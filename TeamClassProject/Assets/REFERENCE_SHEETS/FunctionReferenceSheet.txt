@@ -1,0 +1,20 @@
+Reference sheet for all functions and what they do
+This sheet is sorted by script name
+Don't forget, you can quickly search with ctrl+f, but if you do make sure you're checking the.. 
+correct script, because more than one script can have the same named function
+
+
+
+Movement{
+		
+		GetHit(float attackDamage, float attackAngle, float attackForce, float hitStun)
+			/* This function gets called when an enemy hits you, it will control how the player reacts to getting hit
+		     * What the arguments are for:
+			 *      attackDamage- is the how much the players health/armor goes down.
+			 *      attackAngle- is the angle you get sent flying when you get hit. [*possibly* affected by player weight]
+			 *      attackForce- is how far back you get sent flying. [affected by player weight]
+			 *      hitStun- is how long the player has to wait before they can do anything
+			 *      -Ganderman Dan
+			 */ 
+
+}

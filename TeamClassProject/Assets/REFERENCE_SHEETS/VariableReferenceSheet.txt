@@ -1,0 +1,58 @@
+Reference sheet for all variables and what they do, no matter how redundant.
+This sheet is sorted by script name
+Don't forget, you can quickly search with ctrl+f, but if you do make sure you're checking the.. 
+correct script, because more than one script can have the same named variable
+
+
+
+HeathAndShield{
+		currentHealth: The current amount of health the player has.
+
+		currentShield: The current amount of shield the player has.
+
+		isInvinsible: Not INVISIBLE! This variable dictates whether you are invinsible or not. If you're invinsible, you cannot take damage, or receive
+					  knockback from enemy attacks. You may want to set this to true for example, If you're getting up from getting knocked down, or maybe
+					  invinsibility is just a power up, and so on...
+
+		isInvinsibleTimer: Not sure if we will need this variable, but while this number is positive, set 'isInvinsible' to true, and if its <= 0, set 'isInvinsible' to false
+
+		maxHealth: The maximum amount of health the character can have at one time.
+
+		maxShield: The maximum amount of shield the character can have at one time.
+
+		shieldRegenSpeed: How fast your shield regenerates, after the shieldWaitTime is over
+
+		shieldWaitTime: The amount of time (in seconds) that needs to pass without taking damage, before your shield can start to regenerate.
+}
+
+
+
+Movement{
+		airSpeed: How fast you can move left and right while in the air.
+
+		canWallCling: If true, the character can temporarily, or permanantly cling to walls (we didnt discuss this yet, so i dont know if we will
+					  make wall cling a thing, and if it is a temporary cling.)
+
+		gravity: How strong the downward force to the player is. 
+	  		     /* i may need more types of gravity modifiers, but i think one is fine for now. Also the reason i have gravity...
+				  * here instead of on the rigidbody is mostly preference, but also so it can be easily changed at will in...
+				  * the event we want to have gravity modifiers due to support character interference
+				  * -Ganderman Dan
+                  */
+
+		hitStun: Is how long you have to wait before you can do something after getting hit, this number is affected directly by the
+	             enemies attack, this function should get called when you get hit. While this number is greater than 0, you cannot do anything
+				 Refer to the GetHit() function for further explanation 
+
+		jumpForce: The upward force added to the player when the jump button is pressed. Weight will also impact how high you go when you jump.
+
+		numJumps: The amount of times you can jump before touching the ground again.
+
+		runSpeed: How fast you move left and right while grounded and also running //I dont know if running is in the game, but i put the variable there just in case
+
+		walkSpeed: How fast you can move left and right while grounded.
+
+		weight: How heavy the player is. The weight of your character will help determine how far you fly when an enemy hits you, it will also
+				have an impact on how high you go when you jump (a heavier character will require a greater jump force to go the same height as a lighter character)
+				A similar thing will happen with gravity. 
+}
