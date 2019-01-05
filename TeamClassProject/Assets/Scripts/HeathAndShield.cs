@@ -12,21 +12,26 @@ public class HeathAndShield : MonoBehaviour
 
     // this script should be where all the health and shield related stuff goes. This also includes functions that take care of taking damage. -Ganderman Dan    
 
+    //If you make a new variable or script, please explain what it does in their respective reference sheets, just so every understands what each variable is used for -Ganderman Dan
 
-
-    [Header("Health and Shield")]
+    [Header("Health")]
     public float maxHealth;
     private float currentHealth;
-    public float maxShield, shieldWaitTime, shieldRegenSpeed; //dont know if we will have shield properties in the game but i put it here just in case -Ganderman Dan
-    private float currentShield;
+
+    [Header("Armor")]
+    public float maxArmor; //dont know if we will have armor properties in the game but i put it here just in case -Ganderman Dan
+    public float armorWaitTime;
+    public float armorRegenSpeed;
+    private float currentArmor;
     /*
-     * shields, (at least what im thinking, will be a small portion of health that that must fully deplete before the players "health" starts to ...
-     * go down. Shields will also have the ability to regenerate after a period of not getting hit.)
+     * Armor, (at least what im thinking, will be a small portion of health that that must fully deplete before the players "health" starts to ...
+     * go down. Armor will also have the ability to regenerate after a period of not getting hit.)
      * 
-     * shieldWaitTime - is the amount of time you cant take damage for before you start to regenerate your armor
-     * shieldRegenSpeed - is how fast you regen your shield
+     * armorWaitTime - is the amount of time you cant take damage for before you start to regenerate your armor
+     * armorRegenSpeed - is how fast you regen your armor
      * -Ganderman Dan
      */
+
     [HideInInspector]
     public bool isInvinsible;
     private float isInvinsibleTimer;

@@ -372,7 +372,7 @@ GameObject:
   - component: {fileID: 1507555109}
   m_Layer: 0
   m_Name: WhiteBox
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -480,8 +480,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507555108}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.052, y: -2.7055852, z: 0}
-  m_LocalScale: {x: 62.941505, y: 1, z: 1}
+  m_LocalPosition: {x: 0.052, y: -3.72, z: 0}
+  m_LocalScale: {x: 453.57, y: 7.342, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -495,13 +495,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1943367067}
+  - component: {fileID: 1943367071}
+  - component: {fileID: 1943367072}
   - component: {fileID: 1943367066}
   - component: {fileID: 1943367065}
   - component: {fileID: 1943367070}
   - component: {fileID: 1943367069}
   - component: {fileID: 1943367068}
-  - component: {fileID: 1943367072}
-  - component: {fileID: 1943367071}
+  - component: {fileID: 1943367073}
   m_Layer: 0
   m_Name: Anubis
   m_TagString: Untagged
@@ -584,8 +585,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1943367064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.75, y: -1.09, z: 0}
-  m_LocalScale: {x: 0.285, y: 0.285, z: 0.285}
+  m_LocalPosition: {x: -3.44, y: -1.78, z: 0}
+  m_LocalScale: {x: 0.13193771, y: 0.13193771, z: 0.13193771}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -647,7 +648,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -665,14 +666,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ab57893da469ed4b8a1442fe529eb5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 0
-  walkSpeed: 0
-  airSpeed: 0
-  runSpeed: 0
-  numJumps: 0
-  jumpForce: 0
-  weight: 0
+  aerialJumpForce: 1000
+  groundedJumpForce: 850
+  maxJumps: 2
+  upwardGravity: 25
+  downwardGravity: 35
+  maxDownwardVelocity: 30
+  onGroundTimerMax: 0.05
+  onGroundTimer: 0
+  groundSpeed: 25
+  maxGroundVelocity: 15
+  haltSpeed: 10
+  turnSpeed: 15
+  airSpeed: 25
+  maxAirVelocity: 20
+  movementMultiplier: 1
+  groundedThrustForce: 250
+  aerialThrustForce: 400
+  weight: 2.5
   canWallCling: 0
+  runTransitionAxis: 0.6
   hitStun: 0
 --- !u!114 &1943367072
 MonoBehaviour:
@@ -687,7 +700,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 0
-  maxShield: 0
-  shieldWaitTime: 0
-  shieldRegenSpeed: 0
+  maxArmor: 0
+  armorWaitTime: 0
+  armorRegenSpeed: 0
   isInvinsible: 0
+--- !u!61 &1943367073
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943367064}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.19073814, y: -2.6871715}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 9, y: 9}
+    newSize: {x: 9, y: 9}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.9820839, y: 0.06893325}
+  m_EdgeRadius: 0
