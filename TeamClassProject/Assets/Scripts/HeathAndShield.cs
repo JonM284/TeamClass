@@ -7,20 +7,20 @@ public class HeathAndShield : MonoBehaviour
     /* please put your name at the end of important comments so that we know who wrote what, so that if one of us has a problem understanding
      * what the code does, we can directly ask the person, instead of asking everyone
      * also im putting this block comment at the top of every script, sorry if it gets repetitive
-     * -Ganderman Dan
+     * -Ganderman Dan 🦆
      */
 
-    // this script should be where all the health and shield related stuff goes. This also includes functions that take care of taking damage. -Ganderman Dan    
+    // this script should be where all the health and shield related stuff goes. This also includes functions that take care of taking damage. -Ganderman Dan 🦆
 
-    //If you make a new variable or script, please explain what it does in their respective reference sheets, just so every understands what each variable is used for -Ganderman Dan
+    //If you make a new variable or script, please explain what it does in their respective reference sheets, just so every understands what each variable is used for -Ganderman Dan 🦆
 
     [Header("Health")]
     public float maxHealth;
     private float currentHealth;
 
     [Header("Armor")]
-    public float maxArmor; //dont know if we will have armor properties in the game but i put it here just in case -Ganderman Dan
-    public float armorWaitTime;
+    public float maxArmor; //dont know if we will have armor properties in the game but i put it here just in case -Ganderman Dan 🦆
+    public float armorWaitTime; 
     public float armorRegenSpeed;
     private float currentArmor;
     /*
@@ -29,7 +29,7 @@ public class HeathAndShield : MonoBehaviour
      * 
      * armorWaitTime - is the amount of time you cant take damage for before you start to regenerate your armor
      * armorRegenSpeed - is how fast you regen your armor
-     * -Ganderman Dan
+     * -Ganderman Dan 🦆
      */
 
     [HideInInspector]

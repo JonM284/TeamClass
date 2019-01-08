@@ -41,6 +41,8 @@ Movement{
 
 		airSpeed: How fast you can move left and right while in the air.
 
+		attackHaltSpeed: How fast you top moving when performing an attack.
+
 		canWallCling: If true, the character can temporarily, or permanantly cling to walls (we didnt discuss this yet, so i dont know if we will
 					  make wall cling a thing, and if it is a temporary cling.)
 
@@ -64,6 +66,10 @@ Movement{
 				 Refer to the GetHit() function for further explanation 
 
 		horAxisPos: This stores the current joystick position (left and right) so that FixedUpdate() doesnt have to deal with Input stuff
+
+		isAttackingOnGround: This gets set to true if you are currently doing a grounded attack.
+
+		isAttackingInAir: This gets set to true if you are currently doing an aerial attack.
 
 		isTouchingGround: Check if the player is currently touching the ground/platform/not in the air (used mostly for determining whether or not to use walkSpeed or airSpeed)
 

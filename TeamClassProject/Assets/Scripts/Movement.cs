@@ -7,18 +7,21 @@ public class Movement : MonoBehaviour
     /* please put your name at the end of important comments so that we know who wrote what, so that if one of us has a problem understanding
      * what the code does, we can directly ask the person, instead of asking everyone
      * also im putting this block comment at the top of every script, sorry if it gets repetitive
-     * -Ganderman Dan
+     * -Ganderman Dan 🦆
      */
 
     /* this script should be where all the movement related stuff should go. 
      * I think we should also put knockback related stuff here since that has to do with movement. 
      *            (ex. angle you fly when you get hit, and how far you fly back when you get hit, etc.)
      * But perhaps a separate script could make thinks more organized
-     * We'll figure it out when we get there I guess :)  -Ganderman Dan 
+     * We'll figure it out when we get there I guess :)  -Ganderman Dan  🦆
      */
 
-        //If you make a new variable or script, please explain what it does in their respective reference sheets, just so every understands what each variable is used for -Ganderman Dan
-        
+    //If you make a new variable or script, please explain what it does in their respective reference sheets, just so every understands what each variable is used for -Ganderman Dan 🦆
+
+    [Header("This is for testing purposes, it will not stay like this")]
+        //I will make it so when you choose your character depending on what team your on, your tag will change accordingly, this is more hitbox collision purposes")]
+    public bool isPlayer1;
 
     [Header("Jump & Gravity Modifiers")]
     public float aerialJumpForce;
@@ -38,6 +41,7 @@ public class Movement : MonoBehaviour
     public float maxGroundVelocity;
     [Tooltip("How fast you stop")]
     public float haltSpeed;
+    public float attackHaltSpeed;
     [Tooltip("How quickly you can stop moving one direction to go the other")]
     public float turnSpeed;
     public float airSpeed;
@@ -58,6 +62,14 @@ public class Movement : MonoBehaviour
     public float runTransitionAxis;
     [HideInInspector]
     public float hitStun;
+    
+
+
+    //attack variables
+    private bool isAttackingOnGround = false;
+    private bool isAttackingInAir = false;
+
+
 
     //private movement checkers
     private bool moveRight = false;
@@ -72,6 +84,7 @@ public class Movement : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Animator anim;
+    private BasicAttack ba;
 
     public RaycastHit2D raycast;
 
@@ -80,17 +93,23 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        ba = GetComponent<BasicAttack>();
 
         currentJumps = maxJumps;
+
+        if (isPlayer1)
+        {
+           
+        }
     }
 
-   /* if you're doing something with the rigidbody and movement, do it here, it's better
-    * BUT DONT DO PLAYER INPUT HERE, do input in Update(), and the physics here in FixedUpdate()
-    * If that confuses you, heres an example. In Update, set a bool called moveRight == true if 'd' is pressed. Then in FixedUpdate(), do if(moveRight == true){ physics crap etc. }
-    * check here for reference https://docs.unity3d.com/ScriptReference/MonoBehaviour.FixedUpdate.html
-    * more about the differnces between the two update functions https://unity3d.com/learn/tutorials/topics/scripting/update-and-fixedupdate
-    * -Ganderman Dan
-    */
+    /* if you're doing something with the rigidbody and movement, do it here, it's better
+     * BUT DONT DO PLAYER INPUT HERE, do input in Update(), and the physics here in FixedUpdate()
+     * If that confuses you, heres an example. In Update, set a bool called moveRight == true if 'd' is pressed. Then in FixedUpdate(), do if(moveRight == true){ physics crap etc. }
+     * check here for reference https://docs.unity3d.com/ScriptReference/MonoBehaviour.FixedUpdate.html
+     * more about the differnces between the two update functions https://unity3d.com/learn/tutorials/topics/scripting/update-and-fixedupdate
+     * -Ganderman Dan 🦆
+     */
     void FixedUpdate()
     {
  
@@ -99,8 +118,11 @@ public class Movement : MonoBehaviour
         {
             if (moveRight) //movement going right
             {
-                anim.SetInteger("State", 1);
-                sr.flipX = false;
+                if (!isAttackingInAir && !isAttackingOnGround)
+                {
+                    anim.SetInteger("State", 1);
+                    sr.flipX = false;
+                }
 
                 if (thrustReset && horAxisPos > runTransitionAxis && rb.velocity.x < maxGroundVelocity * .75f)
                 {
@@ -117,15 +139,18 @@ public class Movement : MonoBehaviour
                 }
             }else if (moveLeft) //movement going left
             {
-                anim.SetInteger("State", 1);
-                sr.flipX = true;
+                if (!isAttackingInAir && !isAttackingOnGround)
+                {
+                    anim.SetInteger("State", 1);
+                    sr.flipX = true;
+                }
 
                 if (thrustReset && horAxisPos < -runTransitionAxis && rb.velocity.x > -maxGroundVelocity * .75f)
                 {
                     rb.AddForce(-transform.right * (groundedThrustForce / movementMultiplier));
                     thrustReset = false;
                 }
-                if (Mathf.Abs(rb.velocity.x) < Mathf.Abs(maxGroundVelocity * horAxisPos))//movement takes into account how far the joystick is moved -Ganderman Dan
+                if (Mathf.Abs(rb.velocity.x) < Mathf.Abs(maxGroundVelocity * horAxisPos))//movement takes into account how far the joystick is moved -Ganderman Dan 🦆
                 {
                     if (rb.velocity.x > 1)  //helps you quickly change direction
                     { 
@@ -140,20 +165,37 @@ public class Movement : MonoBehaviour
                  * this determines your 'slideyness' when you put the joystick back into neutral position
                  * the higher the halt speed the faster you stop
                  * the lower the halt speed that most slippery you slide
-                 * -GandermanDan
+                 * -GandermanDan 🦆
                  */
-                if(rb.velocity.x > 1)
+                if (rb.velocity.x > 1)
                 {
-                    rb.AddForce(-transform.right * (haltSpeed));
+                    if (!isAttackingInAir && !isAttackingOnGround)
+                    {
+                        rb.AddForce(-transform.right * (haltSpeed));
+                    }
+                    else
+                    {
+                        rb.AddForce(-transform.right * (attackHaltSpeed));
+                    }
                 }
                 else if(rb.velocity.x < -1)
                 {
-                    rb.AddForce(transform.right * (haltSpeed));
+                    if (!isAttackingInAir && !isAttackingOnGround)
+                    {
+                        rb.AddForce(transform.right * (haltSpeed));
+                    }
+                    else
+                    {
+                        rb.AddForce(transform.right * (attackHaltSpeed));
+                    }
                 }
                 else
                 {
-                    rb.velocity = new Vector3(0, rb.velocity.y, 0);
-                    anim.SetInteger("State", 0);
+                        rb.velocity = new Vector3(0, rb.velocity.y, 0);
+                    if (!isAttackingInAir && !isAttackingOnGround)
+                    {
+                        anim.SetInteger("State", 0);
+                    }
                 }
             }
 
@@ -182,8 +224,11 @@ public class Movement : MonoBehaviour
 
             if (moveRight) //movement going right
             {
-                anim.SetInteger("State", 1);
-                sr.flipX = false;
+                if (!isAttackingInAir && !isAttackingOnGround)
+                {
+                    anim.SetInteger("State", 1);
+                    sr.flipX = false;
+                }
 
                 if (thrustReset && horAxisPos > runTransitionAxis && rb.velocity.x < maxAirVelocity * .75f)
                 {
@@ -201,15 +246,18 @@ public class Movement : MonoBehaviour
             }
             else if (moveLeft) //movement going left
             {
-                anim.SetInteger("State", 1);
-                sr.flipX = true;
+                if (!isAttackingInAir && !isAttackingOnGround)
+                {
+                    anim.SetInteger("State", 1);
+                    sr.flipX = true;
+                }
 
                 if (thrustReset && horAxisPos < -runTransitionAxis && rb.velocity.x > -maxAirVelocity * .75f)
                 {
                     rb.AddForce(-transform.right * (aerialThrustForce / movementMultiplier));
                     thrustReset = false;
                 }
-                if (Mathf.Abs(rb.velocity.x) < Mathf.Abs(maxAirVelocity * horAxisPos))//movement takes into account how far the joystick is moved -Ganderman Dan
+                if (Mathf.Abs(rb.velocity.x) < Mathf.Abs(maxAirVelocity * horAxisPos))//movement takes into account how far the joystick is moved -Ganderman Dan 🦆
                 {
                     if (rb.velocity.x > 1)  //helps you quickly change direction
                     {
@@ -224,20 +272,37 @@ public class Movement : MonoBehaviour
                  * this determines your 'slideyness' when you put the joystick back into neutral position
                  * the higher the halt speed the faster you stop
                  * the lower the halt speed that most slippery you slide
-                 * -GandermanDan
+                 * -GandermanDan 🦆
                  */
 
                 if (rb.velocity.x > 1)
                 {
-                    rb.AddForce(-transform.right * (haltSpeed));
+                    if (!isAttackingInAir && !isAttackingOnGround)
+                    {
+                        rb.AddForce(-transform.right * (haltSpeed));
+                    }
+                    else
+                    {
+                        rb.AddForce(-transform.right * (attackHaltSpeed));
+                    }
                 }
                 else if (rb.velocity.x < -1)
                 {
-                    rb.AddForce(transform.right * (haltSpeed));
+                    if (!isAttackingInAir && !isAttackingOnGround)
+                    {
+                        rb.AddForce(transform.right * (haltSpeed));
+                    }
+                    else
+                    {
+                        rb.AddForce(transform.right * (attackHaltSpeed));
+                    }
                 }
                 else
                 {
-                    anim.SetInteger("State", 0);
+                    if (!isAttackingInAir && !isAttackingOnGround)
+                    {
+                        anim.SetInteger("State", 0);
+                    }
                 }
             }
 
@@ -265,10 +330,23 @@ public class Movement : MonoBehaviour
 
     }
 
-    //ALL PLAYER INPUT goes here
-    //anything that doesn't have to do with rigidbody movement, do here
+    /*ALL PLAYER INPUT goes here
+     *anything that doesn't have to do with rigidbody movement, do here
+     * 
+     * Joystick numbers:
+     * "joystick button 0" = ☐
+     * "joystick button 1" = ✕
+     * "joystick button 2" = ◯
+     * "joystick button 3" = △
+     */
     void Update()
     {
+        /*
+        if(Input.GetKeyDown("joystick button 0"))
+        {
+            Debug.Log("はい");
+        }
+        */
 
         //set timer that will let the player jump slightly off the platform
         if (isTouchingGround && rb.velocity.y <= 0)
@@ -285,40 +363,76 @@ public class Movement : MonoBehaviour
         }
 
 
-
-        if (Input.GetAxis("Horizontal") > .1f)//set right to true 
+        if (!isAttackingOnGround && !isAttackingInAir)
         {
-            moveRight = true;
-            horAxisPos = Input.GetAxis("Horizontal");
+            if (Input.GetAxis("Horizontal") > .1f)//set right to true 
+            {
+                moveRight = true;
+                horAxisPos = Input.GetAxis("Horizontal");
+            }
+            else
+            {
+                moveRight = false;
+            }
+
+            if (Input.GetAxis("Horizontal") < -.1f)//set left to true 
+            {
+                moveLeft = true;
+                horAxisPos = Input.GetAxis("Horizontal");
+            }
+            else
+            {
+                moveLeft = false;
+            }
+
+            if (Input.GetAxis("Horizontal") > -.1f && Input.GetAxis("Horizontal") < .1f)
+            { //When joystick is set back to neutral ready up the next movement thrust
+                thrustReset = true;
+            }
         }
-        else
+
+        //if you press the Square button
+        if (Input.GetKeyDown("joystick button 0"))
         {
-            moveRight = false;
-        }
-                
-        if (Input.GetAxis("Horizontal") < -.1f)//set left to true 
-        {
-            moveLeft = true;
-            horAxisPos = Input.GetAxis("Horizontal");
-        }
-        else
-        {
-            moveLeft = false;
-        }
+            if (isTouchingGround == true)
+            {
+                //do grounded forward attack
+                moveLeft = false;
+                moveRight = false;
+                isAttackingOnGround = true;
+                anim.SetInteger("State", 2);
+            }
+            if (isTouchingGround == false)
+            {
+                //do aerial forward attack
 
-        if(Input.GetAxis("Horizontal") > -.1f && Input.GetAxis("Horizontal") < .1f){ //When joystick is set back to neutral ready up the next movement thrust
-            thrustReset = true;
+            }
         }
 
-
-
-
-        if(Input.GetKeyDown("joystick button 1"))
+        //if you press the X button
+        if (Input.GetKeyDown("joystick button 1"))
         {
             if (currentJumps > 0)
             {
                 activateJump = true;
             }
+        }
+    }
+
+    //this gets called at the end of the attack animation to signal this script that you can move again because your attack is over -Ganderman Dan 🦆
+    public void CanAttackAgain()
+    {
+        isAttackingOnGround = false;
+        isAttackingInAir = false;
+
+        if (isTouchingGround)
+        {
+            anim.SetInteger("State", 0);//idle
+        }
+        if (!isTouchingGround)
+        {
+            //****This is temporary, make this the falling while in air animation when you have one***************
+            anim.SetInteger("State", 0);//idle falling anim
         }
     }
 
@@ -329,8 +443,8 @@ public class Movement : MonoBehaviour
      *      attackAngle- is the angle you get sent flying when you get hit. [*possibly* affected by player weight]
      *      attackForce- is how far back you get sent flying. [affected by player weight]
      *      hitStun- is how long the player has to wait before they can do anything
-     *      -Ganderman Dan
-     */ 
+     *      -Ganderman Dan 🦆
+     */
 
     public void GetHit(float attackDamage, float attackAngle, float attackForce, float hitStun)//im probably missing a few arguments
     {
@@ -338,12 +452,20 @@ public class Movement : MonoBehaviour
     }
 
     /*
-     *Both the OnCollisionEnter2D and OnCollisionStay2D methods are determining when the player is on the ground 
-     * This is basically Corbetta's code from DGD-6 but I use it almost everytime I make a platformer because I feel like it's a goood basis to start and I haven't thought of a better way to do it
+     * Both the OnCollisionEnter2D and OnCollisionStay2D methods are determining when the player is on the ground 
+     * This is basically Corbetta's code from DGD-6 but I use it almost everytime I make a platformer because I feel like it's a goood basis to start and I haven't thought of a better way to do it 
+     * -Buscrubs
      */
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.tag == transform.root.tag)//****This will change
+        {
+            Debug.Log("Hi");
+        }
+
+
+
         foreach (ContactPoint2D contact in collision.contacts)
         {
             //am I coming from the top/bottom?
