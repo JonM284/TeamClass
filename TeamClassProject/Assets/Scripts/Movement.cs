@@ -21,7 +21,7 @@ public class Movement : MonoBehaviour
 
     [Header("This is for testing purposes, it will not stay like this")]
         //I will make it so when you choose your character depending on what team your on, your tag will change accordingly, this is more hitbox collision purposes")]
-    public bool isPlayer1;
+    public bool isBot;
 
     [Header("Jump & Gravity Modifiers")]
     public float aerialJumpForce;
@@ -81,6 +81,8 @@ public class Movement : MonoBehaviour
     private bool activateJump = false;
     private float currentJumps;
 
+    private float xScale;
+
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Animator anim;
@@ -97,10 +99,7 @@ public class Movement : MonoBehaviour
 
         currentJumps = maxJumps;
 
-        if (isPlayer1)
-        {
-           
-        }
+        xScale = gameObject.transform.localScale.x;
     }
 
     /* if you're doing something with the rigidbody and movement, do it here, it's better
@@ -112,7 +111,6 @@ public class Movement : MonoBehaviour
      */
     void FixedUpdate()
     {
- 
         //grounded movement stuff
         if (isTouchingGround)
         {
@@ -121,7 +119,11 @@ public class Movement : MonoBehaviour
                 if (!isAttackingInAir && !isAttackingOnGround)
                 {
                     anim.SetInteger("State", 1);
-                    sr.flipX = false;
+                   // if (Input.GetAxis("Horizontal") > .1f)
+                    //{
+                        gameObject.transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
+                        //sr.flipX = false;
+                   // }
                 }
 
                 if (thrustReset && horAxisPos > runTransitionAxis && rb.velocity.x < maxGroundVelocity * .75f)
@@ -142,7 +144,11 @@ public class Movement : MonoBehaviour
                 if (!isAttackingInAir && !isAttackingOnGround)
                 {
                     anim.SetInteger("State", 1);
-                    sr.flipX = true;
+                   // if (Input.GetAxis("Horizontal") < -.1f)
+                   // {
+                        gameObject.transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
+                        //sr.flipX = true;
+                    //}
                 }
 
                 if (thrustReset && horAxisPos < -runTransitionAxis && rb.velocity.x > -maxGroundVelocity * .75f)
@@ -227,7 +233,7 @@ public class Movement : MonoBehaviour
                 if (!isAttackingInAir && !isAttackingOnGround)
                 {
                     anim.SetInteger("State", 1);
-                    sr.flipX = false;
+                    gameObject.transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
                 }
 
                 if (thrustReset && horAxisPos > runTransitionAxis && rb.velocity.x < maxAirVelocity * .75f)
@@ -249,7 +255,7 @@ public class Movement : MonoBehaviour
                 if (!isAttackingInAir && !isAttackingOnGround)
                 {
                     anim.SetInteger("State", 1);
-                    sr.flipX = true;
+                    gameObject.transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
                 }
 
                 if (thrustReset && horAxisPos < -runTransitionAxis && rb.velocity.x > -maxAirVelocity * .75f)
@@ -341,80 +347,83 @@ public class Movement : MonoBehaviour
      */
     void Update()
     {
-        /*
-        if(Input.GetKeyDown("joystick button 0"))
+        if (!isBot)
         {
-            Debug.Log("はい");
-        }
-        */
-
-        //set timer that will let the player jump slightly off the platform
-        if (isTouchingGround && rb.velocity.y <= 0)
-        {
-            onGroundTimer = onGroundTimerMax;
-        }
-        else
-        {
-            onGroundTimer -= Time.deltaTime;
-        }
-        if(onGroundTimer <= 0)
-        {
-            isTouchingGround = false;
-        }
-
-
-        if (!isAttackingOnGround && !isAttackingInAir)
-        {
-            if (Input.GetAxis("Horizontal") > .1f)//set right to true 
+            /*
+            if(Input.GetKeyDown("joystick button 0"))
             {
-                moveRight = true;
-                horAxisPos = Input.GetAxis("Horizontal");
+                Debug.Log("はい");
+            }
+            */
+
+            //set timer that will let the player jump slightly off the platform
+            if (isTouchingGround && rb.velocity.y <= 0)
+            {
+                onGroundTimer = onGroundTimerMax;
             }
             else
             {
-                moveRight = false;
+                onGroundTimer -= Time.deltaTime;
+            }
+            if (onGroundTimer <= 0)
+            {
+                isTouchingGround = false;
             }
 
-            if (Input.GetAxis("Horizontal") < -.1f)//set left to true 
+
+            if (!isAttackingOnGround && !isAttackingInAir)
             {
-                moveLeft = true;
-                horAxisPos = Input.GetAxis("Horizontal");
-            }
-            else
-            {
-                moveLeft = false;
+                if (Input.GetAxis("Horizontal") > .1f)//set right to true 
+                {
+                    moveRight = true;
+                    horAxisPos = Input.GetAxis("Horizontal");
+                }
+                else
+                {
+                    moveRight = false;
+                }
+
+                if (Input.GetAxis("Horizontal") < -.1f)//set left to true 
+                {
+                    moveLeft = true;
+                    horAxisPos = Input.GetAxis("Horizontal");
+                }
+                else
+                {
+                    moveLeft = false;
+                }
+
+                if (Input.GetAxis("Horizontal") > -.1f && Input.GetAxis("Horizontal") < .1f)
+                { //When joystick is set back to neutral ready up the next movement thrust
+                    thrustReset = true;
+                }
+
+                //if you press the X button
+                if (Input.GetKeyDown("joystick button 1"))
+                {
+                    if (currentJumps > 0)
+                    {
+                        activateJump = true;
+                    }
+                }
             }
 
-            if (Input.GetAxis("Horizontal") > -.1f && Input.GetAxis("Horizontal") < .1f)
-            { //When joystick is set back to neutral ready up the next movement thrust
-                thrustReset = true;
-            }
-        }
-
-        //if you press the Square button
-        if (Input.GetKeyDown("joystick button 0"))
-        {
-            if (isTouchingGround == true)
+            //if you press the Square button
+            if (Input.GetKeyDown("joystick button 0"))
             {
-                //do grounded forward attack
-                moveLeft = false;
-                moveRight = false;
-                isAttackingOnGround = true;
-                anim.SetInteger("State", 2);
-            }
-            if (isTouchingGround == false)
-            {
-                //do aerial forward attack
+                if (isTouchingGround == true)
+                {
+                    //do grounded forward attack
+                    moveLeft = false;
+                    moveRight = false;
+                    isAttackingOnGround = true;
+                    anim.SetInteger("State", 2);
+                }
+                if (isTouchingGround == false)
+                {
+                    //do aerial forward attack
 
-            }
-        }
-
-        //if you press the X button
-        if (Input.GetKeyDown("joystick button 1"))
-        {
-            if (currentJumps > 0)
-            {
-                activateJump = true;
+                }
             }
         }
     }
@@ -448,7 +457,7 @@ public class Movement : MonoBehaviour
 
     public void GetHit(float attackDamage, float attackAngle, float attackForce, float hitStun)//im probably missing a few arguments
     {
-        
+        rb.AddForce(new Vector2(attackForce, 0));
     }
 
     /*
@@ -459,13 +468,6 @@ public class Movement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == transform.root.tag)//****This will change
-        {
-            Debug.Log("Hi");
-        }
-
-
-
         foreach (ContactPoint2D contact in collision.contacts)
         {
             //am I coming from the top/bottom?
@@ -500,10 +502,15 @@ public class Movement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-       // if (other.gameObject.tag == "Floor")
-       // {
-       //     isTouchingGround = true;
-       // }
+        if (other.gameObject.tag == "GroundedForwardAttack")//****This will change
+        {
+            other.gameObject.GetComponentInParent<BasicAttack>().GroundedForwardAttack(gameObject);
+        }
+
+        // if (other.gameObject.tag == "Floor")
+        // {
+        //     isTouchingGround = true;
+        // }
     }
 
     private void OnTriggerExit2D(Collider2D other)
