@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Rewired;
+using Rewired.ControllerExtensions;
 
 public class Movement : MonoBehaviour
 {
@@ -89,6 +91,22 @@ public class Movement : MonoBehaviour
     private BasicAttack ba;
 
     public RaycastHit2D raycast;
+
+    //the following is in order to use rewired
+    [Tooltip("Reference for using rewired")]
+    private Player myPlayer;
+    [Header("Rewired")]
+    [Tooltip("Number identifier for each player, must be above 0")]
+    public int playerNum;
+
+
+    void Awake()
+    {
+        myPlayer = ReInput.players.GetPlayer(playerNum - 1);
+        ReInput.ControllerConnectedEvent += OnControllerConnected;
+        CheckController(myPlayer);
+    }
+
 
     void Start()
     {
@@ -373,33 +391,33 @@ public class Movement : MonoBehaviour
 
             if (!isAttackingOnGround && !isAttackingInAir)
             {
-                if (Input.GetAxis("Horizontal") > .1f)//set right to true 
+                if (myPlayer.GetAxis("Horizontal") > .1f)//set right to true 
                 {
                     moveRight = true;
-                    horAxisPos = Input.GetAxis("Horizontal");
+                    horAxisPos = myPlayer.GetAxis("Horizontal");
                 }
                 else
                 {
                     moveRight = false;
                 }
 
-                if (Input.GetAxis("Horizontal") < -.1f)//set left to true 
+                if (myPlayer.GetAxis("Horizontal") < -.1f)//set left to true 
                 {
                     moveLeft = true;
-                    horAxisPos = Input.GetAxis("Horizontal");
+                    horAxisPos = myPlayer.GetAxis("Horizontal");
                 }
                 else
                 {
                     moveLeft = false;
                 }
 
-                if (Input.GetAxis("Horizontal") > -.1f && Input.GetAxis("Horizontal") < .1f)
+                if (myPlayer.GetAxis("Horizontal") > -.1f && myPlayer.GetAxis("Horizontal") < .1f)
                 { //When joystick is set back to neutral ready up the next movement thrust
                     thrustReset = true;
                 }
 
                 //if you press the X button
-                if (Input.GetKeyDown("joystick button 1"))
+                if (myPlayer.GetButtonDown("Jump"))
                 {
                     if (currentJumps > 0)
                     {
@@ -409,7 +427,7 @@ public class Movement : MonoBehaviour
             }
 
             //if you press the Square button
-            if (Input.GetKeyDown("joystick button 0"))
+            if (myPlayer.GetButtonDown("BasicAttack"))
             {
                 if (isTouchingGround == true)
                 {
@@ -519,5 +537,43 @@ public class Movement : MonoBehaviour
         //{
         //    isTouchingGround = false;
        // }
+    }
+
+
+    // everything that follows is for rewired, please do not change.
+    //-Jon Mendez
+
+    void OnControllerConnected(ControllerStatusChangedEventArgs arg)
+    {
+        CheckController(myPlayer);
+    }
+
+    void CheckController(Player player)
+    {
+        foreach (Joystick joyStick in player.controllers.Joysticks)
+        {
+            var ds4 = joyStick.GetExtension<DualShock4Extension>();
+            if (ds4 == null) continue;//skip this if not DualShock4
+            switch (playerNum) {
+                case 4:
+                    ds4.SetLightColor(Color.yellow);
+                    break;
+                case 3:
+                    ds4.SetLightColor(Color.green);
+                    break;
+                case 2:
+                    ds4.SetLightColor(Color.blue);
+                    break;
+                case 1:
+                    ds4.SetLightColor(Color.red);
+                    break;
+                default:
+                    ds4.SetLightColor(Color.white);
+                    Debug.LogError("Player Num is 0, please change to a number >0");
+                    break;
+            }
+            
+
+        }
     }
 }

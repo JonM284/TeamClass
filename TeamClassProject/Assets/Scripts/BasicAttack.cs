@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Rewired;
 
 public class BasicAttack : MonoBehaviour
 {
@@ -31,7 +32,21 @@ public class BasicAttack : MonoBehaviour
 
     private Animator anim;
 
+    //rewired
+    [Tooltip("Reference for using rewired")]
+    private Player myPlayer;
+    [Header("Rewired")]
+    [Tooltip("Number identifier for each player, must be above 0")]
+    public int playerNum;
 
+    void Awake()
+    {
+        if (playerNum <= 0 || playerNum >= 5)
+        {
+            Debug.LogError("Player Num MUST be greater than 0 and less than 5");
+        }
+        myPlayer = ReInput.players.GetPlayer(playerNum - 1);
+    }
     // Start is called before the first frame update
     void Start()
     {
