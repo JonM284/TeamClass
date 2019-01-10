@@ -75,6 +75,8 @@ Movement{
 
 		isAttackingInAir: This gets set to true if you are currently doing an aerial attack.
 
+		isBot: Mostly for testing, this just makes it so you can beat up the enemy as a sandbag type of thing
+
 		isTouchingGround: Check if the player is currently touching the ground/platform/not in the air (used mostly for determining whether or not to use walkSpeed or airSpeed)
 
 		maxAirVelocity: The maximum speed at which you can move left and right while in the air.

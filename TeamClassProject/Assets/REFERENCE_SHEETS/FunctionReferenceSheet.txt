@@ -7,14 +7,23 @@ correct script, because more than one script can have the same named function
 
 Movement{
 		
-		GetHit(float attackDamage, float attackAngle, float attackForce, float hitStun)
+		GetHit(float attackDamage, float attackAngle, float attackForce, float hitStun, bool facingRight)
 			/* This function gets called when an enemy hits you, it will control how the player reacts to getting hit
 		     * What the arguments are for:
 			 *      attackDamage- is the how much the players health/armor goes down.
 			 *      attackAngle- is the angle you get sent flying when you get hit. [*possibly* affected by player weight]
 			 *      attackForce- is how far back you get sent flying. [affected by player weight]
 			 *      hitStun- is how long the player has to wait before they can do anything
+			 *      facingRight- is true if the player that hit you is facing right, this variable helps to make sure you are hit in the correct direction
 			 *      -Ganderman Dan
 			 */ 
+
+
+		FacingRight(){
+			/*
+			 * Returns true if the player is facing right.
+			 * This gets called when you hit a player, to determine which direction to send you.
+			 */
+		}
 
 }
