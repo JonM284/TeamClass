@@ -29,6 +29,9 @@ public class Movement : MonoBehaviour
     public float aerialJumpForce;
     public float groundedJumpForce;
     public float maxJumps;
+    public float holdJumpForce;
+    [Tooltip("How long you continue to rise while holding the jump button")]
+    public float maxHoldJumpTime;
     [Tooltip("How strong the gravity is while the player is moving upward")]
     public float upwardGravity;
     [Tooltip("How strong the gravity is while the player is moving downward")]
@@ -82,6 +85,7 @@ public class Movement : MonoBehaviour
     private bool thrustActive = true;
     private bool activateJump = false;
     private float currentJumps;
+    private float currentHoldJumpTimer = 0;
 
     private float xScale;
 
@@ -129,9 +133,15 @@ public class Movement : MonoBehaviour
      */
     void FixedUpdate()
     {
+        if(currentHoldJumpTimer > 0)
+        {
+            rb.AddForce(transform.up * (holdJumpForce));
+        }
+
         //grounded movement stuff
         if (isTouchingGround)
         {
+
             if (moveRight) //movement going right
             {
                 if (!isAttackingInAir && !isAttackingOnGround)
@@ -365,6 +375,12 @@ public class Movement : MonoBehaviour
      */
     void Update()
     {
+        
+        if(currentHoldJumpTimer >= 0)
+        {
+            currentHoldJumpTimer -= Time.deltaTime;
+        } 
+
         if (!isBot)
         {
             /*
@@ -422,12 +438,22 @@ public class Movement : MonoBehaviour
                     if (currentJumps > 0)
                     {
                         activateJump = true;
+                        currentHoldJumpTimer = maxHoldJumpTime;
                     }
+                }
+
+                if (myPlayer.GetButtonUp("Jump"))
+                {
+                   currentHoldJumpTimer = 0;
                 }
             }
 
+            //dont click on the link below 
+            //https://www.youtube.com/watch?v=dQw4w9WgXcQ
+            //-Ganderman Dan 🦆
+
             //if you press the Square button
-            if (myPlayer.GetButtonDown("BasicAttack"))
+            if (myPlayer.GetButtonDown("BasicAttack") && (!isAttackingInAir || !isAttackingOnGround))
             {
                 if (isTouchingGround == true)
                 {
@@ -473,9 +499,30 @@ public class Movement : MonoBehaviour
      *      -Ganderman Dan 🦆
      */
 
-    public void GetHit(float attackDamage, float attackAngle, float attackForce, float hitStun)//im probably missing a few arguments
+    public void GetHit(float attackDamage, float attackAngle, float attackForce, float hitStun, bool facingRight)//im probably missing a few arguments
     {
-        rb.AddForce(new Vector2(attackForce, 0));
+        Vector3 dir = new Vector3(0,0,0);
+        if (facingRight)
+        {
+            dir = Quaternion.AngleAxis(attackAngle, Vector3.forward) * Vector3.right;
+        }
+        else
+        {
+            dir = Quaternion.AngleAxis(attackAngle, -Vector3.forward) * -Vector3.right;
+        }
+        rb.AddForce(dir * attackForce);
+       // rb.AddForce(new Vector2(attackForce, 0));
+    }
+
+    public bool FacingRight()
+    {
+        if(gameObject.transform.localScale.x > 0)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
     }
 
     /*
@@ -495,6 +542,7 @@ public class Movement : MonoBehaviour
                 if (contact.normal.y >= 0)
                 { //am I hitting the top of the platform?
                     isTouchingGround = true;
+                    currentJumps = maxJumps;
                 }
             }
         }
@@ -511,10 +559,16 @@ public class Movement : MonoBehaviour
                 if (contact.normal.y >= 0)
                 { //am I hitting the top of the platform?
                     isTouchingGround = true;
+                    rb.velocity = new Vector2(rb.velocity.x, 0);
                     currentJumps = maxJumps;
                 }
             }
         }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+
     }
 
 

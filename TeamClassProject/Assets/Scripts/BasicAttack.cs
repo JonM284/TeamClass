@@ -31,6 +31,7 @@ public class BasicAttack : MonoBehaviour
     public float FA_HitStun;
 
     private Animator anim;
+    private Movement movementScript;
 
     //rewired
     [Tooltip("Reference for using rewired")]
@@ -51,6 +52,7 @@ public class BasicAttack : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        movementScript = GetComponent<Movement>();
     }
 
     // Update is called once per frame
@@ -62,7 +64,7 @@ public class BasicAttack : MonoBehaviour
     public void GroundedForwardAttack(GameObject enemy)
     {
         FA_Hitbox.enabled = false; //I turned it of so the enemy only gets hit once
-        enemy.GetComponent<Movement>().GetHit(FA_Damage, FA_Angle, FA_Knockback, FA_HitStun);
+            enemy.GetComponent<Movement>().GetHit(FA_Damage, FA_Angle, FA_Knockback, FA_HitStun, movementScript.FacingRight());
     }
 
     public void GroundedDownAttack()

@@ -460,8 +460,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240405632}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.052002, y: -4.9, z: 0}
-  m_LocalScale: {x: 65.9094, y: 1.0119479, z: 1}
+  m_LocalPosition: {x: 0.052002, y: -4.811, z: 0}
+  m_LocalScale: {x: 65.9094, y: 1.5685191, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -3651,8 +3651,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507555108}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.052, y: -2.27, z: 0}
-  m_LocalScale: {x: 453.57, y: 1.0119479, z: 1}
+  m_LocalPosition: {x: 0.052, y: -2.3681, z: 0}
+  m_LocalScale: {x: 453.57, y: 1.6247835, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -3738,7 +3738,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.5
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -3860,8 +3860,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBot: 1
   aerialJumpForce: 2000
-  groundedJumpForce: 1500
+  groundedJumpForce: 500
   maxJumps: 2
+  holdJumpForce: 150
+  maxHoldJumpTime: 200
   upwardGravity: 25
   downwardGravity: 35
   maxDownwardVelocity: 30
@@ -4110,7 +4112,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1943367064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.44, y: -1.27, z: 0}
+  m_LocalPosition: {x: -3.396, y: -1.58, z: 0}
   m_LocalScale: {x: 0.13193771, y: 0.13193771, z: 0.13193771}
   m_Children:
   - {fileID: 1162464894}
@@ -4174,7 +4176,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.05
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -4193,24 +4195,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBot: 0
-  aerialJumpForce: 2000
-  groundedJumpForce: 1500
+  aerialJumpForce: 1100
+  groundedJumpForce: 750
   maxJumps: 2
+  holdJumpForce: 50
+  maxHoldJumpTime: 0.25
   upwardGravity: 25
   downwardGravity: 35
-  maxDownwardVelocity: 30
+  maxDownwardVelocity: 25
   onGroundTimerMax: 0.05
   onGroundTimer: 0
-  groundSpeed: 25
-  maxGroundVelocity: 13
+  groundSpeed: 23
+  maxGroundVelocity: 12
   haltSpeed: 18
   attackHaltSpeed: 28
-  turnSpeed: 12
-  airSpeed: 25
-  maxAirVelocity: 20
+  turnSpeed: 14
+  airSpeed: 18
+  maxAirVelocity: 15
   movementMultiplier: 1
-  groundedThrustForce: 100
-  aerialThrustForce: 400
+  groundedThrustForce: 300
+  aerialThrustForce: 950
   weight: 2.5
   canWallCling: 0
   runTransitionAxis: 0.6
@@ -4247,7 +4251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FA_Hitbox: {fileID: 1892052713}
   FA_Damage: 0
-  FA_Angle: 0
-  FA_Knockback: 100
+  FA_Angle: 45
+  FA_Knockback: 200
   FA_HitStun: 0
   playerNum: 1

@@ -46,6 +46,8 @@ Movement{
 		canWallCling: If true, the character can temporarily, or permanantly cling to walls (we didnt discuss this yet, so i dont know if we will
 					  make wall cling a thing, and if it is a temporary cling.)
 
+		currentHoldJumpTimer: Keeps track of how long you've been holding the jump button to see if you should still be able to rise when jumping
+
 		currentJumps: The current amount of jumps you have left.
 
 		downwardGravity: How strong the downward force to the player is WHILE THE PLAYER IS MOVING DOWNWARD. 
@@ -65,6 +67,8 @@ Movement{
 	             enemies attack, this function should get called when you get hit. While this number is greater than 0, you cannot do anything
 				 Refer to the GetHit() function for further explanation 
 
+		holdJumpForce: The force at which you continue to move upwards while holding the jump button
+
 		horAxisPos: This stores the current joystick position (left and right) so that FixedUpdate() doesnt have to deal with Input stuff
 
 		isAttackingOnGround: This gets set to true if you are currently doing a grounded attack.
@@ -78,6 +82,8 @@ Movement{
 		maxDownwardVelocity: The maximum speed at which the player can fall. (So that the fall speed doesnt infinitely accelerate)
 
 		maxGroundVelocity: The maximum speed at which you can move left and right while walking.
+
+		maxHoldJumpTime: The maximum amount of time you'll continue to rise while holding the jump button.
 
 		maxJumps: The maximum amount of times you can jump before touching the ground again.
 
