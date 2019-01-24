@@ -113,24 +113,24 @@ public class PlatformPlayer : MonoBehaviour {
         {
             if (direction == "Right")
             {
-                if (accel < 1)
+                if (accel < myPlayer.GetAxis("Horizontal"))
                 {
                     accel += accelMult;
                 }
                 else
                 {
-                    accel = 1;
+                    accel = myPlayer.GetAxis("Horizontal");
                 }
             }
             if(direction == "Left")
             {
-                if(accel > -1)
+                if(accel > myPlayer.GetAxis("Horizontal"))
                 {
                     accel -= accelMult;
                 }
                 else
                 {
-                    accel = -1;
+                    accel = myPlayer.GetAxis("Horizontal");
                 }
             }
             anim.SetInteger("State", 1);
