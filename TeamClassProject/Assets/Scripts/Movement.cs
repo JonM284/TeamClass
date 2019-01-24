@@ -539,7 +539,7 @@ public class Movement : MonoBehaviour
             if (Mathf.Abs(contact.normal.y) > Mathf.Abs(contact.normal.x))
             {
                 rb.velocity = new Vector2(rb.velocity.x, 0); //stop vertical velocity
-                if (contact.normal.y >= 0)
+                if (contact.normal.y >= 0 && collision.gameObject.tag == "Floor")
                 { //am I hitting the top of the platform?
                     isTouchingGround = true;
                     currentJumps = maxJumps;
@@ -556,7 +556,7 @@ public class Movement : MonoBehaviour
             if (Mathf.Abs(contact.normal.y) > Mathf.Abs(contact.normal.x))
             {
                 //velocity.y = 0; //stop vertical velocity
-                if (contact.normal.y >= 0)
+                if (contact.normal.y >= 0 && collision.gameObject.tag == "Floor")
                 { //am I hitting the top of the platform?
                     isTouchingGround = true;
                     rb.velocity = new Vector2(rb.velocity.x, 0);
