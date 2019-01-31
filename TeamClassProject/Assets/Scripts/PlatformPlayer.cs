@@ -20,6 +20,7 @@ public class PlatformPlayer : MonoBehaviour {
     [Header("Movement Variables")]
     public float accel;
     public float accelMult;
+    public float decelMult;
     public int speed;
     //public int dashSpeed;
 
@@ -45,6 +46,10 @@ public class PlatformPlayer : MonoBehaviour {
     SpriteRenderer sr;
     public Animator anim;
     AudioSource playerJump;
+
+    public enum PlayerState { Fighter, Support }
+    [Header("Player State")]
+    public PlayerState state;
 
 
     void Awake()
@@ -141,7 +146,7 @@ public class PlatformPlayer : MonoBehaviour {
             {
                 if(accel > 0)
                 {
-                    accel -= accelMult;
+                    accel -= decelMult;
                 }
                 else
                 {
@@ -152,7 +157,7 @@ public class PlatformPlayer : MonoBehaviour {
             {
                 if(accel < 0)
                 {
-                    accel += accelMult;
+                    accel += decelMult;
                 }
                 else
                 {
@@ -243,6 +248,10 @@ public class PlatformPlayer : MonoBehaviour {
         }
 
         rb.MovePosition(transform.position + velocity * Time.deltaTime);
+    }
+
+    private void LateUpdate()
+    {
 
         onTopOfPlatform = false;
 
