@@ -121,7 +121,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1848428978116082, guid: ae34b24e48cc7334b988d8854e614176, type: 3}
       propertyPath: m_Name
-      value: Buscemi Anubis
+      value: Claire
       objectReference: {fileID: 0}
     - target: {fileID: 1848428978116082, guid: ae34b24e48cc7334b988d8854e614176, type: 3}
       propertyPath: m_IsActive
@@ -4705,6 +4705,7 @@ MonoBehaviour:
   accelMult: 0.09
   decelMult: 0.15
   speed: 10
+  weight: 0
   velocity: {x: 0, y: 0, z: 0}
   direction: 
   dashCount: 0
@@ -4719,6 +4720,9 @@ MonoBehaviour:
   onTopOfPlatform: 0
   anim: {fileID: 0}
   state: 0
+  maxHealth: 0
+  characterSpeed: 0
+  characterWeight: 0
 --- !u!114 &784233434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6467,7 +6471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1803087892
 Animator:
   serializedVersion: 3

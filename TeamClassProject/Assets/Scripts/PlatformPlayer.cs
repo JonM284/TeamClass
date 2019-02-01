@@ -22,6 +22,7 @@ public class PlatformPlayer : MonoBehaviour {
     public float accelMult;
     public float decelMult;
     public int speed;
+    public float weight;
     //public int dashSpeed;
 
     public Vector3 velocity;
@@ -51,6 +52,10 @@ public class PlatformPlayer : MonoBehaviour {
     [Header("Player State")]
     public PlayerState state;
 
+    [Header("Character Variables")]
+    public float maxHealth;
+    public float characterSpeed;
+    public float characterWeight;
 
     void Awake()
     {
@@ -72,6 +77,8 @@ public class PlatformPlayer : MonoBehaviour {
 
         direction = "Right";
     }
+
+    
 	
 	// Update is called once per frame
 	void Update () {
@@ -167,13 +174,16 @@ public class PlatformPlayer : MonoBehaviour {
             anim.SetInteger("State", 0);
         }
 
-        if(direction == "Right")
+        if (onTopOfPlatform)
         {
-            sr.flipX = false;
-        }
-        if(direction == "Left")
-        {
-            sr.flipX = true;
+            if (direction == "Right")
+            {
+                sr.flipX = false;
+            }
+            if (direction == "Left")
+            {
+                sr.flipX = true;
+            }
         }
         /*
         if (velocity.x >= .01)
@@ -246,8 +256,13 @@ public class PlatformPlayer : MonoBehaviour {
             //playerJump.Play();
             //anim.SetTrigger("jumpStart");
         }
+    }
+
+    private void FixedUpdate()
+    {
 
         rb.MovePosition(transform.position + velocity * Time.deltaTime);
+
     }
 
     private void LateUpdate()
@@ -264,11 +279,11 @@ public class PlatformPlayer : MonoBehaviour {
         { //if we haven't reached maxDownVel
             if (velocity.y > 0)
             { //if player is moving up
-                velocity.y -= gravityUp * Time.deltaTime;
+                velocity.y -= gravityUp * weight * Time.deltaTime;
             }
             else
             { //if player is moving down
-                velocity.y -= gravityDown * Time.deltaTime;
+                velocity.y -= gravityDown * weight * Time.deltaTime;
             }
         }
     }
