@@ -527,7 +527,7 @@ public class Movement : MonoBehaviour
 
     /*
      * Both the OnCollisionEnter2D and OnCollisionStay2D methods are determining when the player is on the ground 
-     * This is basically Corbetta's code from DGD-6 but I use it almost everytime I make a platformer because I feel like it's a goood basis to start and I haven't thought of a better way to do it 
+     * This is basically Corbetta's code from DGD-6 but I use it almost everytime I make a platformer because I feel like it's a good basis to start and I haven't thought of a better way to do it 
      * -Buscrubs
      */
 

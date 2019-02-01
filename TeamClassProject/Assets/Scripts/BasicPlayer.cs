@@ -4,7 +4,7 @@ using UnityEngine;
 using Rewired;
 using Rewired.ControllerExtensions;
 
-public class PlatformPlayer : MonoBehaviour {
+public class BasicPlayer : MonoBehaviour {
 
     //the following is in order to use rewired
     [Tooltip("Reference for using rewired")]
@@ -52,6 +52,15 @@ public class PlatformPlayer : MonoBehaviour {
     [Header("Player State")]
     public PlayerState state;
 
+    [Header("Which Character is This?")]
+    public bool claire;
+    public bool gillbert;
+    public bool gnomercy;
+    string characterName;
+    Claire claireCharacter;
+    Gillbert gillbertCharacter;
+    Gnomercy gnomercyCharacter;
+
     [Header("Character Variables")]
     public float maxHealth;
     public float characterSpeed;
@@ -59,6 +68,21 @@ public class PlatformPlayer : MonoBehaviour {
 
     void Awake()
     {
+
+        if (claire)
+        {
+            characterName = "claire";
+        }
+        if (gillbert)
+        {
+            characterName = "gillbert";
+        }
+        if (gnomercy)
+        {
+            characterName = "gnomercy";
+        }
+
+        //Rewired Code
         myPlayer = ReInput.players.GetPlayer(playerNum - 1);
         ReInput.ControllerConnectedEvent += OnControllerConnected;
         CheckController(myPlayer);

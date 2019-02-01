@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Claire : MonoBehaviour
+public class Gnomercy : MonoBehaviour
 {
-    [Header("Claire Values")]
+    [Header("Gnomercy Values")]
     public float maxHealth;
     public int speed;
     public float weight;
