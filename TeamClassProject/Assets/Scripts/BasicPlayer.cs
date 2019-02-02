@@ -66,6 +66,9 @@ public class BasicPlayer : MonoBehaviour {
     public float characterSpeed;
     public float characterWeight;
 
+    private float xScale;
+    public bool startFacingLeft;
+
     void Awake()
     {
 
@@ -98,6 +101,16 @@ public class BasicPlayer : MonoBehaviour {
         health = 5;
 
         canDash = true;
+
+        if (startFacingLeft)
+        {
+            xScale = -gameObject.transform.localScale.x;
+        }
+        else
+        {
+            xScale = gameObject.transform.localScale.x;
+        }
+        
 
         direction = "Right";
     }
@@ -202,11 +215,13 @@ public class BasicPlayer : MonoBehaviour {
         {
             if (direction == "Right")
             {
-                sr.flipX = false;
+               // sr.flipX = false;
+                gameObject.transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
             }
             if (direction == "Left")
             {
-                sr.flipX = true;
+               //  sr.flipX = true;
+                gameObject.transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
             }
         }
         /*
@@ -351,6 +366,42 @@ public class BasicPlayer : MonoBehaviour {
             }
         }
     }
+
+    /* This function gets called when an enemy hits you
+     * What the arguments are for:
+     *      attackDamage- is the how much the players health/armor goes down.
+     *      attackAngle- is the angle you get sent flying when you get hit. [*possibly* affected by player weight]
+     *      attackForce- is how far back you get sent flying. [affected by player weight]
+     *      hitStun- is how long the player has to wait before they can do anything
+     *      -Ganderman Dan 🦆
+     */
+    public void GetHit(float attackDamage, float attackAngle, float attackForce, float hitStun, bool facingRight)//im probably missing a few arguments
+    {
+        Vector3 dir = new Vector3(0, 0, 0);
+        if (facingRight)
+        {
+            dir = Quaternion.AngleAxis(attackAngle, Vector3.forward) * Vector3.right;
+        }
+        else
+        {
+            dir = Quaternion.AngleAxis(attackAngle, -Vector3.forward) * -Vector3.right;
+        }
+        rb.AddForce(dir * attackForce);
+        // rb.AddForce(new Vector2(attackForce, 0));
+    }
+
+    public bool FacingRight()
+    {
+        if (gameObject.transform.localScale.x > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 
     void OnCollisionStay2D(Collision2D collisionInfo)
     {
