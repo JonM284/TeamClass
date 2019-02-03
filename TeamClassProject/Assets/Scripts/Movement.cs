@@ -122,11 +122,6 @@ public class Movement : MonoBehaviour
         currentJumps = maxJumps;
 
         xScale = gameObject.transform.localScale.x;
-
-        if(xScale < 0)
-        {
-            xScale *= -1;
-        }
     }
 
     /* if you're doing something with the rigidbody and movement, do it here, it's better
