@@ -254,8 +254,17 @@ AnimationClip:
         inWeight: {x: 0, y: 0, z: 0}
         outWeight: {x: 0, y: 0, z: 0}
       - serializedVersion: 3
+        time: 0.25
+        value: {x: 0, y: 0, z: 28.570002}
+        inSlope: {x: 0, y: 0, z: -60}
+        outSlope: {x: 0, y: 0, z: -60}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
         time: 0.5
-        value: {x: 0, y: 0, z: -53.137}
+        value: {x: 0, y: 0, z: 61.217003}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -453,7 +462,17 @@ AnimationClip:
       Fist
     classID: 1
     script: {fileID: 0}
-  m_PPtrCurves: []
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: 21300030, guid: 10468c9b9d5c3400385d279504c62a8a, type: 3}
+    - time: 0.25
+      value: {fileID: 21300068, guid: 10468c9b9d5c3400385d279504c62a8a, type: 3}
+    attribute: m_Sprite
+    path: Skirt/Crystal Torso/Front Crystal Bicep/Front Crystal Forearm/Front Crystal
+      Hand
+    classID: 212
+    script: {fileID: 0}
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -560,6 +579,13 @@ AnimationClip:
       customType: 4
       isPPtrCurve: 0
     - serializedVersion: 2
+      path: 2478816516
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    - serializedVersion: 2
       path: 2678646775
       attribute: 2086281974
       script: {fileID: 0}
@@ -573,7 +599,9 @@ AnimationClip:
       typeID: 1
       customType: 0
       isPPtrCurve: 0
-    pptrCurveMapping: []
+    pptrCurveMapping:
+    - {fileID: 21300030, guid: 10468c9b9d5c3400385d279504c62a8a, type: 3}
+    - {fileID: 21300068, guid: 10468c9b9d5c3400385d279504c62a8a, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -584,7 +612,7 @@ AnimationClip:
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 1
+    m_LoopTime: 0
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -1680,6 +1708,15 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
+        time: 0.25
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 0.5
         value: 0
         inSlope: 0
@@ -1708,6 +1745,15 @@ AnimationClip:
         weightedMode: 0
         inWeight: 0
         outWeight: 0
+      - serializedVersion: 3
+        time: 0.25
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
         value: 0
@@ -1738,8 +1784,17 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
+        time: 0.25
+        value: 28.570002
+        inSlope: -60
+        outSlope: -60
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 0.5
-        value: -53.137
+        value: 61.217003
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2017,8 +2072,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Skirt/Crystal Torso/Front Crystal Bicep/Front Crystal Forearm/Front Crystal
-      Hand
+    path: Skirt/Crystal Torso
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2028,8 +2082,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Skirt/Crystal Torso/Front Crystal Bicep/Front Crystal Forearm/Front Crystal
-      Hand
+    path: Skirt/Crystal Torso
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2039,8 +2092,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Skirt/Crystal Torso/Front Crystal Bicep/Front Crystal Forearm/Front Crystal
-      Hand
+    path: Skirt/Crystal Torso
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2260,7 +2312,8 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Skirt/Crystal Torso
+    path: Skirt/Crystal Torso/Front Crystal Bicep/Front Crystal Forearm/Front Crystal
+      Hand
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2270,7 +2323,8 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Skirt/Crystal Torso
+    path: Skirt/Crystal Torso/Front Crystal Bicep/Front Crystal Forearm/Front Crystal
+      Hand
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2280,7 +2334,8 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Skirt/Crystal Torso
+    path: Skirt/Crystal Torso/Front Crystal Bicep/Front Crystal Forearm/Front Crystal
+      Hand
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0

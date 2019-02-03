@@ -2461,7 +2461,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Fish Body/Fish Bottom Body
+    path: Fish Body
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2471,7 +2471,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Fish Body/Fish Bottom Body
+    path: Fish Body
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2481,7 +2481,37 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Fish Body/Fish Bottom Body
+    path: Fish Body
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Fish Body/Left Jetpack Arm
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Fish Body/Left Jetpack Arm
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Fish Body/Left Jetpack Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2521,7 +2551,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Fish Body/Right Jetpack Arm
+    path: Fish Body/Fish Bottom Body
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2531,7 +2561,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Fish Body/Right Jetpack Arm
+    path: Fish Body/Fish Bottom Body
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2541,7 +2571,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Fish Body/Right Jetpack Arm
+    path: Fish Body/Fish Bottom Body
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2551,7 +2581,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Fish Body
+    path: Fish Body/Fish Head/Fish Mouth
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2561,7 +2591,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Fish Body
+    path: Fish Body/Fish Head/Fish Mouth
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2571,7 +2601,37 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Fish Body
+    path: Fish Body/Fish Head/Fish Mouth
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: 'Fish Body/Fish Bottom Body/Bottom Fin '
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: 'Fish Body/Fish Bottom Body/Bottom Fin '
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: 'Fish Body/Fish Bottom Body/Bottom Fin '
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2670,8 +2730,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Fish Body/Fish Head/Fish Mouth
+    attribute: m_LocalEulerAngles.x
+    path: Fish Body/Right Jetpack Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2681,17 +2741,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Fish Body/Fish Head/Fish Mouth
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Fish Body/Fish Head/Fish Mouth
+    path: Fish Body/Right Jetpack Arm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2701,57 +2751,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Fish Body/Left Jetpack Arm
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Fish Body/Left Jetpack Arm
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Fish Body/Left Jetpack Arm
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: 'Fish Body/Fish Bottom Body/Bottom Fin '
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: 'Fish Body/Fish Bottom Body/Bottom Fin '
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: 'Fish Body/Fish Bottom Body/Bottom Fin '
+    path: Fish Body/Right Jetpack Arm
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
