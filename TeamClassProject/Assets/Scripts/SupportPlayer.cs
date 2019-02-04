@@ -7,6 +7,7 @@ public class SupportPlayer : MonoBehaviour
 
     public float moveSpeed;
     float movement;
+    public static bool movementEnabled;
 
     bool isPlatformMidActive;
     public GameObject platformMid1;
@@ -26,12 +27,14 @@ public class SupportPlayer : MonoBehaviour
     public GameObject platformRight2b;
     float platformRightTimer;
     public BoxCollider2D machine2bCollider;
-
-    
+   
 
     // Start is called before the first frame update
     void Start()
     {
+
+        movementEnabled = true;
+
         isPlatformMidActive = false;
         platformMid1.SetActive(false);
         machine1Collider.enabled = true;
@@ -54,20 +57,24 @@ public class SupportPlayer : MonoBehaviour
     void Update()
     {
         //input for horizontal input
-        movement = Input.GetAxisRaw("HorizontalSupport") * moveSpeed;
+        if(movementEnabled == true)
+        {
+            movement = Input.GetAxisRaw("HorizontalSupport") * moveSpeed;
 
-        //move right
-        if (movement > 0)
-        {
-            transform.position += Vector3.right * Time.deltaTime * moveSpeed;
-            //transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+            //move right
+            if (movement > 0)
+            {
+                transform.position += Vector3.right * Time.deltaTime * moveSpeed;
+                //transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+            }
+            //move left
+            if (movement < 0)
+            {
+                transform.position += -Vector3.right * Time.deltaTime * moveSpeed;
+                //transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+            }
         }
-        //move left
-        if (movement < 0)
-        {
-            transform.position += -Vector3.right * Time.deltaTime * moveSpeed;
-            //transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
-        }
+        
 
         //Platform Mid
         //platform mid appears for 5 seconds then goes off
