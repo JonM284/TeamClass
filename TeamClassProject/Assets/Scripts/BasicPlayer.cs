@@ -128,13 +128,12 @@ public class BasicPlayer : MonoBehaviour {
         }
     }
 
-    enum animations { idle = 0, walk = 1, basic_neutral = 5, basic_forward = 6, basic_up = 7, basic_down = 8 }
+    [HideInInspector]
+    public enum animations { idle = 0, walk = 1, basic_neutral = 5, basic_forward = 6, basic_up = 7, basic_down = 8, neutral_air = 9}
 	
 	// Update is called once per frame
 	void Update () {
         gotHitTimer -= Time.deltaTime;
-
-        Debug.Log(gotHitTimer);
 
         if (!inHitStun)
         {
@@ -148,11 +147,17 @@ public class BasicPlayer : MonoBehaviour {
             Gravity();
         }
 
+        if(anim.GetInteger("State") == (int)animations.neutral_air && onTopOfPlatform){
+            anim.SetInteger("State", (int)animations.idle);
+            isAttacking = false;
+        }
+
         //float mySpeed = Mathf.Abs(rb.velocity.x);
         //anim.SetFloat("xSpeed", Mathf.Abs(velocity.x));
         //anim.SetFloat("yVel", rb.velocity.y);
 
-        if(myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onTopOfPlatform)
+        //neutral basic attack
+        if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onTopOfPlatform)
         {
             if (myPlayer.GetButtonDown("BasicAttack"))
             {
@@ -161,11 +166,33 @@ public class BasicPlayer : MonoBehaviour {
             }
         }
 
+        //up basic attack
         if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") > .3f && Input.GetAxis("Vertical") > -.3f && onTopOfPlatform)
         {
             if (myPlayer.GetButtonDown("BasicAttack"))
             {
                 anim.SetInteger("State", (int)animations.basic_up);
+                isAttacking = true;
+            }
+        }
+
+        //forward basic attack
+        if ((myPlayer.GetAxis("Horizontal") > .3f && myPlayer.GetAxis("Horizontal") > -.3f) || (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") < -.3f) && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onTopOfPlatform)
+        {
+            if (myPlayer.GetButtonDown("BasicAttack"))
+            {
+                anim.SetInteger("State", (int)animations.basic_forward);
+                isAttacking = true;
+                velocity.x = velocity.x / 3;
+            }
+        }
+
+        //neutral air attack
+        if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && !onTopOfPlatform)
+        {
+            if (myPlayer.GetButtonDown("BasicAttack"))
+            {
+                anim.SetInteger("State", (int)animations.neutral_air);
                 isAttacking = true;
             }
         }
