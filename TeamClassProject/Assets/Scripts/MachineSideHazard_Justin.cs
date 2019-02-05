@@ -12,13 +12,15 @@ public class MachineSideHazard_Justin : MonoBehaviour
     public GameObject sideHazard;
     private Vector2 sideHazardStartPos;
 
-    private bool shouldLerp;
-    float lerpTimer;
+    private bool sideHazardShouldLerp;
+    float sideHazardLerpSpeed;
+    float sideHazardLerpTimer;
 
     // Start is called before the first frame update
     void Start()
     {
         sideHazardStartPos = sideHazard.transform.position;
+        sideHazardLerpSpeed = 30f;
     }
 
     // Update is called once per frame
@@ -43,22 +45,22 @@ public class MachineSideHazard_Justin : MonoBehaviour
 
         }
 
-        lerpTimer += Time.deltaTime;
+        sideHazardLerpTimer += Time.deltaTime;
 
         if (sideHazardMachineEnabled == true && Input.GetButtonDown("Jump"))
         {
-            shouldLerp = true;
-            lerpTimer = 0;
+            sideHazardShouldLerp = true;
+            sideHazardLerpTimer = 0;
         }
 
-        if (shouldLerp)
+        if (sideHazardShouldLerp == true)
         {
-            sideHazard.transform.position = Vector3.Lerp(sideHazardStartPos, new Vector2(sideHazardStartPos.x + 15.75f, sideHazardStartPos.y), 1f);
+            sideHazard.transform.Translate(Vector3.right * sideHazardLerpSpeed * Time.deltaTime);
         }
 
-        if(lerpTimer > 1)
+        if(sideHazardLerpTimer > .5f)
         {
-            shouldLerp = false;
+            sideHazardShouldLerp = false;
         }
     }
 
@@ -70,6 +72,9 @@ public class MachineSideHazard_Justin : MonoBehaviour
         SupportPlayer.movementEnabled = false;
         sideHazard.transform.position = new Vector2(sideHazard.transform.position.x + 0.25f, sideHazard.transform.position.y);
     }
+
+
+
 
     private void OnTriggerStay2D(Collider2D other)
     {
