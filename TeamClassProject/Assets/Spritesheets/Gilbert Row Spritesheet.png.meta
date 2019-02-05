@@ -31,6 +31,23 @@ TextureImporter:
     21300052: Flame 4
     21300054: Fin Walking 1
     21300056: Fish Pupil
+    21300058: Spit 1
+    21300060: Spit 2
+    21300062: Spit 3
+    21300064: Spit 4
+    21300066: Spit 5
+    21300068: Spit 6
+    21300070: Spit 7
+    21300072: Smoke 2
+    21300074: Smoke 1
+    21300076: Explosion 1
+    21300078: Explosion 2
+    21300080: Explosion Core
+    21300082: Back Jetpack
+    21300084: Big Flame 1
+    21300086: Big Flame 2
+    21300088: Big Flame 3
+    21300090: Gilbert Row Spritesheet_0
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -338,12 +355,12 @@ TextureImporter:
       name: Flame 1
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 972
+        x: 1199
+        y: 1185
         width: 156
         height: 276
       alignment: 9
-      pivot: {x: 0.5, y: 0.9058621}
+      pivot: {x: 0.5, y: 0.91270334}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -538,12 +555,12 @@ TextureImporter:
       name: Flame 3
       rect:
         serializedVersion: 2
-        x: 844
-        y: 286
-        width: 140
-        height: 268
+        x: 1551
+        y: 1210
+        width: 200
+        height: 262
       alignment: 9
-      pivot: {x: 0.49999955, y: 0.8970786}
+      pivot: {x: 0.49999937, y: 0.92506886}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -558,12 +575,12 @@ TextureImporter:
       name: Flame 2
       rect:
         serializedVersion: 2
-        x: 1007
-        y: 366
-        width: 166
-        height: 216
+        x: 1377
+        y: 1176
+        width: 165
+        height: 306
       alignment: 9
-      pivot: {x: 0.5, y: 0.8630213}
+      pivot: {x: 0.49999925, y: 0.9533855}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -638,10 +655,10 @@ TextureImporter:
       name: Fish Bottom Body Back Per.
       rect:
         serializedVersion: 2
-        x: 827
-        y: 49
+        x: 410
+        y: 0
         width: 178
-        height: 222
+        height: 214
       alignment: 9
       pivot: {x: 0.4394495, y: 0.8167929}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -658,9 +675,9 @@ TextureImporter:
       name: Flame 4
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 107
-        width: 156
+        x: 1768
+        y: 1224
+        width: 186
         height: 237
       alignment: 9
       pivot: {x: 0.5, y: 0.90175235}
@@ -710,6 +727,346 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 046fc3618ea4a4cfea98291339715811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spit 1
+      rect:
+        serializedVersion: 2
+        x: 2023
+        y: 1278
+        width: 64
+        height: 209
+      alignment: 9
+      pivot: {x: 0.45741653, y: 0.8651135}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a87f4aa363b24b3aa86329b4ebb3af3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spit 2
+      rect:
+        serializedVersion: 2
+        x: 2013
+        y: 1129
+        width: 77
+        height: 133
+      alignment: 9
+      pivot: {x: 0.5, y: 0.85859394}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27ec0a3aa12e2482099e3528cd2a5d24
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spit 3
+      rect:
+        serializedVersion: 2
+        x: 2018
+        y: 1026
+        width: 77
+        height: 85
+      alignment: 9
+      pivot: {x: 0.5, y: 0.7885627}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7abf4d425485242c8a4bb5cfd0138091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spit 4
+      rect:
+        serializedVersion: 2
+        x: 2015
+        y: 966
+        width: 64
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0daa65075e0084c3badeeda8143df696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spit 5
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 887
+        width: 95
+        height: 73
+      alignment: 9
+      pivot: {x: 0.24181229, y: 0.5746661}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f06c77902241941fe8d0c831ac38e1c9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spit 6
+      rect:
+        serializedVersion: 2
+        x: 1834
+        y: 870
+        width: 147
+        height: 79
+      alignment: 9
+      pivot: {x: 0.2219064, y: 0.465502}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af703ec65c93b4cf2adfc332b89d776c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spit 7
+      rect:
+        serializedVersion: 2
+        x: 1778
+        y: 947
+        width: 186
+        height: 75
+      alignment: 9
+      pivot: {x: 0.11904218, y: 0.3728182}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83b98d3f103eb44e3923af03c586d414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smoke 2
+      rect:
+        serializedVersion: 2
+        x: 1607
+        y: 835
+        width: 163
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcdd44115d176450d91666e6174124e7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smoke 1
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 838
+        width: 161
+        height: 138
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d3e547f5e04d45379ba8f694bfca98a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion 1
+      rect:
+        serializedVersion: 2
+        x: 1425
+        y: 1005
+        width: 159
+        height: 143
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29c23d686fb2447d297648f63cd452c3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion 2
+      rect:
+        serializedVersion: 2
+        x: 1598
+        y: 1005
+        width: 161
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31da2349e222d4c1298f5422b03d8741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion Core
+      rect:
+        serializedVersion: 2
+        x: 1084
+        y: 958
+        width: 327
+        height: 225
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d7a17fe6d9084b4aa250220bfc7e067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Back Jetpack
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 168
+        width: 260
+        height: 379
+      alignment: 9
+      pivot: {x: 0.166133, y: 0.6120822}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d13a03dd525c148d2959997a797d04ec
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Big Flame 1
+      rect:
+        serializedVersion: 2
+        x: 1189
+        y: 26
+        width: 296
+        height: 799
+      alignment: 9
+      pivot: {x: 0.4923739, y: 0.97462505}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2699614d965b4030ba06cb7c8e5b3ba
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Big Flame 2
+      rect:
+        serializedVersion: 2
+        x: 1534
+        y: 35
+        width: 280
+        height: 795
+      alignment: 9
+      pivot: {x: 0.44356775, y: 0.97133434}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1140606e9d754418b63a14fe5f1b95a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Big Flame 3
+      rect:
+        serializedVersion: 2
+        x: 1837
+        y: 6
+        width: 205
+        height: 831
+      alignment: 9
+      pivot: {x: 0.484425, y: 0.96490324}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2666da7c4aef4f6a8929e84dfda945c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gilbert Row Spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 2006
+        y: 871
+        width: 94
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6a86d75427f9449b8fe458353c57ab2
       vertices: []
       indices: 
       edges: []
