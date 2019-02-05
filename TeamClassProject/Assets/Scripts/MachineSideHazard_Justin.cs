@@ -58,9 +58,11 @@ public class MachineSideHazard_Justin : MonoBehaviour
             sideHazard.transform.Translate(Vector3.right * sideHazardLerpSpeed * Time.deltaTime);
         }
 
-        if(sideHazardLerpTimer > .5f)
+        if(sideHazardLerpTimer > .5f && sideHazardShouldLerp == true)
         {
             sideHazardShouldLerp = false;
+            sideHazardMachineEnabled = false;
+            sideHazard.transform.position = sideHazardStartPos;
         }
     }
 
