@@ -37,6 +37,11 @@ public class BasicPlayer : MonoBehaviour {
     public float gravityUp;
     public float gravityDown;
     public float jumpVel;
+    public float maxInitialJumpTime;
+    private float initialJumpTime = 0;
+    public float maxHoldJumpTime;
+    private float holdJumpTime = 0;
+    private bool jumpButtonPressed = false;
     public float maxDownVel;
     public float onPlatformTimer;
     public float onPlatformTimerMax;
@@ -109,8 +114,8 @@ public class BasicPlayer : MonoBehaviour {
 
         if (!inHitStun)
         {
-
-            Movement();
+            //i put the movement() stuff in fixed update
+           // Movement();
 
         }
 
@@ -284,8 +289,191 @@ public class BasicPlayer : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        if (!inHitStun)
+        {
+            rb.MovePosition(transform.position + velocity * Time.deltaTime);
 
-        rb.MovePosition(transform.position + velocity * Time.deltaTime);
+            //seing which way the player is moving
+            if (myPlayer.GetAxisRaw("Horizontal") > 0)
+            {
+                direction = "Right";
+            }
+            else if (myPlayer.GetAxisRaw("Horizontal") < 0)
+            {
+                direction = "Left";
+            }
+
+            if (Mathf.Abs(myPlayer.GetAxis("Horizontal")) >= .01)
+            {
+                moving = true;
+            }
+            else
+            {
+                moving = false;
+            }
+
+            if (moving)
+            {
+                if (direction == "Right")
+                {
+                    if (accel < myPlayer.GetAxis("Horizontal"))
+                    {
+                        accel += accelMult;
+                    }
+                    else
+                    {
+                        accel = myPlayer.GetAxis("Horizontal");
+                    }
+                }
+                if (direction == "Left")
+                {
+                    if (accel > myPlayer.GetAxis("Horizontal"))
+                    {
+                        accel -= accelMult;
+                    }
+                    else
+                    {
+                        accel = myPlayer.GetAxis("Horizontal");
+                    }
+                }
+                anim.SetInteger("State", 1);
+            }
+            else
+            {
+                if (direction == "Right")
+                {
+                    if (accel > 0)
+                    {
+                        accel -= decelMult;
+                    }
+                    else
+                    {
+                        accel = 0;
+                    }
+                }
+                if (direction == "Left")
+                {
+                    if (accel < 0)
+                    {
+                        accel += decelMult;
+                    }
+                    else
+                    {
+                        accel = 0;
+                    }
+                }
+                anim.SetInteger("State", 0);
+            }
+
+            if (onTopOfPlatform)
+            {
+                if (direction == "Right")
+                {
+                    sr.flipX = false;
+                }
+                if (direction == "Left")
+                {
+                    sr.flipX = true;
+                }
+            }
+            /*
+            if (velocity.x >= .01)
+            {
+                direction = "Right";
+                sr.flipX = false;
+            }
+            if (velocity.x <= -.01)
+            {
+                direction = "Left";
+                sr.flipX = true;
+            }
+            */
+
+            //horizontal movement
+            if (!dash)
+            {
+                velocity.x = accel * speed;
+            }
+            /*else
+            {
+                if(velocity.y > 0)
+                {
+                    velocity = velocity.normalized * dashSpeed;
+                }
+                else if (direction == "Right")
+                {
+                    velocity = new Vector2(1 * dashSpeed, 0);
+                }
+                else if(direction == "Left")
+                {
+                    velocity = new Vector2(-1 * dashSpeed, 0);
+                }
+
+            }
+            */
+
+            //dash mechanics
+            /*
+            if(Input.GetButtonDown("Fire1") && dashCount > 0 && canDash)
+            {
+                StartCoroutine(Dash());
+            }
+            */
+            /*
+            if (velocity.x >= 1 && Input.GetButtonDown("Fire1") && dashCount > 0)
+            {
+                StartCoroutine(Dash());
+            }
+            if (velocity.x <= -1 && Input.GetButtonDown("Fire1") && dashCount > 0)
+            {
+                StartCoroutine(Dash());
+            }
+            */
+
+            //set timer that will let the player jump slightly off the platform
+            if (onTopOfPlatform && velocity.y == 0)
+            {
+                onPlatformTimer = onPlatformTimerMax;
+            }
+            else
+            {
+                onPlatformTimer -= Time.deltaTime;
+            }
+
+            //jump logic
+            initialJumpTime -= Time.fixedDeltaTime;
+            if (initialJumpTime <= 0)
+            {
+                holdJumpTime -= Time.fixedDeltaTime;
+            }
+
+            if (myPlayer.GetButtonDown("Jump") && onPlatformTimer > 0)
+            {
+                initialJumpTime = maxInitialJumpTime;
+                holdJumpTime = maxHoldJumpTime;
+                jumpButtonPressed = true;
+                //playerJump.Play();
+                //anim.SetTrigger("jumpStart");
+            }
+            if (myPlayer.GetButtonUp("Jump"))
+            {
+                jumpButtonPressed = false;
+            }
+
+            //initial jump
+            if (initialJumpTime > 0)
+            {
+              velocity.y = jumpVel;
+            }
+
+            //hold jump
+            if(initialJumpTime <=0 && jumpButtonPressed && holdJumpTime > 0)
+            {
+              velocity.y = jumpVel;
+            }
+
+
+        }
 
     }
 

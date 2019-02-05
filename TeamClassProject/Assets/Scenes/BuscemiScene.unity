@@ -4701,28 +4701,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 1
-  claire: 0
-  gillbert: 0
-  gnomercy: 0
   accel: 0
   accelMult: 0.09
   decelMult: 0.15
   speed: 10
-  weight: 0
+  weight: 1
   velocity: {x: 0, y: 0, z: 0}
-  direction: 
-  dashCount: 0
+  direction: Left
+  dashCount: 2
   dashCountMax: 2
   canDash: 0
   gravityUp: 70
   gravityDown: 65
-  jumpVel: 18
+  jumpVel: 13
+  maxInitialJumpTime: 0.05
+  maxHoldJumpTime: 0.075
   maxDownVel: 100
-  onPlatformTimer: 0
+  onPlatformTimer: 0.075
   onPlatformTimerMax: 0.075
   onTopOfPlatform: 0
-  anim: {fileID: 0}
+  anim: {fileID: 784233436}
   state: 0
+  claire: 0
+  gillbert: 0
+  gnomercy: 0
   maxHealth: 0
   characterSpeed: 0
   characterWeight: 0
@@ -4770,6 +4772,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.0186055, y: 1.4755981}
   m_EdgeRadius: 0
+--- !u!95 &784233436 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95780758903839570, guid: ae34b24e48cc7334b988d8854e614176,
+    type: 3}
+  m_PrefabInstance: {fileID: 15613821}
+  m_PrefabAsset: {fileID: 0}
 --- !u!58 &784233439
 CircleCollider2D:
   m_ObjectHideFlags: 0
