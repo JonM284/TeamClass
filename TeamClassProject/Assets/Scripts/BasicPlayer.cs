@@ -134,6 +134,7 @@ public class BasicPlayer : MonoBehaviour {
 	void Update () {
         gotHitTimer -= Time.deltaTime;
 
+        Debug.Log(gotHitTimer);
 
         if (!inHitStun)
         {
@@ -325,7 +326,7 @@ public class BasicPlayer : MonoBehaviour {
         //jump logic
         if (myPlayer.GetButtonDown("Jump") && onPlatformTimer > 0)
         {
-            velocity.y = jumpVel;
+            //velocity.y = jumpVel;
             //playerJump.Play();
             //anim.SetTrigger("jumpStart");
         }
@@ -334,13 +335,17 @@ public class BasicPlayer : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if(gotHitTimer > 0)
+
+        //changed rb.velocity to just velocity and then put rb.moveposition outside of !inhitstun
+
+        rb.MovePosition(transform.position + velocity * Time.deltaTime);
+
+        if (gotHitTimer > 0)
         {
-            rb.velocity = (hitDirection * knockback);
+            velocity = (hitDirection * knockback);
         }
         if (!inHitStun && !isAttacking)
         {
-            rb.MovePosition(transform.position + velocity * Time.deltaTime);
 
             //seing which way the player is moving
             if (myPlayer.GetAxisRaw("Horizontal") > 0)
