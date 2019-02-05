@@ -177,7 +177,7 @@ public class BasicPlayer : MonoBehaviour {
         }
 
         //forward basic attack
-        if ((myPlayer.GetAxis("Horizontal") > .3f && myPlayer.GetAxis("Horizontal") > -.3f) || (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") < -.3f) && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onTopOfPlatform)
+        if (((myPlayer.GetAxis("Horizontal") > .3f && myPlayer.GetAxis("Horizontal") > -.3f) || (myPlayer.GetAxis("Horizontal")) < .3f && myPlayer.GetAxis("Horizontal") < -.3f) && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onTopOfPlatform)
         {
             if (myPlayer.GetButtonDown("BasicAttack"))
             {
@@ -568,15 +568,15 @@ public class BasicPlayer : MonoBehaviour {
     }
 
 
-    /* This function gets called when an enemy hits you
-     * What the arguments are for:
-     *      attackDamage- is the how much the players health/armor goes down.
-     *      attackAngle- is the angle you get sent flying when you get hit. [*possibly* affected by player weight]
-     *      attackForce- is how far back you get sent flying. [affected by player weight]
-     *      hitStun- is how long the player has to wait before they can do anything
-     *      -Ganderman Dan 🦆
-     */
 
+    /// <summary>
+    /// This function gets called when an enemy hits you
+    /// </summary>
+    /// <param name="attackDamage">is the how much the players health/armor goes down.</param>
+    /// <param name="attackAngle">is the angle you get sent flying when you get hit. [*possibly* affected by player weight]</param>
+    /// <param name="attackForce"> is how far back you get sent flying. [affected by player weight]</param>
+    /// <param name="hitStun">is how long the player has to wait before they can do anything</param>
+    /// <param name="facingRight">Checks which way the player is facing when they do the attack so that it knows whether or not to reverse the knockback</param>
     public void GetHit(float attackDamage, float attackAngle, float attackForce, float hitStun, bool facingRight)//im probably missing a few arguments
     {
         gotHitTimer = hitStun;

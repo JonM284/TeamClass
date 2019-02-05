@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
     public float angle;
     public float knockback;
     public float hitStun;
+    public Vector3 direction;
 
     // Start is called before the first frame update
     void Start()
@@ -20,27 +21,22 @@ public class Projectile : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void SetVariables(float damage1, float angle1, float knockback1, float hitStun1, float speed1, bool direction)
+    public void SetVariables(float damage1, float angle1, float knockback1, float hitStun1, float speed1)
     {
         damage = damage1;
         angle = angle1;
         knockback = knockback1;
         hitStun = hitStun1;
         speed = speed1;
-        moveRight = direction;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (moveRight)
-        {
-            rb.velocity = new Vector2(speed, 0);
-        }
-        else
-        {
-            rb.velocity = new Vector2(-speed, 0);
-        }
+
+        transform.up = direction;
+
+        rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

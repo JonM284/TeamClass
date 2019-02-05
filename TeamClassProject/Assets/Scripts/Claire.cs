@@ -22,7 +22,7 @@ public class Claire : MonoBehaviour
     public float BF_Knockback;
     public float BF_HitStun;
     public GameObject iceShot;
-    public GameObject spawnIceShotHere;
+    public GameObject spawnIceShotHere; 
     public float bulletSpeed;
 
     [Header("Basic Up")]
@@ -43,6 +43,14 @@ public class Claire : MonoBehaviour
     public float NA_Angle;
     public float NA_Knockback;
     public float NA_HitStun;
+
+    [Header("Up Air")]
+    public float UA_Damage;
+    public float UA_Angle;
+    public float UA_Knockback;
+    public float UA_HitStun;
+    public GameObject spawnIceShotHere1;
+    public float bulletSpeed1;
 
     private float currentAttack;
 
@@ -84,8 +92,15 @@ public class Claire : MonoBehaviour
     {
         Debug.Log("Hi");
         GameObject bullet = Instantiate(iceShot, spawnIceShotHere.transform.position, Quaternion.identity);
-        bullet.GetComponent<Projectile>().SetVariables(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, bulletSpeed, player.FacingRight());
-        bullet.transform.Rotate(new Vector3(0, 0, -90));
+        bullet.GetComponent<Projectile>().SetVariables(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, bulletSpeed);
+        if (player.FacingRight())
+        {
+            bullet.GetComponent<Projectile>().direction = new Vector3(1, 0, 0);
+        }
+        else
+        {
+            bullet.GetComponent<Projectile>().direction = new Vector3(-1, 0, 0);
+        }
     }
 
     private void UpBasic(GameObject enemy)
@@ -102,6 +117,15 @@ public class Claire : MonoBehaviour
     {
         enemy.GetComponent<BasicPlayer>().GetHit(NA_Damage, NA_Angle, NA_Knockback, NA_HitStun, player.FacingRight());
     }
+
+    private void UpAir()
+    {
+        GameObject bullet = Instantiate(iceShot, spawnIceShotHere1.transform.position, Quaternion.identity);
+        bullet.GetComponent<Projectile>().SetVariables(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, bulletSpeed1);
+        bullet.GetComponent<Projectile>().direction = new Vector3(0, 1, 0);
+    }
+
+
 
     public void CurrentAttack(int attackNum)
     {
