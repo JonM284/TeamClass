@@ -21,7 +21,9 @@ public class BasicPlayer : MonoBehaviour {
     public float accel;
     public float accelMult;
     public float decelMult;
+    [HideInInspector]
     public int speed;
+    [HideInInspector]
     public float weight;
     //public int dashSpeed;
 
@@ -69,7 +71,17 @@ public class BasicPlayer : MonoBehaviour {
     [Header("Character Variables")]
     public float maxHealth;
     public float characterSpeed;
+    [HideInInspector]
     public float characterWeight;
+    public bool makeFaceRight;
+
+    private float xScale;
+    [HideInInspector]
+    public bool isAttacking;
+
+    private Vector3 hitDirection;
+    private float gotHitTimer = 0;
+    private float knockback = 0;
 
     void Awake()
     {
@@ -105,12 +117,23 @@ public class BasicPlayer : MonoBehaviour {
         canDash = true;
 
         direction = "Right";
+
+        if (makeFaceRight)
+        {
+            xScale = -gameObject.transform.localScale.x;
+        }
+        else
+        {
+            xScale = gameObject.transform.localScale.x;
+        }
     }
 
-    
+    enum animations { idle = 0, walk = 1, basic_neutral = 5, basic_forward = 6, basic_up = 7, basic_down = 8 }
 	
 	// Update is called once per frame
 	void Update () {
+        gotHitTimer -= Time.deltaTime;
+
 
         if (!inHitStun)
         {
@@ -127,7 +150,26 @@ public class BasicPlayer : MonoBehaviour {
         //float mySpeed = Mathf.Abs(rb.velocity.x);
         //anim.SetFloat("xSpeed", Mathf.Abs(velocity.x));
         //anim.SetFloat("yVel", rb.velocity.y);
+
+        if(myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onTopOfPlatform)
+        {
+            if (myPlayer.GetButtonDown("BasicAttack"))
+            {
+                anim.SetInteger("State", (int)animations.basic_neutral);
+                isAttacking = true;
+            }
+        }
+
+        if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") > .3f && Input.GetAxis("Vertical") > -.3f && onTopOfPlatform)
+        {
+            if (myPlayer.GetButtonDown("BasicAttack"))
+            {
+                anim.SetInteger("State", (int)animations.basic_up);
+                isAttacking = true;
+            }
+        }
     }
+
 
     void Movement()
     {
@@ -207,11 +249,13 @@ public class BasicPlayer : MonoBehaviour {
         {
             if (direction == "Right")
             {
-                sr.flipX = false;
+                //sr.flipX = false;
+                gameObject.transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
             }
             if (direction == "Left")
             {
-                sr.flipX = true;
+                //sr.flipX = true;
+                gameObject.transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
             }
         }
         /*
@@ -286,10 +330,15 @@ public class BasicPlayer : MonoBehaviour {
             //anim.SetTrigger("jumpStart");
         }
     }
+    
 
     private void FixedUpdate()
     {
-        if (!inHitStun)
+        if(gotHitTimer > 0)
+        {
+            rb.velocity = (hitDirection * knockback);
+        }
+        if (!inHitStun && !isAttacking)
         {
             rb.MovePosition(transform.position + velocity * Time.deltaTime);
 
@@ -336,7 +385,7 @@ public class BasicPlayer : MonoBehaviour {
                         accel = myPlayer.GetAxis("Horizontal");
                     }
                 }
-                anim.SetInteger("State", 1);
+                anim.SetInteger("State", (int)animations.walk);
             }
             else
             {
@@ -362,18 +411,20 @@ public class BasicPlayer : MonoBehaviour {
                         accel = 0;
                     }
                 }
-                anim.SetInteger("State", 0);
+                anim.SetInteger("State", (int)animations.idle);
             }
 
             if (onTopOfPlatform)
             {
                 if (direction == "Right")
                 {
-                    sr.flipX = false;
+                    //sr.flipX = false;
+                    gameObject.transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
                 }
                 if (direction == "Left")
                 {
-                    sr.flipX = true;
+                    //sr.flipX = true;
+                    gameObject.transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
                 }
             }
             /*
@@ -483,6 +534,51 @@ public class BasicPlayer : MonoBehaviour {
         onTopOfPlatform = false;
 
     }
+
+
+    /* This function gets called when an enemy hits you
+     * What the arguments are for:
+     *      attackDamage- is the how much the players health/armor goes down.
+     *      attackAngle- is the angle you get sent flying when you get hit. [*possibly* affected by player weight]
+     *      attackForce- is how far back you get sent flying. [affected by player weight]
+     *      hitStun- is how long the player has to wait before they can do anything
+     *      -Ganderman Dan 🦆
+     */
+
+    public void GetHit(float attackDamage, float attackAngle, float attackForce, float hitStun, bool facingRight)//im probably missing a few arguments
+    {
+        gotHitTimer = hitStun;
+        knockback = attackForce;
+        Vector3 dir = new Vector3(0, 0, 0);
+        if (facingRight)
+        {
+            dir = Quaternion.AngleAxis(attackAngle, Vector3.forward) * Vector3.right;
+            hitDirection = dir;
+        }
+        else
+        {
+            dir = Quaternion.AngleAxis(attackAngle, -Vector3.forward) * -Vector3.right;
+            hitDirection = dir;
+        }
+        //rb.AddForce(dir * attackForce);
+        // rb.AddForce(new Vector2(attackForce, 0));
+    }
+
+    public bool FacingRight()
+    {
+        if ((makeFaceRight && transform.localScale.x < 0) || (!makeFaceRight && transform.localScale.x > 0) )
+        {
+            Debug.Log("Right");
+            return true;
+        }
+        else
+        {
+            Debug.Log("Left");
+            return false;
+        }
+    }
+
+
 
     void Gravity()
     {
