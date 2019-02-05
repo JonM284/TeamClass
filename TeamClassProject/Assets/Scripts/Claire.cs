@@ -21,6 +21,9 @@ public class Claire : MonoBehaviour
     public float BF_Angle;
     public float BF_Knockback;
     public float BF_HitStun;
+    public GameObject iceShot;
+    public GameObject spawnIceShotHere; 
+    public float bulletSpeed;
 
     [Header("Basic Up")]
     public float BU_Damage;
@@ -34,9 +37,25 @@ public class Claire : MonoBehaviour
     public float BD_Knockback;
     public float BD_HitStun;
 
+    [Header("Air Attacks")]
+    [Header("Neutral Air")]
+    public float NA_Damage;
+    public float NA_Angle;
+    public float NA_Knockback;
+    public float NA_HitStun;
+
+    [Header("Up Air")]
+    public float UA_Damage;
+    public float UA_Angle;
+    public float UA_Knockback;
+    public float UA_HitStun;
+    public GameObject spawnIceShotHere1;
+    public float bulletSpeed1;
+
     private float currentAttack;
 
     BasicPlayer player;
+
 
     private void Awake()
     {
@@ -58,7 +77,10 @@ public class Claire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+     if(player.anim.GetInteger("State") == 1)
+        {
+            EndAttack();
+        } 
     }
 
     private void NeutralBasic(GameObject enemy)
@@ -66,9 +88,19 @@ public class Claire : MonoBehaviour
         enemy.GetComponent<BasicPlayer>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, player.FacingRight());
     }
 
-    private void ForwardBasic(GameObject enemy)
+    private void ForwardBasic()
     {
-        enemy.GetComponent<BasicPlayer>().GetHit(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, player.FacingRight());
+        Debug.Log("Hi");
+        GameObject bullet = Instantiate(iceShot, spawnIceShotHere.transform.position, Quaternion.identity);
+        bullet.GetComponent<Projectile>().SetVariables(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, bulletSpeed);
+        if (player.FacingRight())
+        {
+            bullet.GetComponent<Projectile>().direction = new Vector3(1, 0, 0);
+        }
+        else
+        {
+            bullet.GetComponent<Projectile>().direction = new Vector3(-1, 0, 0);
+        }
     }
 
     private void UpBasic(GameObject enemy)
@@ -80,6 +112,20 @@ public class Claire : MonoBehaviour
     {
         enemy.GetComponent<BasicPlayer>().GetHit(BD_Damage, BD_Angle, BD_Knockback, BD_HitStun, player.FacingRight());
     }
+
+    private void NeutralAir(GameObject enemy)
+    {
+        enemy.GetComponent<BasicPlayer>().GetHit(NA_Damage, NA_Angle, NA_Knockback, NA_HitStun, player.FacingRight());
+    }
+
+    private void UpAir()
+    {
+        GameObject bullet = Instantiate(iceShot, spawnIceShotHere1.transform.position, Quaternion.identity);
+        bullet.GetComponent<Projectile>().SetVariables(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, bulletSpeed1);
+        bullet.GetComponent<Projectile>().direction = new Vector3(0, 1, 0);
+    }
+
+
 
     public void CurrentAttack(int attackNum)
     {
@@ -102,6 +148,8 @@ public class Claire : MonoBehaviour
      * 3 = Basic Up
      * 4 = Basic Down
      * 
+     * 9 = neutral aerial
+     * 
      */
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -116,16 +164,16 @@ public class Claire : MonoBehaviour
                     NeutralBasic(other.gameObject);
                     break;
 
-                case 2:
-                    ForwardBasic(other.gameObject);
-                    break;
-
                 case 3:
                     UpBasic(other.gameObject);
                     break;
 
                 case 4:
                     DownBasic(other.gameObject);
+                    break;
+
+                case 9:
+                    NeutralAir(other.gameObject);
                     break;
             }
         }
