@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Rewired;
 using Rewired.ControllerExtensions;
 
@@ -12,6 +13,9 @@ public class BasicPlayer : MonoBehaviour {
     [Header("Rewired")]
     [Tooltip("Number identifier for each player, must be above 0")]
     public int playerNum;
+
+    public Image healthBar;
+    public Image regenableHealthBar;
 
     Rigidbody2D rb;
 
@@ -50,7 +54,6 @@ public class BasicPlayer : MonoBehaviour {
     public bool onTopOfPlatform;
     [Space(10)]
 
-    int health;
     SpriteRenderer sr;
     public Animator anim;
     AudioSource playerJump;
@@ -70,6 +73,9 @@ public class BasicPlayer : MonoBehaviour {
 
     [Header("Character Variables")]
     public float maxHealth;
+    private float currentHealth;
+    private float regenHeath;
+    public float regenHeathMultiplier;
     public float characterSpeed;
     [HideInInspector]
     public float characterWeight;
@@ -112,7 +118,9 @@ public class BasicPlayer : MonoBehaviour {
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         playerJump = GetComponent<AudioSource>();
-        health = 5;
+
+        currentHealth = maxHealth;
+        regenHeath = maxHealth;
 
         canDash = true;
 
@@ -133,6 +141,10 @@ public class BasicPlayer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        healthBar.fillAmount = currentHealth / maxHealth;
+        regenableHealthBar.fillAmount = regenHeath / maxHealth;
+
         gotHitTimer -= Time.deltaTime;
 
         if (!inHitStun)
@@ -589,21 +601,27 @@ public class BasicPlayer : MonoBehaviour {
     /// <param name="facingRight">Checks which way the player is facing when they do the attack so that it knows whether or not to reverse the knockback</param>
     public void GetHit(float attackDamage, float attackAngle, float attackForce, float hitStun, bool facingRight)//im probably missing a few arguments
     {
-        gotHitTimer = hitStun;
-        knockback = attackForce;
-        Vector3 dir = new Vector3(0, 0, 0);
-        if (facingRight)
+        if (gotHitTimer < 0)
         {
-            dir = Quaternion.AngleAxis(attackAngle, Vector3.forward) * Vector3.right;
-            hitDirection = dir;
+            currentHealth -= attackDamage;
+            regenHeath -= attackDamage * regenHeathMultiplier;
+
+            gotHitTimer = hitStun;
+            knockback = attackForce;
+            Vector3 dir = new Vector3(0, 0, 0);
+            if (facingRight)
+            {
+                dir = Quaternion.AngleAxis(attackAngle, Vector3.forward) * Vector3.right;
+                hitDirection = dir;
+            }
+            else
+            {
+                dir = Quaternion.AngleAxis(attackAngle, -Vector3.forward) * -Vector3.right;
+                hitDirection = dir;
+            }
+            //rb.AddForce(dir * attackForce);
+            // rb.AddForce(new Vector2(attackForce, 0));
         }
-        else
-        {
-            dir = Quaternion.AngleAxis(attackAngle, -Vector3.forward) * -Vector3.right;
-            hitDirection = dir;
-        }
-        //rb.AddForce(dir * attackForce);
-        // rb.AddForce(new Vector2(attackForce, 0));
     }
 
     public bool FacingRight()
