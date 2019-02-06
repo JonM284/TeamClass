@@ -121,7 +121,7 @@ public class Claire : MonoBehaviour
     private void UpAir()
     {
         GameObject bullet = Instantiate(iceShot, spawnIceShotHere1.transform.position, Quaternion.identity);
-        bullet.GetComponent<Projectile>().SetVariables(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, bulletSpeed1);
+        bullet.GetComponent<Projectile>().SetVariables(UA_Damage, UA_Angle, UA_Knockback, UA_HitStun, bulletSpeed1);
         bullet.GetComponent<Projectile>().direction = new Vector3(0, 1, 0);
     }
 

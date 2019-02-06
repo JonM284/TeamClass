@@ -129,7 +129,7 @@ public class BasicPlayer : MonoBehaviour {
     }
 
     [HideInInspector]
-    public enum animations { idle = 0, walk = 1, basic_neutral = 5, basic_forward = 6, basic_up = 7, basic_down = 8, neutral_air = 9}
+    public enum animations { idle = 0, walk = 1, basic_neutral = 5, basic_forward = 6, basic_up = 7, basic_down = 8, neutral_air = 9, up_air = 10}
 	
 	// Update is called once per frame
 	void Update () {
@@ -183,7 +183,7 @@ public class BasicPlayer : MonoBehaviour {
             {
                 anim.SetInteger("State", (int)animations.basic_forward);
                 isAttacking = true;
-                velocity.x = velocity.x / 3;
+                velocity.x = 0;
             }
         }
 
@@ -193,6 +193,16 @@ public class BasicPlayer : MonoBehaviour {
             if (myPlayer.GetButtonDown("BasicAttack"))
             {
                 anim.SetInteger("State", (int)animations.neutral_air);
+                isAttacking = true;
+            }
+        }
+
+        //up air attack
+        if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") > .3f && Input.GetAxis("Vertical") > -.3f && !onTopOfPlatform)
+        {
+            if (myPlayer.GetButtonDown("BasicAttack"))
+            {
+                anim.SetInteger("State", (int)animations.up_air);
                 isAttacking = true;
             }
         }

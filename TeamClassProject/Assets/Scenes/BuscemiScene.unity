@@ -5058,8 +5058,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 620515180}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.26, y: 2.36, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.26, y: 2.74, z: 0}
+  m_LocalScale: {x: 1, y: 1.53, z: 0.65}
   m_Children: []
   m_Father: {fileID: 672828758}
   m_RootOrder: 3
@@ -5242,6 +5242,12 @@ MonoBehaviour:
   NA_Angle: 325
   NA_Knockback: 20
   NA_HitStun: 0.4
+  UA_Damage: 30
+  UA_Angle: 80
+  UA_Knockback: 8
+  UA_HitStun: 0.01
+  spawnIceShotHere1: {fileID: 620515180}
+  bulletSpeed1: 16
 --- !u!114 &672828760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5312,7 +5318,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 672828756}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -5473,6 +5479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 782571007}
   - component: {fileID: 782571008}
+  - component: {fileID: 782571009}
   m_Layer: 0
   m_Name: Crystal Torso
   m_TagString: Untagged
@@ -5545,6 +5552,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &782571009
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782571006}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.008429765, y: 0.13}
+  m_Size: {x: 0.91, y: 2.93}
+  m_Direction: 0
 --- !u!1 &784233432 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1848428978116082, guid: ae34b24e48cc7334b988d8854e614176,
@@ -5631,6 +5654,12 @@ MonoBehaviour:
   NA_Angle: 0
   NA_Knockback: 0
   NA_HitStun: 0
+  UA_Damage: 0
+  UA_Angle: 0
+  UA_Knockback: 0
+  UA_HitStun: 0
+  spawnIceShotHere1: {fileID: 0}
+  bulletSpeed1: 0
 --- !u!61 &784233435
 BoxCollider2D:
   m_ObjectHideFlags: 0
