@@ -7926,6 +7926,7 @@ MonoBehaviour:
   speed: 5
   playerNum: 1
   teamID: 1
+  is_In_Area: 0
 --- !u!1 &1062523075
 GameObject:
   m_ObjectHideFlags: 0
@@ -8044,6 +8045,7 @@ MonoBehaviour:
   speed: 5
   playerNum: 2
   teamID: 2
+  is_In_Area: 0
 --- !u!114 &1073772753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9061,7 +9063,7 @@ Transform:
   m_GameObject: {fileID: 1369327437}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.01, y: 1.23, z: -0.033203125}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.575, y: 0.575, z: 0.575}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13

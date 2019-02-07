@@ -8,11 +8,16 @@ public class AlternateSP : MonoBehaviour
 {
 
     //public variables
+    [Tooltip("Speed of the player")]
     public float speed;
+    [Header("ID numbers")]
+    [Tooltip("Insert player ID numbers")]
     public int playerNum, teamID;
 
 
     //private variables
+
+    //This allows us to change what they can do, when they are either at or away from a machine.
     private enum Status { Free, AtMachine };
     private Rigidbody2D rb;
     private Vector2 vel;
@@ -20,14 +25,22 @@ public class AlternateSP : MonoBehaviour
     private Player myPlayer;
     [SerializeField]
     private bool is_In_Area = false;
+    //The current status of the player: Free (Away from machine- Free to move)
+    // AtMachine(Player is at machine- not free to move).
     Status status;
+    //reference to whichever machine the player is going to use
     private GameObject myMachine;
 
+
+    //--------------------------------------------------------------------------------------------------
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
+
+
+    //--------------------------------------------------------------------------------------------------
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +51,8 @@ public class AlternateSP : MonoBehaviour
         CheckController(myPlayer);
     }
 
+
+    //--------------------------------------------------------------------------------------------------
     // Update is called once per frame
     void Update()
     {
@@ -48,6 +63,10 @@ public class AlternateSP : MonoBehaviour
             horizontalInput = 0;
         }
 
+        // If player is infront of machine and they press "Jump" and they are free, set their status to at a machine
+        // Give the machine my inputs.
+        // If the player presses "Jump" and is using a machine, set them to free again.
+        // Also if they press heavy attack, they jump off the machine without using it.
         if (is_In_Area && myPlayer.GetButtonDown("Jump"))
         {
             if (status == Status.Free)
@@ -90,6 +109,7 @@ public class AlternateSP : MonoBehaviour
 
     }
 
+    //--------------------------------------------------------------------------------------------------
     private void FixedUpdate()
     {
         if (horizontalInput < -0.1f || horizontalInput > 0.1f)
@@ -98,11 +118,17 @@ public class AlternateSP : MonoBehaviour
         }
     }
 
+
+    //--------------------------------------------------------------------------------------------------
+    //this is a temporary function that is to test whether or not the enum is working correctly.
     public void SetFree()
     {
         status = Status.Free;
     }
 
+
+    //--------------------------------------------------------------------------------------------------
+    //This controls the movement of the player.
     void Movement()
     {
         vel.x = horizontalInput * speed;
@@ -111,7 +137,7 @@ public class AlternateSP : MonoBehaviour
         rb.MovePosition(rb.position + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
     }
 
-
+    //--------------------------------------------------------------------------------------------------
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Machine")
@@ -122,6 +148,8 @@ public class AlternateSP : MonoBehaviour
         
     }
 
+
+    //--------------------------------------------------------------------------------------------------
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.tag == "Machine")
@@ -130,6 +158,8 @@ public class AlternateSP : MonoBehaviour
         }
     }
 
+
+    //--------------------------------------------------------------------------------------------------
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "Machine")
@@ -140,12 +170,18 @@ public class AlternateSP : MonoBehaviour
     }
 
 
+
+    //--------------------------------------------------------------------------------------------------
     ///rewired functions
+    // Event that triggers when a controller is plugged in to the computer.
     void OnControllerConnected(ControllerStatusChangedEventArgs arg)
     {
         CheckController(myPlayer);
     }
 
+
+    //--------------------------------------------------------------------------------------------------
+    //Checks to see if this controller is a PS4 controller. If it is, change the color on the back of the controller.
     void CheckController(Player player)
     {
         foreach (Joystick joyStick in player.controllers.Joysticks)
