@@ -705,6 +705,7 @@ public class BasicPlayer : MonoBehaviour {
                   //{
                     Debug.Log("hi");
                     anim.SetInteger("State", (int)animations.jump_land);
+                    isAttacking = false;
                     //}
                     onTopOfPlatform = true;
                         dashCount = dashCountMax;
