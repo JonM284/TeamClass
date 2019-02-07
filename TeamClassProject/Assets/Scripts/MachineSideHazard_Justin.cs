@@ -13,20 +13,25 @@ public class MachineSideHazard_Justin : MonoBehaviour
     private Vector2 sideHazardStartPos;
 
     private bool sideHazardShouldLerp;
+    private bool sideHazardMovingForward;
     float sideHazardLerpSpeed;
     float sideHazardLerpTimer;
+
+    bool sideHazardReady;
+    float sideHazardCooldownTimer;
 
     // Start is called before the first frame update
     void Start()
     {
         sideHazardStartPos = sideHazard.transform.position;
         sideHazardLerpSpeed = 30f;
+        sideHazardReady = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(sideHazardMachineEnabled == true)
+        if(sideHazardMachineEnabled == true && sideHazardReady == true)
         {
             sideHazardMovement = Input.GetAxisRaw("Vertical") * moveSpeed;
 
@@ -45,24 +50,58 @@ public class MachineSideHazard_Justin : MonoBehaviour
 
         }
 
-        sideHazardLerpTimer += Time.deltaTime;
+        //cooldown timer
+        sideHazardCooldownTimer -= Time.deltaTime;
 
-        if (sideHazardMachineEnabled == true && Input.GetButtonDown("Jump"))
+        //cooldown finished
+        if(sideHazardCooldownTimer < 0)
         {
-            sideHazardShouldLerp = true;
-            sideHazardLerpTimer = 0;
+            sideHazardReady = true;
         }
 
-        if (sideHazardShouldLerp == true)
+        //lerping timer
+        sideHazardLerpTimer += Time.deltaTime;
+
+        //if you're in the machine and you hit jump the eel goes/starts
+        if (sideHazardMachineEnabled == true && Input.GetButtonDown("Jump") && sideHazardReady == true)
+        {
+            sideHazardReady = false;
+            sideHazardShouldLerp = true;
+            sideHazardMovingForward = true;
+            sideHazardLerpTimer = 0;
+            sideHazardCooldownTimer = 5.0f;
+        }
+
+        //eel moves right first
+        if (sideHazardShouldLerp == true && sideHazardMovingForward == true)
         {
             sideHazard.transform.Translate(Vector3.right * sideHazardLerpSpeed * Time.deltaTime);
         }
+        //eel moves back left after
+        else if (sideHazardShouldLerp == true && sideHazardMovingForward == false)
+        {
+            sideHazard.transform.Translate(Vector3.left * sideHazardLerpSpeed * Time.deltaTime);
+        }
 
-        if(sideHazardLerpTimer > .5f && sideHazardShouldLerp == true)
+        //if the timer exceeds half a second but not a second, and its moving right/forward, then stop it 
+        if (sideHazardLerpTimer > .5f && sideHazardLerpTimer <= 1.0f && sideHazardShouldLerp == true && sideHazardMovingForward == true)
+        {
+            sideHazardShouldLerp = false;
+            //sideHazardMovingForward = false;
+        }
+        //it stops for half a second then moves back to left
+        if (sideHazardLerpTimer > 1.0f && sideHazardMovingForward == true)
+        {
+            sideHazardMovingForward = false;
+            sideHazardShouldLerp = true;
+        }
+        //after cycle completes it moves back to starting position and gets ready for next time
+        if (sideHazardLerpTimer >= 1.5f && sideHazardShouldLerp == true)
         {
             sideHazardShouldLerp = false;
             sideHazardMachineEnabled = false;
             sideHazard.transform.position = sideHazardStartPos;
+            SupportPlayer.movementEnabled = true;
         }
     }
 
@@ -80,10 +119,14 @@ public class MachineSideHazard_Justin : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player" && Input.GetButtonDown("Jump") && sideHazardMachineEnabled == false)
+        if(sideHazardCooldownTimer < 0)
         {
-            StartCoroutine(SetInMachineTrueDelay());
+            if (other.gameObject.tag == "Player" && Input.GetButtonDown("Jump") && sideHazardMachineEnabled == false && sideHazardReady == true)
+            {
+                StartCoroutine(SetInMachineTrueDelay());
+            }
         }
+        
     }
 
 }
