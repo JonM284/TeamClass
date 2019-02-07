@@ -127,7 +127,7 @@ public class Claire : MonoBehaviour
         bullet.GetComponent<Projectile>().moveRight = player.FacingRight();
     }
 
-
+    
 
     public void CurrentAttack(int attackNum)
     {
