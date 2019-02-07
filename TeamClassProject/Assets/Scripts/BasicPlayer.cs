@@ -137,11 +137,11 @@ public class BasicPlayer : MonoBehaviour {
     }
 
     [HideInInspector]
-    public enum animations { idle = 0, walk = 1, basic_neutral = 5, basic_forward = 6, basic_up = 7, basic_down = 8, neutral_air = 9, up_air = 10}
+    public enum animations { idle = 0, walk = 1, jump_start = 2, jump_land = 4, basic_neutral = 5, basic_forward = 6, basic_up = 7, basic_down = 8, neutral_air = 9, up_air = 10}
 	
 	// Update is called once per frame
 	void Update () {
-
+      //  Debug.Log(anim.GetInteger("State"));
         healthBar.fillAmount = currentHealth / maxHealth;
         regenableHealthBar.fillAmount = regenHeath / maxHealth;
 
@@ -386,6 +386,11 @@ public class BasicPlayer : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        if(anim.GetInteger("State") == (int)animations.jump_land)
+        {
+            velocity.x = 0;
+        }
+
         initialJumpTime -= Time.fixedDeltaTime;
         //changed rb.velocity to just velocity and then put rb.moveposition outside of !inhitstun
 
@@ -441,7 +446,10 @@ public class BasicPlayer : MonoBehaviour {
                         accel = myPlayer.GetAxis("Horizontal");
                     }
                 }
-                anim.SetInteger("State", (int)animations.walk);
+                if (anim.GetInteger("State") != (int)animations.jump_start && onTopOfPlatform && anim.GetInteger("State") != (int)animations.jump_land)
+                {
+                    anim.SetInteger("State", (int)animations.walk);
+                }
             }
             else
             {
@@ -467,7 +475,10 @@ public class BasicPlayer : MonoBehaviour {
                         accel = 0;
                     }
                 }
-                anim.SetInteger("State", (int)animations.idle);
+                if (anim.GetInteger("State") != (int)animations.jump_start && anim.GetInteger("State") != (int)animations.jump_land)
+                {
+                    anim.SetInteger("State", (int)animations.idle);
+                }
             }
 
             if (onTopOfPlatform)
@@ -558,6 +569,7 @@ public class BasicPlayer : MonoBehaviour {
                 initialJumpTime = maxInitialJumpTime;
                 holdJumpTime = maxHoldJumpTime;
                 jumpButtonPressed = true;
+                anim.SetInteger("State", (int)animations.jump_start);
                 //playerJump.Play();
                 //anim.SetTrigger("jumpStart");
             }
@@ -679,22 +691,32 @@ public class BasicPlayer : MonoBehaviour {
                 velocity.y = 0; //stop vertical velocity
                 if (contact.normal.y >= 0)
                 { //am I hitting the top of the platform?
-                    /*
-                    if (collisionInfo.gameObject.tag == "Boss")
-                    {
+                  /*
+                  if (collisionInfo.gameObject.tag == "Boss")
+                  {
 
 
-                        Debug.Log("Hit");
-                    }
-                    else
-                    */
-                    //{
-                        onTopOfPlatform = true;
+                      Debug.Log("Hit");
+                  }
+                  else
+                  */
+                  //{
+                  //if (onPlatformTimer < 0)
+                  //{
+                    Debug.Log("hi");
+                    anim.SetInteger("State", (int)animations.jump_land);
+                    //}
+                    onTopOfPlatform = true;
                         dashCount = dashCountMax;
                     //}
                 }
             }
         }
+    }
+
+    public void EndLandAnim()
+    {
+        anim.SetInteger("State", (int)animations.idle);
     }
 
     void OnCollisionStay2D(Collision2D collisionInfo)
