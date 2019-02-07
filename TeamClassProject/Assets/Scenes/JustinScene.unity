@@ -231,7 +231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1848428978116082, guid: ae34b24e48cc7334b988d8854e614176, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4306798255847764, guid: ae34b24e48cc7334b988d8854e614176, type: 3}
       propertyPath: m_LocalPosition.x
@@ -479,6 +479,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 1
+  healthBar: {fileID: 0}
+  regenableHealthBar: {fileID: 0}
   accel: 0
   accelMult: 0.09
   decelMult: 0
@@ -504,6 +506,7 @@ MonoBehaviour:
   gillbert: 0
   gnomercy: 0
   maxHealth: 0
+  regenHeathMultiplier: 0
   characterSpeed: 0
   characterWeight: 0
   makeFaceRight: 0
@@ -5279,7 +5282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1693746460
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5844,7 +5847,7 @@ GameObject:
   - component: {fileID: 2054923990}
   - component: {fileID: 2054923992}
   m_Layer: 0
-  m_Name: SideHazard
+  m_Name: SideHazard_Eel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5922,7 +5925,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
