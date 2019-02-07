@@ -42,6 +42,13 @@ public class ObjectSpawner : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This will activate a gameobject that was created at the beginning of the game.
+    /// </summary>
+    /// <param name="tag">Name of the Object pool wanting to spawn from.</param>
+    /// <param name="position">Position that the gameobject will be when set to active.</param>
+    /// <param name="rotation">Rotation that the gameobject will be when set to active.</param>
+    /// <returns></returns>
     public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
     {
         if (!objPoolDictionary.ContainsKey(tag))

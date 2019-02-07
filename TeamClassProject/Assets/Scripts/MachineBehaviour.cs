@@ -92,7 +92,9 @@ public class MachineBehaviour : MonoBehaviour
 
 
     //--------------------------------------------------------------------------------------------------
-    // Function description: This contains all movement and interactions for the Side Cannons
+    /// <summary>
+    /// Function description: This contains all movement and interactions for the Side Cannons
+    /// </summary>
     void SideCannonMovement()
     {
 
@@ -129,7 +131,9 @@ public class MachineBehaviour : MonoBehaviour
 
 
     //--------------------------------------------------------------------------------------------------
-    //Function Description: This contains all movement and interactions for the Background Cannon
+    /// <summary>
+    /// Function Description: This contains all movement and interactions for the Background Cannon.
+    /// </summary>
     void BackgroundCannonMovement()
     {
         vel.x = horizontalInput * speed;
@@ -151,7 +155,9 @@ public class MachineBehaviour : MonoBehaviour
 
 
     //--------------------------------------------------------------------------------------------------
-    //Function Description: This contains all movement and interactions for the Side Hazzards (currently Eels)
+    /// <summary>
+    /// Function Description: This contains all movement and interactions for the Side Hazzards (currently Eels).
+    /// </summary>
     void SideHazzardControl()
     {
 
@@ -179,10 +185,12 @@ public class MachineBehaviour : MonoBehaviour
     }
 
     //--------------------------------------------------------------------------------------------------
-    //Function Description: Will be called from the support script.
-    //This script requires access to the correct player number in order to have the correct player interact with the hazzards.
-    //Immediately takes player number from player, uses this ID number as its own inputs.
-    //In the case of a team ID being necissary~ it also takes a team ID which players have.
+    /// <summary>
+    ///
+    //This Function requires access to the correct player number in order to have the correct player interact with the hazzards.
+    /// </summary>
+    /// <param name="playerNum">Player ID from the support character that is activating this machine.</param>
+    /// <param name="teamID">Player's Team ID</param>
     public void Commence_Control(int playerNum, int teamID)
     {
         // Recieve the number of a player and use it as my inputs.
@@ -212,8 +220,10 @@ public class MachineBehaviour : MonoBehaviour
 
 
     //--------------------------------------------------------------------------------------------------
-    //Turns off the inputs that were being recieved from the player.
-    //Player is no longer going to use this machine for now.
+    /// <summary>
+    /// Turns off the inputs that were being recieved from the player.
+    /// Player is no longer going to use this machine for now.
+    /// </summary>
     public void End_Control()
     {
         is_In_Use = false;
