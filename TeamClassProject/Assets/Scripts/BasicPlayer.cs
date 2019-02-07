@@ -175,6 +175,7 @@ public class BasicPlayer : MonoBehaviour {
             {
                 anim.SetInteger("State", (int)animations.basic_neutral);
                 isAttacking = true;
+                velocity.x = 0;
             }
         }
 
@@ -185,6 +186,7 @@ public class BasicPlayer : MonoBehaviour {
             {
                 anim.SetInteger("State", (int)animations.basic_up);
                 isAttacking = true;
+                velocity.x = 0;
             }
         }
 
@@ -384,7 +386,7 @@ public class BasicPlayer : MonoBehaviour {
 
     private void FixedUpdate()
     {
-
+        initialJumpTime -= Time.fixedDeltaTime;
         //changed rb.velocity to just velocity and then put rb.moveposition outside of !inhitstun
 
         rb.MovePosition(transform.position + velocity * Time.deltaTime);
@@ -546,7 +548,6 @@ public class BasicPlayer : MonoBehaviour {
             }
 
             //jump logic
-            initialJumpTime -= Time.fixedDeltaTime;
             if (initialJumpTime <= 0)
             {
                 holdJumpTime -= Time.fixedDeltaTime;

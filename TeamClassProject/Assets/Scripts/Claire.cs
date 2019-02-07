@@ -93,6 +93,7 @@ public class Claire : MonoBehaviour
         Debug.Log("Hi");
         GameObject bullet = Instantiate(iceShot, spawnIceShotHere.transform.position, Quaternion.identity);
         bullet.GetComponent<Projectile>().SetVariables(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, bulletSpeed);
+        bullet.GetComponent<Projectile>().moveRight = player.FacingRight();
         if (player.FacingRight())
         {
             bullet.GetComponent<Projectile>().direction = new Vector3(1, 0, 0);
@@ -123,6 +124,7 @@ public class Claire : MonoBehaviour
         GameObject bullet = Instantiate(iceShot, spawnIceShotHere1.transform.position, Quaternion.identity);
         bullet.GetComponent<Projectile>().SetVariables(UA_Damage, UA_Angle, UA_Knockback, UA_HitStun, bulletSpeed1);
         bullet.GetComponent<Projectile>().direction = new Vector3(0, 1, 0);
+        bullet.GetComponent<Projectile>().moveRight = player.FacingRight();
     }
 
 
