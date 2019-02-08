@@ -13,6 +13,8 @@ public class Projectile : MonoBehaviour
     public float angle;
     public float knockback;
     public float hitStun;
+    public float distance;
+    public float travelTime;
     public Vector3 direction;
 
     // Start is called before the first frame update
@@ -21,12 +23,14 @@ public class Projectile : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void SetVariables(float damage1, float angle1, float knockback1, float hitStun1, float speed1)
+    public void SetVariables(float damage1, float angle1, float knockback1, float hitStun1, float distance1, float travelTime1, float speed1)
     {
         damage = damage1;
         angle = angle1;
         knockback = knockback1;
         hitStun = hitStun1;
+        distance = distance1;
+        travelTime = travelTime1;
         speed = speed1;
     }
 
@@ -43,7 +47,7 @@ public class Projectile : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<BasicPlayer>().GetHit(damage, angle, knockback, hitStun, moveRight);
+            other.gameObject.GetComponent<BasicPlayer>().GetHit(damage, angle, knockback, hitStun, distance, travelTime, moveRight);
         }
         Destroy(gameObject);
     }

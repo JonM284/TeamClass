@@ -904,36 +904,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1000
-  speed: 10
+  speed: 7
   weight: 1
   BN_Damage: 100
   BN_Angle: 60
   BN_Knockback: 10
   BN_HitStun: 0.4
+  BN_Distance: 300
+  BN_TravelTime: 0.45
   BF_Damage: 30
   BF_Angle: 30
-  BF_Knockback: 8
-  BF_HitStun: 0.01
+  BF_Knockback: 12
+  BF_HitStun: 0.05
+  BF_Distance: 175
+  BF_TravelTime: 0.3
   iceShot: {fileID: 2931862945572960438, guid: ef5a0b8049a64ad4da8140d4a8b2c817, type: 3}
-  spawnIceShotHere: {fileID: 869737133}
+  spawnIceShotHere: {fileID: 256466095}
   bulletSpeed: 16
   BU_Damage: 100
   BU_Angle: 90
   BU_Knockback: 8
   BU_HitStun: 0.4
+  BU_Distance: 150
+  BU_TravelTime: 0.2
   BD_Damage: 0
   BD_Angle: 0
   BD_Knockback: 0
   BD_HitStun: 0
+  BD_Distance: 0
+  BD_TravelTime: 0
   NA_Damage: 80
   NA_Angle: 325
   NA_Knockback: 20
   NA_HitStun: 0.4
+  NA_Distance: 300
+  NA_TravelTime: 0.35
   UA_Damage: 30
   UA_Angle: 80
   UA_Knockback: 8
   UA_HitStun: 0.01
-  spawnIceShotHere1: {fileID: 187752564}
+  UA_Distance: 150
+  UA_TravelTime: 0.1
+  spawnIceShotHere1: {fileID: 620515180}
   bulletSpeed1: 16
 --- !u!114 &132821078
 MonoBehaviour:
@@ -951,7 +963,7 @@ MonoBehaviour:
   healthBar: {fileID: 1267189351}
   regenableHealthBar: {fileID: 856305966}
   accel: 0
-  accelMult: 0.09
+  accelMult: 0.05
   decelMult: 0.15
   speed: 10
   weight: 1
@@ -961,7 +973,7 @@ MonoBehaviour:
   dashCountMax: 2
   canDash: 0
   gravityUp: 70
-  gravityDown: 65
+  gravityDown: 48
   jumpVel: 13
   maxInitialJumpTime: 0.05
   maxHoldJumpTime: 0.075
@@ -1373,7 +1385,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -1755,7 +1767,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -2560,7 +2572,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 432632492}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -2745,7 +2757,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 450362575}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -6353,16 +6365,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1000
-  speed: 10
+  speed: 7
   weight: 1
   BN_Damage: 100
   BN_Angle: 60
   BN_Knockback: 10
   BN_HitStun: 0.4
+  BN_Distance: 300
+  BN_TravelTime: 0.45
   BF_Damage: 30
   BF_Angle: 30
   BF_Knockback: 12
   BF_HitStun: 0.05
+  BF_Distance: 175
+  BF_TravelTime: 0.3
   iceShot: {fileID: 2931862945572960438, guid: ef5a0b8049a64ad4da8140d4a8b2c817, type: 3}
   spawnIceShotHere: {fileID: 256466095}
   bulletSpeed: 16
@@ -6370,18 +6386,26 @@ MonoBehaviour:
   BU_Angle: 90
   BU_Knockback: 8
   BU_HitStun: 0.4
+  BU_Distance: 150
+  BU_TravelTime: 0.2
   BD_Damage: 0
   BD_Angle: 0
   BD_Knockback: 0
   BD_HitStun: 0
+  BD_Distance: 0
+  BD_TravelTime: 0
   NA_Damage: 80
   NA_Angle: 325
   NA_Knockback: 20
   NA_HitStun: 0.4
+  NA_Distance: 300
+  NA_TravelTime: 0.35
   UA_Damage: 30
   UA_Angle: 80
   UA_Knockback: 8
   UA_HitStun: 0.01
+  UA_Distance: 150
+  UA_TravelTime: 0.1
   spawnIceShotHere1: {fileID: 620515180}
   bulletSpeed1: 16
 --- !u!114 &672828760
@@ -6400,7 +6424,7 @@ MonoBehaviour:
   healthBar: {fileID: 925004688}
   regenableHealthBar: {fileID: 308418905}
   accel: 0
-  accelMult: 0.09
+  accelMult: 0.05
   decelMult: 0.15
   speed: 10
   weight: 1
@@ -6410,7 +6434,7 @@ MonoBehaviour:
   dashCountMax: 2
   canDash: 0
   gravityUp: 70
-  gravityDown: 65
+  gravityDown: 48
   jumpVel: 13
   maxInitialJumpTime: 0.05
   maxHoldJumpTime: 0.075
@@ -7167,10 +7191,14 @@ MonoBehaviour:
   BN_Angle: 0
   BN_Knockback: 0
   BN_HitStun: 0
+  BN_Distance: 0
+  BN_TravelTime: 0
   BF_Damage: 0
   BF_Angle: 0
   BF_Knockback: 0
   BF_HitStun: 0
+  BF_Distance: 0
+  BF_TravelTime: 0
   iceShot: {fileID: 0}
   spawnIceShotHere: {fileID: 0}
   bulletSpeed: 0
@@ -7178,18 +7206,26 @@ MonoBehaviour:
   BU_Angle: 0
   BU_Knockback: 0
   BU_HitStun: 0
+  BU_Distance: 0
+  BU_TravelTime: 0
   BD_Damage: 0
   BD_Angle: 0
   BD_Knockback: 0
   BD_HitStun: 0
+  BD_Distance: 0
+  BD_TravelTime: 0
   NA_Damage: 0
   NA_Angle: 0
   NA_Knockback: 0
   NA_HitStun: 0
+  NA_Distance: 0
+  NA_TravelTime: 0
   UA_Damage: 0
   UA_Angle: 0
   UA_Knockback: 0
   UA_HitStun: 0
+  UA_Distance: 0
+  UA_TravelTime: 0
   spawnIceShotHere1: {fileID: 0}
   bulletSpeed1: 0
 --- !u!61 &784233435
@@ -8006,7 +8042,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 888915788}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -10050,7 +10086,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -10837,7 +10873,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

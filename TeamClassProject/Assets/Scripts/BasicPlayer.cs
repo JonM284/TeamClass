@@ -89,6 +89,13 @@ public class BasicPlayer : MonoBehaviour {
     private float gotHitTimer = 0;
     private float knockback = 0;
 
+    private float maxKnockbackTime;
+    private float currentKnockbackTime;
+    private float maxDistance;
+    private Vector3 startPosition;
+    private Vector3 endPosition;
+
+
     void Awake()
     {
 
@@ -388,7 +395,7 @@ public class BasicPlayer : MonoBehaviour {
     {
         if(anim.GetInteger("State") == (int)animations.jump_land)
         {
-            velocity.x = 0;
+            //velocity.x = 0;
         }
 
         initialJumpTime -= Time.fixedDeltaTime;
@@ -396,9 +403,11 @@ public class BasicPlayer : MonoBehaviour {
 
         rb.MovePosition(transform.position + velocity * Time.deltaTime);
 
-        if (gotHitTimer > 0)
+        //knockback stuff
+        if (currentKnockbackTime/maxKnockbackTime < .98f)
         {
-            velocity = (hitDirection * knockback);
+            Knockback();
+            //velocity = (hitDirection * knockback);
         }
         if (!inHitStun && !isAttacking)
         {
@@ -602,7 +611,16 @@ public class BasicPlayer : MonoBehaviour {
 
     }
 
+    public void Knockback()
+    {
+        currentKnockbackTime += Time.deltaTime;
 
+        //exponential knockback movement
+        float progress = currentKnockbackTime / maxKnockbackTime;
+        progress = Mathf.Sin(progress * Mathf.PI * 0.5f);
+       // velocity = startPosition - Vector3.Lerp(startPosition, endPosition, progress * Time.deltaTime);
+        rb.MovePosition(Vector3.Lerp(startPosition, endPosition, progress * Time.deltaTime));
+    }
 
     /// <summary>
     /// This function gets called when an enemy hits you
@@ -611,13 +629,20 @@ public class BasicPlayer : MonoBehaviour {
     /// <param name="attackAngle">is the angle you get sent flying when you get hit. [*possibly* affected by player weight]</param>
     /// <param name="attackForce"> is how far back you get sent flying. [affected by player weight]</param>
     /// <param name="hitStun">is how long the player has to wait before they can do anything</param>
+    /// <param name="distance">How far does the enemy fly</param>
+    /// <param name="travelTime">How long should it take for the enemy to get to that distance</param>
     /// <param name="facingRight">Checks which way the player is facing when they do the attack so that it knows whether or not to reverse the knockback</param>
-    public void GetHit(float attackDamage, float attackAngle, float attackForce, float hitStun, bool facingRight)//im probably missing a few arguments
+    public void GetHit(float attackDamage, float attackAngle, float attackForce, float hitStun, float distance, float travelTime, bool facingRight)//im probably missing a few arguments
     {
         if (gotHitTimer < 0)
         {
             currentHealth -= attackDamage;
             regenHeath -= attackDamage * regenHeathMultiplier;
+            velocity = new Vector3(0, 0, 0);
+            maxDistance = distance;
+            maxKnockbackTime = travelTime;
+            currentKnockbackTime = 0;
+            startPosition = transform.position;
 
             gotHitTimer = hitStun;
             knockback = attackForce;
@@ -626,11 +651,13 @@ public class BasicPlayer : MonoBehaviour {
             {
                 dir = Quaternion.AngleAxis(attackAngle, Vector3.forward) * Vector3.right;
                 hitDirection = dir;
+                endPosition = transform.position + (hitDirection.normalized * distance);
             }
             else
             {
                 dir = Quaternion.AngleAxis(attackAngle, -Vector3.forward) * -Vector3.right;
                 hitDirection = dir;
+                endPosition = transform.position + (hitDirection.normalized * distance);
             }
             //rb.AddForce(dir * attackForce);
             // rb.AddForce(new Vector2(attackForce, 0));
