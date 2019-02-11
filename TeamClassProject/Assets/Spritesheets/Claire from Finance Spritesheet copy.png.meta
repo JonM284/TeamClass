@@ -44,6 +44,15 @@ TextureImporter:
     21300078: Claire Pout
     21300080: Claire Closed Eye
     21300082: Crystal Floor
+    21300084: Claire Back Head
+    21300086: Claire Back Arm
+    21300088: Claire Back Hand Point
+    21300090: Claire Back Bun
+    21300092: Claire Back Torso
+    21300094: Claire Back Hand Closed
+    21300096: Claire Back Skirt
+    21300098: Claire Back Leg
+    21300100: Claire Back Skirt Sitting
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -351,9 +360,9 @@ TextureImporter:
       name: Skirt Long
       rect:
         serializedVersion: 2
-        x: 464
+        x: 493
         y: 892
-        width: 236
+        width: 230
         height: 284
       alignment: 9
       pivot: {x: 0.42498574, y: 0.9096366}
@@ -983,6 +992,186 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: be03aca8640904475895db696efbef08
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Claire Back Head
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 1195
+        width: 261
+        height: 295
+      alignment: 9
+      pivot: {x: 0.48538804, y: 0.060451288}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba54f2435a3b34e7e9fa007809a8cffb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Claire Back Arm
+      rect:
+        serializedVersion: 2
+        x: 1471
+        y: 1280
+        width: 97
+        height: 197
+      alignment: 9
+      pivot: {x: 0.2837581, y: 0.722629}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 729410cf6a425432bb52210289d8ea00
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Claire Back Hand Point
+      rect:
+        serializedVersion: 2
+        x: 1463
+        y: 977
+        width: 101
+        height: 265
+      alignment: 9
+      pivot: {x: 0.59439903, y: 0.91735196}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 715ea7c3df21a48b7918acb502a737a5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Claire Back Bun
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 983
+        width: 217
+        height: 194
+      alignment: 9
+      pivot: {x: 0.43240905, y: 0.36139104}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae4caa46b61b74259868d09f893ab8ca
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Claire Back Torso
+      rect:
+        serializedVersion: 2
+        x: 1196
+        y: 617
+        width: 228
+        height: 342
+      alignment: 9
+      pivot: {x: 0.5, y: 0.17834759}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 137d74d3fb19f4f0fa4e937553f18c23
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Claire Back Hand Closed
+      rect:
+        serializedVersion: 2
+        x: 1462
+        y: 615
+        width: 92
+        height: 230
+      alignment: 9
+      pivot: {x: 0.5, y: 0.8697364}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e2720498a1b44db78d76269ea4949a5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Claire Back Skirt
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 314
+        width: 208
+        height: 286
+      alignment: 9
+      pivot: {x: 0.48260263, y: 0.83529896}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cbd2349666bd445682a1026edc4a676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Claire Back Leg
+      rect:
+        serializedVersion: 2
+        x: 1444
+        y: 311
+        width: 107
+        height: 268
+      alignment: 9
+      pivot: {x: 0.46618083, y: 0.9185807}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aa486ef6cb034bc089dbb32a52c6656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Claire Back Skirt Sitting
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 926
+        width: 237
+        height: 222
+      alignment: 9
+      pivot: {x: 0.5, y: 0.7608071}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3238b3cdae28419ab4a61a1fa5883eb
       vertices: []
       indices: 
       edges: []
