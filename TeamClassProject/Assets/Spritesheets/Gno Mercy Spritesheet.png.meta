@@ -25,6 +25,16 @@ TextureImporter:
     21300040: Pot Leg
     21300042: Back Thigh
     21300044: Foot
+    21300046: Clothed Torso
+    21300048: Front Clothed Forearm
+    21300050: Back Forearm Clothed
+    21300052: Front Clothed Bicep
+    21300054: Back Bicep Clothed
+    21300056: Back Clothed Thigh
+    21300058: Boot foot
+    21300060: Clothed Pot Foot
+    21300062: Clothed Front Thigh
+    21300064: Back Calf Clothed
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -133,9 +143,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 22
-        y: 752
+        y: 1346
         width: 194
-        height: 717
+        height: 710
       alignment: 9
       pivot: {x: 0.77978563, y: 0.30851817}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,7 +163,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 216
-        y: 1284
+        y: 1874
         width: 177
         height: 188
       alignment: 9
@@ -173,7 +183,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 406
-        y: 1404
+        y: 2003
         width: 124
         height: 61
       alignment: 0
@@ -192,10 +202,10 @@ TextureImporter:
       name: Beard
       rect:
         serializedVersion: 2
-        x: 574
-        y: 1088
+        x: 568
+        y: 1686
         width: 415
-        height: 412
+        height: 408
       alignment: 9
       pivot: {x: 0.44506556, y: 0.91500765}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,7 +223,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 995
-        y: 1079
+        y: 1679
         width: 225
         height: 402
       alignment: 9
@@ -233,7 +243,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1225
-        y: 536
+        y: 1137
         width: 439
         height: 942
       alignment: 9
@@ -253,7 +263,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 404
-        y: 1291
+        y: 1892
         width: 113
         height: 94
       alignment: 9
@@ -273,7 +283,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 223
-        y: 925
+        y: 1529
         width: 161
         height: 327
       alignment: 9
@@ -293,7 +303,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 402
-        y: 1220
+        y: 1823
         width: 99
         height: 60
       alignment: 0
@@ -313,7 +323,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 398
-        y: 1175
+        y: 1774
         width: 43
         height: 42
       alignment: 0
@@ -333,7 +343,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 451
-        y: 1175
+        y: 1775
         width: 37
         height: 41
       alignment: 0
@@ -353,7 +363,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 407
-        y: 876
+        y: 1474
         width: 208
         height: 262
       alignment: 9
@@ -373,7 +383,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 696
-        y: 344
+        y: 947
         width: 496
         height: 717
       alignment: 9
@@ -393,7 +403,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 27
-        y: 396
+        y: 996
         width: 254
         height: 312
       alignment: 9
@@ -413,7 +423,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 296
-        y: 587
+        y: 1186
         width: 164
         height: 277
       alignment: 9
@@ -433,7 +443,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 476
-        y: 660
+        y: 1262
         width: 181
         height: 209
       alignment: 9
@@ -452,8 +462,8 @@ TextureImporter:
       name: Back Bicep
       rect:
         serializedVersion: 2
-        x: 302
-        y: 100
+        x: 306
+        y: 703
         width: 235
         height: 465
       alignment: 9
@@ -473,7 +483,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 528
-        y: 388
+        y: 985
         width: 136
         height: 236
       alignment: 9
@@ -493,7 +503,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 198
+        y: 802
         width: 92
         height: 179
       alignment: 9
@@ -513,7 +523,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 130
-        y: 224
+        y: 828
         width: 147
         height: 150
       alignment: 9
@@ -533,7 +543,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 551
-        y: 23
+        y: 618
         width: 234
         height: 293
       alignment: 9
@@ -553,7 +563,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 814
-        y: 35
+        y: 633
         width: 150
         height: 273
       alignment: 9
@@ -573,7 +583,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 80
+        y: 678
         width: 209
         height: 108
       alignment: 9
@@ -584,6 +594,206 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 7c0ad4c29053e4cc7b1f8ecd2babbd53
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clothed Torso
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 10
+        width: 528
+        height: 650
+      alignment: 9
+      pivot: {x: 0.49999994, y: 0.30625424}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43c5ff17c35144d7c87dc8f543bedda8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Front Clothed Forearm
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 42
+        width: 176
+        height: 278
+      alignment: 9
+      pivot: {x: 0.5, y: 0.81604904}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3750e1c49957f4576820617de428ac2c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Back Forearm Clothed
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 329
+        width: 170
+        height: 267
+      alignment: 9
+      pivot: {x: 0.5, y: 0.87294537}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70a83ead1269f453cb9df9787ab48947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Front Clothed Bicep
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 45
+        width: 213
+        height: 451
+      alignment: 9
+      pivot: {x: 0.18375307, y: 0.76624745}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eb0d024fde524cf1bb1c8463588acd2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Back Bicep Clothed
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 51
+        width: 223
+        height: 492
+      alignment: 9
+      pivot: {x: 0.73639876, y: 0.8095392}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 295489bf008aa4df1a5ae649eac28e99
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Back Clothed Thigh
+      rect:
+        serializedVersion: 2
+        x: 1257
+        y: 309
+        width: 155
+        height: 281
+      alignment: 9
+      pivot: {x: 0.4811043, y: 0.8439422}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 678299ef730284139bca6dba4ddfd171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boot foot
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 555
+        width: 255
+        height: 131
+      alignment: 9
+      pivot: {x: 0.66079247, y: 0.81299245}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eba51317a3e0249ad90a5610cb548cc2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clothed Pot Foot
+      rect:
+        serializedVersion: 2
+        x: 1193
+        y: 628
+        width: 240
+        height: 310
+      alignment: 9
+      pivot: {x: 0.5, y: 0.84010935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32c395750f3594efaab155a5fd3448cc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clothed Front Thigh
+      rect:
+        serializedVersion: 2
+        x: 982
+        y: 698
+        width: 202
+        height: 234
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6752225}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c7a327ff23344de188c51951755f361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Back Calf Clothed
+      rect:
+        serializedVersion: 2
+        x: 1245
+        y: 81
+        width: 179
+        height: 206
+      alignment: 9
+      pivot: {x: 0.40585515, y: 0.9601529}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88e6e393ed4bb41458094f87eada11f9
       vertices: []
       indices: 
       edges: []
