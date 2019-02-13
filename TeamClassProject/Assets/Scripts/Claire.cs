@@ -103,7 +103,7 @@ public class Claire : MonoBehaviour
 
     private void ForwardBasic()
     {
-        //Debug.Log("Hi");
+        Debug.Log("Hi");
         GameObject bullet = Instantiate(iceShot, spawnIceShotHere.transform.position, Quaternion.identity);
         bullet.GetComponent<Projectile>().SetVariables(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, BF_Distance, BF_TravelTime, bulletSpeed);
         bullet.GetComponent<Projectile>().moveRight = player.FacingRight();
@@ -150,7 +150,6 @@ public class Claire : MonoBehaviour
     public void EndAttack()
     {
         currentAttack = 0;
-        player.anim.SetInteger("State", 0);
         player.isAttacking = false;
     }
 
