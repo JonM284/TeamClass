@@ -149,7 +149,7 @@ public class BasicPlayer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-      //  Debug.Log(anim.GetInteger("State"));
+        Debug.Log(moving);
         healthBar.fillAmount = currentHealth / maxHealth;
         regenableHealthBar.fillAmount = regenHeath / maxHealth;
 
@@ -191,6 +191,7 @@ public class BasicPlayer : MonoBehaviour {
             {
                 if (myPlayer.GetButtonDown("BasicAttack"))
                 {
+                    //Debug.Log("Merp");
                     anim.SetInteger("State", (int)animations.basic_neutral);
                     isAttacking = true;
                     velocity.x = 0;
@@ -244,168 +245,7 @@ public class BasicPlayer : MonoBehaviour {
 
     void Movement()
     {
-        //seing which way the player is moving
-        if(myPlayer.GetAxisRaw("Horizontal") > 0)
-        {
-            direction = "Right";
-        }
-        else if(myPlayer.GetAxisRaw("Horizontal") < 0)
-        {
-            direction = "Left";
-        }
-
-        if (Mathf.Abs(myPlayer.GetAxis("Horizontal")) >= .01)
-        {
-            moving = true;
-        }
-        else
-        {
-            moving = false;
-        }
-
-        if (moving)
-        {
-            if (direction == "Right")
-            {
-                if (accel < myPlayer.GetAxis("Horizontal"))
-                {
-                    accel += accelMult;
-                }
-                else
-                {
-                    accel = myPlayer.GetAxis("Horizontal");
-                }
-            }
-            if(direction == "Left")
-            {
-                if(accel > myPlayer.GetAxis("Horizontal"))
-                {
-                    accel -= accelMult;
-                }
-                else
-                {
-                    accel = myPlayer.GetAxis("Horizontal");
-                }
-            }
-            anim.SetInteger("State", 1);
-        }
-        else
-        {
-            if(direction == "Right")
-            {
-                if(accel > 0)
-                {
-                    accel -= decelMult;
-                }
-                else
-                {
-                    accel = 0;
-                }
-            }
-            if(direction == "Left")
-            {
-                if(accel < 0)
-                {
-                    accel += decelMult;
-                }
-                else
-                {
-                    accel = 0;
-                }
-            }
-            anim.SetInteger("State", 0);
-        }
-
-        if (onTopOfPlatform)
-        {
-            if (direction == "Right")
-            {
-                //sr.flipX = false;
-                gameObject.transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
-            }
-            if (direction == "Left")
-            {
-                //sr.flipX = true;
-                gameObject.transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
-            }
-        }
-        /*
-        if (velocity.x >= .01)
-        {
-            direction = "Right";
-            sr.flipX = false;
-        }
-        if (velocity.x <= -.01)
-        {
-            direction = "Left";
-            sr.flipX = true;
-        }
-        */
-
-        //horizontal movement
-        if (!dash)
-        {
-            velocity.x = accel * speed;
-        }
-        /*else
-        {
-            if(velocity.y > 0)
-            {
-                velocity = velocity.normalized * dashSpeed;
-            }
-            else if (direction == "Right")
-            {
-                velocity = new Vector2(1 * dashSpeed, 0);
-            }
-            else if(direction == "Left")
-            {
-                velocity = new Vector2(-1 * dashSpeed, 0);
-            }
-            
-        }
-        */
-
-        //dash mechanics
-        /*
-        if(Input.GetButtonDown("Fire1") && dashCount > 0 && canDash)
-        {
-            StartCoroutine(Dash());
-        }
-        */
-        /*
-        if (velocity.x >= 1 && Input.GetButtonDown("Fire1") && dashCount > 0)
-        {
-            StartCoroutine(Dash());
-        }
-        if (velocity.x <= -1 && Input.GetButtonDown("Fire1") && dashCount > 0)
-        {
-            StartCoroutine(Dash());
-        }
-        */
-
-        //set timer that will let the player jump slightly off the platform
-        if (onTopOfPlatform && velocity.y == 0)
-        {
-            onPlatformTimer = onPlatformTimerMax;
-        }
-        else
-        {
-            onPlatformTimer -= Time.deltaTime;
-        }
-
-        //jump logic
-        if (myPlayer.GetButtonDown("Jump") && onPlatformTimer > 0)
-        {
-            //velocity.y = jumpVel;
-            //playerJump.Play();
-            //anim.SetTrigger("jumpStart");
-        }
-    }
-    
-
-    private void FixedUpdate()
-    {
-        if(anim.GetInteger("State") == (int)animations.jump_land)
+        if (anim.GetInteger("State") == (int)animations.jump_land)
         {
             //velocity.x = 0;
         }
@@ -416,7 +256,7 @@ public class BasicPlayer : MonoBehaviour {
         rb.MovePosition(transform.position + velocity * Time.deltaTime);
 
         //knockback stuff
-        if (currentKnockbackTime/maxKnockbackTime < .98f)
+        if (currentKnockbackTime / maxKnockbackTime < .98f)
         {
             Knockback();
             //velocity = (hitDirection * knockback);
@@ -602,17 +442,24 @@ public class BasicPlayer : MonoBehaviour {
             //initial jump
             if (initialJumpTime > 0)
             {
-              velocity.y = jumpVel;
+                velocity.y = jumpVel;
             }
 
             //hold jump
-            if(initialJumpTime <=0 && jumpButtonPressed && holdJumpTime > 0)
+            if (initialJumpTime <= 0 && jumpButtonPressed && holdJumpTime > 0)
             {
-              velocity.y = jumpVel;
+                velocity.y = jumpVel;
             }
 
 
         }
+    }
+    
+
+    private void FixedUpdate()
+    {
+
+        Movement();
 
     }
 
@@ -745,9 +592,12 @@ public class BasicPlayer : MonoBehaviour {
                   //{
                   //if (onPlatformTimer < 0)
                   //{
-                    Debug.Log("hi");
-                    anim.SetInteger("State", (int)animations.jump_land);
-                    isAttacking = false;
+                  //Debug.Log("hi");
+                    if (onPlatformTimer < 0)
+                    {
+                        //anim.SetInteger("State", (int)animations.jump_land);
+                    }
+                        isAttacking = false;
                     //}
                     onTopOfPlatform = true;
                         dashCount = dashCountMax;
