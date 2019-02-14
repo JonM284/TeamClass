@@ -10,7 +10,7 @@ public class MachineBehaviour : MonoBehaviour
     public bool is_In_Use = false;
     [Header("All Hazards")]
     [Tooltip("Insert all GameObjects that will be controlled by THIS machine")]
-    public GameObject[] Controlled_Hazzard;
+    public GameObject[] Controlled_Hazard;
     [Tooltip("Vertical and Horizontal move speed of certain hazzards")]
     public float speed;
     [Header("Max Hazzards")]
@@ -38,25 +38,51 @@ public class MachineBehaviour : MonoBehaviour
     //This is in order to "Spawn in" objects
     private ObjectSpawner objectPool;
     private Vector3 Move_Rotation, originalRotation;
+
+    //variables for side hazzards "Eels"
+    float sideHazardMovement;
+    float moveSpeed = 2f;
+
+
+    public bool sideHazardMachineEnabled;
     
+    public List<Vector3> sideHazardStartPos;
+
+    private bool sideHazardShouldLerp;
+    private bool sideHazardMovingForward;
+    float sideHazardLerpSpeed;
+    float sideHazardLerpTimer;
+
+    bool sideHazardReady;
+    float sideHazardCooldownTimer;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        originalRotation = new Vector3(Controlled_Hazzard[Current_Haz_Num].transform.rotation.x, 
-            Controlled_Hazzard[Current_Haz_Num].transform.rotation.y,
-            Controlled_Hazzard[Current_Haz_Num].transform.rotation.z);
+        originalRotation = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.rotation.x, 
+            Controlled_Hazard[Current_Haz_Num].transform.rotation.y,
+            Controlled_Hazard[Current_Haz_Num].transform.rotation.z);
 
         Move_Rotation = originalRotation;
         //get an instance of the object spawner so we can spawn objects
         objectPool = ObjectSpawner.Instance;
 
+
+        if (mach == MachineID.SideHazard) {
+            for (int i = 0; i < Controlled_Hazard.Length; i++) {
+                sideHazardStartPos[i] = Controlled_Hazard[i].transform.position;
+                sideHazardLerpSpeed = 30f;
+                sideHazardReady = true;
+                sideHazardStartPos.Add(sideHazardStartPos[i]);
+            }
+        }
+
         //only do this if this machine is of type "Background Cannon" 
         if (mach == MachineID.BackgroundCannon)
         {
-            Controlled_Hazzard[0].GetComponent<SpriteRenderer>().color = Color.white;
-            Controlled_Hazzard[0].SetActive(false);
+            Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.white;
+            Controlled_Hazard[0].SetActive(false);
         }
     }
 
@@ -104,9 +130,19 @@ public class MachineBehaviour : MonoBehaviour
             if (Current_Haz_Num < max_Machines_Amnt)
             {
                 Current_Haz_Num++;
-                Move_Rotation = originalRotation;
+               
             }
 
+        }
+
+        if (myPlayer.GetButtonDown("Jump") && can_Use)
+        {
+            Debug.Log(Controlled_Hazard[Current_Haz_Num].transform.GetChild(0).transform.name);
+            Vector3 dir = Controlled_Hazard[Current_Haz_Num].transform.GetChild(0).transform.position - Controlled_Hazard[Current_Haz_Num].transform.position;
+            objectPool.SpawnFromPool("Tester", Controlled_Hazard[Current_Haz_Num].transform.position,
+                Quaternion.Euler(Move_Rotation));
+            End_Control();
+            Debug.Log("Has Spawned object");
         }
 
         if (Current_Haz_Num >= max_Machines_Amnt)
@@ -124,7 +160,7 @@ public class MachineBehaviour : MonoBehaviour
             Move_Rotation.z -= Time.deltaTime * speed;
         }
 
-        Controlled_Hazzard[Current_Haz_Num].transform.rotation = Quaternion.Euler(Move_Rotation);
+        Controlled_Hazard[Current_Haz_Num].transform.rotation = Quaternion.Euler(Move_Rotation);
 
     }
 
@@ -142,13 +178,13 @@ public class MachineBehaviour : MonoBehaviour
         //this allows the player to spawn an object in the position where the crosshair is
         if (myPlayer.GetButtonDown("Jump") && can_Use)
         {
-            objectPool.SpawnFromPool("Tester", Controlled_Hazzard[Current_Haz_Num].transform.position, Quaternion.identity);
+            objectPool.SpawnFromPool("Tester", Controlled_Hazard[Current_Haz_Num].transform.position, Quaternion.identity);
             End_Control();
             Debug.Log("Has Spawned object");
         }
 
         //this allows the player to move the crosshair
-        Controlled_Hazzard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazzard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
+        Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
             + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
     }
 
@@ -178,9 +214,64 @@ public class MachineBehaviour : MonoBehaviour
             Current_Haz_Num = 0;
         }
 
+        
+
+        //cooldown timer
+        sideHazardCooldownTimer -= Time.deltaTime;
+
+        //cooldown finished
+        if (sideHazardCooldownTimer < 0)
+        {
+            sideHazardReady = true;
+        }
+
+        //lerping timer
+        sideHazardLerpTimer += Time.deltaTime;
+
+        //if you're in the machine and you hit jump the eel goes/starts
+        if (sideHazardMachineEnabled == true && myPlayer.GetButtonDown("BasicAttack") && sideHazardReady == true)
+        {
+            sideHazardReady = false;
+            sideHazardShouldLerp = true;
+            sideHazardMovingForward = true;
+            sideHazardLerpTimer = 0;
+            sideHazardCooldownTimer = 5.0f;
+        }
+
+        //eel moves right first
+        if (sideHazardShouldLerp == true && sideHazardMovingForward == true)
+        {
+            Controlled_Hazard[Current_Haz_Num].transform.Translate(Vector3.right * sideHazardLerpSpeed * Time.deltaTime);
+        }
+        //eel moves back left after
+        else if (sideHazardShouldLerp == true && sideHazardMovingForward == false)
+        {
+            Controlled_Hazard[Current_Haz_Num].transform.Translate(Vector3.left * sideHazardLerpSpeed * Time.deltaTime);
+        }
+
+        //if the timer exceeds half a second but not a second, and its moving right/forward, then stop it 
+        if (sideHazardLerpTimer > .5f && sideHazardLerpTimer <= 1.0f && sideHazardShouldLerp == true && sideHazardMovingForward == true)
+        {
+            sideHazardShouldLerp = false;
+            //sideHazardMovingForward = false;
+        }
+        //it stops for half a second then moves back to left
+        if (sideHazardLerpTimer > 1.0f && sideHazardMovingForward == true)
+        {
+            sideHazardMovingForward = false;
+            sideHazardShouldLerp = true;
+        }
+        //after cycle completes it moves back to starting position and gets ready for next time
+        if (sideHazardLerpTimer >= 1.5f && sideHazardShouldLerp == true)
+        {
+            sideHazardShouldLerp = false;
+            sideHazardMachineEnabled = false;
+            Controlled_Hazard[Current_Haz_Num].transform.position = sideHazardStartPos[Current_Haz_Num];
+            SupportPlayer.movementEnabled = true;
+        }
 
         //this allows the player to move the side cannon (will be changed to rotation)
-        Controlled_Hazzard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazzard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
+        Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
             + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
     }
 
@@ -201,17 +292,17 @@ public class MachineBehaviour : MonoBehaviour
         StartCoroutine(waitForUse());
 
         if (mach == MachineID.BackgroundCannon) {
-            Controlled_Hazzard[0].SetActive(true);
+            Controlled_Hazard[0].SetActive(true);
             switch (teamID)
             {
                 case 2:
-                    Controlled_Hazzard[0].GetComponent<SpriteRenderer>().color = Color.cyan;
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.cyan;
                     break;
                 case 1:
-                    Controlled_Hazzard[0].GetComponent<SpriteRenderer>().color = Color.red;
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.red;
                     break;
                 default:
-                    Controlled_Hazzard[0].GetComponent<SpriteRenderer>().color = Color.black;
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.black;
                     break;
             }
         }
@@ -232,12 +323,25 @@ public class MachineBehaviour : MonoBehaviour
         myPlayer = ReInput.players.GetPlayer(-1);
         
         if (mach == MachineID.BackgroundCannon) {
-            Controlled_Hazzard[0].GetComponent<SpriteRenderer>().color = Color.white;
-            Controlled_Hazzard[0].SetActive(false);
+            Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.white;
+            Controlled_Hazard[0].SetActive(false);
         }
         
         Debug.Log("Player has deactivated machine: "+transform.name);
     }
+
+    //--------------------------------------------------------------------------------------------------
+    //functions for side hazards created by Justin
+    IEnumerator SetInMachineTrueDelay()
+    {
+        yield return new WaitForSeconds(.1f);
+        sideHazardMachineEnabled = true;
+        SupportPlayer.movementEnabled = false;
+        Controlled_Hazard[Current_Haz_Num].transform.position = new Vector2(Controlled_Hazard[Current_Haz_Num].transform.position.x + 0.25f,
+            Controlled_Hazard[Current_Haz_Num].transform.position.y);
+    }
+
+
 
     //--------------------------------------------------------------------------------------------------
     // This function just draws Gizmos in unity
@@ -245,11 +349,11 @@ public class MachineBehaviour : MonoBehaviour
     {
         if (mach == MachineID.SideHazard) {
             Gizmos.color = new Color32(255, 0, 0, 200);
-            for (int i = 0; i < Controlled_Hazzard.Length; i++) {
-                Gizmos.DrawLine(new Vector3(Controlled_Hazzard[i].transform.position.x,
-                    Controlled_Hazzard[i].transform.position.y + 0.6f, Controlled_Hazzard[i].transform.position.x),
-                    new Vector3(Controlled_Hazzard[i].transform.position.x,
-                    Controlled_Hazzard[i].transform.position.y - 0.6f, Controlled_Hazzard[i].transform.position.x));
+            for (int i = 0; i < Controlled_Hazard.Length; i++) {
+                Gizmos.DrawLine(new Vector3(Controlled_Hazard[i].transform.position.x,
+                    Controlled_Hazard[i].transform.position.y + 0.6f, Controlled_Hazard[i].transform.position.x),
+                    new Vector3(Controlled_Hazard[i].transform.position.x,
+                    Controlled_Hazard[i].transform.position.y - 0.6f, Controlled_Hazard[i].transform.position.x));
             }
         }
 
