@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Rewired;
 using Rewired.ControllerExtensions;
 
-public class BasicPlayer : MonoBehaviour {
+public class BuscemiBasicPlayer : MonoBehaviour {
 
     //the following is in order to use rewired
     [Tooltip("Reference for using rewired")]
@@ -746,7 +746,7 @@ public class BasicPlayer : MonoBehaviour {
                   //if (onPlatformTimer < 0)
                   //{
                     Debug.Log("hi");
-                    anim.SetInteger("State", (int)animations.jump_land);
+                    anim.SetInteger("State", (int)animations.idle);
                     isAttacking = false;
                     //}
                     onTopOfPlatform = true;
