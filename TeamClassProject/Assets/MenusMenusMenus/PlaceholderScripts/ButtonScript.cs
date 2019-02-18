@@ -11,9 +11,9 @@ public class ButtonScript : MonoBehaviour
 
     public GameObject playVideo;
     public GameObject fightersVideo;
-    public GameObject optionsVideo;
-    public GameObject extrasVideo;
-    public GameObject quitVideo;
+    //public GameObject optionsVideo;
+    //public GameObject extrasVideo;
+    //public GameObject quitVideo;
 
     // Start is called before the first frame update
     void Start()
@@ -34,11 +34,38 @@ public class ButtonScript : MonoBehaviour
 
         if (lastButtonOn == 2)
         {
-            playVideo.SetActive(true);
+            fightersVideo.SetActive(true);
         }
         else
         {
-            playVideo.SetActive(false);
+            fightersVideo.SetActive(false);
+        }
+
+        if (lastButtonOn == 3)
+        {
+
+        }
+        else
+        {
+
+        }
+
+        if (lastButtonOn == 4)
+        {
+
+        }
+        else
+        {
+
+        }
+
+        if (lastButtonOn == 5)
+        {
+
+        }
+        else
+        {
+
         }
 
         //Debug.Log(lastButtonOn);
@@ -47,7 +74,10 @@ public class ButtonScript : MonoBehaviour
     void OnMouseEnter()
     {
         selector.SetActive(true);
-        flash.SetActive(true);
+
+        if(lastButtonOn != buttonID){
+            flash.SetActive(true);
+        }
 
         lastButtonOn = buttonID;
     }
