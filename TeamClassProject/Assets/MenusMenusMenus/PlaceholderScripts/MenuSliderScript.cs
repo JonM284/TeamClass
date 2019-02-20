@@ -9,25 +9,28 @@ public class MenuSliderScript : MonoBehaviour
     public int sliderInt;
     public AudioSource menuUp;
     public AudioSource menuDown;
+    public bool hasMenuBeenUp;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         sliderInt = 0;
+        hasMenuBeenUp = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && sliderInt != 1)
+        if (Input.GetKeyDown(KeyCode.Return) && sliderInt != 1 && TitleScript.canStart == true)
         {
             anim.SetInteger("SliderValue", 1);
             menuUp.Play();
             sliderInt = 1;
+            hasMenuBeenUp = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && sliderInt != 2)
+        if (Input.GetKeyDown(KeyCode.Escape) && sliderInt != 2 && TitleScript.canStart == true && hasMenuBeenUp == true)
         {
             anim.SetInteger("SliderValue", 2);
             menuDown.Play();
