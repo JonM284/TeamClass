@@ -16,7 +16,8 @@ public class MachineBehaviour : MonoBehaviour
     [Header("Max Hazzards")]
     [Tooltip("How many hazzards will this machine have access to?")]
     public int max_Machines_Amnt;
-
+    [Tooltip("Max distance for side hazards, max angle for side cannons")]
+    public float Max_range;
     //These are the different MACHINE TYPES
     public enum MachineID { SideCannon, BackgroundCannon, SideHazard, MovingPlatform, SpecialPlatform };
     [Header("Machine Type")]
@@ -30,8 +31,9 @@ public class MachineBehaviour : MonoBehaviour
     private int Current_Haz_Num = 0;
     //velocity
     private Vector2 vel;
-    
-    private bool can_Use;
+
+    public bool can_Use = false;
+    private bool other_can_Use = false;
     //rewired after this point
     //myPlayer will properly connect this players inputs to go to the correct location in rewired
     private Player myPlayer;
@@ -46,7 +48,9 @@ public class MachineBehaviour : MonoBehaviour
 
     public bool sideHazardMachineEnabled;
     
-    public List<Vector3> sideHazardStartPos;
+    public List<Vector3> Hazard_StartPos;
+    public List<Vector3> Hazard_MaxPos;
+    public List<Vector3> Hazard_MinPos;
 
     private bool sideHazardShouldLerp;
     private bool sideHazardMovingForward;
@@ -64,17 +68,23 @@ public class MachineBehaviour : MonoBehaviour
             Controlled_Hazard[Current_Haz_Num].transform.rotation.y,
             Controlled_Hazard[Current_Haz_Num].transform.rotation.z);
 
-        Move_Rotation = originalRotation;
+        Move_Rotation = new Vector3(0,0,90);
         //get an instance of the object spawner so we can spawn objects
         objectPool = ObjectSpawner.Instance;
 
 
-        if (mach == MachineID.SideHazard) {
+        if (mach == MachineID.SideHazard || mach == MachineID.SpecialPlatform) {
             for (int i = 0; i < Controlled_Hazard.Length; i++) {
-                sideHazardStartPos[i] = Controlled_Hazard[i].transform.position;
+                Hazard_StartPos[i] = Controlled_Hazard[i].transform.position;
                 sideHazardLerpSpeed = 30f;
                 sideHazardReady = true;
-                sideHazardStartPos.Add(sideHazardStartPos[i]);
+                Hazard_StartPos.Add(Hazard_StartPos[i]);
+                Hazard_MaxPos[i] = new Vector3(Controlled_Hazard[i].transform.position.x, 
+                    Controlled_Hazard[i].transform.position.y + Max_range, Controlled_Hazard[i].transform.position.z);
+                Hazard_MaxPos.Add(Hazard_MaxPos[i]);
+                Hazard_MinPos[i] = new Vector3(Controlled_Hazard[i].transform.position.x,
+                    Controlled_Hazard[i].transform.position.y - Max_range, Controlled_Hazard[i].transform.position.z);
+                Hazard_MinPos.Add(Hazard_MinPos[i]);
             }
         }
 
@@ -106,10 +116,12 @@ public class MachineBehaviour : MonoBehaviour
             {
                 verticalInput = myPlayer.GetAxisRaw("Vertical");
                 SideHazzardControl();
-            }/*else if (mach == MachineID.MovingPlatform)
-            {
-
             }else if (mach == MachineID.SpecialPlatform)
+            {
+                verticalInput = myPlayer.GetAxisRaw("Vertical");
+                
+                SpecialPlatformBehaviour();
+            }/*else if (mach == MachineID.SpecialPlatform)
             {
 
             }*/
@@ -214,17 +226,35 @@ public class MachineBehaviour : MonoBehaviour
             Current_Haz_Num = 0;
         }
 
+        if (myPlayer.GetButtonDown("BasicAttack") && can_Use)
+        {
+            Debug.Log("Should go off");
+            Controlled_Hazard[Current_Haz_Num].GetComponent<Eel_Movement>().Eel_Active = true;
+            End_Control();
+        }
         
 
-        //cooldown timer
+       /* //cooldown timer
         sideHazardCooldownTimer -= Time.deltaTime;
 
         //cooldown finished
         if (sideHazardCooldownTimer < 0)
         {
             sideHazardReady = true;
+        }*/
+
+        if (Controlled_Hazard[Current_Haz_Num].transform.position.y >= Hazard_MaxPos[Current_Haz_Num].y)
+        {
+            Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.position.x,
+                Hazard_MaxPos[Current_Haz_Num].y, Controlled_Hazard[Current_Haz_Num].transform.position.z);
         }
 
+        if (Controlled_Hazard[Current_Haz_Num].transform.position.y <= Hazard_MinPos[Current_Haz_Num].y)
+        {
+            Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.position.x,
+                Hazard_MinPos[Current_Haz_Num].y, Controlled_Hazard[Current_Haz_Num].transform.position.z);
+        }
+        /*
         //lerping timer
         sideHazardLerpTimer += Time.deltaTime;
 
@@ -269,8 +299,41 @@ public class MachineBehaviour : MonoBehaviour
             Controlled_Hazard[Current_Haz_Num].transform.position = sideHazardStartPos[Current_Haz_Num];
             SupportPlayer.movementEnabled = true;
         }
-
+        */
         //this allows the player to move the side cannon (will be changed to rotation)
+        Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
+            + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+    }
+
+
+    void SpecialPlatformBehaviour()
+    {
+        vel.y = verticalInput * speed;
+
+        if (myPlayer.GetButtonDown("Special"))
+        {
+            if (Current_Haz_Num < max_Machines_Amnt)
+            {
+                Current_Haz_Num++;
+
+            }
+
+        }
+
+
+        if (Controlled_Hazard[Current_Haz_Num].transform.position.y >= Hazard_MaxPos[Current_Haz_Num].y)
+        {
+            Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.position.x,
+                Hazard_MaxPos[Current_Haz_Num].y, Controlled_Hazard[Current_Haz_Num].transform.position.z);
+        }
+
+        if (Controlled_Hazard[Current_Haz_Num].transform.position.y <= Hazard_MinPos[Current_Haz_Num].y)
+        {
+            Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.position.x,
+                Hazard_MinPos[Current_Haz_Num].y, Controlled_Hazard[Current_Haz_Num].transform.position.z);
+        }
+
+
         Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
             + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
     }
@@ -319,6 +382,7 @@ public class MachineBehaviour : MonoBehaviour
     {
         is_In_Use = false;
         can_Use = false;
+        other_can_Use = false;
         // The playerID "-1" does not exist, therefore, the inputs will never be recieved.
         myPlayer = ReInput.players.GetPlayer(-1);
         
@@ -371,9 +435,10 @@ public class MachineBehaviour : MonoBehaviour
 
     IEnumerator waitForUse()
     {
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.1f);
         Debug.Log("Now can use");
         can_Use = true;
+        other_can_Use = true;
     }
 
 }
