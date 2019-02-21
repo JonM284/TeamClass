@@ -35,7 +35,7 @@ public class SupportPlayer : MonoBehaviour
 
         movementEnabled = true;
 
-        isPlatformMidActive = false;
+        /*isPlatformMidActive = false;
         platformMid1.SetActive(false);
         machine1Collider.enabled = true;
 
@@ -50,7 +50,7 @@ public class SupportPlayer : MonoBehaviour
         platformRight1.SetActive(true);
         platformRight2a.SetActive(false);
         platformRight2b.SetActive(false);
-
+        */
     }
 
     // Update is called once per frame
@@ -76,7 +76,7 @@ public class SupportPlayer : MonoBehaviour
         }
         
 
-        //Platform Mid
+        /*//Platform Mid
         //platform mid appears for 5 seconds then goes off
         platformMidTimer += Time.deltaTime;
         if(platformMidTimer > 5 && isPlatformMidActive == true)
@@ -110,10 +110,10 @@ public class SupportPlayer : MonoBehaviour
             platformRight2a.SetActive(false);
             platformRight2b.SetActive(false);
         }
-
+        */
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    /*private void OnTriggerStay2D(Collider2D other)
     {
         //Stand touching machine and press e to activate platform
         if(other.gameObject.name == "Machine1" && Input.GetButtonDown("ActivateMachine"))
@@ -141,6 +141,6 @@ public class SupportPlayer : MonoBehaviour
             platformRight2a.SetActive(true);
             platformRight2b.SetActive(true);
         }
-    }
+    }*/
 
 }
