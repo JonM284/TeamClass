@@ -8,6 +8,10 @@ public class Claire : MonoBehaviour
     public float maxHealth;
     public int speed;
     public float weight;
+    public float gravityUp;
+    public float gravityDown;
+    public float jumpVel;
+    public float maxDownVel;
 
     [Header("Basic Attacks")]
     [Header("Basic Neutral")]
@@ -72,13 +76,7 @@ public class Claire : MonoBehaviour
 
     private void Awake()
     {
-        if(this.GetComponent<BasicPlayer>() != null)
-        {
-            player = this.GetComponent<BasicPlayer>();
-            player.maxHealth = maxHealth;
-            player.speed = speed;
-            player.weight = weight;
-        }
+        
     }
 
     // Start is called before the first frame update
@@ -90,10 +88,7 @@ public class Claire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     if(player.anim.GetInteger("State") == 1)
-        {
-            EndAttack();
-        } 
+
     }
 
     private void NeutralBasic(GameObject enemy)
@@ -103,7 +98,6 @@ public class Claire : MonoBehaviour
 
     private void ForwardBasic()
     {
-        Debug.Log("Hi");
         GameObject bullet = Instantiate(iceShot, spawnIceShotHere.transform.position, Quaternion.identity);
         bullet.GetComponent<Projectile>().SetVariables(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, BF_Distance, BF_TravelTime, bulletSpeed);
         bullet.GetComponent<Projectile>().moveRight = player.FacingRight();

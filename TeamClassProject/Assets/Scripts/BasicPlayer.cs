@@ -149,7 +149,6 @@ public class BasicPlayer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(anim.GetInteger("State"));
         healthBar.fillAmount = currentHealth / maxHealth;
         regenableHealthBar.fillAmount = regenHeath / maxHealth;
 
@@ -745,7 +744,6 @@ public class BasicPlayer : MonoBehaviour {
                   //{
                   //if (onPlatformTimer < 0)
                   //{
-                    Debug.Log("hi");
                     anim.SetInteger("State", (int)animations.jump_land);
                     isAttacking = false;
                     //}

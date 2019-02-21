@@ -66,7 +66,6 @@ public class BuscemiBasicPlayer : MonoBehaviour {
     public bool claire;
     public bool gillbert;
     public bool gnomercy;
-    string characterName;
     Claire claireCharacter;
     Gillbert gillbertCharacter;
     Gnomercy gnomercyCharacter;
@@ -76,9 +75,6 @@ public class BuscemiBasicPlayer : MonoBehaviour {
     private float currentHealth;
     private float regenHeath;
     public float regenHeathMultiplier;
-    public float characterSpeed;
-    [HideInInspector]
-    public float characterWeight;
     public bool makeFaceRight;
 
     private float xScale;
@@ -99,18 +95,41 @@ public class BuscemiBasicPlayer : MonoBehaviour {
 
     void Awake()
     {
-
+        //grabbing character specific values from their respective characters
+            
         if (claire)
         {
-            characterName = "claire";
-        }
+            claireCharacter = this.GetComponent<Claire>();
+            maxHealth = claireCharacter.maxHealth;
+            speed = claireCharacter.speed;
+            weight = claireCharacter.weight;
+            gravityUp = claireCharacter.gravityUp;
+            gravityDown = claireCharacter.gravityDown;
+            jumpVel = claireCharacter.jumpVel;
+            maxDownVel = claireCharacter.maxDownVel;
+}
         if (gillbert)
         {
-            characterName = "gillbert";
+            gillbertCharacter = this.GetComponent<Gillbert>();
+            maxHealth = gillbertCharacter.maxHealth;
+            speed = gillbertCharacter.speed;
+            weight = gillbertCharacter.weight;
+            gravityUp = gillbertCharacter.gravityUp;
+            gravityDown = gillbertCharacter.gravityDown;
+            jumpVel = gillbertCharacter.jumpVel;
+            maxDownVel = gillbertCharacter.maxDownVel;
+
         }
         if (gnomercy)
         {
-            characterName = "gnomercy";
+            gnomercyCharacter = this.GetComponent<Gnomercy>();
+            maxHealth = gnomercyCharacter.maxHealth;
+            speed = gnomercyCharacter.speed;
+            weight = gnomercyCharacter.weight;
+            gravityUp = gnomercyCharacter.gravityUp;
+            gravityDown = gnomercyCharacter.gravityDown;
+            jumpVel = gnomercyCharacter.jumpVel;
+            maxDownVel = gnomercyCharacter.maxDownVel;
         }
 
         //Rewired Code
@@ -121,6 +140,8 @@ public class BuscemiBasicPlayer : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
+        
 
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
@@ -143,17 +164,16 @@ public class BuscemiBasicPlayer : MonoBehaviour {
             xScale = gameObject.transform.localScale.x;
         }
     }
-
-    [HideInInspector]
-    public enum animations { idle = 0, walk = 1, jump_start = 2, jump_land = 4, basic_neutral = 5, basic_forward = 6, basic_up = 7, basic_down = 8, neutral_air = 9, up_air = 10, hit_back = 100, hit_up = 101}
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(anim.GetInteger("State"));
         healthBar.fillAmount = currentHealth / maxHealth;
         regenableHealthBar.fillAmount = regenHeath / maxHealth;
 
         gotHitTimer -= Time.deltaTime;
+
+        //Animator Logic
+        anim.SetFloat("yVel", velocity.y);
 
         if (gotHitTimer > 0)
         {
@@ -162,11 +182,11 @@ public class BuscemiBasicPlayer : MonoBehaviour {
 
         if(hitAngle < 75 || (hitAngle > 105  && hitAngle < 255) || hitAngle > 285)
             {
-                anim.SetInteger("State", (int)animations.hit_back);
+                //anim.SetInteger("State", (int)animations.hit_back);
             }
             else
             {
-                anim.SetInteger("State", (int)animations.hit_up);
+                //anim.SetInteger("State", (int)animations.hit_up);
             }
         }
 
@@ -175,14 +195,12 @@ public class BuscemiBasicPlayer : MonoBehaviour {
             Gravity();
         }
 
+        /*
         if(anim.GetInteger("State") == (int)animations.neutral_air && onTopOfPlatform){
             anim.SetInteger("State", (int)animations.idle);
             isAttacking = false;
         }
-
-        //float mySpeed = Mathf.Abs(rb.velocity.x);
-        //anim.SetFloat("xSpeed", Mathf.Abs(velocity.x));
-        //anim.SetFloat("yVel", rb.velocity.y);
+        */
 
         //neutral basic attack
         if (gotHitTimer < 0)
@@ -191,7 +209,7 @@ public class BuscemiBasicPlayer : MonoBehaviour {
             {
                 if (myPlayer.GetButtonDown("BasicAttack"))
                 {
-                    anim.SetInteger("State", (int)animations.basic_neutral);
+                    //anim.SetInteger("State", (int)animations.basic_neutral);
                     isAttacking = true;
                     velocity.x = 0;
                 }
@@ -202,7 +220,7 @@ public class BuscemiBasicPlayer : MonoBehaviour {
             {
                 if (myPlayer.GetButtonDown("BasicAttack"))
                 {
-                    anim.SetInteger("State", (int)animations.basic_up);
+                    //anim.SetInteger("State", (int)animations.basic_up);
                     isAttacking = true;
                     velocity.x = 0;
                 }
@@ -213,7 +231,7 @@ public class BuscemiBasicPlayer : MonoBehaviour {
             {
                 if (myPlayer.GetButtonDown("BasicAttack"))
                 {
-                    anim.SetInteger("State", (int)animations.basic_forward);
+                    //anim.SetInteger("State", (int)animations.basic_forward);
                     isAttacking = true;
                     velocity.x = 0;
                 }
@@ -224,7 +242,7 @@ public class BuscemiBasicPlayer : MonoBehaviour {
             {
                 if (myPlayer.GetButtonDown("BasicAttack"))
                 {
-                    anim.SetInteger("State", (int)animations.neutral_air);
+                    //anim.SetInteger("State", (int)animations.neutral_air);
                     isAttacking = true;
                 }
             }
@@ -234,7 +252,7 @@ public class BuscemiBasicPlayer : MonoBehaviour {
             {
                 if (myPlayer.GetButtonDown("BasicAttack"))
                 {
-                    anim.SetInteger("State", (int)animations.up_air);
+                    //anim.SetInteger("State", (int)animations.up_air);
                     isAttacking = true;
                 }
             }
@@ -405,10 +423,6 @@ public class BuscemiBasicPlayer : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if(anim.GetInteger("State") == (int)animations.jump_land)
-        {
-            //velocity.x = 0;
-        }
 
         initialJumpTime -= Time.fixedDeltaTime;
         //changed rb.velocity to just velocity and then put rb.moveposition outside of !inhitstun
@@ -467,9 +481,9 @@ public class BuscemiBasicPlayer : MonoBehaviour {
                         accel = myPlayer.GetAxis("Horizontal");
                     }
                 }
-                if (anim.GetInteger("State") != (int)animations.jump_start && onTopOfPlatform && anim.GetInteger("State") != (int)animations.jump_land)
+                //if (anim.GetInteger("State") != (int)animations.jump_start && onTopOfPlatform && anim.GetInteger("State") != (int)animations.jump_land)
                 {
-                    anim.SetInteger("State", (int)animations.walk);
+                    //anim.SetInteger("State", (int)animations.walk);
                 }
             }
             else
@@ -496,9 +510,9 @@ public class BuscemiBasicPlayer : MonoBehaviour {
                         accel = 0;
                     }
                 }
-                if (anim.GetInteger("State") != (int)animations.jump_start && anim.GetInteger("State") != (int)animations.jump_land)
+                //if (anim.GetInteger("State") != (int)animations.jump_start && anim.GetInteger("State") != (int)animations.jump_land)
                 {
-                    anim.SetInteger("State", (int)animations.idle);
+                    //anim.SetInteger("State", (int)animations.idle);
                 }
             }
 
@@ -570,7 +584,7 @@ public class BuscemiBasicPlayer : MonoBehaviour {
             */
 
             //set timer that will let the player jump slightly off the platform
-            if (onTopOfPlatform && velocity.y == 0)
+            if (onTopOfPlatform && velocity.y >= -.5f && velocity.y <= .5f)
             {
                 onPlatformTimer = onPlatformTimerMax;
             }
@@ -590,7 +604,7 @@ public class BuscemiBasicPlayer : MonoBehaviour {
                 initialJumpTime = maxInitialJumpTime;
                 holdJumpTime = maxHoldJumpTime;
                 jumpButtonPressed = true;
-                anim.SetInteger("State", (int)animations.jump_start);
+                //anim.SetInteger("State", (int)animations.jump_start);
                 //playerJump.Play();
                 //anim.SetTrigger("jumpStart");
             }
@@ -733,25 +747,9 @@ public class BuscemiBasicPlayer : MonoBehaviour {
                 velocity.y = 0; //stop vertical velocity
                 if (contact.normal.y >= 0)
                 { //am I hitting the top of the platform?
-                  /*
-                  if (collisionInfo.gameObject.tag == "Boss")
-                  {
-
-
-                      Debug.Log("Hit");
-                  }
-                  else
-                  */
-                  //{
-                  //if (onPlatformTimer < 0)
-                  //{
-                    Debug.Log("hi");
-                    anim.SetInteger("State", (int)animations.idle);
+                    //anim.SetInteger("State", (int)animations.idle);
                     isAttacking = false;
-                    //}
                     onTopOfPlatform = true;
-                        dashCount = dashCountMax;
-                    //}
                 }
             }
         }
@@ -759,7 +757,7 @@ public class BuscemiBasicPlayer : MonoBehaviour {
 
     public void EndLandAnim()
     {
-        anim.SetInteger("State", (int)animations.idle);
+        //anim.SetInteger("State", (int)animations.idle);
     }
 
     void OnCollisionStay2D(Collision2D collisionInfo)

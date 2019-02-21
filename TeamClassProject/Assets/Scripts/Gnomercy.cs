@@ -8,18 +8,16 @@ public class Gnomercy : MonoBehaviour
     public float maxHealth;
     public int speed;
     public float weight;
+    public float gravityUp;
+    public float gravityDown;
+    public float jumpVel;
+    public float maxDownVel;
 
     BasicPlayer player;
 
     private void Awake()
     {
-        if(this.GetComponent<BasicPlayer>() != null)
-        {
-            player = this.GetComponent<BasicPlayer>();
-            player.maxHealth = maxHealth;
-            player.speed = speed;
-            player.weight = weight;
-        }
+        
     }
 
     // Start is called before the first frame update

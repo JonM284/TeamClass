@@ -1004,7 +1004,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!111 &132821076
 Animation:
   m_ObjectHideFlags: 0
@@ -1035,6 +1035,10 @@ MonoBehaviour:
   maxHealth: 1000
   speed: 7
   weight: 1
+  gravityUp: 0
+  gravityDown: 0
+  jumpVel: 0
+  maxDownVel: 0
   BN_Damage: 100
   BN_Angle: 60
   BN_Knockback: 14
@@ -1088,7 +1092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d36e986441c62c47845bc68bc9106e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNum: 1
+  playerNum: 2
   healthBar: {fileID: 1267189351}
   regenableHealthBar: {fileID: 856305966}
   accel: 0
@@ -6923,6 +6927,10 @@ MonoBehaviour:
   maxHealth: 1000
   speed: 7
   weight: 1
+  gravityUp: 0
+  gravityDown: 0
+  jumpVel: 0
+  maxDownVel: 0
   BN_Damage: 100
   BN_Angle: 45
   BN_Knockback: 15
@@ -7839,6 +7847,10 @@ MonoBehaviour:
   maxHealth: 1000
   speed: 0
   weight: 1
+  gravityUp: 0
+  gravityDown: 0
+  jumpVel: 0
+  maxDownVel: 0
   BN_Damage: 0
   BN_Angle: 0
   BN_Knockback: 0
@@ -9964,6 +9976,7 @@ GameObject:
   - component: {fileID: 1088747330}
   - component: {fileID: 1088747329}
   - component: {fileID: 1088747328}
+  - component: {fileID: 1088747336}
   m_Layer: 0
   m_Name: BuscemiClaire
   m_TagString: Player
@@ -10001,6 +10014,10 @@ MonoBehaviour:
   maxHealth: 1000
   speed: 7
   weight: 1
+  gravityUp: 70
+  gravityDown: 48
+  jumpVel: 13
+  maxDownVel: 100
   BN_Damage: 100
   BN_Angle: 60
   BN_Knockback: 10
@@ -10049,12 +10066,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1088747327}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d36e986441c62c47845bc68bc9106e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNum: 2
+  playerNum: 1
   healthBar: {fileID: 925004688}
   regenableHealthBar: {fileID: 308418905}
   accel: 0
@@ -10209,6 +10226,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1088747336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088747327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88265dba3b54c594a97921d55e872236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNum: 1
+  healthBar: {fileID: 925004688}
+  regenableHealthBar: {fileID: 308418905}
+  accel: 0
+  accelMult: 0.05
+  decelMult: 0.15
+  speed: 0
+  weight: 0
+  velocity: {x: 0, y: 0, z: 0}
+  direction: 
+  dashCount: 0
+  dashCountMax: 0
+  canDash: 0
+  gravityUp: 0
+  gravityDown: 0
+  jumpVel: 0
+  maxInitialJumpTime: 0.05
+  maxHoldJumpTime: 0.075
+  maxDownVel: 0
+  onPlatformTimer: 0
+  onPlatformTimerMax: 0.75
+  onTopOfPlatform: 0
+  anim: {fileID: 1088747334}
+  state: 0
+  claire: 1
+  gillbert: 0
+  gnomercy: 0
+  maxHealth: 0
+  regenHeathMultiplier: 0
+  makeFaceRight: 0
+  isAttacking: 0
 --- !u!1 &1090457659
 GameObject:
   m_ObjectHideFlags: 0
@@ -14104,11 +14164,11 @@ MonoBehaviour:
     lineCount: 4
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
