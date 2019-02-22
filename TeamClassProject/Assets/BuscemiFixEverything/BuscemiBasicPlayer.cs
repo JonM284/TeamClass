@@ -167,13 +167,26 @@ public class BuscemiBasicPlayer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        healthBar.fillAmount = currentHealth / maxHealth;
+
+		//set timer that will let the player jump slightly off the platform
+		if (onTopOfPlatform && velocity.y == 0)
+		{
+			//Debug.Log("It works?");
+			onPlatformTimer = onPlatformTimerMax;
+		}
+		else
+		{
+			onPlatformTimer -= Time.deltaTime;
+		}
+
+		healthBar.fillAmount = currentHealth / maxHealth;
         regenableHealthBar.fillAmount = regenHeath / maxHealth;
 
         gotHitTimer -= Time.deltaTime;
 
         //Animator Logic
         anim.SetFloat("yVel", velocity.y);
+		anim.SetFloat("xVel", Mathf.Abs(velocity.x));
 
         if (gotHitTimer > 0)
         {
@@ -188,11 +201,6 @@ public class BuscemiBasicPlayer : MonoBehaviour {
             {
                 //anim.SetInteger("State", (int)animations.hit_up);
             }
-        }
-
-        if (!dash && !onTopOfPlatform)
-        {
-            Gravity();
         }
 
         /*
@@ -262,274 +270,114 @@ public class BuscemiBasicPlayer : MonoBehaviour {
 
     void Movement()
     {
-        //seing which way the player is moving
-        if(myPlayer.GetAxisRaw("Horizontal") > 0)
-        {
-            direction = "Right";
-        }
-        else if(myPlayer.GetAxisRaw("Horizontal") < 0)
-        {
-            direction = "Left";
-        }
+		initialJumpTime -= Time.fixedDeltaTime;
+		//changed rb.velocity to just velocity and then put rb.moveposition outside of !inhitstun
 
-        if (Mathf.Abs(myPlayer.GetAxis("Horizontal")) >= .01)
-        {
-            moving = true;
-        }
-        else
-        {
-            moving = false;
-        }
+		rb.MovePosition(transform.position + velocity * Time.fixedDeltaTime);
 
-        if (moving)
-        {
-            if (direction == "Right")
-            {
-                if (accel < myPlayer.GetAxis("Horizontal"))
-                {
-                    accel += accelMult;
-                }
-                else
-                {
-                    accel = myPlayer.GetAxis("Horizontal");
-                }
-            }
-            if(direction == "Left")
-            {
-                if(accel > myPlayer.GetAxis("Horizontal"))
-                {
-                    accel -= accelMult;
-                }
-                else
-                {
-                    accel = myPlayer.GetAxis("Horizontal");
-                }
-            }
-            anim.SetInteger("State", 1);
-        }
-        else
-        {
-            if(direction == "Right")
-            {
-                if(accel > 0)
-                {
-                    accel -= decelMult;
-                }
-                else
-                {
-                    accel = 0;
-                }
-            }
-            if(direction == "Left")
-            {
-                if(accel < 0)
-                {
-                    accel += decelMult;
-                }
-                else
-                {
-                    accel = 0;
-                }
-            }
-            anim.SetInteger("State", 0);
-        }
+		//knockback stuff
+		if (currentKnockbackTime / maxKnockbackTime < .98f)
+		{
+			Knockback();
+			//velocity = (hitDirection * knockback);
+		}
+		if (!inHitStun && !isAttacking)
+		{
 
-        if (onTopOfPlatform)
-        {
-            if (direction == "Right")
-            {
-                //sr.flipX = false;
-                gameObject.transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
-            }
-            if (direction == "Left")
-            {
-                //sr.flipX = true;
-                gameObject.transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
-            }
-        }
-        /*
-        if (velocity.x >= .01)
-        {
-            direction = "Right";
-            sr.flipX = false;
-        }
-        if (velocity.x <= -.01)
-        {
-            direction = "Left";
-            sr.flipX = true;
-        }
-        */
+			//seing which way the player is moving
+			if (myPlayer.GetAxisRaw("Horizontal") > 0)
+			{
+				direction = "Right";
+			}
+			else if (myPlayer.GetAxisRaw("Horizontal") < 0)
+			{
+				direction = "Left";
+			}
 
-        //horizontal movement
-        if (!dash)
-        {
-            velocity.x = accel * speed;
-        }
-        /*else
-        {
-            if(velocity.y > 0)
-            {
-                velocity = velocity.normalized * dashSpeed;
-            }
-            else if (direction == "Right")
-            {
-                velocity = new Vector2(1 * dashSpeed, 0);
-            }
-            else if(direction == "Left")
-            {
-                velocity = new Vector2(-1 * dashSpeed, 0);
-            }
-            
-        }
-        */
+			if (Mathf.Abs(myPlayer.GetAxis("Horizontal")) >= .01)
+			{
+				moving = true;
+			}
+			else
+			{
+				moving = false;
+			}
 
-        //dash mechanics
-        /*
-        if(Input.GetButtonDown("Fire1") && dashCount > 0 && canDash)
-        {
-            StartCoroutine(Dash());
-        }
-        */
-        /*
-        if (velocity.x >= 1 && Input.GetButtonDown("Fire1") && dashCount > 0)
-        {
-            StartCoroutine(Dash());
-        }
-        if (velocity.x <= -1 && Input.GetButtonDown("Fire1") && dashCount > 0)
-        {
-            StartCoroutine(Dash());
-        }
-        */
+			if (moving)
+			{
+				if (direction == "Right")
+				{
+					if (accel < myPlayer.GetAxis("Horizontal"))
+					{
+						accel += accelMult;
+					}
+					else
+					{
+						accel = myPlayer.GetAxis("Horizontal");
+					}
+				}
+				if (direction == "Left")
+				{
+					if (accel > myPlayer.GetAxis("Horizontal"))
+					{
+						accel -= accelMult;
+					}
+					else
+					{
+						accel = myPlayer.GetAxis("Horizontal");
+					}
+				}
+				//if (anim.GetInteger("State") != (int)animations.jump_start && onTopOfPlatform && anim.GetInteger("State") != (int)animations.jump_land)
+				{
+					//anim.SetInteger("State", (int)animations.walk);
+				}
+			}
+			else
+			{
+				if (direction == "Right")
+				{
+					if (accel > 0)
+					{
+						accel -= decelMult;
+					}
+					else
+					{
+						accel = 0;
+					}
+				}
+				if (direction == "Left")
+				{
+					if (accel < 0)
+					{
+						accel += decelMult;
+					}
+					else
+					{
+						accel = 0;
+					}
+				}
+				//if (anim.GetInteger("State") != (int)animations.jump_start && anim.GetInteger("State") != (int)animations.jump_land)
+				{
+					//anim.SetInteger("State", (int)animations.idle);
+				}
+			}
 
-        //set timer that will let the player jump slightly off the platform
-        if (onTopOfPlatform && velocity.y == 0)
-        {
-            onPlatformTimer = onPlatformTimerMax;
-        }
-        else
-        {
-            onPlatformTimer -= Time.deltaTime;
-        }
-
-        //jump logic
-        if (myPlayer.GetButtonDown("Jump") && onPlatformTimer > 0)
-        {
-            //velocity.y = jumpVel;
-            //playerJump.Play();
-            //anim.SetTrigger("jumpStart");
-        }
-    }
-    
-
-    private void FixedUpdate()
-    {
-
-        initialJumpTime -= Time.fixedDeltaTime;
-        //changed rb.velocity to just velocity and then put rb.moveposition outside of !inhitstun
-
-        rb.MovePosition(transform.position + velocity * Time.deltaTime);
-
-        //knockback stuff
-        if (currentKnockbackTime/maxKnockbackTime < .98f)
-        {
-            Knockback();
-            //velocity = (hitDirection * knockback);
-        }
-        if (!inHitStun && !isAttacking)
-        {
-
-            //seing which way the player is moving
-            if (myPlayer.GetAxisRaw("Horizontal") > 0)
-            {
-                direction = "Right";
-            }
-            else if (myPlayer.GetAxisRaw("Horizontal") < 0)
-            {
-                direction = "Left";
-            }
-
-            if (Mathf.Abs(myPlayer.GetAxis("Horizontal")) >= .01)
-            {
-                moving = true;
-            }
-            else
-            {
-                moving = false;
-            }
-
-            if (moving)
-            {
-                if (direction == "Right")
-                {
-                    if (accel < myPlayer.GetAxis("Horizontal"))
-                    {
-                        accel += accelMult;
-                    }
-                    else
-                    {
-                        accel = myPlayer.GetAxis("Horizontal");
-                    }
-                }
-                if (direction == "Left")
-                {
-                    if (accel > myPlayer.GetAxis("Horizontal"))
-                    {
-                        accel -= accelMult;
-                    }
-                    else
-                    {
-                        accel = myPlayer.GetAxis("Horizontal");
-                    }
-                }
-                //if (anim.GetInteger("State") != (int)animations.jump_start && onTopOfPlatform && anim.GetInteger("State") != (int)animations.jump_land)
-                {
-                    //anim.SetInteger("State", (int)animations.walk);
-                }
-            }
-            else
-            {
-                if (direction == "Right")
-                {
-                    if (accel > 0)
-                    {
-                        accel -= decelMult;
-                    }
-                    else
-                    {
-                        accel = 0;
-                    }
-                }
-                if (direction == "Left")
-                {
-                    if (accel < 0)
-                    {
-                        accel += decelMult;
-                    }
-                    else
-                    {
-                        accel = 0;
-                    }
-                }
-                //if (anim.GetInteger("State") != (int)animations.jump_start && anim.GetInteger("State") != (int)animations.jump_land)
-                {
-                    //anim.SetInteger("State", (int)animations.idle);
-                }
-            }
-
-            if (onTopOfPlatform)
-            {
-                if (direction == "Right")
-                {
-                    //sr.flipX = false;
-                    gameObject.transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
-                }
-                if (direction == "Left")
-                {
-                    //sr.flipX = true;
-                    gameObject.transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
-                }
-            }
-            /*
+			if (onPlatformTimer > 0)
+			{
+				if (direction == "Right")
+				{
+					//sr.flipX = false;
+					Debug.Log(direction);
+					gameObject.transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
+				}
+				if (direction == "Left")
+				{
+					//sr.flipX = true;
+					Debug.Log(direction);
+					gameObject.transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
+				}
+			}
+			/*
             if (velocity.x >= .01)
             {
                 direction = "Right";
@@ -542,12 +390,12 @@ public class BuscemiBasicPlayer : MonoBehaviour {
             }
             */
 
-            //horizontal movement
-            if (!dash)
-            {
-                velocity.x = accel * speed;
-            }
-            /*else
+			//horizontal movement
+			if (!dash)
+			{
+				velocity.x = accel * speed;
+			}
+			/*else
             {
                 if(velocity.y > 0)
                 {
@@ -565,14 +413,14 @@ public class BuscemiBasicPlayer : MonoBehaviour {
             }
             */
 
-            //dash mechanics
-            /*
+			//dash mechanics
+			/*
             if(Input.GetButtonDown("Fire1") && dashCount > 0 && canDash)
             {
                 StartCoroutine(Dash());
             }
             */
-            /*
+			/*
             if (velocity.x >= 1 && Input.GetButtonDown("Fire1") && dashCount > 0)
             {
                 StartCoroutine(Dash());
@@ -583,51 +431,53 @@ public class BuscemiBasicPlayer : MonoBehaviour {
             }
             */
 
-            //set timer that will let the player jump slightly off the platform
-            if (onTopOfPlatform && velocity.y >= -.5f && velocity.y <= .5f)
-            {
-                onPlatformTimer = onPlatformTimerMax;
-            }
-            else
-            {
-                onPlatformTimer -= Time.deltaTime;
-            }
+			//jump logic
+			if (initialJumpTime <= 0)
+			{
+				holdJumpTime -= Time.fixedDeltaTime;
+			}
 
-            //jump logic
-            if (initialJumpTime <= 0)
-            {
-                holdJumpTime -= Time.fixedDeltaTime;
-            }
+			if (myPlayer.GetButtonDown("Jump") && onPlatformTimer > 0)
+			{
+				initialJumpTime = maxInitialJumpTime;
+				holdJumpTime = maxHoldJumpTime;
+				jumpButtonPressed = true;
+				//anim.SetInteger("State", (int)animations.jump_start);
+				//playerJump.Play();
+				//anim.SetTrigger("jumpStart");
+			}
+			if (myPlayer.GetButtonUp("Jump"))
+			{
+				jumpButtonPressed = false;
+			}
 
-            if (myPlayer.GetButtonDown("Jump") && onPlatformTimer > 0)
-            {
-                initialJumpTime = maxInitialJumpTime;
-                holdJumpTime = maxHoldJumpTime;
-                jumpButtonPressed = true;
-                //anim.SetInteger("State", (int)animations.jump_start);
-                //playerJump.Play();
-                //anim.SetTrigger("jumpStart");
-            }
-            if (myPlayer.GetButtonUp("Jump"))
-            {
-                jumpButtonPressed = false;
-            }
+			//initial jump
+			if (initialJumpTime > 0)
+			{
+				velocity.y = jumpVel;
+			}
 
-            //initial jump
-            if (initialJumpTime > 0)
-            {
-              velocity.y = jumpVel;
-            }
-
-            //hold jump
-            if(initialJumpTime <=0 && jumpButtonPressed && holdJumpTime > 0)
-            {
-              velocity.y = jumpVel;
-            }
+			//hold jump
+			if (initialJumpTime <= 0 && jumpButtonPressed && holdJumpTime > 0)
+			{
+				velocity.y = jumpVel;
+			}
 
 
-        }
+		}
 
+	}
+
+
+	private void FixedUpdate()
+    {
+
+		if (!dash && !onTopOfPlatform)
+		{
+			Gravity();
+		}
+
+		Movement();
     }
 
     private void LateUpdate()
@@ -747,8 +597,8 @@ public class BuscemiBasicPlayer : MonoBehaviour {
                 velocity.y = 0; //stop vertical velocity
                 if (contact.normal.y >= 0)
                 { //am I hitting the top of the platform?
-                    //anim.SetInteger("State", (int)animations.idle);
-                    isAttacking = false;
+					anim.SetTrigger("land");
+					isAttacking = false;
                     onTopOfPlatform = true;
                 }
             }
@@ -757,7 +607,7 @@ public class BuscemiBasicPlayer : MonoBehaviour {
 
     public void EndLandAnim()
     {
-        //anim.SetInteger("State", (int)animations.idle);
+		
     }
 
     void OnCollisionStay2D(Collision2D collisionInfo)
