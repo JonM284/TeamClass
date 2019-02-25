@@ -22,18 +22,18 @@ public class MenuSliderScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && sliderInt != 1 && TitleScript.canStart == true)
+        if (Input.GetKeyDown(KeyCode.Return) && sliderInt != 1)
         {
             anim.SetInteger("SliderValue", 1);
-            menuUp.Play();
+            //menuUp.Play();
             sliderInt = 1;
             hasMenuBeenUp = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && sliderInt != 2 && TitleScript.canStart == true && hasMenuBeenUp == true)
+        if (Input.GetKeyDown(KeyCode.Escape) && sliderInt != 2 && hasMenuBeenUp == true)
         {
             anim.SetInteger("SliderValue", 2);
-            menuDown.Play();
+            //menuDown.Play();
             sliderInt = 2;
         }
     }
