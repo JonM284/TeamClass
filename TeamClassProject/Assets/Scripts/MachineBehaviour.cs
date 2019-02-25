@@ -19,7 +19,7 @@ public class MachineBehaviour : MonoBehaviour
     [Tooltip("Max distance for side hazards, max angle for side cannons")]
     public float Max_range;
     //These are the different MACHINE TYPES
-    public enum MachineID { SideCannon, BackgroundCannon, SideHazard, MovingPlatform, SpecialPlatform };
+    public enum MachineID { SideCannon, BackgroundCannon, SideHazard, SpecialPlatform, MiddlePlatform };
     [Header("Machine Type")]
     [Tooltip("What type of machine will this be?")]
     public MachineID mach;
@@ -45,6 +45,7 @@ public class MachineBehaviour : MonoBehaviour
     float sideHazardMovement;
     float moveSpeed = 2f;
 
+    
 
     public bool sideHazardMachineEnabled;
     
@@ -59,6 +60,15 @@ public class MachineBehaviour : MonoBehaviour
 
     bool sideHazardReady;
     float sideHazardCooldownTimer;
+
+    //variables for MiddlePlatform "Ship"
+    private GameObject middlePlatform;
+    private Rigidbody2D middlePlatform_rb;
+    private BoxCollider2D middlePlatform_blowBoxCollider;
+    private BoxCollider2D middlePlatform_vacuumBoxCollider;
+    private float middlePlatform_moveSpeed;
+    private bool middlePlatform_movingUp;
+    private bool middlePlatform_cycleFinished;
 
 
     // Start is called before the first frame update
@@ -94,6 +104,13 @@ public class MachineBehaviour : MonoBehaviour
             Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.white;
             Controlled_Hazard[0].SetActive(false);
         }
+
+        //set middlePlatform variables
+        middlePlatform = GameObject.Find("MiddlePlatform");
+        middlePlatform_rb = middlePlatform.GetComponent<Rigidbody2D>();
+        middlePlatform_vacuumBoxCollider = GameObject.Find("MiddlePlatform_Collider_Vacuum").GetComponent<BoxCollider2D>();
+        middlePlatform_blowBoxCollider = GameObject.Find("MiddlePlatform_Collider_Blow").GetComponent<BoxCollider2D>();
+        middlePlatform_moveSpeed = 0.125f;
     }
 
     // Update is called once per frame
@@ -101,12 +118,13 @@ public class MachineBehaviour : MonoBehaviour
     {
         //if the machine is in use
         if (is_In_Use) {
-            
+
             if (mach == MachineID.SideCannon)
             {
                 verticalInput = myPlayer.GetAxisRaw("Vertical");
                 SideCannonMovement();
-            } else if (mach == MachineID.BackgroundCannon)
+            }
+            else if (mach == MachineID.BackgroundCannon)
             {
                 verticalInput = myPlayer.GetAxisRaw("Vertical");
                 horizontalInput = myPlayer.GetAxisRaw("Horizontal");
@@ -116,15 +134,17 @@ public class MachineBehaviour : MonoBehaviour
             {
                 verticalInput = myPlayer.GetAxisRaw("Vertical");
                 SideHazzardControl();
-            }else if (mach == MachineID.SpecialPlatform)
+            }
+            else if (mach == MachineID.SpecialPlatform)
             {
                 verticalInput = myPlayer.GetAxisRaw("Vertical");
-                
                 SpecialPlatformBehaviour();
-            }/*else if (mach == MachineID.SpecialPlatform)
+            }
+            else if (mach == MachineID.MiddlePlatform)
             {
 
-            }*/
+                MiddlePlatformBehavior();
+            }
         }
     }
 
@@ -317,9 +337,13 @@ public class MachineBehaviour : MonoBehaviour
                 Current_Haz_Num++;
 
             }
+            //reset current_haz_Num if it is greater than or equal to the max number of hazzards
+            if (Current_Haz_Num >= max_Machines_Amnt)
+            {
+                Current_Haz_Num = 0;
+            }
 
         }
-
 
         if (Controlled_Hazard[Current_Haz_Num].transform.position.y >= Hazard_MaxPos[Current_Haz_Num].y)
         {
@@ -336,6 +360,81 @@ public class MachineBehaviour : MonoBehaviour
 
         Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
             + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+    }
+
+    void MiddlePlatformBehavior()
+    {
+
+        if(middlePlatform_movingUp == true)
+        {
+            Current_Haz_Num = 0;
+        }
+        else if(middlePlatform_movingUp == false)
+        {
+            Current_Haz_Num = 1;
+        }
+
+        //switches the trigger that is active (Vacuum or Blow)
+        if (myPlayer.GetButtonDown("Special"))
+        {
+            if (Current_Haz_Num < max_Machines_Amnt)
+            {
+                Current_Haz_Num++;
+
+            }
+            //reset current_haz_Num if it is greater than or equal to the max number of hazzards
+            if (Current_Haz_Num >= max_Machines_Amnt)
+            {
+                Current_Haz_Num = 0;
+            }
+        }
+
+        //Controlling the MiddlePlatform
+
+        if (Current_Haz_Num == 0 && middlePlatform_blowBoxCollider.enabled == false)    //Blow Active
+        {
+            middlePlatform_vacuumBoxCollider.enabled = false;
+            middlePlatform_blowBoxCollider.enabled = true;
+            middlePlatform_movingUp = true;
+            
+        }
+        else if (Current_Haz_Num == 1 && middlePlatform_vacuumBoxCollider.enabled == false)    //Vacuum Active
+        {
+            middlePlatform_blowBoxCollider.enabled = false;
+            middlePlatform_vacuumBoxCollider.enabled = true;
+            middlePlatform_movingUp = false;
+        }
+
+
+        //move ship upward
+        if (middlePlatform_movingUp == true)
+        {
+            middlePlatform_rb.MovePosition(middlePlatform.transform.position + middlePlatform.transform.up * middlePlatform_moveSpeed * Time.deltaTime);
+        }
+        //move ship downward
+        else if(middlePlatform_movingUp == false)
+        {
+            middlePlatform_rb.MovePosition(middlePlatform.transform.position - middlePlatform.transform.up * middlePlatform_moveSpeed * Time.deltaTime);
+        }
+        
+        //if ship reaches its max/min, kick out of machine and set cooldown
+        if(middlePlatform.transform.position.y >= 3.0f && middlePlatform_movingUp == true)
+        {
+            End_Control();
+            //The player still has to hit X or O to get off machine.  We need to make a way for the machine to force the player off
+                //make Status enum in AlternateSP public?
+            middlePlatform_movingUp = false;
+            middlePlatform_blowBoxCollider.enabled = false;
+        }
+        if (middlePlatform.transform.position.y <= 1.0f && middlePlatform_movingUp == false)
+        {
+            End_Control();
+            middlePlatform_movingUp = true;
+            middlePlatform_vacuumBoxCollider.enabled = false;
+        }
+
+        
+
     }
 
     //--------------------------------------------------------------------------------------------------
