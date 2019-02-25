@@ -185,8 +185,8 @@ public class BuscemiBasicPlayer : MonoBehaviour {
         gotHitTimer -= Time.deltaTime;
 
         //Animator Logic
-        anim.SetFloat("yVel", velocity.y);
-		anim.SetFloat("xVel", Mathf.Abs(velocity.x));
+        //anim.SetFloat("yVel", velocity.y);
+		//anim.SetFloat("xVel", Mathf.Abs(velocity.x));
 
         if (gotHitTimer > 0)
         {
@@ -367,13 +367,13 @@ public class BuscemiBasicPlayer : MonoBehaviour {
 				if (direction == "Right")
 				{
 					//sr.flipX = false;
-					Debug.Log(direction);
+					//Debug.Log(direction);
 					gameObject.transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
 				}
 				if (direction == "Left")
 				{
 					//sr.flipX = true;
-					Debug.Log(direction);
+					//Debug.Log(direction);
 					gameObject.transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
 				}
 			}
@@ -597,7 +597,7 @@ public class BuscemiBasicPlayer : MonoBehaviour {
                 velocity.y = 0; //stop vertical velocity
                 if (contact.normal.y >= 0)
                 { //am I hitting the top of the platform?
-					anim.SetTrigger("land");
+					//anim.SetTrigger("land");
 					isAttacking = false;
                     onTopOfPlatform = true;
                 }
