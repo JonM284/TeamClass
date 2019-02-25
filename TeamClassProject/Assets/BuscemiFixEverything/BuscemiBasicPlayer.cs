@@ -29,7 +29,9 @@ public class BuscemiBasicPlayer : MonoBehaviour {
     public int speed;
     [HideInInspector]
     public float weight;
-    //public int dashSpeed;
+	//public int dashSpeed;
+
+	bool hitHead;
 
     public Vector3 velocity;
     public string direction;
@@ -193,7 +195,7 @@ public class BuscemiBasicPlayer : MonoBehaviour {
             //i put the movement() stuff in fixed update
            // Movement();
 
-        if(hitAngle < 75 || (hitAngle > 105  && hitAngle < 255) || hitAngle > 285)
+			if(hitAngle < 75 || (hitAngle > 105  && hitAngle < 255) || hitAngle > 285)
             {
                 //anim.SetInteger("State", (int)animations.hit_back);
             }
@@ -430,7 +432,6 @@ public class BuscemiBasicPlayer : MonoBehaviour {
                 StartCoroutine(Dash());
             }
             */
-
 			//jump logic
 			if (initialJumpTime <= 0)
 			{
@@ -452,17 +453,16 @@ public class BuscemiBasicPlayer : MonoBehaviour {
 			}
 
 			//initial jump
-			if (initialJumpTime > 0)
+			if (initialJumpTime > 0 && !hitHead)
 			{
 				velocity.y = jumpVel;
 			}
 
 			//hold jump
-			if (initialJumpTime <= 0 && jumpButtonPressed && holdJumpTime > 0)
+			if (initialJumpTime <= 0 && jumpButtonPressed && holdJumpTime > 0 && !hitHead)
 			{
 				velocity.y = jumpVel;
 			}
-
 
 		}
 
@@ -601,6 +601,11 @@ public class BuscemiBasicPlayer : MonoBehaviour {
 					isAttacking = false;
                     onTopOfPlatform = true;
                 }
+				//am I hitting the bottom of a platform?
+				if(contact.normal.y < 0)
+				{
+					hitHead = true;
+				}
             }
         }
     }
@@ -630,7 +635,22 @@ public class BuscemiBasicPlayer : MonoBehaviour {
         }
     }
 
-    void OnControllerConnected(ControllerStatusChangedEventArgs arg)
+	private void OnCollisionExit2D(Collision2D collision)
+	{
+
+		hitHead = false;
+
+		foreach (ContactPoint2D contact in collision.contacts)
+		{
+			//am I coming from the top/bottom?
+			if (Mathf.Abs(contact.normal.y) > Mathf.Abs(contact.normal.x))
+			{
+				
+			}
+		}
+	}
+
+	void OnControllerConnected(ControllerStatusChangedEventArgs arg)
     {
         CheckController(myPlayer);
     }
