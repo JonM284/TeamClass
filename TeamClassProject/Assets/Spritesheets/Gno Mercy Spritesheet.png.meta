@@ -37,6 +37,10 @@ TextureImporter:
     21300064: Back Calf Clothed
     21300066: Whip Hand
     21300068: Flamingo Hand
+    21300070: Down Hammer
+    21300072: Shockwave 1
+    21300074: Shockwave 2
+    21300076: Shockwave 0
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -804,12 +808,12 @@ TextureImporter:
       name: Whip Hand
       rect:
         serializedVersion: 2
-        x: 1892
-        y: 17
-        width: 208
-        height: 2075
+        x: 1887.8757
+        y: 17.626266
+        width: 202.7644
+        height: 2027.0128
       alignment: 9
-      pivot: {x: 0.73639387, y: 0.13378417}
+      pivot: {x: 0.77574855, y: 0.13664241}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -840,6 +844,86 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Down Hammer
+      rect:
+        serializedVersion: 2
+        x: 2171
+        y: 1126
+        width: 402
+        height: 961
+      alignment: 9
+      pivot: {x: 0.65567124, y: 0.20231102}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0996299b14ae248889fb0b6dfeb8ba65
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shockwave 1
+      rect:
+        serializedVersion: 2
+        x: 2113
+        y: 782
+        width: 523
+        height: 331
+      alignment: 9
+      pivot: {x: 0.50854677, y: 0.0813606}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82c49731532dd49e28490c6f46dba26c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shockwave 2
+      rect:
+        serializedVersion: 2
+        x: 2114
+        y: 600
+        width: 515
+        height: 161
+      alignment: 9
+      pivot: {x: 0.5000005, y: 0.14642864}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8befa9defebe54753aef9b838e14f55c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shockwave 0
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 268
+        width: 307
+        height: 314
+      alignment: 9
+      pivot: {x: 0.48348275, y: 0.026282633}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f02c2186f7c5545f8b54f38484b19f61
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -851,6 +935,6 @@ TextureImporter:
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
-  userData: 
+  userData: 636868042800000000
   assetBundleName: 
   assetBundleVariant: 
