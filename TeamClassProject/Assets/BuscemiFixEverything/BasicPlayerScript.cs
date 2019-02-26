@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Rewired;
 using Rewired.ControllerExtensions;
 
@@ -14,14 +15,24 @@ public class BasicPlayerScript : MonoBehaviour
 	[Tooltip("Number identifier for each player, must be above 0")]
 	public int playerNum;
 
+	public Image healthBar;
+	public Image regenableHealthBar;
+
 	Rigidbody2D rb;
 
-	private bool moving;
+	private bool moving, hitHead;
 
 	[Header("Movement Variables")]
+	public float accel;
+	public float accelMult;
+	public float decelMult;
+	[HideInInspector]
 	public int speed;
+	[HideInInspector]
+	public float weight;
 
 	public Vector3 velocity;
+	public string direction;
 	[Space(10)]
 
 	[Header("Gravity Variables")]
@@ -29,12 +40,84 @@ public class BasicPlayerScript : MonoBehaviour
 	public float gravityDown;
 	public float jumpVel;
 	public float maxDownVel;
+	public float maxInitialJumpTime;
+	private float initialJumpTime = 0;
+	public float maxHoldJumpTime;
+	private float holdJumpTime = 0;
+	private bool jumpButtonPressed = false;
 	public float onPlatformTimer;
 	public float onPlatformTimerMax;
 	public bool onTopOfPlatform;
 
-	private void Awake()
+	[Header("Which Character is This?")]
+	public bool claire;
+	public bool gillbert;
+	public bool gnomercy;
+	Claire claireCharacter;
+	Gillbert gillbertCharacter;
+	Gnomercy gnomercyCharacter;
+
+	[Header("Character Variables")]
+	public float maxHealth;
+	private float currentHealth;
+	private float regenHeath;
+	public float regenHeathMultiplier;
+	public bool makeFaceRight;
+
+	private float xScale;
+	[HideInInspector]
+	public bool isAttacking;
+
+	private Vector3 hitDirection;
+	private float gotHitTimer = 0;
+	private float knockback = 0;
+
+	private float maxKnockbackTime;
+	private float currentKnockbackTime;
+	private float maxDistance;
+	private Vector3 startPosition;
+	private Vector3 endPosition;
+	private float hitAngle;
+
+	void Awake()
 	{
+		//grabbing character specific values from their respective characters
+
+		if (claire)
+		{
+			claireCharacter = this.GetComponent<Claire>();
+			maxHealth = claireCharacter.maxHealth;
+			speed = claireCharacter.speed;
+			weight = claireCharacter.weight;
+			gravityUp = claireCharacter.gravityUp;
+			gravityDown = claireCharacter.gravityDown;
+			jumpVel = claireCharacter.jumpVel;
+			maxDownVel = claireCharacter.maxDownVel;
+		}
+		if (gillbert)
+		{
+			gillbertCharacter = this.GetComponent<Gillbert>();
+			maxHealth = gillbertCharacter.maxHealth;
+			speed = gillbertCharacter.speed;
+			weight = gillbertCharacter.weight;
+			gravityUp = gillbertCharacter.gravityUp;
+			gravityDown = gillbertCharacter.gravityDown;
+			jumpVel = gillbertCharacter.jumpVel;
+			maxDownVel = gillbertCharacter.maxDownVel;
+
+		}
+		if (gnomercy)
+		{
+			gnomercyCharacter = this.GetComponent<Gnomercy>();
+			maxHealth = gnomercyCharacter.maxHealth;
+			speed = gnomercyCharacter.speed;
+			weight = gnomercyCharacter.weight;
+			gravityUp = gnomercyCharacter.gravityUp;
+			gravityDown = gnomercyCharacter.gravityDown;
+			jumpVel = gnomercyCharacter.jumpVel;
+			maxDownVel = gnomercyCharacter.maxDownVel;
+		}
+
 		//Rewired Code
 		myPlayer = ReInput.players.GetPlayer(playerNum - 1);
 		ReInput.ControllerConnectedEvent += OnControllerConnected;
@@ -45,6 +128,17 @@ public class BasicPlayerScript : MonoBehaviour
 	void Start()
     {
 		rb = GetComponent<Rigidbody2D>();
+
+		//making the player face a certain way
+		if (makeFaceRight)
+		{
+			xScale = -gameObject.transform.localScale.x;
+		}
+		else
+		{
+			xScale = gameObject.transform.localScale.x;
+		}
+
 	}
 
     // Update is called once per frame
@@ -71,9 +165,17 @@ public class BasicPlayerScript : MonoBehaviour
 	void Movement()
 	{
 
-		velocity.x = myPlayer.GetAxisRaw("Horizontal") * speed;
+		//seing which way the player is moving
+		if (myPlayer.GetAxisRaw("Horizontal") > 0)
+		{
+			direction = "Right";
+		}
+		else if (myPlayer.GetAxisRaw("Horizontal") < 0)
+		{
+			direction = "Left";
+		}
 
-		if (Mathf.Abs(velocity.x) >= 1)
+		if (Mathf.Abs(myPlayer.GetAxis("Horizontal")) >= .01)
 		{
 			moving = true;
 		}
@@ -82,8 +184,106 @@ public class BasicPlayerScript : MonoBehaviour
 			moving = false;
 		}
 
+		//Aceleration code
+		if (moving)
+		{
+			if (direction == "Right")
+			{
+				if (accel < myPlayer.GetAxis("Horizontal"))
+				{
+					accel += accelMult;
+				}
+				else
+				{
+					accel = myPlayer.GetAxis("Horizontal");
+				}
+			}
+			if (direction == "Left")
+			{
+				if (accel > myPlayer.GetAxis("Horizontal"))
+				{
+					accel -= accelMult;
+				}
+				else
+				{
+					accel = myPlayer.GetAxis("Horizontal");
+				}
+			}
+		}
+		//Deceleration code
+		else
+		{
+			if (direction == "Right")
+			{
+				if (accel > 0)
+				{
+					accel -= decelMult;
+				}
+				else
+				{
+					accel = 0;
+				}
+			}
+			if (direction == "Left")
+			{
+				if (accel < 0)
+				{
+					accel += decelMult;
+				}
+				else
+				{
+					accel = 0;
+				}
+			}
+		}
+
+		velocity.x = accel * speed;
+
+		if(onPlatformTimer > 0)
+		{
+			if(direction == "Right")
+			{
+				gameObject.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+			}
+			if(direction == "Left")
+			{
+				gameObject.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+			}
+		}
+
+		//jump logic
+		if (initialJumpTime <= 0)
+		{
+			holdJumpTime -= Time.deltaTime;
+		}
+
+		if (myPlayer.GetButtonDown("Jump") && onPlatformTimer > 0)
+		{
+			initialJumpTime = maxInitialJumpTime;
+			holdJumpTime = maxHoldJumpTime;
+			jumpButtonPressed = true;
+		}
+		if (myPlayer.GetButtonUp("Jump"))
+		{
+			jumpButtonPressed = false;
+		}
+
+		//initial jump
+		if (initialJumpTime > 0 && !hitHead)
+		{
+			velocity.y = jumpVel;
+		}
+
+		//hold jump
+		if (initialJumpTime <= 0 && jumpButtonPressed && holdJumpTime > 0 && !hitHead)
+		{
+			velocity.y = jumpVel;
+		}
+
+		initialJumpTime -= Time.deltaTime;
+
 		//set timer that will let the player jump slightly off the platform
-        if (onTopOfPlatform && velocity.y == 0)
+		if (onTopOfPlatform && velocity.y == 0)
         {
             onPlatformTimer = onPlatformTimerMax;
         }
@@ -92,12 +292,13 @@ public class BasicPlayerScript : MonoBehaviour
             onPlatformTimer -= Time.deltaTime;
         }
 
+		/*
 		//jump logic
 		if (myPlayer.GetButtonDown("Jump") && onPlatformTimer > 0)
 		{
 			velocity.y = jumpVel;
 		}
-
+		*/
 		rb.MovePosition(transform.position + velocity * Time.deltaTime);
 
 		onTopOfPlatform = false;
@@ -132,6 +333,12 @@ public class BasicPlayerScript : MonoBehaviour
 				{ //am I hitting the top of the platform?
 					onTopOfPlatform = true;
 				}
+				//am I hitting the bottom of a platform?
+				if(contact.normal.y < 0)
+				{
+					hitHead = true;
+					velocity.y = 0;
+				}
 			}
 		}
 	}
@@ -153,6 +360,11 @@ public class BasicPlayerScript : MonoBehaviour
 				}
 			}
 		}
+	}
+
+	private void OnCollisionExit2D(Collision2D collision)
+	{
+		hitHead = false;
 	}
 
 	void OnControllerConnected(ControllerStatusChangedEventArgs arg)

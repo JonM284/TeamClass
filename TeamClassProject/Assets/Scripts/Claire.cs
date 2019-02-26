@@ -7,6 +7,7 @@ public class Claire : MonoBehaviour
     [Header("Claire Values")]
     public float maxHealth;
     public int speed;
+	[Tooltip("Only change this by decimal point intervals, 1 is default. I.E. .7 or 1.4")]
     public float weight;
     public float gravityUp;
     public float gravityDown;

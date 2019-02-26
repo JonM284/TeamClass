@@ -10203,15 +10203,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 1
+  healthBar: {fileID: 925004688}
+  regenableHealthBar: {fileID: 308418905}
+  accel: 0
+  accelMult: 0.05
+  decelMult: 0.15
   speed: 7
+  weight: 0
   velocity: {x: 0, y: 0, z: 0}
-  gravityUp: 70
-  gravityDown: 30
-  jumpVel: 13
-  maxDownVel: 100
+  direction: 
+  gravityUp: 0
+  gravityDown: 0
+  jumpVel: 0
+  maxDownVel: 0
+  maxInitialJumpTime: 0.05
+  maxHoldJumpTime: 0.075
   onPlatformTimer: 0
   onPlatformTimerMax: 0.075
   onTopOfPlatform: 0
+  claire: 1
+  gillbert: 0
+  gnomercy: 0
+  maxHealth: 0
+  regenHeathMultiplier: 0
+  makeFaceRight: 0
+  isAttacking: 0
 --- !u!1 &1090457659
 GameObject:
   m_ObjectHideFlags: 0
@@ -12586,7 +12602,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1000000
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0

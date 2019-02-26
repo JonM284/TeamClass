@@ -95,6 +95,7 @@ public class BuscemiBasicPlayer : MonoBehaviour {
     private float hitAngle;
 
 
+
     void Awake()
     {
         //grabbing character specific values from their respective characters
