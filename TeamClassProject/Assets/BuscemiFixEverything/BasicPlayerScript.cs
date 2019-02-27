@@ -243,11 +243,11 @@ public class BasicPlayerScript : MonoBehaviour
 		{
 			if(direction == "Right")
 			{
-				gameObject.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+				gameObject.transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
 			}
 			if(direction == "Left")
 			{
-				gameObject.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+				gameObject.transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
 			}
 		}
 
