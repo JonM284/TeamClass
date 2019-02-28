@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MiddlePlatform_Blow : MonoBehaviour
-{ 
+{
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,15 @@ public class MiddlePlatform_Blow : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            
+            other.gameObject.GetComponent<BasicPlayerScript>().jumpVel = 2;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {   
+        if(other.gameObject.tag == "Player")
+        {
+            other.gameObject.GetComponent<BasicPlayerScript>().jumpVel = 13;
         }
     }
 
