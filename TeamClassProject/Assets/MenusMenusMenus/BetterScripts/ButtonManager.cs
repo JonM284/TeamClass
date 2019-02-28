@@ -12,45 +12,16 @@ public class ButtonManager : MonoBehaviour
     public Image extrasButton;
     public Image quitButton;
 
-    // Know which game object should be selected
-    public Image selected;
-    // Know where our selection is
-    public int xPos, yPos;
-
     // Start is called before the first frame update
     void Start()
     {
-        // Pick the first selected
-        xPos = 1;
-        yPos = 1;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(xPos == 1 && yPos == 1){
-            selected = playButton;
-        }
 
-        if (xPos == 1 && yPos == 2)
-        {
-            selected = fightersButton;
-        }
-
-        if (xPos == 1 && yPos == 3)
-        {
-            selected = optionsButton;
-        }
-
-        if (xPos == 1 && yPos == 4)
-        {
-            selected = extrasButton;
-        }
-
-        if (xPos == 1 && yPos == 5)
-        {
-            selected = quitButton;
-        }
     }
 
     public void playBtn()
