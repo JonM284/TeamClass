@@ -146,6 +146,7 @@ public class MachineBehaviour : MonoBehaviour
                 MiddlePlatformBehavior();
             }
         }
+      
     }
 
 
@@ -488,6 +489,11 @@ public class MachineBehaviour : MonoBehaviour
         if (mach == MachineID.BackgroundCannon) {
             Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.white;
             Controlled_Hazard[0].SetActive(false);
+        }
+        if(mach == MachineID.MiddlePlatform)
+        {
+            middlePlatform_blowBoxCollider.enabled = false;
+            middlePlatform_vacuumBoxCollider.enabled = false;
         }
         
         Debug.Log("Player has deactivated machine: "+transform.name);
