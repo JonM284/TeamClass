@@ -273,11 +273,19 @@ public class BasicPlayerScript : MonoBehaviour
 		{
 			velocity.y = jumpVel;
 		}
+		else if(initialJumpTime > 0 && hitHead)
+		{
+			velocity.y = 0;
+		}
 
 		//hold jump
 		if (initialJumpTime <= 0 && jumpButtonPressed && holdJumpTime > 0 && !hitHead)
 		{
 			velocity.y = jumpVel;
+		}
+		else if(initialJumpTime <= 0 && jumpButtonPressed && holdJumpTime > 0 && hitHead)
+		{
+			velocity.y = 0;
 		}
 
 		initialJumpTime -= Time.deltaTime;
