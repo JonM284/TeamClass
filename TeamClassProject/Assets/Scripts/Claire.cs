@@ -89,13 +89,15 @@ public class Claire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+		
     }
+
+	
 
     private void NeutralBasic(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayer>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, BN_Distance, BN_TravelTime, player.FacingRight());
-    }
+		enemy.GetComponent<BasicPlayer>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, BN_Distance, BN_TravelTime, player.FacingRight());
+	}
 
     private void ForwardBasic()
     {

@@ -19,8 +19,13 @@ public class BasicPlayerScript : MonoBehaviour
 	public Image regenableHealthBar;
 
 	Rigidbody2D rb;
+	Animator anim;
 
 	private bool moving, hitHead;
+
+	public enum PlayerState { Fighter, Support }
+	[Header("Am I Fighting or Support")]
+	public PlayerState state;
 
 	[Header("Movement Variables")]
 	public float accel;
@@ -128,6 +133,7 @@ public class BasicPlayerScript : MonoBehaviour
 	void Start()
     {
 		rb = GetComponent<Rigidbody2D>();
+		anim = GetComponent<Animator>();
 
 		//making the player face a certain way
 		if (makeFaceRight)
@@ -144,26 +150,43 @@ public class BasicPlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
 		Movement();
 
-		if (!onTopOfPlatform)
-		{
-			Gravity();
-		}
     }
 
 	private void FixedUpdate()
 	{
-		
+
+		FixedMovement();
+
+		if (!onTopOfPlatform && state == PlayerState.Fighter)
+		{
+			Gravity();
+		}
+
 	}
 
 	private void LateUpdate()
 	{
-		
+
+		onTopOfPlatform = false;
+
 	}
 
+	/// <summary>
+	/// This is going to control everything that the player would need to move around the game
+	/// If the player needs something that doesn't require any physics, make sure it goes here
+	/// </summary>
 	void Movement()
 	{
+
+		//animation logic for fighter and support
+		anim.SetFloat("xVel", Mathf.Abs(velocity.x));
+		anim.SetFloat("yVel", velocity.y);
+
+		//animation logic for just the fighter
+		anim.SetBool("isAttacking", isAttacking);
 
 		//seing which way the player is moving
 		if (myPlayer.GetAxisRaw("Horizontal") > 0)
@@ -237,79 +260,109 @@ public class BasicPlayerScript : MonoBehaviour
 			}
 		}
 
+		//this is movement that the player needs only when it is a fighter
+		if (state == PlayerState.Fighter)
+		{
+			if (onPlatformTimer > 0)
+			{
+				if (direction == "Right")
+				{
+					gameObject.transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
+				}
+				if (direction == "Left")
+				{
+					gameObject.transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
+				}
+			}
+
+			//jump logic
+			if (initialJumpTime <= 0)
+			{
+				holdJumpTime -= Time.deltaTime;
+			}
+
+			if (myPlayer.GetButtonDown("Jump") && onPlatformTimer > 0)
+			{
+				initialJumpTime = maxInitialJumpTime;
+				holdJumpTime = maxHoldJumpTime;
+				jumpButtonPressed = true;
+			}
+			if (myPlayer.GetButtonUp("Jump"))
+			{
+				jumpButtonPressed = false;
+			}
+
+			//set timer that will let the player jump slightly off the platform
+			if (onTopOfPlatform && velocity.y == 0)
+			{
+				onPlatformTimer = onPlatformTimerMax;
+			}
+			else
+			{
+				onPlatformTimer -= Time.deltaTime;
+			}
+		}
+
+	}
+
+	void FixedMovement()
+	{
+
 		velocity.x = accel * speed;
 
-		if(onPlatformTimer > 0)
+		//this is movement that the player needs only when it is a fighter
+		if (state == PlayerState.Fighter)
 		{
-			if(direction == "Right")
+			//stopping the jump velocity if you hit your head
+			if (hitHead && velocity.y > 0)
 			{
-				gameObject.transform.localScale = new Vector3(-xScale, transform.localScale.y, transform.localScale.z);
+				velocity.y = 0;
 			}
-			if(direction == "Left")
+
+			//initial jump
+			if (initialJumpTime > 0)
 			{
-				gameObject.transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
+				velocity.y = jumpVel;
+			}
+			else if (initialJumpTime > 0)
+			{
+				velocity.y = 0;
+			}
+
+			//hold jump
+			if (initialJumpTime <= 0 && jumpButtonPressed && holdJumpTime > 0 && !hitHead)
+			{
+				velocity.y = jumpVel;
+			}
+			else if (initialJumpTime <= 0 && jumpButtonPressed && holdJumpTime > 0 && hitHead)
+			{
+				velocity.y = 0;
+			}
+
+			initialJumpTime -= Time.fixedDeltaTime;
+		}
+
+		rb.MovePosition(transform.position + velocity * Time.fixedDeltaTime);
+
+	}
+
+	void Knockback()
+	{
+
+		gotHitTimer -= Time.deltaTime;
+
+		if (gotHitTimer > 0)
+		{
+
+			if (hitAngle < 75 || (hitAngle > 105 && hitAngle < 255) || hitAngle > 285)
+			{
+				//anim.SetInteger("State", (int)animations.hit_back);
+			}
+			else
+			{
+				//anim.SetInteger("State", (int)animations.hit_up);
 			}
 		}
-
-		//jump logic
-		if (initialJumpTime <= 0)
-		{
-			holdJumpTime -= Time.deltaTime;
-		}
-
-		if (myPlayer.GetButtonDown("Jump") && onPlatformTimer > 0)
-		{
-			initialJumpTime = maxInitialJumpTime;
-			holdJumpTime = maxHoldJumpTime;
-			jumpButtonPressed = true;
-		}
-		if (myPlayer.GetButtonUp("Jump"))
-		{
-			jumpButtonPressed = false;
-		}
-
-		//initial jump
-		if (initialJumpTime > 0 && !hitHead)
-		{
-			velocity.y = jumpVel;
-		}
-		else if(initialJumpTime > 0 && hitHead)
-		{
-			velocity.y = 0;
-		}
-
-		//hold jump
-		if (initialJumpTime <= 0 && jumpButtonPressed && holdJumpTime > 0 && !hitHead)
-		{
-			velocity.y = jumpVel;
-		}
-		else if(initialJumpTime <= 0 && jumpButtonPressed && holdJumpTime > 0 && hitHead)
-		{
-			velocity.y = 0;
-		}
-
-		initialJumpTime -= Time.deltaTime;
-
-		//set timer that will let the player jump slightly off the platform
-		if (onTopOfPlatform && velocity.y == 0)
-        {
-            onPlatformTimer = onPlatformTimerMax;
-        }
-        else
-        {
-            onPlatformTimer -= Time.deltaTime;
-        }
-
-		/*
-		//jump logic
-		if (myPlayer.GetButtonDown("Jump") && onPlatformTimer > 0)
-		{
-			velocity.y = jumpVel;
-		}
-		*/
-		rb.MovePosition(transform.position + velocity * Time.deltaTime);
-
-		onTopOfPlatform = false;
 
 	}
 
@@ -320,11 +373,11 @@ public class BasicPlayerScript : MonoBehaviour
 		{ //if we haven't reached maxDownVel
 			if (velocity.y > 0)
 			{ //if player is moving up
-				velocity.y -= gravityUp * Time.deltaTime;
+				velocity.y -= gravityUp * Time.fixedDeltaTime;
 			}
 			else
 			{ //if player is moving down
-				velocity.y -= gravityDown * Time.deltaTime;
+				velocity.y -= gravityDown * Time.fixedDeltaTime;
 			}
 		}
 	}
@@ -339,7 +392,10 @@ public class BasicPlayerScript : MonoBehaviour
 				velocity.y = 0; //stop vertical velocity
 				if (contact.normal.y >= 0)
 				{ //am I hitting the top of the platform?
+					anim.SetTrigger("land");
 					onTopOfPlatform = true;
+					hitHead = false;
+					velocity.y = 0;
 				}
 				//am I hitting the bottom of a platform?
 				if(contact.normal.y < 0)
@@ -364,15 +420,14 @@ public class BasicPlayerScript : MonoBehaviour
 				}
 				if (contact.normal.y >= 0)
 				{ //am I hitting the top of the platform?
+					if (velocity.y < 0)
+					{
+						velocity.y = 0; //stop vertical velocity
+					}
 					onTopOfPlatform = true;
 				}
 			}
 		}
-	}
-
-	private void OnCollisionExit2D(Collision2D collision)
-	{
-		hitHead = false;
 	}
 
 	void OnControllerConnected(ControllerStatusChangedEventArgs arg)
