@@ -677,7 +677,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1042682429}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &322506734
@@ -2472,6 +2472,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c37c24cb2b6684a02b567259889ff458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playButton: {fileID: 0}
+  fightersButton: {fileID: 0}
+  optionsButton: {fileID: 0}
+  extrasButton: {fileID: 0}
+  quitButton: {fileID: 0}
+  selected: {fileID: 0}
+  xPos: 0
+  yPos: 0
 --- !u!1 &1571206059
 GameObject:
   m_ObjectHideFlags: 0
@@ -3252,7 +3260,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1928231679}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1512945693}
+        m_MethodName: fighterBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1928231679
