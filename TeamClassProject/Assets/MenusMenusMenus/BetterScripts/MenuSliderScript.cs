@@ -6,7 +6,7 @@ public class MenuSliderScript : MonoBehaviour
 {
 
     private Animator anim;
-    public int sliderInt;
+    public static int sliderInt;
     public AudioSource menuUp;
     public AudioSource menuDown;
     public bool hasMenuBeenUp;

@@ -3,35 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class ButtonManager : MonoBehaviour
 {
-    public Image playButton;
-    public Image fightersButton;
-    public Image optionsButton;
-    public Image extrasButton;
-    public Image quitButton;
+
+    public EventSystem es;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(es.currentSelectedGameObject == null){
+            es.SetSelectedGameObject(es.firstSelectedGameObject);
+        }
     }
 
     public void playBtn()
     {
-        SceneManager.LoadScene("MixedTogetherScene");
+        if (MenuSliderScript.sliderInt == 1)
+        {
+            SceneManager.LoadScene("MixedTogetherScene");
+        }
     }
 
     public void fighterBtn()
     {
-        SceneManager.LoadScene("Fighters");
+        if (MenuSliderScript.sliderInt == 1)
+        {
+            SceneManager.LoadScene("Fighters");
+        }
     }
 
     public void optionsBtn()
@@ -46,7 +53,10 @@ public class ButtonManager : MonoBehaviour
 
     public void quitBtn()
     {
-        Application.Quit();
+        if (MenuSliderScript.sliderInt == 1)
+        {
+            Application.Quit();
+        }
     }
 
     public void menuBtn()

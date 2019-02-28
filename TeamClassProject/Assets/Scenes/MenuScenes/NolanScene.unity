@@ -1455,7 +1455,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d58a330d5c594048b7041c3f4b81c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliderInt: 0
   menuUp: {fileID: 0}
   menuDown: {fileID: 0}
   hasMenuBeenUp: 0
@@ -1967,7 +1966,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d58a330d5c594048b7041c3f4b81c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliderInt: 0
   menuUp: {fileID: 1199751742}
   menuDown: {fileID: 1199751741}
   hasMenuBeenUp: 0
@@ -2472,14 +2470,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c37c24cb2b6684a02b567259889ff458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playButton: {fileID: 0}
-  fightersButton: {fileID: 0}
-  optionsButton: {fileID: 0}
-  extrasButton: {fileID: 0}
-  quitButton: {fileID: 0}
-  selected: {fileID: 0}
-  xPos: 0
-  yPos: 0
+  playButton: {fileID: 1042682432}
+  fightersButton: {fileID: 1928231679}
+  optionsButton: {fileID: 1338409727}
+  extrasButton: {fileID: 1571206062}
+  quitButton: {fileID: 1852882890}
+  es: {fileID: 322506733}
 --- !u!1 &1571206059
 GameObject:
   m_ObjectHideFlags: 0
