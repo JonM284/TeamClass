@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 66767269}
   - component: {fileID: 66767268}
   m_Layer: 0
-  m_Name: ExtrasButton
+  m_Name: WawaButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 444869478}
   - component: {fileID: 444869477}
   m_Layer: 0
-  m_Name: OptionsButton
+  m_Name: GnomercyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1072,7 +1072,7 @@ GameObject:
   - component: {fileID: 1545287946}
   - component: {fileID: 1545287945}
   m_Layer: 0
-  m_Name: PlayButton
+  m_Name: ClaireButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1283,7 +1283,7 @@ GameObject:
   - component: {fileID: 1609525387}
   - component: {fileID: 1609525386}
   m_Layer: 0
-  m_Name: FightersButton
+  m_Name: GilbertButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1531,16 +1531,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 100
-    m_Alignment: 7
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '4th CHAR
-
-
-'
+  m_Text: WAWA?
 --- !u!222 &1876224164
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1586,9 +1583,6 @@ MonoBehaviour:
   optionsButton: {fileID: 0}
   extrasButton: {fileID: 0}
   quitButton: {fileID: 0}
-  selected: {fileID: 0}
-  xPos: 0
-  yPos: 0
 --- !u!114 &1957127570
 MonoBehaviour:
   m_ObjectHideFlags: 0
