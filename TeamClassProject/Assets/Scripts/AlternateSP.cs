@@ -84,13 +84,17 @@ public class AlternateSP : MonoBehaviour
         }else
         {
             horizontalInput = 0;
+            if (transform.position.x != myMachine.transform.position.x)
+            {
+                transform.position = new Vector3(myMachine.transform.position.x, transform.position.y, transform.position.z);
+            }
         }
 
         // If player is infront of machine and they press "Jump" and they are free, set their status to at a machine
         // Give the machine my inputs.
         // If the player presses "Jump" and is using a machine, set them to free again.
         // Also if they press heavy attack, they jump off the machine without using it.
-        if (is_In_Area && myPlayer.GetButtonDown("Jump"))
+        if (is_In_Area && (myPlayer.GetButtonDown("Jump")|| myPlayer.GetButtonDown("BasicAttack")))
         {
             if (status == Status.Free)
             {
@@ -168,7 +172,17 @@ public class AlternateSP : MonoBehaviour
             anim.SetInteger("Anim_Num", 2);
         }
 
-        
+        if (status == Status.AtMachine && (myPlayer.GetAxisRaw("Horizontal") >= 0.1f || myPlayer.GetAxisRaw("Vertical") >= 0.1f))
+        {
+            anim.SetInteger("Anim_Num", 7);
+        }
+
+        if (status == Status.AtMachine && (myPlayer.GetAxisRaw("Horizontal") <= -0.1f || myPlayer.GetAxisRaw("Vertical") <= -0.1f))
+        {
+            anim.SetInteger("Anim_Num", 6);
+        }
+
+
 
 
 
