@@ -172,7 +172,7 @@ public class MachineBehaviour : MonoBehaviour
         {
             Debug.Log(Controlled_Hazard[Current_Haz_Num].transform.GetChild(0).transform.name);
             Vector3 dir = Controlled_Hazard[Current_Haz_Num].transform.GetChild(0).transform.position - Controlled_Hazard[Current_Haz_Num].transform.position;
-            objectPool.SpawnFromPool("Tester", Controlled_Hazard[Current_Haz_Num].transform.position,
+            objectPool.SpawnFromPool("CannonBall", Controlled_Hazard[Current_Haz_Num].transform.position,
                 Quaternion.Euler(Move_Rotation));
             End_Control();
             Debug.Log("Has Spawned object");
