@@ -92,6 +92,7 @@ public class BasicPlayerScript : MonoBehaviour
 		{
 			claireCharacter = this.GetComponent<Claire>();
 			maxHealth = claireCharacter.maxHealth;
+			currentHealth = maxHealth;
 			speed = claireCharacter.speed;
 			weight = claireCharacter.weight;
 			gravityUp = claireCharacter.gravityUp;
@@ -103,6 +104,7 @@ public class BasicPlayerScript : MonoBehaviour
 		{
 			gillbertCharacter = this.GetComponent<Gillbert>();
 			maxHealth = gillbertCharacter.maxHealth;
+			currentHealth = maxHealth;
 			speed = gillbertCharacter.speed;
 			weight = gillbertCharacter.weight;
 			gravityUp = gillbertCharacter.gravityUp;
@@ -115,6 +117,7 @@ public class BasicPlayerScript : MonoBehaviour
 		{
 			gnomercyCharacter = this.GetComponent<Gnomercy>();
 			maxHealth = gnomercyCharacter.maxHealth;
+			currentHealth = maxHealth;
 			speed = gnomercyCharacter.speed;
 			weight = gnomercyCharacter.weight;
 			gravityUp = gnomercyCharacter.gravityUp;
@@ -133,7 +136,14 @@ public class BasicPlayerScript : MonoBehaviour
 	void Start()
     {
 		rb = GetComponent<Rigidbody2D>();
-		anim = GetComponent<Animator>();
+		if (GetComponent<Animator>() != null)
+		{
+			anim = GetComponent<Animator>();
+		}
+		else
+		{
+			anim = null;
+		}
 
 		//making the player face a certain way
 		if (makeFaceRight)
@@ -151,16 +161,24 @@ public class BasicPlayerScript : MonoBehaviour
     void Update()
     {
 
-		Movement();
+		healthBar.fillAmount = currentHealth / maxHealth;
+		regenableHealthBar.fillAmount = regenHeath / maxHealth;
 
-		Attack();
+		if (!isAttacking)
+		{
+			Movement();
+			Attack();
+		}
 
-    }
+	}
 
-	private void FixedUpdate()
+ void FixedUpdate()
 	{
 
-		FixedMovement();
+		if (!isAttacking)
+		{
+			FixedMovement();
+		}
 
 		if (!onTopOfPlatform && state == PlayerState.Fighter)
 		{
@@ -305,6 +323,7 @@ public class BasicPlayerScript : MonoBehaviour
 			{
 				onPlatformTimer -= Time.deltaTime;
 			}
+
 		}
 
 	}
@@ -324,24 +343,26 @@ public class BasicPlayerScript : MonoBehaviour
 			}
 
 			//initial jump
-			if (initialJumpTime > 0)
+			if (initialJumpTime > 0 && !hitHead)
 			{
 				velocity.y = jumpVel;
 			}
-			else if (initialJumpTime > 0)
+			/*else if (initialJumpTime > 0)
 			{
 				velocity.y = 0;
 			}
+			*/
 
 			//hold jump
 			if (initialJumpTime <= 0 && jumpButtonPressed && holdJumpTime > 0 && !hitHead)
 			{
 				velocity.y = jumpVel;
 			}
-			else if (initialJumpTime <= 0 && jumpButtonPressed && holdJumpTime > 0 && hitHead)
+			/*else if (initialJumpTime <= 0 && jumpButtonPressed && holdJumpTime > 0 && hitHead)
 			{
 				velocity.y = 0;
 			}
+			*/
 
 			initialJumpTime -= Time.fixedDeltaTime;
 		}
@@ -359,9 +380,10 @@ public class BasicPlayerScript : MonoBehaviour
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
+					Debug.Log("Attack");
 					anim.SetTrigger("BasicNeutral");
 					isAttacking = true;
-					velocity.x = 0;
+					accel = 0;
 				}
 			}
 
@@ -372,7 +394,7 @@ public class BasicPlayerScript : MonoBehaviour
 				{
 					anim.SetTrigger("BasicUp");
 					isAttacking = true;
-					velocity.x = 0;
+					accel = 0;
 				}
 			}
 
@@ -381,9 +403,9 @@ public class BasicPlayerScript : MonoBehaviour
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
-					//anim.SetInteger("State", (int)animations.basic_forward);
+					anim.SetTrigger("BasicForward");
 					isAttacking = true;
-					velocity.x = 0;
+					accel = 0;
 				}
 			}
 
@@ -406,69 +428,6 @@ public class BasicPlayerScript : MonoBehaviour
 					isAttacking = true;
 				}
 			}
-		}
-	}
-
-	void Knockback()
-	{
-
-		if (gotHitTimer > 0)
-		{
-
-			if (hitAngle < 75 || (hitAngle > 105 && hitAngle < 255) || hitAngle > 285)
-			{
-				//anim.SetInteger("State", (int)animations.hit_back);
-			}
-			else
-			{
-				//anim.SetInteger("State", (int)animations.hit_up);
-			}
-		}
-
-	}
-
-	/// <summary>
-	/// This function gets called when an enemy hits you
-	/// </summary>
-	/// <param name="attackDamage">is the how much the players health/armor goes down.</param>
-	/// <param name="attackAngle">is the angle you get sent flying when you get hit. [*possibly* affected by player weight]</param>
-	/// <param name="attackForce"> is how far back you get sent flying. [affected by player weight]</param>
-	/// <param name="hitStun">is how long the player has to wait before they can do anything</param>
-	/// <param name="distance">How far does the enemy fly</param>
-	/// <param name="travelTime">How long should it take for the enemy to get to that distance</param>
-	/// <param name="facingRight">Checks which way the player is facing when they do the attack so that it knows whether or not to reverse the knockback</param>
-	public void GetHit(float attackDamage, float attackAngle, float attackForce, float hitStun, float distance, float travelTime, bool facingRight)//im probably missing a few arguments
-	{
-		if (gotHitTimer < 0)
-		{
-			currentHealth -= attackDamage;
-			hitAngle = attackAngle;
-			regenHeath -= attackDamage * regenHeathMultiplier;
-			velocity = new Vector3(0, 0, 0);
-			maxDistance = distance;
-			maxKnockbackTime = travelTime;
-			currentKnockbackTime = 0;
-			startPosition = transform.position;
-
-			gotHitTimer = hitStun;
-			knockback = attackForce;
-			Vector3 dir = new Vector3(0, 0, 0);
-			if (facingRight)
-			{
-				dir = Quaternion.AngleAxis(attackAngle, Vector3.forward) * Vector3.right;
-				hitDirection = dir;
-				endPosition = transform.position + (hitDirection.normalized * distance);
-				direction = "Left";
-			}
-			else
-			{
-				dir = Quaternion.AngleAxis(attackAngle, -Vector3.forward) * -Vector3.right;
-				hitDirection = dir;
-				endPosition = transform.position + (hitDirection.normalized * distance);
-				direction = "Right";
-			}
-			//rb.AddForce(dir * attackForce);
-			// rb.AddForce(new Vector2(attackForce, 0));
 		}
 	}
 
