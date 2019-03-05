@@ -17,11 +17,16 @@ public class AlternateSP : MonoBehaviour
 
     //private variables
 
+    //This is for the direction of the player
+    //I am aware that it is not actually facing right at the beginning
+    private bool is_Looking_Right = false;
+    private Vector3 original_Scale;
+
     //This allows us to change what they can do, when they are either at or away from a machine.
     private enum Status { Free, AtMachine };
     private Rigidbody2D rb;
     private Vector2 vel;
-    private float horizontalInput;
+    private float horizontalInput, verticalInput;
     private Player myPlayer;
     [SerializeField]
     private bool is_In_Area = false;
@@ -31,11 +36,17 @@ public class AlternateSP : MonoBehaviour
     //reference to whichever machine the player is going to use
     private GameObject myMachine;
 
+    //Beyond this point is for animations
+    private Animator anim;
+    
+
 
     //--------------------------------------------------------------------------------------------------
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        original_Scale = transform.localScale;
     }
 
 
@@ -58,6 +69,18 @@ public class AlternateSP : MonoBehaviour
     {
         if (status == Status.Free) {
             horizontalInput = myPlayer.GetAxisRaw("Horizontal");
+
+            if (horizontalInput >= 0.1f && !is_Looking_Right)
+            {
+                gameObject.transform.localScale = new Vector3(-original_Scale.x, transform.localScale.y, transform.localScale.z);
+                is_Looking_Right = true;
+            }
+            if (horizontalInput <= -0.1f && is_Looking_Right)
+            {
+                gameObject.transform.localScale = new Vector3(original_Scale.x, transform.localScale.y, transform.localScale.z);
+                is_Looking_Right = false;
+            }
+
         }else
         {
             horizontalInput = 0;
@@ -103,8 +126,8 @@ public class AlternateSP : MonoBehaviour
 
         }
 
-        
 
+        Handle_Animations();
 
 
     }
@@ -118,6 +141,38 @@ public class AlternateSP : MonoBehaviour
         }
     }
 
+
+    void Handle_Animations()
+    {
+        if (status == Status.AtMachine)
+        {
+            anim.SetBool("Is_At_Machine", true);
+        }
+        else
+        {
+            anim.SetBool("Is_At_Machine", false);
+        }
+
+        if (myPlayer.GetAxisRaw("Horizontal") == 0 && status == Status.Free)
+        {
+            anim.SetInteger("Anim_Num", 0);
+        }
+
+        if (Mathf.Abs(myPlayer.GetAxisRaw("Horizontal")) >= 0.1f && status == Status.Free)
+        {
+            anim.SetInteger("Anim_Num", 1);
+        }
+
+        if (status == Status.AtMachine && Mathf.Abs(myPlayer.GetAxisRaw("Horizontal")) == 0 && Mathf.Abs(myPlayer.GetAxisRaw("Vertical")) == 0)
+        {
+            anim.SetInteger("Anim_Num", 2);
+        }
+
+        
+
+
+
+    }
 
     //--------------------------------------------------------------------------------------------------
     //this is a temporary function that is to test whether or not the enum is working correctly.
