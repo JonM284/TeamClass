@@ -10,6 +10,7 @@ public class Eel_Movement : MonoBehaviour
     private Vector3 myStartPos;
     public bool Eel_Active = false;
     private bool has_Hit_Platform = false, hasStarted = false;
+    public float going_Out_Speed, return_Speed;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,7 @@ public class Eel_Movement : MonoBehaviour
         
 
         if (Vector3.Distance(myEel.transform.position, myEndPos.position) > 1 && !has_Hit_Platform) {
-            myEel.transform.position = Vector3.Lerp(myEel.transform.position, new Vector3(myEndPos.position.x, transform.position.y, transform.position.z), Time.deltaTime * 3);
+            myEel.transform.position = Vector3.Lerp(myEel.transform.position, new Vector3(myEndPos.position.x, transform.position.y, transform.position.z), Time.deltaTime * going_Out_Speed);
         }else if(Vector3.Distance(myEel.transform.position, myEndPos.position) <= 1 || has_Hit_Platform)
         {
             Eel_Active = false;
@@ -51,7 +52,7 @@ public class Eel_Movement : MonoBehaviour
     public void Deactivate_Eel()
     {
         
-        myEel.transform.position = Vector3.Lerp(myEel.transform.position, new Vector3(myStartPos.x, transform.position.y, transform.position.z), Time.deltaTime * 5);
+        myEel.transform.position = Vector3.Lerp(myEel.transform.position, new Vector3(myStartPos.x, transform.position.y, transform.position.z), Time.deltaTime * return_Speed);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
