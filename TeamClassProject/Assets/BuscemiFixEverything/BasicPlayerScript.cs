@@ -378,6 +378,7 @@ public class BasicPlayerScript : MonoBehaviour
 		{
 			if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onTopOfPlatform)
 			{
+
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
 					Debug.Log("Attack");
