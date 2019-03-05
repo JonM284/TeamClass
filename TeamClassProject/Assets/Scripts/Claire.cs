@@ -72,7 +72,7 @@ public class Claire : MonoBehaviour
 
     private float currentAttack;
 
-    BasicPlayer player;
+    BasicPlayerScript player;
 
 
     private void Awake()
@@ -83,7 +83,7 @@ public class Claire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+		player = GetComponent<BasicPlayerScript>();
     }
 
     // Update is called once per frame
@@ -96,7 +96,7 @@ public class Claire : MonoBehaviour
 
     private void NeutralBasic(GameObject enemy)
     {
-		enemy.GetComponent<BasicPlayer>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, BN_Distance, BN_TravelTime, player.FacingRight());
+		enemy.GetComponent<BasicPlayerScript>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, BN_Distance, BN_TravelTime, player.FacingRight());
 	}
 
     private void ForwardBasic()
@@ -116,17 +116,17 @@ public class Claire : MonoBehaviour
 
     private void UpBasic(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayer>().GetHit(BU_Damage, BU_Angle, BU_Knockback, BU_HitStun, BU_Distance, BU_TravelTime, player.FacingRight());
+        enemy.GetComponent<BasicPlayerScript>().GetHit(BU_Damage, BU_Angle, BU_Knockback, BU_HitStun, BU_Distance, BU_TravelTime, player.FacingRight());
     }
 
     private void DownBasic(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayer>().GetHit(BD_Damage, BD_Angle, BD_Knockback, BD_HitStun, BD_Distance, BD_TravelTime, player.FacingRight());
+        enemy.GetComponent<BasicPlayerScript>().GetHit(BD_Damage, BD_Angle, BD_Knockback, BD_HitStun, BD_Distance, BD_TravelTime, player.FacingRight());
     }
 
     private void NeutralAir(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayer>().GetHit(NA_Damage, NA_Angle, NA_Knockback, NA_HitStun, NA_Distance, NA_TravelTime, player.FacingRight());
+        enemy.GetComponent<BasicPlayerScript>().GetHit(NA_Damage, NA_Angle, NA_Knockback, NA_HitStun, NA_Distance, NA_TravelTime, player.FacingRight());
     }
 
     private void UpAir()

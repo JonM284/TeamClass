@@ -153,6 +153,8 @@ public class BasicPlayerScript : MonoBehaviour
 
 		Movement();
 
+		Attack();
+
     }
 
 	private void FixedUpdate()
@@ -187,6 +189,8 @@ public class BasicPlayerScript : MonoBehaviour
 
 		//animation logic for just the fighter
 		anim.SetBool("isAttacking", isAttacking);
+
+		gotHitTimer -= Time.deltaTime;
 
 		//seing which way the player is moving
 		if (myPlayer.GetAxisRaw("Horizontal") > 0)
@@ -346,10 +350,67 @@ public class BasicPlayerScript : MonoBehaviour
 
 	}
 
+	void Attack()
+	{
+		//neutral basic attack
+		if (gotHitTimer < 0)
+		{
+			if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onTopOfPlatform)
+			{
+				if (myPlayer.GetButtonDown("BasicAttack"))
+				{
+					anim.SetTrigger("BasicNeutral");
+					isAttacking = true;
+					velocity.x = 0;
+				}
+			}
+
+			//up basic attack
+			if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") > .3f && Input.GetAxis("Vertical") > -.3f && onTopOfPlatform)
+			{
+				if (myPlayer.GetButtonDown("BasicAttack"))
+				{
+					anim.SetTrigger("BasicUp");
+					isAttacking = true;
+					velocity.x = 0;
+				}
+			}
+
+			//forward basic attack
+			if (((myPlayer.GetAxis("Horizontal") > .3f && myPlayer.GetAxis("Horizontal") > -.3f) || (myPlayer.GetAxis("Horizontal")) < .3f && myPlayer.GetAxis("Horizontal") < -.3f) && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onTopOfPlatform)
+			{
+				if (myPlayer.GetButtonDown("BasicAttack"))
+				{
+					//anim.SetInteger("State", (int)animations.basic_forward);
+					isAttacking = true;
+					velocity.x = 0;
+				}
+			}
+
+			//neutral air attack
+			if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && !onTopOfPlatform)
+			{
+				if (myPlayer.GetButtonDown("BasicAttack"))
+				{
+					//anim.SetInteger("State", (int)animations.neutral_air);
+					isAttacking = true;
+				}
+			}
+
+			//up air attack
+			if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") > .3f && Input.GetAxis("Vertical") > -.3f && !onTopOfPlatform)
+			{
+				if (myPlayer.GetButtonDown("BasicAttack"))
+				{
+					//anim.SetInteger("State", (int)animations.up_air);
+					isAttacking = true;
+				}
+			}
+		}
+	}
+
 	void Knockback()
 	{
-
-		gotHitTimer -= Time.deltaTime;
 
 		if (gotHitTimer > 0)
 		{
@@ -366,6 +427,51 @@ public class BasicPlayerScript : MonoBehaviour
 
 	}
 
+	/// <summary>
+	/// This function gets called when an enemy hits you
+	/// </summary>
+	/// <param name="attackDamage">is the how much the players health/armor goes down.</param>
+	/// <param name="attackAngle">is the angle you get sent flying when you get hit. [*possibly* affected by player weight]</param>
+	/// <param name="attackForce"> is how far back you get sent flying. [affected by player weight]</param>
+	/// <param name="hitStun">is how long the player has to wait before they can do anything</param>
+	/// <param name="distance">How far does the enemy fly</param>
+	/// <param name="travelTime">How long should it take for the enemy to get to that distance</param>
+	/// <param name="facingRight">Checks which way the player is facing when they do the attack so that it knows whether or not to reverse the knockback</param>
+	public void GetHit(float attackDamage, float attackAngle, float attackForce, float hitStun, float distance, float travelTime, bool facingRight)//im probably missing a few arguments
+	{
+		if (gotHitTimer < 0)
+		{
+			currentHealth -= attackDamage;
+			hitAngle = attackAngle;
+			regenHeath -= attackDamage * regenHeathMultiplier;
+			velocity = new Vector3(0, 0, 0);
+			maxDistance = distance;
+			maxKnockbackTime = travelTime;
+			currentKnockbackTime = 0;
+			startPosition = transform.position;
+
+			gotHitTimer = hitStun;
+			knockback = attackForce;
+			Vector3 dir = new Vector3(0, 0, 0);
+			if (facingRight)
+			{
+				dir = Quaternion.AngleAxis(attackAngle, Vector3.forward) * Vector3.right;
+				hitDirection = dir;
+				endPosition = transform.position + (hitDirection.normalized * distance);
+				direction = "Left";
+			}
+			else
+			{
+				dir = Quaternion.AngleAxis(attackAngle, -Vector3.forward) * -Vector3.right;
+				hitDirection = dir;
+				endPosition = transform.position + (hitDirection.normalized * distance);
+				direction = "Right";
+			}
+			//rb.AddForce(dir * attackForce);
+			// rb.AddForce(new Vector2(attackForce, 0));
+		}
+	}
+
 	void Gravity()
 	{
 		//gravity logic
@@ -379,6 +485,20 @@ public class BasicPlayerScript : MonoBehaviour
 			{ //if player is moving down
 				velocity.y -= gravityDown * Time.fixedDeltaTime;
 			}
+		}
+	}
+
+	public bool FacingRight()
+	{
+		if ((makeFaceRight && transform.localScale.x < 0) || (!makeFaceRight && transform.localScale.x > 0))
+		{
+			Debug.Log("Right");
+			return true;
+		}
+		else
+		{
+			Debug.Log("Left");
+			return false;
 		}
 	}
 

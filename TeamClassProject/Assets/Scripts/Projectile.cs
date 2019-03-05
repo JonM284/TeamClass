@@ -47,7 +47,7 @@ public class Projectile : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<BasicPlayer>().GetHit(damage, angle, knockback, hitStun, distance, travelTime, moveRight);
+            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(damage, angle, knockback, hitStun, distance, travelTime, moveRight);
         }
         Destroy(gameObject);
     }
