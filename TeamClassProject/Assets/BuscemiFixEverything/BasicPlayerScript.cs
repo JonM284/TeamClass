@@ -58,11 +58,13 @@ public class BasicPlayerScript : MonoBehaviour
 	public bool claire;
 	public bool gillbert;
 	public bool gnomercy;
+    public bool wawaw;
 	Claire claireCharacter;
 	Gillbert gillbertCharacter;
 	Gnomercy gnomercyCharacter;
+    Watermelon wawaCharacter;
 
-	[Header("Character Variables")]
+    [Header("Character Variables")]
 	public float maxHealth;
 	private float currentHealth;
 	private float regenHeath;
@@ -126,8 +128,21 @@ public class BasicPlayerScript : MonoBehaviour
 			maxDownVel = gnomercyCharacter.maxDownVel;
 		}
 
-		//Rewired Code
-		myPlayer = ReInput.players.GetPlayer(playerNum - 1);
+        if (wawa)
+        {
+            wawaCharacter = this.GetComponent<Watermelon>();
+            maxHealth = wawaCharacter.maxHealth;
+            currentHealth = maxHealth;
+            speed = wawaCharacter.speed;
+            weight = wawaCharacter.weight;
+            gravityUp = wawaCharacter.gravityUp;
+            gravityDown = wawaCharacter.gravityDown;
+            jumpVel = wawaCharacter.jumpVel;
+            maxDownVel = wawaCharacter.maxDownVel;
+        }
+
+        //Rewired Code
+        myPlayer = ReInput.players.GetPlayer(playerNum - 1);
 		ReInput.ControllerConnectedEvent += OnControllerConnected;
 		CheckController(myPlayer);
 	}
