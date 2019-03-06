@@ -58,7 +58,7 @@ public class BasicPlayerScript : MonoBehaviour
 	public bool claire;
 	public bool gillbert;
 	public bool gnomercy;
-    public bool wawaw;
+    public bool wawa;
 	Claire claireCharacter;
 	Gillbert gillbertCharacter;
 	Gnomercy gnomercyCharacter;
