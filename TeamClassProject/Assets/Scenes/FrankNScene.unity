@@ -884,6 +884,7 @@ GameObject:
   - component: {fileID: 417905998}
   - component: {fileID: 417905997}
   - component: {fileID: 417905999}
+  - component: {fileID: 417906000}
   m_Layer: 0
   m_Name: Wawa
   m_TagString: Untagged
@@ -947,8 +948,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 417905992}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.212, y: -2.318, z: 0.37963614}
-  m_LocalScale: {x: 0.39106798, y: 0.39106798, z: 0.39106798}
+  m_LocalPosition: {x: -4.8, y: 0.13, z: 0.37963614}
+  m_LocalScale: {x: 1.1507758, y: 1.1507758, z: 1.1507758}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -1009,9 +1010,9 @@ MonoBehaviour:
   speed: 6
   weight: 3
   gravityUp: 5
-  gravityDown: 5
+  gravityDown: 15
   jumpVel: 1.5
-  maxDownVel: 0
+  maxDownVel: 8
   BN_Damage: 0
   BN_Angle: 0
   BN_Knockback: 0
@@ -1079,7 +1080,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 6
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1094,12 +1095,32 @@ Animation:
   m_GameObject: {fileID: 417905992}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
+  m_Animation: {fileID: 7400000, guid: 901db73194cc176438a39891cccc2df6, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 901db73194cc176438a39891cccc2df6, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!95 &417906000
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417905992}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &472074407
 GameObject:
   m_ObjectHideFlags: 0
