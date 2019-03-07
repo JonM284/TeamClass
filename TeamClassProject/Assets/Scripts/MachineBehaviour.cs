@@ -170,8 +170,8 @@ public class MachineBehaviour : MonoBehaviour
 
         if (myPlayer.GetButtonDown("Jump") && can_Use)
         {
-            Debug.Log(Controlled_Hazard[Current_Haz_Num].transform.GetChild(0).transform.name);
-            Vector3 dir = Controlled_Hazard[Current_Haz_Num].transform.GetChild(0).transform.position - Controlled_Hazard[Current_Haz_Num].transform.position;
+            //Debug.Log(Controlled_Hazard[Current_Haz_Num].transform.GetChild(0).transform.name);
+            //Vector3 dir = Controlled_Hazard[Current_Haz_Num].transform.GetChild(0).transform.position - Controlled_Hazard[Current_Haz_Num].transform.position;
             objectPool.SpawnFromPool("CannonBall", Controlled_Hazard[Current_Haz_Num].transform.position,
                 Quaternion.Euler(Move_Rotation));
             End_Control();

@@ -14,13 +14,13 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Is_At_Machine
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -334,7 +334,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 6
     m_ConditionEvent: Anim_Num
-    m_EventTreshold: 3
+    m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102073487987488918}
   m_Solo: 0
@@ -412,7 +412,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 6
     m_ConditionEvent: Anim_Num
-    m_EventTreshold: 3
+    m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102073487987488918}
   m_Solo: 0
@@ -1073,7 +1073,7 @@ AnimatorStateMachine:
     m_Position: {x: 744, y: 504, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102258494160815450}
-    m_Position: {x: 528, y: 588, z: 0}
+    m_Position: {x: 540, y: 564, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102039129513407532}
     m_Position: {x: 204, y: 648, z: 0}

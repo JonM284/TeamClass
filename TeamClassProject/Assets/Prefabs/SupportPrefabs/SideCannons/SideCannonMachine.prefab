@@ -120,9 +120,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is_In_Use: 0
-  Controlled_Hazzard:
-  - {fileID: 0}
-  - {fileID: 0}
+  Controlled_Hazard: []
   speed: 28
   max_Machines_Amnt: 2
+  Max_range: 0
   mach: 0
+  can_Use: 0
+  sideHazardMachineEnabled: 0
+  Hazard_StartPos: []
+  Hazard_MaxPos: []
+  Hazard_MinPos: []
