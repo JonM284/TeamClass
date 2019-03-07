@@ -40,7 +40,10 @@ public class MachineBehaviour2 : MonoBehaviour
     //This is in order to "Spawn in" objects
     private ObjectSpawner objectPool;
     private Vector3 Move_Rotation, originalRotation;
-    
+
+    public FairyScript fairyScript;
+
+    public GameObject my_Controller_Player;
 
     // Start is called before the first frame update
     void Start()
@@ -52,14 +55,13 @@ public class MachineBehaviour2 : MonoBehaviour
         Move_Rotation = new Vector3(0, 0, 90);
         //get an instance of the object spawner so we can spawn objects
         objectPool = ObjectSpawner.Instance;
-
+        my_Controller_Player = null;
 
         //only do this if this machine is of type "Background Cannon" 
         if (mach == MachineID.Fairy)
         {
             Controlled_Hazard[0].SetActive(false);
         }
-
 
     }
 
@@ -110,8 +112,10 @@ public class MachineBehaviour2 : MonoBehaviour
 
         vel.x = horizontalInput * speed;
         vel.y = verticalInput * speed;
-
-        print(vel.y);
+        if (fairyScript.fairyHitPlayer == true)
+        {
+            End_Control();
+        }
 
         //this allows the player to move the crosshair
         Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
@@ -156,10 +160,11 @@ public class MachineBehaviour2 : MonoBehaviour
     /// </summary>
     /// <param name="playerNum">Player ID from the support character that is activating this machine.</param>
     /// <param name="teamID">Player's Team ID</param>
-    public void Commence_Control(int playerNum, int teamID)
+    public void Commence_Control(int playerNum, int teamID, GameObject player)
     {
         // Recieve the number of a player and use it as my inputs.
         myPlayer = ReInput.players.GetPlayer(playerNum - 1);
+        my_Controller_Player = player;
 
         is_In_Use = true;
 
@@ -184,6 +189,8 @@ public class MachineBehaviour2 : MonoBehaviour
         is_In_Use = false;
         can_Use = false;
         other_can_Use = false;
+        my_Controller_Player.GetComponent<AlternateSP2>().status = AlternateSP2.Status.Free;
+        my_Controller_Player = null;
         // The playerID "-1" does not exist, therefore, the inputs will never be recieved.
         myPlayer = ReInput.players.GetPlayer(-1);
 
