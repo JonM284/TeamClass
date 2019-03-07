@@ -13,6 +13,7 @@ public class Claire : MonoBehaviour
     public float gravityDown;
     public float jumpVel;
     public float maxDownVel;
+    private int playerNumber;
 
     [Header("Basic Attacks")]
     [Header("Basic Neutral")]
@@ -70,6 +71,40 @@ public class Claire : MonoBehaviour
     public GameObject spawnIceShotHere1;
     public float bulletSpeed1;
 
+    [Header("Neutral Heavy")]
+    public float NH_Damage;
+    public float NH_Angle;
+    public float NH_Knockback;
+    public float NH_HitStun;
+    public float NH_Distance;
+    public float NH_TravelTime;
+
+    [Header("Forward Heavy")]
+    public float FH_Damage;
+    public float FH_Angle;
+    public float FH_Knockback;
+    public float FH_HitStun;
+    public float FH_Distance;
+    public float FH_TravelTime;
+
+    [Header("Down Heavy Part 1")]
+    public float DH1_Damage;
+    public float DH1_Angle;
+    public float DH1_Knockback;
+    public float DH1_HitStun;
+    public float DH1_Distance;
+    public float DH1_TravelTime;
+
+    [Header("Down Heavy Part 2")]
+    public float DH2_Damage;
+    public float DH2_Angle;
+    public float DH2_Knockback;
+    public float DH2_HitStun;
+    public float DH2_Distance;
+    public float DH2_TravelTime;
+
+
+
     private float currentAttack;
 
     BasicPlayerScript player;
@@ -77,13 +112,14 @@ public class Claire : MonoBehaviour
 
     private void Awake()
     {
-        
+         
     }
 
     // Start is called before the first frame update
     void Start()
     {
 		player = this.GetComponent<BasicPlayerScript>();
+        playerNumber = GetComponent<BasicPlayerScript>().playerNum;
     }
 
     // Update is called once per frame
@@ -96,48 +132,67 @@ public class Claire : MonoBehaviour
 
     private void NeutralBasic(GameObject enemy)
     {
-		//enemy.GetComponent<BasicPlayerScript>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, BN_Distance, BN_TravelTime, player.FacingRight());
+		enemy.GetComponent<BasicPlayerScript>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, BN_Distance, BN_TravelTime, player.FacingRight());
 	}
 
     private void ForwardBasic()
     {
         GameObject bullet = Instantiate(iceShot, spawnIceShotHere.transform.position, Quaternion.identity);
-        bullet.GetComponent<Projectile>().SetVariables(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, BF_Distance, BF_TravelTime, bulletSpeed);
+        bullet.GetComponent<Projectile>().SetVariables(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, BF_Distance, BF_TravelTime, bulletSpeed, playerNumber);
         bullet.GetComponent<Projectile>().moveRight = player.FacingRight();
         if (player.FacingRight())
         {
-            bullet.GetComponent<Projectile>().direction = new Vector3(1, 0, 0);
+            bullet.GetComponent<Projectile>().direction = new Vector3(-1, 0, 0);
         }
         else
         {
-            bullet.GetComponent<Projectile>().direction = new Vector3(-1, 0, 0);
+            bullet.GetComponent<Projectile>().direction = new Vector3(1, 0, 0);
         }
     }
 
     private void UpBasic(GameObject enemy)
     {
-        //enemy.GetComponent<BasicPlayerScript>().GetHit(BU_Damage, BU_Angle, BU_Knockback, BU_HitStun, BU_Distance, BU_TravelTime, player.FacingRight());
+        enemy.GetComponent<BasicPlayerScript>().GetHit(BU_Damage, BU_Angle, BU_Knockback, BU_HitStun, BU_Distance, BU_TravelTime, player.FacingRight());
     }
 
     private void DownBasic(GameObject enemy)
     {
-        //enemy.GetComponent<BasicPlayerScript>().GetHit(BD_Damage, BD_Angle, BD_Knockback, BD_HitStun, BD_Distance, BD_TravelTime, player.FacingRight());
+        enemy.GetComponent<BasicPlayerScript>().GetHit(BD_Damage, BD_Angle, BD_Knockback, BD_HitStun, BD_Distance, BD_TravelTime, player.FacingRight());
     }
 
     private void NeutralAir(GameObject enemy)
     {
-        //enemy.GetComponent<BasicPlayerScript>().GetHit(NA_Damage, NA_Angle, NA_Knockback, NA_HitStun, NA_Distance, NA_TravelTime, player.FacingRight());
+        enemy.GetComponent<BasicPlayerScript>().GetHit(NA_Damage, NA_Angle, NA_Knockback, NA_HitStun, NA_Distance, NA_TravelTime, player.FacingRight());
     }
 
     private void UpAir()
     {
         GameObject bullet = Instantiate(iceShot, spawnIceShotHere1.transform.position, Quaternion.identity);
-        bullet.GetComponent<Projectile>().SetVariables(UA_Damage, UA_Angle, UA_Knockback, UA_HitStun, UA_Distance, UA_TravelTime, bulletSpeed1);
+        bullet.GetComponent<Projectile>().SetVariables(UA_Damage, UA_Angle, UA_Knockback, UA_HitStun, UA_Distance, UA_TravelTime, bulletSpeed1, playerNumber);
         bullet.GetComponent<Projectile>().direction = new Vector3(0, 1, 0);
         bullet.GetComponent<Projectile>().moveRight = player.FacingRight();
     }
 
-    
+    private void NeutralHeavy(GameObject enemy)
+    {
+        enemy.GetComponent<BasicPlayerScript>().GetHit(NH_Damage, NH_Angle, NH_Knockback, NH_HitStun, NH_Distance, NH_TravelTime, player.FacingRight());
+    }
+
+    private void ForwardHeavy(GameObject enemy)
+    {
+        enemy.GetComponent<BasicPlayerScript>().GetHit(FH_Damage, FH_Angle, FH_Knockback, FH_HitStun, FH_Distance, FH_TravelTime, player.FacingRight());
+    }
+
+    private void DownHeavyPart1(GameObject enemy)
+    {
+        enemy.GetComponent<BasicPlayerScript>().GetHit(DH1_Damage, DH1_Angle, DH1_Knockback, DH1_HitStun, DH1_Distance, DH1_TravelTime, player.FacingRight());
+    }
+
+    private void DownHeavyPart2(GameObject enemy)
+    {
+        enemy.GetComponent<BasicPlayerScript>().GetHit(DH2_Damage, DH2_Angle, DH2_Knockback, DH2_HitStun, DH2_Distance, DH2_TravelTime, player.FacingRight());
+    }
+
 
     public void CurrentAttack(int attackNum)
     {
@@ -162,31 +217,63 @@ public class Claire : MonoBehaviour
      * 
      * 9 = neutral aerial
      * 
+     * 
+     * 20 = neutral heavy
+     * 21 = forward heavy
+     * 22 = down heavy part 1
+     * 23 = down heavy part 2
+     * 
      */
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag == "Player")
         {
-            switch(currentAttack)
+            try
             {
-                case 0:
-                    break;
+                if (other.transform.root.gameObject.GetComponent<BasicPlayerScript>().playerNum != playerNumber)
+                {
+                    switch (currentAttack)
+                    {
+                        case 0:
+                            break;
 
-                case 1:
-                    NeutralBasic(other.gameObject);
-                    break;
+                        case 1:
+                            NeutralBasic(other.gameObject);
+                            break;
 
-                case 3:
-                    UpBasic(other.gameObject);
-                    break;
+                        case 3:
+                            UpBasic(other.gameObject);
+                            break;
 
-                case 4:
-                    DownBasic(other.gameObject);
-                    break;
+                        case 4:
+                            DownBasic(other.gameObject);
+                            break;
 
-                case 9:
-                    NeutralAir(other.gameObject);
-                    break;
+                        case 9:
+                            NeutralAir(other.gameObject);
+                            break;
+
+                        case 20:
+                            NeutralHeavy(other.gameObject);
+                            break;
+
+                        case 21:
+                            ForwardHeavy(other.gameObject);
+                            break;
+
+                        case 22:
+                            DownHeavyPart1(other.gameObject);
+                            break;
+
+                        case 23:
+                            DownHeavyPart2(other.gameObject);
+                            break;
+                    }
+                }
+            }
+            catch
+            {
+
             }
         }
     }

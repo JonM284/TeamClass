@@ -4,7 +4,7 @@ using UnityEngine;
 using Rewired;
 using Rewired.ControllerExtensions;
 
-public class AlternateSP : MonoBehaviour
+public class AlternateSP2 : MonoBehaviour
 {
 
     //public variables
@@ -99,16 +99,16 @@ public class AlternateSP : MonoBehaviour
             if (status == Status.Free)
             {
                 status = Status.AtMachine;
-                if (!myMachine.GetComponent<MachineBehaviour>().is_In_Use) {
-                    myMachine.GetComponent<MachineBehaviour>().Commence_Control(playerNum, teamID);
+                if (!myMachine.GetComponent<MachineBehaviour2>().is_In_Use) {
+                    myMachine.GetComponent<MachineBehaviour2>().Commence_Control(playerNum, teamID);
                 }
                 Debug.Log(status);
             }else if (status == Status.AtMachine)
             {
                 status = Status.Free;
-                if (myMachine.GetComponent<MachineBehaviour>().is_In_Use)
+                if (myMachine.GetComponent<MachineBehaviour2>().is_In_Use)
                 {
-                    myMachine.GetComponent<MachineBehaviour>().End_Control();
+                    myMachine.GetComponent<MachineBehaviour2>().End_Control();
                     Debug.Log("Has detached from machine with Jump");
                 }
                 
@@ -116,9 +116,9 @@ public class AlternateSP : MonoBehaviour
             }
         }else if (is_In_Area && myPlayer.GetButtonDown("HeavyAttack"))
         {
-            if (myMachine.GetComponent<MachineBehaviour>().is_In_Use)
+            if (myMachine.GetComponent<MachineBehaviour2>().is_In_Use)
             {
-                myMachine.GetComponent<MachineBehaviour>().End_Control();
+                myMachine.GetComponent<MachineBehaviour2>().End_Control();
                 myMachine = null;
                 Debug.Log("Has detached from machine with Heavy Attack");
             }

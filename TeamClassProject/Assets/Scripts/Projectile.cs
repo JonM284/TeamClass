@@ -15,6 +15,7 @@ public class Projectile : MonoBehaviour
     public float hitStun;
     public float distance;
     public float travelTime;
+    public float playerNum;
     public Vector3 direction;
 
     // Start is called before the first frame update
@@ -23,7 +24,7 @@ public class Projectile : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void SetVariables(float damage1, float angle1, float knockback1, float hitStun1, float distance1, float travelTime1, float speed1)
+    public void SetVariables(float damage1, float angle1, float knockback1, float hitStun1, float distance1, float travelTime1, float speed1, int playerNum1)
     {
         damage = damage1;
         angle = angle1;
@@ -32,6 +33,7 @@ public class Projectile : MonoBehaviour
         distance = distance1;
         travelTime = travelTime1;
         speed = speed1;
+        playerNum = playerNum1;
     }
 
     // Update is called once per frame
@@ -45,10 +47,20 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            //other.gameObject.GetComponent<BasicPlayerScript>().GetHit(damage, angle, knockback, hitStun, distance, travelTime, moveRight);
+            try
+            {
+                if (other.transform.root.gameObject.GetComponent<BasicPlayerScript>().playerNum != playerNum)
+                {                
+                    other.gameObject.GetComponent<BasicPlayerScript>().GetHit(damage, angle, knockback, hitStun, distance, travelTime, moveRight);
+                    Destroy(gameObject);
+                }
+            }
+            catch
+            {
+
+            }
         }
-        Destroy(gameObject);
     }
 }
