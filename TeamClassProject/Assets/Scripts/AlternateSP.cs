@@ -174,12 +174,12 @@ public class AlternateSP : MonoBehaviour
 
         if (status == Status.AtMachine && (myPlayer.GetAxisRaw("Horizontal") >= 0.1f || myPlayer.GetAxisRaw("Vertical") >= 0.1f))
         {
-            anim.SetInteger("Anim_Num", 7);
+            anim.SetInteger("Anim_Num", 6);
         }
 
         if (status == Status.AtMachine && (myPlayer.GetAxisRaw("Horizontal") <= -0.1f || myPlayer.GetAxisRaw("Vertical") <= -0.1f))
         {
-            anim.SetInteger("Anim_Num", 6);
+            anim.SetInteger("Anim_Num", 7);
         }
 
 

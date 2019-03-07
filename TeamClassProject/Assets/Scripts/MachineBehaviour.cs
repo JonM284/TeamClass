@@ -168,7 +168,7 @@ public class MachineBehaviour : MonoBehaviour
 
         }
 
-        if (myPlayer.GetButtonDown("Jump") && can_Use)
+        if (myPlayer.GetButtonDown("BasicAttack") && can_Use)
         {
             //Debug.Log(Controlled_Hazard[Current_Haz_Num].transform.GetChild(0).transform.name);
             //Vector3 dir = Controlled_Hazard[Current_Haz_Num].transform.GetChild(0).transform.position - Controlled_Hazard[Current_Haz_Num].transform.position;
@@ -178,19 +178,34 @@ public class MachineBehaviour : MonoBehaviour
             Debug.Log("Has Spawned object");
         }
 
+        if (myPlayer.GetButtonDown("Jump"))
+        {
+            End_Control();
+        }
+
         if (Current_Haz_Num >= max_Machines_Amnt)
         {
             Current_Haz_Num = 0;
         }
 
         
-        if (verticalInput > 0.1f)
+        if (verticalInput > 0.1f && Move_Rotation.z < Max_range)
         {
             Move_Rotation.z += Time.deltaTime * speed;
         }
-        if (verticalInput < -0.1f)
+        if (verticalInput < -0.1f && Move_Rotation.z > -Max_range)
         {
             Move_Rotation.z -= Time.deltaTime * speed;
+        }
+
+
+        if (Move_Rotation.z > Max_range)
+        {
+            Move_Rotation.z = Max_range;
+        }
+        if (Move_Rotation.z < -Max_range)
+        {
+            Move_Rotation.z = -Max_range;
         }
 
         Controlled_Hazard[Current_Haz_Num].transform.rotation = Quaternion.Euler(Move_Rotation);
@@ -209,11 +224,16 @@ public class MachineBehaviour : MonoBehaviour
         vel.y = verticalInput * speed;
 
         //this allows the player to spawn an object in the position where the crosshair is
-        if (myPlayer.GetButtonDown("Jump") && can_Use)
+        if (myPlayer.GetButtonDown("BasicAttack") && can_Use)
         {
             objectPool.SpawnFromPool("Tester", Controlled_Hazard[Current_Haz_Num].transform.position, Quaternion.identity);
             End_Control();
             Debug.Log("Has Spawned object");
+        }
+
+        if (myPlayer.GetButtonDown("Jump"))
+        {
+            End_Control();
         }
 
         //this allows the player to move the crosshair
@@ -253,16 +273,20 @@ public class MachineBehaviour : MonoBehaviour
             Controlled_Hazard[Current_Haz_Num].GetComponent<Eel_Movement>().Eel_Active = true;
             End_Control();
         }
-        
 
-       /* //cooldown timer
-        sideHazardCooldownTimer -= Time.deltaTime;
-
-        //cooldown finished
-        if (sideHazardCooldownTimer < 0)
+        if (myPlayer.GetButtonDown("Jump"))
         {
-            sideHazardReady = true;
-        }*/
+            End_Control();
+        }
+
+        /* //cooldown timer
+         sideHazardCooldownTimer -= Time.deltaTime;
+
+         //cooldown finished
+         if (sideHazardCooldownTimer < 0)
+         {
+             sideHazardReady = true;
+         }*/
 
         if (Controlled_Hazard[Current_Haz_Num].transform.position.y >= Hazard_MaxPos[Current_Haz_Num].y)
         {

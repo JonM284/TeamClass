@@ -40,7 +40,7 @@ public class SideCannon_projectile : MonoBehaviour
             timer = -1;
         }
 
-        rb.MovePosition(transform.position + transform.right * Time.deltaTime); 
+        rb.MovePosition(transform.position + transform.right * speed * Time.deltaTime); 
     }
 
     private void OnTriggerEnter2D(Collider2D other)
