@@ -175,7 +175,8 @@ public class BasicPlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log(maxKnockbackTime);
+        Debug.Log(currentKnockbackTime);
 		healthBar.fillAmount = currentHealth / maxHealth;
 		regenableHealthBar.fillAmount = regenHeath / maxHealth;
 
@@ -200,7 +201,14 @@ public class BasicPlayerScript : MonoBehaviour
 			Gravity();
 		}
 
-	}
+        //knockback stuff
+        if (currentKnockbackTime / maxKnockbackTime < .98f)
+        {
+            Knockback();
+            //velocity = (hitDirection * knockback);
+        }
+
+    }
 
 	private void LateUpdate()
 	{
@@ -463,7 +471,64 @@ public class BasicPlayerScript : MonoBehaviour
 		}
 	}
 
-	public bool FacingRight()
+    public void Knockback()
+    {
+        currentKnockbackTime += Time.deltaTime;
+
+        //exponential knockback movement
+        float progress = currentKnockbackTime / maxKnockbackTime;
+        progress = Mathf.Sin(progress * Mathf.PI * 0.5f);
+        // velocity = startPosition - Vector3.Lerp(startPosition, endPosition, progress * Time.deltaTime);
+        rb.MovePosition(Vector3.Lerp(startPosition, endPosition, progress * Time.deltaTime));
+    }
+
+    /// <summary>
+    /// This function gets called when an enemy hits you
+    /// </summary>
+    /// <param name="attackDamage">is the how much the players health/armor goes down.</param>
+    /// <param name="attackAngle">is the angle you get sent flying when you get hit. [*possibly* affected by player weight]</param>
+    /// <param name="attackForce"> is how far back you get sent flying. [affected by player weight]</param>
+    /// <param name="hitStun">is how long the player has to wait before they can do anything</param>
+    /// <param name="distance">How far does the enemy fly</param>
+    /// <param name="travelTime">How long should it take for the enemy to get to that distance</param>
+    /// <param name="facingRight">Checks which way the player is facing when they do the attack so that it knows whether or not to reverse the knockback</param>
+    public void GetHit(float attackDamage, float attackAngle, float attackForce, float hitStun, float distance, float travelTime, bool facingRight)//im probably missing a few arguments
+    {
+        if (gotHitTimer < 0)
+        {
+            currentHealth -= attackDamage;
+            hitAngle = attackAngle;
+            regenHeath -= attackDamage * regenHeathMultiplier;
+            velocity = new Vector3(0, 0, 0);
+            maxDistance = distance;
+            maxKnockbackTime = travelTime;
+            currentKnockbackTime = 0;
+            startPosition = transform.position;
+            isAttacking = false;
+
+            gotHitTimer = hitStun;
+            knockback = attackForce;
+            Vector3 dir = new Vector3(0, 0, 0);
+            if (facingRight)
+            {
+                dir = Quaternion.AngleAxis(attackAngle, Vector3.forward) * Vector3.right;
+                hitDirection = dir;
+                endPosition = transform.position + (hitDirection.normalized * distance);
+                direction = "Left";
+            }
+            else
+            {
+                dir = Quaternion.AngleAxis(attackAngle, -Vector3.forward) * -Vector3.right;
+                hitDirection = new Vector3(-dir.x, dir.y, dir.z);
+                endPosition = transform.position + (hitDirection.normalized * distance);
+                direction = "Right";
+            }
+            //rb.AddForce(dir * attackForce);
+            // rb.AddForce(new Vector2(attackForce, 0));
+        }
+    }
+
+    public bool FacingRight()
 	{
 		if ((makeFaceRight && transform.localScale.x < 0) || (!makeFaceRight && transform.localScale.x > 0))
 		{

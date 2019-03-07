@@ -13,6 +13,7 @@ public class Claire : MonoBehaviour
     public float gravityDown;
     public float jumpVel;
     public float maxDownVel;
+    private int playerNumber;
 
     [Header("Basic Attacks")]
     [Header("Basic Neutral")]
@@ -77,13 +78,14 @@ public class Claire : MonoBehaviour
 
     private void Awake()
     {
-        
+         
     }
 
     // Start is called before the first frame update
     void Start()
     {
 		player = this.GetComponent<BasicPlayerScript>();
+        playerNumber = GetComponent<BasicPlayerScript>().playerNum;
     }
 
     // Update is called once per frame
@@ -96,7 +98,7 @@ public class Claire : MonoBehaviour
 
     private void NeutralBasic(GameObject enemy)
     {
-		//enemy.GetComponent<BasicPlayerScript>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, BN_Distance, BN_TravelTime, player.FacingRight());
+		enemy.GetComponent<BasicPlayerScript>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, BN_Distance, BN_TravelTime, player.FacingRight());
 	}
 
     private void ForwardBasic()
@@ -116,17 +118,17 @@ public class Claire : MonoBehaviour
 
     private void UpBasic(GameObject enemy)
     {
-        //enemy.GetComponent<BasicPlayerScript>().GetHit(BU_Damage, BU_Angle, BU_Knockback, BU_HitStun, BU_Distance, BU_TravelTime, player.FacingRight());
+        enemy.GetComponent<BasicPlayerScript>().GetHit(BU_Damage, BU_Angle, BU_Knockback, BU_HitStun, BU_Distance, BU_TravelTime, player.FacingRight());
     }
 
     private void DownBasic(GameObject enemy)
     {
-        //enemy.GetComponent<BasicPlayerScript>().GetHit(BD_Damage, BD_Angle, BD_Knockback, BD_HitStun, BD_Distance, BD_TravelTime, player.FacingRight());
+        enemy.GetComponent<BasicPlayerScript>().GetHit(BD_Damage, BD_Angle, BD_Knockback, BD_HitStun, BD_Distance, BD_TravelTime, player.FacingRight());
     }
 
     private void NeutralAir(GameObject enemy)
     {
-        //enemy.GetComponent<BasicPlayerScript>().GetHit(NA_Damage, NA_Angle, NA_Knockback, NA_HitStun, NA_Distance, NA_TravelTime, player.FacingRight());
+        enemy.GetComponent<BasicPlayerScript>().GetHit(NA_Damage, NA_Angle, NA_Knockback, NA_HitStun, NA_Distance, NA_TravelTime, player.FacingRight());
     }
 
     private void UpAir()
@@ -167,26 +169,36 @@ public class Claire : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            switch(currentAttack)
+            try
             {
-                case 0:
-                    break;
+                if (other.transform.root.gameObject.GetComponent<BasicPlayerScript>().playerNum != playerNumber)
+                {
+                    switch (currentAttack)
+                    {
+                        case 0:
+                            break;
 
-                case 1:
-                    NeutralBasic(other.gameObject);
-                    break;
+                        case 1:
+                            NeutralBasic(other.gameObject);
+                            break;
 
-                case 3:
-                    UpBasic(other.gameObject);
-                    break;
+                        case 3:
+                            UpBasic(other.gameObject);
+                            break;
 
-                case 4:
-                    DownBasic(other.gameObject);
-                    break;
+                        case 4:
+                            DownBasic(other.gameObject);
+                            break;
 
-                case 9:
-                    NeutralAir(other.gameObject);
-                    break;
+                        case 9:
+                            NeutralAir(other.gameObject);
+                            break;
+                    }
+                }
+            }
+            catch
+            {
+
             }
         }
     }
