@@ -613,6 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 602725e80ed10407390ba99273eb41ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPos: {x: 0, y: 0, z: 0}
   machineBehaviourScript_OnFairyMachine: {fileID: 1657217328}
   fairyHitPlayer: 0
 --- !u!1 &286675038
@@ -6949,6 +6950,7 @@ MonoBehaviour:
   mach: 0
   can_Use: 0
   fairyScript: {fileID: 191691700}
+  my_Controller_Player: {fileID: 0}
 --- !u!61 &1657217329
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class FairyScript : MonoBehaviour
 {
-    private Vector3 startPos;
+    public Vector3 startPos;
     public MachineBehaviour2 machineBehaviourScript_OnFairyMachine;
     public bool fairyHitPlayer;
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class FairyScript : MonoBehaviour
         
     }
 
+
     void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.tag == "Player")
@@ -29,7 +31,6 @@ public class FairyScript : MonoBehaviour
 
             other.gameObject.GetComponent<BasicPlayerScript>().GetHit(-250f, 0, 0, 0, 0, 0, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight());
             transform.position = startPos;
-            //gameObject.SetActive(false);
 
         }
     }

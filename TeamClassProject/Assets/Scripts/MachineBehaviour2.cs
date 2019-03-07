@@ -114,6 +114,7 @@ public class MachineBehaviour2 : MonoBehaviour
         vel.y = verticalInput * speed;
         if (fairyScript.fairyHitPlayer == true)
         {
+            StartCoroutine(FairyResetInitialDelay());
             End_Control();
         }
 
@@ -125,7 +126,11 @@ public class MachineBehaviour2 : MonoBehaviour
 
     }
 
-
+    IEnumerator FairyResetInitialDelay()
+    {
+        yield return new WaitForSeconds(1.0f);
+        fairyScript.fairyHitPlayer = false;
+    }
 
     //--------------------------------------------------------------------------------------------------
     /// <summary>
@@ -196,6 +201,7 @@ public class MachineBehaviour2 : MonoBehaviour
 
         if (mach == MachineID.Fairy)
         {
+            Controlled_Hazard[0].transform.position = fairyScript.startPos;
             Controlled_Hazard[0].SetActive(false);
         }
 
