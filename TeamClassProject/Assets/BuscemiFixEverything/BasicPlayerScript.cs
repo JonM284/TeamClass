@@ -465,7 +465,47 @@ public class BasicPlayerScript : MonoBehaviour
                     isAttacking = true;
 				}
 			}
-		}
+
+            //Neutral Heavy
+            if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onTopOfPlatform)
+            {
+                if (myPlayer.GetButtonDown("HeavyAttack"))
+                {
+                    anim.SetTrigger("HeavyNeutral");
+                    isAttacking = true;
+                    velocity.x = 0;
+                }
+            }
+
+            //forward heavy attack
+            if (((myPlayer.GetAxis("Horizontal") > .3f && myPlayer.GetAxis("Horizontal") > -.3f) || (myPlayer.GetAxis("Horizontal")) < .3f && myPlayer.GetAxis("Horizontal") < -.3f) && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onTopOfPlatform)
+            {
+                if (myPlayer.GetButtonDown("HeavyAttack"))
+                {
+                    anim.SetTrigger("HeavyForward");
+                    isAttacking = true;
+                    if(velocity.x > 0)
+                    {
+                        velocity.x += 4;
+                    }
+                    else
+                    {
+                        velocity.x -= 4;
+                    }
+                }
+            }
+
+            //Down Heavy
+            if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") < -.3f && onTopOfPlatform)
+            {
+                if (myPlayer.GetButtonDown("HeavyAttack"))
+                {
+                    anim.SetTrigger("HeavyDown");
+                    isAttacking = true;
+                    velocity.x = 0;
+                }
+            }
+        }
 	}
 
 	void Gravity()

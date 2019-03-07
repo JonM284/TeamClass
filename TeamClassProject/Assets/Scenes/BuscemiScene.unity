@@ -1242,6 +1242,30 @@ MonoBehaviour:
   UA_TravelTime: 0.1
   spawnIceShotHere1: {fileID: 187752564}
   bulletSpeed1: 16
+  NH_Damage: 0
+  NH_Angle: 0
+  NH_Knockback: 0
+  NH_HitStun: 0
+  NH_Distance: 0
+  NH_TravelTime: 0
+  FH_Damage: 0
+  FH_Angle: 0
+  FH_Knockback: 0
+  FH_HitStun: 0
+  FH_Distance: 0
+  FH_TravelTime: 0
+  DH1_Damage: 0
+  DH1_Angle: 0
+  DH1_Knockback: 0
+  DH1_HitStun: 0
+  DH1_Distance: 0
+  DH1_TravelTime: 0
+  DH2_Damage: 0
+  DH2_Angle: 0
+  DH2_Knockback: 0
+  DH2_HitStun: 0
+  DH2_Distance: 0
+  DH2_TravelTime: 0
 --- !u!114 &132821078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3341,6 +3365,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &381576790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 381576791}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &381576791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381576790}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1481793953}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &390785440
 GameObject:
   m_ObjectHideFlags: 0
@@ -4340,6 +4394,53 @@ Transform:
   m_Father: {fileID: 1088747335}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &529143158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 529143159}
+  - component: {fileID: 529143160}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &529143159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529143158}
+  m_LocalRotation: {x: -0, y: -0, z: 0.016313061, w: -0.999867}
+  m_LocalPosition: {x: -0.026763627, y: -0.36137533, z: 0}
+  m_LocalScale: {x: 1.258903, y: 1.2275783, z: 1.2652544}
+  m_Children: []
+  m_Father: {fileID: 1481793953}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &529143160
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529143158}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.12, y: 0.01}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &574922446
 GameObject:
   m_ObjectHideFlags: 0
@@ -7658,6 +7759,30 @@ MonoBehaviour:
   UA_TravelTime: 0.1
   spawnIceShotHere1: {fileID: 620515180}
   bulletSpeed1: 16
+  NH_Damage: 0
+  NH_Angle: 0
+  NH_Knockback: 0
+  NH_HitStun: 0
+  NH_Distance: 0
+  NH_TravelTime: 0
+  FH_Damage: 0
+  FH_Angle: 0
+  FH_Knockback: 0
+  FH_HitStun: 0
+  FH_Distance: 0
+  FH_TravelTime: 0
+  DH1_Damage: 0
+  DH1_Angle: 0
+  DH1_Knockback: 0
+  DH1_HitStun: 0
+  DH1_Distance: 0
+  DH1_TravelTime: 0
+  DH2_Damage: 0
+  DH2_Angle: 0
+  DH2_Knockback: 0
+  DH2_HitStun: 0
+  DH2_Distance: 0
+  DH2_TravelTime: 0
 --- !u!114 &672828760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8578,6 +8703,30 @@ MonoBehaviour:
   UA_TravelTime: 0
   spawnIceShotHere1: {fileID: 0}
   bulletSpeed1: 0
+  NH_Damage: 0
+  NH_Angle: 0
+  NH_Knockback: 0
+  NH_HitStun: 0
+  NH_Distance: 0
+  NH_TravelTime: 0
+  FH_Damage: 0
+  FH_Angle: 0
+  FH_Knockback: 0
+  FH_HitStun: 0
+  FH_Distance: 0
+  FH_TravelTime: 0
+  DH1_Damage: 0
+  DH1_Angle: 0
+  DH1_Knockback: 0
+  DH1_HitStun: 0
+  DH1_Distance: 0
+  DH1_TravelTime: 0
+  DH2_Damage: 0
+  DH2_Angle: 0
+  DH2_Knockback: 0
+  DH2_HitStun: 0
+  DH2_Distance: 0
+  DH2_TravelTime: 0
 --- !u!61 &784233435
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10862,7 +11011,7 @@ MonoBehaviour:
   BN_Angle: 60
   BN_Knockback: 10
   BN_HitStun: 0.4
-  BN_Distance: 300
+  BN_Distance: 200
   BN_TravelTime: 0.45
   BF_Damage: 30
   BF_Angle: 30
@@ -10899,6 +11048,30 @@ MonoBehaviour:
   UA_TravelTime: 0.1
   spawnIceShotHere1: {fileID: 132038554}
   bulletSpeed1: 16
+  NH_Damage: 150
+  NH_Angle: 30
+  NH_Knockback: 9
+  NH_HitStun: 0.3
+  NH_Distance: 300
+  NH_TravelTime: 0.4
+  FH_Damage: 120
+  FH_Angle: 39
+  FH_Knockback: 9
+  FH_HitStun: 0.3
+  FH_Distance: 255
+  FH_TravelTime: 0.45
+  DH1_Damage: 10
+  DH1_Angle: 125
+  DH1_Knockback: 2
+  DH1_HitStun: 0.4
+  DH1_Distance: 35
+  DH1_TravelTime: 0.4
+  DH2_Damage: 160
+  DH2_Angle: 55
+  DH2_Knockback: 11
+  DH2_HitStun: 0.5
+  DH2_Distance: 275
+  DH2_TravelTime: 0.6
 --- !u!114 &1088747330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13262,6 +13435,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1363173270}
   - component: {fileID: 1363173271}
+  - component: {fileID: 1363173272}
   m_Layer: 0
   m_Name: Crystal Floor
   m_TagString: Untagged
@@ -13331,6 +13505,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1363173272
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363173269}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.57360315, y: 0.32}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.97933406, y: 0.028522428}
+    oldSize: {x: 1.1966667, y: 0.8066667}
+    newSize: {x: 1.1966667, y: 0.8066667}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1966667, y: 0.57}
+  m_EdgeRadius: 0
 --- !u!1 &1367730222
 GameObject:
   m_ObjectHideFlags: 0
@@ -13980,6 +14180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1481793953}
   - component: {fileID: 1481793954}
+  - component: {fileID: 1481793955}
   m_Layer: 0
   m_Name: Front Crystal Fist
   m_TagString: Untagged
@@ -13997,7 +14198,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0.19679192, w: 0.9804453}
   m_LocalPosition: {x: 0.03, y: -0.31, z: 0}
   m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 381576791}
+  - {fileID: 529143159}
   m_Father: {fileID: 1343313251}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -22.699001}
@@ -14049,6 +14252,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &1481793955
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481793952}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000019751647, y: -0.25290617}
+  serializedVersion: 2
+  m_Radius: 0.7
 --- !u!1 &1504907993
 GameObject:
   m_ObjectHideFlags: 0
@@ -14530,6 +14749,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1553553209}
   - component: {fileID: 1553553210}
+  - component: {fileID: 1553553211}
   m_Layer: 0
   m_Name: Back Crystal Fist
   m_TagString: Untagged
@@ -14599,6 +14819,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &1553553211
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553553208}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.016860366, y: -0.23604658}
+  serializedVersion: 2
+  m_Radius: 0.62
 --- !u!1 &1567374253
 GameObject:
   m_ObjectHideFlags: 0
@@ -16474,6 +16710,30 @@ MonoBehaviour:
   UA_TravelTime: 0.1
   spawnIceShotHere1: {fileID: 307910845}
   bulletSpeed1: 16
+  NH_Damage: 0
+  NH_Angle: 0
+  NH_Knockback: 0
+  NH_HitStun: 0
+  NH_Distance: 0
+  NH_TravelTime: 0
+  FH_Damage: 0
+  FH_Angle: 0
+  FH_Knockback: 0
+  FH_HitStun: 0
+  FH_Distance: 0
+  FH_TravelTime: 0
+  DH1_Damage: 0
+  DH1_Angle: 0
+  DH1_Knockback: 0
+  DH1_HitStun: 0
+  DH1_Distance: 0
+  DH1_TravelTime: 0
+  DH2_Damage: 0
+  DH2_Angle: 0
+  DH2_Knockback: 0
+  DH2_HitStun: 0
+  DH2_Distance: 0
+  DH2_TravelTime: 0
 --- !u!114 &1780422898
 MonoBehaviour:
   m_ObjectHideFlags: 0
