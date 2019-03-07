@@ -182,21 +182,34 @@ public class BasicPlayerScript : MonoBehaviour
 
 		if (!isAttacking)
 		{
-			Movement();
 			Attack();
 		}
 
-	}
+        if (!isAttacking || !onTopOfPlatform)
+        {
+            Movement();
+        }
+
+    }
 
  void FixedUpdate()
 	{
+        if(gotHitTimer > 0)
+        {
+            anim.SetBool("hitstun", true);
+        }
+        else
+        {
+            anim.SetBool("hitstun", false);
+        }
 
-		if (!isAttacking)
+		if (!isAttacking || !onTopOfPlatform)
 		{
-			FixedMovement();
-		}
+            FixedMovement();
+        }
+   
 
-		if (!onTopOfPlatform && state == PlayerState.Fighter)
+        if (!onTopOfPlatform && state == PlayerState.Fighter)
 		{
 			Gravity();
 		}
@@ -438,8 +451,8 @@ public class BasicPlayerScript : MonoBehaviour
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
-					//anim.SetInteger("State", (int)animations.neutral_air);
-					isAttacking = true;
+                    anim.SetTrigger("NeutralAir");
+                    isAttacking = true;
 				}
 			}
 
@@ -448,8 +461,8 @@ public class BasicPlayerScript : MonoBehaviour
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
-					//anim.SetInteger("State", (int)animations.up_air);
-					isAttacking = true;
+                    anim.SetTrigger("UpAir");
+                    isAttacking = true;
 				}
 			}
 		}
@@ -514,14 +527,14 @@ public class BasicPlayerScript : MonoBehaviour
                 dir = Quaternion.AngleAxis(attackAngle, Vector3.forward) * Vector3.right;
                 hitDirection = dir;
                 endPosition = transform.position + (hitDirection.normalized * distance);
-                direction = "Left";
+                direction = "Right";
             }
             else
             {
                 dir = Quaternion.AngleAxis(attackAngle, -Vector3.forward) * -Vector3.right;
                 hitDirection = new Vector3(-dir.x, dir.y, dir.z);
                 endPosition = transform.position + (hitDirection.normalized * distance);
-                direction = "Right";
+                direction = "Left";
             }
             //rb.AddForce(dir * attackForce);
             // rb.AddForce(new Vector2(attackForce, 0));
