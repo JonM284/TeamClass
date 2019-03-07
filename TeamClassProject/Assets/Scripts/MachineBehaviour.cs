@@ -70,6 +70,8 @@ public class MachineBehaviour : MonoBehaviour
     private bool middlePlatform_movingUp;
     private bool middlePlatform_cycleFinished;
 
+    public GameObject my_Controller_Player;
+
 
     // Start is called before the first frame update
     void Start()
@@ -81,7 +83,7 @@ public class MachineBehaviour : MonoBehaviour
         Move_Rotation = new Vector3(0,0,90);
         //get an instance of the object spawner so we can spawn objects
         objectPool = ObjectSpawner.Instance;
-
+        my_Controller_Player = null;
 
         if (mach == MachineID.SideHazard || mach == MachineID.SpecialPlatform) {
             for (int i = 0; i < Controlled_Hazard.Length; i++) {
@@ -172,8 +174,15 @@ public class MachineBehaviour : MonoBehaviour
         {
             //Debug.Log(Controlled_Hazard[Current_Haz_Num].transform.GetChild(0).transform.name);
             //Vector3 dir = Controlled_Hazard[Current_Haz_Num].transform.GetChild(0).transform.position - Controlled_Hazard[Current_Haz_Num].transform.position;
-            objectPool.SpawnFromPool("CannonBall", Controlled_Hazard[Current_Haz_Num].transform.position,
-                Quaternion.Euler(Move_Rotation));
+            if (Current_Haz_Num <= 1) {
+                objectPool.SpawnFromPool("CannonBall_Move_Right", Controlled_Hazard[Current_Haz_Num].transform.position,
+                    Quaternion.Euler(Move_Rotation));
+            }
+            if (Current_Haz_Num >= 2)
+            {
+                objectPool.SpawnFromPool("CannonBall_Move_Left", Controlled_Hazard[Current_Haz_Num].transform.position,
+                    Quaternion.Euler(Move_Rotation));
+            }
             End_Control();
             Debug.Log("Has Spawned object");
         }
@@ -469,11 +478,11 @@ public class MachineBehaviour : MonoBehaviour
     /// </summary>
     /// <param name="playerNum">Player ID from the support character that is activating this machine.</param>
     /// <param name="teamID">Player's Team ID</param>
-    public void Commence_Control(int playerNum, int teamID)
+    public void Commence_Control(int playerNum, int teamID, GameObject player)
     {
         // Recieve the number of a player and use it as my inputs.
         myPlayer = ReInput.players.GetPlayer(playerNum - 1);
-
+        my_Controller_Player = player;
         is_In_Use = true;
 
         StartCoroutine(waitForUse());
@@ -507,6 +516,8 @@ public class MachineBehaviour : MonoBehaviour
         is_In_Use = false;
         can_Use = false;
         other_can_Use = false;
+        my_Controller_Player.GetComponent<AlternateSP>().status = AlternateSP.Status.Free;
+        my_Controller_Player = null;
         // The playerID "-1" does not exist, therefore, the inputs will never be recieved.
         myPlayer = ReInput.players.GetPlayer(-1);
         
@@ -558,7 +569,7 @@ public class MachineBehaviour : MonoBehaviour
         {
             Gizmos.color = new Color32(0, 0, 255, 125);
         }
-        Gizmos.DrawWireSphere(transform.position, 0.5f);
+        Gizmos.DrawWireSphere(transform.position, 0.25f);
     }
 
 
