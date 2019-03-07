@@ -102,7 +102,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 6
+  m_Constraints: 4
 --- !u!61 &2931862945572960436
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -142,8 +142,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveRight: 1
-  speed: 4
+  speed: 1
   damage: 30
   angle: 10
   knockback: 3
   hitStun: 0.01
+  distance: 0
+  travelTime: 0
+  playerNum: 0
+  direction: {x: 0, y: 0, z: 0}

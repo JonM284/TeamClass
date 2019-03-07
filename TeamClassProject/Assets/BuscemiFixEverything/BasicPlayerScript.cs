@@ -74,6 +74,8 @@ public class BasicPlayerScript : MonoBehaviour
 	private float xScale;
 	[HideInInspector]
 	public bool isAttacking;
+	//make the player stop in their tracks
+	bool constrainPosition;
 
 	private Vector3 hitDirection;
 	private float gotHitTimer = 0;
@@ -175,6 +177,15 @@ public class BasicPlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+		//checking the isAttacking boolean and making sure it isn't on when it shouldn't be.
+		if(isAttacking && anim.GetCurrentAnimatorStateInfo(0).IsName("Crystal Idle"))
+		{
+			isAttacking = false;
+		}
+
+		//make sure the player cannot be moved
+
         Debug.Log(maxKnockbackTime);
         Debug.Log(currentKnockbackTime);
 		healthBar.fillAmount = currentHealth / maxHealth;
@@ -203,7 +214,7 @@ public class BasicPlayerScript : MonoBehaviour
             anim.SetBool("hitstun", false);
         }
 
-		if (!isAttacking || !onTopOfPlatform)
+		if (!isAttacking || onPlatformTimer < 0)
 		{
             FixedMovement();
         }
@@ -412,7 +423,7 @@ public class BasicPlayerScript : MonoBehaviour
 		//neutral basic attack
 		if (gotHitTimer < 0)
 		{
-			if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onTopOfPlatform)
+			if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
 			{
 
 				if (myPlayer.GetButtonDown("BasicAttack"))
@@ -420,34 +431,49 @@ public class BasicPlayerScript : MonoBehaviour
 					Debug.Log("Attack");
 					anim.SetTrigger("BasicNeutral");
 					isAttacking = true;
-					accel = 0;
+					if (claire)
+					{
+
+						rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+					}
 				}
 			}
 
 			//up basic attack
-			if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") > .3f && Input.GetAxis("Vertical") > -.3f && onTopOfPlatform)
+			if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") > .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
 					anim.SetTrigger("BasicUp");
 					isAttacking = true;
-					accel = 0;
+					if (claire)
+					{
+
+						rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+					}
 				}
 			}
 
 			//forward basic attack
-			if (((myPlayer.GetAxis("Horizontal") > .3f && myPlayer.GetAxis("Horizontal") > -.3f) || (myPlayer.GetAxis("Horizontal")) < .3f && myPlayer.GetAxis("Horizontal") < -.3f) && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onTopOfPlatform)
+			if (((myPlayer.GetAxis("Horizontal") > .3f && myPlayer.GetAxis("Horizontal") > -.3f) || (myPlayer.GetAxis("Horizontal")) < .3f && myPlayer.GetAxis("Horizontal") < -.3f) && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
 					anim.SetTrigger("BasicForward");
 					isAttacking = true;
-					accel = 0;
+					if (claire)
+					{
+
+						rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+					}
 				}
 			}
 
 			//neutral air attack
-			if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && !onTopOfPlatform)
+			if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer < 0)
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
@@ -457,7 +483,7 @@ public class BasicPlayerScript : MonoBehaviour
 			}
 
 			//up air attack
-			if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") > .3f && Input.GetAxis("Vertical") > -.3f && !onTopOfPlatform)
+			if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") > .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer < 0)
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
@@ -467,42 +493,50 @@ public class BasicPlayerScript : MonoBehaviour
 			}
 
             //Neutral Heavy
-            if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onTopOfPlatform)
+            if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
             {
                 if (myPlayer.GetButtonDown("HeavyAttack"))
                 {
                     anim.SetTrigger("HeavyNeutral");
                     isAttacking = true;
-                    velocity.x = 0;
+					if (claire)
+					{
+
+						rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+					}
                 }
             }
 
             //forward heavy attack
-            if (((myPlayer.GetAxis("Horizontal") > .3f && myPlayer.GetAxis("Horizontal") > -.3f) || (myPlayer.GetAxis("Horizontal")) < .3f && myPlayer.GetAxis("Horizontal") < -.3f) && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onTopOfPlatform)
+            if (((myPlayer.GetAxis("Horizontal") > .3f && myPlayer.GetAxis("Horizontal") > -.3f) || (myPlayer.GetAxis("Horizontal")) < .3f && myPlayer.GetAxis("Horizontal") < -.3f) && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
             {
                 if (myPlayer.GetButtonDown("HeavyAttack"))
                 {
                     anim.SetTrigger("HeavyForward");
                     isAttacking = true;
-                    if(velocity.x > 0)
-                    {
-                        velocity.x += 4;
-                    }
-                    else
-                    {
-                        velocity.x -= 4;
-                    }
+					if (claire)
+					{
+
+						//add movement
+
+					}
                 }
             }
 
             //Down Heavy
-            if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") < -.3f && onTopOfPlatform)
+            if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") < -.3f && onPlatformTimer > 0)
             {
                 if (myPlayer.GetButtonDown("HeavyAttack"))
                 {
                     anim.SetTrigger("HeavyDown");
                     isAttacking = true;
-                    velocity.x = 0;
+					if (claire)
+					{
+
+						rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+					}
                 }
             }
         }
@@ -547,6 +581,10 @@ public class BasicPlayerScript : MonoBehaviour
     /// <param name="facingRight">Checks which way the player is facing when they do the attack so that it knows whether or not to reverse the knockback</param>
     public void GetHit(float attackDamage, float attackAngle, float attackForce, float hitStun, float distance, float travelTime, bool facingRight)//im probably missing a few arguments
     {
+
+		rb.constraints = RigidbodyConstraints2D.None;
+		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
         if (gotHitTimer < 0)
         {
             currentHealth -= attackDamage;

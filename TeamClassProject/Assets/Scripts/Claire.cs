@@ -203,7 +203,9 @@ public class Claire : MonoBehaviour
     {
         currentAttack = 0;
         player.isAttacking = false;
-    }
+		this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+		this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+	}
 
 
 
