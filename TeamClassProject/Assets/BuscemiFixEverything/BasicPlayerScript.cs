@@ -525,14 +525,14 @@ public class BasicPlayerScript : MonoBehaviour
             if (facingRight)
             {
                 dir = Quaternion.AngleAxis(attackAngle, Vector3.forward) * Vector3.right;
-                hitDirection = dir;
+                hitDirection = new Vector3(-dir.x, dir.y, dir.z);
                 endPosition = transform.position + (hitDirection.normalized * distance);
                 direction = "Right";
             }
             else
             {
-                dir = Quaternion.AngleAxis(attackAngle, -Vector3.forward) * -Vector3.right;
-                hitDirection = new Vector3(-dir.x, dir.y, dir.z);
+                dir = Quaternion.AngleAxis(attackAngle, Vector3.forward) * Vector3.right;
+                hitDirection = dir;
                 endPosition = transform.position + (hitDirection.normalized * distance);
                 direction = "Left";
             }

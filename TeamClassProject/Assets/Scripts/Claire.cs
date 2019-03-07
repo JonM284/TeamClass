@@ -104,15 +104,15 @@ public class Claire : MonoBehaviour
     private void ForwardBasic()
     {
         GameObject bullet = Instantiate(iceShot, spawnIceShotHere.transform.position, Quaternion.identity);
-        bullet.GetComponent<Projectile>().SetVariables(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, BF_Distance, BF_TravelTime, bulletSpeed);
+        bullet.GetComponent<Projectile>().SetVariables(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, BF_Distance, BF_TravelTime, bulletSpeed, playerNumber);
         bullet.GetComponent<Projectile>().moveRight = player.FacingRight();
         if (player.FacingRight())
         {
-            bullet.GetComponent<Projectile>().direction = new Vector3(1, 0, 0);
+            bullet.GetComponent<Projectile>().direction = new Vector3(-1, 0, 0);
         }
         else
         {
-            bullet.GetComponent<Projectile>().direction = new Vector3(-1, 0, 0);
+            bullet.GetComponent<Projectile>().direction = new Vector3(1, 0, 0);
         }
     }
 
@@ -134,7 +134,7 @@ public class Claire : MonoBehaviour
     private void UpAir()
     {
         GameObject bullet = Instantiate(iceShot, spawnIceShotHere1.transform.position, Quaternion.identity);
-        bullet.GetComponent<Projectile>().SetVariables(UA_Damage, UA_Angle, UA_Knockback, UA_HitStun, UA_Distance, UA_TravelTime, bulletSpeed1);
+        bullet.GetComponent<Projectile>().SetVariables(UA_Damage, UA_Angle, UA_Knockback, UA_HitStun, UA_Distance, UA_TravelTime, bulletSpeed1, playerNumber);
         bullet.GetComponent<Projectile>().direction = new Vector3(0, 1, 0);
         bullet.GetComponent<Projectile>().moveRight = player.FacingRight();
     }
