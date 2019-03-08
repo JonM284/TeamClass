@@ -18,8 +18,10 @@ public class BasicPlayerScript : MonoBehaviour
 	public Image healthBar;
 	public Image regenableHealthBar;
 
-	Rigidbody2D rb;
-	Animator anim;
+    [HideInInspector]
+    public Rigidbody2D rb;
+    [HideInInspector]
+	public Animator anim;
 
 	private bool moving, hitHead;
 
@@ -428,48 +430,35 @@ public class BasicPlayerScript : MonoBehaviour
 
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
-					Debug.Log("Attack");
-					anim.SetTrigger("BasicNeutral");
-					isAttacking = true;
-					if (claire)
-					{
-
-						rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
-					}
+                    if (claire)
+                    {
+                        claireCharacter.ClaireAttackController(1);
+                    }
 				}
 			}
+            
+            //forward basic attack
+            if (((myPlayer.GetAxis("Horizontal") > .3f && myPlayer.GetAxis("Horizontal") > -.3f) || (myPlayer.GetAxis("Horizontal")) < .3f && myPlayer.GetAxis("Horizontal") < -.3f) && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
+            {
+                if (myPlayer.GetButtonDown("BasicAttack"))
+                {
+                    if (claire)
+                    {
+                        claireCharacter.ClaireAttackController(2);
+                    }
+                }
+            }
 
-			//up basic attack
-			if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") > .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
+            //up basic attack
+            if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") > .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
-					anim.SetTrigger("BasicUp");
-					isAttacking = true;
-					if (claire)
-					{
-
-						rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
-					}
-				}
-			}
-
-			//forward basic attack
-			if (((myPlayer.GetAxis("Horizontal") > .3f && myPlayer.GetAxis("Horizontal") > -.3f) || (myPlayer.GetAxis("Horizontal")) < .3f && myPlayer.GetAxis("Horizontal") < -.3f) && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
-			{
-				if (myPlayer.GetButtonDown("BasicAttack"))
-				{
-					anim.SetTrigger("BasicForward");
-					isAttacking = true;
-					if (claire)
-					{
-
-						rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
-					}
-				}
+                    if (claire)
+                    {
+                        claireCharacter.ClaireAttackController(3);
+                    }
+                }
 			}
 
 			//neutral air attack
@@ -477,9 +466,11 @@ public class BasicPlayerScript : MonoBehaviour
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
-                    anim.SetTrigger("NeutralAir");
-                    isAttacking = true;
-				}
+                    if (claire)
+                    {
+                        claireCharacter.ClaireAttackController(9);
+                    }
+                }
 			}
 
 			//up air attack
@@ -487,9 +478,11 @@ public class BasicPlayerScript : MonoBehaviour
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
-                    anim.SetTrigger("UpAir");
-                    isAttacking = true;
-				}
+                    if (claire)
+                    {
+                        claireCharacter.ClaireAttackController(10);
+                    }
+                }
 			}
 
             //Neutral Heavy
@@ -497,14 +490,10 @@ public class BasicPlayerScript : MonoBehaviour
             {
                 if (myPlayer.GetButtonDown("HeavyAttack"))
                 {
-                    anim.SetTrigger("HeavyNeutral");
-                    isAttacking = true;
-					if (claire)
-					{
-
-						rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
-					}
+                    if (claire)
+                    {
+                        claireCharacter.ClaireAttackController(20);
+                    }
                 }
             }
 
@@ -513,14 +502,10 @@ public class BasicPlayerScript : MonoBehaviour
             {
                 if (myPlayer.GetButtonDown("HeavyAttack"))
                 {
-                    anim.SetTrigger("HeavyForward");
-                    isAttacking = true;
-					if (claire)
-					{
-
-						//add movement
-
-					}
+                    if (claire)
+                    {
+                        claireCharacter.ClaireAttackController(21);
+                    }
                 }
             }
 
@@ -529,14 +514,10 @@ public class BasicPlayerScript : MonoBehaviour
             {
                 if (myPlayer.GetButtonDown("HeavyAttack"))
                 {
-                    anim.SetTrigger("HeavyDown");
-                    isAttacking = true;
-					if (claire)
-					{
-
-						rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
-					}
+                    if (claire)
+                    {
+                        claireCharacter.ClaireAttackController(22);
+                    }
                 }
             }
         }
