@@ -196,7 +196,10 @@ public class BasicPlayerScript : MonoBehaviour
 			Attack();
 		}
 
-		Movement();
+        if (!isAttacking || !onTopOfPlatform)
+        {
+            Movement();
+        }
 
     }
 
@@ -211,7 +214,10 @@ public class BasicPlayerScript : MonoBehaviour
             anim.SetBool("hitstun", false);
         }
 
-		FixedMovement();
+		if (!isAttacking || onPlatformTimer < 0)
+		{
+            FixedMovement();
+        }
    
 
         if (!onTopOfPlatform && state == PlayerState.Fighter)
@@ -326,7 +332,7 @@ public class BasicPlayerScript : MonoBehaviour
 		//this is movement that the player needs only when it is a fighter
 		if (state == PlayerState.Fighter)
 		{
-			if (onPlatformTimer > 0 && !isAttacking)
+			if (onPlatformTimer > 0)
 			{
 				if (direction == "Right")
 				{
