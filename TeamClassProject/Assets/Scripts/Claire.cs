@@ -128,6 +128,107 @@ public class Claire : MonoBehaviour
 		
     }
 
+    /*
+   * attack numbers
+   * 0 = null
+   * 1 = Basic Neutral
+   * 2 = Basic Forward
+   * 3 = Basic Up
+   * 4 = Basic Down
+   * 
+   * 9 = neutral aerial
+   * 10 = up aerial
+   * 
+   * 
+   * 20 = neutral heavy
+   * 21 = forward heavy
+   * 22 = down heavy 
+   * 
+   */
+    public void ClaireAttackController(int attackNum)
+    {
+        switch (attackNum)
+        {
+            case 1:
+                player.anim.SetTrigger("BasicNeutral");
+                player.isAttacking = true;
+                if (player.claire)
+                {
+                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                }
+                break;
+
+            case 2:
+                player.anim.SetTrigger("BasicForward");
+                player.isAttacking = true;
+                if (player.claire)
+                {
+
+                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                }
+                break;
+
+            case 3:
+                player.anim.SetTrigger("BasicUp");
+                player.isAttacking = true;
+                if (player.claire)
+                {
+
+                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                }
+                break;
+
+            case 9:
+                player.anim.SetTrigger("NeutralAir");
+                player.isAttacking = true;
+                break;
+
+            case 10:
+                player.anim.SetTrigger("UpAir");
+                player.isAttacking = true;
+                break;
+
+            case 20:
+                player.anim.SetTrigger("HeavyNeutral");
+                player.isAttacking = true;
+                if (player.claire)
+                {
+
+                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                }
+                break;
+
+            case 21:   
+                    player.anim.SetTrigger("HeavyForward");
+                    player.isAttacking = true;
+                    if (player.claire)
+                    {
+
+                        //add movement
+
+                    }
+                break;
+
+            case 22:
+                player.anim.SetTrigger("HeavyDown");
+                player.isAttacking = true;
+                if (player.claire)
+                {
+
+                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                }
+                break;
+
+
+            default:
+                break;
+        }
+    }
+
 	
 
     private void NeutralBasic(GameObject enemy)

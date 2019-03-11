@@ -23,7 +23,7 @@ public class AlternateSP : MonoBehaviour
     private Vector3 original_Scale;
 
     //This allows us to change what they can do, when they are either at or away from a machine.
-    private enum Status { Free, AtMachine };
+    public enum Status { Free, AtMachine };
     private Rigidbody2D rb;
     private Vector2 vel;
     private float horizontalInput, verticalInput;
@@ -32,7 +32,9 @@ public class AlternateSP : MonoBehaviour
     private bool is_In_Area = false;
     //The current status of the player: Free (Away from machine- Free to move)
     // AtMachine(Player is at machine- not free to move).
-    Status status;
+    [Header("Player States")]
+    [Tooltip("Current Status of the player")]
+    public Status status;
     //reference to whichever machine the player is going to use
     private GameObject myMachine;
 
@@ -100,7 +102,7 @@ public class AlternateSP : MonoBehaviour
             {
                 status = Status.AtMachine;
                 if (!myMachine.GetComponent<MachineBehaviour>().is_In_Use) {
-                    myMachine.GetComponent<MachineBehaviour>().Commence_Control(playerNum, teamID);
+                    myMachine.GetComponent<MachineBehaviour>().Commence_Control(playerNum, teamID, gameObject);
                 }
                 Debug.Log(status);
             }else if (status == Status.AtMachine)
@@ -174,12 +176,12 @@ public class AlternateSP : MonoBehaviour
 
         if (status == Status.AtMachine && (myPlayer.GetAxisRaw("Horizontal") >= 0.1f || myPlayer.GetAxisRaw("Vertical") >= 0.1f))
         {
-            anim.SetInteger("Anim_Num", 6);
+            anim.SetInteger("Anim_Num", 7);
         }
 
         if (status == Status.AtMachine && (myPlayer.GetAxisRaw("Horizontal") <= -0.1f || myPlayer.GetAxisRaw("Vertical") <= -0.1f))
         {
-            anim.SetInteger("Anim_Num", 7);
+            anim.SetInteger("Anim_Num", 6);
         }
 
 

@@ -25,11 +25,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 176442064}
   m_LocalRotation: {x: -0, y: -0, z: -0.291339, w: 0.95661986}
-  m_LocalPosition: {x: 0.371, y: 1.021, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.46374992, y: -0.13999999, z: 0}
+  m_LocalScale: {x: 1.2499998, y: 1.2499998, z: 1}
   m_Children: []
-  m_Father: {fileID: 821999557}
-  m_RootOrder: 2
+  m_Father: {fileID: 1292272043923940135}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -33.876003}
 --- !u!212 &176442066
 SpriteRenderer:
@@ -104,11 +104,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1520949894}
   m_LocalRotation: {x: -0, y: -0, z: 0.37499237, w: 0.9270279}
-  m_LocalPosition: {x: -0.329, y: 1.039, z: 0}
-  m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 1}
+  m_LocalPosition: {x: -0.41125014, y: -0.11750013, z: 0}
+  m_LocalScale: {x: 1.2499998, y: 1.2499998, z: 1}
   m_Children: []
-  m_Father: {fileID: 821999557}
-  m_RootOrder: 3
+  m_Father: {fileID: 1292272043923940135}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 44.048}
 --- !u!212 &1520949896
 SpriteRenderer:
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 1982607896}
   - component: {fileID: 1982607895}
   m_Layer: 0
-  m_Name: Special Machine_Airship
+  m_Name: Special_Machine_Airship_Blowfish
   m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,8 +190,6 @@ Transform:
   m_Children:
   - {fileID: 135088331075094672}
   - {fileID: 1292272043923940135}
-  - {fileID: 176442065}
-  - {fileID: 1520949895}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -297,6 +295,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   Hazard_MinPos:
   - {x: 0, y: 0, z: 0}
+  my_Controller_Player: {fileID: 0}
 --- !u!1 &411173722052976497
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,7 +402,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.133, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 176442065}
+  - {fileID: 1520949895}
   m_Father: {fileID: 821999557}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
