@@ -97,7 +97,7 @@ public class Watermelon : MonoBehaviour
 
     private void ForwardBasic(GameObject enemy)
     {
-
+        enemy.GetComponent<BasicPlayerScript>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, BN_Distance, BN_TravelTime, player.FacingRight());
     }
 
     private void UpBasic(GameObject enemy)
