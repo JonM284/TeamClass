@@ -95,7 +95,7 @@ public class Watermelon : MonoBehaviour
         
     }
 
-    private void ForwardBasic()
+    private void ForwardBasic(GameObject enemy)
     {
 
     }
