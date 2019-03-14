@@ -76,6 +76,7 @@ public class BasicPlayerScript : MonoBehaviour
 	private float xScale;
 	[HideInInspector]
 	public bool isAttacking;
+	bool isJumping;
 	//make the player stop in their tracks
 	bool constrainPosition;
 
@@ -193,7 +194,7 @@ public class BasicPlayerScript : MonoBehaviour
 		healthBar.fillAmount = currentHealth / maxHealth;
 		regenableHealthBar.fillAmount = regenHeath / maxHealth;
 
-		if (!isAttacking)
+		if (!isAttacking && !isJumping)
 		{
 			Attack();
 		}
@@ -334,7 +335,7 @@ public class BasicPlayerScript : MonoBehaviour
 		//this is movement that the player needs only when it is a fighter
 		if (state == PlayerState.Fighter)
 		{
-			if (onPlatformTimer > 0)
+			if (onPlatformTimer > 0 && !isAttacking)
 			{
 				if (direction == "Right")
 				{
