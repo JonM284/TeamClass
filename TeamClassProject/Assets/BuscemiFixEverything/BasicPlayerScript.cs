@@ -431,10 +431,9 @@ public class BasicPlayerScript : MonoBehaviour
 
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
-                    if (claire)
-                    {
-                        claireCharacter.ClaireAttackController(1);
-                    }
+                    if (claire) { claireCharacter.ClaireAttackController(1); }
+
+                    if (gillbert) { gillbertCharacter.GilbertAttackController(1); }
 				}
 			}
             
@@ -443,10 +442,9 @@ public class BasicPlayerScript : MonoBehaviour
             {
                 if (myPlayer.GetButtonDown("BasicAttack"))
                 {
-                    if (claire)
-                    {
-                        claireCharacter.ClaireAttackController(2);
-                    }
+                    if (claire) { claireCharacter.ClaireAttackController(2); }
+
+                    if (gillbert) { gillbertCharacter.GilbertAttackController(2); }
                 }
             }
 
@@ -455,10 +453,9 @@ public class BasicPlayerScript : MonoBehaviour
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
-                    if (claire)
-                    {
-                        claireCharacter.ClaireAttackController(3);
-                    }
+                    if (claire) { claireCharacter.ClaireAttackController(3); }
+
+                    if (gillbert) { gillbertCharacter.GilbertAttackController(3); }
                 }
 			}
 
@@ -467,10 +464,9 @@ public class BasicPlayerScript : MonoBehaviour
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
-                    if (claire)
-                    {
-                        claireCharacter.ClaireAttackController(9);
-                    }
+                    if (claire) { claireCharacter.ClaireAttackController(9); }
+
+                    if (gillbert) { gillbertCharacter.GilbertAttackController(9); }
                 }
 			}
 
@@ -479,10 +475,9 @@ public class BasicPlayerScript : MonoBehaviour
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
-                    if (claire)
-                    {
-                        claireCharacter.ClaireAttackController(10);
-                    }
+                    if (claire) { claireCharacter.ClaireAttackController(10); }
+
+                    if (gillbert) { gillbertCharacter.GilbertAttackController(10); }
                 }
 			}
 
@@ -491,10 +486,9 @@ public class BasicPlayerScript : MonoBehaviour
             {
                 if (myPlayer.GetButtonDown("HeavyAttack"))
                 {
-                    if (claire)
-                    {
-                        claireCharacter.ClaireAttackController(20);
-                    }
+                    if (claire) { claireCharacter.ClaireAttackController(20); }
+
+                    if (gillbert) { gillbertCharacter.GilbertAttackController(20); }
                 }
             }
 
@@ -503,10 +497,9 @@ public class BasicPlayerScript : MonoBehaviour
             {
                 if (myPlayer.GetButtonDown("HeavyAttack"))
                 {
-                    if (claire)
-                    {
-                        claireCharacter.ClaireAttackController(21);
-                    }
+                    if (claire) { claireCharacter.ClaireAttackController(21); }
+
+                    if (gillbert) { gillbertCharacter.GilbertAttackController(21); }
                 }
             }
 
@@ -515,10 +508,9 @@ public class BasicPlayerScript : MonoBehaviour
             {
                 if (myPlayer.GetButtonDown("HeavyAttack"))
                 {
-                    if (claire)
-                    {
-                        claireCharacter.ClaireAttackController(22);
-                    }
+                    if (claire) { claireCharacter.ClaireAttackController(22); }
+
+                    if (gillbert) { gillbertCharacter.GilbertAttackController(22); }
                 }
             }
         }
