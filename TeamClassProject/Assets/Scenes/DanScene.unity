@@ -9237,12 +9237,12 @@ MonoBehaviour:
   BD_HitStun: 0
   BD_Distance: 0
   BD_TravelTime: 0
-  NA_Damage: 55
-  NA_Angle: 320
-  NA_Knockback: 45
-  NA_HitStun: 0.3
-  NA_Distance: 125
-  NA_TravelTime: 0.2
+  NA_Damage: 0
+  NA_Angle: 0
+  NA_Knockback: 0
+  NA_HitStun: 0
+  NA_Distance: 0
+  NA_TravelTime: 0
   UA_Damage: 0
   UA_Angle: 0
   UA_Knockback: 0
@@ -9251,12 +9251,12 @@ MonoBehaviour:
   UA_TravelTime: 0
   spawnIceShotHere1: {fileID: 0}
   bulletSpeed1: 0
-  NH_Damage: 75
-  NH_Angle: 45
-  NH_Knockback: 450
-  NH_HitStun: 0.45
-  NH_Distance: 45
-  NH_TravelTime: 0.45
+  NH_Damage: 0
+  NH_Angle: 0
+  NH_Knockback: 0
+  NH_HitStun: 0
+  NH_Distance: 0
+  NH_TravelTime: 0
   FH_Damage: 0
   FH_Angle: 0
   FH_Knockback: 0
@@ -10324,7 +10324,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1011486135}
   - component: {fileID: 1011486136}
-  - component: {fileID: 1011486137}
   m_Layer: 0
   m_Name: Fish Glow
   m_TagString: Untagged
@@ -10394,22 +10393,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &1011486137
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011486134}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.000000059604645, y: 0.00000047683716}
-  serializedVersion: 2
-  m_Radius: 0.68
 --- !u!1 &1017547134
 GameObject:
   m_ObjectHideFlags: 0
@@ -15983,7 +15966,6 @@ GameObject:
   - component: {fileID: 1772372772}
   - component: {fileID: 1772372773}
   - component: {fileID: 1772372774}
-  - component: {fileID: 1772372775}
   m_Layer: 0
   m_Name: 'Bottom Fin '
   m_TagString: Untagged
@@ -16079,22 +16061,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7677796, y: 1.5993233}
   m_EdgeRadius: 0
---- !u!58 &1772372775
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1772372771}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.01, y: -0.42}
-  serializedVersion: 2
-  m_Radius: 0.91
 --- !u!1 &1780672178
 GameObject:
   m_ObjectHideFlags: 0
