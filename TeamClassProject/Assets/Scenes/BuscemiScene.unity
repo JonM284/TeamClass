@@ -1470,6 +1470,8 @@ MonoBehaviour:
   playerNum: 2
   healthBar: {fileID: 1267189351}
   regenableHealthBar: {fileID: 856305966}
+  rb: {fileID: 0}
+  anim: {fileID: 0}
   state: 0
   accel: 0
   accelMult: 0.05
@@ -1598,7 +1600,7 @@ MonoBehaviour:
   gravityDown: 30
   jumpVel: 13
   maxDownVel: 100
-  BN_Damage: 100
+  BN_Damage: 101
   BN_Angle: 60
   BN_Knockback: 10
   BN_HitStun: 0.4
@@ -11149,6 +11151,7 @@ MonoBehaviour:
   playerNum: 1
   teamID: 1
   is_In_Area: 0
+  status: 0
 --- !u!114 &1003755796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12428,6 +12431,8 @@ MonoBehaviour:
   playerNum: 1
   healthBar: {fileID: 925004688}
   regenableHealthBar: {fileID: 308418905}
+  rb: {fileID: 0}
+  anim: {fileID: 0}
   state: 0
   accel: 0
   accelMult: 0.05
