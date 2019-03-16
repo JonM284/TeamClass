@@ -187,6 +187,10 @@ public class BasicPlayerScript : MonoBehaviour
 			isAttacking = false;
 		}
 
+		//make sure the player cannot be moved
+
+        Debug.Log(maxKnockbackTime);
+        Debug.Log(currentKnockbackTime);
 		healthBar.fillAmount = currentHealth / maxHealth;
 		regenableHealthBar.fillAmount = regenHeath / maxHealth;
 
@@ -354,7 +358,6 @@ public class BasicPlayerScript : MonoBehaviour
 				initialJumpTime = maxInitialJumpTime;
 				holdJumpTime = maxHoldJumpTime;
 				jumpButtonPressed = true;
-				isJumping = true;
 			}
 			if (myPlayer.GetButtonUp("Jump"))
 			{
@@ -555,10 +558,6 @@ public class BasicPlayerScript : MonoBehaviour
 
 		rb.constraints = RigidbodyConstraints2D.None;
 		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-		if (isJumping)
-		{
-			isJumping = false;
-		}
 
         if (gotHitTimer < 0)
         {
@@ -593,13 +592,6 @@ public class BasicPlayerScript : MonoBehaviour
             // rb.AddForce(new Vector2(attackForce, 0));
         }
     }
-
-	void HasJumped()
-	{
-
-		isJumping = false;
-
-	}
 
     public bool FacingRight()
 	{
