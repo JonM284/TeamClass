@@ -77,6 +77,10 @@ public class BasicPlayerScript : MonoBehaviour
 	[HideInInspector]
 	public bool isAttacking;
 	bool isJumping;
+
+	//this is to see if isAttacking is true when it shouldn't be
+	float checkAttackTimer;
+
 	//make the player stop in their tracks
 	bool constrainPosition;
 
@@ -181,16 +185,22 @@ public class BasicPlayerScript : MonoBehaviour
     void Update()
     {
 
-		//checking the isAttacking boolean and making sure it isn't on when it shouldn't be.
+		//checking the isAttacking boolean and making sure it isn't on when it shouldn't be. 
+		//This is specific to each character since we need to give the name of the animation that is currently playing so it will either stay here or eventually it will be moved to their own specific scripts.
 		if(isAttacking && anim.GetCurrentAnimatorStateInfo(0).IsName("Crystal Idle"))
+		{
+			checkAttackTimer += Time.deltaTime;
+		}
+		else
+		{
+			checkAttackTimer = 0;
+		}
+		if(checkAttackTimer >= .4)
 		{
 			isAttacking = false;
 		}
+		
 
-		//make sure the player cannot be moved
-
-        Debug.Log(maxKnockbackTime);
-        Debug.Log(currentKnockbackTime);
 		healthBar.fillAmount = currentHealth / maxHealth;
 		regenableHealthBar.fillAmount = regenHeath / maxHealth;
 
@@ -358,6 +368,7 @@ public class BasicPlayerScript : MonoBehaviour
 				initialJumpTime = maxInitialJumpTime;
 				holdJumpTime = maxHoldJumpTime;
 				jumpButtonPressed = true;
+				isJumping = true;
 			}
 			if (myPlayer.GetButtonUp("Jump"))
 			{
@@ -558,6 +569,10 @@ public class BasicPlayerScript : MonoBehaviour
 
 		rb.constraints = RigidbodyConstraints2D.None;
 		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+		if (isJumping)
+		{
+			isJumping = false;
+		}
 
         if (gotHitTimer < 0)
         {
@@ -592,6 +607,11 @@ public class BasicPlayerScript : MonoBehaviour
             // rb.AddForce(new Vector2(attackForce, 0));
         }
     }
+
+	void HasJumped()
+	{
+		isJumping = false;
+	}
 
     public bool FacingRight()
 	{
