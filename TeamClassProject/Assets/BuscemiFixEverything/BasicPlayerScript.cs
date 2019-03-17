@@ -68,7 +68,7 @@ public class BasicPlayerScript : MonoBehaviour
 
     [Header("Character Variables")]
 	public float maxHealth;
-	private float currentHealth;
+	public float currentHealth;
 	private float regenHeath;
 	public float regenHeathMultiplier;
 	public bool makeFaceRight;
@@ -94,6 +94,7 @@ public class BasicPlayerScript : MonoBehaviour
 	private Vector3 startPosition;
 	private Vector3 endPosition;
 	private float hitAngle;
+    public float stunTime = 0;
 
 	void Awake()
 	{
@@ -185,6 +186,8 @@ public class BasicPlayerScript : MonoBehaviour
     void Update()
     {
 
+        stunTime -= Time.deltaTime;
+
 		//checking the isAttacking boolean and making sure it isn't on when it shouldn't be. 
 		//This is specific to each character since we need to give the name of the animation that is currently playing so it will either stay here or eventually it will be moved to their own specific scripts.
 		if(isAttacking && anim.GetCurrentAnimatorStateInfo(0).IsName("Crystal Idle"))
@@ -199,17 +202,30 @@ public class BasicPlayerScript : MonoBehaviour
 		{
 			isAttacking = false;
 		}
-		
 
-		healthBar.fillAmount = currentHealth / maxHealth;
+        if (isAttacking && anim.GetCurrentAnimatorStateInfo(0).IsName("Fish Idle"))
+        {
+            checkAttackTimer += Time.deltaTime;
+        }
+        else
+        {
+            checkAttackTimer = 0;
+        }
+        if (checkAttackTimer >= .4)
+        {
+            isAttacking = false;
+        }
+
+
+        healthBar.fillAmount = currentHealth / maxHealth;
 		regenableHealthBar.fillAmount = regenHeath / maxHealth;
 
-		if (!isAttacking && !isJumping)
+		if (!isAttacking && !isJumping && stunTime <= 0)
 		{
 			Attack();
 		}
 
-        if (!isAttacking || !onTopOfPlatform)
+        if (!isAttacking || !onTopOfPlatform && stunTime <= 0)
         {
             Movement();
         }
@@ -227,7 +243,7 @@ public class BasicPlayerScript : MonoBehaviour
             anim.SetBool("hitstun", false);
         }
 
-		if (!isAttacking || onPlatformTimer < 0)
+		if (!isAttacking || onPlatformTimer < 0 && stunTime <= 0)
 		{
             FixedMovement();
         }
@@ -470,8 +486,20 @@ public class BasicPlayerScript : MonoBehaviour
                 }
 			}
 
-			//neutral air attack
-			if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer < 0)
+
+            //Down basic attack
+            if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") < -.3f && onPlatformTimer > 0)
+            {
+                if (myPlayer.GetButtonDown("BasicAttack"))
+                {
+                    if (claire) { claireCharacter.ClaireAttackController(4); }
+
+                    if (gillbert) { gillbertCharacter.GilbertAttackController(4); }
+                }
+            }
+
+            //neutral air attack
+            if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer < 0)
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{

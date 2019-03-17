@@ -44,13 +44,9 @@ public class Gillbert : MonoBehaviour
 
     [Header("Basic Down")]
     public float BD_Damage;
-    public float BD_Angle;
-    public float BD_Knockback;
-    public float BD_HitStun;
-    public float BD_Distance;
-    public float BD_TravelTime;
+    public float BD_StunTime;
 
-    [Header("Air Attacks")]
+      [Header("Air Attacks")]
     [Header("Neutral Air")]
     public float NA_Damage;
     public float NA_Angle;
@@ -178,6 +174,17 @@ public class Gillbert : MonoBehaviour
                 }
                 break;
 
+            case 4:
+                player.anim.SetTrigger("BasicDown");
+                player.isAttacking = true;
+                if (player.gillbert)
+                {
+
+                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                }
+                break;
+
             case 9:
                 player.anim.SetTrigger("NeutralAir");
                 player.isAttacking = true;
@@ -246,7 +253,8 @@ public class Gillbert : MonoBehaviour
 
     private void DownBasic(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(BD_Damage, BD_Angle, BD_Knockback, BD_HitStun, BD_Distance, BD_TravelTime, player.FacingRight());
+        enemy.GetComponent<BasicPlayerScript>().currentHealth -= BD_Damage;
+        enemy.GetComponent<BasicPlayerScript>().stunTime = BD_StunTime;
     }
 
     private void NeutralAir(GameObject enemy)
