@@ -185,36 +185,42 @@ public class BasicPlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+		Debug.Log(isAttacking);
         stunTime -= Time.deltaTime;
 
 		//checking the isAttacking boolean and making sure it isn't on when it shouldn't be. 
 		//This is specific to each character since we need to give the name of the animation that is currently playing so it will either stay here or eventually it will be moved to their own specific scripts.
-		if(isAttacking && anim.GetCurrentAnimatorStateInfo(0).IsName("Crystal Idle"))
+		if (claire)
 		{
-			checkAttackTimer += Time.deltaTime;
-		}
-		else
-		{
-			checkAttackTimer = 0;
-		}
-		if(checkAttackTimer >= .4)
-		{
-			isAttacking = false;
+			if (isAttacking && anim.GetCurrentAnimatorStateInfo(0).IsName("Crystal Idle"))
+			{
+				checkAttackTimer += Time.deltaTime;
+			}
+			else
+			{
+				checkAttackTimer = 0;
+			}
+			if (checkAttackTimer >= .1)
+			{
+				isAttacking = false;
+			}
 		}
 
-        if (isAttacking && anim.GetCurrentAnimatorStateInfo(0).IsName("Fish Idle"))
-        {
-            checkAttackTimer += Time.deltaTime;
-        }
-        else
-        {
-            checkAttackTimer = 0;
-        }
-        if (checkAttackTimer >= .4)
-        {
-            isAttacking = false;
-        }
+		if (gillbert)
+		{
+			if (isAttacking && anim.GetCurrentAnimatorStateInfo(0).IsName("Fish Idle"))
+			{
+				checkAttackTimer += Time.deltaTime;
+			}
+			else
+			{
+				checkAttackTimer = 0;
+			}
+			if (checkAttackTimer >= .1)
+			{
+				isAttacking = false;
+			}
+		}
 
 
         healthBar.fillAmount = currentHealth / maxHealth;
