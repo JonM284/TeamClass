@@ -41,6 +41,13 @@ public class Gillbert : MonoBehaviour
     public float BU_HitStun;
     public float BU_Distance;
     public float BU_TravelTime;
+    public GameObject spitBall;
+    public GameObject spawnSpitHere;
+    public float BU_MaxDownVel;
+    public float BU_GravityUp;
+    public float BU_GravityDown;
+    public float BU_Speed;
+    public float BU_MoveUpTimer;
 
     [Header("Basic Down")]
     public float BD_Damage;
@@ -248,7 +255,9 @@ public class Gillbert : MonoBehaviour
 
     private void UpBasic(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(BU_Damage, BU_Angle, BU_Knockback, BU_HitStun, BU_Distance, BU_TravelTime, player.FacingRight());
+        GameObject spit = Instantiate(spitBall, spawnSpitHere.transform.position, Quaternion.identity);
+        spit.GetComponent<SpitProjectile>().SetVariables(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, BF_Distance, BF_TravelTime, playerNumber);
+        spit.GetComponent<SpitProjectile>().SetPhysicsVariables(BU_MaxDownVel, BU_GravityUp, BU_GravityDown, BU_Speed, BU_MoveUpTimer);
     }
 
     private void DownBasic(GameObject enemy)

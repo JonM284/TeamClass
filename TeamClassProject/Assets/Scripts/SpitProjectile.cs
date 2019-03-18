@@ -22,6 +22,7 @@ public class SpitProjectile : MonoBehaviour
     public float travelTime;
     public float playerNum;
     public Vector3 direction;
+    public bool moveRight = true;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,17 @@ public class SpitProjectile : MonoBehaviour
         currentMoveUpTimer = maxMoveUpTimer;
     }
 
-    public void SetVariables(float damage1, float angle1, float knockback1, float hitStun1, float distance1, float travelTime1, float speed1, int playerNum1)
+    public void SetPhysicsVariables(float maxDownVelocity, float gravityUp1, float gravityDown1, float speed1, float maxMoveUpTimer1)
+    {
+        maxDownVel = maxDownVelocity;
+        gravityUp = gravityUp1;
+        gravityDown = gravityDown1;
+        speed = speed1;
+        maxMoveUpTimer = maxMoveUpTimer1;
+        currentMoveUpTimer = maxMoveUpTimer;
+    }
+
+    public void SetVariables(float damage1, float angle1, float knockback1, float hitStun1, float distance1, float travelTime1, int playerNum1)
     {
         damage = damage1;
         angle = angle1;
@@ -37,7 +48,6 @@ public class SpitProjectile : MonoBehaviour
         hitStun = hitStun1;
         distance = distance1;
         travelTime = travelTime1;
-        speed = speed1;
         playerNum = playerNum1;
     }
 
@@ -89,8 +99,22 @@ public class SpitProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.tag == "Floor")
+        {
+            Destroy(gameObject);
+        }
+
         if (other.gameObject.tag == "Player")
         {
+            if(other.transform.position.x <= transform.position.x)
+            {
+                moveRight = true;
+            }
+            else
+            {
+                moveRight = false;
+            }
+
             try
             {
                 if (other.transform.root.gameObject.GetComponent<BasicPlayerScript>().playerNum != playerNum)
