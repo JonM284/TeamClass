@@ -92,7 +92,7 @@ public class Watermelon : MonoBehaviour
 
     private void NeutralBasic(GameObject enemy)
     {
-        
+        print("NB");
     }
 
     private void ForwardBasic(GameObject enemy)
