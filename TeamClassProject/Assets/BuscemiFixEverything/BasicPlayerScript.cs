@@ -185,7 +185,7 @@ public class BasicPlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		Debug.Log(isAttacking);
+		//Debug.Log(isAttacking);
         stunTime -= Time.deltaTime;
 
 		//checking the isAttacking boolean and making sure it isn't on when it shouldn't be. 

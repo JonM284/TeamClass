@@ -4009,9 +4009,10 @@ GameObject:
   m_Component:
   - component: {fileID: 518740718}
   - component: {fileID: 518740719}
+  - component: {fileID: 518740720}
   m_Layer: 0
   m_Name: Left Jetpack
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4079,6 +4080,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &518740720
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518740717}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.38612345, y: -0.28278458}
+  m_Size: {x: 1.0602163, y: 3.0673864}
+  m_Direction: 0
 --- !u!1 &574922446
 GameObject:
   m_ObjectHideFlags: 0
@@ -8423,6 +8440,7 @@ GameObject:
   m_Component:
   - component: {fileID: 809923381}
   - component: {fileID: 809923382}
+  - component: {fileID: 809923383}
   m_Layer: 0
   m_Name: Right Jetpack
   m_TagString: Untagged
@@ -8493,6 +8511,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &809923383
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809923380}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.28935102, y: -0.83699435}
+  m_Size: {x: 0.86666775, y: 2.6541345}
+  m_Direction: 0
 --- !u!1 &811561147
 GameObject:
   m_ObjectHideFlags: 0
@@ -9236,8 +9270,8 @@ MonoBehaviour:
   spawnSpitHere: {fileID: 1429822184}
   BU_MaxDownVel: 100
   BU_GravityUp: 70
-  BU_GravityDown: 30
-  BU_Speed: 5.5
+  BU_GravityDown: 45
+  BU_Speed: 7.5
   BU_MoveUpTimer: 0.7
   BD_Damage: 10
   BD_StunTime: 1
@@ -9267,18 +9301,12 @@ MonoBehaviour:
   FH_HitStun: 0
   FH_Distance: 0
   FH_TravelTime: 0
-  DH1_Damage: 0
-  DH1_Angle: 0
-  DH1_Knockback: 0
-  DH1_HitStun: 0
-  DH1_Distance: 0
-  DH1_TravelTime: 0
-  DH2_Damage: 0
-  DH2_Angle: 0
-  DH2_Knockback: 0
-  DH2_HitStun: 0
-  DH2_Distance: 0
-  DH2_TravelTime: 0
+  DH1_Damage: 92
+  DH1_Angle: 60
+  DH1_Knockback: 45
+  DH1_HitStun: 0.3
+  DH1_Distance: 264
+  DH1_TravelTime: 0.25
 --- !u!114 &883514674
 MonoBehaviour:
   m_ObjectHideFlags: 0
