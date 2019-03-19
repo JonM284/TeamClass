@@ -88,7 +88,7 @@ public class Gillbert : MonoBehaviour
     public float FH_Distance;
     public float FH_TravelTime;
 
-    [Header("Down Heavy Part 1")]
+    [Header("Down Heavy")]
     public float DH1_Damage;
     public float DH1_Angle;
     public float DH1_Knockback;
@@ -96,13 +96,6 @@ public class Gillbert : MonoBehaviour
     public float DH1_Distance;
     public float DH1_TravelTime;
 
-    [Header("Down Heavy Part 2")]
-    public float DH2_Damage;
-    public float DH2_Angle;
-    public float DH2_Knockback;
-    public float DH2_HitStun;
-    public float DH2_Distance;
-    public float DH2_TravelTime;
 
 
 
@@ -286,15 +279,11 @@ public class Gillbert : MonoBehaviour
         enemy.GetComponent<BasicPlayerScript>().GetHit(FH_Damage, FH_Angle, FH_Knockback, FH_HitStun, FH_Distance, FH_TravelTime, player.FacingRight());
     }
 
-    private void DownHeavyPart1(GameObject enemy)
+    private void DownHeavy(GameObject enemy)
     {
         enemy.GetComponent<BasicPlayerScript>().GetHit(DH1_Damage, DH1_Angle, DH1_Knockback, DH1_HitStun, DH1_Distance, DH1_TravelTime, player.FacingRight());
     }
 
-    private void DownHeavyPart2(GameObject enemy)
-    {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(DH2_Damage, DH2_Angle, DH2_Knockback, DH2_HitStun, DH2_Distance, DH2_TravelTime, player.FacingRight());
-    }
 
 
     public void CurrentAttack(int attackNum)
@@ -371,12 +360,9 @@ public class Gillbert : MonoBehaviour
                             break;
 
                         case 22:
-                            DownHeavyPart1(other.gameObject);
+                            DownHeavy(other.gameObject);
                             break;
 
-                        case 23:
-                            DownHeavyPart2(other.gameObject);
-                            break;
                     }
                 }
             }
