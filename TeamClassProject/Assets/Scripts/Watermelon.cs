@@ -67,8 +67,11 @@ public class Watermelon : MonoBehaviour
   
 
     private float currentAttack;
-
+    private int yDir;
+    private bool latched;
+    Rigidbody2D rb2D;
     BasicPlayerScript player;
+    public Sprite vineWhip;
 
 
     private void Awake()
@@ -80,12 +83,51 @@ public class Watermelon : MonoBehaviour
     void Start()
     {
         player = GetComponent<BasicPlayerScript>();
+        rb2D = GetComponent<Rigidbody2D>();
+        yDir = 1;
+        latched = false;
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        if (latched==true)
+        {
+            rb2D.constraints = RigidbodyConstraints2D.FreezePositionY;
+        }
+        else
+        {
+            rb2D.constraints = RigidbodyConstraints2D.None;
+            rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+        }
+        Vector2 startPos = transform.position;
+        Vector2 rayDir = new Vector3(0, yDir);
+        float rayLength = 3;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, rayLength);
+
+        if (hit.collider == null)
+        {
+            latched = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            
+                
+                if (latched==true)
+                {
+                    latched = false;
+                }
+                
+                else if (hit.collider != null)
+                {
+                    transform.position = new Vector2(hit.collider.transform.position.x,hit.collider.transform.position.y-1.5f);
+                    latched = true;
+                }
+            
+        }
     }
 
 
