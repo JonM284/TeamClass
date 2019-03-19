@@ -151,6 +151,7 @@ public class Watermelon : MonoBehaviour
             
 
         }
+        
     }
 
     public void WawaAttackController(int attackNum)
@@ -254,7 +255,10 @@ public class Watermelon : MonoBehaviour
 
     public void EndAttack()
     {
-
+        currentAttack = 0;
+        player.isAttacking = false;
+        this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
 
