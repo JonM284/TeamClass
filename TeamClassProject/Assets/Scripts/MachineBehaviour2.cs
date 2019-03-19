@@ -19,7 +19,7 @@ public class MachineBehaviour2 : MonoBehaviour
     [Tooltip("Max distance for side hazards, max angle for side cannons")]
     public float Max_range;
     //These are the different MACHINE TYPES
-    public enum MachineID { Fairy };
+    public enum MachineID { Two_Fairy, Two_BottomHazard };
     [Header("Machine Type")]
     [Tooltip("What type of machine will this be?")]
     public MachineID mach;
@@ -42,6 +42,13 @@ public class MachineBehaviour2 : MonoBehaviour
     private Vector3 Move_Rotation, originalRotation;
 
     public FairyScript fairyScript;
+    private float cooldownTimer_Fairy;
+    private float cooldownLength_Fairy;
+    private bool Fairy_Machine_Ready;
+
+    public List<Vector3> Hazard_StartPos;
+    public List<Vector3> Hazard_MaxPos;
+    public List<Vector3> Hazard_MinPos;
 
     public GameObject my_Controller_Player;
 
@@ -58,31 +65,47 @@ public class MachineBehaviour2 : MonoBehaviour
         my_Controller_Player = null;
 
         //only do this if this machine is of type "Background Cannon" 
-        if (mach == MachineID.Fairy)
+        if (mach == MachineID.Two_Fairy)
         {
             Controlled_Hazard[0].SetActive(false);
         }
 
+
+        //resetting cooldowns
+        cooldownTimer_Fairy = 0f;
+        cooldownLength_Fairy = 10f;
+        Fairy_Machine_Ready = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //fairy cooldown
+        if(Fairy_Machine_Ready == false)
+        {
+            cooldownTimer_Fairy -= Time.deltaTime;
+            if(cooldownTimer_Fairy <= 0)
+            {
+                Fairy_Machine_Ready = true;
+                GetComponent<BoxCollider2D>().enabled = true;
+            }
+        }
+
+
         //if the machine is in use
         if (is_In_Use) {
 
-            if (mach == MachineID.Fairy)
+            if (mach == MachineID.Two_Fairy)
             {
                 verticalInput = myPlayer.GetAxisRaw("Vertical");
                 horizontalInput = myPlayer.GetAxisRaw("Horizontal");
                 FairyControl();
             }
-            /*else if (mach == MachineID.BackgroundCannon)
+            else if (mach == MachineID.Two_BottomHazard)
             {
-                verticalInput = myPlayer.GetAxisRaw("Vertical");
                 horizontalInput = myPlayer.GetAxisRaw("Horizontal");
-                BackgroundCannonMovement();
-            }
+                Two_BottomHazardControl();
+            }/*
             else if (mach == MachineID.SideHazard)
             {
                 verticalInput = myPlayer.GetAxisRaw("Vertical");
@@ -112,24 +135,92 @@ public class MachineBehaviour2 : MonoBehaviour
 
         vel.x = horizontalInput * speed;
         vel.y = verticalInput * speed;
+        //if fairy hits a player
         if (fairyScript.fairyHitPlayer == true)
         {
             StartCoroutine(FairyResetInitialDelay());
             End_Control();
+            Fairy_Machine_Ready = false;
+            cooldownTimer_Fairy = cooldownLength_Fairy;
+            GetComponent<BoxCollider2D>().enabled = false;
         }
 
         //this allows the player to move the crosshair
         Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
             + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
-
-     
-
     }
 
     IEnumerator FairyResetInitialDelay()
     {
         yield return new WaitForSeconds(1.0f);
         fairyScript.fairyHitPlayer = false;
+    }
+
+    void Two_BottomHazardControl()
+    {
+        vel.x = horizontalInput * speed;
+        print(Current_Haz_Num);
+        //this allows players to change which side hazzard is currently selected
+        if (myPlayer.GetButtonDown("Special"))
+        {
+            if (Current_Haz_Num < max_Machines_Amnt)
+            {
+                Current_Haz_Num++;
+            }
+
+        }
+        //reset current_haz_Num if it is greater than or equal to the max number of hazzards
+        if (Current_Haz_Num >= max_Machines_Amnt)
+        {
+            Current_Haz_Num = 0;
+        }
+
+
+        if(myPlayer.GetButton("BasicAttack") && can_Use)
+        {
+            if (Current_Haz_Num == 0)
+            {
+                Controlled_Hazard[Current_Haz_Num].GetComponent<Spike_Movement>().Spike_Active = true;
+            }
+            else if(Current_Haz_Num == 1)
+            {
+                Controlled_Hazard[Current_Haz_Num].GetComponent<Tree_Movement>().Tree_Active = true;
+            }
+
+            End_Control();
+        }
+        /*
+        if (myPlayer.GetButtonDown("BasicAttack") && can_Use)
+        {
+
+            Debug.Log("Should go off");
+            Controlled_Hazard[Current_Haz_Num].GetComponent<Eel_Movement>().Eel_Active = true;
+            End_Control();
+        }
+        /*
+        if (myPlayer.GetButtonDown("Jump"))
+        {
+            End_Control();
+        }
+        */
+        /*if (Controlled_Hazard[Current_Haz_Num].transform.position.x >= Hazard_MaxPos[Current_Haz_Num].x)
+        {
+            Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.position.x,
+                Hazard_MaxPos[Current_Haz_Num].y, Controlled_Hazard[Current_Haz_Num].transform.position.z);
+        }
+
+        if (Controlled_Hazard[Current_Haz_Num].transform.position.x <= Hazard_MinPos[Current_Haz_Num].x)
+        {
+            Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.position.x,
+                Hazard_MinPos[Current_Haz_Num].y, Controlled_Hazard[Current_Haz_Num].transform.position.z);
+        }
+        */
+        //this allows the player to move the side cannon (will be changed to rotation)
+        Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
+            + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+
+
+
     }
 
     //--------------------------------------------------------------------------------------------------
@@ -175,7 +266,7 @@ public class MachineBehaviour2 : MonoBehaviour
 
         StartCoroutine(waitForUse());
 
-        if (mach == MachineID.Fairy)
+        if (mach == MachineID.Two_Fairy)
         {
             Controlled_Hazard[0].SetActive(true);
         }
@@ -199,7 +290,7 @@ public class MachineBehaviour2 : MonoBehaviour
         // The playerID "-1" does not exist, therefore, the inputs will never be recieved.
         myPlayer = ReInput.players.GetPlayer(-1);
 
-        if (mach == MachineID.Fairy)
+        if (mach == MachineID.Two_Fairy)
         {
             Controlled_Hazard[0].transform.position = fairyScript.startPos;
             Controlled_Hazard[0].SetActive(false);
