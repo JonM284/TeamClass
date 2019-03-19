@@ -626,11 +626,11 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: yVel
-    m_EventTreshold: -1
-  - m_ConditionMode: 1
+    m_EventTreshold: -0.5
+  - m_ConditionMode: 2
     m_ConditionEvent: hitstun
     m_EventTreshold: 0
-  - m_ConditionMode: 1
+  - m_ConditionMode: 2
     m_ConditionEvent: isAttacking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
@@ -1361,7 +1361,7 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -12, y: 204, z: 0}
+  m_AnyStatePosition: {x: -84, y: 72, z: 0}
   m_EntryPosition: {x: 180, y: 708, z: 0}
   m_ExitPosition: {x: 1164, y: 636, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

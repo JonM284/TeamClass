@@ -201,6 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9073327}
   - component: {fileID: 9073328}
+  - component: {fileID: 9073329}
   m_Layer: 0
   m_Name: Back Hand
   m_TagString: Untagged
@@ -271,6 +272,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &9073329
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9073326}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.33436686, y: 0.9651062}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.72849673, y: 0.19264127}
+    oldSize: {x: 1.4633332, y: 3.14}
+    newSize: {x: 0.49, y: 0.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.4633332, y: 3.1399999}
+  m_EdgeRadius: 0
 --- !u!1001 &15613821
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16112,6 +16139,71 @@ MonoBehaviour:
   gravityDown: 30
   jumpVel: 13
   maxDownVel: 100
+  BN_Damage: 0
+  BN_Angle: 0
+  BN_Knockback: 0
+  BN_HitStun: 0
+  BN_Distance: 0
+  BN_TravelTime: 0
+  BF_Damage: 0
+  BF_Angle: 0
+  BF_Knockback: 0
+  BF_HitStun: 0
+  BF_Distance: 0
+  BF_TravelTime: 0
+  iceShot: {fileID: 0}
+  spawnIceShotHere: {fileID: 0}
+  bulletSpeed: 0
+  BU_Damage: 0
+  BU_Angle: 0
+  BU_Knockback: 0
+  BU_HitStun: 0
+  BU_Distance: 0
+  BU_TravelTime: 0
+  BD_Damage: 0
+  BD_Angle: 0
+  BD_Knockback: 0
+  BD_HitStun: 0
+  BD_Distance: 0
+  BD_TravelTime: 0
+  NA_Damage: 0
+  NA_Angle: 0
+  NA_Knockback: 0
+  NA_HitStun: 0
+  NA_Distance: 0
+  NA_TravelTime: 0
+  UA_Damage: 0
+  UA_Angle: 0
+  UA_Knockback: 0
+  UA_HitStun: 0
+  UA_Distance: 0
+  UA_TravelTime: 0
+  spawnIceShotHere1: {fileID: 0}
+  bulletSpeed1: 0
+  NH_Damage: 0
+  NH_Angle: 0
+  NH_Knockback: 0
+  NH_HitStun: 0
+  NH_Distance: 0
+  NH_TravelTime: 0
+  FH_Damage: 0
+  FH_Angle: 0
+  FH_Knockback: 0
+  FH_HitStun: 0
+  FH_Distance: 0
+  FH_TravelTime: 0
+  DH1_Damage: 0
+  DH1_Angle: 0
+  DH1_Knockback: 0
+  DH1_HitStun: 0
+  DH1_Distance: 0
+  DH1_TravelTime: 0
+  DH2_Damage: 0
+  DH2_Angle: 0
+  DH2_Knockback: 0
+  DH2_HitStun: 0
+  DH2_Distance: 0
+  DH2_TravelTime: 0
 --- !u!114 &1791978936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18532,6 +18624,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2129422850}
   - component: {fileID: 2129422851}
+  - component: {fileID: 2129422852}
   m_Layer: 0
   m_Name: Front Hand
   m_TagString: Untagged
@@ -18601,3 +18694,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &2129422852
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129422849}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.1936996, y: 1.977385}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.77978563, y: 0.30851817}
+    oldSize: {x: 0.64666665, y: 2.3666668}
+    newSize: {x: 0.59, y: 0.62666667}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.0133333, y: 3.1076212}
+  m_EdgeRadius: 0

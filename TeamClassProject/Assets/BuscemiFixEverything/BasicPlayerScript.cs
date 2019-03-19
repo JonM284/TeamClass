@@ -407,6 +407,14 @@ public class BasicPlayerScript : MonoBehaviour
 				onPlatformTimer -= Time.deltaTime;
 			}
 
+			if (gillbert)
+			{
+				if (jumpButtonPressed)
+				{
+					velocity.y += .4f;
+				}
+			}
+
 		}
 
 	}
@@ -478,7 +486,7 @@ public class BasicPlayerScript : MonoBehaviour
                     if (claire) { claireCharacter.ClaireAttackController(2); }
 
                     if (gillbert) { gillbertCharacter.GilbertAttackController(2); }
-                }
+				}
             }
 
             //up basic attack
@@ -489,7 +497,9 @@ public class BasicPlayerScript : MonoBehaviour
                     if (claire) { claireCharacter.ClaireAttackController(3); }
 
                     if (gillbert) { gillbertCharacter.GilbertAttackController(3); }
-                }
+
+					if (gnomercy) { gnomercyCharacter.GnomercyAttackController(3); }
+				}
 			}
 
 
@@ -501,9 +511,7 @@ public class BasicPlayerScript : MonoBehaviour
                     if (claire) { claireCharacter.ClaireAttackController(4); }
 
                     if (gillbert) { gillbertCharacter.GilbertAttackController(4); }
-
-                    if (wawa) { wawaCharacter.WawaAttackController(4); }
-                }
+				}
             }
 
             //neutral air attack
@@ -514,6 +522,7 @@ public class BasicPlayerScript : MonoBehaviour
                     if (claire) { claireCharacter.ClaireAttackController(9); }
 
                     if (gillbert) { gillbertCharacter.GilbertAttackController(9); }
+
                 }
 			}
 
@@ -547,7 +556,9 @@ public class BasicPlayerScript : MonoBehaviour
                     if (claire) { claireCharacter.ClaireAttackController(21); }
 
                     if (gillbert) { gillbertCharacter.GilbertAttackController(21); }
-                }
+
+					if (gnomercy) { gnomercyCharacter.GnomercyAttackController(21); }
+				}
             }
 
             //Down Heavy
@@ -558,7 +569,9 @@ public class BasicPlayerScript : MonoBehaviour
                     if (claire) { claireCharacter.ClaireAttackController(22); }
 
                     if (gillbert) { gillbertCharacter.GilbertAttackController(22); }
-                }
+
+					if (gnomercy) { gnomercyCharacter.GnomercyAttackController(22); }
+				}
             }
         }
 	}
