@@ -68,10 +68,14 @@ public class Watermelon : MonoBehaviour
 
     private float currentAttack;
     private int yDir;
-    private bool latched;
+    private bool latched, vining, goUp;
+    private int vineUpCou;
+
+
     Rigidbody2D rb2D;
     BasicPlayerScript player;
-    public Sprite vineWhip;
+    public Renderer vineWhip;
+    public GameObject downVine;
 
 
     private void Awake()
@@ -82,22 +86,29 @@ public class Watermelon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        downVine.gameObject.SetActive(false);
         player = GetComponent<BasicPlayerScript>();
         rb2D = GetComponent<Rigidbody2D>();
         yDir = 1;
+        vining = false;
         latched = false;
+        goUp = true;
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        vineDNHappenings();
+
         if (latched==true)
         {
             rb2D.constraints = RigidbodyConstraints2D.FreezePositionY;
+            vineWhip.enabled = true;
         }
         else
         {
+            vineWhip.enabled = false;
             rb2D.constraints = RigidbodyConstraints2D.None;
             rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
 
@@ -128,9 +139,81 @@ public class Watermelon : MonoBehaviour
                 }
             
         }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            if (vining!=true)
+            {
+                vining = true;
+                downVine.gameObject.SetActive(true);
+            }
+            
+            
+
+        }
+    }
+
+    public void WawaAttackController(int attackNum)
+    {
+        switch (attackNum)
+        {
+
+            case 4:
+                player.anim.SetTrigger("BasicDown");
+                player.isAttacking = true;
+                if (player.wawa)
+                {
+                    print("wawaBDAttk");
+                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                }
+                break;
+
+        
+        }
     }
 
 
+    private void vineDNHappenings()
+    {
+        if (vining == true)
+        {
+            downVine.gameObject.SetActive(true);
+            if (goUp == true)
+            {
+                downVine.transform.position = new Vector2(downVine.transform.position.x, downVine.transform.position.y + .0004f);
+                vineUpCou++;
+                if (vineUpCou > 60)
+                {
+                    goUp = false;
+                }
+            }
+            else
+            {
+                downVine.transform.position = new Vector2(downVine.transform.position.x, downVine.transform.position.y - .0004f);
+                vineUpCou++;
+                if (vineUpCou > 100)
+                {
+                    goUp = true;
+
+                    vining = false;
+
+                }
+            }
+        }
+        else
+        {
+            vineUpCou = 0;
+            downVine.gameObject.SetActive(false);
+        }
+
+
+
+
+
+
+
+    }
 
     private void NeutralBasic(GameObject enemy)
     {
@@ -149,7 +232,7 @@ public class Watermelon : MonoBehaviour
 
     private void DownBasic(GameObject enemy)
     {
-        
+        enemy.GetComponent<BasicPlayerScript>().GetHit(BD_Damage, BD_Angle, BD_Knockback, BD_HitStun, BD_Distance, BD_TravelTime, player.FacingRight());
     }
 
     private void NeutralAir(GameObject enemy)
