@@ -222,6 +222,22 @@ public class BasicPlayerScript : MonoBehaviour
 			}
 		}
 
+        if (wawa)
+        {
+            if (isAttacking && anim.GetCurrentAnimatorStateInfo(0).IsName("Wawa Idle"))
+            {
+                checkAttackTimer += Time.deltaTime;
+            }
+            else
+            {
+                checkAttackTimer = 0;
+            }
+            if (checkAttackTimer >= .1)
+            {
+                isAttacking = false;
+            }
+        }
+
 
         healthBar.fillAmount = currentHealth / maxHealth;
 		regenableHealthBar.fillAmount = regenHeath / maxHealth;
@@ -511,7 +527,9 @@ public class BasicPlayerScript : MonoBehaviour
                     if (claire) { claireCharacter.ClaireAttackController(4); }
 
                     if (gillbert) { gillbertCharacter.GilbertAttackController(4); }
-				}
+
+                    if (wawa) {wawaCharacter.WawaAttackController(4); }
+                }
             }
 
             //neutral air attack

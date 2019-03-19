@@ -103,8 +103,6 @@ public class Claire : MonoBehaviour
     public float DH2_Distance;
     public float DH2_TravelTime;
 
-
-
     private float currentAttack;
 
     BasicPlayerScript player;
