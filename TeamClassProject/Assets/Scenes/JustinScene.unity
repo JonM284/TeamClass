@@ -730,8 +730,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1778211259
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4210cd32bd6f2c94993ffa32c74a048e, type: 3}
   m_Color: {r: 0.3490566, g: 0.28572872, b: 0.22227661, a: 1}
@@ -983,7 +983,7 @@ GameObject:
   - component: {fileID: 451794338}
   - component: {fileID: 451794337}
   - component: {fileID: 451794341}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1000,7 +1000,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1075,7 +1075,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4210cd32bd6f2c94993ffa32c74a048e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.10865241, g: 0.5, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1093,7 +1093,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 451794336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.75, z: 0}
+  m_LocalPosition: {x: 0, y: -3.541, z: 0}
   m_LocalScale: {x: 4, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1113,11 +1113,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myTree: {fileID: 451794336}
   myEndPos: {fileID: 659026610}
+  myStartPos: {x: 0, y: 0, z: 0}
   Tree_Active: 0
   going_Out_Speed: 1
   return_Speed: 0
   removeTreeTimer: 0
   removeTreeLength: 0
+  treeIsThere: 0
 --- !u!1 &501930303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1237,7 +1239,7 @@ GameObject:
   - component: {fileID: 573191090}
   - component: {fileID: 573191089}
   - component: {fileID: 573191091}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1282,7 +1284,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4210cd32bd6f2c94993ffa32c74a048e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9433962, g: 0.5562425, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1367,6 +1369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mySpike: {fileID: 573191086}
   myEndPos: {fileID: 1050603868}
+  myStartPos: {x: 0, y: 0, z: 0}
   Spike_Active: 0
   going_Out_Speed: 3
   return_Speed: 0
@@ -1977,7 +1980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 659026610}
   - component: {fileID: 659026609}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Tree_EndPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2919,7 +2922,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1050603868}
   - component: {fileID: 1050603869}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Spike_EndPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7297,7 +7300,7 @@ GameObject:
   - component: {fileID: 1630894777}
   - component: {fileID: 1630894776}
   - component: {fileID: 1630894775}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Top_Floor
   m_TagString: Floor
   m_Icon: {fileID: 0}
@@ -7356,7 +7359,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -7399,8 +7402,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1778211259
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4210cd32bd6f2c94993ffa32c74a048e, type: 3}
   m_Color: {r: 0.3490566, g: 0.28572872, b: 0.22227661, a: 1}
@@ -7975,6 +7978,85 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1889597017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1889597019}
+  - component: {fileID: 1889597018}
+  m_Layer: 0
+  m_Name: SupportArea_Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &1889597018
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889597017}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -1778211259
+  m_SortingLayer: 1
+  m_SortingOrder: -1
+  m_Sprite: {fileID: 21300000, guid: 4210cd32bd6f2c94993ffa32c74a048e, type: 3}
+  m_Color: {r: 0.5764706, g: 0.3647059, b: 0.24705882, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.32, y: 0.32}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1889597019
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889597017}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -3.6, z: 0}
+  m_LocalScale: {x: 49.21404, y: 7.8720317, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1913872730
 GameObject:
   m_ObjectHideFlags: 0

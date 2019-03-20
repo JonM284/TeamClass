@@ -42,9 +42,14 @@ public class MachineBehaviour2 : MonoBehaviour
     private Vector3 Move_Rotation, originalRotation;
 
     public FairyScript fairyScript;
+    //cooldowns
     private float cooldownTimer_Fairy;
     private float cooldownLength_Fairy;
     private bool Fairy_Machine_Ready;
+
+    private float cooldownTimer_TwoBottomHazard;
+    private float cooldownLength_TwoBottomHazard;
+    private bool Two_BottomHazard_Machine_Ready;
 
     public List<Vector3> Hazard_StartPos;
     public List<Vector3> Hazard_MaxPos;
@@ -75,18 +80,34 @@ public class MachineBehaviour2 : MonoBehaviour
         cooldownTimer_Fairy = 0f;
         cooldownLength_Fairy = 10f;
         Fairy_Machine_Ready = true;
+
+        cooldownTimer_TwoBottomHazard = 0f;
+        cooldownLength_TwoBottomHazard = 10f;
+        Two_BottomHazard_Machine_Ready = true;
+
     }
 
     // Update is called once per frame
     void Update()
     {
         //fairy cooldown
-        if(Fairy_Machine_Ready == false)
+        if (Fairy_Machine_Ready == false)
         {
             cooldownTimer_Fairy -= Time.deltaTime;
-            if(cooldownTimer_Fairy <= 0)
+            if (cooldownTimer_Fairy <= 0)
             {
                 Fairy_Machine_Ready = true;
+                GetComponent<BoxCollider2D>().enabled = true;
+            }
+        }
+
+        //Bottom Hazard Cooldown
+        if (Two_BottomHazard_Machine_Ready == false)
+        {
+            cooldownTimer_TwoBottomHazard -= Time.deltaTime;
+            if(cooldownTimer_TwoBottomHazard <= 0)
+            {
+                Two_BottomHazard_Machine_Ready = true;
                 GetComponent<BoxCollider2D>().enabled = true;
             }
         }
@@ -156,11 +177,12 @@ public class MachineBehaviour2 : MonoBehaviour
         fairyScript.fairyHitPlayer = false;
     }
 
+    //Spikes/Tree Bottom Hazard Support Machine
     void Two_BottomHazardControl()
     {
+        //Moving the spikes/tree left/right before activating it
         vel.x = horizontalInput * speed;
-        print(Current_Haz_Num);
-        //this allows players to change which side hazzard is currently selected
+        //this allows players to change which bottom hazard is currently selected (spikes/tree)
         if (myPlayer.GetButtonDown("Special"))
         {
             if (Current_Haz_Num < max_Machines_Amnt)
@@ -168,53 +190,52 @@ public class MachineBehaviour2 : MonoBehaviour
                 Current_Haz_Num++;
             }
 
+            //switch spikes for tree
+            if(Current_Haz_Num == 1)
+            {
+                Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<SpriteRenderer>().enabled = false;
+                Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<BoxCollider2D>().enabled = false;
+                Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.transform.position = Controlled_Hazard[0].GetComponent<Spike_Movement>().myStartPos;
+                Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<SpriteRenderer>().enabled = true;   
+            }
+            //switch tree for spikes
+            else
+            {
+                Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<SpriteRenderer>().enabled = true;
+                Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<SpriteRenderer>().enabled = false;
+                Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<BoxCollider2D>().enabled = false;
+                Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.transform.position = Controlled_Hazard[1].GetComponent<Tree_Movement>().myStartPos;
+            }
         }
         //reset current_haz_Num if it is greater than or equal to the max number of hazzards
         if (Current_Haz_Num >= max_Machines_Amnt)
         {
             Current_Haz_Num = 0;
         }
-
-
+        //player activates (sends out) hazard (spikes/tree)
         if(myPlayer.GetButton("BasicAttack") && can_Use)
         {
+            //if spikes
             if (Current_Haz_Num == 0)
             {
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Spike_Movement>().Spike_Active = true;
+                Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<BoxCollider2D>().enabled = true;
             }
+            //if tree
             else if(Current_Haz_Num == 1)
             {
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Tree_Movement>().Tree_Active = true;
+                Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<BoxCollider2D>().enabled = true;
             }
 
+            //kick player off machine and put it on cooldown
             End_Control();
-        }
-        /*
-        if (myPlayer.GetButtonDown("BasicAttack") && can_Use)
-        {
+            Two_BottomHazard_Machine_Ready = false;
+            cooldownTimer_TwoBottomHazard = cooldownLength_TwoBottomHazard;
+            GetComponent<BoxCollider2D>().enabled = false;
 
-            Debug.Log("Should go off");
-            Controlled_Hazard[Current_Haz_Num].GetComponent<Eel_Movement>().Eel_Active = true;
-            End_Control();
         }
-        /*
-        if (myPlayer.GetButtonDown("Jump"))
-        {
-            End_Control();
-        }
-        */
-        /*if (Controlled_Hazard[Current_Haz_Num].transform.position.x >= Hazard_MaxPos[Current_Haz_Num].x)
-        {
-            Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.position.x,
-                Hazard_MaxPos[Current_Haz_Num].y, Controlled_Hazard[Current_Haz_Num].transform.position.z);
-        }
-
-        if (Controlled_Hazard[Current_Haz_Num].transform.position.x <= Hazard_MinPos[Current_Haz_Num].x)
-        {
-            Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.position.x,
-                Hazard_MinPos[Current_Haz_Num].y, Controlled_Hazard[Current_Haz_Num].transform.position.z);
-        }
-        */
+       
         //this allows the player to move the side cannon (will be changed to rotation)
         Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
             + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
@@ -223,27 +244,6 @@ public class MachineBehaviour2 : MonoBehaviour
 
     }
 
-    //--------------------------------------------------------------------------------------------------
-    /// <summary>
-    /// Function Description: This contains all movement and interactions for the Background Cannon.
-    /// </summary>
-    void BackgroundCannonMovement()
-    {
-        vel.x = horizontalInput * speed;
-        vel.y = verticalInput * speed;
-
-        //this allows the player to spawn an object in the position where the crosshair is
-        if (myPlayer.GetButtonDown("Jump") && can_Use)
-        {
-            objectPool.SpawnFromPool("Tester", Controlled_Hazard[Current_Haz_Num].transform.position, Quaternion.identity);
-            End_Control();
-            Debug.Log("Has Spawned object");
-        }
-
-        //this allows the player to move the crosshair
-        Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
-            + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
-    }
 
 
 
@@ -269,6 +269,14 @@ public class MachineBehaviour2 : MonoBehaviour
         if (mach == MachineID.Two_Fairy)
         {
             Controlled_Hazard[0].SetActive(true);
+        }
+        if(mach == MachineID.Two_BottomHazard)
+        {
+            Current_Haz_Num = 0;
+            Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<SpriteRenderer>().enabled = true;
+            Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<BoxCollider2D>().enabled = false;
+            Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<SpriteRenderer>().enabled = false;
+            Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<BoxCollider2D>().enabled = false;
         }
 
             Debug.Log("Player:"+playerNum+ " has activated hazzard: "+mach);
@@ -296,6 +304,21 @@ public class MachineBehaviour2 : MonoBehaviour
             Controlled_Hazard[0].SetActive(false);
         }
 
+        if(mach == MachineID.Two_BottomHazard)
+        {
+            //if just leaving machine and not activating either spikes or tree, disable sprites and colliders of spikes/trees | if one of them is active, you don't want to do anything
+            if(Controlled_Hazard[0].GetComponent<Spike_Movement>().Spike_Active == false && Controlled_Hazard[1].GetComponent<Tree_Movement>().Tree_Active == false)
+            {
+                Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<SpriteRenderer>().enabled = false;
+                Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<BoxCollider2D>().enabled = false;
+                Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.transform.position = Controlled_Hazard[0].GetComponent<Spike_Movement>().myStartPos;
+                Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<SpriteRenderer>().enabled = false;
+                Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<BoxCollider2D>().enabled = false;
+                Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.transform.position = Controlled_Hazard[1].GetComponent<Tree_Movement>().myStartPos;
+            }
+            
+        }
+        
         Debug.Log("Player has deactivated machine: "+transform.name);
     }
 
