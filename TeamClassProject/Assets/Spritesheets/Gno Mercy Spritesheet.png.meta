@@ -52,6 +52,9 @@ TextureImporter:
     21300094: Back Head
     21300096: Pers. Hammer 1
     21300098: Pers. Hammer 2
+    21300100: Dirt Boulder
+    21300102: Dirt
+    21300104: Dirt Pile
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -1004,7 +1007,7 @@ TextureImporter:
         width: 439
         height: 178
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1044,7 +1047,7 @@ TextureImporter:
         width: 94
         height: 250
       alignment: 9
-      pivot: {x: 0.42287493, y: 0.19550318}
+      pivot: {x: 0.47452366, y: 0.08868612}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1064,7 +1067,7 @@ TextureImporter:
         width: 87
         height: 258
       alignment: 9
-      pivot: {x: 0.41666946, y: 0.1487437}
+      pivot: {x: 0.41666386, y: 0.12051536}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1102,9 +1105,9 @@ TextureImporter:
         x: 2974
         y: 490
         width: 587
-        height: 1019
+        height: 867
       alignment: 9
-      pivot: {x: 0.72849065, y: 0.15493442}
+      pivot: {x: 0.72849065, y: 0.15152156}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1122,15 +1125,75 @@ TextureImporter:
         x: 3572
         y: 574
         width: 685
-        height: 1007
+        height: 821
       alignment: 9
-      pivot: {x: 0.70109314, y: 0.14002307}
+      pivot: {x: 0.70540136, y: 0.14760107}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 70f57577de9a44ecc873e73a68246d27
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dirt Boulder
+      rect:
+        serializedVersion: 2
+        x: 3702
+        y: 62
+        width: 364
+        height: 327
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 817fb4c9f5fd8473482e87a83cfd6649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dirt
+      rect:
+        serializedVersion: 2
+        x: 4116
+        y: 40
+        width: 112
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4d46a53fabaa4b4a99d2fa39009c617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dirt Pile
+      rect:
+        serializedVersion: 2
+        x: 3727
+        y: 420
+        width: 339
+        height: 72
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1538264}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72d24e572f6414872b5e60c43ca484ba
       vertices: []
       indices: 
       edges: []
