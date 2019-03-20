@@ -19,7 +19,7 @@ public class MachineBehaviour2 : MonoBehaviour
     [Tooltip("Max distance for side hazards, max angle for side cannons")]
     public float Max_range;
     //These are the different MACHINE TYPES
-    public enum MachineID { Two_Fairy, Two_BottomHazard };
+    public enum MachineID { Two_Fairy, Two_BottomHazard, Two_TopHazard };
     [Header("Machine Type")]
     [Tooltip("What type of machine will this be?")]
     public MachineID mach;
@@ -42,6 +42,7 @@ public class MachineBehaviour2 : MonoBehaviour
     private Vector3 Move_Rotation, originalRotation;
 
     public FairyScript fairyScript;
+
     //cooldowns
     private float cooldownTimer_Fairy;
     private float cooldownLength_Fairy;
@@ -50,6 +51,10 @@ public class MachineBehaviour2 : MonoBehaviour
     private float cooldownTimer_TwoBottomHazard;
     private float cooldownLength_TwoBottomHazard;
     private bool Two_BottomHazard_Machine_Ready;
+
+    private float cooldownTimer_TwoTopHazard;
+    private float cooldownLength_TwoTopHazard;
+    private bool Two_TopHazard_Machine_Ready;
 
     public List<Vector3> Hazard_StartPos;
     public List<Vector3> Hazard_MaxPos;
@@ -85,6 +90,10 @@ public class MachineBehaviour2 : MonoBehaviour
         cooldownLength_TwoBottomHazard = 10f;
         Two_BottomHazard_Machine_Ready = true;
 
+        cooldownTimer_TwoTopHazard = 0f;
+        cooldownLength_TwoTopHazard = 10f;
+        Two_TopHazard_Machine_Ready = true;
+
     }
 
     // Update is called once per frame
@@ -112,6 +121,17 @@ public class MachineBehaviour2 : MonoBehaviour
             }
         }
 
+        //Top Hazard Cooldown
+        if (Two_TopHazard_Machine_Ready == false)
+        {
+            cooldownTimer_TwoTopHazard -= Time.deltaTime;
+            if (cooldownTimer_TwoTopHazard <= 0)
+            {
+                Two_TopHazard_Machine_Ready = true;
+                GetComponent<BoxCollider2D>().enabled = true;
+            }
+        }
+
 
         //if the machine is in use
         if (is_In_Use) {
@@ -126,12 +146,12 @@ public class MachineBehaviour2 : MonoBehaviour
             {
                 horizontalInput = myPlayer.GetAxisRaw("Horizontal");
                 Two_BottomHazardControl();
-            }/*
-            else if (mach == MachineID.SideHazard)
-            {
-                verticalInput = myPlayer.GetAxisRaw("Vertical");
-                SideHazzardControl();
             }
+            else if (mach == MachineID.Two_TopHazard)
+            {
+                horizontalInput = myPlayer.GetAxisRaw("Horizontal");
+                Two_TopHazardControl();
+            }/*
             else if (mach == MachineID.SpecialPlatform)
             {
                 verticalInput = myPlayer.GetAxisRaw("Vertical");
@@ -190,8 +210,14 @@ public class MachineBehaviour2 : MonoBehaviour
                 Current_Haz_Num++;
             }
 
+            //reset current_haz_Num if it is greater than or equal to the max number of hazzards
+            if (Current_Haz_Num >= max_Machines_Amnt)
+            {
+                Current_Haz_Num = 0;
+            }
+
             //switch spikes for tree
-            if(Current_Haz_Num == 1)
+            if (Current_Haz_Num == 1)
             {
                 Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<SpriteRenderer>().enabled = false;
                 Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<BoxCollider2D>().enabled = false;
@@ -207,11 +233,7 @@ public class MachineBehaviour2 : MonoBehaviour
                 Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.transform.position = Controlled_Hazard[1].GetComponent<Tree_Movement>().myStartPos;
             }
         }
-        //reset current_haz_Num if it is greater than or equal to the max number of hazzards
-        if (Current_Haz_Num >= max_Machines_Amnt)
-        {
-            Current_Haz_Num = 0;
-        }
+        
         //player activates (sends out) hazard (spikes/tree)
         if(myPlayer.GetButton("BasicAttack") && can_Use)
         {
@@ -236,16 +258,133 @@ public class MachineBehaviour2 : MonoBehaviour
 
         }
        
-        //this allows the player to move the side cannon (will be changed to rotation)
-        Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
-            + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+            //this allows the player to move the hazard left and right
+            Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
+                + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
 
+        //boundaries for spike moving sideways
+        if (Controlled_Hazard[0].transform.position.x < -7.4f)
+        {
+            Controlled_Hazard[0].transform.position = new Vector3(Controlled_Hazard[0].transform.position.x + .1f, Controlled_Hazard[0].transform.position.y, Controlled_Hazard[0].transform.position.z);
+        }
+        if (Controlled_Hazard[0].transform.position.x > 7.4f)
+        {
+            Controlled_Hazard[0].transform.position = new Vector3(Controlled_Hazard[0].transform.position.x - .1f, Controlled_Hazard[0].transform.position.y, Controlled_Hazard[0].transform.position.z);
+        }
 
+        //boundaries for tree moving sideways
+        if (Controlled_Hazard[1].transform.position.x < -7.05f)
+        {
+            Controlled_Hazard[1].transform.position = new Vector3(Controlled_Hazard[1].transform.position.x + .1f, Controlled_Hazard[1].transform.position.y, Controlled_Hazard[1].transform.position.z);
+        }
+        if(Controlled_Hazard[1].transform.position.x > 7.05f)
+        {
+            Controlled_Hazard[1].transform.position = new Vector3(Controlled_Hazard[1].transform.position.x - .1f, Controlled_Hazard[1].transform.position.y, Controlled_Hazard[1].transform.position.z);
+        }
 
     }
 
+    //Branbull/Apples Support Machine
+    public void Two_TopHazardControl()
+    {
+        //Moving the branbull/apple left/right before activating it
+        vel.x = horizontalInput * speed;
+        //this allows players to change which bottom hazard is currently selected (branbull/apple)
+        if (myPlayer.GetButtonDown("Special"))
+        {
+            if (Current_Haz_Num < max_Machines_Amnt)
+            {
+                Current_Haz_Num++;
+            }
 
+            //reset current_haz_Num if it is greater than or equal to the max number of hazzards
+            if (Current_Haz_Num >= max_Machines_Amnt)
+            {
+                Current_Haz_Num = 0;
+            }
 
+            //switch branbull for apple
+            if (Current_Haz_Num == 1)
+            {
+                Controlled_Hazard[0].GetComponent<Branbull_Movement>().myBranbull.GetComponent<SpriteRenderer>().enabled = false;
+                Controlled_Hazard[0].GetComponent<Branbull_Movement>().branbullExploded.GetComponent<SpriteRenderer>().enabled = false;
+                Controlled_Hazard[0].GetComponent<Branbull_Movement>().myBranbull.GetComponent<BoxCollider2D>().enabled = false;
+                Controlled_Hazard[0].GetComponent<Branbull_Movement>().branbullExploded.GetComponent<BoxCollider2D>().enabled = false;
+                Controlled_Hazard[0].GetComponent<Branbull_Movement>().myBranbull.transform.position = Controlled_Hazard[0].GetComponent<Branbull_Movement>().myStartPos;
+                foreach (SpriteRenderer apple in Controlled_Hazard[1].GetComponent<Apple_Movement>().appleSprites)
+                {
+                    apple.enabled = true;
+                }
+            }
+            //switch apple for branbull
+            else
+            {
+                Controlled_Hazard[0].GetComponent<Branbull_Movement>().myBranbull.GetComponent<SpriteRenderer>().enabled = true;
+                foreach (SpriteRenderer apple in Controlled_Hazard[1].GetComponent<Apple_Movement>().appleSprites)
+                {
+                    apple.enabled = false;
+                }
+                foreach (CircleCollider2D appleCollider in Controlled_Hazard[1].GetComponent<Apple_Movement>().appleColliders)
+                {
+                    appleCollider.enabled = false;
+                }
+                Controlled_Hazard[1].GetComponent<Apple_Movement>().myApple.transform.position = Controlled_Hazard[1].GetComponent<Apple_Movement>().myStartPos;
+            }
+
+        }
+
+        //player activates (sends out) hazard (branbull/apple)
+        if (myPlayer.GetButton("BasicAttack") && can_Use)
+        {
+            //if branbull
+            if (Current_Haz_Num == 0)
+            {
+                Controlled_Hazard[Current_Haz_Num].GetComponent<Branbull_Movement>().Branbull_Active = true;
+                Controlled_Hazard[0].GetComponent<Branbull_Movement>().myBranbull.GetComponent<BoxCollider2D>().enabled = true;
+            }
+            //if apple
+            else if (Current_Haz_Num == 1)
+            {
+                Controlled_Hazard[Current_Haz_Num].GetComponent<Apple_Movement>().Apple_Active = true;
+                foreach (CircleCollider2D appleCollider in Controlled_Hazard[1].GetComponent<Apple_Movement>().appleColliders)
+                {
+                    appleCollider.enabled = true;
+                }
+            }
+
+            //kick player off machine and put it on cooldown
+            End_Control();
+            Two_TopHazard_Machine_Ready = false;
+            cooldownTimer_TwoTopHazard = cooldownLength_TwoTopHazard;
+            GetComponent<BoxCollider2D>().enabled = false;
+
+        }
+
+        //this allows the player to move the hazard left and right
+        Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
+            + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+
+        //boundaries for branbull moving sideways
+        if (Controlled_Hazard[0].transform.position.x < -7.35f)
+        {
+            Controlled_Hazard[0].transform.position = new Vector3(Controlled_Hazard[0].transform.position.x + .1f, Controlled_Hazard[0].transform.position.y, Controlled_Hazard[0].transform.position.z);
+        }
+        if (Controlled_Hazard[0].transform.position.x > 7.35f)
+        {
+            Controlled_Hazard[0].transform.position = new Vector3(Controlled_Hazard[0].transform.position.x - .1f, Controlled_Hazard[0].transform.position.y, Controlled_Hazard[0].transform.position.z);
+        }
+
+        //boundaries for apple moving sideways
+        if (Controlled_Hazard[1].transform.position.x < -6f)
+        {
+            Controlled_Hazard[1].transform.position = new Vector3(Controlled_Hazard[1].transform.position.x + .1f, Controlled_Hazard[1].transform.position.y, Controlled_Hazard[1].transform.position.z);
+        }
+        if (Controlled_Hazard[1].transform.position.x > 6f)
+        {
+            Controlled_Hazard[1].transform.position = new Vector3(Controlled_Hazard[1].transform.position.x - .1f, Controlled_Hazard[1].transform.position.y, Controlled_Hazard[1].transform.position.z);
+        }
+
+    }
 
     
 
@@ -278,8 +417,23 @@ public class MachineBehaviour2 : MonoBehaviour
             Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<SpriteRenderer>().enabled = false;
             Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<BoxCollider2D>().enabled = false;
         }
+        if (mach == MachineID.Two_TopHazard)
+        {
+            Current_Haz_Num = 0;
+            Controlled_Hazard[0].GetComponent<Branbull_Movement>().myBranbull.GetComponent<SpriteRenderer>().enabled = true;
+            Controlled_Hazard[0].GetComponent<Branbull_Movement>().myBranbull.GetComponent<BoxCollider2D>().enabled = false;
+            Controlled_Hazard[0].GetComponent<Branbull_Movement>().branbullExploded.GetComponent<BoxCollider2D>().enabled = false;
+            foreach (SpriteRenderer apple in Controlled_Hazard[1].GetComponent<Apple_Movement>().appleSprites)
+            {
+                    apple.enabled = false;
+            }
+            foreach (CircleCollider2D appleCollider in Controlled_Hazard[1].GetComponent<Apple_Movement>().appleColliders)
+            {
+                appleCollider.enabled = false;
+            }
+        }
 
-            Debug.Log("Player:"+playerNum+ " has activated hazzard: "+mach);
+        Debug.Log("Player:"+playerNum+ " has activated hazzard: "+mach);
     }
 
 
@@ -315,10 +469,28 @@ public class MachineBehaviour2 : MonoBehaviour
                 Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<SpriteRenderer>().enabled = false;
                 Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<BoxCollider2D>().enabled = false;
                 Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.transform.position = Controlled_Hazard[1].GetComponent<Tree_Movement>().myStartPos;
-            }
-            
+            } 
         }
-        
+        if (mach == MachineID.Two_TopHazard)
+        {
+            //if just leaving machine and not activating either branbull or apple, disable sprites and colliders of branbull/apple | if one of them is active, you don't want to do anything
+            if (Controlled_Hazard[0].GetComponent<Branbull_Movement>().Branbull_Active == false && Controlled_Hazard[1].GetComponent<Apple_Movement>().Apple_Active == false)
+            {
+                Controlled_Hazard[0].GetComponent<Branbull_Movement>().myBranbull.GetComponent<SpriteRenderer>().enabled = false;
+                Controlled_Hazard[0].GetComponent<Branbull_Movement>().myBranbull.GetComponent<BoxCollider2D>().enabled = false;
+                Controlled_Hazard[0].GetComponent<Branbull_Movement>().myBranbull.transform.position = Controlled_Hazard[0].GetComponent<Branbull_Movement>().myStartPos;
+                foreach (SpriteRenderer apple in Controlled_Hazard[1].GetComponent<Apple_Movement>().appleSprites)
+                {
+                    apple.enabled = false;
+                }
+                foreach (CircleCollider2D appleCollider in Controlled_Hazard[1].GetComponent<Apple_Movement>().appleColliders)
+                {
+                    appleCollider.enabled = false;
+                }
+                Controlled_Hazard[1].GetComponent<Apple_Movement>().myApple.transform.position = Controlled_Hazard[1].GetComponent<Apple_Movement>().myStartPos;
+            }
+        }
+
         Debug.Log("Player has deactivated machine: "+transform.name);
     }
 
