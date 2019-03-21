@@ -2377,7 +2377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a84798539e05554c957a6b86b175395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNum: 1
+  playerNum: 2
   healthBar: {fileID: 945378464}
   regenableHealthBar: {fileID: 134448193}
   rb: {fileID: 0}
@@ -2405,13 +2405,12 @@ MonoBehaviour:
   wawa: 0
   maxHealth: 100
   currentHealth: 0
-  regenHeathMultiplier: 0
+  regenHeathMultiplier: 0.4
   makeFaceRight: 0
   isAttacking: 0
   stunTime: 0
   dashSpeed: 0.25
   maxDashTimer: 0.18
-  gameCamera: {fileID: 1158544943}
 --- !u!61 &430095615
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2890,15 +2889,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a84798539e05554c957a6b86b175395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNum: 2
+  playerNum: 1
   healthBar: {fileID: 206296646}
   regenableHealthBar: {fileID: 211150989}
   rb: {fileID: 0}
   anim: {fileID: 0}
   state: 0
   accel: 0
-  accelMult: 0.05
-  decelMult: 0.15
+  accelMult: 1
+  decelMult: 1
   speed: 7
   weight: 0
   velocity: {x: 0, y: 0, z: 0}
@@ -2918,13 +2917,12 @@ MonoBehaviour:
   wawa: 0
   maxHealth: 0
   currentHealth: 0
-  regenHeathMultiplier: 0
+  regenHeathMultiplier: 0.4
   makeFaceRight: 0
   isAttacking: 0
   stunTime: 0
   dashSpeed: 0.25
   maxDashTimer: 0.18
-  gameCamera: {fileID: 1158544943}
 --- !u!70 &431855595
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -9258,6 +9256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1158544943}
   - component: {fileID: 1158544942}
+  - component: {fileID: 1158544944}
   - component: {fileID: 1158544941}
   m_Layer: 0
   m_Name: Main Camera
@@ -9330,6 +9329,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1158544944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158544940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496e00929efd89b438aff3a28ee06988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1159595184
 GameObject:
   m_ObjectHideFlags: 0

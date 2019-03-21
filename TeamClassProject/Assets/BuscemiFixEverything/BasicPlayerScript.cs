@@ -118,6 +118,7 @@ public class BasicPlayerScript : MonoBehaviour
 			claireCharacter = this.GetComponent<Claire>();
 			maxHealth = claireCharacter.maxHealth;
 			currentHealth = maxHealth;
+            regenHeath = maxHealth;
 			speed = claireCharacter.speed;
 			weight = claireCharacter.weight;
 			gravityUp = claireCharacter.gravityUp;
@@ -130,7 +131,8 @@ public class BasicPlayerScript : MonoBehaviour
 			gillbertCharacter = this.GetComponent<Gillbert>();
 			maxHealth = gillbertCharacter.maxHealth;
 			currentHealth = maxHealth;
-			speed = gillbertCharacter.speed;
+            regenHeath = maxHealth;
+            speed = gillbertCharacter.speed;
 			weight = gillbertCharacter.weight;
 			gravityUp = gillbertCharacter.gravityUp;
 			gravityDown = gillbertCharacter.gravityDown;
@@ -143,7 +145,8 @@ public class BasicPlayerScript : MonoBehaviour
 			gnomercyCharacter = this.GetComponent<Gnomercy>();
 			maxHealth = gnomercyCharacter.maxHealth;
 			currentHealth = maxHealth;
-			speed = gnomercyCharacter.speed;
+            regenHeath = maxHealth;
+            speed = gnomercyCharacter.speed;
 			weight = gnomercyCharacter.weight;
 			gravityUp = gnomercyCharacter.gravityUp;
 			gravityDown = gnomercyCharacter.gravityDown;
@@ -436,10 +439,10 @@ public class BasicPlayerScript : MonoBehaviour
 
 			if (myPlayer.GetButtonDown("Jump") && onPlatformTimer > 0)
 			{
-				initialJumpTime = maxInitialJumpTime;
+                isJumping = true;
+                initialJumpTime = maxInitialJumpTime;
 				holdJumpTime = maxHoldJumpTime;
 				jumpButtonPressed = true;
-				isJumping = true;
 			}
 			if (myPlayer.GetButtonUp("Jump"))
 			{
@@ -543,7 +546,7 @@ public class BasicPlayerScript : MonoBehaviour
 				{
                     if (claire) { claireCharacter.ClaireAttackController(1); }
 
-                    if (gillbert) { gillbertCharacter.GilbertAttackController(1); }
+                    //if (gillbert) { gillbertCharacter.GilbertAttackController(1); }
 				}
 			}
             
@@ -554,7 +557,7 @@ public class BasicPlayerScript : MonoBehaviour
                 {
                     if (claire) { claireCharacter.ClaireAttackController(2); }
 
-                    if (gillbert) { gillbertCharacter.GilbertAttackController(2); }
+                    //if (gillbert) { gillbertCharacter.GilbertAttackController(2); }
 				}
             }
 
@@ -604,7 +607,7 @@ public class BasicPlayerScript : MonoBehaviour
 				{
                     if (claire) { claireCharacter.ClaireAttackController(10); }
 
-                    if (gillbert) { gillbertCharacter.GilbertAttackController(10); }
+                    //if (gillbert) { gillbertCharacter.GilbertAttackController(10); }
                 }
 			}
 
@@ -626,7 +629,7 @@ public class BasicPlayerScript : MonoBehaviour
                 {
                     if (claire) { claireCharacter.ClaireAttackController(21); }
 
-                    if (gillbert) { gillbertCharacter.GilbertAttackController(21); }
+                    //if (gillbert) { gillbertCharacter.GilbertAttackController(21); }
 
 					if (gnomercy) { gnomercyCharacter.GnomercyAttackController(21); }
 				}
@@ -639,7 +642,7 @@ public class BasicPlayerScript : MonoBehaviour
                 {
                     if (claire) { claireCharacter.ClaireAttackController(22); }
 
-                    if (gillbert) { gillbertCharacter.GilbertAttackController(22); }
+                    //if (gillbert) { gillbertCharacter.GilbertAttackController(22); }
 
 					if (gnomercy) { gnomercyCharacter.GnomercyAttackController(22); }
 				}
