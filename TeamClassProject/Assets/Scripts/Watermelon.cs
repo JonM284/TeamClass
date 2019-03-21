@@ -158,6 +158,15 @@ public class Watermelon : MonoBehaviour
     {
         switch (attackNum)
         {
+            case 2:
+                player.anim.SetTrigger("BasicForward");
+                player.isAttacking = true;
+                if (player.wawa)
+                {
+                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                }
+                break;
 
             case 4:
                 player.anim.SetTrigger("BasicDown");
@@ -170,7 +179,8 @@ public class Watermelon : MonoBehaviour
                 }
                 break;
 
-        
+            
+
         }
     }
 
