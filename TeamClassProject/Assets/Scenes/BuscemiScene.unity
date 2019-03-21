@@ -1152,12 +1152,18 @@ MonoBehaviour:
   BN_HitStun: 0.4
   BN_Distance: 300
   BN_TravelTime: 0.45
+  BN_ShakeDuration: 0
+  BN_ShakeMagnitude: 0
+  BN_ShakeSlowDown: 0
   BF_Damage: 30
   BF_Angle: 30
   BF_Knockback: 15
   BF_HitStun: 0.05
   BF_Distance: 175
   BF_TravelTime: 0.3
+  BF_ShakeDuration: 0
+  BF_ShakeMagnitude: 0
+  BF_ShakeSlowDown: 0
   iceShot: {fileID: 2931862945572960438, guid: ef5a0b8049a64ad4da8140d4a8b2c817, type: 3}
   spawnIceShotHere: {fileID: 869737133}
   bulletSpeed: 16
@@ -1167,24 +1173,36 @@ MonoBehaviour:
   BU_HitStun: 0.4
   BU_Distance: 150
   BU_TravelTime: 0.2
+  BU_ShakeDuration: 0
+  BU_ShakeMagnitude: 0
+  BU_ShakeSlowDown: 0
   BD_Damage: 0
   BD_Angle: 0
   BD_Knockback: 0
   BD_HitStun: 0
   BD_Distance: 0
   BD_TravelTime: 0
+  BD_ShakeDuration: 0
+  BD_ShakeMagnitude: 0
+  BD_ShakeSlowDown: 0
   NA_Damage: 80
   NA_Angle: 325
   NA_Knockback: 20
   NA_HitStun: 0.4
   NA_Distance: 300
   NA_TravelTime: 0.35
+  NA_ShakeDuration: 0
+  NA_ShakeMagnitude: 0
+  NA_ShakeSlowDown: 0
   UA_Damage: 30
   UA_Angle: 80
   UA_Knockback: 8
   UA_HitStun: 0.01
   UA_Distance: 150
   UA_TravelTime: 0.1
+  UA_ShakeDuration: 0
+  UA_ShakeMagnitude: 0
+  UA_ShakeSlowDown: 0
   spawnIceShotHere1: {fileID: 187752564}
   bulletSpeed1: 16
   NH_Damage: 0
@@ -1193,24 +1211,36 @@ MonoBehaviour:
   NH_HitStun: 0
   NH_Distance: 0
   NH_TravelTime: 0
+  NH_ShakeDuration: 0
+  NH_ShakeMagnitude: 0
+  NH_ShakeSlowDown: 0
   FH_Damage: 0
   FH_Angle: 0
   FH_Knockback: 0
   FH_HitStun: 0
   FH_Distance: 0
   FH_TravelTime: 0
+  FH_ShakeDuration: 0
+  FH_ShakeMagnitude: 0
+  FH_ShakeSlowDown: 0
   DH1_Damage: 0
   DH1_Angle: 0
   DH1_Knockback: 0
   DH1_HitStun: 0
   DH1_Distance: 0
   DH1_TravelTime: 0
+  DH1_ShakeDuration: 0
+  DH1_ShakeMagnitude: 0
+  DH1_ShakeSlowDown: 0
   DH2_Damage: 0
   DH2_Angle: 0
   DH2_Knockback: 0
   DH2_HitStun: 0
   DH2_Distance: 0
   DH2_TravelTime: 0
+  DH2_ShakeDuration: 0
+  DH2_ShakeMagnitude: 0
+  DH2_ShakeSlowDown: 0
 --- !u!114 &132821078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7706,12 +7736,18 @@ MonoBehaviour:
   BN_HitStun: 0.65
   BN_Distance: 400
   BN_TravelTime: 0.45
+  BN_ShakeDuration: 0
+  BN_ShakeMagnitude: 0
+  BN_ShakeSlowDown: 0
   BF_Damage: 30
   BF_Angle: 30
   BF_Knockback: 14
   BF_HitStun: 0.25
   BF_Distance: 175
   BF_TravelTime: 0.2
+  BF_ShakeDuration: 0
+  BF_ShakeMagnitude: 0
+  BF_ShakeSlowDown: 0
   iceShot: {fileID: 2931862945572960438, guid: ef5a0b8049a64ad4da8140d4a8b2c817, type: 3}
   spawnIceShotHere: {fileID: 256466095}
   bulletSpeed: 16
@@ -7721,24 +7757,36 @@ MonoBehaviour:
   BU_HitStun: 0.5
   BU_Distance: 350
   BU_TravelTime: 0.3
+  BU_ShakeDuration: 0
+  BU_ShakeMagnitude: 0
+  BU_ShakeSlowDown: 0
   BD_Damage: 0
   BD_Angle: 0
   BD_Knockback: 0
   BD_HitStun: 0
   BD_Distance: 0
   BD_TravelTime: 0
+  BD_ShakeDuration: 0
+  BD_ShakeMagnitude: 0
+  BD_ShakeSlowDown: 0
   NA_Damage: 80
   NA_Angle: 325
   NA_Knockback: 20
   NA_HitStun: 0.4
   NA_Distance: 300
   NA_TravelTime: 0.35
+  NA_ShakeDuration: 0
+  NA_ShakeMagnitude: 0
+  NA_ShakeSlowDown: 0
   UA_Damage: 30
   UA_Angle: 80
   UA_Knockback: 8
   UA_HitStun: 0.01
   UA_Distance: 150
   UA_TravelTime: 0.1
+  UA_ShakeDuration: 0
+  UA_ShakeMagnitude: 0
+  UA_ShakeSlowDown: 0
   spawnIceShotHere1: {fileID: 620515180}
   bulletSpeed1: 16
   NH_Damage: 0
@@ -7747,24 +7795,36 @@ MonoBehaviour:
   NH_HitStun: 0
   NH_Distance: 0
   NH_TravelTime: 0
+  NH_ShakeDuration: 0
+  NH_ShakeMagnitude: 0
+  NH_ShakeSlowDown: 0
   FH_Damage: 0
   FH_Angle: 0
   FH_Knockback: 0
   FH_HitStun: 0
   FH_Distance: 0
   FH_TravelTime: 0
+  FH_ShakeDuration: 0
+  FH_ShakeMagnitude: 0
+  FH_ShakeSlowDown: 0
   DH1_Damage: 0
   DH1_Angle: 0
   DH1_Knockback: 0
   DH1_HitStun: 0
   DH1_Distance: 0
   DH1_TravelTime: 0
+  DH1_ShakeDuration: 0
+  DH1_ShakeMagnitude: 0
+  DH1_ShakeSlowDown: 0
   DH2_Damage: 0
   DH2_Angle: 0
   DH2_Knockback: 0
   DH2_HitStun: 0
   DH2_Distance: 0
   DH2_TravelTime: 0
+  DH2_ShakeDuration: 0
+  DH2_ShakeMagnitude: 0
+  DH2_ShakeSlowDown: 0
 --- !u!114 &672828760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8650,12 +8710,18 @@ MonoBehaviour:
   BN_HitStun: 0
   BN_Distance: 0
   BN_TravelTime: 0
+  BN_ShakeDuration: 0
+  BN_ShakeMagnitude: 0
+  BN_ShakeSlowDown: 0
   BF_Damage: 0
   BF_Angle: 0
   BF_Knockback: 0
   BF_HitStun: 0
   BF_Distance: 0
   BF_TravelTime: 0
+  BF_ShakeDuration: 0
+  BF_ShakeMagnitude: 0
+  BF_ShakeSlowDown: 0
   iceShot: {fileID: 0}
   spawnIceShotHere: {fileID: 0}
   bulletSpeed: 0
@@ -8665,24 +8731,36 @@ MonoBehaviour:
   BU_HitStun: 0
   BU_Distance: 0
   BU_TravelTime: 0
+  BU_ShakeDuration: 0
+  BU_ShakeMagnitude: 0
+  BU_ShakeSlowDown: 0
   BD_Damage: 0
   BD_Angle: 0
   BD_Knockback: 0
   BD_HitStun: 0
   BD_Distance: 0
   BD_TravelTime: 0
+  BD_ShakeDuration: 0
+  BD_ShakeMagnitude: 0
+  BD_ShakeSlowDown: 0
   NA_Damage: 0
   NA_Angle: 0
   NA_Knockback: 0
   NA_HitStun: 0
   NA_Distance: 0
   NA_TravelTime: 0
+  NA_ShakeDuration: 0
+  NA_ShakeMagnitude: 0
+  NA_ShakeSlowDown: 0
   UA_Damage: 0
   UA_Angle: 0
   UA_Knockback: 0
   UA_HitStun: 0
   UA_Distance: 0
   UA_TravelTime: 0
+  UA_ShakeDuration: 0
+  UA_ShakeMagnitude: 0
+  UA_ShakeSlowDown: 0
   spawnIceShotHere1: {fileID: 0}
   bulletSpeed1: 0
   NH_Damage: 0
@@ -8691,24 +8769,36 @@ MonoBehaviour:
   NH_HitStun: 0
   NH_Distance: 0
   NH_TravelTime: 0
+  NH_ShakeDuration: 0
+  NH_ShakeMagnitude: 0
+  NH_ShakeSlowDown: 0
   FH_Damage: 0
   FH_Angle: 0
   FH_Knockback: 0
   FH_HitStun: 0
   FH_Distance: 0
   FH_TravelTime: 0
+  FH_ShakeDuration: 0
+  FH_ShakeMagnitude: 0
+  FH_ShakeSlowDown: 0
   DH1_Damage: 0
   DH1_Angle: 0
   DH1_Knockback: 0
   DH1_HitStun: 0
   DH1_Distance: 0
   DH1_TravelTime: 0
+  DH1_ShakeDuration: 0
+  DH1_ShakeMagnitude: 0
+  DH1_ShakeSlowDown: 0
   DH2_Damage: 0
   DH2_Angle: 0
   DH2_Knockback: 0
   DH2_HitStun: 0
   DH2_Distance: 0
   DH2_TravelTime: 0
+  DH2_ShakeDuration: 0
+  DH2_ShakeMagnitude: 0
+  DH2_ShakeSlowDown: 0
 --- !u!61 &784233435
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11168,10 +11258,8 @@ GameObject:
   - component: {fileID: 1088747333}
   - component: {fileID: 1088747332}
   - component: {fileID: 1088747331}
-  - component: {fileID: 1088747330}
   - component: {fileID: 1088747329}
   - component: {fileID: 1088747328}
-  - component: {fileID: 1088747336}
   - component: {fileID: 1088747337}
   - component: {fileID: 1088747338}
   - component: {fileID: 1088747339}
@@ -11222,12 +11310,18 @@ MonoBehaviour:
   BN_HitStun: 0.4
   BN_Distance: 200
   BN_TravelTime: 0.45
+  BN_ShakeDuration: 0
+  BN_ShakeMagnitude: 0
+  BN_ShakeSlowDown: 0
   BF_Damage: 30
   BF_Angle: 30
   BF_Knockback: 12
   BF_HitStun: 0.1
   BF_Distance: 175
   BF_TravelTime: 0.3
+  BF_ShakeDuration: 0
+  BF_ShakeMagnitude: 0
+  BF_ShakeSlowDown: 0
   iceShot: {fileID: 2931862945572960438, guid: ef5a0b8049a64ad4da8140d4a8b2c817, type: 3}
   spawnIceShotHere: {fileID: 480040979}
   bulletSpeed: 16
@@ -11237,24 +11331,36 @@ MonoBehaviour:
   BU_HitStun: 0.4
   BU_Distance: 150
   BU_TravelTime: 0.2
+  BU_ShakeDuration: 0
+  BU_ShakeMagnitude: 0
+  BU_ShakeSlowDown: 0
   BD_Damage: 0
   BD_Angle: 0
   BD_Knockback: 0
   BD_HitStun: 0
   BD_Distance: 0
   BD_TravelTime: 0
+  BD_ShakeDuration: 0
+  BD_ShakeMagnitude: 0
+  BD_ShakeSlowDown: 0
   NA_Damage: 80
   NA_Angle: 325
   NA_Knockback: 20
   NA_HitStun: 0.4
   NA_Distance: 300
   NA_TravelTime: 0.35
+  NA_ShakeDuration: 0
+  NA_ShakeMagnitude: 0
+  NA_ShakeSlowDown: 0
   UA_Damage: 30
   UA_Angle: 80
   UA_Knockback: 8
   UA_HitStun: 0.01
   UA_Distance: 150
   UA_TravelTime: 0.1
+  UA_ShakeDuration: 0
+  UA_ShakeMagnitude: 0
+  UA_ShakeSlowDown: 0
   spawnIceShotHere1: {fileID: 132038554}
   bulletSpeed1: 16
   NH_Damage: 150
@@ -11263,69 +11369,36 @@ MonoBehaviour:
   NH_HitStun: 0.3
   NH_Distance: 300
   NH_TravelTime: 0.4
+  NH_ShakeDuration: 0
+  NH_ShakeMagnitude: 0
+  NH_ShakeSlowDown: 0
   FH_Damage: 120
   FH_Angle: 39
   FH_Knockback: 9
   FH_HitStun: 0.3
   FH_Distance: 255
   FH_TravelTime: 0.45
+  FH_ShakeDuration: 0
+  FH_ShakeMagnitude: 0
+  FH_ShakeSlowDown: 0
   DH1_Damage: 10
   DH1_Angle: 125
   DH1_Knockback: 2
   DH1_HitStun: 0.4
   DH1_Distance: 35
   DH1_TravelTime: 0.4
+  DH1_ShakeDuration: 0
+  DH1_ShakeMagnitude: 0
+  DH1_ShakeSlowDown: 0
   DH2_Damage: 160
   DH2_Angle: 55
   DH2_Knockback: 11
   DH2_HitStun: 0.5
   DH2_Distance: 275
   DH2_TravelTime: 0.6
---- !u!114 &1088747330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1088747327}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d36e986441c62c47845bc68bc9106e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerNum: 1
-  healthBar: {fileID: 925004688}
-  regenableHealthBar: {fileID: 308418905}
-  accel: 0
-  accelMult: 0.05
-  decelMult: 0.15
-  speed: 10
-  weight: 1
-  velocity: {x: 0, y: 0, z: 0}
-  direction: Left
-  dashCount: 2
-  dashCountMax: 2
-  canDash: 0
-  gravityUp: 70
-  gravityDown: 48
-  jumpVel: 13
-  maxInitialJumpTime: 0.05
-  maxHoldJumpTime: 0.075
-  maxDownVel: 100
-  onPlatformTimer: 0.075
-  onPlatformTimerMax: 0.075
-  onTopOfPlatform: 0
-  anim: {fileID: 784233436}
-  state: 0
-  claire: 1
-  gillbert: 0
-  gnomercy: 0
-  maxHealth: 1000
-  regenHeathMultiplier: 0.35
-  characterSpeed: 0
-  characterWeight: 1
-  makeFaceRight: 1
-  isAttacking: 0
+  DH2_ShakeDuration: 0
+  DH2_ShakeMagnitude: 0
+  DH2_ShakeSlowDown: 0
 --- !u!50 &1088747331
 Rigidbody2D:
   serializedVersion: 4
@@ -11448,49 +11521,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1088747336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1088747327}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88265dba3b54c594a97921d55e872236, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerNum: 1
-  healthBar: {fileID: 925004688}
-  regenableHealthBar: {fileID: 308418905}
-  accel: 0
-  accelMult: 0.05
-  decelMult: 0.15
-  speed: 0
-  weight: 0
-  velocity: {x: 0, y: 0, z: 0}
-  direction: Left
-  dashCount: 0
-  dashCountMax: 0
-  canDash: 0
-  gravityUp: 0
-  gravityDown: 0
-  jumpVel: 0
-  maxInitialJumpTime: 0.05
-  maxHoldJumpTime: 0.075
-  maxDownVel: 0
-  onPlatformTimer: 0
-  onPlatformTimerMax: 0.075
-  onTopOfPlatform: 0
-  anim: {fileID: 1088747334}
-  state: 0
-  claire: 1
-  gillbert: 0
-  gnomercy: 0
-  maxHealth: 0
-  regenHeathMultiplier: 0
-  makeFaceRight: 1
-  isAttacking: 0
 --- !u!61 &1088747337
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11561,6 +11591,9 @@ MonoBehaviour:
   makeFaceRight: 0
   isAttacking: 0
   stunTime: 0
+  dashSpeed: 0
+  maxDashTimer: 0
+  gameCamera: {fileID: 1158544943}
 --- !u!82 &1088747339
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16721,12 +16754,18 @@ MonoBehaviour:
   BN_HitStun: 0
   BN_Distance: 0
   BN_TravelTime: 0
+  BN_ShakeDuration: 0
+  BN_ShakeMagnitude: 0
+  BN_ShakeSlowDown: 0
   BF_Damage: 0
   BF_Angle: 0
   BF_Knockback: 0
   BF_HitStun: 0
   BF_Distance: 0
   BF_TravelTime: 0
+  BF_ShakeDuration: 0
+  BF_ShakeMagnitude: 0
+  BF_ShakeSlowDown: 0
   iceShot: {fileID: 0}
   spawnIceShotHere: {fileID: 0}
   bulletSpeed: 0
@@ -16736,24 +16775,36 @@ MonoBehaviour:
   BU_HitStun: 0
   BU_Distance: 0
   BU_TravelTime: 0
+  BU_ShakeDuration: 0
+  BU_ShakeMagnitude: 0
+  BU_ShakeSlowDown: 0
   BD_Damage: 0
   BD_Angle: 0
   BD_Knockback: 0
   BD_HitStun: 0
   BD_Distance: 0
   BD_TravelTime: 0
+  BD_ShakeDuration: 0
+  BD_ShakeMagnitude: 0
+  BD_ShakeSlowDown: 0
   NA_Damage: 0
   NA_Angle: 0
   NA_Knockback: 0
   NA_HitStun: 0
   NA_Distance: 0
   NA_TravelTime: 0
+  NA_ShakeDuration: 0
+  NA_ShakeMagnitude: 0
+  NA_ShakeSlowDown: 0
   UA_Damage: 0
   UA_Angle: 0
   UA_Knockback: 0
   UA_HitStun: 0
   UA_Distance: 0
   UA_TravelTime: 0
+  UA_ShakeDuration: 0
+  UA_ShakeMagnitude: 0
+  UA_ShakeSlowDown: 0
   spawnIceShotHere1: {fileID: 0}
   bulletSpeed1: 0
   NH_Damage: 0
@@ -16762,24 +16813,36 @@ MonoBehaviour:
   NH_HitStun: 0
   NH_Distance: 0
   NH_TravelTime: 0
+  NH_ShakeDuration: 0
+  NH_ShakeMagnitude: 0
+  NH_ShakeSlowDown: 0
   FH_Damage: 0
   FH_Angle: 0
   FH_Knockback: 0
   FH_HitStun: 0
   FH_Distance: 0
   FH_TravelTime: 0
+  FH_ShakeDuration: 0
+  FH_ShakeMagnitude: 0
+  FH_ShakeSlowDown: 0
   DH1_Damage: 0
   DH1_Angle: 0
   DH1_Knockback: 0
   DH1_HitStun: 0
   DH1_Distance: 0
   DH1_TravelTime: 0
+  DH1_ShakeDuration: 0
+  DH1_ShakeMagnitude: 0
+  DH1_ShakeSlowDown: 0
   DH2_Damage: 0
   DH2_Angle: 0
   DH2_Knockback: 0
   DH2_HitStun: 0
   DH2_Distance: 0
   DH2_TravelTime: 0
+  DH2_ShakeDuration: 0
+  DH2_ShakeMagnitude: 0
+  DH2_ShakeSlowDown: 0
 --- !u!114 &1791978936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16824,6 +16887,9 @@ MonoBehaviour:
   makeFaceRight: 0
   isAttacking: 0
   stunTime: 0
+  dashSpeed: 0
+  maxDashTimer: 0
+  gameCamera: {fileID: 1158544943}
 --- !u!1 &1794474948
 GameObject:
   m_ObjectHideFlags: 0
