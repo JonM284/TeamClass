@@ -56,6 +56,16 @@ TextureImporter:
     21300102: Dirt
     21300104: Dirt Pile
     21300106: Upside Down Shovel
+    21300108: Letter
+    21300110: Nigel Head
+    21300112: Nigel Body Flying
+    21300114: Nigel Wing 0
+    21300116: Nigel Wing 1
+    21300118: Gno Mercy Spritesheet_0
+    21300120: Nigel Wing 3
+    21300122: Nigel Wing 4
+    21300124: Nigel Wing 5
+    21300126: Nigel Body Rest
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -404,7 +414,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 696
-        y: 947
+        y: 952
         width: 496
         height: 717
       alignment: 9
@@ -863,8 +873,8 @@ TextureImporter:
       name: Shockwave 1
       rect:
         serializedVersion: 2
-        x: 2675
-        y: 1737
+        x: 2587
+        y: 1746
         width: 523
         height: 331
       alignment: 9
@@ -883,8 +893,8 @@ TextureImporter:
       name: Shockwave 2
       rect:
         serializedVersion: 2
-        x: 2676
-        y: 1571
+        x: 2585
+        y: 1575
         width: 515
         height: 161
       alignment: 9
@@ -903,8 +913,8 @@ TextureImporter:
       name: Shockwave 0
       rect:
         serializedVersion: 2
-        x: 3264
-        y: 1712
+        x: 2109
+        y: 776
         width: 307
         height: 314
       alignment: 9
@@ -923,9 +933,9 @@ TextureImporter:
       name: Gno Back
       rect:
         serializedVersion: 2
-        x: 1542
+        x: 1539
         y: 41
-        width: 540
+        width: 519
         height: 728
       alignment: 9
       pivot: {x: 0.5, y: 0.27592918}
@@ -1083,8 +1093,8 @@ TextureImporter:
       name: Back Head
       rect:
         serializedVersion: 2
-        x: 3612
-        y: 1636
+        x: 2047
+        y: 10
         width: 373
         height: 417
       alignment: 9
@@ -1215,6 +1225,206 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 51e158f0b894d421e84d0a9f3f78b9ef
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Letter
+      rect:
+        serializedVersion: 2
+        x: 4089
+        y: 174
+        width: 151
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7d4cc87b7af34d2a8ab44a25e318bda
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nigel Head
+      rect:
+        serializedVersion: 2
+        x: 3159
+        y: 1475
+        width: 224
+        height: 149
+      alignment: 9
+      pivot: {x: 0.9163633, y: 0.47019437}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af8b5c4723488445e903016ce0b73061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nigel Body Flying
+      rect:
+        serializedVersion: 2
+        x: 3412
+        y: 1397
+        width: 462
+        height: 218
+      alignment: 9
+      pivot: {x: 0.4615489, y: 0.6120488}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe26261af14d847bd91332b4cc9c82f5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nigel Wing 0
+      rect:
+        serializedVersion: 2
+        x: 3141
+        y: 1636
+        width: 216
+        height: 315
+      alignment: 9
+      pivot: {x: 0.55140406, y: 0.93707025}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: def46673535b14c2a9544775e94918ed
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nigel Wing 1
+      rect:
+        serializedVersion: 2
+        x: 3379
+        y: 1620
+        width: 226
+        height: 462
+      alignment: 9
+      pivot: {x: 0.5786068, y: 0.9566164}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b128bc94daf5646dda931470cb47d671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gno Mercy Spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 3619
+        y: 1618
+        width: 248
+        height: 376
+      alignment: 9
+      pivot: {x: 0.54477125, y: 0.9370325}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b93b9b27f3204bc499833d48b3a99ea
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nigel Wing 3
+      rect:
+        serializedVersion: 2
+        x: 4023
+        y: 1931
+        width: 275
+        height: 138
+      alignment: 9
+      pivot: {x: 0.6130504, y: 0.7574613}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb8fc0f00784941cea464cd38349145c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nigel Wing 4
+      rect:
+        serializedVersion: 2
+        x: 4098
+        y: 1405
+        width: 222
+        height: 329
+      alignment: 9
+      pivot: {x: 0.560019, y: 0.08152961}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1268167a055214c0ea10861297b6f75f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nigel Wing 5
+      rect:
+        serializedVersion: 2
+        x: 3878
+        y: 1405
+        width: 207
+        height: 453
+      alignment: 9
+      pivot: {x: 0.57509506, y: 0.024508378}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2336ff8423ab44dca8a10663e23afa6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nigel Body Rest
+      rect:
+        serializedVersion: 2
+        x: 1436
+        y: 777
+        width: 244
+        height: 273
+      alignment: 9
+      pivot: {x: 0.46359754, y: 0.16650413}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04b425b774dfb41e6b79fca134594cfc
       vertices: []
       indices: 
       edges: []
