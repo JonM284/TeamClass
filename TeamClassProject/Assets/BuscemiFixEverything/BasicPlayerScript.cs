@@ -185,6 +185,16 @@ public class BasicPlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //<3 for Justin  
+        //-Love Dan 🦆
+        //Here's additional recognition for our one true leader throughout this endeavorous task
+        //set upon us, for without him we are nothing.
+        //Praise be to our one and only team manager Patrick ♥♥♥♥♥♥♥♥
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
 		//Debug.Log(isAttacking);
         stunTime -= Time.deltaTime;
 
