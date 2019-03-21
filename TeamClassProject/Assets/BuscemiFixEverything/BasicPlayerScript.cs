@@ -103,16 +103,14 @@ public class BasicPlayerScript : MonoBehaviour
     private float prevJoystickAxis = 0;
     private bool didntTurnAround = true;
 
-    [Header("Camera")]
-    public Transform gameCamera;
-    private float shakeDuration = 0;
-    private float shakeMagnitude = 0;
-    private float shakeSlowDown = 0;
-    private Vector3 initialPos;
+    GameObject mainCamera;
+    
 
 	void Awake()
 	{
-        initialPos = gameCamera.localPosition;
+
+        mainCamera = GameObject.Find("Main Camera");
+
 		//grabbing character specific values from their respective characters
 
 		if (claire)
@@ -310,17 +308,7 @@ public class BasicPlayerScript : MonoBehaviour
             //velocity = (hitDirection * knockback);
         }
 
-        if (shakeDuration > 0)
-        {
-            gameCamera.localPosition = initialPos + Random.insideUnitSphere * shakeMagnitude;
-
-            shakeDuration -= Time.deltaTime * shakeSlowDown;
-        }
-        else
-        {
-            shakeDuration = 0;
-            gameCamera.localPosition = initialPos;
-        }
+       
 
     }
 
@@ -720,9 +708,8 @@ public class BasicPlayerScript : MonoBehaviour
             currentKnockbackTime = 0;
             startPosition = transform.position;
             isAttacking = false;
-            shakeDuration = duration;
-            shakeMagnitude = magnitude;
-            shakeSlowDown = slowDown;
+
+            mainCamera.GetComponent<ShakeScreenScript>().SetVariables(duration, magnitude, slowDown);
 
             gotHitTimer = hitStun;
             knockback = attackForce;
@@ -806,6 +793,7 @@ public class BasicPlayerScript : MonoBehaviour
 					if (velocity.y < 0)
 					{
 						velocity.y = 0; //stop vertical velocity
+                        initialJumpTime = 0;
 					}
 					onTopOfPlatform = true;
 				}
