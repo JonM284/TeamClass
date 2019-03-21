@@ -96,8 +96,23 @@ public class BasicPlayerScript : MonoBehaviour
 	private float hitAngle;
     public float stunTime = 0;
 
+    [Header("Dash")]
+    public float dashSpeed;
+    public float maxDashTimer;
+    private float currentDashTimer = 0;
+    private float prevJoystickAxis = 0;
+    private bool didntTurnAround = true;
+
+    [Header("Camera")]
+    public Transform gameCamera;
+    private float shakeDuration = 0;
+    private float shakeMagnitude = 0;
+    private float shakeSlowDown = 0;
+    private Vector3 initialPos;
+
 	void Awake()
 	{
+        initialPos = gameCamera.localPosition;
 		//grabbing character specific values from their respective characters
 
 		if (claire)
@@ -185,6 +200,8 @@ public class BasicPlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentDashTimer -= Time.deltaTime;
+
         //<3 for Justin  
         //-Love Dan 🦆
         //Here's additional recognition for our one true leader throughout this endeavorous task
@@ -293,14 +310,26 @@ public class BasicPlayerScript : MonoBehaviour
             //velocity = (hitDirection * knockback);
         }
 
+        if (shakeDuration > 0)
+        {
+            gameCamera.localPosition = initialPos + Random.insideUnitSphere * shakeMagnitude;
+
+            shakeDuration -= Time.deltaTime * shakeSlowDown;
+        }
+        else
+        {
+            shakeDuration = 0;
+            gameCamera.localPosition = initialPos;
+        }
+
     }
 
 	private void LateUpdate()
 	{
 
 		onTopOfPlatform = false;
-
-	}
+        prevJoystickAxis = myPlayer.GetAxis("Horizontal");
+    }
 
 	/// <summary>
 	/// This is going to control everything that the player would need to move around the game
@@ -340,7 +369,13 @@ public class BasicPlayerScript : MonoBehaviour
 		//Aceleration code
 		if (moving)
 		{
-			if (direction == "Right")
+            if(((prevJoystickAxis < .7f && prevJoystickAxis >.6f) || (prevJoystickAxis > -.7f && prevJoystickAxis <-.6f)) && currentDashTimer < 0 && velocity.x < .5f && velocity.x > -.5f && onTopOfPlatform)
+            {
+                currentDashTimer = maxDashTimer;
+                didntTurnAround = true;
+            }
+
+            if (direction == "Right")
 			{
 				if (accel < myPlayer.GetAxis("Horizontal"))
 				{
@@ -484,7 +519,27 @@ public class BasicPlayerScript : MonoBehaviour
 			initialJumpTime -= Time.fixedDeltaTime;
 		}
 
-		rb.MovePosition(transform.position + velocity * Time.fixedDeltaTime);
+
+        if (currentDashTimer > 0)
+        {
+            if (prevJoystickAxis >= .5f && myPlayer.GetAxis("Horizontal") < 0)
+            {
+                didntTurnAround = false;
+            }else
+            if (prevJoystickAxis <= -.5f && myPlayer.GetAxis("Horizontal") > 0)
+            {
+                didntTurnAround = false;
+            }
+            
+            if(didntTurnAround)
+            {
+                float dashMultiplier = ((currentDashTimer / maxDashTimer) * 100) / 3;
+                velocity.x *= dashSpeed * dashMultiplier;
+            }
+
+        }
+
+        rb.MovePosition(transform.position + velocity * Time.fixedDeltaTime);
 
 	}
 
@@ -641,7 +696,10 @@ public class BasicPlayerScript : MonoBehaviour
     /// <param name="distance">How far does the enemy fly</param>
     /// <param name="travelTime">How long should it take for the enemy to get to that distance</param>
     /// <param name="facingRight">Checks which way the player is facing when they do the attack so that it knows whether or not to reverse the knockback</param>
-    public void GetHit(float attackDamage, float attackAngle, float attackForce, float hitStun, float distance, float travelTime, bool facingRight)//im probably missing a few arguments
+    /// <param name="duration">How long the screen shake lasts</param>
+    /// <param name="magnitude">How agressively the screen shakes</param>
+    /// <param name="slowDown">How quickly the camera stops shaking</param>
+    public void GetHit(float attackDamage, float attackAngle, float attackForce, float hitStun, float distance, float travelTime, bool facingRight, float duration, float magnitude, float slowDown)//im probably missing a few arguments
     {
 
 		rb.constraints = RigidbodyConstraints2D.None;
@@ -662,6 +720,9 @@ public class BasicPlayerScript : MonoBehaviour
             currentKnockbackTime = 0;
             startPosition = transform.position;
             isAttacking = false;
+            shakeDuration = duration;
+            shakeMagnitude = magnitude;
+            shakeSlowDown = slowDown;
 
             gotHitTimer = hitStun;
             knockback = attackForce;

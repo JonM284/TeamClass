@@ -23,6 +23,9 @@ public class Claire : MonoBehaviour
     public float BN_HitStun;
     public float BN_Distance;
     public float BN_TravelTime;
+    public float BN_ShakeDuration;
+    public float BN_ShakeMagnitude;
+    public float BN_ShakeSlowDown;
 
 
     [Header("Basic Forward")]
@@ -32,6 +35,9 @@ public class Claire : MonoBehaviour
     public float BF_HitStun;
     public float BF_Distance;
     public float BF_TravelTime;
+    public float BF_ShakeDuration;
+    public float BF_ShakeMagnitude;
+    public float BF_ShakeSlowDown;
     public GameObject iceShot;
     public GameObject spawnIceShotHere; 
     public float bulletSpeed;
@@ -43,6 +49,9 @@ public class Claire : MonoBehaviour
     public float BU_HitStun;
     public float BU_Distance;
     public float BU_TravelTime;
+    public float BU_ShakeDuration;
+    public float BU_ShakeMagnitude;
+    public float BU_ShakeSlowDown;
 
     [Header("Basic Down")]
     public float BD_Damage;
@@ -51,6 +60,9 @@ public class Claire : MonoBehaviour
     public float BD_HitStun;
     public float BD_Distance;
     public float BD_TravelTime;
+    public float BD_ShakeDuration;
+    public float BD_ShakeMagnitude;
+    public float BD_ShakeSlowDown;
 
     [Header("Air Attacks")]
     [Header("Neutral Air")]
@@ -60,6 +72,9 @@ public class Claire : MonoBehaviour
     public float NA_HitStun;
     public float NA_Distance;
     public float NA_TravelTime;
+    public float NA_ShakeDuration;
+    public float NA_ShakeMagnitude;
+    public float NA_ShakeSlowDown;
 
     [Header("Up Air")]
     public float UA_Damage;
@@ -68,6 +83,9 @@ public class Claire : MonoBehaviour
     public float UA_HitStun;
     public float UA_Distance;
     public float UA_TravelTime;
+    public float UA_ShakeDuration;
+    public float UA_ShakeMagnitude;
+    public float UA_ShakeSlowDown;
     public GameObject spawnIceShotHere1;
     public float bulletSpeed1;
 
@@ -78,6 +96,9 @@ public class Claire : MonoBehaviour
     public float NH_HitStun;
     public float NH_Distance;
     public float NH_TravelTime;
+    public float NH_ShakeDuration;
+    public float NH_ShakeMagnitude;
+    public float NH_ShakeSlowDown;
 
     [Header("Forward Heavy")]
     public float FH_Damage;
@@ -86,6 +107,9 @@ public class Claire : MonoBehaviour
     public float FH_HitStun;
     public float FH_Distance;
     public float FH_TravelTime;
+    public float FH_ShakeDuration;
+    public float FH_ShakeMagnitude;
+    public float FH_ShakeSlowDown;
 
     [Header("Down Heavy Part 1")]
     public float DH1_Damage;
@@ -94,6 +118,9 @@ public class Claire : MonoBehaviour
     public float DH1_HitStun;
     public float DH1_Distance;
     public float DH1_TravelTime;
+    public float DH1_ShakeDuration;
+    public float DH1_ShakeMagnitude;
+    public float DH1_ShakeSlowDown;
 
     [Header("Down Heavy Part 2")]
     public float DH2_Damage;
@@ -102,6 +129,9 @@ public class Claire : MonoBehaviour
     public float DH2_HitStun;
     public float DH2_Distance;
     public float DH2_TravelTime;
+    public float DH2_ShakeDuration;
+    public float DH2_ShakeMagnitude;
+    public float DH2_ShakeSlowDown;
 
     private float currentAttack;
 
@@ -231,13 +261,13 @@ public class Claire : MonoBehaviour
 
     private void NeutralBasic(GameObject enemy)
     {
-		enemy.GetComponent<BasicPlayerScript>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, BN_Distance, BN_TravelTime, player.FacingRight());
+		enemy.GetComponent<BasicPlayerScript>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, BN_Distance, BN_TravelTime, player.FacingRight(), BN_ShakeDuration, BN_ShakeMagnitude, BN_ShakeSlowDown);
 	}
 
     private void ForwardBasic()
     {
         GameObject bullet = Instantiate(iceShot, spawnIceShotHere.transform.position, Quaternion.identity);
-        bullet.GetComponent<Projectile>().SetVariables(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, BF_Distance, BF_TravelTime, bulletSpeed, playerNumber);
+        bullet.GetComponent<Projectile>().SetVariables(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, BF_Distance, BF_TravelTime, bulletSpeed, playerNumber, BF_ShakeDuration, BF_ShakeMagnitude, BF_ShakeSlowDown);
         bullet.GetComponent<Projectile>().moveRight = player.FacingRight();
         if (player.FacingRight())
         {
@@ -251,45 +281,45 @@ public class Claire : MonoBehaviour
 
     private void UpBasic(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(BU_Damage, BU_Angle, BU_Knockback, BU_HitStun, BU_Distance, BU_TravelTime, player.FacingRight());
+        enemy.GetComponent<BasicPlayerScript>().GetHit(BU_Damage, BU_Angle, BU_Knockback, BU_HitStun, BU_Distance, BU_TravelTime, player.FacingRight(), BU_ShakeDuration, BU_ShakeMagnitude, BU_ShakeSlowDown);
     }
 
     private void DownBasic(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(BD_Damage, BD_Angle, BD_Knockback, BD_HitStun, BD_Distance, BD_TravelTime, player.FacingRight());
+        enemy.GetComponent<BasicPlayerScript>().GetHit(BD_Damage, BD_Angle, BD_Knockback, BD_HitStun, BD_Distance, BD_TravelTime, player.FacingRight(), BD_ShakeDuration, BD_ShakeMagnitude, BD_ShakeSlowDown);
     }
 
     private void NeutralAir(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(NA_Damage, NA_Angle, NA_Knockback, NA_HitStun, NA_Distance, NA_TravelTime, player.FacingRight());
+        enemy.GetComponent<BasicPlayerScript>().GetHit(NA_Damage, NA_Angle, NA_Knockback, NA_HitStun, NA_Distance, NA_TravelTime, player.FacingRight(), NA_ShakeDuration, NA_ShakeMagnitude, NA_ShakeSlowDown);
     }
 
     private void UpAir()
     {
         GameObject bullet = Instantiate(iceShot, spawnIceShotHere1.transform.position, Quaternion.identity);
-        bullet.GetComponent<Projectile>().SetVariables(UA_Damage, UA_Angle, UA_Knockback, UA_HitStun, UA_Distance, UA_TravelTime, bulletSpeed1, playerNumber);
+        bullet.GetComponent<Projectile>().SetVariables(UA_Damage, UA_Angle, UA_Knockback, UA_HitStun, UA_Distance, UA_TravelTime, bulletSpeed1, playerNumber, UA_ShakeDuration, UA_ShakeMagnitude, UA_ShakeSlowDown);
         bullet.GetComponent<Projectile>().direction = new Vector3(0, 1, 0);
         bullet.GetComponent<Projectile>().moveRight = player.FacingRight();
     }
 
     private void NeutralHeavy(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(NH_Damage, NH_Angle, NH_Knockback, NH_HitStun, NH_Distance, NH_TravelTime, player.FacingRight());
+        enemy.GetComponent<BasicPlayerScript>().GetHit(NH_Damage, NH_Angle, NH_Knockback, NH_HitStun, NH_Distance, NH_TravelTime, player.FacingRight(), NH_ShakeDuration, NH_ShakeMagnitude, NH_ShakeSlowDown);
     }
 
     private void ForwardHeavy(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(FH_Damage, FH_Angle, FH_Knockback, FH_HitStun, FH_Distance, FH_TravelTime, player.FacingRight());
+        enemy.GetComponent<BasicPlayerScript>().GetHit(FH_Damage, FH_Angle, FH_Knockback, FH_HitStun, FH_Distance, FH_TravelTime, player.FacingRight(), FH_ShakeDuration, FH_ShakeMagnitude, FH_ShakeSlowDown);
     }
 
     private void DownHeavyPart1(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(DH1_Damage, DH1_Angle, DH1_Knockback, DH1_HitStun, DH1_Distance, DH1_TravelTime, player.FacingRight());
+        enemy.GetComponent<BasicPlayerScript>().GetHit(DH1_Damage, DH1_Angle, DH1_Knockback, DH1_HitStun, DH1_Distance, DH1_TravelTime, player.FacingRight(), DH1_ShakeDuration, DH1_ShakeMagnitude, DH1_ShakeSlowDown);
     }
 
     private void DownHeavyPart2(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(DH2_Damage, DH2_Angle, DH2_Knockback, DH2_HitStun, DH2_Distance, DH2_TravelTime, player.FacingRight());
+        enemy.GetComponent<BasicPlayerScript>().GetHit(DH2_Damage, DH2_Angle, DH2_Knockback, DH2_HitStun, DH2_Distance, DH2_TravelTime, player.FacingRight(), DH2_ShakeDuration, DH2_ShakeMagnitude, DH2_ShakeSlowDown);
     }
 
 

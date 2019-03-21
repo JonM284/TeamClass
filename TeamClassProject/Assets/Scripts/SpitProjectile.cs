@@ -21,6 +21,9 @@ public class SpitProjectile : MonoBehaviour
     public float distance;
     public float travelTime;
     public float playerNum;
+    public float shakeDuration;
+    public float shakeMagnitude;
+    public float shakeSlowDown;
     public Vector3 direction;
     public bool moveRight = true;
 
@@ -40,7 +43,7 @@ public class SpitProjectile : MonoBehaviour
         currentMoveUpTimer = maxMoveUpTimer;
     }
 
-    public void SetVariables(float damage1, float angle1, float knockback1, float hitStun1, float distance1, float travelTime1, int playerNum1)
+    public void SetVariables(float damage1, float angle1, float knockback1, float hitStun1, float distance1, float travelTime1, int playerNum1, float duration, float magnitude, float slowDown)
     {
         damage = damage1;
         angle = angle1;
@@ -49,6 +52,9 @@ public class SpitProjectile : MonoBehaviour
         distance = distance1;
         travelTime = travelTime1;
         playerNum = playerNum1;
+        shakeDuration = duration;
+        shakeMagnitude = magnitude;
+        shakeSlowDown = slowDown;
     }
 
     // Update is called once per frame
@@ -119,7 +125,7 @@ public class SpitProjectile : MonoBehaviour
             {
                 if (other.transform.root.gameObject.GetComponent<BasicPlayerScript>().playerNum != playerNum)
                 {
-                    other.gameObject.GetComponent<BasicPlayerScript>().GetHit(damage, angle, knockback, hitStun, distance, travelTime, moveRight);
+                    other.gameObject.GetComponent<BasicPlayerScript>().GetHit(damage, angle, knockback, hitStun, distance, travelTime, moveRight, shakeDuration, shakeMagnitude, shakeSlowDown);
                     Destroy(gameObject);
                 }
             }

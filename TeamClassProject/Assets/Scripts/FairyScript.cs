@@ -29,7 +29,7 @@ public class FairyScript : MonoBehaviour
         {
             fairyHitPlayer = true;
 
-            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(-250f, 0, 0, 0, 0, 0, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight());
+            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(-250f, 0, 0, 0, 0, 0, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight(), 0,0 ,0);
             transform.position = startPos;
 
         }

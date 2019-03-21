@@ -22,6 +22,9 @@ public class Watermelon : MonoBehaviour
     public float BN_HitStun;
     public float BN_Distance;
     public float BN_TravelTime;
+    public float BN_ShakeDuration;
+    public float BN_ShakeMagnitude;
+    public float BN_ShakeSlowDown;
 
 
     [Header("Basic Forward")]
@@ -31,6 +34,9 @@ public class Watermelon : MonoBehaviour
     public float BF_HitStun;
     public float BF_Distance;
     public float BF_TravelTime;
+    public float BF_ShakeDuration;
+    public float BF_ShakeMagnitude;
+    public float BF_ShakeSlowDown;
 
     [Header("Basic Up")]
     public float BU_Damage;
@@ -39,6 +45,9 @@ public class Watermelon : MonoBehaviour
     public float BU_HitStun;
     public float BU_Distance;
     public float BU_TravelTime;
+    public float BU_ShakeDuration;
+    public float BU_ShakeMagnitude;
+    public float BU_ShakeSlowDown;
 
     [Header("Basic Down")]
     public float BD_Damage;
@@ -47,8 +56,11 @@ public class Watermelon : MonoBehaviour
     public float BD_HitStun;
     public float BD_Distance;
     public float BD_TravelTime;
+    public float BD_ShakeDuration;
+    public float BD_ShakeMagnitude;
+    public float BD_ShakeSlowDown;
 
-    
+
     [Header("Neutral Air")]
     public float NA_Damage;
     public float NA_Angle;
@@ -56,6 +68,9 @@ public class Watermelon : MonoBehaviour
     public float NA_HitStun;
     public float NA_Distance;
     public float NA_TravelTime;
+    public float NA_ShakeDuration;
+    public float NA_ShakeMagnitude;
+    public float NA_ShakeSlowDown;
 
     [Header("Up Air")]
     public float UA_Damage;
@@ -64,7 +79,10 @@ public class Watermelon : MonoBehaviour
     public float UA_HitStun;
     public float UA_Distance;
     public float UA_TravelTime;
-  
+    public float UA_ShakeDuration;
+    public float UA_ShakeMagnitude;
+    public float UA_ShakeSlowDown;
+
 
     private float currentAttack;
     private int yDir;
@@ -233,7 +251,7 @@ public class Watermelon : MonoBehaviour
 
     private void ForwardBasic(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, BN_Distance, BN_TravelTime, player.FacingRight());
+        enemy.GetComponent<BasicPlayerScript>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, BN_Distance, BN_TravelTime, player.FacingRight(), BN_ShakeDuration, BN_ShakeMagnitude, BN_ShakeSlowDown);
     }
 
     private void UpBasic(GameObject enemy)
@@ -243,7 +261,7 @@ public class Watermelon : MonoBehaviour
 
     private void DownBasic(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(BD_Damage, BD_Angle, BD_Knockback, BD_HitStun, BD_Distance, BD_TravelTime, player.FacingRight());
+        enemy.GetComponent<BasicPlayerScript>().GetHit(BD_Damage, BD_Angle, BD_Knockback, BD_HitStun, BD_Distance, BD_TravelTime, player.FacingRight(), BD_ShakeDuration, BD_ShakeMagnitude, BD_ShakeSlowDown);
     }
 
     private void NeutralAir(GameObject enemy)

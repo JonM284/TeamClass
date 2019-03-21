@@ -97,7 +97,7 @@ public class Apple_Movement : MonoBehaviour
         //deals damage to player if apple hits player
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(damageToDealToPlayer, 0, 0, 0, 0, 0, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight());
+            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(damageToDealToPlayer, 0, 0, 0, 0, 0, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight(),0,0,0);
         }
     }
 
