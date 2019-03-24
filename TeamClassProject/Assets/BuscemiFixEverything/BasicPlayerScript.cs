@@ -557,8 +557,10 @@ public class BasicPlayerScript : MonoBehaviour
                 {
                     if (claire) { claireCharacter.ClaireAttackController(2); }
 
-                    //if (gillbert) { gillbertCharacter.GilbertAttackController(2); }
-				}
+                    if (gillbert) { gillbertCharacter.GilbertAttackController(2); }
+
+                    if (wawa) { wawaCharacter.WawaAttackController(2); }
+                }
             }
 
             //up basic attack
