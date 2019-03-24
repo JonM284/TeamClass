@@ -72,6 +72,9 @@ public class MachineBehaviour : MonoBehaviour
 
     public GameObject my_Controller_Player;
 
+    [Header("Audio")]
+    public AudioClip[] machineSounds;
+    public AudioSource machineSoundPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -520,7 +523,10 @@ public class MachineBehaviour : MonoBehaviour
         my_Controller_Player = null;
         // The playerID "-1" does not exist, therefore, the inputs will never be recieved.
         myPlayer = ReInput.players.GetPlayer(-1);
-        
+
+        machineSoundPlayer.clip = machineSounds[0];
+        machineSoundPlayer.Play();
+
         if (mach == MachineID.BackgroundCannon) {
             Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.white;
             Controlled_Hazard[0].SetActive(false);
@@ -579,6 +585,10 @@ public class MachineBehaviour : MonoBehaviour
         Debug.Log("Now can use");
         can_Use = true;
         other_can_Use = true;
+
+        machineSoundPlayer.clip = machineSounds[1];
+        machineSoundPlayer.Play();
+
     }
 
 }
