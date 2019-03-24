@@ -271,6 +271,8 @@ MonoBehaviour:
   makeFaceRight: 0
   isAttacking: 0
   stunTime: 0
+  dashSpeed: 0
+  maxDashTimer: 0
 --- !u!114 &118585728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,36 +298,54 @@ MonoBehaviour:
   BN_HitStun: 0
   BN_Distance: 0
   BN_TravelTime: 0
+  BN_ShakeDuration: 0
+  BN_ShakeMagnitude: 0
+  BN_ShakeSlowDown: 0
   BF_Damage: 20
   BF_Angle: 40
   BF_Knockback: 30
   BF_HitStun: 0.05
   BF_Distance: 450
   BF_TravelTime: 0.3
+  BF_ShakeDuration: 0.12
+  BF_ShakeMagnitude: 10.8
+  BF_ShakeSlowDown: 0.69
   BU_Damage: 0
   BU_Angle: 0
   BU_Knockback: 0
   BU_HitStun: 0
   BU_Distance: 0
   BU_TravelTime: 0
+  BU_ShakeDuration: 0
+  BU_ShakeMagnitude: 0
+  BU_ShakeSlowDown: 0
   BD_Damage: 60
   BD_Angle: 70
   BD_Knockback: 40
   BD_HitStun: 0.3
   BD_Distance: 200
   BD_TravelTime: 0.35
+  BD_ShakeDuration: 0.18
+  BD_ShakeMagnitude: 0.15
+  BD_ShakeSlowDown: 0
   NA_Damage: 0
   NA_Angle: 0
   NA_Knockback: 0
   NA_HitStun: 0
   NA_Distance: 0
   NA_TravelTime: 0
+  NA_ShakeDuration: 0
+  NA_ShakeMagnitude: 0
+  NA_ShakeSlowDown: 0
   UA_Damage: 0
   UA_Angle: 0
   UA_Knockback: 0
   UA_HitStun: 0
   UA_Distance: 0
   UA_TravelTime: 0
+  UA_ShakeDuration: 0
+  UA_ShakeMagnitude: 0
+  UA_ShakeSlowDown: 0
   vineWhip: {fileID: 1775592566}
   downVine: {fileID: 128782355}
 --- !u!95 &118585729
@@ -1170,6 +1190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 329358514}
   - component: {fileID: 329358515}
+  - component: {fileID: 329358516}
   m_Layer: 0
   m_Name: Top Shell
   m_TagString: Untagged
@@ -1241,6 +1262,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &329358516
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329358513}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.36, y: 1.73}
+  m_Direction: 0
 --- !u!1 &337357648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,6 +1455,8 @@ MonoBehaviour:
   makeFaceRight: 0
   isAttacking: 0
   stunTime: 0
+  dashSpeed: 0
+  maxDashTimer: 0
 --- !u!61 &379951733
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1484,12 +1523,18 @@ MonoBehaviour:
   BN_HitStun: 0.4
   BN_Distance: 300
   BN_TravelTime: 0.45
+  BN_ShakeDuration: 0
+  BN_ShakeMagnitude: 0
+  BN_ShakeSlowDown: 0
   BF_Damage: 30
   BF_Angle: 30
   BF_Knockback: 12
   BF_HitStun: 0.1
   BF_Distance: 175
   BF_TravelTime: 0.3
+  BF_ShakeDuration: 0
+  BF_ShakeMagnitude: 0
+  BF_ShakeSlowDown: 0
   iceShot: {fileID: 2931862945572960438, guid: ef5a0b8049a64ad4da8140d4a8b2c817, type: 3}
   spawnIceShotHere: {fileID: 337357648}
   bulletSpeed: 16
@@ -1499,24 +1544,36 @@ MonoBehaviour:
   BU_HitStun: 0.4
   BU_Distance: 150
   BU_TravelTime: 0.2
+  BU_ShakeDuration: 0
+  BU_ShakeMagnitude: 0
+  BU_ShakeSlowDown: 0
   BD_Damage: 0
   BD_Angle: 0
   BD_Knockback: 0
   BD_HitStun: 0
   BD_Distance: 0
   BD_TravelTime: 0
+  BD_ShakeDuration: 0
+  BD_ShakeMagnitude: 0
+  BD_ShakeSlowDown: 0
   NA_Damage: 80
   NA_Angle: 325
   NA_Knockback: 20
   NA_HitStun: 0.4
   NA_Distance: 300
   NA_TravelTime: 0.35
+  NA_ShakeDuration: 0
+  NA_ShakeMagnitude: 0
+  NA_ShakeSlowDown: 0
   UA_Damage: 30
   UA_Angle: 80
   UA_Knockback: 8
   UA_HitStun: 0.01
   UA_Distance: 150
   UA_TravelTime: 0.1
+  UA_ShakeDuration: 0
+  UA_ShakeMagnitude: 0
+  UA_ShakeSlowDown: 0
   spawnIceShotHere1: {fileID: 795995361}
   bulletSpeed1: 16
   NH_Damage: 0
@@ -1525,24 +1582,36 @@ MonoBehaviour:
   NH_HitStun: 0
   NH_Distance: 0
   NH_TravelTime: 0
+  NH_ShakeDuration: 0
+  NH_ShakeMagnitude: 0
+  NH_ShakeSlowDown: 0
   FH_Damage: 0
   FH_Angle: 0
   FH_Knockback: 0
   FH_HitStun: 0
   FH_Distance: 0
   FH_TravelTime: 0
+  FH_ShakeDuration: 0
+  FH_ShakeMagnitude: 0
+  FH_ShakeSlowDown: 0
   DH1_Damage: 0
   DH1_Angle: 0
   DH1_Knockback: 0
   DH1_HitStun: 0
   DH1_Distance: 0
   DH1_TravelTime: 0
+  DH1_ShakeDuration: 0
+  DH1_ShakeMagnitude: 0
+  DH1_ShakeSlowDown: 0
   DH2_Damage: 0
   DH2_Angle: 0
   DH2_Knockback: 0
   DH2_HitStun: 0
   DH2_Distance: 0
   DH2_TravelTime: 0
+  DH2_ShakeDuration: 0
+  DH2_ShakeMagnitude: 0
+  DH2_ShakeSlowDown: 0
 --- !u!50 &379951738
 Rigidbody2D:
   serializedVersion: 4
@@ -8123,7 +8192,7 @@ SpriteRenderer:
   m_Size: {x: 0.87482995, y: 6.789957}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1781639698
@@ -8229,7 +8298,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.41}
-  m_Size: {x: 1.44, y: 1.66}
+  m_Size: {x: 1.44, y: 2}
   m_Direction: 0
 --- !u!1 &1793069715
 GameObject:
@@ -9180,36 +9249,54 @@ MonoBehaviour:
   BN_HitStun: 0
   BN_Distance: 0
   BN_TravelTime: 0
+  BN_ShakeDuration: 0
+  BN_ShakeMagnitude: 0
+  BN_ShakeSlowDown: 0
   BF_Damage: 20
   BF_Angle: 40
   BF_Knockback: 30
   BF_HitStun: 0.05
   BF_Distance: 450
   BF_TravelTime: 0.3
+  BF_ShakeDuration: 0
+  BF_ShakeMagnitude: 0
+  BF_ShakeSlowDown: 0
   BU_Damage: 0
   BU_Angle: 0
   BU_Knockback: 0
   BU_HitStun: 0
   BU_Distance: 0
   BU_TravelTime: 0
+  BU_ShakeDuration: 0
+  BU_ShakeMagnitude: 0
+  BU_ShakeSlowDown: 0
   BD_Damage: 0
   BD_Angle: 0
   BD_Knockback: 0
   BD_HitStun: 0
   BD_Distance: 0
   BD_TravelTime: 0
+  BD_ShakeDuration: 0
+  BD_ShakeMagnitude: 0
+  BD_ShakeSlowDown: 0
   NA_Damage: 0
   NA_Angle: 0
   NA_Knockback: 0
   NA_HitStun: 0
   NA_Distance: 0
   NA_TravelTime: 0
+  NA_ShakeDuration: 0
+  NA_ShakeMagnitude: 0
+  NA_ShakeSlowDown: 0
   UA_Damage: 0
   UA_Angle: 0
   UA_Knockback: 0
   UA_HitStun: 0
   UA_Distance: 0
   UA_TravelTime: 0
+  UA_ShakeDuration: 0
+  UA_ShakeMagnitude: 0
+  UA_ShakeSlowDown: 0
   vineWhip: {fileID: 1775592566}
   downVine: {fileID: 128782355}
 --- !u!114 &1172997454895610788
@@ -9256,6 +9343,8 @@ MonoBehaviour:
   makeFaceRight: 0
   isAttacking: 0
   stunTime: 0
+  dashSpeed: 0
+  maxDashTimer: 0
 --- !u!4 &1172997454895610789
 Transform:
   m_ObjectHideFlags: 0
