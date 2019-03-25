@@ -266,9 +266,11 @@ public class BasicPlayerScript : MonoBehaviour
             }
         }
 
-
-        healthBar.fillAmount = currentHealth / maxHealth;
-		regenableHealthBar.fillAmount = regenHeath / maxHealth;
+		if (healthBar != null && regenableHealthBar != null)
+		{
+			healthBar.fillAmount = currentHealth / maxHealth;
+			regenableHealthBar.fillAmount = regenHeath / maxHealth;
+		}
 
 		if (!isAttacking && !isJumping && stunTime <= 0)
 		{
