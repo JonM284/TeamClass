@@ -448,7 +448,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0
+    m_StopTime: 0.75
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -1579,8 +1579,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Wawa Body/Back Arm Leaf
+    attribute: m_LocalEulerAngles.z
+    path: Wawa Body/Top Shell/Top Leaf
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1590,7 +1590,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Wawa Body/Back Arm Leaf
+    path: Wawa Body/Top Shell/Top Leaf
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1599,8 +1599,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Wawa Body/Back Arm Leaf
+    attribute: m_LocalEulerAngles.x
+    path: Wawa Body/Top Shell/Top Leaf
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1640,7 +1640,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Wawa Body/Top Shell/Top Leaf
+    path: Wawa Body/Back Arm Leaf
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1650,7 +1650,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Wawa Body/Top Shell/Top Leaf
+    path: Wawa Body/Back Arm Leaf
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1660,9 +1660,23 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Wawa Body/Top Shell/Top Leaf
+    path: Wawa Body/Back Arm Leaf
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.016666668
+    functionName: CurrentAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 9
+    messageOptions: 0
+  - time: 0.75
+    functionName: EndAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
