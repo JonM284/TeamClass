@@ -214,11 +214,11 @@ public class Watermelon : MonoBehaviour
             case 9:
                 player.anim.SetTrigger("NeutralAir");
                 player.isAttacking = true;
-                if (player.wawa)
-                {
-                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                //if (player.wawa)
+                //{
+               //     player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-                }
+              //  }
                 break;
 
             case 11:
@@ -285,7 +285,7 @@ public class Watermelon : MonoBehaviour
 
     private void ForwardBasic(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, BN_Distance, BN_TravelTime, player.FacingRight(), BN_ShakeDuration, BN_ShakeMagnitude, BN_ShakeSlowDown);
+        enemy.GetComponent<BasicPlayerScript>().GetHit(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, BF_Distance, BF_TravelTime, player.FacingRight(), BF_ShakeDuration, BF_ShakeMagnitude, BF_ShakeSlowDown);
         print("FB");
     }
 
@@ -311,6 +311,7 @@ public class Watermelon : MonoBehaviour
 
     private void DownAir()
     {
+        Debug.Log("hi");
         GameObject melonDownJ = Instantiate(melonDown, spawnMelonJDHere.transform.position, Quaternion.identity);
         melonDownJ.GetComponent<Projectile>().SetVariables(DA_Damage, DA_Angle, DA_Knockback, DA_HitStun, DA_Distance, DA_TravelTime, melDSpeed, playerNumber, DA_ShakeDuration, DA_ShakeMagnitude, DA_ShakeSlowDown);
         melonDownJ.GetComponent<Projectile>().direction = new Vector3(0, -1, 0);
@@ -327,6 +328,7 @@ public class Watermelon : MonoBehaviour
     public void EndAttack()
     {
         currentAttack = 0;
+        
         player.isAttacking = false;
         this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
