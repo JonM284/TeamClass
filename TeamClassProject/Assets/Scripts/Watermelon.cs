@@ -13,8 +13,8 @@ public class Watermelon : MonoBehaviour
     public float gravityDown;
     public float jumpVel;
     public float maxDownVel;
+    private int playerNumber;
 
-    
     [Header("Basic Neutral")]
     public float BN_Damage;
     public float BN_Angle;
@@ -83,6 +83,20 @@ public class Watermelon : MonoBehaviour
     public float UA_ShakeMagnitude;
     public float UA_ShakeSlowDown;
 
+    [Header("Down Air")]
+    public float DA_Damage;
+    public float DA_Angle;
+    public float DA_Knockback;
+    public float DA_HitStun;
+    public float DA_Distance;
+    public float DA_TravelTime;
+    public float DA_ShakeDuration;
+    public float DA_ShakeMagnitude;
+    public float DA_ShakeSlowDown;
+    public GameObject melonDown;
+    public GameObject spawnMelonJDHere;
+    public float melDSpeed;
+
 
     private float currentAttack;
     private int yDir;
@@ -116,7 +130,7 @@ public class Watermelon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        /*
         vineDNHappenings();
 
         if (latched==true)
@@ -169,7 +183,7 @@ public class Watermelon : MonoBehaviour
             
 
         }
-        
+        */
     }
 
     public void WawaAttackController(int attackNum)
@@ -197,7 +211,27 @@ public class Watermelon : MonoBehaviour
                 }
                 break;
 
-            
+            case 9:
+                player.anim.SetTrigger("NeutralAir");
+                player.isAttacking = true;
+                //if (player.wawa)
+                //{
+               //     player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+              //  }
+                break;
+
+            case 11:
+                player.anim.SetTrigger("DownAir");
+                player.isAttacking = true;
+                if (player.wawa)
+                {
+                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                }
+                break;
+
+
 
         }
     }
@@ -251,7 +285,7 @@ public class Watermelon : MonoBehaviour
 
     private void ForwardBasic(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, BN_Distance, BN_TravelTime, player.FacingRight(), BN_ShakeDuration, BN_ShakeMagnitude, BN_ShakeSlowDown);
+        enemy.GetComponent<BasicPlayerScript>().GetHit(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, BF_Distance, BF_TravelTime, player.FacingRight(), BF_ShakeDuration, BF_ShakeMagnitude, BF_ShakeSlowDown);
         print("FB");
     }
 
@@ -267,12 +301,21 @@ public class Watermelon : MonoBehaviour
 
     private void NeutralAir(GameObject enemy)
     {
-        
+        enemy.GetComponent<BasicPlayerScript>().GetHit(NA_Damage, NA_Angle, NA_Knockback, NA_HitStun, NA_Distance, NA_TravelTime, player.FacingRight(), NA_ShakeDuration, NA_ShakeMagnitude, NA_ShakeSlowDown);
     }
 
     private void UpAir()
     {
 
+    }
+
+    private void DownAir()
+    {
+        Debug.Log("hi");
+        GameObject melonDownJ = Instantiate(melonDown, spawnMelonJDHere.transform.position, Quaternion.identity);
+        melonDownJ.GetComponent<Projectile>().SetVariables(DA_Damage, DA_Angle, DA_Knockback, DA_HitStun, DA_Distance, DA_TravelTime, melDSpeed, playerNumber, DA_ShakeDuration, DA_ShakeMagnitude, DA_ShakeSlowDown);
+        melonDownJ.GetComponent<Projectile>().direction = new Vector3(0, -1, 0);
+        melonDownJ.GetComponent<Projectile>().moveRight = player.FacingRight();
     }
 
 
@@ -285,6 +328,7 @@ public class Watermelon : MonoBehaviour
     public void EndAttack()
     {
         currentAttack = 0;
+        
         player.isAttacking = false;
         this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -330,6 +374,10 @@ public class Watermelon : MonoBehaviour
 
                 case 9:
                     NeutralAir(other.gameObject);
+                    break;
+
+                case 11:
+                    DownAir();
                     break;
             }
         }

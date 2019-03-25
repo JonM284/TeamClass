@@ -266,9 +266,11 @@ public class BasicPlayerScript : MonoBehaviour
             }
         }
 
-
-        healthBar.fillAmount = currentHealth / maxHealth;
-		regenableHealthBar.fillAmount = regenHeath / maxHealth;
+		if (healthBar != null && regenableHealthBar != null)
+		{
+			healthBar.fillAmount = currentHealth / maxHealth;
+			regenableHealthBar.fillAmount = regenHeath / maxHealth;
+		}
 
 		if (!isAttacking && !isJumping && stunTime <= 0)
 		{
@@ -599,6 +601,8 @@ public class BasicPlayerScript : MonoBehaviour
 
                     if (gillbert) { gillbertCharacter.GilbertAttackController(9); }
 
+                    if (wawa) { wawaCharacter.WawaAttackController(9); }
+
                 }
 			}
 
@@ -612,6 +616,17 @@ public class BasicPlayerScript : MonoBehaviour
                     //if (gillbert) { gillbertCharacter.GilbertAttackController(10); }
                 }
 			}
+
+            //down air attack
+            if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") < -.3f && onPlatformTimer < 0)
+            {
+                if (myPlayer.GetButtonDown("BasicAttack"))
+                {
+                    if (wawa) { wawaCharacter.WawaAttackController(11); }
+
+                   
+                }
+            }
 
             //Neutral Heavy
             if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
