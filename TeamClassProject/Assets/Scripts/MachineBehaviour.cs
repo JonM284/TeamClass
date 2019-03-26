@@ -23,6 +23,9 @@ public class MachineBehaviour : MonoBehaviour
     [Header("Machine Type")]
     [Tooltip("What type of machine will this be?")]
     public MachineID mach;
+    [Header("Machine CoolDown")]
+    [Tooltip("How long the machine will be unusable after firing it off")]
+    public float coolDown_Timer;
 
 
     //inputs are for movement
@@ -31,9 +34,11 @@ public class MachineBehaviour : MonoBehaviour
     private int Current_Haz_Num = 0;
     //velocity
     private Vector2 vel;
-
+    //coolDown_Max
+    private float coolDown_Timer_Max;
     public bool can_Use = false;
     private bool other_can_Use = false;
+    private bool has_Been_Used = false;
     //rewired after this point
     //myPlayer will properly connect this players inputs to go to the correct location in rewired
     private Player myPlayer;
@@ -71,6 +76,7 @@ public class MachineBehaviour : MonoBehaviour
     private bool middlePlatform_cycleFinished;
 
     public GameObject my_Controller_Player;
+    public GameObject[] indicator_Images;
 
     [Header("Audio")]
     public AudioClip[] machineSounds;
@@ -79,6 +85,9 @@ public class MachineBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        indicator_Images[0].SetActive(true);
+        indicator_Images[1].SetActive(false);
+        coolDown_Timer_Max = coolDown_Timer;
         originalRotation = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.rotation.x, 
             Controlled_Hazard[Current_Haz_Num].transform.rotation.y,
             Controlled_Hazard[Current_Haz_Num].transform.rotation.z);
@@ -151,7 +160,26 @@ public class MachineBehaviour : MonoBehaviour
                 MiddlePlatformBehavior();
             }
         }
+
+        if (coolDown_Timer > 0 && has_Been_Used)
+        {
+            can_Use = false;
+            this.gameObject.GetComponent<Collider2D>().enabled = false;
+            coolDown_Timer -= Time.deltaTime;
+            
+        }
+        if (coolDown_Timer <= 0 && has_Been_Used)
+        {
+            can_Use = true;
+            has_Been_Used = false;
+            indicator_Images[0].SetActive(true);
+            indicator_Images[1].SetActive(false);
+            this.gameObject.GetComponent<Collider2D>().enabled = true;
+            coolDown_Timer = coolDown_Timer_Max;
+        }
       
+
+
     }
 
 
@@ -502,6 +530,11 @@ public class MachineBehaviour : MonoBehaviour
         {
             
         }
+
+
+        indicator_Images[0].SetActive(false);
+        indicator_Images[1].SetActive(true);
+        has_Been_Used = true;
     }
 
     //--------------------------------------------------------------------------------------------------
