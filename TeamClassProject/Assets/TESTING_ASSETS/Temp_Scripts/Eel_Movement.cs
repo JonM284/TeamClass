@@ -38,7 +38,7 @@ public class Eel_Movement : MonoBehaviour
     {
         
 
-        if (Vector3.Distance(myEel.transform.position, myEndPos.position) > 1 && !has_Hit_Platform) {
+        if (Vector3.Distance(myEel.transform.position, myEndPos.position) > 1 && !has_Hit_Platform && Eel_Active) {
             myEel.transform.position = Vector3.Lerp(myEel.transform.position, new Vector3(myEndPos.position.x, transform.position.y, transform.position.z), Time.deltaTime * going_Out_Speed);
         }
 
@@ -59,7 +59,7 @@ public class Eel_Movement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Platform")
+        if (other.gameObject.tag == "Platform" || other.gameObject.tag == "Player")
         {
             Debug.Log("Hit Platform");
             has_Hit_Platform = true;

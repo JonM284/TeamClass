@@ -162,20 +162,20 @@ public class Gnomercy : MonoBehaviour
 			case 1:
 				player.anim.SetTrigger("BasicNeutral");
 				player.isAttacking = true;
-				
-				break;
+                player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                break;
 
 			case 2:
 				player.anim.SetTrigger("BasicForward");
 				player.isAttacking = true;
-				
-				break;
+                player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                break;
 
 			case 3:
 				player.anim.SetTrigger("BasicUp");
 				player.isAttacking = true;
-				
-				break;
+                player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                break;
 
 			case 9:
 				player.anim.SetTrigger("NeutralAir");
@@ -190,19 +190,20 @@ public class Gnomercy : MonoBehaviour
 			case 20:
 				player.anim.SetTrigger("HeavyNeutral");
 				player.isAttacking = true;
-				break;
+                player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                break;
 
 			case 21:
 				player.anim.SetTrigger("HeavyForward");
 				player.isAttacking = true;
-				
-				break;
+                player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                break;
 
 			case 22:
 				player.anim.SetTrigger("HeavyDown");
 				player.isAttacking = true;
-				
-				break;
+                player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                break;
 
 
 			default:

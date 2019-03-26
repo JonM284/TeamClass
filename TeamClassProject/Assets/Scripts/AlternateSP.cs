@@ -142,13 +142,14 @@ public class AlternateSP : MonoBehaviour
                 status = Status.Free;
                 if (myMachine.GetComponent<MachineBehaviour>().is_In_Use)
                 {
+                    myMachine.GetComponent<MachineBehaviour>().Fire_Off_Machine();
                     myMachine.GetComponent<MachineBehaviour>().End_Control();
                     Debug.Log("Has detached from machine with Jump");
                 }
                 
                 Debug.Log(status);
             }
-        }else if (is_In_Area && myPlayer.GetButtonDown("HeavyAttack"))
+        }else if (is_In_Area && (myPlayer.GetButtonDown("HeavyAttack")))
         {
             if (myMachine.GetComponent<MachineBehaviour>().is_In_Use)
             {
