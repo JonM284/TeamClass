@@ -205,7 +205,13 @@ public class BasicPlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentDashTimer -= Time.deltaTime;
+        if (myPlayer.GetButtonDown("Switch"))
+        {
+            try { 
+                transform.root.GetComponent<SwitchHandler>().BeginSwap(playerNum);
+            }catch {
+            }
+        }
 
         //<3 for Justin  
         //-Love Dan 🦆
