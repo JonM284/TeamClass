@@ -9,7 +9,7 @@ public class Eel_Movement : MonoBehaviour
     public Transform myEndPos;
     private Vector3 myStartPos;
     public bool Eel_Active = false;
-    private bool has_Hit_Platform = false, hasStarted = false;
+    public bool has_Hit_Platform = false, hasStarted = false;
     public float going_Out_Speed, return_Speed;
 
     // Start is called before the first frame update
@@ -59,11 +59,16 @@ public class Eel_Movement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Platform" || other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Platform")
         {
             Debug.Log("Hit Platform");
             has_Hit_Platform = true;
             Eel_Active = false;
+        }
+        if (other.gameObject.tag == "Player")
+        {
+            float angle = Mathf.Atan2(other.transform.position.y, other.transform.position.x);
+            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(15f, angle, 0, 0.2f, 20f, 1.5f, true, 0.1f, 0.3f, 0.2f);
         }
     }
 }
