@@ -39,6 +39,8 @@ public class BasicPlayerScript : MonoBehaviour
 	public float weight;
 
 	public Vector3 velocity;
+	Vector3 previousPos, currentPos;
+	Vector3 currentVelocity;
 	public string direction;
 	[Space(10)]
 
@@ -196,6 +198,8 @@ public class BasicPlayerScript : MonoBehaviour
 			xScale = gameObject.transform.localScale.x;
 		}
 
+		StartCoroutine(CalcVelocity());
+
 	}
 
     // Update is called once per frame
@@ -208,6 +212,9 @@ public class BasicPlayerScript : MonoBehaviour
         //Here's additional recognition for our one true leader throughout this endeavorous task
         //set upon us, for without him we are nothing.
         //Praise be to our one and only team manager Patrick ♥♥♥♥♥♥♥♥
+
+		//I hate you Pat. You are not only a regular garbage person, but you are THE garbage man, without any of the benefits.
+
         if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
@@ -221,6 +228,22 @@ public class BasicPlayerScript : MonoBehaviour
 		if (claire)
 		{
 			if (isAttacking && anim.GetCurrentAnimatorStateInfo(0).IsName("Crystal Idle"))
+			{
+				checkAttackTimer += Time.deltaTime;
+			}
+			else
+			{
+				checkAttackTimer = 0;
+			}
+			if (checkAttackTimer >= .1)
+			{
+				isAttacking = false;
+			}
+		}
+
+		if (gnomercy)
+		{
+			if (isAttacking && anim.GetCurrentAnimatorStateInfo(0).IsName("Mercy Idle"))
 			{
 				checkAttackTimer += Time.deltaTime;
 			}
@@ -277,7 +300,7 @@ public class BasicPlayerScript : MonoBehaviour
 			Attack();
 		}
 
-        if (!isAttacking || !onTopOfPlatform && stunTime <= 0)
+        if (!isAttacking && stunTime <= 0)
         {
             Movement();
         }
@@ -295,7 +318,7 @@ public class BasicPlayerScript : MonoBehaviour
             anim.SetBool("hitstun", false);
         }
 
-		if (!isAttacking || onPlatformTimer < 0 && stunTime <= 0)
+		if (!isAttacking && stunTime <= 0)
 		{
             FixedMovement();
         }
@@ -332,8 +355,8 @@ public class BasicPlayerScript : MonoBehaviour
 	{
 
 		//animation logic for fighter and support
-		anim.SetFloat("xVel", Mathf.Abs(velocity.x));
-		anim.SetFloat("yVel", velocity.y);
+		anim.SetFloat("xVel", Mathf.Abs(currentVelocity.x));
+		anim.SetFloat("yVel", currentVelocity.y);
 
 		//animation logic for just the fighter
 		anim.SetBool("isAttacking", isAttacking);
@@ -445,6 +468,7 @@ public class BasicPlayerScript : MonoBehaviour
                 initialJumpTime = maxInitialJumpTime;
 				holdJumpTime = maxHoldJumpTime;
 				jumpButtonPressed = true;
+				StartCoroutine(DoJumpAnim());
 			}
 			if (myPlayer.GetButtonUp("Jump"))
 			{
@@ -511,6 +535,7 @@ public class BasicPlayerScript : MonoBehaviour
 
 			initialJumpTime -= Time.fixedDeltaTime;
 		}
+
 
 
         if (currentDashTimer > 0)
@@ -752,6 +777,27 @@ public class BasicPlayerScript : MonoBehaviour
             // rb.AddForce(new Vector2(attackForce, 0));
         }
     }
+
+	IEnumerator CalcVelocity()
+	{
+		while (Application.isPlaying)
+		{
+			// Position at frame start
+			previousPos = transform.position;
+			// Wait till it the end of the frame
+			yield return new WaitForEndOfFrame();
+			// Calculate velocity: Velocity = DeltaPosition / DeltaTime
+			currentVelocity = (previousPos - transform.position) / Time.deltaTime;
+			//Debug.Log(velocity);
+		}
+	}
+
+	IEnumerator DoJumpAnim()
+	{
+		anim.SetTrigger("Jump");
+		yield return new WaitForSeconds(.2f);
+		anim.ResetTrigger("Jump");
+	}
 
 	void HasJumped()
 	{
