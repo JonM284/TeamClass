@@ -2850,6 +2850,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 945378464}
+    - target: {fileID: 685954106, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 601068658141386476, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
@@ -6777,7 +6781,7 @@ MonoBehaviour:
   BU_ShakeSlowDown: 0.2
   spitBall: {fileID: 8136995603509912922, guid: 8ca0156d87ab5b146bea5b00379d6f04,
     type: 3}
-  spawnSpitHere: {fileID: 0}
+  spawnSpitHere: {fileID: 821951769}
   BU_MaxDownVel: 100
   BU_GravityUp: 70
   BU_GravityDown: 45
@@ -6832,6 +6836,12 @@ MonoBehaviour:
   DH1_ShakeDuration: 0.04
   DH1_ShakeMagnitude: 0.05
   DH1_ShakeSlowDown: 0.25
+--- !u!4 &629131659 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 601068658141386475, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
+    type: 3}
+  m_PrefabInstance: {fileID: 432219426}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &639361015
 GameObject:
   m_ObjectHideFlags: 0
@@ -7009,8 +7019,7 @@ PrefabInstance:
       propertyPath: regenableHealthBar
       value: 
       objectReference: {fileID: 211150989}
-    m_RemovedComponents:
-    - {fileID: 601068658141386476, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
 --- !u!1 &645758370 stripped
 GameObject:
@@ -7018,109 +7027,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 645758369}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &645758371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 645758370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86d59d78a71526541a5d09a88f9b3d66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 1000
-  speed: 7
-  weight: 1
-  gravityUp: 70
-  gravityDown: 30
-  jumpVel: 13
-  maxDownVel: 100
-  BN_Damage: 0
-  BN_Angle: 0
-  BN_Knockback: 0
-  BN_HitStun: 0
-  BN_Distance: 0
-  BN_TravelTime: 0
-  BN_ShakeDuration: 0
-  BN_ShakeMagnitude: 0
-  BN_ShakeSlowDown: 0
-  BF_Damage: 50
-  BF_Angle: 90
-  BF_Knockback: 6
-  BF_HitStun: 0.5
-  BF_Distance: 80
-  BF_TravelTime: 0.4
-  BF_ShakeDuration: 0.035
-  BF_ShakeMagnitude: 0.05
-  BF_ShakeSlowDown: 0.2
-  BU_Damage: 45
-  BU_Angle: 70
-  BU_Knockback: 100
-  BU_HitStun: 0.2
-  BU_Distance: 32
-  BU_TravelTime: 0.26
-  BU_ShakeDuration: 0.02
-  BU_ShakeMagnitude: 0.035
-  BU_ShakeSlowDown: 0.2
-  spitBall: {fileID: 8136995603509912922, guid: 8ca0156d87ab5b146bea5b00379d6f04,
-    type: 3}
-  spawnSpitHere: {fileID: 0}
-  BU_MaxDownVel: 100
-  BU_GravityUp: 70
-  BU_GravityDown: 45
-  BU_Speed: 7.5
-  BU_MoveUpTimer: 0.7
-  BD_Damage: 10
-  BD_StunTime: 1
-  NA_Damage: 0
-  NA_Angle: 0
-  NA_Knockback: 0
-  NA_HitStun: 0
-  NA_Distance: 0
-  NA_TravelTime: 0
-  NA_ShakeDuration: 0
-  NA_ShakeMagnitude: 0
-  NA_ShakeSlowDown: 0
-  UA_Damage: 0
-  UA_Angle: 0
-  UA_Knockback: 0
-  UA_HitStun: 0
-  UA_Distance: 0
-  UA_TravelTime: 0
-  UA_ShakeDuration: 0
-  UA_ShakeMagnitude: 0
-  UA_ShakeSlowDown: 0
-  spawnIceShotHere1: {fileID: 0}
-  bulletSpeed1: 0
-  NH_Damage: 65
-  NH_Angle: 45
-  NH_Knockback: 0
-  NH_HitStun: 0.45
-  NH_Distance: 220
-  NH_TravelTime: 0.2
-  NH_ShakeDuration: 0.045
-  NH_ShakeMagnitude: 0.06
-  NH_ShakeSlowDown: 0.2
-  FH_Damage: 0
-  FH_Angle: 0
-  FH_Knockback: 0
-  FH_HitStun: 0
-  FH_Distance: 0
-  FH_TravelTime: 0
-  FH_ShakeDuration: 0
-  FH_ShakeMagnitude: 0
-  FH_ShakeSlowDown: 0
-  DH1_Damage: 92
-  DH1_Angle: 60
-  DH1_Knockback: 45
-  DH1_HitStun: 0.3
-  DH1_Distance: 264
-  DH1_TravelTime: 0.25
-  DH1_ShakeDuration: 0.04
-  DH1_ShakeMagnitude: 0.05
-  DH1_ShakeSlowDown: 0.25
 --- !u!1 &666447216
 GameObject:
   m_ObjectHideFlags: 0
@@ -7855,6 +7761,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &821951769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 821951770}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &821951770
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821951769}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 629131659}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &821999556
 PrefabInstance:
   m_ObjectHideFlags: 0

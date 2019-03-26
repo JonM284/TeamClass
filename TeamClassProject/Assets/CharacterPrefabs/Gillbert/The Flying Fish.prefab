@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &685954105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 685954106}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &685954106
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685954105}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.73, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 601068658141386475}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &601068657975064946
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,8 +202,8 @@ GameObject:
   - component: {fileID: 601068658141386473}
   - component: {fileID: 601068658141386478}
   - component: {fileID: 601068658141386479}
-  - component: {fileID: 601068658141386476}
   - component: {fileID: 601068658141386477}
+  - component: {fileID: 645758371}
   m_Layer: 0
   m_Name: The Flying Fish
   m_TagString: Player
@@ -194,6 +224,7 @@ Transform:
   m_Children:
   - {fileID: 601068659384611828}
   - {fileID: 601068658613593602}
+  - {fileID: 685954106}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -260,6 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 1
+  teamNum: 0
   healthBar: {fileID: 0}
   regenableHealthBar: {fileID: 0}
   rb: {fileID: 0}
@@ -293,7 +325,28 @@ MonoBehaviour:
   stunTime: 0
   dashSpeed: 0.25
   maxDashTimer: 0.18
---- !u!114 &601068658141386476
+--- !u!50 &601068658141386477
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601068658141386466}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!114 &645758371
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -341,7 +394,7 @@ MonoBehaviour:
   BU_ShakeSlowDown: 0.2
   spitBall: {fileID: 8136995603509912922, guid: 8ca0156d87ab5b146bea5b00379d6f04,
     type: 3}
-  spawnSpitHere: {fileID: 601068658613593603}
+  spawnSpitHere: {fileID: 685954105}
   BU_MaxDownVel: 100
   BU_GravityUp: 70
   BU_GravityDown: 45
@@ -396,27 +449,6 @@ MonoBehaviour:
   DH1_ShakeDuration: 0.04
   DH1_ShakeMagnitude: 0.05
   DH1_ShakeSlowDown: 0.25
---- !u!50 &601068658141386477
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601068658141386466}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!1 &601068658247654022
 GameObject:
   m_ObjectHideFlags: 0
