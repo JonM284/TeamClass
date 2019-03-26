@@ -198,6 +198,7 @@ public class BasicPlayerScript : MonoBehaviour
 			xScale = gameObject.transform.localScale.x;
 		}
 
+		//this isn't working properly since it makes the player go back down to 0 in between frames
 		StartCoroutine(CalcVelocity());
 
 	}
@@ -219,7 +220,7 @@ public class BasicPlayerScript : MonoBehaviour
         //set upon us, for without him we are nothing.
         //Praise be to our one and only team manager Patrick ♥♥♥♥♥♥♥♥
 
-		//I hate you Pat. You are not only a regular garbage person, but you are THE garbage man, without any of the benefits.
+		//I hate you Pat. You are not only a regular garbage person, but you are THE garbage man, who eats trash but isn't Danny Devito.
 
         if (currentHealth > maxHealth)
         {
@@ -305,8 +306,14 @@ public class BasicPlayerScript : MonoBehaviour
 		{
 			Attack();
 		}
+		//Reset the velocity whenever the player attacks
+		else
+		{
+			accel = 0;
+			velocity = new Vector3(0, 0, 0);
+		}
 
-        if (!isAttacking && stunTime <= 0)
+		if (!isAttacking && stunTime <= 0)
         {
             Movement();
         }
@@ -361,8 +368,8 @@ public class BasicPlayerScript : MonoBehaviour
 	{
 
 		//animation logic for fighter and support
-		anim.SetFloat("xVel", Mathf.Abs(currentVelocity.x));
-		anim.SetFloat("yVel", currentVelocity.y);
+		anim.SetFloat("xVel", Mathf.Abs(velocity.x));
+		anim.SetFloat("yVel", velocity.y);
 
 		//animation logic for just the fighter
 		anim.SetBool("isAttacking", isAttacking);
@@ -792,7 +799,7 @@ public class BasicPlayerScript : MonoBehaviour
 		{
 			// Position at frame start
 			previousPos = transform.position;
-			// Wait till it the end of the frame
+			// Wait till it is the end of the frame
 			yield return new WaitForEndOfFrame();
 			// Calculate velocity: Velocity = DeltaPosition / DeltaTime
 			currentVelocity = (previousPos - transform.position) / Time.deltaTime;
