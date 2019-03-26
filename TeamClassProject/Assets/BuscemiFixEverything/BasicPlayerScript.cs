@@ -668,7 +668,7 @@ public class BasicPlayerScript : MonoBehaviour
                 {
                     //if (claire) { claireCharacter.ClaireAttackController(22); }
 
-                    //if (gillbert) { gillbertCharacter.GilbertAttackController(22); }
+                    if (gillbert) { gillbertCharacter.GilbertAttackController(22); }
 
 					if (gnomercy) { gnomercyCharacter.GnomercyAttackController(22); }
 				}
