@@ -190,7 +190,6 @@ public class Gnomercy : MonoBehaviour
 			case 20:
 				player.anim.SetTrigger("HeavyNeutral");
 				player.isAttacking = true;
-				
 				break;
 
 			case 21:

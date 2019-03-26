@@ -306,6 +306,11 @@ public class BasicPlayerScript : MonoBehaviour
 		{
 			Attack();
 		}
+
+		if (!isAttacking && stunTime <= 0)
+        {
+            Movement();
+        }
 		//Reset the velocity whenever the player attacks
 		else
 		{
@@ -313,12 +318,7 @@ public class BasicPlayerScript : MonoBehaviour
 			velocity = new Vector3(0, 0, 0);
 		}
 
-		if (!isAttacking && stunTime <= 0)
-        {
-            Movement();
-        }
-
-    }
+	}
 
  void FixedUpdate()
 	{
@@ -680,7 +680,9 @@ public class BasicPlayerScript : MonoBehaviour
 
                     if (gillbert) { gillbertCharacter.GilbertAttackController(20); }
 
-                    if (wawa) { wawaCharacter.WawaAttackController(20); }
+					if (gnomercy) { gnomercyCharacter.GnomercyAttackController(20); }
+
+					if (wawa) { wawaCharacter.WawaAttackController(20); }
                 }
             }
 
