@@ -134,16 +134,16 @@ public class Claire : MonoBehaviour
     public float UH2_ShakeMagnitude;
     public float UH2_ShakeSlowDown;
 
-    [Header("Down Heavy Part 1")]
-    public float DH1_Damage;
-    public float DH1_Angle;
-    public float DH1_Knockback;
-    public float DH1_HitStun;
-    public float DH1_Distance;
-    public float DH1_TravelTime;
-    public float DH1_ShakeDuration;
-    public float DH1_ShakeMagnitude;
-    public float DH1_ShakeSlowDown;
+    [Header("Down Heavy")]
+    public float DH_Damage;
+    public float DH_Angle;
+    public float DH_Knockback;
+    public float DH_HitStun;
+    public float DH_Distance;
+    public float DH_TravelTime;
+    public float DH_ShakeDuration;
+    public float DH_ShakeMagnitude;
+    public float DH_ShakeSlowDown;
 
     private float currentAttack;
 
@@ -267,6 +267,17 @@ public class Claire : MonoBehaviour
 
                 }
                 break;
+            case 23:
+                player.anim.SetTrigger("HeavyUp");
+                player.isAttacking = true;
+                player.canTurn = false;
+                if (player.claire)
+                {
+
+                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                }
+                break;
 
 
             default:
@@ -329,16 +340,20 @@ public class Claire : MonoBehaviour
         enemy.GetComponent<BasicPlayerScript>().GetHit(FH_Damage, FH_Angle, FH_Knockback, FH_HitStun, FH_Distance, FH_TravelTime, player.FacingRight(), FH_ShakeDuration, FH_ShakeMagnitude, FH_ShakeSlowDown);
     }
 
-    private void DownHeavyPart1(GameObject enemy)
+    private void DownHeavy(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(DH1_Damage, DH1_Angle, DH1_Knockback, DH1_HitStun, DH1_Distance, DH1_TravelTime, player.FacingRight(), DH1_ShakeDuration, DH1_ShakeMagnitude, DH1_ShakeSlowDown);
+        //enemy.GetComponent<BasicPlayerScript>().GetHit(DH_Damage, DH_Angle, DH_Knockback, DH_HitStun, DH_Distance, DH_TravelTime, player.FacingRight(), DH_ShakeDuration, DH_ShakeMagnitude, DH_ShakeSlowDown);
     }
 
-    private void DownHeavyPart2(GameObject enemy)
+    private void UpHeavyPart1(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(DH2_Damage, DH2_Angle, DH2_Knockback, DH2_HitStun, DH2_Distance, DH2_TravelTime, player.FacingRight(), DH2_ShakeDuration, DH2_ShakeMagnitude, DH2_ShakeSlowDown);
+        enemy.GetComponent<BasicPlayerScript>().GetHit(UH1_Damage, UH1_Angle, UH1_Knockback, UH1_HitStun, UH1_Distance, UH1_TravelTime, player.FacingRight(), UH1_ShakeDuration, UH1_ShakeMagnitude, UH1_ShakeSlowDown);
     }
 
+    private void UpHeavyPart2(GameObject enemy)
+    {
+        enemy.GetComponent<BasicPlayerScript>().GetHit(UH2_Damage, UH2_Angle, UH2_Knockback, UH2_HitStun, UH2_Distance, UH2_TravelTime, player.FacingRight(), UH2_ShakeDuration, UH2_ShakeMagnitude, UH2_ShakeSlowDown);
+    }
 
     public void CurrentAttack(int attackNum)
     {
@@ -369,8 +384,9 @@ public class Claire : MonoBehaviour
      * 
      * 20 = neutral heavy
      * 21 = forward heavy
-     * 22 = down heavy part 1
-     * 23 = down heavy part 2
+     * 22 = down heavy 
+     * 23 = up heavy part 1
+     * 24 = up heavy part 2
      * 
      */
     private void OnTriggerEnter2D(Collider2D other)
@@ -411,11 +427,14 @@ public class Claire : MonoBehaviour
                             break;
 
                         case 22:
-                            DownHeavyPart1(other.gameObject);
+                            DownHeavy(other.gameObject);
                             break;
 
                         case 23:
-                            DownHeavyPart2(other.gameObject);
+                            UpHeavyPart1(other.gameObject);
+                            break;
+                        case 24:
+                            UpHeavyPart2(other.gameObject);
                             break;
                     }
                 }
