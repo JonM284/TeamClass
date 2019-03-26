@@ -7,10 +7,11 @@ public class Eel_Movement : MonoBehaviour
 
     public GameObject myEel;
     public Transform myEndPos;
-    private Vector3 myStartPos;
+    private Vector3 myStartPos, pause_Position;
     public bool Eel_Active = false;
-    public bool has_Hit_Platform = false, hasStarted = false;
+    public bool has_Hit_Platform = false, hasStarted = false, is_Facing_Right;
     public float going_Out_Speed, return_Speed;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,20 @@ public class Eel_Movement : MonoBehaviour
         if (!Eel_Active)
         {
             Deactivate_Eel();
+        }
+
+
+    }
+
+    private void LateUpdate()
+    {
+        if (is_Facing_Right)
+        {
+            pause_Position = new Vector3(transform.position.x + 5f, transform.position.y, transform.position.z);
+        }
+        else
+        {
+            pause_Position = new Vector3(transform.position.x - 5f, transform.position.y, transform.position.z);
         }
     }
 

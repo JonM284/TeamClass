@@ -584,6 +584,7 @@ public class MachineBehaviour : MonoBehaviour
         can_Use = false;
         other_can_Use = false;
         my_Controller_Player.GetComponent<AlternateSP>().status = AlternateSP.Status.Free;
+        Debug.Log("Player: " +my_Controller_Player.gameObject.GetComponent<AlternateSP>().playerNum+ "has deactivated machine: " + transform.name);
         my_Controller_Player = null;
         // The playerID "-1" does not exist, therefore, the inputs will never be recieved.
         myPlayer = ReInput.players.GetPlayer(-1);
@@ -600,7 +601,7 @@ public class MachineBehaviour : MonoBehaviour
             middlePlatform_vacuumBoxCollider.enabled = false;
         }
         
-        Debug.Log("Player has deactivated machine: "+transform.name);
+        
        // machineSoundPlayer.clip = machineSounds[0];
         //machineSoundPlayer.Play();
     }

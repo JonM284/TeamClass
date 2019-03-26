@@ -1923,7 +1923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPools:
   - poolTag: Tester
-    poolObject: {fileID: 9219205776360276453, guid: 34e38092aca35494a8778996c08a4bc0,
+    poolObject: {fileID: 2160339970771410272, guid: 7f7d33014b392874384c9d8575a31b0d,
       type: 3}
     total_Pool_Amt: 3
   - poolTag: CannonBall_Move_Right
@@ -2148,6 +2148,7 @@ MonoBehaviour:
   Eel_Active: 0
   has_Hit_Platform: 0
   hasStarted: 0
+  is_Facing_Right: 0
   going_Out_Speed: 3
   return_Speed: 0.5
 --- !u!1 &283106117
@@ -3958,10 +3959,7 @@ MonoBehaviour:
         _categoryId: 0
         _layoutId: 0
       _defaultMouseMaps: []
-      _defaultKeyboardMaps:
-      - _enabled: 0
-        _categoryId: 0
-        _layoutId: 0
+      _defaultKeyboardMaps: []
       _defaultCustomControllerMaps: []
       _startingCustomControllers: []
       _assignMouseOnStart: 1
@@ -3976,10 +3974,7 @@ MonoBehaviour:
         _categoryId: 0
         _layoutId: 0
       _defaultMouseMaps: []
-      _defaultKeyboardMaps:
-      - _enabled: 0
-        _categoryId: 0
-        _layoutId: 0
+      _defaultKeyboardMaps: []
       _defaultCustomControllerMaps: []
       _startingCustomControllers: []
       _assignMouseOnStart: 0
@@ -8461,6 +8456,7 @@ MonoBehaviour:
   Eel_Active: 0
   has_Hit_Platform: 0
   hasStarted: 0
+  is_Facing_Right: 0
   going_Out_Speed: 3
   return_Speed: 0.5
 --- !u!4 &930677339 stripped
@@ -13454,6 +13450,7 @@ MonoBehaviour:
   Eel_Active: 0
   has_Hit_Platform: 0
   hasStarted: 0
+  is_Facing_Right: 0
   going_Out_Speed: 3
   return_Speed: 0.5
 --- !u!1001 &1998425699
@@ -14243,6 +14240,7 @@ MonoBehaviour:
   Eel_Active: 0
   has_Hit_Platform: 0
   hasStarted: 0
+  is_Facing_Right: 0
   going_Out_Speed: 3
   return_Speed: 0.5
 --- !u!1 &2094059088 stripped
