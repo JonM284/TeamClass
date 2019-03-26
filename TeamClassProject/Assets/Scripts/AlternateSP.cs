@@ -89,7 +89,7 @@ public class AlternateSP : MonoBehaviour
         }
 
 
-        if (myPlayer.GetButtonDown("BasicAttack"))
+        if (myPlayer.GetButtonDown("Switch"))
         {
             try
             {

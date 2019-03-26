@@ -229,7 +229,7 @@ public class BasicPlayerScript : MonoBehaviour
             findTeamController = true;
         }
 
-        if (myPlayer.GetButtonDown("BasicAttack"))
+        if (myPlayer.GetButtonDown("Switch"))
         {
             Debug.Log(teamController.name);
             try {

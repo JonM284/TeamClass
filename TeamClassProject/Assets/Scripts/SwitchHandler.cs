@@ -57,11 +57,11 @@ public class SwitchHandler : MonoBehaviour
         {
             teammate1_supportPos = teammate1_support.transform.position;
         }
-        if (teammate1_fighter.activeSelf == true)
+        if (teammate2_fighter.activeSelf == true)
         {
             teammate2_fighterPos = teammate2_fighter.transform.position;
         }
-        if (teammate1_fighter.activeSelf == true)
+        if (teammate2_fighter.activeSelf == true)
         {
             teammate2_supportPos = teammate2_support.transform.position;
         }
