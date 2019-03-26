@@ -242,6 +242,16 @@ public class Watermelon : MonoBehaviour
                 }
                 break;
 
+            case 12:
+                player.anim.SetTrigger("BackAir");
+                player.isAttacking = true;
+                if (player.wawa)
+                {
+                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                }
+                break;
+
             case 20:
                 player.anim.SetTrigger("HeavyNeutral");
                 player.isAttacking = true;

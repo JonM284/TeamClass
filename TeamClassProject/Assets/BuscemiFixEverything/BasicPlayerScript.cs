@@ -666,6 +666,11 @@ public class BasicPlayerScript : MonoBehaviour
                 }
             }
 
+
+            //back air attack
+
+
+
             //Neutral Heavy
             if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
             {
