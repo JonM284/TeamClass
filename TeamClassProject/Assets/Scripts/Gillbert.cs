@@ -170,6 +170,7 @@ public class Gillbert : MonoBehaviour
             case 1:
                 player.anim.SetTrigger("BasicNeutral");
                 player.isAttacking = true;
+                player.canTurn = false;
                 if (player.gillbert)
                 {
                     player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -179,6 +180,7 @@ public class Gillbert : MonoBehaviour
             case 2:
                 player.anim.SetTrigger("BasicForward");
                 player.isAttacking = true;
+                player.canTurn = false;
                 if (player.gillbert)
                 {
 
@@ -190,6 +192,7 @@ public class Gillbert : MonoBehaviour
             case 3:
                 player.anim.SetTrigger("BasicUp");
                 player.isAttacking = true;
+                player.canTurn = false;
                 if (player.gillbert)
                 {
 
@@ -201,6 +204,7 @@ public class Gillbert : MonoBehaviour
             case 4:
                 player.anim.SetTrigger("BasicDown");
                 player.isAttacking = true;
+                player.canTurn = false;
                 if (player.gillbert)
                 {
 
@@ -222,6 +226,7 @@ public class Gillbert : MonoBehaviour
             case 20:
                 player.anim.SetTrigger("HeavyNeutral");
                 player.isAttacking = true;
+                player.canTurn = false;
                 if (player.gillbert)
                 {
 
@@ -244,6 +249,7 @@ public class Gillbert : MonoBehaviour
             case 22:
                 player.anim.SetTrigger("HeavyDown");
                 player.isAttacking = true;
+                player.canTurn = false;
                 if (player.gillbert)
                 {
 
@@ -319,6 +325,7 @@ public class Gillbert : MonoBehaviour
     {
         currentAttack = 0;
         player.isAttacking = false;
+        player.canTurn = true;
         this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
     }

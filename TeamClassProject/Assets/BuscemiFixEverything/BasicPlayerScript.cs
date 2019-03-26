@@ -111,6 +111,9 @@ public class BasicPlayerScript : MonoBehaviour
     GameObject mainCamera;
 
     GameObject teamController;
+
+    [HideInInspector]
+    public bool canTurn = true;
     
 
 	void Awake()
@@ -400,17 +403,20 @@ public class BasicPlayerScript : MonoBehaviour
 
 		gotHitTimer -= Time.deltaTime;
 
-		//seing which way the player is moving
-		if (myPlayer.GetAxisRaw("Horizontal") > 0)
-		{
-			direction = "Right";
-		}
-		else if (myPlayer.GetAxisRaw("Horizontal") < 0)
-		{
-			direction = "Left";
-		}
+        //seing which way the player is moving
+        if (canTurn)
+        {
+            if (myPlayer.GetAxisRaw("Horizontal") > 0)
+            {
+                direction = "Right";
+            }
+            else if (myPlayer.GetAxisRaw("Horizontal") < 0)
+            {
+                direction = "Left";
+            }
+        }
 
-		if (Mathf.Abs(myPlayer.GetAxis("Horizontal")) >= .01)
+		if (Mathf.Abs(myPlayer.GetAxis("Horizontal")) >= .12 || Mathf.Abs(myPlayer.GetAxis("Horizontal")) <= -.12)
 		{
 			moving = true;
 		}
@@ -876,12 +882,22 @@ public class BasicPlayerScript : MonoBehaviour
 					onTopOfPlatform = true;
 					hitHead = false;
 					velocity.y = 0;
-				}
+                    if (maxKnockbackTime > 0)
+                    {
+                        //maxKnockbackTime /= 4;
+                        //knockback /= 4;
+                       // gotHitTimer = 0;
+                        //maxDistance = 0;
+                    }
+                }
 				//am I hitting the bottom of a platform?
 				if(contact.normal.y < 0)
 				{
-					hitHead = true;
-					velocity.y = 0;
+					//hitHead = true;
+					//velocity.y = 0;
+                    //gotHitTimer = 0;
+                    //maxKnockbackTime = 0;
+                   
 				}
 			}
 		}
@@ -896,7 +912,7 @@ public class BasicPlayerScript : MonoBehaviour
 			{
 				if (velocity.y < 0)
 				{
-					velocity.y = 0; //stop vertical velocity
+					//velocity.y = 0; //stop vertical velocity
 				}
 				if (contact.normal.y >= 0)
 				{ //am I hitting the top of the platform?
@@ -904,6 +920,7 @@ public class BasicPlayerScript : MonoBehaviour
 					{
 						velocity.y = 0; //stop vertical velocity
                         initialJumpTime = 0;
+                       
 					}
 					onTopOfPlatform = true;
 				}

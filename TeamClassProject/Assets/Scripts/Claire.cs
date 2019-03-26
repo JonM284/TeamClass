@@ -180,6 +180,7 @@ public class Claire : MonoBehaviour
             case 1:
                 player.anim.SetTrigger("BasicNeutral");
                 player.isAttacking = true;
+                player.canTurn = false;
                 if (player.claire)
                 {
                     player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -189,6 +190,7 @@ public class Claire : MonoBehaviour
             case 2:
                 player.anim.SetTrigger("BasicForward");
                 player.isAttacking = true;
+                player.canTurn = false;
                 if (player.claire)
                 {
 
@@ -221,6 +223,7 @@ public class Claire : MonoBehaviour
             case 20:
                 player.anim.SetTrigger("HeavyNeutral");
                 player.isAttacking = true;
+                player.canTurn = false;
                 if (player.claire)
                 {
 
@@ -232,7 +235,8 @@ public class Claire : MonoBehaviour
             case 21:   
                     player.anim.SetTrigger("HeavyForward");
                     player.isAttacking = true;
-                    if (player.claire)
+                player.canTurn = false;
+                if (player.claire)
                     {
 
                         //add movement
@@ -243,6 +247,7 @@ public class Claire : MonoBehaviour
             case 22:
                 player.anim.SetTrigger("HeavyDown");
                 player.isAttacking = true;
+                player.canTurn = false;
                 if (player.claire)
                 {
 
@@ -332,7 +337,8 @@ public class Claire : MonoBehaviour
     {
         currentAttack = 0;
         player.isAttacking = false;
-		this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        player.canTurn = true;
+        this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
 		this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 	}
 
