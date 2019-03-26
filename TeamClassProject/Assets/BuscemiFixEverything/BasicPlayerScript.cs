@@ -14,6 +14,7 @@ public class BasicPlayerScript : MonoBehaviour
 	[Header("Rewired")]
 	[Tooltip("Number identifier for each player, must be above 0")]
 	public int playerNum;
+    public int teamNum;
 
 	public Image healthBar;
 	public Image regenableHealthBar;
@@ -105,11 +106,17 @@ public class BasicPlayerScript : MonoBehaviour
     private float prevJoystickAxis = 0;
     private bool didntTurnAround = true;
 
+    bool findTeamController = false;
+
     GameObject mainCamera;
+
+    GameObject teamController;
     
 
 	void Awake()
 	{
+        
+
 
         mainCamera = GameObject.Find("Main Camera");
 
@@ -178,7 +185,9 @@ public class BasicPlayerScript : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-		rb = GetComponent<Rigidbody2D>();
+        
+
+        rb = GetComponent<Rigidbody2D>();
 		if (GetComponent<Animator>() != null)
 		{
 			anim = GetComponent<Animator>();
@@ -206,10 +215,25 @@ public class BasicPlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (myPlayer.GetButtonDown("Switch"))
+        if (findTeamController == false)
         {
-            try { 
-                transform.root.GetComponent<SwitchHandler>().BeginSwap(playerNum);
+            if (teamNum == 1)
+            {
+                teamController = GameObject.Find("Team1");
+            }
+            else if (teamNum == 2)
+            {
+                teamController = GameObject.Find("Team2");
+            }
+
+            findTeamController = true;
+        }
+
+        if (myPlayer.GetButtonDown("BasicAttack"))
+        {
+            Debug.Log(teamController.name);
+            try {
+                    teamController.GetComponent<SwitchHandler>().BeginSwap(playerNum);
             }catch {
             }
         }
