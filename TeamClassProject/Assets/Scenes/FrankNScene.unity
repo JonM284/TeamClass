@@ -360,6 +360,15 @@ MonoBehaviour:
   melDSpeed: 3
   vineWhip: {fileID: 1775592566}
   downVine: {fileID: 128782355}
+  NH_Damage: 40
+  NH_Angle: 45
+  NH_Knockback: 10
+  NH_HitStun: 0.2
+  NH_Distance: 2
+  NH_TravelTime: 0.1
+  NH_ShakeDuration: 0
+  NH_ShakeMagnitude: 0
+  NH_ShakeSlowDown: 0
 --- !u!95 &118585729
 Animator:
   serializedVersion: 3
@@ -1330,6 +1339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 361573216}
   - component: {fileID: 361573217}
+  - component: {fileID: 361573218}
   m_Layer: 0
   m_Name: Back Arm Leaf
   m_TagString: Untagged
@@ -1399,6 +1409,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &361573218
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361573215}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.4469987, y: -0.010642916}
+  m_Size: {x: 1.21, y: 0.8}
+  m_Direction: 1
 --- !u!1 &379951731
 GameObject:
   m_ObjectHideFlags: 0
@@ -9464,6 +9490,15 @@ MonoBehaviour:
   melDSpeed: 0
   vineWhip: {fileID: 1775592566}
   downVine: {fileID: 128782355}
+  NH_Damage: 0
+  NH_Angle: 0
+  NH_Knockback: 0
+  NH_HitStun: 0
+  NH_Distance: 0
+  NH_TravelTime: 0
+  NH_ShakeDuration: 0
+  NH_ShakeMagnitude: 0
+  NH_ShakeSlowDown: 0
 --- !u!114 &1172997454895610788
 MonoBehaviour:
   m_ObjectHideFlags: 0

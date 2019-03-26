@@ -636,6 +636,8 @@ public class BasicPlayerScript : MonoBehaviour
                     if (claire) { claireCharacter.ClaireAttackController(20); }
 
                     if (gillbert) { gillbertCharacter.GilbertAttackController(20); }
+
+                    if (wawa) { wawaCharacter.WawaAttackController(20); }
                 }
             }
 
