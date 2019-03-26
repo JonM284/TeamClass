@@ -14,6 +14,8 @@ public class AlternateSP : MonoBehaviour
     [Tooltip("Insert player ID numbers")]
     public int playerNum, teamID;
 
+    public int teamNum;
+
 
     //private variables
 
@@ -40,8 +42,10 @@ public class AlternateSP : MonoBehaviour
 
     //Beyond this point is for animations
     private Animator anim;
-    
 
+    GameObject teamController;
+
+    bool findTeamController = false;
 
     //--------------------------------------------------------------------------------------------------
     private void Awake()
@@ -49,6 +53,7 @@ public class AlternateSP : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         original_Scale = transform.localScale;
+
     }
 
 
@@ -69,6 +74,33 @@ public class AlternateSP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (findTeamController == false)
+        {
+            if (teamNum == 1)
+            {
+                teamController = GameObject.Find("Team1");
+            }
+            else if (teamNum == 2)
+            {
+                teamController = GameObject.Find("Team2");
+            }
+
+            findTeamController = true;
+        }
+
+
+        if (myPlayer.GetButtonDown("Switch"))
+        {
+            try
+            {
+                    teamController.GetComponent<SwitchHandler>().BeginSwap(playerNum);
+            }
+            catch
+            {
+            }
+        }
+
+
         if (status == Status.Free) {
             horizontalInput = myPlayer.GetAxisRaw("Horizontal");
 
@@ -110,13 +142,14 @@ public class AlternateSP : MonoBehaviour
                 status = Status.Free;
                 if (myMachine.GetComponent<MachineBehaviour>().is_In_Use)
                 {
+                    myMachine.GetComponent<MachineBehaviour>().Fire_Off_Machine();
                     myMachine.GetComponent<MachineBehaviour>().End_Control();
                     Debug.Log("Has detached from machine with Jump");
                 }
                 
                 Debug.Log(status);
             }
-        }else if (is_In_Area && myPlayer.GetButtonDown("HeavyAttack"))
+        }else if (is_In_Area && (myPlayer.GetButtonDown("HeavyAttack")))
         {
             if (myMachine.GetComponent<MachineBehaviour>().is_In_Use)
             {

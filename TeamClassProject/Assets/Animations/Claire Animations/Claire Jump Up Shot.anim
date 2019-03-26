@@ -685,7 +685,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.4
+        time: 0.38333333
         value: 0
         inSlope: 0
         outSlope: 0
@@ -694,8 +694,17 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.41666666
+        time: 0.4
         value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.95
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 103
@@ -2805,7 +2814,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.4
+        time: 0.38333333
         value: 0
         inSlope: 0
         outSlope: 0
@@ -2814,8 +2823,17 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.41666666
+        time: 0.4
         value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.95
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 103
@@ -2838,7 +2856,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Skirt/Crystal Torso/Front Crystal Bicep
+    path: Skirt/Crystal Torso/Back Crystal Bicep/Back Crystal Forearm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2848,7 +2866,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Skirt/Crystal Torso/Front Crystal Bicep
+    path: Skirt/Crystal Torso/Back Crystal Bicep/Back Crystal Forearm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2858,7 +2876,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Skirt/Crystal Torso/Front Crystal Bicep
+    path: Skirt/Crystal Torso/Back Crystal Bicep/Back Crystal Forearm
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2868,7 +2886,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Skirt/Crystal Torso/Crystal Head
+    path: Skirt/Crystal Torso/Back Crystal Bicep
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2878,7 +2896,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Skirt/Crystal Torso/Crystal Head
+    path: Skirt/Crystal Torso/Back Crystal Bicep
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2888,7 +2906,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Skirt/Crystal Torso/Crystal Head
+    path: Skirt/Crystal Torso/Back Crystal Bicep
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2898,7 +2916,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Skirt/Crystal Torso
+    path: Skirt/Back Crystal Thigh
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2908,7 +2926,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Skirt/Crystal Torso
+    path: Skirt/Back Crystal Thigh
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2918,7 +2936,37 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Skirt/Crystal Torso
+    path: Skirt/Back Crystal Thigh
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Skirt/Crystal Torso/Front Crystal Bicep
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Skirt/Crystal Torso/Front Crystal Bicep
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Skirt/Crystal Torso/Front Crystal Bicep
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2961,7 +3009,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Skirt/Back Crystal Thigh
+    path: Skirt/Back Crystal Thigh/Back Crystal Calf
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2971,7 +3019,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Skirt/Back Crystal Thigh
+    path: Skirt/Back Crystal Thigh/Back Crystal Calf
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2981,7 +3029,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Skirt/Back Crystal Thigh
+    path: Skirt/Back Crystal Thigh/Back Crystal Calf
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2991,7 +3039,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Skirt/Crystal Torso/Back Crystal Bicep
+    path: Skirt/Crystal Torso/Crystal Head
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3001,7 +3049,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Skirt/Crystal Torso/Back Crystal Bicep
+    path: Skirt/Crystal Torso/Crystal Head
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3011,7 +3059,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Skirt/Crystal Torso/Back Crystal Bicep
+    path: Skirt/Crystal Torso/Crystal Head
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3081,7 +3129,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Skirt/Back Crystal Thigh/Back Crystal Calf
+    path: Skirt/Crystal Torso
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3091,7 +3139,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Skirt/Back Crystal Thigh/Back Crystal Calf
+    path: Skirt/Crystal Torso
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3101,37 +3149,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Skirt/Back Crystal Thigh/Back Crystal Calf
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Skirt/Crystal Torso/Back Crystal Bicep/Back Crystal Forearm
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Skirt/Crystal Torso/Back Crystal Bicep/Back Crystal Forearm
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Skirt/Crystal Torso/Back Crystal Bicep/Back Crystal Forearm
+    path: Skirt/Crystal Torso
     classID: 4
     script: {fileID: 0}
   - curve:
