@@ -94,7 +94,7 @@ public class AlternateSP2 : MonoBehaviour
         // Give the machine my inputs.
         // If the player presses "Jump" and is using a machine, set them to free again.
         // Also if they press heavy attack, they jump off the machine without using it.
-        if (is_In_Area && (myPlayer.GetButtonDown("Jump")|| myPlayer.GetButtonDown("BasicAttack")))
+        if (is_In_Area && (myPlayer.GetButtonDown("Jump")/*|| myPlayer.GetButtonDown("BasicAttack")*/))
         {
             if (status == Status.Free)
             {
