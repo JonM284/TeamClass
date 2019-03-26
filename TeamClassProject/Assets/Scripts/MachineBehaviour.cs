@@ -550,7 +550,7 @@ public class MachineBehaviour : MonoBehaviour
         myPlayer = ReInput.players.GetPlayer(playerNum - 1);
         my_Controller_Player = player;
         is_In_Use = true;
-        GetComponent<BoxCollider2D>().enabled = false; 
+        
         //StartCoroutine(waitForUse());
 
         if (mach == MachineID.BackgroundCannon) {

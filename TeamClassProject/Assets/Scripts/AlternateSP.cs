@@ -38,7 +38,7 @@ public class AlternateSP : MonoBehaviour
     [Tooltip("Current Status of the player")]
     public Status status;
     //reference to whichever machine the player is going to use
-    private GameObject myMachine;
+    public GameObject myMachine;
 
     //Beyond this point is for animations
     private Animator anim;
@@ -130,7 +130,7 @@ public class AlternateSP : MonoBehaviour
         // Also if they press heavy attack, they jump off the machine without using it.
         if (is_In_Area && (myPlayer.GetButtonDown("Jump")|| myPlayer.GetButtonDown("BasicAttack")))
         {
-            if (status == Status.Free)
+            if (status == Status.Free && !myMachine.GetComponent<MachineBehaviour>().is_In_Use)
             {
                 status = Status.AtMachine;
                 if (!myMachine.GetComponent<MachineBehaviour>().is_In_Use) {

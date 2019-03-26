@@ -316,6 +316,7 @@ MonoBehaviour:
   teamNum: 0
   is_In_Area: 0
   status: 0
+  myMachine: {fileID: 0}
 --- !u!95 &67342945
 Animator:
   serializedVersion: 3
@@ -2204,6 +2205,7 @@ MonoBehaviour:
   teamNum: 0
   is_In_Area: 0
   status: 0
+  myMachine: {fileID: 0}
 --- !u!61 &284448944
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3957,7 +3959,7 @@ MonoBehaviour:
         _layoutId: 0
       _defaultMouseMaps: []
       _defaultKeyboardMaps:
-      - _enabled: 1
+      - _enabled: 0
         _categoryId: 0
         _layoutId: 0
       _defaultCustomControllerMaps: []
@@ -3974,7 +3976,10 @@ MonoBehaviour:
         _categoryId: 0
         _layoutId: 0
       _defaultMouseMaps: []
-      _defaultKeyboardMaps: []
+      _defaultKeyboardMaps:
+      - _enabled: 0
+        _categoryId: 0
+        _layoutId: 0
       _defaultCustomControllerMaps: []
       _startingCustomControllers: []
       _assignMouseOnStart: 0
@@ -3989,7 +3994,10 @@ MonoBehaviour:
         _categoryId: 0
         _layoutId: 0
       _defaultMouseMaps: []
-      _defaultKeyboardMaps: []
+      _defaultKeyboardMaps:
+      - _enabled: 1
+        _categoryId: 0
+        _layoutId: 0
       _defaultCustomControllerMaps: []
       _startingCustomControllers: []
       _assignMouseOnStart: 0
@@ -8872,6 +8880,7 @@ MonoBehaviour:
   teamNum: 0
   is_In_Area: 0
   status: 0
+  myMachine: {fileID: 0}
 --- !u!1 &1062523075
 GameObject:
   m_ObjectHideFlags: 0
@@ -8993,6 +9002,7 @@ MonoBehaviour:
   teamNum: 0
   is_In_Area: 0
   status: 0
+  myMachine: {fileID: 0}
 --- !u!114 &1073772753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10734,6 +10744,7 @@ MonoBehaviour:
   teamNum: 0
   is_In_Area: 0
   status: 0
+  myMachine: {fileID: 0}
 --- !u!50 &1570947082
 Rigidbody2D:
   serializedVersion: 4
@@ -14258,6 +14269,7 @@ MonoBehaviour:
   teamNum: 0
   is_In_Area: 0
   status: 0
+  myMachine: {fileID: 0}
 --- !u!61 &2094059090
 BoxCollider2D:
   m_ObjectHideFlags: 0

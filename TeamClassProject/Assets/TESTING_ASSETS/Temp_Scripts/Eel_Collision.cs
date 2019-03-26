@@ -24,7 +24,7 @@ public class Eel_Collision : MonoBehaviour
             my_Parent.GetComponent<Eel_Movement>().has_Hit_Platform = true;
             my_Parent.GetComponent<Eel_Movement>().Eel_Active = true;
             float angle = Mathf.Atan2(other.transform.position.y, other.transform.position.x);
-            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(15f, angle, 0, 0.2f, 20f, 1.5f, true, 0.1f, 0.3f, 0.2f);
+            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(75f, angle, 0, 0.2f, 20f, 1.5f, true, 0.1f, 0.3f, 0.2f);
         }
 
         
