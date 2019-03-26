@@ -10017,6 +10017,11 @@ PrefabInstance:
       propertyPath: regenableHealthBar
       value: 
       objectReference: {fileID: 211150989}
+    - target: {fileID: 601068658141386479, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
+        type: 3}
+      propertyPath: playerNum
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
 --- !u!1001 &1389090293101244052
@@ -10523,6 +10528,16 @@ PrefabInstance:
       propertyPath: regenableHealthBar
       value: 
       objectReference: {fileID: 134448193}
+    - target: {fileID: 5615167271143781587, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: playerNum
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: BU_HitStun
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8619d383b949f2047802810e41ae9a6c, type: 3}
 --- !u!1001 &6758382369549200787
