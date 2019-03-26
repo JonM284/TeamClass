@@ -307,16 +307,18 @@ public class BasicPlayerScript : MonoBehaviour
 			Attack();
 		}
 
-		if (!isAttacking && stunTime <= 0)
+        if (stunTime <= 0)
         {
             Movement();
         }
 		//Reset the velocity whenever the player attacks
-		else
+		/*
+        else
 		{
 			accel = 0;
 			velocity = new Vector3(0, 0, 0);
 		}
+		*/
 
 	}
 
@@ -331,7 +333,7 @@ public class BasicPlayerScript : MonoBehaviour
             anim.SetBool("hitstun", false);
         }
 
-		if (!isAttacking && stunTime <= 0)
+		if (stunTime <= 0)
 		{
             FixedMovement();
         }
@@ -348,8 +350,6 @@ public class BasicPlayerScript : MonoBehaviour
             Knockback();
             //velocity = (hitDirection * knockback);
         }
-
-       
 
     }
 
@@ -581,7 +581,6 @@ public class BasicPlayerScript : MonoBehaviour
 		{
 			if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
 			{
-
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
                     if (claire) { claireCharacter.ClaireAttackController(1); }
@@ -615,7 +614,6 @@ public class BasicPlayerScript : MonoBehaviour
 					if (gnomercy) { gnomercyCharacter.GnomercyAttackController(3); }
 				}
 			}
-
 
             //Down basic attack
             if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") < -.3f && onPlatformTimer > 0)
