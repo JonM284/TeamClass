@@ -257,72 +257,6 @@ public class BasicPlayerScript : MonoBehaviour
 		//Debug.Log(isAttacking);
         stunTime -= Time.deltaTime;
 
-		//checking the isAttacking boolean and making sure it isn't on when it shouldn't be. 
-		//This is specific to each character since we need to give the name of the animation that is currently playing so it will either stay here or eventually it will be moved to their own specific scripts.
-		if (claire)
-		{
-			if (isAttacking && anim.GetCurrentAnimatorStateInfo(0).IsName("Crystal Idle"))
-			{
-				checkAttackTimer += Time.deltaTime;
-			}
-			else
-			{
-				checkAttackTimer = 0;
-			}
-			if (checkAttackTimer >= .1)
-			{
-				isAttacking = false;
-			}
-		}
-
-		if (gnomercy)
-		{
-			if (isAttacking && anim.GetCurrentAnimatorStateInfo(0).IsName("Mercy Idle"))
-			{
-				checkAttackTimer += Time.deltaTime;
-			}
-			else
-			{
-				checkAttackTimer = 0;
-			}
-			if (checkAttackTimer >= .1)
-			{
-				isAttacking = false;
-			}
-		}
-
-		if (gillbert)
-		{
-			if (isAttacking && anim.GetCurrentAnimatorStateInfo(0).IsName("Fish Idle"))
-			{
-				checkAttackTimer += Time.deltaTime;
-			}
-			else
-			{
-				checkAttackTimer = 0;
-			}
-			if (checkAttackTimer >= .1)
-			{
-				isAttacking = false;
-			}
-		}
-
-        if (wawa)
-        {
-            if (isAttacking && anim.GetCurrentAnimatorStateInfo(0).IsName("Wawa Idle"))
-            {
-                checkAttackTimer += Time.deltaTime;
-            }
-            else
-            {
-                checkAttackTimer = 0;
-            }
-            if (checkAttackTimer >= .1)
-            {
-                isAttacking = false;
-            }
-        }
-
 		if (healthBar != null && regenableHealthBar != null)
 		{
 			healthBar.fillAmount = currentHealth / maxHealth;
@@ -404,7 +338,7 @@ public class BasicPlayerScript : MonoBehaviour
 		gotHitTimer -= Time.deltaTime;
 
         //seing which way the player is moving
-        if (canTurn)
+        if (!isAttacking)
         {
             if (myPlayer.GetAxisRaw("Horizontal") > 0)
             {
@@ -842,6 +776,48 @@ public class BasicPlayerScript : MonoBehaviour
 		}
 	}
 
+    IEnumerator CheckAttacking()
+    {
+        while(Application.isPlaying)
+        //checking the isAttacking boolean and making sure it isn't on when it shouldn't be. 
+        //This is specific to each character since we need to give the name of the animation that is currently playing so it will either stay here or eventually it will be moved to their own specific scripts.
+        if (claire)
+        {
+            if (isAttacking && anim.GetCurrentAnimatorStateInfo(0).IsName("Crystal Idle"))
+            {
+                yield return new WaitForEndOfFrame();
+                isAttacking = false;
+            }
+        }
+
+        if (gnomercy)
+        {
+            if (isAttacking && anim.GetCurrentAnimatorStateInfo(0).IsName("Mercy Idle"))
+            {
+                yield return new WaitForEndOfFrame();
+                isAttacking = false;
+            }
+        }
+
+        if (gillbert)
+        {
+            if (isAttacking && anim.GetCurrentAnimatorStateInfo(0).IsName("Fish Idle"))
+            {
+                yield return new WaitForEndOfFrame();
+                isAttacking = false;
+            }
+        }
+
+        if (wawa)
+        {
+            if (isAttacking && anim.GetCurrentAnimatorStateInfo(0).IsName("Wawa Idle"))
+            {
+                yield return new WaitForEndOfFrame();
+                isAttacking = false;
+            }
+        }
+    }
+
 	IEnumerator DoJumpAnim()
 	{
 		anim.SetTrigger("Jump");
@@ -878,6 +854,7 @@ public class BasicPlayerScript : MonoBehaviour
 				velocity.y = 0; //stop vertical velocity
 				if (contact.normal.y >= 0)
 				{ //am I hitting the top of the platform?
+                    isAttacking = false;
 					anim.SetTrigger("land");
 					onTopOfPlatform = true;
 					hitHead = false;

@@ -65,6 +65,7 @@ public class Claire : MonoBehaviour
     public float BD_ShakeSlowDown;
 
     [Header("Air Attacks")]
+
     [Header("Neutral Air")]
     public float NA_Damage;
     public float NA_Angle;
@@ -111,6 +112,28 @@ public class Claire : MonoBehaviour
     public float FH_ShakeMagnitude;
     public float FH_ShakeSlowDown;
 
+    [Header("Up Heavy Part 1")]
+    public float UH1_Damage;
+    public float UH1_Angle;
+    public float UH1_Knockback;
+    public float UH1_HitStun;
+    public float UH1_Distance;
+    public float UH1_TravelTime;
+    public float UH1_ShakeDuration;
+    public float UH1_ShakeMagnitude;
+    public float UH1_ShakeSlowDown;
+
+    [Header("Up Heavy Part 2")]
+    public float UH2_Damage;
+    public float UH2_Angle;
+    public float UH2_Knockback;
+    public float UH2_HitStun;
+    public float UH2_Distance;
+    public float UH2_TravelTime;
+    public float UH2_ShakeDuration;
+    public float UH2_ShakeMagnitude;
+    public float UH2_ShakeSlowDown;
+
     [Header("Down Heavy Part 1")]
     public float DH1_Damage;
     public float DH1_Angle;
@@ -121,17 +144,6 @@ public class Claire : MonoBehaviour
     public float DH1_ShakeDuration;
     public float DH1_ShakeMagnitude;
     public float DH1_ShakeSlowDown;
-
-    [Header("Down Heavy Part 2")]
-    public float DH2_Damage;
-    public float DH2_Angle;
-    public float DH2_Knockback;
-    public float DH2_HitStun;
-    public float DH2_Distance;
-    public float DH2_TravelTime;
-    public float DH2_ShakeDuration;
-    public float DH2_ShakeMagnitude;
-    public float DH2_ShakeSlowDown;
 
     private float currentAttack;
 
@@ -171,7 +183,7 @@ public class Claire : MonoBehaviour
    * 20 = neutral heavy
    * 21 = forward heavy
    * 22 = down heavy 
-   * 
+   * 23 = up heavy
    */
     public void ClaireAttackController(int attackNum)
     {

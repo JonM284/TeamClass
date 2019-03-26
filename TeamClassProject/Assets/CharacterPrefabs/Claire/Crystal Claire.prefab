@@ -22196,6 +22196,24 @@ MonoBehaviour:
   FH_ShakeDuration: 0.05
   FH_ShakeMagnitude: 0.085
   FH_ShakeSlowDown: 0.1
+  UH1_Damage: 10
+  UH1_Angle: 125
+  UH1_Knockback: 2
+  UH1_HitStun: 0.4
+  UH1_Distance: 35
+  UH1_TravelTime: 0.4
+  UH1_ShakeDuration: 0.03
+  UH1_ShakeMagnitude: 0.035
+  UH1_ShakeSlowDown: 0.2
+  UH2_Damage: 160
+  UH2_Angle: 55
+  UH2_Knockback: 11
+  UH2_HitStun: 0.5
+  UH2_Distance: 275
+  UH2_TravelTime: 0.6
+  UH2_ShakeDuration: 0.05
+  UH2_ShakeMagnitude: 0.05
+  UH2_ShakeSlowDown: 0.1
   DH1_Damage: 10
   DH1_Angle: 125
   DH1_Knockback: 2
@@ -22310,7 +22328,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a84798539e05554c957a6b86b175395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNum: 2
+  playerNum: 1
+  teamNum: 0
   healthBar: {fileID: 0}
   regenableHealthBar: {fileID: 0}
   rb: {fileID: 0}
@@ -22344,6 +22363,7 @@ MonoBehaviour:
   stunTime: 0
   dashSpeed: 0.25
   maxDashTimer: 0.18
+  canTurn: 1
 --- !u!82 &5615167271143781584
 AudioSource:
   m_ObjectHideFlags: 0
