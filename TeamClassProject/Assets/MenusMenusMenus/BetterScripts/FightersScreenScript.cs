@@ -12,6 +12,7 @@ public class FightersScreenScript : MonoBehaviour
     public Button Gilbert;
     public Button Gnomercy;
     public Button Wawa;
+    public Button Back;
 
     public int selected;
 

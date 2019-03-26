@@ -29,7 +29,7 @@ public class ButtonManager : MonoBehaviour
     {
         if (MenuSliderScript.sliderInt == 1)
         {
-            SceneManager.LoadScene("MixedTogetherScene");
+            SceneManager.LoadScene("StageSelect");
         }
     }
 
