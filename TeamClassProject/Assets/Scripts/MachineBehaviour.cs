@@ -173,22 +173,7 @@ public class MachineBehaviour : MonoBehaviour
 
         }
 
-        if (myPlayer.GetButtonDown("BasicAttack") && can_Use)
-        {
-            //Debug.Log(Controlled_Hazard[Current_Haz_Num].transform.GetChild(0).transform.name);
-            //Vector3 dir = Controlled_Hazard[Current_Haz_Num].transform.GetChild(0).transform.position - Controlled_Hazard[Current_Haz_Num].transform.position;
-            if (Current_Haz_Num <= 1) {
-                objectPool.SpawnFromPool("CannonBall_Move_Right", Controlled_Hazard[Current_Haz_Num].transform.position,
-                    Quaternion.Euler(Move_Rotation));
-            }
-            if (Current_Haz_Num >= 2)
-            {
-                objectPool.SpawnFromPool("CannonBall_Move_Left", Controlled_Hazard[Current_Haz_Num].transform.position,
-                    Quaternion.Euler(Move_Rotation));
-            }
-            End_Control();
-            Debug.Log("Has Spawned object");
-        }
+        
 
         if (myPlayer.GetButtonDown("Jump"))
         {
@@ -203,11 +188,26 @@ public class MachineBehaviour : MonoBehaviour
         
         if (verticalInput > 0.1f && Move_Rotation.z < Max_range)
         {
-            Move_Rotation.z += Time.deltaTime * speed;
+            if (Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Is_Facing_Right) {
+                Move_Rotation.z += Time.deltaTime * speed;
+            }
+            if (!Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Is_Facing_Right)
+            {
+                Move_Rotation.z -= Time.deltaTime * speed;
+            }
         }
         if (verticalInput < -0.1f && Move_Rotation.z > -Max_range)
         {
-            Move_Rotation.z -= Time.deltaTime * speed;
+            
+            if (Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Is_Facing_Right)
+            {
+                
+                Move_Rotation.z -= Time.deltaTime * speed;
+            }
+            if (!Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Is_Facing_Right)
+            {
+                Move_Rotation.z += Time.deltaTime * speed;
+            }
         }
 
 
@@ -235,13 +235,7 @@ public class MachineBehaviour : MonoBehaviour
         vel.x = horizontalInput * speed;
         vel.y = verticalInput * speed;
 
-        //this allows the player to spawn an object in the position where the crosshair is
-        if (myPlayer.GetButtonDown("BasicAttack") && can_Use)
-        {
-            objectPool.SpawnFromPool("Tester", Controlled_Hazard[Current_Haz_Num].transform.position, Quaternion.identity);
-            End_Control();
-            Debug.Log("Has Spawned object");
-        }
+        
 
         if (myPlayer.GetButtonDown("Jump"))
         {
@@ -279,12 +273,7 @@ public class MachineBehaviour : MonoBehaviour
             Current_Haz_Num = 0;
         }
 
-        if (myPlayer.GetButtonDown("BasicAttack") && can_Use)
-        {
-            Debug.Log("Should go off");
-            Controlled_Hazard[Current_Haz_Num].GetComponent<Eel_Movement>().Eel_Active = true;
-            End_Control();
-        }
+        
 
         if (myPlayer.GetButtonDown("Jump"))
         {
@@ -474,6 +463,47 @@ public class MachineBehaviour : MonoBehaviour
 
     }
 
+
+    public void Fire_Off_Machine()
+    {
+        if (mach == MachineID.SideCannon)
+        {
+                //Debug.Log(Controlled_Hazard[Current_Haz_Num].transform.GetChild(0).transform.name);
+                //Vector3 dir = Controlled_Hazard[Current_Haz_Num].transform.GetChild(0).transform.position - Controlled_Hazard[Current_Haz_Num].transform.position;
+                if (Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Is_Facing_Right)
+                {
+                    objectPool.SpawnFromPool("CannonBall_Move_Right", Controlled_Hazard[Current_Haz_Num].transform.position,
+                        Quaternion.Euler(Move_Rotation));
+                }
+                if (!Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Is_Facing_Right)
+                {
+                    objectPool.SpawnFromPool("CannonBall_Move_Left", Controlled_Hazard[Current_Haz_Num].transform.position,
+                        Quaternion.Euler(Move_Rotation));
+                }
+                End_Control();
+                Debug.Log("Has Spawned object");
+           
+        }
+        else if (mach == MachineID.BackgroundCannon)
+        {
+            //this allows the player to spawn an object in the position where the crosshair is
+                objectPool.SpawnFromPool("Tester", Controlled_Hazard[Current_Haz_Num].transform.position, Quaternion.identity);
+                End_Control();
+                Debug.Log("Has Spawned object");
+          
+        }
+        else if (mach == MachineID.SideHazard)
+        {
+            Debug.Log("Should go off");
+            Controlled_Hazard[Current_Haz_Num].GetComponent<Eel_Movement>().Eel_Active = true;
+            End_Control();
+        }
+        else if (mach == MachineID.SpecialPlatform)
+        {
+            
+        }
+    }
+
     //--------------------------------------------------------------------------------------------------
     /// <summary>
     ///
@@ -488,7 +518,7 @@ public class MachineBehaviour : MonoBehaviour
         my_Controller_Player = player;
         is_In_Use = true;
 
-        StartCoroutine(waitForUse());
+        //StartCoroutine(waitForUse());
 
         if (mach == MachineID.BackgroundCannon) {
             Controlled_Hazard[0].SetActive(true);
@@ -516,6 +546,7 @@ public class MachineBehaviour : MonoBehaviour
     /// </summary>
     public void End_Control()
     {
+        Debug.Log("End Control has been called on: " +transform.name);
         is_In_Use = false;
         can_Use = false;
         other_can_Use = false;
@@ -524,8 +555,7 @@ public class MachineBehaviour : MonoBehaviour
         // The playerID "-1" does not exist, therefore, the inputs will never be recieved.
         myPlayer = ReInput.players.GetPlayer(-1);
 
-        machineSoundPlayer.clip = machineSounds[0];
-        machineSoundPlayer.Play();
+        
 
         if (mach == MachineID.BackgroundCannon) {
             Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.white;
@@ -538,6 +568,8 @@ public class MachineBehaviour : MonoBehaviour
         }
         
         Debug.Log("Player has deactivated machine: "+transform.name);
+       // machineSoundPlayer.clip = machineSounds[0];
+        //machineSoundPlayer.Play();
     }
 
     //--------------------------------------------------------------------------------------------------
@@ -586,8 +618,8 @@ public class MachineBehaviour : MonoBehaviour
         can_Use = true;
         other_can_Use = true;
 
-        machineSoundPlayer.clip = machineSounds[1];
-        machineSoundPlayer.Play();
+       // machineSoundPlayer.clip = machineSounds[1];
+       // machineSoundPlayer.Play();
 
     }
 
