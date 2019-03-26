@@ -109,6 +109,17 @@ public class Watermelon : MonoBehaviour
     public Renderer vineWhip;
     public GameObject downVine;
 
+    [Header("Neutral Heavy")]
+    public float NH_Damage;
+    public float NH_Angle;
+    public float NH_Knockback;
+    public float NH_HitStun;
+    public float NH_Distance;
+    public float NH_TravelTime;
+    public float NH_ShakeDuration;
+    public float NH_ShakeMagnitude;
+    public float NH_ShakeSlowDown;
+
 
     private void Awake()
     {
@@ -231,6 +242,17 @@ public class Watermelon : MonoBehaviour
                 }
                 break;
 
+            case 20:
+                player.anim.SetTrigger("HeavyNeutral");
+                player.isAttacking = true;
+                if (player.wawa)
+                {
+                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                }
+                break;
+
+
 
 
         }
@@ -318,6 +340,10 @@ public class Watermelon : MonoBehaviour
         melonDownJ.GetComponent<Projectile>().moveRight = player.FacingRight();
     }
 
+    private void NeutralHeavy(GameObject enemy)
+    {
+        enemy.GetComponent<BasicPlayerScript>().GetHit(NH_Damage, NH_Angle, NH_Knockback, NH_HitStun, NH_Distance, NH_TravelTime, player.FacingRight(), NH_ShakeDuration, NH_ShakeMagnitude, NH_ShakeSlowDown);
+    }
 
 
     public void CurrentAttack(int attackNum)
@@ -378,6 +404,10 @@ public class Watermelon : MonoBehaviour
 
                 case 11:
                     DownAir();
+                    break;
+
+                case 20:
+                    NeutralHeavy(other.gameObject);
                     break;
             }
         }
