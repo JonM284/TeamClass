@@ -20316,6 +20316,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7641726567996731361, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: SizeModule.curve.minScalar
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3425057349994527316, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: SizeModule.curve.minScalar
+      value: 0.35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8619d383b949f2047802810e41ae9a6c, type: 3}
 --- !u!1 &576915521
@@ -151953,7 +151963,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2070663279
 MonoBehaviour:
   m_ObjectHideFlags: 0
