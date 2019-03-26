@@ -666,12 +666,25 @@ public class BasicPlayerScript : MonoBehaviour
             {
                 if (myPlayer.GetButtonDown("HeavyAttack"))
                 {
-                    if (claire) { claireCharacter.ClaireAttackController(22); }
+                    //if (claire) { claireCharacter.ClaireAttackController(22); }
 
                     //if (gillbert) { gillbertCharacter.GilbertAttackController(22); }
 
 					if (gnomercy) { gnomercyCharacter.GnomercyAttackController(22); }
 				}
+            }
+
+            //Up Heavy
+            if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") > .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
+            {
+                if (myPlayer.GetButtonDown("HeavyAttack"))
+                {
+                    if (claire) { claireCharacter.ClaireAttackController(23); }
+
+                    //if (gillbert) { gillbertCharacter.GilbertAttackController(23); }
+
+                    //if (gnomercy) { gnomercyCharacter.GnomercyAttackController(23); }
+                }
             }
         }
 	}
