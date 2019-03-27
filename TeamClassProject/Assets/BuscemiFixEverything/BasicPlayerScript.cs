@@ -14,6 +14,7 @@ public class BasicPlayerScript : MonoBehaviour
 	[Header("Rewired")]
 	[Tooltip("Number identifier for each player, must be above 0")]
 	public int playerNum;
+    public SpriteRenderer[] rigPieces;
     public int teamNum;
 
 	public Image healthBar;
@@ -183,7 +184,32 @@ public class BasicPlayerScript : MonoBehaviour
         myPlayer = ReInput.players.GetPlayer(playerNum - 1);
 		ReInput.ControllerConnectedEvent += OnControllerConnected;
 		CheckController(myPlayer);
-	}
+
+        rigPieces = GetComponentsInChildren<SpriteRenderer>();
+        if (playerNum == 1)
+        {
+            foreach (SpriteRenderer sprite in rigPieces)
+            {
+                if (sprite != null)
+                {
+                    sprite.sortingLayerName = "Player 1";
+                }
+            }
+        }
+        else
+        {
+            if (playerNum == 2)
+            {
+                foreach (SpriteRenderer sprite in rigPieces)
+                {
+                    if (sprite != null)
+                    {
+                        sprite.sortingLayerName = "Player 2";
+                    }
+                }
+            }
+        }
+    }
 
 	// Start is called before the first frame update
 	void Start()

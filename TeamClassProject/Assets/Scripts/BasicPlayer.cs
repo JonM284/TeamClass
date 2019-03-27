@@ -13,6 +13,7 @@ public class BasicPlayer : MonoBehaviour {
     [Header("Rewired")]
     [Tooltip("Number identifier for each player, must be above 0")]
     public int playerNum;
+    public SpriteRenderer[] rigPieces;
 
     public Image healthBar;
     public Image regenableHealthBar;
@@ -125,6 +126,30 @@ public class BasicPlayer : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        rigPieces = GetComponentsInChildren<SpriteRenderer>();
+        if (playerNum == 1)
+        {
+            foreach (SpriteRenderer sprite in rigPieces)
+            {
+                if (sprite != null)
+                {
+                    sprite.sortingLayerName = "Player 1";
+                }
+            }
+        }
+        else
+        {
+            if (playerNum == 2)
+            {
+                foreach (SpriteRenderer sprite in rigPieces)
+                {
+                    if (sprite != null)
+                    {
+                        sprite.sortingLayerName = "Player 2";
+                    }
+                }
+            }
+        }
         playerJump = GetComponent<AudioSource>();
 
         currentHealth = maxHealth;
