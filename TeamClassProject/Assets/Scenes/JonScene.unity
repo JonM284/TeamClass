@@ -2201,7 +2201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  playerNum: 4
+  playerNum: 1
   teamID: 2
   teamNum: 0
   is_In_Area: 0
@@ -2863,7 +2863,7 @@ PrefabInstance:
     - target: {fileID: 601068658141386479, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
         type: 3}
       propertyPath: playerNum
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 601068658141386479, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
         type: 3}
@@ -6966,6 +6966,11 @@ PrefabInstance:
       propertyPath: regenableHealthBar
       value: 
       objectReference: {fileID: 211150989}
+    - target: {fileID: 601068658141386479, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
+        type: 3}
+      propertyPath: playerNum
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
 --- !u!1 &645758370 stripped
@@ -12129,7 +12134,7 @@ PrefabInstance:
     - target: {fileID: 5615167271143781587, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
       propertyPath: playerNum
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8619d383b949f2047802810e41ae9a6c, type: 3}
@@ -14168,7 +14173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  playerNum: 1
+  playerNum: 4
   teamID: 1
   teamNum: 0
   is_In_Area: 0
