@@ -289,10 +289,7 @@ public class BasicPlayerScript : MonoBehaviour
 			regenableHealthBar.fillAmount = regenHeath / maxHealth;
 		}
 
-		if (!isAttacking && !isJumping && stunTime <= 0)
-		{
-			Attack();
-		}
+		
 
         if (stunTime <= 0)
         {
@@ -311,7 +308,12 @@ public class BasicPlayerScript : MonoBehaviour
 
  void FixedUpdate()
 	{
-        if(gotHitTimer > 0)
+        if (!isAttacking && !isJumping && stunTime <= 0)
+        {
+            Attack();
+        }
+
+        if (gotHitTimer > 0)
         {
             anim.SetBool("hitstun", true);
         }
