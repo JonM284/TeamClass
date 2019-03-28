@@ -89,7 +89,7 @@ public class AlternateSP : MonoBehaviour
         }
 
 
-        if (myPlayer.GetButtonDown("Switch") && status == Status.Free)
+        if (myPlayer.GetButtonDown("Switch"))
         {
             try
             {
@@ -128,7 +128,7 @@ public class AlternateSP : MonoBehaviour
         // Give the machine my inputs.
         // If the player presses "Jump" and is using a machine, set them to free again.
         // Also if they press heavy attack, they jump off the machine without using it.
-        /*if (is_In_Area && (myPlayer.GetButtonDown("Jump")|| myPlayer.GetButtonDown("BasicAttack")))
+        if (is_In_Area && (myPlayer.GetButtonDown("Jump")|| myPlayer.GetButtonDown("BasicAttack")))
         {
             if (status == Status.Free && !myMachine.GetComponent<MachineBehaviour>().is_In_Use)
             {
@@ -155,46 +155,6 @@ public class AlternateSP : MonoBehaviour
             {
                 myMachine.GetComponent<MachineBehaviour>().End_Control();
                 myMachine = null;
-                Debug.Log("Has detached from machine with Heavy Attack");
-            }
-            if (status == Status.AtMachine)
-            {
-                status = Status.Free;
-                Debug.Log(status);
-            }
-
-        }*/
-
-        if (is_In_Area && myPlayer.GetButtonDown("Jump")
-            && status == Status.Free && !myMachine.GetComponent<MachineBehaviour>().is_In_Use)
-        {
-           
-                status = Status.AtMachine;
-                if (!myMachine.GetComponent<MachineBehaviour>().is_In_Use)
-                {
-                    myMachine.GetComponent<MachineBehaviour>().Commence_Control(playerNum, teamID, gameObject);
-                }
-                Debug.Log(status);
-    
-        }
-
-        if (myPlayer.GetButtonDown("HeavyAttack") && status == Status.AtMachine
-            && myMachine.GetComponent<MachineBehaviour>().is_In_Use)
-        {
-                status = Status.Free;
-                myMachine.GetComponent<MachineBehaviour>().End_Control();
-                Debug.Log("Has detached from machine with Jump");
-                Debug.Log(status);
-        }
-
-        if (is_In_Area && (myPlayer.GetButtonDown("BasicAttack")))
-        {
-            if (myMachine.GetComponent<MachineBehaviour>().is_In_Use 
-                && myMachine.GetComponent<MachineBehaviour>().my_Controller_Player == this.gameObject)
-            {
-                myMachine.GetComponent<MachineBehaviour>().Fire_Off_Machine();
-                myMachine.GetComponent<MachineBehaviour>().End_Control();
-                
                 Debug.Log("Has detached from machine with Heavy Attack");
             }
             if (status == Status.AtMachine)
