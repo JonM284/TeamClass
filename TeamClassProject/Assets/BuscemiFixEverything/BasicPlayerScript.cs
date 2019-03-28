@@ -465,7 +465,7 @@ public class BasicPlayerScript : MonoBehaviour
 				holdJumpTime -= Time.deltaTime;
 			}
 
-			if (myPlayer.GetButtonDown("Jump") && onPlatformTimer > 0)
+			if (myPlayer.GetButtonDown("Jump") && onPlatformTimer > 0 && !isAttacking)
 			{
                 isJumping = true;
                 initialJumpTime = maxInitialJumpTime;

@@ -717,7 +717,47 @@ PrefabInstance:
     - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
       propertyPath: BU_HitStun
-      value: 0.5
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: BN_HitStun
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: BF_HitStun
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: BD_Distance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: NA_HitStun
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: UA_HitStun
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: NH_HitStun
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: FH_HitStun
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: UH2_HitStun
+      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8619d383b949f2047802810e41ae9a6c, type: 3}
@@ -5696,6 +5736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 1
+  rigPieces: []
   healthBar: {fileID: 0}
   regenableHealthBar: {fileID: 0}
   accel: 0
@@ -8373,12 +8414,12 @@ PrefabInstance:
     - target: {fileID: 4224738144925258989, guid: f081e4ae8c20f64408db1e12712574bf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.178895
+      value: -3.25
       objectReference: {fileID: 0}
     - target: {fileID: 4224738144925258989, guid: f081e4ae8c20f64408db1e12712574bf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.61
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4224738144925258989, guid: f081e4ae8c20f64408db1e12712574bf,
         type: 3}
@@ -8467,7 +8508,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -9017,6 +9058,22 @@ PrefabInstance:
         type: 3}
       propertyPath: playerNum
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: BF_HitStun
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: BU_HitStun
+      value: 0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: NH_HitStun
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: DH1_HitStun
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
@@ -11215,6 +11272,22 @@ PrefabInstance:
       propertyPath: playerNum
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: BF_HitStun
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: BU_HitStun
+      value: 0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: NH_HitStun
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: DH1_HitStun
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
 --- !u!1001 &1389090293101244052
@@ -11729,7 +11802,42 @@ PrefabInstance:
     - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
       propertyPath: BU_HitStun
-      value: 0.5
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: BN_HitStun
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: BF_HitStun
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: NA_HitStun
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: UA_HitStun
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: NH_HitStun
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: FH_HitStun
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: UH2_HitStun
+      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8619d383b949f2047802810e41ae9a6c, type: 3}
