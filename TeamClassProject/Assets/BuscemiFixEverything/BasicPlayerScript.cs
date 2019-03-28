@@ -289,7 +289,10 @@ public class BasicPlayerScript : MonoBehaviour
 			regenableHealthBar.fillAmount = regenHeath / maxHealth;
 		}
 
-		
+		if (!isAttacking && !isJumping && stunTime <= 0)
+		{
+			Attack();
+		}
 
         if (stunTime <= 0)
         {
@@ -308,12 +311,7 @@ public class BasicPlayerScript : MonoBehaviour
 
  void FixedUpdate()
 	{
-        if (!isAttacking && !isJumping && stunTime <= 0)
-        {
-            Attack();
-        }
-
-        if (gotHitTimer > 0)
+        if(gotHitTimer > 0)
         {
             anim.SetBool("hitstun", true);
         }
@@ -895,6 +893,7 @@ public class BasicPlayerScript : MonoBehaviour
 				velocity.y = 0; //stop vertical velocity
 				if (contact.normal.y >= 0)
 				{ //am I hitting the top of the platform?
+                    isJumping = false;
                     isAttacking = false;
 					anim.SetTrigger("land");
 					onTopOfPlatform = true;
@@ -946,7 +945,27 @@ public class BasicPlayerScript : MonoBehaviour
 		}
 	}
 
-	void OnControllerConnected(ControllerStatusChangedEventArgs arg)
+    private void OnCollisionExit2D(Collision2D collisionInfo)
+    {
+        foreach (ContactPoint2D contact in collisionInfo.contacts)
+        {
+            //am I coming from the top/bottom?
+            if (Mathf.Abs(contact.normal.y) > Mathf.Abs(contact.normal.x))
+            {
+                if (contact.normal.y >= 0)
+                { //am I hitting the top of the platform?
+                    if (velocity.y < 0)
+                    {
+                        //velocity.y = 0; //stop vertical velocity
+                        onTopOfPlatform = false;
+                        isJumping = true;
+                    }
+                }
+            }
+        }
+    }
+
+    void OnControllerConnected(ControllerStatusChangedEventArgs arg)
 	{
 		CheckController(myPlayer);
 	}
