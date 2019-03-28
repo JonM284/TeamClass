@@ -308,7 +308,21 @@ AnimationClip:
     path: Wawa Body/Mouth
     classID: 212
     script: {fileID: 0}
-  m_PPtrCurves: []
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: 21300038, guid: 842aa5e144c3f450494d5190b65354c4, type: 3}
+    attribute: m_Sprite
+    path: Wawa Body/Bottom Shell
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 21300040, guid: 842aa5e144c3f450494d5190b65354c4, type: 3}
+    attribute: m_Sprite
+    path: Wawa Body/Top Shell
+    classID: 212
+    script: {fileID: 0}
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -316,6 +330,20 @@ AnimationClip:
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
     genericBindings:
+    - serializedVersion: 2
+      path: 1348383727
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 2346072568
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
     - serializedVersion: 2
       path: 2346072568
       attribute: 1
@@ -442,7 +470,9 @@ AnimationClip:
       typeID: 212
       customType: 26
       isPPtrCurve: 0
-    pptrCurveMapping: []
+    pptrCurveMapping:
+    - {fileID: 21300038, guid: 842aa5e144c3f450494d5190b65354c4, type: 3}
+    - {fileID: 21300040, guid: 842aa5e144c3f450494d5190b65354c4, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

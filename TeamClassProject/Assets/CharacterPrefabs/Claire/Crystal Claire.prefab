@@ -21965,7 +21965,6 @@ GameObject:
   - component: {fileID: 5615167271143781673}
   - component: {fileID: 5615167271143781679}
   - component: {fileID: 5615167271143781676}
-  - component: {fileID: 5615167271143781677}
   - component: {fileID: 5615167271143781586}
   - component: {fileID: 5615167271143781587}
   - component: {fileID: 5615167271143781584}
@@ -21993,6 +21992,7 @@ Transform:
   - {fileID: 5615167269358937976}
   - {fileID: 791574513304624714}
   - {fileID: 4034388612700275526}
+  - {fileID: 5176209827569672944}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22238,49 +22238,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &5615167271143781677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5615167271143781585}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88265dba3b54c594a97921d55e872236, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerNum: 1
-  healthBar: {fileID: 0}
-  regenableHealthBar: {fileID: 0}
-  accel: 0
-  accelMult: 0.05
-  decelMult: 0.15
-  speed: 0
-  weight: 0
-  velocity: {x: 0, y: 0, z: 0}
-  direction: Left
-  dashCount: 0
-  dashCountMax: 0
-  canDash: 0
-  gravityUp: 0
-  gravityDown: 0
-  jumpVel: 0
-  maxInitialJumpTime: 0.05
-  maxHoldJumpTime: 0.075
-  maxDownVel: 0
-  onPlatformTimer: 0
-  onPlatformTimerMax: 0.075
-  onTopOfPlatform: 0
-  anim: {fileID: 5615167271143781674}
-  state: 0
-  claire: 1
-  gillbert: 0
-  gnomercy: 0
-  maxHealth: 0
-  regenHeathMultiplier: 0
-  makeFaceRight: 1
-  isAttacking: 0
 --- !u!61 &5615167271143781586
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41981,3 +41938,82 @@ TrailRenderer:
   m_MinVertexDistance: 0.87
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!1 &8326187045778185884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5176209827569672944}
+  - component: {fileID: 4669752959564515496}
+  m_Layer: 0
+  m_Name: Crystal Shield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5176209827569672944
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8326187045778185884}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.3787103, y: -0.03428161, z: 0}
+  m_LocalScale: {x: 2.500012, y: 2.500012, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5615167271143781669}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &4669752959564515496
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8326187045778185884}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -594534133
+  m_SortingLayer: 3
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300104, guid: 10468c9b9d5c3400385d279504c62a8a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.5233333, y: 1.4}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
