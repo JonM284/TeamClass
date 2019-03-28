@@ -358,8 +358,8 @@ public class BasicPlayerScript : MonoBehaviour
 		anim.SetFloat("xVel", Mathf.Abs(velocity.x));
 		anim.SetFloat("yVel", velocity.y);
 
-		//animation logic for just the fighter
-		anim.SetBool("isAttacking", isAttacking);
+        //animation logic for just the fighter
+        anim.SetBool("isAttacking", isAttacking);
 
 		gotHitTimer -= Time.deltaTime;
 
@@ -568,7 +568,7 @@ public class BasicPlayerScript : MonoBehaviour
 	{
 		//neutral basic attack
 		if (gotHitTimer < 0)
-		{
+		{          
 			if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
@@ -604,7 +604,7 @@ public class BasicPlayerScript : MonoBehaviour
 					if (gnomercy) { gnomercyCharacter.GnomercyAttackController(3); }
 				}
 			}
-
+                       
             //Down basic attack
             if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") < -.3f && onPlatformTimer > 0)
             {
@@ -642,6 +642,37 @@ public class BasicPlayerScript : MonoBehaviour
                     //if (gillbert) { gillbertCharacter.GilbertAttackController(10); }
                 }
 			}
+
+            //forward air attack
+            if (direction == "Right")
+            {
+                if (myPlayer.GetAxis("Horizontal") > .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer < 0)
+                {
+                    if (myPlayer.GetButtonDown("BasicAttack"))
+                    {
+                        //if (claire) { claireCharacter.ClaireAttackController(11); }
+
+                        if (gillbert) { gillbertCharacter.GilbertAttackController(11); }
+
+                        //if (gnomercy) { gnomercyCharacter.GnomercyAttackController(11); }
+                    }
+                }
+            }
+            if (direction == "Left")
+            {
+                if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") < -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer < 0)
+                {
+                    if (myPlayer.GetButtonDown("BasicAttack"))
+                    {
+                        //if (claire) { claireCharacter.ClaireAttackController(11); }
+
+                        if (gillbert) { gillbertCharacter.GilbertAttackController(11); }
+
+                        //if (gnomercy) { gnomercyCharacter.GnomercyAttackController(11); }
+                    }
+                }
+            }
+
 
             //down air attack
             if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") < -.3f && onPlatformTimer < 0)
@@ -681,7 +712,7 @@ public class BasicPlayerScript : MonoBehaviour
                 {
                     if (claire) { claireCharacter.ClaireAttackController(21); }
 
-                    //if (gillbert) { gillbertCharacter.GilbertAttackController(21); }
+                    if (gillbert) { gillbertCharacter.GilbertAttackController(21); }
 
 					if (gnomercy) { gnomercyCharacter.GnomercyAttackController(21); }
 				}

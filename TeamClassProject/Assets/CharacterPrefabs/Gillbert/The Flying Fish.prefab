@@ -404,15 +404,24 @@ MonoBehaviour:
   BU_MoveUpTimer: 0.7
   BD_Damage: 10
   BD_StunTime: 1
-  NA_Damage: 0
-  NA_Angle: 0
-  NA_Knockback: 0
-  NA_HitStun: 0
-  NA_Distance: 0
-  NA_TravelTime: 0
-  NA_ShakeDuration: 0
-  NA_ShakeMagnitude: 0
-  NA_ShakeSlowDown: 0
+  NA_Damage: 85
+  NA_Angle: 345
+  NA_Knockback: 70
+  NA_HitStun: 0.25
+  NA_Distance: 120
+  NA_TravelTime: 0.25
+  NA_ShakeDuration: 0.0025
+  NA_ShakeMagnitude: 0.5
+  NA_ShakeSlowDown: 0.2
+  FA_Damage: 85
+  FA_Angle: 345
+  FA_Knockback: 200
+  FA_HitStun: 0.2
+  FA_Distance: 120
+  FA_TravelTime: 0.2
+  FA_ShakeDuration: 0.035
+  FA_ShakeMagnitude: 0.5
+  FA_ShakeSlowDown: 0.2
   UA_Damage: 0
   UA_Angle: 0
   UA_Knockback: 0
@@ -433,15 +442,15 @@ MonoBehaviour:
   NH_ShakeDuration: 0.045
   NH_ShakeMagnitude: 0.06
   NH_ShakeSlowDown: 0.2
-  FH_Damage: 0
-  FH_Angle: 0
-  FH_Knockback: 0
-  FH_HitStun: 0
-  FH_Distance: 0
-  FH_TravelTime: 0
-  FH_ShakeDuration: 0
-  FH_ShakeMagnitude: 0
-  FH_ShakeSlowDown: 0
+  FH_Damage: 90
+  FH_Angle: 20
+  FH_Knockback: 50
+  FH_HitStun: 0.3
+  FH_Distance: 145
+  FH_TravelTime: 0.3
+  FH_ShakeDuration: 0.045
+  FH_ShakeMagnitude: 0.06
+  FH_ShakeSlowDown: 0.2
   DH1_Damage: 92
   DH1_Angle: 60
   DH1_Knockback: 45
@@ -925,6 +934,7 @@ GameObject:
   m_Component:
   - component: {fileID: 601068658652418214}
   - component: {fileID: 601068658652418209}
+  - component: {fileID: 2026583675557424397}
   m_Layer: 0
   m_Name: Fish Head
   m_TagString: Untagged
@@ -998,6 +1008,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &2026583675557424397
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601068658652418215}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.16802663, y: 0.30805016}
+  serializedVersion: 2
+  m_Radius: 0.53000003
 --- !u!1 &601068658802580622
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,6 +1306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 601068659288360372}
   - component: {fileID: 601068659288360375}
+  - component: {fileID: 7392441036765454965}
   m_Layer: 0
   m_Name: Fish Bottom Body
   m_TagString: Untagged
@@ -1350,6 +1377,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &7392441036765454965
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601068659288360373}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.018670589, y: 0.25}
+  serializedVersion: 2
+  m_Radius: 1.84
 --- !u!1 &601068659302726410
 GameObject:
   m_ObjectHideFlags: 0

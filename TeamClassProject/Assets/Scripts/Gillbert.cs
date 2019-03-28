@@ -74,6 +74,17 @@ public class Gillbert : MonoBehaviour
     public float NA_ShakeMagnitude;
     public float NA_ShakeSlowDown;
 
+    [Header("Forward Air")]
+    public float FA_Damage;
+    public float FA_Angle;
+    public float FA_Knockback;
+    public float FA_HitStun;
+    public float FA_Distance;
+    public float FA_TravelTime;
+    public float FA_ShakeDuration;
+    public float FA_ShakeMagnitude;
+    public float FA_ShakeSlowDown;
+
     [Header("Up Air")]
     public float UA_Damage;
     public float UA_Angle;
@@ -156,6 +167,7 @@ public class Gillbert : MonoBehaviour
    * 
    * 9 = neutral aerial
    * 10 = up aerial
+   * 11 = forward aerial
    * 
    * 
    * 20 = neutral heavy
@@ -220,6 +232,11 @@ public class Gillbert : MonoBehaviour
 
             case 10:
                 player.anim.SetTrigger("UpAir");
+                player.isAttacking = true;
+                break;
+
+            case 11:
+                player.anim.SetTrigger("ForwardAir");
                 player.isAttacking = true;
                 break;
 
@@ -294,6 +311,11 @@ public class Gillbert : MonoBehaviour
         enemy.GetComponent<BasicPlayerScript>().GetHit(NA_Damage, NA_Angle, NA_Knockback, NA_HitStun, NA_Distance, NA_TravelTime, player.FacingRight(), NA_ShakeDuration, NA_ShakeMagnitude, NA_ShakeSlowDown);
     }
 
+    private void ForwardAir(GameObject enemy)
+    {
+        enemy.GetComponent<BasicPlayerScript>().GetHit(FA_Damage, FA_Angle, FA_Knockback, FA_HitStun, FA_Distance, FA_TravelTime, player.FacingRight(), FA_ShakeDuration, FA_ShakeMagnitude, FA_ShakeSlowDown);
+    }
+
     private void UpAir(GameObject enemy)
     {
 
@@ -306,7 +328,7 @@ public class Gillbert : MonoBehaviour
 
     private void ForwardHeavy(GameObject enemy)
     {
-        //enemy.GetComponent<BasicPlayerScript>().GetHit(FH_Damage, FH_Angle, FH_Knockback, FH_HitStun, FH_Distance, FH_TravelTime, player.FacingRight(), FH_ShakeDuration, FH_ShakeMagnitude, FH_ShakeSlowDown);
+        enemy.GetComponent<BasicPlayerScript>().GetHit(FH_Damage, FH_Angle, FH_Knockback, FH_HitStun, FH_Distance, FH_TravelTime, player.FacingRight(), FH_ShakeDuration, FH_ShakeMagnitude, FH_ShakeSlowDown);
     }
 
     private void DownHeavy(GameObject enemy)
@@ -341,6 +363,7 @@ public class Gillbert : MonoBehaviour
      * 4 = Basic Down
      * 
      * 9 = neutral aerial
+     * 11 = forwardAir
      * 
      * 
      * 20 = neutral heavy
@@ -380,6 +403,10 @@ public class Gillbert : MonoBehaviour
 
                         case 9:
                             NeutralAir(other.gameObject);
+                            break;
+
+                        case 11:
+                            ForwardAir(other.gameObject);
                             break;
 
                         case 20:
