@@ -10,20 +10,30 @@ public class Eel_Movement : MonoBehaviour
     private Vector3 myStartPos, pause_Position;
     public bool Eel_Active = false;
     public bool has_Hit_Platform = false, hasStarted = false, is_Facing_Right;
-    public float going_Out_Speed, return_Speed;
+    public float going_Out_Speed, return_Speed, pause_timer;
+    
+    public float Head_Poke;
+    private float pause_timer_Max;
 
 
     // Start is called before the first frame update
     void Start()
     {
         myStartPos = myEel.transform.position;
-        
+        pause_timer_Max = pause_timer;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Eel_Active)
+        if (Eel_Active && pause_timer > 0)
+        {
+            pause_timer -= Time.deltaTime;
+            Set_Up_Eel();
+        }
+
+
+        if (Eel_Active && pause_timer <= 0)
         {
             Activate_Eel();
         }
@@ -40,12 +50,17 @@ public class Eel_Movement : MonoBehaviour
     {
         if (is_Facing_Right)
         {
-            pause_Position = new Vector3(transform.position.x + 5f, transform.position.y, transform.position.z);
+            pause_Position = new Vector3(myStartPos.x + Head_Poke, transform.position.y, transform.position.z);
         }
         else
         {
-            pause_Position = new Vector3(transform.position.x - 5f, transform.position.y, transform.position.z);
+            pause_Position = new Vector3(myStartPos.x - Head_Poke, transform.position.y, transform.position.z);
         }
+    }
+
+    void Set_Up_Eel()
+    {
+        myEel.transform.position = Vector3.Lerp(myEel.transform.position, pause_Position, Time.deltaTime * going_Out_Speed);
     }
 
 
@@ -60,10 +75,18 @@ public class Eel_Movement : MonoBehaviour
         if (Vector3.Distance(myEel.transform.position, myEndPos.position) <= 1 || has_Hit_Platform)
         {
             Eel_Active = false;
+            pause_timer = pause_timer_Max;
             Debug.Log("Now Equal, should go back");
         }
 
 
+    }
+
+    public void Actual_Activate_Eel()
+    {
+        Eel_Active = true;
+        has_Hit_Platform = false;
+        pause_timer = pause_timer_Max;
     }
 
     public void Deactivate_Eel()

@@ -78,7 +78,7 @@ public class SideCannon_projectile : MonoBehaviour
         explosion_Particles.gameObject.SetActive(true);
         explosion_Particles.Play();
         trail_Particles.Stop();
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(0.8f);
         explosion_Particles.Stop();
         explosion_Particles.gameObject.SetActive(false);
         this.gameObject.SetActive(false);

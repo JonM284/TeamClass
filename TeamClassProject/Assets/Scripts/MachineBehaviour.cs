@@ -523,7 +523,7 @@ public class MachineBehaviour : MonoBehaviour
         else if (mach == MachineID.SideHazard)
         {
             Debug.Log("Should go off");
-            Controlled_Hazard[Current_Haz_Num].GetComponent<Eel_Movement>().Eel_Active = true;
+            Controlled_Hazard[Current_Haz_Num].GetComponent<Eel_Movement>().Actual_Activate_Eel();
             End_Control();
         }
         else if (mach == MachineID.SpecialPlatform)

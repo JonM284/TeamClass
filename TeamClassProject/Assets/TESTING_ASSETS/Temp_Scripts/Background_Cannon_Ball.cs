@@ -25,10 +25,10 @@ public class Background_Cannon_Ball : MonoBehaviour
     IEnumerator Turn_On()
     {
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         this.GetComponent<Collider2D>().enabled = true;
         explosion_Effect.Play();
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.8f);
         this.GetComponent<Collider2D>().enabled = false;
         explosion_Effect.Stop();
         StartCoroutine(waitToShutOff());
