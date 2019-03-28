@@ -98,6 +98,24 @@ public class Gillbert : MonoBehaviour
     public GameObject spawnIceShotHere1;
     public float bulletSpeed1;
 
+    [Header("Down Air")]
+    public float DA_Damage;
+    public float DA_Angle;
+    public float DA_Knockback;
+    public float DA_HitStun;
+    public float DA_Distance;
+    public float DA_TravelTime;
+    public float DA_ShakeDuration;
+    public float DA_ShakeMagnitude;
+    public float DA_ShakeSlowDown;
+    public GameObject spitBall1;
+    public GameObject spawnSpitHere1;
+    public float DA_MaxDownVel;
+    public float DA_GravityUp;
+    public float DA_GravityDown;
+    public float DA_Speed;
+    public float DA_MoveUpTimer;
+
     [Header("Neutral Heavy")]
     public float NH_Damage;
     public float NH_Angle;
@@ -168,6 +186,7 @@ public class Gillbert : MonoBehaviour
    * 9 = neutral aerial
    * 10 = up aerial
    * 11 = forward aerial
+   * 12 = down aerial
    * 
    * 
    * 20 = neutral heavy
@@ -237,6 +256,11 @@ public class Gillbert : MonoBehaviour
 
             case 11:
                 player.anim.SetTrigger("ForwardAir");
+                player.isAttacking = true;
+                break;
+
+            case 12:
+                player.anim.SetTrigger("DownAir");
                 player.isAttacking = true;
                 break;
 
@@ -319,6 +343,13 @@ public class Gillbert : MonoBehaviour
     private void UpAir(GameObject enemy)
     {
 
+    }
+
+    private void DownAir(GameObject enemy)
+    {
+        GameObject spit1 = Instantiate(spitBall1, spawnSpitHere1.transform.position, Quaternion.identity);
+        spit1.GetComponent<SpitProjectile>().SetVariables(DA_Damage, DA_Angle, DA_Knockback, DA_HitStun, DA_Distance, DA_TravelTime, playerNumber, DA_ShakeDuration, DA_ShakeMagnitude, DA_ShakeSlowDown);
+        spit1.GetComponent<SpitProjectile>().SetPhysicsVariables(DA_MaxDownVel, DA_GravityUp, DA_GravityDown, DA_Speed, DA_MoveUpTimer);
     }
 
     private void NeutralHeavy(GameObject enemy)

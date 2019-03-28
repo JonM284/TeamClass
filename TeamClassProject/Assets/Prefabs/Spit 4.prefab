@@ -128,6 +128,9 @@ MonoBehaviour:
   distance: 32
   travelTime: 0.26
   playerNum: 0
+  shakeDuration: 0
+  shakeMagnitude: 0
+  shakeSlowDown: 0
   direction: {x: 0, y: 0, z: 0}
   moveRight: 1
 --- !u!58 &8136995603509912919
@@ -145,4 +148,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.01}
   serializedVersion: 2
-  m_Radius: 0.09
+  m_Radius: 0.11

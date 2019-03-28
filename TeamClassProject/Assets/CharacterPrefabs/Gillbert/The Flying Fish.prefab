@@ -225,6 +225,7 @@ Transform:
   - {fileID: 601068659384611828}
   - {fileID: 601068658613593602}
   - {fileID: 685954106}
+  - {fileID: 3907835057478572876}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -433,6 +434,23 @@ MonoBehaviour:
   UA_ShakeSlowDown: 0
   spawnIceShotHere1: {fileID: 0}
   bulletSpeed1: 0
+  DA_Damage: 50
+  DA_Angle: 20
+  DA_Knockback: 150
+  DA_HitStun: 0.05
+  DA_Distance: 50
+  DA_TravelTime: 0.05
+  DA_ShakeDuration: 0.01
+  DA_ShakeMagnitude: 0.5
+  DA_ShakeSlowDown: 0.2
+  spitBall1: {fileID: 8136995603509912922, guid: 8ca0156d87ab5b146bea5b00379d6f04,
+    type: 3}
+  spawnSpitHere1: {fileID: 6746266923202572942}
+  DA_MaxDownVel: 100
+  DA_GravityUp: 70
+  DA_GravityDown: 30
+  DA_Speed: 5
+  DA_MoveUpTimer: 0.01
   NH_Damage: 65
   NH_Angle: 45
   NH_Knockback: 0
@@ -2196,3 +2214,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6746266923202572942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3907835057478572876}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3907835057478572876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6746266923202572942}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.12, y: -1.55, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 601068658141386475}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

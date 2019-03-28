@@ -27,10 +27,13 @@ public class SpitProjectile : MonoBehaviour
     public Vector3 direction;
     public bool moveRight = true;
 
+    Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
         currentMoveUpTimer = maxMoveUpTimer;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public void SetPhysicsVariables(float maxDownVelocity, float gravityUp1, float gravityDown1, float speed1, float maxMoveUpTimer1)
@@ -76,7 +79,7 @@ public class SpitProjectile : MonoBehaviour
             velocity.y = speed * (currentMoveUpTimer / maxMoveUpTimer);
         }
 
-        GetComponent<Rigidbody2D>().MovePosition(transform.position + velocity * Time.fixedDeltaTime);
+        rb.MovePosition(transform.position + velocity * Time.fixedDeltaTime);
     }
 
     void Gravity()
