@@ -51,7 +51,6 @@ public class Eel_Movement : MonoBehaviour
 
     public void Activate_Eel()
     {
-        
 
         if (Vector3.Distance(myEel.transform.position, myEndPos.position) > 1 && !has_Hit_Platform && Eel_Active) {
             myEel.transform.position = Vector3.Lerp(myEel.transform.position, new Vector3(myEndPos.position.x, transform.position.y, transform.position.z), Time.deltaTime * going_Out_Speed);

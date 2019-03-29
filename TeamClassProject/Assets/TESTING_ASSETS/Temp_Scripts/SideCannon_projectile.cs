@@ -13,6 +13,10 @@ public class SideCannon_projectile : MonoBehaviour
     public bool move_Right;
     public ParticleSystem explosion_Particles, trail_Particles;
 
+    [Header("Audio")]
+    public AudioClip[] CannonSounds;
+    public AudioSource CannonSoundPlayer;
+
     private void Awake()
     {
         original_Speed = speed;
@@ -25,6 +29,10 @@ public class SideCannon_projectile : MonoBehaviour
         
         rb = GetComponent<Rigidbody2D>();
         Floor = new Vector3(0,-3,0);
+
+        //Cannon Explosion
+        CannonSoundPlayer.clip = CannonSounds[0];
+        CannonSoundPlayer.Play();
     }
 
     private void OnEnable()
@@ -82,5 +90,10 @@ public class SideCannon_projectile : MonoBehaviour
         explosion_Particles.Stop();
         explosion_Particles.gameObject.SetActive(false);
         this.gameObject.SetActive(false);
+
+        //Cannon Explosion
+        CannonSoundPlayer.clip = CannonSounds[1];
+        CannonSoundPlayer.Play();
+
     }
 }

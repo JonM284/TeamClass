@@ -149,6 +149,10 @@ public class Claire : MonoBehaviour
 
     BasicPlayerScript player;
 
+    [Header("Audio")]
+    public AudioClip[] ClaireSounds;
+    public AudioSource ClaireSoundPlayer;
+
 
     private void Awake()
     {
@@ -160,6 +164,9 @@ public class Claire : MonoBehaviour
     {
 		player = this.GetComponent<BasicPlayerScript>();
         playerNumber = GetComponent<BasicPlayerScript>().playerNum;
+
+        //setting AudioSource
+        ClaireSoundPlayer = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -193,6 +200,10 @@ public class Claire : MonoBehaviour
                 player.anim.SetTrigger("BasicNeutral");
                 player.isAttacking = true;
                 player.canTurn = false;
+
+                ClaireSoundPlayer.clip = ClaireSounds[0];
+                ClaireSoundPlayer.Play();
+
                 if (player.claire)
                 {
                     player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -203,6 +214,10 @@ public class Claire : MonoBehaviour
                 player.anim.SetTrigger("BasicForward");
                 player.isAttacking = true;
                 player.canTurn = false;
+
+                ClaireSoundPlayer.clip = ClaireSounds[1];
+                ClaireSoundPlayer.Play();
+
                 if (player.claire)
                 {
 
@@ -214,6 +229,10 @@ public class Claire : MonoBehaviour
             case 3:
                 player.anim.SetTrigger("BasicUp");
                 player.isAttacking = true;
+
+                ClaireSoundPlayer.clip = ClaireSounds[2];
+                ClaireSoundPlayer.Play();
+
                 if (player.claire)
                 {
 
@@ -225,17 +244,29 @@ public class Claire : MonoBehaviour
             case 9:
                 player.anim.SetTrigger("NeutralAir");
                 player.isAttacking = true;
+
+                ClaireSoundPlayer.clip = ClaireSounds[3];
+                ClaireSoundPlayer.Play();
+
                 break;
 
             case 10:
                 player.anim.SetTrigger("UpAir");
                 player.isAttacking = true;
+
+                ClaireSoundPlayer.clip = ClaireSounds[4];
+                ClaireSoundPlayer.Play();
+
                 break;
 
             case 20:
                 player.anim.SetTrigger("HeavyNeutral");
                 player.isAttacking = true;
                 player.canTurn = false;
+
+                ClaireSoundPlayer.clip = ClaireSounds[5];
+                ClaireSoundPlayer.Play();
+
                 if (player.claire)
                 {
 
@@ -248,6 +279,10 @@ public class Claire : MonoBehaviour
                     player.anim.SetTrigger("HeavyForward");
                     player.isAttacking = true;
                 player.canTurn = false;
+
+                ClaireSoundPlayer.clip = ClaireSounds[6];
+                ClaireSoundPlayer.Play();
+
                 if (player.claire)
                     {
 
@@ -260,6 +295,10 @@ public class Claire : MonoBehaviour
                 player.anim.SetTrigger("HeavyDown");
                 player.isAttacking = true;
                 player.canTurn = false;
+
+                ClaireSoundPlayer.clip = ClaireSounds[7];
+                ClaireSoundPlayer.Play();
+
                 if (player.claire)
                 {
 
@@ -271,6 +310,10 @@ public class Claire : MonoBehaviour
                 player.anim.SetTrigger("HeavyUp");
                 player.isAttacking = true;
                 player.canTurn = false;
+
+                ClaireSoundPlayer.clip = ClaireSounds[8];
+                ClaireSoundPlayer.Play();
+
                 if (player.claire)
                 {
 

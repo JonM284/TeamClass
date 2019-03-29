@@ -125,6 +125,9 @@ public class MachineBehaviour : MonoBehaviour
         middlePlatform_vacuumBoxCollider = GameObject.Find("MiddlePlatform_Collider_Vacuum").GetComponent<BoxCollider2D>();
         middlePlatform_blowBoxCollider = GameObject.Find("MiddlePlatform_Collider_Blow").GetComponent<BoxCollider2D>();
         middlePlatform_moveSpeed = 0.125f;
+
+        //setting AudioSource
+        machineSoundPlayer = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -176,6 +179,10 @@ public class MachineBehaviour : MonoBehaviour
             indicator_Images[1].SetActive(false);
             this.gameObject.GetComponent<Collider2D>().enabled = true;
             coolDown_Timer = coolDown_Timer_Max;
+
+            machineSoundPlayer.clip = machineSounds[1];
+            machineSoundPlayer.Play();
+            //Debug.Log("MachineReady Audio");
         }
       
 
@@ -382,6 +389,10 @@ public class MachineBehaviour : MonoBehaviour
 
     void SpecialPlatformBehaviour()
     {
+        //Propellor Sound
+        machineSoundPlayer.clip = machineSounds[2];
+        machineSoundPlayer.Play();
+
         vel.y = verticalInput * speed;
 
         if (myPlayer.GetButtonDown("Special"))
@@ -418,8 +429,11 @@ public class MachineBehaviour : MonoBehaviour
 
     void MiddlePlatformBehavior()
     {
+        //Propellor Sound
+        machineSoundPlayer.clip = machineSounds[2];
+        machineSoundPlayer.Play();
 
-        if(middlePlatform_movingUp == true)
+        if (middlePlatform_movingUp == true)
         {
             Current_Haz_Num = 0;
         }
@@ -508,6 +522,7 @@ public class MachineBehaviour : MonoBehaviour
                     objectPool.SpawnFromPool("CannonBall_Move_Left", Controlled_Hazard[Current_Haz_Num].transform.position,
                         Quaternion.Euler(Move_Rotation));
                 }
+
                 End_Control();
                 Debug.Log("Has Spawned object");
            
@@ -516,7 +531,8 @@ public class MachineBehaviour : MonoBehaviour
         {
             //this allows the player to spawn an object in the position where the crosshair is
                 objectPool.SpawnFromPool("Tester", Controlled_Hazard[Current_Haz_Num].transform.position, Quaternion.identity);
-                End_Control();
+
+            End_Control();
                 Debug.Log("Has Spawned object");
           
         }
@@ -524,6 +540,12 @@ public class MachineBehaviour : MonoBehaviour
         {
             Debug.Log("Should go off");
             Controlled_Hazard[Current_Haz_Num].GetComponent<Eel_Movement>().Eel_Active = true;
+
+            //Cannon Eel
+            machineSoundPlayer.clip = machineSounds[5];
+            machineSoundPlayer.Play();
+            Debug.Log("Eel Sound played Hopefully");
+
             End_Control();
         }
         else if (mach == MachineID.SpecialPlatform)
@@ -600,10 +622,12 @@ public class MachineBehaviour : MonoBehaviour
             middlePlatform_blowBoxCollider.enabled = false;
             middlePlatform_vacuumBoxCollider.enabled = false;
         }
-        
-        
-       // machineSoundPlayer.clip = machineSounds[0];
-        //machineSoundPlayer.Play();
+
+
+        machineSoundPlayer.clip = machineSounds[0];
+        machineSoundPlayer.Play();
+        //Debug.Log("audio MachinePowerDown");
+
     }
 
     //--------------------------------------------------------------------------------------------------
@@ -651,9 +675,6 @@ public class MachineBehaviour : MonoBehaviour
         Debug.Log("Now can use");
         can_Use = true;
         other_can_Use = true;
-
-       // machineSoundPlayer.clip = machineSounds[1];
-       // machineSoundPlayer.Play();
 
     }
 
