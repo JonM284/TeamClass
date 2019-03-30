@@ -89,52 +89,57 @@ public class SwitchHandler : MonoBehaviour
 
         if (teammate1_timer > 0 && teammate2_timer > 0)
         {
-            teammate2_timer = 0;
-            teammate1_timer = 0;
+            if (specialMeter[0].fillAmount >= 1)
+            {
+                currentUltNum -= 100;
 
-            if (teammate1_fighter.activeSelf)
-            {
-                teammate1_fighter.SetActive(false);
-                teammate1_support.SetActive(true);
-                teammate1_support.transform.position = new Vector3(teammate2_supportPos.x, -3.85f, teammate2_supportPos.z) ;
-            }
-            else
-            {
-                teammate1_fighter.SetActive(true);
-                if(teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth + regenHealthPool >= teammate1_fighter.GetComponent<BasicPlayerScript>().regenHeath)
+                teammate2_timer = 0;
+                teammate1_timer = 0;
+
+                if (teammate1_fighter.activeSelf)
                 {
-                    teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth = teammate1_fighter.GetComponent<BasicPlayerScript>().regenHeath;
+                    teammate1_fighter.SetActive(false);
+                    teammate1_support.SetActive(true);
+                    teammate1_support.transform.position = new Vector3(teammate2_supportPos.x, -3.85f, teammate2_supportPos.z);
                 }
                 else
                 {
-                    teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth += regenHealthPool;
-                    teammate1_fighter.GetComponent<BasicPlayerScript>().regenHeath = teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth;
+                    teammate1_fighter.SetActive(true);
+                    if (teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth + regenHealthPool >= teammate1_fighter.GetComponent<BasicPlayerScript>().regenHeath)
+                    {
+                        teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth = teammate1_fighter.GetComponent<BasicPlayerScript>().regenHeath;
+                    }
+                    else
+                    {
+                        teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth += regenHealthPool;
+                        teammate1_fighter.GetComponent<BasicPlayerScript>().regenHeath = teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth;
+                    }
+                    teammate1_fighter.transform.position = new Vector3(teammate2_fighterPos.x, teammate2_fighterPos.y + .3f, teammate2_fighterPos.z);
+                    teammate1_support.SetActive(false);
                 }
-                teammate1_fighter.transform.position = new Vector3(teammate2_fighterPos.x, teammate2_fighterPos.y + .3f, teammate2_fighterPos.z);
-                teammate1_support.SetActive(false);
-            }
 
 
-            if (teammate2_fighter.activeSelf)
-            {
-                teammate2_fighter.SetActive(false);
-                teammate2_support.SetActive(true);
-                teammate2_support.transform.position = new Vector3(teammate1_supportPos.x, -3.85f, teammate1_supportPos.z);
-            }
-            else
-            {
-                teammate2_fighter.SetActive(true);
-                if (teammate2_fighter.GetComponent<BasicPlayerScript>().currentHealth + regenHealthPool >= teammate2_fighter.GetComponent<BasicPlayerScript>().regenHeath)
+                if (teammate2_fighter.activeSelf)
                 {
-                    teammate2_fighter.GetComponent<BasicPlayerScript>().currentHealth = teammate2_fighter.GetComponent<BasicPlayerScript>().regenHeath;
+                    teammate2_fighter.SetActive(false);
+                    teammate2_support.SetActive(true);
+                    teammate2_support.transform.position = new Vector3(teammate1_supportPos.x, -3.85f, teammate1_supportPos.z);
                 }
                 else
                 {
-                    teammate2_fighter.GetComponent<BasicPlayerScript>().currentHealth += regenHealthPool;
-                    teammate2_fighter.GetComponent<BasicPlayerScript>().regenHeath = teammate2_fighter.GetComponent<BasicPlayerScript>().currentHealth;
+                    teammate2_fighter.SetActive(true);
+                    if (teammate2_fighter.GetComponent<BasicPlayerScript>().currentHealth + regenHealthPool >= teammate2_fighter.GetComponent<BasicPlayerScript>().regenHeath)
+                    {
+                        teammate2_fighter.GetComponent<BasicPlayerScript>().currentHealth = teammate2_fighter.GetComponent<BasicPlayerScript>().regenHeath;
+                    }
+                    else
+                    {
+                        teammate2_fighter.GetComponent<BasicPlayerScript>().currentHealth += regenHealthPool;
+                        teammate2_fighter.GetComponent<BasicPlayerScript>().regenHeath = teammate2_fighter.GetComponent<BasicPlayerScript>().currentHealth;
+                    }
+                    teammate2_fighter.transform.position = new Vector3(teammate1_fighterPos.x, teammate1_fighterPos.y + .3f, teammate1_fighterPos.z);
+                    teammate2_support.SetActive(false);
                 }
-                teammate2_fighter.transform.position = new Vector3(teammate1_fighterPos.x, teammate1_fighterPos.y + .3f, teammate1_fighterPos.z);
-                teammate2_support.SetActive(false);
             }
         }
     }
