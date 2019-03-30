@@ -73,7 +73,7 @@ public class BasicPlayerScript : MonoBehaviour
     [Header("Character Variables")]
 	public float maxHealth;
 	public float currentHealth;
-	private float regenHeath;
+	public float regenHeath;
 	public float regenHeathMultiplier;
 	public bool makeFaceRight;
 
@@ -800,6 +800,7 @@ public class BasicPlayerScript : MonoBehaviour
 
         if (gotHitTimer < 0)
         {
+            teamController.GetComponent<SwitchHandler>().UpdateUltBar(attackDamage);
             currentHealth -= attackDamage;
             hitAngle = attackAngle;
             regenHeath -= attackDamage * regenHeathMultiplier;
