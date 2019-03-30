@@ -39,6 +39,8 @@ public class BasicPlayerScript : MonoBehaviour
 	public int speed;
 	[HideInInspector]
 	public float weight;
+    public float gilbertFlightTime;
+    private float currentGilbertFlightTime;
 
 	public Vector3 velocity;
 	Vector3 previousPos, currentPos;
@@ -76,6 +78,7 @@ public class BasicPlayerScript : MonoBehaviour
 	public float regenHeath;
 	public float regenHeathMultiplier;
 	public bool makeFaceRight;
+    private bool isFlying = false;
 
 	private float xScale;
 	[HideInInspector]
@@ -99,6 +102,7 @@ public class BasicPlayerScript : MonoBehaviour
 	private Vector3 endPosition;
 	private float hitAngle;
     public float stunTime = 0;
+    private float maxUpVel = 4;
 
     [Header("Dash")]
     public float dashSpeed;
@@ -151,8 +155,9 @@ public class BasicPlayerScript : MonoBehaviour
 			gravityDown = gillbertCharacter.gravityDown;
 			jumpVel = gillbertCharacter.jumpVel;
 			maxDownVel = gillbertCharacter.maxDownVel;
+            currentGilbertFlightTime = gilbertFlightTime;
 
-		}
+        }
 		if (gnomercy)
 		{
 			gnomercyCharacter = this.GetComponent<Gnomercy>();
@@ -280,6 +285,16 @@ public class BasicPlayerScript : MonoBehaviour
             currentHealth = maxHealth;
         }
 
+        if (onTopOfPlatform && gillbert && currentGilbertFlightTime < gilbertFlightTime)
+        {
+            if(currentGilbertFlightTime < 0)
+            {
+                currentGilbertFlightTime = 0;
+            }
+            currentGilbertFlightTime += Time.deltaTime * 2;
+        }
+
+
 		//Debug.Log(isAttacking);
         stunTime -= Time.deltaTime;
 
@@ -357,6 +372,7 @@ public class BasicPlayerScript : MonoBehaviour
 		//animation logic for fighter and support
 		anim.SetFloat("xVel", Mathf.Abs(velocity.x));
 		anim.SetFloat("yVel", velocity.y);
+        anim.SetBool("isFlying", isFlying);
 
         //animation logic for just the fighter
         anim.SetBool("isAttacking", isAttacking);
@@ -490,10 +506,20 @@ public class BasicPlayerScript : MonoBehaviour
 
 			if (gillbert)
 			{
-				if (jumpButtonPressed)
+				if (myPlayer.GetButton("Jump") && holdJumpTime <= 0 && !onTopOfPlatform && currentGilbertFlightTime > 1f)
 				{
-					velocity.y += .4f;
-				}
+                    currentGilbertFlightTime -= Time.deltaTime;
+                    if (velocity.y < maxUpVel)
+                    {
+                        velocity.y += 1.5f;
+                    }
+
+                    isFlying = true;
+                }
+                else
+                {
+                    isFlying = false;
+                }
 			}
 
 		}
