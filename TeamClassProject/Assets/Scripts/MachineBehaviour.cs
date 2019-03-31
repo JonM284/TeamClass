@@ -202,8 +202,10 @@ public class MachineBehaviour : MonoBehaviour
         {
             if (Current_Haz_Num < max_Machines_Amnt)
             {
+                Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.white;
                 Current_Haz_Num++;
-               
+                Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.red;
+                //Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Do_Flash();
             }
 
         }
@@ -298,7 +300,10 @@ public class MachineBehaviour : MonoBehaviour
         {
             if (Current_Haz_Num < max_Machines_Amnt)
             {
+                Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.white;
                 Current_Haz_Num++;
+                Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
+                //Controlled_Hazard[Current_Haz_Num].GetComponent<Eel_Movement>().Do_Flash();
             }
 
         }
@@ -400,7 +405,7 @@ public class MachineBehaviour : MonoBehaviour
             if (Current_Haz_Num < max_Machines_Amnt)
             {
                 Current_Haz_Num++;
-
+                
             }
             //reset current_haz_Num if it is greater than or equal to the max number of hazzards
             if (Current_Haz_Num >= max_Machines_Amnt)
@@ -539,7 +544,7 @@ public class MachineBehaviour : MonoBehaviour
         else if (mach == MachineID.SideHazard)
         {
             Debug.Log("Should go off");
-            Controlled_Hazard[Current_Haz_Num].GetComponent<Eel_Movement>().Eel_Active = true;
+            Controlled_Hazard[Current_Haz_Num].GetComponent<Eel_Movement>().Actually_Activate();
 
             //Cannon Eel
             machineSoundPlayer.clip = machineSounds[5];
@@ -589,10 +594,20 @@ public class MachineBehaviour : MonoBehaviour
                     Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.black;
                     break;
             }
+        }else if (mach == MachineID.SideCannon)
+        {
+            //Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Do_Flash();
+            Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.red;
+        }else if (mach == MachineID.SideHazard)
+        {
+            //Controlled_Hazard[Current_Haz_Num].GetComponent<Eel_Movement>().Do_Flash();
+            Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
         }
         Debug.Log("Player:"+playerNum+ " has activated hazzard: "+mach);
     }
 
+
+    
 
     //--------------------------------------------------------------------------------------------------
     /// <summary>
@@ -605,12 +620,12 @@ public class MachineBehaviour : MonoBehaviour
         is_In_Use = false;
         can_Use = false;
         other_can_Use = false;
-        my_Controller_Player.GetComponent<AlternateSP>().status = AlternateSP.Status.Free;
+        //my_Controller_Player.GetComponent<AlternateSP>().status = AlternateSP.Status.Free;
         Debug.Log("Player: " +my_Controller_Player.gameObject.GetComponent<AlternateSP>().playerNum+ "has deactivated machine: " + transform.name);
         my_Controller_Player = null;
         // The playerID "-1" does not exist, therefore, the inputs will never be recieved.
         myPlayer = ReInput.players.GetPlayer(-1);
-
+        
         
 
         if (mach == MachineID.BackgroundCannon) {
@@ -622,7 +637,20 @@ public class MachineBehaviour : MonoBehaviour
             middlePlatform_blowBoxCollider.enabled = false;
             middlePlatform_vacuumBoxCollider.enabled = false;
         }
-
+        if (mach == MachineID.SideCannon)
+        {
+            for (int i = 0; i < Controlled_Hazard.Length; i++)
+            {
+                Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.white;
+            }
+        }
+        if (mach == MachineID.SideHazard)
+        {
+            for (int i = 0; i < Controlled_Hazard.Length; i++)
+            {
+                Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.white;
+            }
+        }
 
         machineSoundPlayer.clip = machineSounds[0];
         machineSoundPlayer.Play();

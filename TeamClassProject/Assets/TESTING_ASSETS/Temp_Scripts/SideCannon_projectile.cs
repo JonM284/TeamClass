@@ -79,14 +79,14 @@ public class SideCannon_projectile : MonoBehaviour
     }
 
 
-    IEnumerator wait_To_Deactivate()
+    public IEnumerator wait_To_Deactivate()
     {
         speed = 0;
         this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         explosion_Particles.gameObject.SetActive(true);
         explosion_Particles.Play();
         trail_Particles.Stop();
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(0.5f);
         explosion_Particles.Stop();
         explosion_Particles.gameObject.SetActive(false);
         this.gameObject.SetActive(false);

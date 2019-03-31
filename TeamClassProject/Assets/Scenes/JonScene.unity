@@ -2399,8 +2399,11 @@ MonoBehaviour:
   has_Hit_Platform: 0
   hasStarted: 0
   is_Facing_Right: 0
+  is_In_Pause: 0
   going_Out_Speed: 3
   return_Speed: 0.5
+  Poke_Dist: 5
+  Poke_timer: 2.3
 --- !u!1 &283106117
 GameObject:
   m_ObjectHideFlags: 0
@@ -3244,7 +3247,7 @@ PrefabInstance:
     - target: {fileID: 3174836650587856897, guid: 7b74d7bbab95d4e739d264a61cbb3db3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.300001
+      value: 19.96666
       objectReference: {fileID: 0}
     - target: {fileID: 3174836650587856897, guid: 7b74d7bbab95d4e739d264a61cbb3db3,
         type: 3}
@@ -9183,9 +9186,12 @@ MonoBehaviour:
   Eel_Active: 0
   has_Hit_Platform: 0
   hasStarted: 0
-  is_Facing_Right: 0
+  is_Facing_Right: 1
+  is_In_Pause: 0
   going_Out_Speed: 3
   return_Speed: 0.5
+  Poke_Dist: 5
+  Poke_timer: 2.3
 --- !u!4 &930677339 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1389090293991025871, guid: 03977b721d8391c4bb1152e40c3a39ca,
@@ -11357,7 +11363,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1491147295}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.01, y: -0.9700001, z: -0.033203125}
+  m_LocalPosition: {x: -1.14, y: -0.9700001, z: -0.033203125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11971,7 +11977,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631858455}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.79, y: 3.43, z: -0.033203125}
+  m_LocalPosition: {x: 1.13, y: 3.43, z: -0.033203125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -12575,7 +12581,7 @@ PrefabInstance:
     - target: {fileID: 3174836650587856897, guid: 7b74d7bbab95d4e739d264a61cbb3db3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.966663
+      value: -19.96666
       objectReference: {fileID: 0}
     - target: {fileID: 3174836650587856897, guid: 7b74d7bbab95d4e739d264a61cbb3db3,
         type: 3}
@@ -12783,7 +12789,7 @@ PrefabInstance:
     - target: {fileID: 3174836650587856897, guid: 7b74d7bbab95d4e739d264a61cbb3db3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.300001
+      value: 19.96666
       objectReference: {fileID: 0}
     - target: {fileID: 3174836650587856897, guid: 7b74d7bbab95d4e739d264a61cbb3db3,
         type: 3}
@@ -13201,7 +13207,7 @@ PrefabInstance:
     - target: {fileID: 3174836650587856897, guid: 7b74d7bbab95d4e739d264a61cbb3db3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.816664
+      value: -19.96666
       objectReference: {fileID: 0}
     - target: {fileID: 3174836650587856897, guid: 7b74d7bbab95d4e739d264a61cbb3db3,
         type: 3}
@@ -14786,8 +14792,11 @@ MonoBehaviour:
   has_Hit_Platform: 0
   hasStarted: 0
   is_Facing_Right: 0
+  is_In_Pause: 0
   going_Out_Speed: 3
   return_Speed: 0.5
+  Poke_Dist: 5
+  Poke_timer: 2.3
 --- !u!1001 &1998425699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15419,7 +15428,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060324689}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.79, y: 0.58, z: -0.033203125}
+  m_LocalPosition: {x: 1.13, y: 0.58, z: -0.033203125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -15449,7 +15458,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065620876}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.01, y: 1.88, z: -0.033203125}
+  m_LocalPosition: {x: -1.14, y: 1.88, z: -0.033203125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -15575,9 +15584,12 @@ MonoBehaviour:
   Eel_Active: 0
   has_Hit_Platform: 0
   hasStarted: 0
-  is_Facing_Right: 0
+  is_Facing_Right: 1
+  is_In_Pause: 0
   going_Out_Speed: 3
   return_Speed: 0.5
+  Poke_Dist: 5
+  Poke_timer: 2.3
 --- !u!1 &2094059088 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 133428132262509136, guid: db453bdbb735396439e84a12697d9e7b,
@@ -16154,6 +16166,14 @@ PrefabInstance:
       propertyPath: machineSounds.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: 5cad94c3623039a4c9b7430fbf94b05a, type: 3}
+    - target: {fileID: 1750472599, guid: 33d3dc97275ae6f4288b968cd3f92b4e, type: 3}
+      propertyPath: Max_range
+      value: 53
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750472599, guid: 33d3dc97275ae6f4288b968cd3f92b4e, type: 3}
+      propertyPath: speed
+      value: 80
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33d3dc97275ae6f4288b968cd3f92b4e, type: 3}
 --- !u!1001 &6965468622080451344

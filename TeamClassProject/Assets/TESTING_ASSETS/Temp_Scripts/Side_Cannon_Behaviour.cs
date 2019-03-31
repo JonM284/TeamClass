@@ -6,15 +6,22 @@ public class Side_Cannon_Behaviour : MonoBehaviour
 {
     public bool Is_Facing_Right;
 
-    // Start is called before the first frame update
-    void Start()
+
+    public void Do_Flash()
     {
-        
+        StartCoroutine(flash_Control());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator flash_Control()
     {
-        
+
+        for (int i = 0; i < 3; i++)
+        {
+            yield return new WaitForSeconds(0.1f);
+            GetComponentInParent<SpriteRenderer>().color = Color.red;
+            yield return new WaitForSeconds(0.1f);
+            GetComponentInParent<SpriteRenderer>().color = Color.white;
+        }
+
     }
 }
