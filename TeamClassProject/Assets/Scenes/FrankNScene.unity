@@ -240,6 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 1
+  rigPieces: []
   teamNum: 0
   healthBar: {fileID: 1441845610}
   regenableHealthBar: {fileID: 1578332445}
@@ -251,6 +252,7 @@ MonoBehaviour:
   decelMult: 0.15
   speed: 6
   weight: 40
+  gilbertFlightTime: 0
   velocity: {x: 0, y: 0, z: 0}
   direction: Right
   gravityUp: 17.2
@@ -268,6 +270,7 @@ MonoBehaviour:
   wawa: 1
   maxHealth: 1000
   currentHealth: 0
+  regenHeath: 0
   regenHeathMultiplier: 0
   makeFaceRight: 0
   isAttacking: 0
@@ -357,7 +360,8 @@ MonoBehaviour:
   DA_ShakeDuration: 0
   DA_ShakeMagnitude: 0
   DA_ShakeSlowDown: 0
-  melonDown: {fileID: 747445174}
+  melonDown: {fileID: 2416181010292551942, guid: 4ff962d24eb7d214e8e4603d16e043aa,
+    type: 3}
   spawnMelonJDHere: {fileID: 235664647}
   melDSpeed: 3
   vineWhip: {fileID: 1775592566}
@@ -1464,6 +1468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 2
+  rigPieces: []
   teamNum: 0
   healthBar: {fileID: 1210639280}
   regenableHealthBar: {fileID: 2106248271}
@@ -1475,6 +1480,7 @@ MonoBehaviour:
   decelMult: 0.15
   speed: 7
   weight: 0
+  gilbertFlightTime: 0
   velocity: {x: 0, y: 0, z: 0}
   direction: 
   gravityUp: 0
@@ -1492,6 +1498,7 @@ MonoBehaviour:
   wawa: 0
   maxHealth: 100
   currentHealth: 0
+  regenHeath: 0
   regenHeathMultiplier: 0
   makeFaceRight: 0
   isAttacking: 0
@@ -1663,6 +1670,8 @@ MonoBehaviour:
   DH_ShakeDuration: 0
   DH_ShakeMagnitude: 0
   DH_ShakeSlowDown: 0
+  ClaireSounds: []
+  ClaireSoundPlayer: {fileID: 0}
 --- !u!50 &379951738
 Rigidbody2D:
   serializedVersion: 4
@@ -9525,6 +9534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 1
+  rigPieces: []
   teamNum: 0
   healthBar: {fileID: 1441845610}
   regenableHealthBar: {fileID: 1578332445}
@@ -9536,6 +9546,7 @@ MonoBehaviour:
   decelMult: 0.15
   speed: 6
   weight: 40
+  gilbertFlightTime: 0
   velocity: {x: 0, y: 0, z: 0}
   direction: Right
   gravityUp: 17.2
@@ -9553,6 +9564,7 @@ MonoBehaviour:
   wawa: 1
   maxHealth: 1000
   currentHealth: 0
+  regenHeath: 0
   regenHeathMultiplier: 0
   makeFaceRight: 0
   isAttacking: 0
