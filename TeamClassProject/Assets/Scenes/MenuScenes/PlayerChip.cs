@@ -7,6 +7,8 @@ public class PlayerChip : MonoBehaviour
     public int PlayerID;
     public int position;
 
+    public static int currentID;
+
     public GameObject stage1;
     public GameObject stage2;
     public GameObject stage3;
@@ -20,6 +22,9 @@ public class PlayerChip : MonoBehaviour
     void Start()
     {
         timer = 0;
+        currentID = 1;
+
+        canMove = true;
     }
 
     // Update is called once per frame
@@ -27,7 +32,14 @@ public class PlayerChip : MonoBehaviour
     {
         timer++;
 
-        if(position <= 0)
+        //Debug.Log(currentID);
+
+        if(timer >= 5f)
+        {
+            timer = 5f;
+        }
+
+        if (position <= 0)
         {
             position = 5;
         }
@@ -37,16 +49,34 @@ public class PlayerChip : MonoBehaviour
             position = 1;
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow) && timer >= 5f && canMove == true)
+        if (Input.GetKeyDown(KeyCode.RightArrow) && timer >= 5f && canMove == true && currentID == PlayerID)
         {
             position += 1;
             timer = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && timer >= 5f && canMove == true)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && timer >= 5f && canMove == true && currentID == PlayerID)
         {
             position -= 1;
             timer = 0;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return) && timer >= 5f && canMove == true && currentID == PlayerID && currentID <= 3)
+        {
+            timer = 0;
+            currentID += 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return) && timer >= 5f && canMove == true && currentID == 4)
+        {
+            currentID = 4;
+            timer = 0;
+            canMove = false;
+        }
+
+        if(currentID >= 4)
+        {
+            currentID = 4;
         }
 
         if (position == 1)

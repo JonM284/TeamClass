@@ -162,12 +162,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerID: 2
   position: 1
+  currentID: 0
   stage1: {fileID: 1486199431}
   stage2: {fileID: 2008441475}
   stage3: {fileID: 335666086}
   stage4: {fileID: 1797355310}
   random: {fileID: 916971453}
-  canMove: 0
+  canMove: 1
   timer: 0
 --- !u!1 &43189187
 GameObject:
@@ -456,12 +457,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerID: 4
   position: 1
+  currentID: 0
   stage1: {fileID: 421830207}
   stage2: {fileID: 1305407898}
   stage3: {fileID: 660846467}
   stage4: {fileID: 1296261634}
   random: {fileID: 852332274}
-  canMove: 0
+  canMove: 1
   timer: 0
 --- !u!1 &140716927
 GameObject:
@@ -513,12 +515,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerID: 3
   position: 1
+  currentID: 0
   stage1: {fileID: 1926099629}
   stage2: {fileID: 1900509680}
   stage3: {fileID: 1699788900}
   stage4: {fileID: 628638210}
   random: {fileID: 666382953}
-  canMove: 0
+  canMove: 1
   timer: 0
 --- !u!1 &220037898
 GameObject:
@@ -1541,7 +1544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &630437743
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1944,7 +1947,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 7ec0fa74cd463422ea64e46923c47df0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4614,6 +4617,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerID: 1
   position: 1
+  currentID: 0
   stage1: {fileID: 713492168}
   stage2: {fileID: 623948232}
   stage3: {fileID: 1966725050}
