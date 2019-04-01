@@ -175,6 +175,10 @@ public class Gillbert : MonoBehaviour
     BasicPlayerScript player;
 
 
+    [Header("Audio")]
+    public AudioClip[] GilbertSounds;
+    public AudioSource GilbertSoundPlayer;
+
     private void Awake()
     {
 
@@ -185,6 +189,9 @@ public class Gillbert : MonoBehaviour
     {
         player = this.GetComponent<BasicPlayerScript>();
         playerNumber = GetComponent<BasicPlayerScript>().playerNum;
+
+        //setting AudioSource
+        GilbertSoundPlayer = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -236,6 +243,10 @@ public class Gillbert : MonoBehaviour
                 player.anim.SetTrigger("BasicNeutral");
                 player.isAttacking = true;
                 player.canTurn = false;
+
+                GilbertSoundPlayer.clip = GilbertSounds[0];
+                GilbertSoundPlayer.Play();
+
                 if (player.gillbert)
                 {
                     player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -246,6 +257,10 @@ public class Gillbert : MonoBehaviour
                 player.anim.SetTrigger("BasicForward");
                 player.isAttacking = true;
                 player.canTurn = false;
+
+                GilbertSoundPlayer.clip = GilbertSounds[0];
+                GilbertSoundPlayer.Play();
+
                 if (player.gillbert)
                 {
 
@@ -258,6 +273,10 @@ public class Gillbert : MonoBehaviour
                 player.anim.SetTrigger("BasicUp");
                 player.isAttacking = true;
                 player.canTurn = false;
+
+                GilbertSoundPlayer.clip = GilbertSounds[1];
+                GilbertSoundPlayer.Play();
+
                 if (player.gillbert)
                 {
 
@@ -270,6 +289,10 @@ public class Gillbert : MonoBehaviour
                 player.anim.SetTrigger("BasicDown");
                 player.isAttacking = true;
                 player.canTurn = false;
+
+                GilbertSoundPlayer.clip = GilbertSounds[2];
+                GilbertSoundPlayer.Play();
+
                 if (player.gillbert)
                 {
 
@@ -281,27 +304,47 @@ public class Gillbert : MonoBehaviour
             case 9:
                 player.anim.SetTrigger("NeutralAir");
                 player.isAttacking = true;
+
+                GilbertSoundPlayer.clip = GilbertSounds[0];
+                GilbertSoundPlayer.Play();
+
                 break;
 
             case 10:
                 player.anim.SetTrigger("UpAir");
                 player.isAttacking = true;
+
+                GilbertSoundPlayer.clip = GilbertSounds[3];
+                GilbertSoundPlayer.Play();
+
                 break;
 
             case 11:
                 player.anim.SetTrigger("ForwardAir");
                 player.isAttacking = true;
+
+                GilbertSoundPlayer.clip = GilbertSounds[3];
+                GilbertSoundPlayer.Play();
+
                 break;
 
             case 12:
                 player.anim.SetTrigger("DownAir");
                 player.isAttacking = true;
+
+                GilbertSoundPlayer.clip = GilbertSounds[4];
+                GilbertSoundPlayer.Play();
+
                 break;
 
             case 20:
                 player.anim.SetTrigger("HeavyNeutral");
                 player.isAttacking = true;
                 player.canTurn = false;
+
+                GilbertSoundPlayer.clip = GilbertSounds[5];
+                GilbertSoundPlayer.Play();
+
                 if (player.gillbert)
                 {
 
@@ -313,6 +356,10 @@ public class Gillbert : MonoBehaviour
             case 21:
                 player.anim.SetTrigger("HeavyForward");
                 player.isAttacking = true;
+
+                GilbertSoundPlayer.clip = GilbertSounds[6];
+                GilbertSoundPlayer.Play();
+
                 if (player.gillbert)
                 {
 
@@ -325,6 +372,10 @@ public class Gillbert : MonoBehaviour
                 player.anim.SetTrigger("HeavyDown");
                 player.isAttacking = true;
                 player.canTurn = false;
+
+                GilbertSoundPlayer.clip = GilbertSounds[7];
+                GilbertSoundPlayer.Play();
+
                 if (player.gillbert)
                 {
 
@@ -337,6 +388,7 @@ public class Gillbert : MonoBehaviour
                 player.isAttacking = true;
                 ultActive = true;
                 player.currentGilbertFlightTime = 10;
+
                 break;
 
 
