@@ -162,7 +162,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerID: 2
   position: 1
-  currentID: 0
   stage1: {fileID: 1486199431}
   stage2: {fileID: 2008441475}
   stage3: {fileID: 335666086}
@@ -457,7 +456,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerID: 4
   position: 1
-  currentID: 0
   stage1: {fileID: 421830207}
   stage2: {fileID: 1305407898}
   stage3: {fileID: 660846467}
@@ -515,7 +513,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerID: 3
   position: 1
-  currentID: 0
   stage1: {fileID: 1926099629}
   stage2: {fileID: 1900509680}
   stage3: {fileID: 1699788900}
@@ -1894,6 +1891,49 @@ Transform:
   m_Father: {fileID: 335666088}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &695651220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 695651221}
+  - component: {fileID: 695651222}
+  m_Layer: 0
+  m_Name: StageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &695651221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695651220}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &695651222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695651220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e908379c6d1db4789ad97969d5c69538, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &713492168
 GameObject:
   m_ObjectHideFlags: 0
@@ -4617,7 +4657,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerID: 1
   position: 1
-  currentID: 0
   stage1: {fileID: 713492168}
   stage2: {fileID: 623948232}
   stage3: {fileID: 1966725050}

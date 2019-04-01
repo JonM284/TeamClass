@@ -17,6 +17,11 @@ public class PlayerChip : MonoBehaviour
     public bool canMove;
 
     public float timer;
+    public float changePlayerTimer;
+
+    /* Bools will tell us if someone voted and then we disable their input
+    true - did vote, false - did not vote */
+    public bool P1_Voted, P2_Voted, P3_Voted, P4_Voted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +30,8 @@ public class PlayerChip : MonoBehaviour
         currentID = 1;
 
         canMove = true;
+
+        changePlayerTimer = 25f;
     }
 
     // Update is called once per frame
@@ -32,11 +39,11 @@ public class PlayerChip : MonoBehaviour
     {
         timer++;
 
-        //Debug.Log(currentID);
+        Debug.Log(currentID);
 
-        if(timer >= 5f)
+        if(timer >= 2.5f)
         {
-            timer = 5f;
+            timer = 2.5f;
         }
 
         if (position <= 0)
@@ -49,27 +56,26 @@ public class PlayerChip : MonoBehaviour
             position = 1;
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow) && timer >= 5f && canMove == true && currentID == PlayerID)
+        if (Input.GetKey(KeyCode.RightArrow) && timer >= 2.5f && canMove == true && currentID == PlayerID)
         {
             position += 1;
             timer = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && timer >= 5f && canMove == true && currentID == PlayerID)
+        if (Input.GetKey(KeyCode.LeftArrow) && timer >= 2.5f && canMove == true && currentID == PlayerID)
         {
             position -= 1;
             timer = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.Return) && timer >= 5f && canMove == true && currentID == PlayerID && currentID <= 3)
+        if (Input.GetKeyDown(KeyCode.Return) && timer >= 2.5f && canMove == true && currentID == PlayerID)
         {
             timer = 0;
             currentID += 1;
         }
 
-        if (Input.GetKeyDown(KeyCode.Return) && timer >= 5f && canMove == true && currentID == 4)
+        if (Input.GetKeyDown(KeyCode.Return) && timer >= 2.5f && canMove == true && currentID == 4)
         {
-            currentID = 4;
             timer = 0;
             canMove = false;
         }
