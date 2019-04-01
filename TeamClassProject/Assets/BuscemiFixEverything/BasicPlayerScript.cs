@@ -752,7 +752,7 @@ public class BasicPlayerScript : MonoBehaviour
             {
                 if (myPlayer.GetButtonDown("HeavyAttack"))
                 {
-                    //if (claire) { claireCharacter.ClaireAttackController(22); }
+                    if (claire) { claireCharacter.ClaireAttackController(22); }
 
                     if (gillbert) { gillbertCharacter.GilbertAttackController(22); }
 
