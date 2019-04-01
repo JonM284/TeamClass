@@ -39,6 +39,7 @@ public class MachineBehaviour : MonoBehaviour
     public bool can_Use = false;
     private bool other_can_Use = false;
     private bool has_Been_Used = false;
+    private bool side_platform_Used = false;
     //rewired after this point
     //myPlayer will properly connect this players inputs to go to the correct location in rewired
     private Player myPlayer;
@@ -179,7 +180,7 @@ public class MachineBehaviour : MonoBehaviour
             indicator_Images[1].SetActive(false);
             this.gameObject.GetComponent<Collider2D>().enabled = true;
             coolDown_Timer = coolDown_Timer_Max;
-
+            side_platform_Used = false;
             machineSoundPlayer.clip = machineSounds[1];
             machineSoundPlayer.Play();
             //Debug.Log("MachineReady Audio");
@@ -555,7 +556,9 @@ public class MachineBehaviour : MonoBehaviour
         }
         else if (mach == MachineID.SpecialPlatform)
         {
-            
+            side_platform_Used = true;
+            Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Platform_Behaviour>().Do_Spike();
+            End_Control();
         }
 
 
@@ -650,6 +653,16 @@ public class MachineBehaviour : MonoBehaviour
             {
                 Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.white;
             }
+            
+        }
+        if (mach == MachineID.SpecialPlatform)
+        {
+            if (!side_platform_Used) {
+                Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Platform_Behaviour>().Do_Fire();
+            }
+            indicator_Images[0].SetActive(false);
+            indicator_Images[1].SetActive(true);
+            has_Been_Used = true;
         }
 
         machineSoundPlayer.clip = machineSounds[0];
