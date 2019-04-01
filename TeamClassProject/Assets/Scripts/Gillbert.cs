@@ -149,8 +149,26 @@ public class Gillbert : MonoBehaviour
     public float DH1_ShakeMagnitude;
     public float DH1_ShakeSlowDown;
 
+    [Header("Ult Attack")]
+    public float U_Damage;
+    public float U_Angle;
+    public float U_Knockback;
+    public float U_HitStun;
+    public float U_Distance;
+    public float U_TravelTime;
+    public float U_ShakeDuration;
+    public float U_ShakeMagnitude;
+    public float U_ShakeSlowDown;
+    public GameObject fireball;
+    public float U_MaxDownVel;
+    public float U_GravityUp;
+    public float U_GravityDown;
+    public float U_Speed;
+    public float U_MoveUpTimer;
 
 
+    private float ultAttackTime = 0;
+    private bool ultActive = false;
 
     private float currentAttack;
 
@@ -172,7 +190,21 @@ public class Gillbert : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ultAttackTime -= Time.deltaTime;
 
+        if (ultActive)
+        {
+            if(ultAttackTime < 0)
+            {
+                UltAttack();
+                ultAttackTime = 1;
+            }
+        }
+
+        if(player.currentGilbertFlightTime < 0)
+        {
+            ultActive = false;
+        }
     }
 
     /*
@@ -192,6 +224,8 @@ public class Gillbert : MonoBehaviour
    * 20 = neutral heavy
    * 21 = forward heavy
    * 22 = down heavy 
+   * 
+   * 69 = ult
    * 
    */
     public void GilbertAttackController(int attackNum)
@@ -299,6 +333,12 @@ public class Gillbert : MonoBehaviour
                 }
                 break;
 
+            case 69:
+                player.isAttacking = true;
+                ultActive = true;
+                player.currentGilbertFlightTime = 10;
+                break;
+
 
             default:
                 break;
@@ -367,6 +407,13 @@ public class Gillbert : MonoBehaviour
         enemy.GetComponent<BasicPlayerScript>().GetHit(DH1_Damage, DH1_Angle, DH1_Knockback, DH1_HitStun, DH1_Distance, DH1_TravelTime, player.FacingRight(), DH1_ShakeDuration, DH1_ShakeMagnitude, DH1_ShakeSlowDown);
     }
 
+
+    private void UltAttack()
+    {
+        GameObject fireballs = Instantiate(fireball, spawnSpitHere1.transform.position, Quaternion.identity);
+        fireball.GetComponent<SpitProjectile>().SetVariables(U_Damage, U_Angle, U_Knockback, U_HitStun, U_Distance, U_TravelTime, playerNumber, U_ShakeDuration, U_ShakeMagnitude, U_ShakeSlowDown);
+        fireball.GetComponent<SpitProjectile>().SetPhysicsVariables(U_MaxDownVel, U_GravityUp, U_GravityDown, U_Speed, U_MoveUpTimer);
+    }
 
 
     public void CurrentAttack(int attackNum)

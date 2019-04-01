@@ -1881,7 +1881,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -3214,6 +3214,67 @@ PrefabInstance:
     - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
       propertyPath: DA_MoveUpTimer
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: fireball
+      value: 
+      objectReference: {fileID: 8136995603509912922, guid: 5ad66ea88e7f8be4e93ee274b079ae97,
+        type: 3}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_MoveUpTimer
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_Speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_GravityDown
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_GravityUp
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_MaxDownVel
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_ShakeSlowDown
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_ShakeMagnitude
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_ShakeDuration
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_TravelTime
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_Distance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_HitStun
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_Knockback
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_Angle
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_Damage
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 685954106, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
       propertyPath: m_RootOrder
@@ -7476,6 +7537,67 @@ PrefabInstance:
       propertyPath: DA_MoveUpTimer
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: fireball
+      value: 
+      objectReference: {fileID: 8136995603509912922, guid: 5ad66ea88e7f8be4e93ee274b079ae97,
+        type: 3}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_Damage
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_Angle
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_Knockback
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_HitStun
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_Distance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_TravelTime
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_ShakeDuration
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_ShakeMagnitude
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_ShakeSlowDown
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_MaxDownVel
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_GravityUp
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_GravityDown
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_Speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
+      propertyPath: U_MoveUpTimer
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
 --- !u!1 &645758370 stripped
@@ -7684,6 +7806,7 @@ MonoBehaviour:
   - {fileID: 84481927}
   teammate1_timer: 0
   teammate2_timer: 0
+  currentUltNum: 0
 --- !u!4 &702386922
 Transform:
   m_ObjectHideFlags: 0
@@ -7965,6 +8088,7 @@ MonoBehaviour:
   - {fileID: 352181900}
   teammate1_timer: 0
   teammate2_timer: 0
+  currentUltNum: 0
 --- !u!4 &776684338
 Transform:
   m_ObjectHideFlags: 0
@@ -9049,7 +9173,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 888915788}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -10360,7 +10484,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -11510,7 +11634,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -13127,7 +13251,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1808684085}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

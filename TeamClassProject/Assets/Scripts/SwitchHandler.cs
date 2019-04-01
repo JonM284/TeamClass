@@ -29,7 +29,8 @@ public class SwitchHandler : MonoBehaviour
 
     float regenHealthPool = 0;
 
-    float currentUltNum = 0;
+    [HideInInspector]
+    public float currentUltNum = 0;
     float maxUltNum = 300;
 
     Color origBarColor;

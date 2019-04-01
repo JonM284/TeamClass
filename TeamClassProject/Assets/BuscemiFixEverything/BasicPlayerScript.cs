@@ -40,7 +40,8 @@ public class BasicPlayerScript : MonoBehaviour
 	[HideInInspector]
 	public float weight;
     public float gilbertFlightTime;
-    private float currentGilbertFlightTime;
+    [HideInInspector]
+    public float currentGilbertFlightTime;
 
 	public Vector3 velocity;
 	Vector3 previousPos, currentPos;
@@ -771,6 +772,21 @@ public class BasicPlayerScript : MonoBehaviour
                     //if (gnomercy) { gnomercyCharacter.GnomercyAttackController(23); }
                 }
             }
+
+
+
+
+            //ult
+            if (Input.GetKeyDown("u"))
+            {
+               // if (teamController.GetComponent<SwitchHandler>().specialMeter[2].fillAmount >= 1)
+              //  {
+                    teamController.GetComponent<SwitchHandler>().currentUltNum = 0;
+
+
+                    if (gillbert) { gillbertCharacter.GilbertAttackController(69); }
+               // }
+            }
         }
 	}
 
@@ -959,12 +975,15 @@ public class BasicPlayerScript : MonoBehaviour
 					onTopOfPlatform = true;
 					hitHead = false;
 					velocity.y = 0;
-                    if (maxKnockbackTime > 0)
+                    if (collisionInfo.gameObject.tag != "Player")
                     {
-                        //maxKnockbackTime /= 4;
-                        //knockback /= 4;
-                       // gotHitTimer = 0;
-                        //maxDistance = 0;
+                        if (maxKnockbackTime > 0)
+                        {
+                            maxKnockbackTime /= 4;
+                            knockback /= 4;
+                            gotHitTimer = 0;
+                            maxDistance = 0;
+                        }
                     }
                 }
 				//am I hitting the bottom of a platform?
