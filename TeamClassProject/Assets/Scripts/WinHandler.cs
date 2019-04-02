@@ -11,7 +11,9 @@ public class WinHandler : MonoBehaviour
 
 
     public Image winScreen;
+    public Image winScreen1;
     public Text winText;
+    public Text winText2;
 
     public Text team1Text;
     public Text team2Text;
@@ -25,9 +27,9 @@ public class WinHandler : MonoBehaviour
     void Start()
     {
         winScreen.enabled = false;
+        winScreen1.enabled = false;
         team1 = GameObject.Find("Team1");
         team2 = GameObject.Find("Team2");
-        winText.text = "";
     }
 
     // Update is called once per frame
@@ -36,7 +38,6 @@ public class WinHandler : MonoBehaviour
         if(winActive == false && (team1.GetComponent<SwitchHandler>().teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth <=0 || team1.GetComponent<SwitchHandler>().teammate2_fighter.GetComponent<BasicPlayerScript>().currentHealth <= 0))
         {
             winScreen.enabled = true;
-            winText.text = "TEAM 2 WINS!";
             winActive = true;
             team1Text.enabled = false;
             team2Text.enabled = false;
@@ -44,8 +45,7 @@ public class WinHandler : MonoBehaviour
 
         if (winActive == false && (team2.GetComponent<SwitchHandler>().teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth <= 0 || team2.GetComponent<SwitchHandler>().teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth <= 0))
         {
-            winScreen.enabled = true;
-            winText.text = "TEAM 1 WINS!";
+            winScreen1.enabled = true;
             winActive = true;
             team1Text.enabled = false;
             team2Text.enabled = false;
