@@ -407,6 +407,7 @@ public class Gillbert : MonoBehaviour
     private void ForwardBasic(GameObject enemy) 
     {
         enemy.GetComponent<BasicPlayerScript>().GetHit(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, BF_Distance, BF_TravelTime, player.FacingRight(), BF_ShakeDuration, BF_ShakeMagnitude, BF_ShakeSlowDown);
+        player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(BF_Damage);
     }
 
     private void UpBasic(GameObject enemy)
@@ -414,22 +415,26 @@ public class Gillbert : MonoBehaviour
         GameObject spit = Instantiate(spitBall, spawnSpitHere.transform.position, Quaternion.identity);
         spit.GetComponent<SpitProjectile>().SetVariables(BU_Damage, BU_Angle, BU_Knockback, BU_HitStun, BU_Distance, BU_TravelTime, playerNumber, BU_ShakeDuration, BU_ShakeMagnitude, BU_ShakeSlowDown);
         spit.GetComponent<SpitProjectile>().SetPhysicsVariables(BU_MaxDownVel, BU_GravityUp, BU_GravityDown, BU_Speed, BU_MoveUpTimer);
+        player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(BU_Damage);
     }
 
     private void DownBasic(GameObject enemy)
     {
         enemy.GetComponent<BasicPlayerScript>().currentHealth -= BD_Damage;
         enemy.GetComponent<BasicPlayerScript>().stunTime = BD_StunTime;
+        player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(BD_Damage);
     }
 
     private void NeutralAir(GameObject enemy)
     {
         enemy.GetComponent<BasicPlayerScript>().GetHit(NA_Damage, NA_Angle, NA_Knockback, NA_HitStun, NA_Distance, NA_TravelTime, player.FacingRight(), NA_ShakeDuration, NA_ShakeMagnitude, NA_ShakeSlowDown);
+        player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(NA_Damage);
     }
 
     private void ForwardAir(GameObject enemy)
     {
         enemy.GetComponent<BasicPlayerScript>().GetHit(FA_Damage, FA_Angle, FA_Knockback, FA_HitStun, FA_Distance, FA_TravelTime, player.FacingRight(), FA_ShakeDuration, FA_ShakeMagnitude, FA_ShakeSlowDown);
+        player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(FA_Damage);
     }
 
     private void UpAir(GameObject enemy)
@@ -442,21 +447,25 @@ public class Gillbert : MonoBehaviour
         GameObject spit1 = Instantiate(spitBall1, spawnSpitHere1.transform.position, Quaternion.identity);
         spit1.GetComponent<SpitProjectile>().SetVariables(DA_Damage, DA_Angle, DA_Knockback, DA_HitStun, DA_Distance, DA_TravelTime, playerNumber, DA_ShakeDuration, DA_ShakeMagnitude, DA_ShakeSlowDown);
         spit1.GetComponent<SpitProjectile>().SetPhysicsVariables(DA_MaxDownVel, DA_GravityUp, DA_GravityDown, DA_Speed, DA_MoveUpTimer);
+        spit1.GetComponent<SpitProjectile>().player = player;
     }
 
     private void NeutralHeavy(GameObject enemy)
     {
         enemy.GetComponent<BasicPlayerScript>().GetHit(NH_Damage, NH_Angle, NH_Knockback, NH_HitStun, NH_Distance, NH_TravelTime, player.FacingRight(), NH_ShakeDuration, NH_ShakeMagnitude, NH_ShakeSlowDown);
+        player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(NH_Damage);
     }
 
     private void ForwardHeavy(GameObject enemy)
     {
         enemy.GetComponent<BasicPlayerScript>().GetHit(FH_Damage, FH_Angle, FH_Knockback, FH_HitStun, FH_Distance, FH_TravelTime, player.FacingRight(), FH_ShakeDuration, FH_ShakeMagnitude, FH_ShakeSlowDown);
+        player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(FH_Damage);
     }
 
     private void DownHeavy(GameObject enemy)
     {
         enemy.GetComponent<BasicPlayerScript>().GetHit(DH1_Damage, DH1_Angle, DH1_Knockback, DH1_HitStun, DH1_Distance, DH1_TravelTime, player.FacingRight(), DH1_ShakeDuration, DH1_ShakeMagnitude, DH1_ShakeSlowDown);
+        player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(DH1_Damage);
     }
 
 
@@ -465,7 +474,8 @@ public class Gillbert : MonoBehaviour
         GameObject fireballs = Instantiate(fireball, spawnSpitHere1.transform.position, Quaternion.identity);
         fireball.GetComponent<SpitProjectile>().SetVariables(U_Damage, U_Angle, U_Knockback, U_HitStun, U_Distance, U_TravelTime, playerNumber, U_ShakeDuration, U_ShakeMagnitude, U_ShakeSlowDown);
         fireball.GetComponent<SpitProjectile>().SetPhysicsVariables(U_MaxDownVel, U_GravityUp, U_GravityDown, U_Speed, U_MoveUpTimer);
-    }
+        fireball.GetComponent<SpitProjectile>().player = player;
+    }   
 
 
     public void CurrentAttack(int attackNum)

@@ -116,10 +116,11 @@ public class BasicPlayerScript : MonoBehaviour
 
     GameObject mainCamera;
 
-    GameObject teamController;
+    [HideInInspector]
+    public GameObject teamController;
 
     [HideInInspector]
-    public bool canTurn = true;
+    public bool canTurn = true; 
     
 
 	void Awake()

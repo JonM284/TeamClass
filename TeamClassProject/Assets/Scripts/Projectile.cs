@@ -21,6 +21,8 @@ public class Projectile : MonoBehaviour
     public float shakeSlowDown;
     public Vector3 direction;
 
+    public BasicPlayerScript player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +62,7 @@ public class Projectile : MonoBehaviour
                 if (other.transform.root.gameObject.GetComponent<BasicPlayerScript>().playerNum != playerNum)
                 {                
                     other.gameObject.GetComponent<BasicPlayerScript>().GetHit(damage, angle, knockback, hitStun, distance, travelTime, moveRight, shakeDuration, shakeMagnitude, shakeSlowDown);
+                    player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(damage);
                     Destroy(gameObject);
                 }
             }

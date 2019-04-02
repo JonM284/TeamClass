@@ -26,6 +26,7 @@ public class SpitProjectile : MonoBehaviour
     public float shakeSlowDown;
     public Vector3 direction;
     public bool moveRight = true;
+    public BasicPlayerScript player;
 
     Rigidbody2D rb;
 
@@ -129,6 +130,7 @@ public class SpitProjectile : MonoBehaviour
                 if (other.transform.root.gameObject.GetComponent<BasicPlayerScript>().playerNum != playerNum)
                 {
                     other.gameObject.GetComponent<BasicPlayerScript>().GetHit(damage, angle, knockback, hitStun, distance, travelTime, moveRight, shakeDuration, shakeMagnitude, shakeSlowDown);
+                    player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(damage);
                     Destroy(gameObject);
                 }
             }

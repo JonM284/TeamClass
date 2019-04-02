@@ -333,13 +333,15 @@ public class Claire : MonoBehaviour
     private void NeutralBasic(GameObject enemy)
     {
 		enemy.GetComponent<BasicPlayerScript>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, BN_Distance, BN_TravelTime, player.FacingRight(), BN_ShakeDuration, BN_ShakeMagnitude, BN_ShakeSlowDown);
-	}
+        player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(BN_Damage);
+    }
 
     private void ForwardBasic()
     {
         GameObject bullet = Instantiate(iceShot, spawnIceShotHere.transform.position, Quaternion.identity);
         bullet.GetComponent<Projectile>().SetVariables(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, BF_Distance, BF_TravelTime, bulletSpeed, playerNumber, BF_ShakeDuration, BF_ShakeMagnitude, BF_ShakeSlowDown);
         bullet.GetComponent<Projectile>().moveRight = player.FacingRight();
+        bullet.GetComponent<Projectile>().player = player;
         if (player.FacingRight())
         {
             bullet.GetComponent<Projectile>().direction = new Vector3(-1, 0, 0);
@@ -353,16 +355,19 @@ public class Claire : MonoBehaviour
     private void UpBasic(GameObject enemy)
     {
         enemy.GetComponent<BasicPlayerScript>().GetHit(BU_Damage, BU_Angle, BU_Knockback, BU_HitStun, BU_Distance, BU_TravelTime, player.FacingRight(), BU_ShakeDuration, BU_ShakeMagnitude, BU_ShakeSlowDown);
+        player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(BU_Damage);
     }
 
     private void DownBasic(GameObject enemy)
     {
         enemy.GetComponent<BasicPlayerScript>().GetHit(BD_Damage, BD_Angle, BD_Knockback, BD_HitStun, BD_Distance, BD_TravelTime, player.FacingRight(), BD_ShakeDuration, BD_ShakeMagnitude, BD_ShakeSlowDown);
+        player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(BD_Damage);
     }
 
     private void NeutralAir(GameObject enemy)
     {
         enemy.GetComponent<BasicPlayerScript>().GetHit(NA_Damage, NA_Angle, NA_Knockback, NA_HitStun, NA_Distance, NA_TravelTime, player.FacingRight(), NA_ShakeDuration, NA_ShakeMagnitude, NA_ShakeSlowDown);
+        player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(NA_Damage);
     }
 
     private void UpAir()
@@ -371,16 +376,19 @@ public class Claire : MonoBehaviour
         bullet.GetComponent<Projectile>().SetVariables(UA_Damage, UA_Angle, UA_Knockback, UA_HitStun, UA_Distance, UA_TravelTime, bulletSpeed1, playerNumber, UA_ShakeDuration, UA_ShakeMagnitude, UA_ShakeSlowDown);
         bullet.GetComponent<Projectile>().direction = new Vector3(0, 1, 0);
         bullet.GetComponent<Projectile>().moveRight = player.FacingRight();
+        bullet.GetComponent<Projectile>().player = player;
     }
 
     private void NeutralHeavy(GameObject enemy)
     {
         enemy.GetComponent<BasicPlayerScript>().GetHit(NH_Damage, NH_Angle, NH_Knockback, NH_HitStun, NH_Distance, NH_TravelTime, player.FacingRight(), NH_ShakeDuration, NH_ShakeMagnitude, NH_ShakeSlowDown);
+        player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(NH_Damage);
     }
 
     private void ForwardHeavy(GameObject enemy)
     {
         enemy.GetComponent<BasicPlayerScript>().GetHit(FH_Damage, FH_Angle, FH_Knockback, FH_HitStun, FH_Distance, FH_TravelTime, player.FacingRight(), FH_ShakeDuration, FH_ShakeMagnitude, FH_ShakeSlowDown);
+        player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(FH_Damage);
     }
 
     private void DownHeavy(GameObject enemy)
@@ -391,11 +399,13 @@ public class Claire : MonoBehaviour
     private void UpHeavyPart1(GameObject enemy)
     {
         enemy.GetComponent<BasicPlayerScript>().GetHit(UH1_Damage, UH1_Angle, UH1_Knockback, UH1_HitStun, UH1_Distance, UH1_TravelTime, player.FacingRight(), UH1_ShakeDuration, UH1_ShakeMagnitude, UH1_ShakeSlowDown);
+        player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(UH1_Damage);
     }
 
     private void UpHeavyPart2(GameObject enemy)
     {
         enemy.GetComponent<BasicPlayerScript>().GetHit(UH2_Damage, UH2_Angle, UH2_Knockback, UH2_HitStun, UH2_Distance, UH2_TravelTime, player.FacingRight(), UH2_ShakeDuration, UH2_ShakeMagnitude, UH2_ShakeSlowDown);
+        player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(UH2_Damage);
     }
 
     public void CurrentAttack(int attackNum)
