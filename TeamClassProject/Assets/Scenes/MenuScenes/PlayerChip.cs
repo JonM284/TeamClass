@@ -39,8 +39,6 @@ public class PlayerChip : MonoBehaviour
     {
         timer++;
 
-        Debug.Log(currentID);
-
         if(timer >= 2.5f)
         {
             timer = 2.5f;

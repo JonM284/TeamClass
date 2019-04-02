@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     /* Ints will handle which stage was voted for
     1 - Claire's, 2 - Gilbert's, 3 - Gno's, 4 - Wawa's, 5 - Random */
-    public static int P1_Stage, P2_Stage, P3_Stage, P4_Stage = 0;
+    public static int Stage_1, Stage_2, Stage_3, Stage_4, Stage_5 = 0;
 
     /* Ints will handle which stage is selected
     1 - Claire's, 2 - Gilbert's, 3 - Gno's, 4 - Wawa's, 5 - Random */
@@ -56,6 +56,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(Stage_1 + Stage_2 + Stage_3 + Stage_4 + Stage_5 >= 4)
+        {
+            //load level with most votes here once everyone voted
+        }
     }
 }
