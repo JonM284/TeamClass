@@ -12,8 +12,8 @@ public class WinHandler : MonoBehaviour
 
     public Image winScreen;
     public Image winScreen1;
-    public Text winText;
-    public Text winText2;
+    public GameObject winText;
+    public GameObject winText2;
 
     public Text team1Text;
     public Text team2Text;
@@ -28,6 +28,8 @@ public class WinHandler : MonoBehaviour
     {
         winScreen.enabled = false;
         winScreen1.enabled = false;
+        winText.SetActive(false);
+        winText2.SetActive(false);
         team1 = GameObject.Find("Team1");
         team2 = GameObject.Find("Team2");
     }
@@ -38,6 +40,7 @@ public class WinHandler : MonoBehaviour
         if(winActive == false && (team1.GetComponent<SwitchHandler>().teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth <=0 || team1.GetComponent<SwitchHandler>().teammate2_fighter.GetComponent<BasicPlayerScript>().currentHealth <= 0))
         {
             winScreen.enabled = true;
+            winText.SetActive(true);
             winActive = true;
             team1Text.enabled = false;
             team2Text.enabled = false;
@@ -46,6 +49,7 @@ public class WinHandler : MonoBehaviour
         if (winActive == false && (team2.GetComponent<SwitchHandler>().teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth <= 0 || team2.GetComponent<SwitchHandler>().teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth <= 0))
         {
             winScreen1.enabled = true;
+            winText2.SetActive(true);
             winActive = true;
             team1Text.enabled = false;
             team2Text.enabled = false;
