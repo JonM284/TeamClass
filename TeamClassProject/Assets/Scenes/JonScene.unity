@@ -3112,7 +3112,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 639361019}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7704,6 +7704,8 @@ RectTransform:
   - {fileID: 2055703182}
   - {fileID: 1740328032}
   - {fileID: 832255372}
+  - {fileID: 771901723}
+  - {fileID: 1571054417}
   - {fileID: 381937489}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -8373,7 +8375,7 @@ GameObject:
   - component: {fileID: 771901725}
   - component: {fileID: 771901724}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8386,16 +8388,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771901722}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2055703182}
-  m_RootOrder: 0
+  m_Father: {fileID: 639361019}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -97, y: 152}
+  m_AnchoredPosition: {x: -81.899994, y: 191}
   m_SizeDelta: {x: 521.1, y: 391}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &771901724
@@ -8431,7 +8433,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Team 2 Wins
+  m_Text: Team 1 Wins
 --- !u!222 &771901725
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11022,7 +11024,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winScreen: {fileID: 2055703183}
   winScreen1: {fileID: 1740328033}
-  winText: {fileID: 771901724}
+  winText: {fileID: 1571054416}
+  winText2: {fileID: 771901722}
   team1Text: {fileID: 832255373}
   team2Text: {fileID: 381937490}
 --- !u!1 &1162464893
@@ -12892,7 +12895,7 @@ GameObject:
   - component: {fileID: 1571054419}
   - component: {fileID: 1571054418}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12905,16 +12908,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1571054416}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1740328032}
-  m_RootOrder: 0
+  m_Father: {fileID: 639361019}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -305, y: -186}
+  m_AnchoredPosition: {x: -289.89996, y: -194}
   m_SizeDelta: {x: 521.1, y: 391}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1571054418
@@ -12950,7 +12953,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Team 1 Wins
+  m_Text: Team 2 Wins
 --- !u!222 &1571054419
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13983,8 +13986,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1571054417}
+  m_Children: []
   m_Father: {fileID: 639361019}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16580,8 +16582,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 771901723}
+  m_Children: []
   m_Father: {fileID: 639361019}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
