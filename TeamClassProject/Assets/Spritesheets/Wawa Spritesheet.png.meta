@@ -19,6 +19,13 @@ TextureImporter:
     21300028: Seed 1
     21300030: Seed 2
     21300032: Seed 3
+    21300034: Vine
+    21300036: Thorn Vine
+    21300038: Spike Top
+    21300040: Spike Bottom
+    21300042: Juice Ball
+    21300044: Juice Smear
+    21300046: Juice Spot
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -458,6 +465,146 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: f924a085b043d4f4d8aae353823866e1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vine
+      rect:
+        serializedVersion: 2
+        x: 1266
+        y: 731
+        width: 210
+        height: 754
+      alignment: 9
+      pivot: {x: 0.5152047, y: 0.015965998}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5b1ced6102f74730af4cf58062b1458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thorn Vine
+      rect:
+        serializedVersion: 2
+        x: 1511
+        y: 756
+        width: 256
+        height: 725
+      alignment: 9
+      pivot: {x: 0.5, y: 0.033183593}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 200ae8394b87e44039f4c8b79ef0ad28
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spike Top
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 338
+        width: 447
+        height: 300
+      alignment: 9
+      pivot: {x: 0.5071429, y: 0.23392914}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f98ef95ebf3e463ca704b0dfadf6993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spike Bottom
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 28
+        width: 495
+        height: 291
+      alignment: 9
+      pivot: {x: 0.5, y: 0.28056028}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a90d18020586e4679acb6d45f514c391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Juice Ball
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 747
+        width: 207
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2276f800b2667442482ac17e80a1b0b7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Juice Smear
+      rect:
+        serializedVersion: 2
+        x: 1591
+        y: 332
+        width: 166
+        height: 367
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67fe8c96278614fbd918ef499e4c800f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Juice Spot
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 22
+        width: 451
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a8c2ecd4d1a344dc81a87fd7b9c2674
       vertices: []
       indices: 
       edges: []
