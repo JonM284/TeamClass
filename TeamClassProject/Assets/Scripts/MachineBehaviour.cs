@@ -59,6 +59,8 @@ public class MachineBehaviour : MonoBehaviour
     public List<Vector3> Hazard_MaxPos;
     public List<Vector3> Hazard_MinPos;
 
+    public GameObject[] machine_UI;
+
     private bool sideHazardShouldLerp;
     private bool sideHazardMovingForward;
     float sideHazardLerpSpeed;
@@ -97,7 +99,10 @@ public class MachineBehaviour : MonoBehaviour
         //get an instance of the object spawner so we can spawn objects
         objectPool = ObjectSpawner.Instance;
         my_Controller_Player = null;
-
+        for (int i = 0; i < machine_UI.Length; i++)
+        {
+            machine_UI[i].SetActive(false);
+        }
         if (mach == MachineID.SideHazard || mach == MachineID.SpecialPlatform) {
             for (int i = 0; i < Controlled_Hazard.Length; i++) {
                 Hazard_StartPos[i] = Controlled_Hazard[i].transform.position;
@@ -548,7 +553,7 @@ public class MachineBehaviour : MonoBehaviour
             Controlled_Hazard[Current_Haz_Num].GetComponent<Eel_Movement>().Actually_Activate();
 
             //Cannon Eel
-            machineSoundPlayer.clip = machineSounds[5];
+            machineSoundPlayer.clip = machineSounds[4];
             machineSoundPlayer.Play();
             Debug.Log("Eel Sound played Hopefully");
 
@@ -607,6 +612,12 @@ public class MachineBehaviour : MonoBehaviour
             Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
         }
         Debug.Log("Player:"+playerNum+ " has activated hazzard: "+mach);
+
+        machine_UI[0].SetActive(false);
+        for (int i = 1; i < machine_UI.Length; i++)
+        {
+            machine_UI[i].SetActive(true);
+        }
     }
 
 
@@ -624,12 +635,15 @@ public class MachineBehaviour : MonoBehaviour
         can_Use = false;
         other_can_Use = false;
         //my_Controller_Player.GetComponent<AlternateSP>().status = AlternateSP.Status.Free;
-        Debug.Log("Player: " +my_Controller_Player.gameObject.GetComponent<AlternateSP>().playerNum+ "has deactivated machine: " + transform.name);
+
         my_Controller_Player = null;
         // The playerID "-1" does not exist, therefore, the inputs will never be recieved.
-        myPlayer = ReInput.players.GetPlayer(-1);
-        
-        
+        myPlayer = ReInput.players.GetPlayer(5);
+
+        for (int i = 0; i < machine_UI.Length; i++)
+        {
+            machine_UI[i].SetActive(false);
+        }
 
         if (mach == MachineID.BackgroundCannon) {
             Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.white;
@@ -717,6 +731,22 @@ public class MachineBehaviour : MonoBehaviour
         can_Use = true;
         other_can_Use = true;
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!is_In_Use && other.gameObject.tag == "Player")
+        {
+            machine_UI[0].SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (!is_In_Use && other.gameObject.tag == "Player")
+        {
+            machine_UI[0].SetActive(false);
+        }
     }
 
 }

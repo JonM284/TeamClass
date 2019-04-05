@@ -74,6 +74,10 @@ public class Eel_Movement : MonoBehaviour
         has_Hit_Platform = false;
         is_In_Pause = true;
         Eel_Active = false;
+        if (!myEel.GetComponent<Collider2D>().enabled)
+        {
+            myEel.GetComponent<Collider2D>().enabled = true;
+        }
     }
 
 
@@ -114,7 +118,10 @@ public class Eel_Movement : MonoBehaviour
 
     public void Deactivate_Eel()
     {
-        
+        if (myEel.GetComponent<Collider2D>().enabled)
+        {
+            myEel.GetComponent<Collider2D>().enabled = false;
+        }
         myEel.transform.position = Vector3.Lerp(myEel.transform.position, new Vector3(myStartPos.x, transform.position.y, transform.position.z), Time.deltaTime * return_Speed);
     }
 
