@@ -245,7 +245,7 @@ public class Claire : MonoBehaviour
                 player.anim.SetTrigger("NeutralAir");
                 player.isAttacking = true;
 
-                ClaireSoundPlayer.clip = ClaireSounds[3];
+                ClaireSoundPlayer.clip = ClaireSounds[0];
                 ClaireSoundPlayer.Play();
 
                 break;
