@@ -14,7 +14,7 @@ public class PlayerStageSelect : MonoBehaviour
     public int playerNum;
 
     public static int position;
-    public bool hasSelected;
+    public static bool hasSelected;
 
     public GameObject selected_airship;
     public GameObject selected_forest;
