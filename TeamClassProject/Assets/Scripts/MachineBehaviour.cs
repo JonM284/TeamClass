@@ -206,14 +206,21 @@ public class MachineBehaviour : MonoBehaviour
         //this allows players to change which side hazzard is currently selected
         if (myPlayer.GetButtonDown("Special"))
         {
-            if (Current_Haz_Num < max_Machines_Amnt)
-            {
                 Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.white;
                 Current_Haz_Num++;
-                Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.red;
-                //Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Do_Flash();
+            switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.cyan;
+                    break;
+                case 1:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.red;
+                    break;
+                default:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.black;
+                    break;
             }
-
+            //Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Do_Flash();
         }
 
         
@@ -226,6 +233,18 @@ public class MachineBehaviour : MonoBehaviour
         if (Current_Haz_Num >= max_Machines_Amnt)
         {
             Current_Haz_Num = 0;
+            switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.cyan;
+                    break;
+                case 1:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.red;
+                    break;
+                default:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.black;
+                    break;
+            }
         }
 
         
@@ -308,7 +327,18 @@ public class MachineBehaviour : MonoBehaviour
             {
                 Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.white;
                 Current_Haz_Num++;
-                Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
+                switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+                {
+                    case 2:
+                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.cyan;
+                        break;
+                    case 1:
+                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
+                        break;
+                    default:
+                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.black;
+                        break;
+                }
                 //Controlled_Hazard[Current_Haz_Num].GetComponent<Eel_Movement>().Do_Flash();
             }
 
@@ -317,6 +347,18 @@ public class MachineBehaviour : MonoBehaviour
         if (Current_Haz_Num >= max_Machines_Amnt)
         {
             Current_Haz_Num = 0;
+            switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.cyan;
+                    break;
+                case 1:
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
+                    break;
+                default:
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.black;
+                    break;
+            }
         }
 
         
@@ -410,16 +452,43 @@ public class MachineBehaviour : MonoBehaviour
         {
             if (Current_Haz_Num < max_Machines_Amnt)
             {
+                Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.white;
                 Current_Haz_Num++;
-                
+                switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+                {
+                    case 2:
+                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.cyan;
+                        break;
+                    case 1:
+                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
+                        break;
+                    default:
+                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.black;
+                        break;
+                }
+
             }
             //reset current_haz_Num if it is greater than or equal to the max number of hazzards
-            if (Current_Haz_Num >= max_Machines_Amnt)
-            {
-                Current_Haz_Num = 0;
-            }
-
+           
         }
+
+        if (Current_Haz_Num >= max_Machines_Amnt)
+        {
+            Current_Haz_Num = 0;
+            switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.cyan;
+                    break;
+                case 1:
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
+                    break;
+                default:
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.black;
+                    break;
+            }
+        }
+
 
         if (Controlled_Hazard[Current_Haz_Num].transform.position.y >= Hazard_MaxPos[Current_Haz_Num].y)
         {
@@ -605,11 +674,48 @@ public class MachineBehaviour : MonoBehaviour
         }else if (mach == MachineID.SideCannon)
         {
             //Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Do_Flash();
-            Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.red;
-        }else if (mach == MachineID.SideHazard)
+            switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[0].GetComponentInParent<SpriteRenderer>().color = Color.cyan;
+                    break;
+                case 1:
+                    Controlled_Hazard[0].GetComponentInParent<SpriteRenderer>().color = Color.red;
+                    break;
+                default:
+                    Controlled_Hazard[0].GetComponentInParent<SpriteRenderer>().color = Color.black;
+                    break;
+            }
+        }
+        else if (mach == MachineID.SideHazard)
         {
             //Controlled_Hazard[Current_Haz_Num].GetComponent<Eel_Movement>().Do_Flash();
-            Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
+            switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.cyan;
+                    break;
+                case 1:
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.red;
+                    break;
+                default:
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.black;
+                    break;
+            }
+        }else if (mach == MachineID.SpecialPlatform)
+        {
+            switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.cyan;
+                    break;
+                case 1:
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.red;
+                    break;
+                default:
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.black;
+                    break;
+            }
         }
         Debug.Log("Player:"+playerNum+ " has activated hazzard: "+mach);
 
