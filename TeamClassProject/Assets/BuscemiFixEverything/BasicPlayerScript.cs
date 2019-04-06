@@ -81,6 +81,8 @@ public class BasicPlayerScript : MonoBehaviour
 	public bool makeFaceRight;
     private bool isFlying = false;
 
+    float landtimer = 0;
+
 	private float xScale;
 	[HideInInspector]
 	public bool isAttacking;
@@ -251,6 +253,8 @@ public class BasicPlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        landtimer -= Time.deltaTime;
+
         if (findTeamController == false)
         {
             if (teamNum == 1)
@@ -701,6 +705,36 @@ public class BasicPlayerScript : MonoBehaviour
                 }
             }
 
+            //back air attack
+            if (direction == "Right")
+            {
+                if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") < -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer < 0)
+                {
+                    if (myPlayer.GetButtonDown("BasicAttack"))
+                    {
+                        //if (claire) { claireCharacter.ClaireAttackController(11); }
+
+                        //if (gillbert) { gillbertCharacter.GilbertAttackController(11); }
+
+                        //if (gnomercy) { gnomercyCharacter.GnomercyAttackController(11); }
+                    }
+                }
+            }
+            if (direction == "Left")
+            {
+                if (myPlayer.GetAxis("Horizontal") > .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer < 0)
+                {
+                    if (myPlayer.GetButtonDown("BasicAttack"))
+                    {
+                        //if (claire) { claireCharacter.ClaireAttackController(11); }
+
+                        //if (gillbert) { gillbertCharacter.GilbertAttackController(11); }
+
+                        //if (gnomercy) { gnomercyCharacter.GnomercyAttackController(11); }
+                    }
+                }
+            }
+
 
             //down air attack
             if (myPlayer.GetAxis("Horizontal") < .5f && myPlayer.GetAxis("Horizontal") > -.5f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") < -.3f && onPlatformTimer < 0)
@@ -972,7 +1006,11 @@ public class BasicPlayerScript : MonoBehaviour
 				{ //am I hitting the top of the platform?
                     isJumping = false;
                     isAttacking = false;
-					anim.SetTrigger("land");
+                    if (landtimer < 0)
+                    {
+                        anim.SetTrigger("land");
+                        landtimer = 1;
+                    }
 					onTopOfPlatform = true;
 					hitHead = false;
 					velocity.y = 0;

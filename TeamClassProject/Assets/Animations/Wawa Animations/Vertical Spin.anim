@@ -1917,14 +1917,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0
-    functionName: WawaAttackController
+  - time: 0.05
+    functionName: CurrentAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 20
     messageOptions: 0
-  - time: 0.7125
+  - time: 0.6125
     functionName: EndAttack
     data: 
     objectReferenceParameter: {fileID: 0}

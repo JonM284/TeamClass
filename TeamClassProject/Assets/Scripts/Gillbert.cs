@@ -210,6 +210,10 @@ public class Gillbert : MonoBehaviour
 
         if(player.currentGilbertFlightTime < 0)
         {
+            if(ultActive == true)
+            {
+                player.isAttacking = false;
+            }
             ultActive = false;
         }
     }

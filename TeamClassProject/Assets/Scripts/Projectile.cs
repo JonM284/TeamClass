@@ -61,6 +61,8 @@ public class Projectile : MonoBehaviour
             {
                 if (other.transform.root.gameObject.GetComponent<BasicPlayerScript>().playerNum != playerNum)
                 {                
+                    Debug.Log("pn" + other.transform.root.gameObject.GetComponent<BasicPlayerScript>().playerNum);
+                    Debug.Log("pnm1 " + playerNum);
                     other.gameObject.GetComponent<BasicPlayerScript>().GetHit(damage, angle, knockback, hitStun, distance, travelTime, moveRight, shakeDuration, shakeMagnitude, shakeSlowDown);
                     player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(damage);
                     Destroy(gameObject);
