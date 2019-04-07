@@ -24,7 +24,8 @@ public class Tree_Movement : MonoBehaviour
         removeTreeLength = 5f;
         myStartPos = myTree.transform.position;
         myTree.GetComponent<SpriteRenderer>().enabled = false;
-        myTree.GetComponent<BoxCollider2D>().enabled = false;
+        //myTree.GetComponent<BoxCollider2D>().enabled = false;
+        myTree.GetComponent<PolygonCollider2D>().enabled = false;
         treeIsThere = false;
     }
 
@@ -47,7 +48,8 @@ public class Tree_Movement : MonoBehaviour
         {
             treeIsThere = false;
             myTree.GetComponent<SpriteRenderer>().enabled = false;
-            myTree.GetComponent<BoxCollider2D>().enabled = false;
+            //myTree.GetComponent<BoxCollider2D>().enabled = false;
+            myTree.GetComponent<PolygonCollider2D>().enabled = false;
             myTree.transform.position = myStartPos;
         }
 
