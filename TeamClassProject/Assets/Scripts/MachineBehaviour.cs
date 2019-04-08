@@ -230,7 +230,7 @@ public class MachineBehaviour : MonoBehaviour
             End_Control();
         }
 
-        if (Current_Haz_Num >= max_Machines_Amnt)
+        if (Current_Haz_Num > max_Machines_Amnt - 1 )
         {
             Current_Haz_Num = 0;
             switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
@@ -344,7 +344,7 @@ public class MachineBehaviour : MonoBehaviour
 
         }
         //reset current_haz_Num if it is greater than or equal to the max number of hazzards
-        if (Current_Haz_Num >= max_Machines_Amnt)
+        if (Current_Haz_Num > max_Machines_Amnt - 1)
         {
             Current_Haz_Num = 0;
             switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
@@ -472,7 +472,7 @@ public class MachineBehaviour : MonoBehaviour
            
         }
 
-        if (Current_Haz_Num >= max_Machines_Amnt)
+        if (Current_Haz_Num > max_Machines_Amnt - 1)
         {
             Current_Haz_Num = 0;
             switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
@@ -531,7 +531,7 @@ public class MachineBehaviour : MonoBehaviour
 
             }
             //reset current_haz_Num if it is greater than or equal to the max number of hazzards
-            if (Current_Haz_Num >= max_Machines_Amnt)
+            if (Current_Haz_Num > max_Machines_Amnt -1)
             {
                 Current_Haz_Num = 0;
             }
@@ -764,14 +764,14 @@ public class MachineBehaviour : MonoBehaviour
         {
             for (int i = 0; i < Controlled_Hazard.Length; i++)
             {
-                Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.white;
+                Controlled_Hazard[i].GetComponentInParent<SpriteRenderer>().color = Color.white;
             }
         }
         if (mach == MachineID.SideHazard)
         {
             for (int i = 0; i < Controlled_Hazard.Length; i++)
             {
-                Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.white;
+                Controlled_Hazard[i].GetComponent<SpriteRenderer>().color = Color.white;
             }
             
         }
@@ -779,6 +779,10 @@ public class MachineBehaviour : MonoBehaviour
         {
             if (!side_platform_Used) {
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Platform_Behaviour>().Do_Fire();
+            }
+            for (int i = 0; i < Controlled_Hazard.Length; i++)
+            {
+                Controlled_Hazard[i].GetComponent<SpriteRenderer>().color = Color.white;
             }
             indicator_Images[0].SetActive(false);
             indicator_Images[1].SetActive(true);

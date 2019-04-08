@@ -88,6 +88,13 @@ public class AlternateSP : MonoBehaviour
             findTeamController = true;
         }
 
+        if (transform.position.x < -7.5)
+        {
+            transform.position = new Vector2(-7.5f, transform.position.y);
+        }else if (transform.position.x > 7.5)
+        {
+            transform.position = new Vector2(7.5f, transform.position.y);
+        }
 
         if (myPlayer.GetButtonDown("Switch"))
         {
