@@ -202,24 +202,16 @@ public class AlternateSP : MonoBehaviour
         if (myPlayer.GetAxisRaw("Horizontal") == 0 && status == Status.Free)
         {
             anim.SetInteger("Anim_Num", 0);
-        }
-
-        if (Mathf.Abs(myPlayer.GetAxisRaw("Horizontal")) >= 0.1f && status == Status.Free)
+        }else if (Mathf.Abs(myPlayer.GetAxisRaw("Horizontal")) >= 0.1f && status == Status.Free)
         {
             anim.SetInteger("Anim_Num", 1);
-        }
-
-        if (status == Status.AtMachine && Mathf.Abs(myPlayer.GetAxisRaw("Horizontal")) == 0 && Mathf.Abs(myPlayer.GetAxisRaw("Vertical")) == 0)
+        }else if (status == Status.AtMachine && Mathf.Abs(myPlayer.GetAxisRaw("Horizontal")) == 0 && Mathf.Abs(myPlayer.GetAxisRaw("Vertical")) == 0)
         {
             anim.SetInteger("Anim_Num", 2);
-        }
-
-        if (status == Status.AtMachine && (myPlayer.GetAxisRaw("Horizontal") >= 0.1f || myPlayer.GetAxisRaw("Vertical") >= 0.1f))
+        }else if (status == Status.AtMachine && (myPlayer.GetAxisRaw("Horizontal") >= 0.1f || myPlayer.GetAxisRaw("Vertical") >= 0.1f))
         {
             anim.SetInteger("Anim_Num", 7);
-        }
-
-        if (status == Status.AtMachine && (myPlayer.GetAxisRaw("Horizontal") <= -0.1f || myPlayer.GetAxisRaw("Vertical") <= -0.1f))
+        }else if (status == Status.AtMachine && (myPlayer.GetAxisRaw("Horizontal") <= -0.1f || myPlayer.GetAxisRaw("Vertical") <= -0.1f))
         {
             anim.SetInteger("Anim_Num", 6);
         }
