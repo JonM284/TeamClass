@@ -741,7 +741,10 @@ public class BasicPlayerScript : MonoBehaviour
             {
                 if (myPlayer.GetButtonDown("BasicAttack"))
                 {
-                    if (wawa) { wawaCharacter.WawaAttackController(11); }
+
+					if (claire) { claireCharacter.ClaireAttackController(12); }
+
+					if (wawa) { wawaCharacter.WawaAttackController(11); }
 
                     if (gillbert) { gillbertCharacter.GilbertAttackController(12); }
 
