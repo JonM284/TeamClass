@@ -137,7 +137,12 @@ public class Gnomercy : MonoBehaviour
 
 	private float currentAttack;
 
-	private void Awake()
+    [Header("Audio")]
+    public AudioClip[] GnomercySounds;
+    public AudioSource GnomercySoundPlayer;
+
+
+    private void Awake()
     {
         
     }
@@ -147,7 +152,10 @@ public class Gnomercy : MonoBehaviour
     {
 		player = this.GetComponent<BasicPlayerScript>();
 		playerNumber = GetComponent<BasicPlayerScript>().playerNum;
-	}
+
+        //setting AudioSource
+        GnomercySoundPlayer = gameObject.GetComponent<AudioSource>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -169,6 +177,10 @@ public class Gnomercy : MonoBehaviour
 				player.anim.SetTrigger("BasicForward");
 				player.isAttacking = true;
                 player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                GnomercySoundPlayer.clip = GnomercySounds[0];
+                GnomercySoundPlayer.Play();
+
                 break;
 
 			case 3:

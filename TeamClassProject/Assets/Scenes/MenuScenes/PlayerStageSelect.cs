@@ -13,14 +13,11 @@ public class PlayerStageSelect : MonoBehaviour
     [Tooltip("Number identifier for each player, must be above 0")]
     public int playerNum;
 
-    public int position;
-    public bool canMove;
+    public static int position;
+    public static bool hasSelected;
 
-    public GameObject stage1;
-    public GameObject stage2;
-    public GameObject stage3;
-    public GameObject stage4;
-    public GameObject random;
+    public GameObject selected_airship;
+    public GameObject selected_forest;
 
     void Awake()
     {
@@ -30,130 +27,67 @@ public class PlayerStageSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        position = 1;
-        canMove = true;
+        position = 2;
+        hasSelected = false;
+
+        GameManager.gameState = 2;
     }
 
     // Update is called once per frame
     void Update()
     {
         //move right if holding right
-        if(myPlayer.GetAxis("Horizontal") >= 0.1f && canMove == true)
-        {
-            position++;
-        }
-
-        //move left if holding left
-        if (myPlayer.GetAxis("Horizontal") <= -0.1f && canMove == true)
+        if(myPlayer.GetAxis("Horizontal") >= 0.1f && hasSelected == false)
         {
             position--;
         }
 
-        //if holding left on 0, go back to 5
-        if (position <= 0)
+        //move left if holding left
+        if (myPlayer.GetAxis("Horizontal") <= -0.1f && hasSelected == false)
         {
-            position = 5;
+            position++;
         }
 
-        //if holding right on 5, go to 1
-        if (position >= 6)
+        //if holding left on 1, don't do anything
+        if (position <= 1)
         {
             position = 1;
         }
 
-        if(myPlayer.GetButtonDown("A") && canMove == true)
+        //if holding right on 2, don't do anything 
+        if (position >= 2)
         {
-            canMove = false;
-
-            if(position == 1)
-            {
-                GameManager.Stage_1++;
-            }
-
-            if (position == 2)
-            {
-                GameManager.Stage_2++;
-            }
-
-            if (position == 3)
-            {
-                GameManager.Stage_3++;
-            }
-
-            if (position == 4)
-            {
-                GameManager.Stage_4++;
-            }
+            position = 2;
+        }
+       
+        //if position is 1, turn on the grey object over the airship level
+        if (position == 1)
+        {
+            selected_forest.SetActive(true);
+        }
+        else
+        {
+            selected_forest.SetActive(false);
         }
 
-        if (myPlayer.GetButtonDown("B") && canMove == false)
+        //if position is 2, turn on the grey object over the forest level
+        if (position == 2)
         {
-            canMove = true;
+            selected_airship.SetActive(true);
+        }
+        else
+        {
+            selected_airship.SetActive(false);
+        }
 
-            if (position == 1)
-            {
-                GameManager.Stage_1--;
-            }
+        if (myPlayer.GetButtonDown("Jump") && hasSelected == false)
+        {
+            hasSelected = true;
+        }
 
-            if (position == 2)
-            {
-                GameManager.Stage_2--;
-            }
-
-            if (position == 3)
-            {
-                GameManager.Stage_3--;
-            }
-
-            if (position == 4)
-            {
-                GameManager.Stage_4--;
-            }
-
-            if (position == 1)
-            {
-                stage1.SetActive(true);
-            }
-            else
-            {
-                stage1.SetActive(false);
-            }
-
-            if (position == 2)
-            {
-                stage2.SetActive(true);
-            }
-            else
-            {
-                stage2.SetActive(false);
-            }
-
-            if (position == 3)
-            {
-                stage3.SetActive(true);
-            }
-            else
-            {
-                stage3.SetActive(false);
-            }
-
-            if (position == 4)
-            {
-                stage4.SetActive(true);
-            }
-            else
-            {
-                stage4.SetActive(false);
-            }
-
-            if (position == 5)
-            {
-                random.SetActive(true);
-            }
-            else
-            {
-                random.SetActive(false);
-            }
+        if (myPlayer.GetButtonDown("HeavyAttack") && hasSelected == true)
+        {
+            hasSelected = false;
         }
     }
 }

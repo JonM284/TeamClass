@@ -59,6 +59,8 @@ public class MachineBehaviour : MonoBehaviour
     public List<Vector3> Hazard_MaxPos;
     public List<Vector3> Hazard_MinPos;
 
+    public GameObject[] machine_UI;
+
     private bool sideHazardShouldLerp;
     private bool sideHazardMovingForward;
     float sideHazardLerpSpeed;
@@ -97,7 +99,10 @@ public class MachineBehaviour : MonoBehaviour
         //get an instance of the object spawner so we can spawn objects
         objectPool = ObjectSpawner.Instance;
         my_Controller_Player = null;
-
+        for (int i = 0; i < machine_UI.Length; i++)
+        {
+            machine_UI[i].SetActive(false);
+        }
         if (mach == MachineID.SideHazard || mach == MachineID.SpecialPlatform) {
             for (int i = 0; i < Controlled_Hazard.Length; i++) {
                 Hazard_StartPos[i] = Controlled_Hazard[i].transform.position;
@@ -201,14 +206,21 @@ public class MachineBehaviour : MonoBehaviour
         //this allows players to change which side hazzard is currently selected
         if (myPlayer.GetButtonDown("Special"))
         {
-            if (Current_Haz_Num < max_Machines_Amnt)
-            {
                 Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.white;
                 Current_Haz_Num++;
-                Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.red;
-                //Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Do_Flash();
+            switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.cyan;
+                    break;
+                case 1:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.red;
+                    break;
+                default:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.black;
+                    break;
             }
-
+            //Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Do_Flash();
         }
 
         
@@ -218,9 +230,21 @@ public class MachineBehaviour : MonoBehaviour
             End_Control();
         }
 
-        if (Current_Haz_Num >= max_Machines_Amnt)
+        if (Current_Haz_Num > max_Machines_Amnt - 1 )
         {
             Current_Haz_Num = 0;
+            switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.cyan;
+                    break;
+                case 1:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.red;
+                    break;
+                default:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.black;
+                    break;
+            }
         }
 
         
@@ -303,15 +327,38 @@ public class MachineBehaviour : MonoBehaviour
             {
                 Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.white;
                 Current_Haz_Num++;
-                Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
+                switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+                {
+                    case 2:
+                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.cyan;
+                        break;
+                    case 1:
+                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
+                        break;
+                    default:
+                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.black;
+                        break;
+                }
                 //Controlled_Hazard[Current_Haz_Num].GetComponent<Eel_Movement>().Do_Flash();
             }
 
         }
         //reset current_haz_Num if it is greater than or equal to the max number of hazzards
-        if (Current_Haz_Num >= max_Machines_Amnt)
+        if (Current_Haz_Num > max_Machines_Amnt - 1)
         {
             Current_Haz_Num = 0;
+            switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.cyan;
+                    break;
+                case 1:
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
+                    break;
+                default:
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.black;
+                    break;
+            }
         }
 
         
@@ -405,16 +452,43 @@ public class MachineBehaviour : MonoBehaviour
         {
             if (Current_Haz_Num < max_Machines_Amnt)
             {
+                Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.white;
                 Current_Haz_Num++;
-                
+                switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+                {
+                    case 2:
+                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.cyan;
+                        break;
+                    case 1:
+                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
+                        break;
+                    default:
+                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.black;
+                        break;
+                }
+
             }
             //reset current_haz_Num if it is greater than or equal to the max number of hazzards
-            if (Current_Haz_Num >= max_Machines_Amnt)
-            {
-                Current_Haz_Num = 0;
-            }
-
+           
         }
+
+        if (Current_Haz_Num > max_Machines_Amnt - 1)
+        {
+            Current_Haz_Num = 0;
+            switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.cyan;
+                    break;
+                case 1:
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
+                    break;
+                default:
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.black;
+                    break;
+            }
+        }
+
 
         if (Controlled_Hazard[Current_Haz_Num].transform.position.y >= Hazard_MaxPos[Current_Haz_Num].y)
         {
@@ -457,7 +531,7 @@ public class MachineBehaviour : MonoBehaviour
 
             }
             //reset current_haz_Num if it is greater than or equal to the max number of hazzards
-            if (Current_Haz_Num >= max_Machines_Amnt)
+            if (Current_Haz_Num > max_Machines_Amnt -1)
             {
                 Current_Haz_Num = 0;
             }
@@ -548,7 +622,7 @@ public class MachineBehaviour : MonoBehaviour
             Controlled_Hazard[Current_Haz_Num].GetComponent<Eel_Movement>().Actually_Activate();
 
             //Cannon Eel
-            machineSoundPlayer.clip = machineSounds[5];
+            machineSoundPlayer.clip = machineSounds[4];
             machineSoundPlayer.Play();
             Debug.Log("Eel Sound played Hopefully");
 
@@ -600,13 +674,56 @@ public class MachineBehaviour : MonoBehaviour
         }else if (mach == MachineID.SideCannon)
         {
             //Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Do_Flash();
-            Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.red;
-        }else if (mach == MachineID.SideHazard)
+            switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[0].GetComponentInParent<SpriteRenderer>().color = Color.cyan;
+                    break;
+                case 1:
+                    Controlled_Hazard[0].GetComponentInParent<SpriteRenderer>().color = Color.red;
+                    break;
+                default:
+                    Controlled_Hazard[0].GetComponentInParent<SpriteRenderer>().color = Color.black;
+                    break;
+            }
+        }
+        else if (mach == MachineID.SideHazard)
         {
             //Controlled_Hazard[Current_Haz_Num].GetComponent<Eel_Movement>().Do_Flash();
-            Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
+            switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.cyan;
+                    break;
+                case 1:
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.red;
+                    break;
+                default:
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.black;
+                    break;
+            }
+        }else if (mach == MachineID.SpecialPlatform)
+        {
+            switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.cyan;
+                    break;
+                case 1:
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.red;
+                    break;
+                default:
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.black;
+                    break;
+            }
         }
         Debug.Log("Player:"+playerNum+ " has activated hazzard: "+mach);
+
+        machine_UI[0].SetActive(false);
+        for (int i = 1; i < machine_UI.Length; i++)
+        {
+            machine_UI[i].SetActive(true);
+        }
     }
 
 
@@ -624,12 +741,15 @@ public class MachineBehaviour : MonoBehaviour
         can_Use = false;
         other_can_Use = false;
         //my_Controller_Player.GetComponent<AlternateSP>().status = AlternateSP.Status.Free;
-        Debug.Log("Player: " +my_Controller_Player.gameObject.GetComponent<AlternateSP>().playerNum+ "has deactivated machine: " + transform.name);
+
         my_Controller_Player = null;
         // The playerID "-1" does not exist, therefore, the inputs will never be recieved.
-        myPlayer = ReInput.players.GetPlayer(-1);
-        
-        
+        myPlayer = ReInput.players.GetPlayer(5);
+
+        for (int i = 0; i < machine_UI.Length; i++)
+        {
+            machine_UI[i].SetActive(false);
+        }
 
         if (mach == MachineID.BackgroundCannon) {
             Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.white;
@@ -644,14 +764,14 @@ public class MachineBehaviour : MonoBehaviour
         {
             for (int i = 0; i < Controlled_Hazard.Length; i++)
             {
-                Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.white;
+                Controlled_Hazard[i].GetComponentInParent<SpriteRenderer>().color = Color.white;
             }
         }
         if (mach == MachineID.SideHazard)
         {
             for (int i = 0; i < Controlled_Hazard.Length; i++)
             {
-                Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.white;
+                Controlled_Hazard[i].GetComponent<SpriteRenderer>().color = Color.white;
             }
             
         }
@@ -659,6 +779,10 @@ public class MachineBehaviour : MonoBehaviour
         {
             if (!side_platform_Used) {
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Platform_Behaviour>().Do_Fire();
+            }
+            for (int i = 0; i < Controlled_Hazard.Length; i++)
+            {
+                Controlled_Hazard[i].GetComponent<SpriteRenderer>().color = Color.white;
             }
             indicator_Images[0].SetActive(false);
             indicator_Images[1].SetActive(true);
@@ -717,6 +841,22 @@ public class MachineBehaviour : MonoBehaviour
         can_Use = true;
         other_can_Use = true;
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!is_In_Use && other.gameObject.tag == "Player")
+        {
+            machine_UI[0].SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (!is_In_Use && other.gameObject.tag == "Player")
+        {
+            machine_UI[0].SetActive(false);
+        }
     }
 
 }

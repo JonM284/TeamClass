@@ -96,7 +96,7 @@ public class Branbull_Movement : MonoBehaviour
         //if the player is standing on exploded branbull it deals damage every frame
         if(other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(1f, 0, 0, 0, 0, 0, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight(), 0, 0,0 );
+            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(2f, 0, 0, 0, 0, 0, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight(), 0, 0,0 );
         }
     }
 

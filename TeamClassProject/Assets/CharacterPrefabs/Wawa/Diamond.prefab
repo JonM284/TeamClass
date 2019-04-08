@@ -107,7 +107,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -141,17 +141,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveRight: 1
   speed: 0
-  damage: 0
+  damage: 13.82
   angle: 0
-  knockback: 0
-  hitStun: 0
-  distance: 0
+  knockback: 5.11
+  hitStun: 3.55
+  distance: 14.31
   travelTime: 0
   playerNum: 0
   shakeDuration: 0
   shakeMagnitude: 0
   shakeSlowDown: 0
   direction: {x: 0, y: 0, z: 0}
+  player: {fileID: 0}
 --- !u!50 &2305824252420006301
 Rigidbody2D:
   serializedVersion: 4

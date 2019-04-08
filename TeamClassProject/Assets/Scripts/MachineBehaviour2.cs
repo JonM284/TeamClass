@@ -19,7 +19,7 @@ public class MachineBehaviour2 : MonoBehaviour
     [Tooltip("Max distance for side hazards, max angle for side cannons")]
     public float Max_range;
     //These are the different MACHINE TYPES
-    public enum MachineID { Two_Fairy, Two_BottomHazard, Two_TopHazard };
+    public enum MachineID { Two_Fairy, Two_BottomHazard, Two_TopHazard, Two_Mushrooms };
     [Header("Machine Type")]
     [Tooltip("What type of machine will this be?")]
     public MachineID mach;
@@ -56,6 +56,10 @@ public class MachineBehaviour2 : MonoBehaviour
     private float cooldownLength_TwoTopHazard;
     private bool Two_TopHazard_Machine_Ready;
 
+    private float cooldownTimer_Mushrooms;
+    private float cooldownLength_Mushrooms;
+    private bool Mushrooms_Machine_Ready;
+
     public List<Vector3> Hazard_StartPos;
     public List<Vector3> Hazard_MaxPos;
     public List<Vector3> Hazard_MinPos;
@@ -83,17 +87,20 @@ public class MachineBehaviour2 : MonoBehaviour
 
         //resetting cooldowns
         cooldownTimer_Fairy = 0f;
-        cooldownLength_Fairy = 10f;
+        cooldownLength_Fairy = 5f;
         Fairy_Machine_Ready = true;
 
         cooldownTimer_TwoBottomHazard = 0f;
-        cooldownLength_TwoBottomHazard = 10f;
+        cooldownLength_TwoBottomHazard = 5f;
         Two_BottomHazard_Machine_Ready = true;
 
         cooldownTimer_TwoTopHazard = 0f;
-        cooldownLength_TwoTopHazard = 10f;
+        cooldownLength_TwoTopHazard = 5f;
         Two_TopHazard_Machine_Ready = true;
 
+        cooldownTimer_Mushrooms= 0f;
+        cooldownLength_Mushrooms = 5f;
+        Mushrooms_Machine_Ready = true;
     }
 
     // Update is called once per frame
@@ -132,6 +139,16 @@ public class MachineBehaviour2 : MonoBehaviour
             }
         }
 
+        //Mushrooms Cooldown
+        if (Mushrooms_Machine_Ready == false)
+        {
+            cooldownTimer_Mushrooms -= Time.deltaTime;
+            if (cooldownTimer_Mushrooms <= 0)
+            {
+                Mushrooms_Machine_Ready = true;
+                GetComponent<BoxCollider2D>().enabled = true;
+            }
+        }
 
         //if the machine is in use
         if (is_In_Use) {
@@ -151,12 +168,12 @@ public class MachineBehaviour2 : MonoBehaviour
             {
                 horizontalInput = myPlayer.GetAxisRaw("Horizontal");
                 Two_TopHazardControl();
-            }/*
-            else if (mach == MachineID.SpecialPlatform)
-            {
-                verticalInput = myPlayer.GetAxisRaw("Vertical");
-                SpecialPlatformBehaviour();
             }
+            else if (mach == MachineID.Two_Mushrooms)
+            {
+                horizontalInput = myPlayer.GetAxisRaw("Horizontal");
+                MushroomMachine();
+            }/*
             else if (mach == MachineID.MiddlePlatform)
             {
 
@@ -229,7 +246,8 @@ public class MachineBehaviour2 : MonoBehaviour
             {
                 Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<SpriteRenderer>().enabled = true;
                 Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<SpriteRenderer>().enabled = false;
-                Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<BoxCollider2D>().enabled = false;
+                //Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<BoxCollider2D>().enabled = false;
+                Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<PolygonCollider2D>().enabled = false;
                 Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.transform.position = Controlled_Hazard[1].GetComponent<Tree_Movement>().myStartPos;
             }
         }
@@ -247,7 +265,8 @@ public class MachineBehaviour2 : MonoBehaviour
             else if(Current_Haz_Num == 1)
             {
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Tree_Movement>().Tree_Active = true;
-                Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<BoxCollider2D>().enabled = true;
+                //Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<BoxCollider2D>().enabled = true;
+                Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<PolygonCollider2D>().enabled = true;
             }
 
             //kick player off machine and put it on cooldown
@@ -386,7 +405,108 @@ public class MachineBehaviour2 : MonoBehaviour
 
     }
 
-    
+    //controls the mushroom machine: Activate machine, toggle through two mushrooms (bounce pad/spores), move mushroom left and right, pick mushroom -> activate mushroom
+    public void MushroomMachine()
+    {
+
+        //Moving the mushroom left/right before activating it
+        vel.x = horizontalInput * speed;
+        //this allows players to change which mushroom is currently selected (bounce pad/spores)
+        if (myPlayer.GetButtonDown("Special"))
+        {
+            if (Current_Haz_Num < max_Machines_Amnt)
+            {
+                Current_Haz_Num++;
+            }
+
+            //reset current_haz_Num if it is greater than or equal to the max number of hazzards
+            if (Current_Haz_Num >= max_Machines_Amnt)
+            {
+                Current_Haz_Num = 0;
+            }
+
+            //switch bounce for spores
+            if (Current_Haz_Num == 1)
+            {
+                Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().myMushroomBounce.GetComponent<SpriteRenderer>().enabled = false;
+                foreach (BoxCollider2D mushroomBounceCollider in Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().mushroomBounceColliders)
+                {
+                    mushroomBounceCollider.enabled = false;
+                }
+                Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().myMushroomBounce.transform.position = Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().myStartPos;
+                Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myMushroomSpores.GetComponent<SpriteRenderer>().enabled = true;
+            }
+            //switch spores for bounce pad
+            else
+            {
+                Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().myMushroomBounce.GetComponent<SpriteRenderer>().enabled = true;
+                Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myMushroomSpores.GetComponent<SpriteRenderer>().enabled = false;
+                foreach (BoxCollider2D mushroomSporesCollider in Controlled_Hazard[1].GetComponent<Mushroom_Spores>().mushroomSporesColliders)
+                {
+                    mushroomSporesCollider.enabled = false;
+                }
+                Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myMushroomSpores.transform.position = Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myStartPos;
+            }
+        }
+
+        //player activates bounce pad / spores
+        if (myPlayer.GetButton("BasicAttack") && can_Use)
+        {
+            //if bounce pad
+            if (Current_Haz_Num == 0)
+            {
+                Controlled_Hazard[Current_Haz_Num].GetComponent<Mushroom_BouncePad>().MushroomBounce_Active = true;
+                foreach (BoxCollider2D mushroomBounceCollider in Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().mushroomBounceColliders)
+                {
+                    mushroomBounceCollider.enabled = true;
+                }
+                Controlled_Hazard[Current_Haz_Num].GetComponent<Mushroom_BouncePad>().removeMushroomBounceTimer = Controlled_Hazard[Current_Haz_Num].GetComponent<Mushroom_BouncePad>().removeMushroomBounceLength;
+                Controlled_Hazard[Current_Haz_Num].GetComponent<Mushroom_BouncePad>().MushroomBounceAreThere = true;
+            }
+            //if spores
+            else if (Current_Haz_Num == 1)
+            {
+                Controlled_Hazard[Current_Haz_Num].GetComponent<Mushroom_Spores>().MushroomSpores_Active = true;
+                foreach (BoxCollider2D mushroomSporesCollider in Controlled_Hazard[1].GetComponent<Mushroom_Spores>().mushroomSporesColliders)
+                {
+                    mushroomSporesCollider.enabled = true;
+                }
+                Controlled_Hazard[Current_Haz_Num].GetComponent<Mushroom_Spores>().removeMushroomSporesTimer = Controlled_Hazard[Current_Haz_Num].GetComponent<Mushroom_Spores>().removeMushroomSporesLength;
+                Controlled_Hazard[Current_Haz_Num].GetComponent<Mushroom_Spores>().MushroomSporesAreThere = true;
+            }
+
+            //kick player off machine and put it on cooldown
+            End_Control();
+            Mushrooms_Machine_Ready = false;
+            cooldownTimer_Mushrooms = cooldownLength_Mushrooms;
+            GetComponent<BoxCollider2D>().enabled = false;
+
+        }
+
+        //this allows the player to move the hazard left and right
+        Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
+            + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+
+        //boundaries for bounce pad moving sideways
+        if (Controlled_Hazard[0].transform.position.x < -7f)
+        {
+            Controlled_Hazard[0].transform.position = new Vector3(Controlled_Hazard[0].transform.position.x + .1f, Controlled_Hazard[0].transform.position.y, Controlled_Hazard[0].transform.position.z);
+        }
+        if (Controlled_Hazard[0].transform.position.x > 7f)
+        {
+            Controlled_Hazard[0].transform.position = new Vector3(Controlled_Hazard[0].transform.position.x - .1f, Controlled_Hazard[0].transform.position.y, Controlled_Hazard[0].transform.position.z);
+        }
+
+        //boundaries for spores moving sideways
+        if (Controlled_Hazard[1].transform.position.x < -7f)
+        {
+            Controlled_Hazard[1].transform.position = new Vector3(Controlled_Hazard[1].transform.position.x + .1f, Controlled_Hazard[1].transform.position.y, Controlled_Hazard[1].transform.position.z);
+        }
+        if (Controlled_Hazard[1].transform.position.x > 7f)
+        {
+            Controlled_Hazard[1].transform.position = new Vector3(Controlled_Hazard[1].transform.position.x - .1f, Controlled_Hazard[1].transform.position.y, Controlled_Hazard[1].transform.position.z);
+        }
+    }
 
     //--------------------------------------------------------------------------------------------------
     /// <summary>
@@ -415,7 +535,8 @@ public class MachineBehaviour2 : MonoBehaviour
             Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<SpriteRenderer>().enabled = true;
             Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<BoxCollider2D>().enabled = false;
             Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<SpriteRenderer>().enabled = false;
-            Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<BoxCollider2D>().enabled = false;
+            //Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<BoxCollider2D>().enabled = false;
+            Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<PolygonCollider2D>().enabled = false;
         }
         if (mach == MachineID.Two_TopHazard)
         {
@@ -431,6 +552,18 @@ public class MachineBehaviour2 : MonoBehaviour
             {
                 appleCollider.enabled = false;
             }
+        }
+
+        if(mach == MachineID.Two_Mushrooms)
+        {
+            Current_Haz_Num = 0;
+            Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().myMushroomBounce.GetComponent<SpriteRenderer>().enabled = true;
+            Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myMushroomSpores.GetComponent<SpriteRenderer>().enabled = false;
+            foreach (BoxCollider2D mushroomSporesCollider in Controlled_Hazard[1].GetComponent<Mushroom_Spores>().mushroomSporesColliders)
+            {
+                mushroomSporesCollider.enabled = false;
+            }
+            Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myMushroomSpores.transform.position = Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myStartPos;
         }
 
         Debug.Log("Player:"+playerNum+ " has activated hazzard: "+mach);
@@ -467,7 +600,8 @@ public class MachineBehaviour2 : MonoBehaviour
                 Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<BoxCollider2D>().enabled = false;
                 Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.transform.position = Controlled_Hazard[0].GetComponent<Spike_Movement>().myStartPos;
                 Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<SpriteRenderer>().enabled = false;
-                Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<BoxCollider2D>().enabled = false;
+                //Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<BoxCollider2D>().enabled = false;
+                Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<PolygonCollider2D>().enabled = true;
                 Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.transform.position = Controlled_Hazard[1].GetComponent<Tree_Movement>().myStartPos;
             } 
         }
@@ -489,6 +623,27 @@ public class MachineBehaviour2 : MonoBehaviour
                 }
                 Controlled_Hazard[1].GetComponent<Apple_Movement>().myApple.transform.position = Controlled_Hazard[1].GetComponent<Apple_Movement>().myStartPos;
             }
+        }
+
+        if(mach == MachineID.Two_Mushrooms)
+        {
+            if (Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().MushroomBounce_Active == false && Controlled_Hazard[1].GetComponent<Mushroom_Spores>().MushroomSpores_Active == false)
+            {
+                Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().myMushroomBounce.GetComponent<SpriteRenderer>().enabled = false;
+                foreach (BoxCollider2D mushroomBounceCollider in Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().mushroomBounceColliders)
+                {
+                    mushroomBounceCollider.enabled = false;
+                }
+                Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().myMushroomBounce.transform.position = Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().myStartPos;
+
+                Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myMushroomSpores.GetComponent<SpriteRenderer>().enabled = false;
+                foreach (BoxCollider2D mushroomSporesCollider in Controlled_Hazard[1].GetComponent<Mushroom_Spores>().mushroomSporesColliders)
+                {
+                    mushroomSporesCollider.enabled = false;
+                }
+                Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myMushroomSpores.transform.position = Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myStartPos;
+            }
+            
         }
 
         Debug.Log("Player has deactivated machine: "+transform.name);

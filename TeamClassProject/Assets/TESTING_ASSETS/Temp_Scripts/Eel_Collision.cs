@@ -17,6 +17,7 @@ public class Eel_Collision : MonoBehaviour
         if (other.gameObject.tag == "Platform") {
             my_Parent.GetComponent<Eel_Movement>().has_Hit_Platform = true;
             my_Parent.GetComponent<Eel_Movement>().Eel_Active = true;
+            
         }
 
         if (other.gameObject.tag == "Player")

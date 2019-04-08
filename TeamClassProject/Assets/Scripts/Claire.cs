@@ -90,7 +90,18 @@ public class Claire : MonoBehaviour
     public GameObject spawnIceShotHere1;
     public float bulletSpeed1;
 
-    [Header("Neutral Heavy")]
+	[Header("Down Air")]
+	public float DA_Damage;
+	public float DA_Angle;
+	public float DA_Knockback;
+	public float DA_HitStun;
+	public float DA_Distance;
+	public float DA_TravelTime;
+	public float DA_ShakeDuration;
+	public float DA_ShakeMagnitude;
+	public float DA_ShakeSlowDown;
+
+	[Header("Neutral Heavy")]
     public float NH_Damage;
     public float NH_Angle;
     public float NH_Knockback;
@@ -241,11 +252,16 @@ public class Claire : MonoBehaviour
                 }
                 break;
 
+			case 4:
+				player.anim.SetTrigger("BasicDown");
+				player.isAttacking = true;
+				break;
+
             case 9:
                 player.anim.SetTrigger("NeutralAir");
                 player.isAttacking = true;
 
-                ClaireSoundPlayer.clip = ClaireSounds[3];
+                ClaireSoundPlayer.clip = ClaireSounds[0];
                 ClaireSoundPlayer.Play();
 
                 break;
@@ -259,7 +275,15 @@ public class Claire : MonoBehaviour
 
                 break;
 
-            case 20:
+			case 11:
+				break;
+
+			case 12:
+				player.anim.SetTrigger("DownAir");
+				player.isAttacking = true;
+				break;
+
+			case 20:
                 player.anim.SetTrigger("HeavyNeutral");
                 player.isAttacking = true;
                 player.canTurn = false;
@@ -379,7 +403,13 @@ public class Claire : MonoBehaviour
         bullet.GetComponent<Projectile>().player = player;
     }
 
-    private void NeutralHeavy(GameObject enemy)
+	private void DownAir(GameObject enemy)
+	{
+		enemy.GetComponent<BasicPlayerScript>().GetHit(DA_Damage, DA_Angle, DA_Knockback, DA_HitStun, DA_Distance, DA_TravelTime, player.FacingRight(), DA_ShakeDuration, DA_ShakeMagnitude, DA_ShakeSlowDown);
+		player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(DA_Damage);
+	}
+
+	private void NeutralHeavy(GameObject enemy)
     {
         enemy.GetComponent<BasicPlayerScript>().GetHit(NH_Damage, NH_Angle, NH_Knockback, NH_HitStun, NH_Distance, NH_TravelTime, player.FacingRight(), NH_ShakeDuration, NH_ShakeMagnitude, NH_ShakeSlowDown);
         player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(NH_Damage);
@@ -471,7 +501,11 @@ public class Claire : MonoBehaviour
                             NeutralAir(other.gameObject);
                             break;
 
-                        case 20:
+						case 12:
+							DownAir(other.gameObject);
+							break;
+
+						case 20:
                             NeutralHeavy(other.gameObject);
                             break;
 

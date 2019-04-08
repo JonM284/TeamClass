@@ -106,8 +106,8 @@ public class Watermelon : MonoBehaviour
 
     Rigidbody2D rb2D;
     BasicPlayerScript player;
-    public Renderer vineWhip;
-    public GameObject downVine;
+    // public Renderer vineWhip;
+    //public GameObject downVine;
 
     [Header("Neutral Heavy")]
     public float NH_Damage;
@@ -129,8 +129,9 @@ public class Watermelon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        downVine.gameObject.SetActive(false);
+       // downVine.gameObject.SetActive(false);
         player = GetComponent<BasicPlayerScript>();
+        playerNumber = GetComponent<BasicPlayerScript>().playerNum;
         rb2D = GetComponent<Rigidbody2D>();
         yDir = 1;
         vining = false;
@@ -216,7 +217,6 @@ public class Watermelon : MonoBehaviour
                 player.isAttacking = true;
                 if (player.wawa)
                 {
-                    print("wawaBDAttk");
                     player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
                 }
@@ -235,21 +235,21 @@ public class Watermelon : MonoBehaviour
             case 11:
                 player.anim.SetTrigger("DownAir");
                 player.isAttacking = true;
-                if (player.wawa)
-                {
-                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                //if (player.wawa)
+              //  {
+                //   player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-                }
+               // }
                 break;
 
             case 12:
                 player.anim.SetTrigger("BackAir");
                 player.isAttacking = true;
-                if (player.wawa)
-                {
-                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                //if (player.wawa)
+                //{
+                 //   player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-                }
+                //}
                 break;
 
             case 20:
@@ -273,10 +273,10 @@ public class Watermelon : MonoBehaviour
     {
         if (vining == true)
         {
-            downVine.gameObject.SetActive(true);
+            //downVine.gameObject.SetActive(true);
             if (goUp == true)
             {
-                downVine.transform.position = new Vector2(downVine.transform.position.x, downVine.transform.position.y + .0004f);
+                //downVine.transform.position = new Vector2(downVine.transform.position.x, downVine.transform.position.y + .0004f);
                 vineUpCou++;
                 if (vineUpCou > 60)
                 {
@@ -285,7 +285,7 @@ public class Watermelon : MonoBehaviour
             }
             else
             {
-                downVine.transform.position = new Vector2(downVine.transform.position.x, downVine.transform.position.y - .0004f);
+                //downVine.transform.position = new Vector2(downVine.transform.position.x, downVine.transform.position.y - .0004f);
                 vineUpCou++;
                 if (vineUpCou > 100)
                 {
@@ -299,7 +299,7 @@ public class Watermelon : MonoBehaviour
         else
         {
             vineUpCou = 0;
-            downVine.gameObject.SetActive(false);
+            //downVine.gameObject.SetActive(false);
         }
 
 
