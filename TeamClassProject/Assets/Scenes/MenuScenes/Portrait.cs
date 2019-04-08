@@ -119,7 +119,7 @@ public class Portrait : MonoBehaviour
 
         if (myPlayer.GetButtonDown("Jump") && selected == false && PlayerStageSelect.hasSelected == true)
         {
-            selected = true;
+            //selected = true;
 
             if(char_selected == 1)
             {
