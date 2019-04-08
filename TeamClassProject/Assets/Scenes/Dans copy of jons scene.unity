@@ -3046,38 +3046,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1 &319532527 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5615167270242946374, guid: 8619d383b949f2047802810e41ae9a6c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1718459701}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &319532528
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 319532527}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.016860366, y: -0.23604572}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.52794534, y: 0.8727038}
-    oldSize: {x: 0.60333335, y: 0.6333333}
-    newSize: {x: 0.26, y: 0.38666666}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.60333335, y: 0.6333333}
-  m_EdgeRadius: 0
 --- !u!1 &336438451
 GameObject:
   m_ObjectHideFlags: 0
@@ -9504,12 +9472,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1718459701}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &719453066 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5615167271143781669, guid: 8619d383b949f2047802810e41ae9a6c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1718459701}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &722917369
 GameObject:
   m_ObjectHideFlags: 0
@@ -10711,63 +10673,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 821999556}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &825623641
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 825623642}
-  - component: {fileID: 825623643}
-  m_Layer: 0
-  m_Name: SlideHitbox
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &825623642
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 825623641}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 719453066}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &825623643
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 825623641}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.9232487, y: -1.0212826}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.3200599, y: 1.123047}
-  m_EdgeRadius: 0
 --- !u!1 &827265517
 GameObject:
   m_ObjectHideFlags: 0
@@ -12948,7 +12853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a84798539e05554c957a6b86b175395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNum: 1
+  playerNum: 4
   rigPieces: []
   teamNum: 0
   healthBar: {fileID: 206296646}
@@ -16758,9 +16663,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5615167271143781587, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
-      propertyPath: playerNum
-      value: 3
-      objectReference: {fileID: 0}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 945378464}
     - target: {fileID: 5615167271143781587, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
       propertyPath: regenableHealthBar
@@ -16768,9 +16673,9 @@ PrefabInstance:
       objectReference: {fileID: 134448193}
     - target: {fileID: 5615167271143781587, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 945378464}
+      propertyPath: playerNum
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8619d383b949f2047802810e41ae9a6c, type: 3}
 --- !u!1 &1730788200
@@ -17485,11 +17390,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crystal Claire
       objectReference: {fileID: 0}
-    - target: {fileID: 5615167271143781585, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5615167271143781669, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17555,84 +17455,28 @@ PrefabInstance:
       propertyPath: regenableHealthBar
       value: 
       objectReference: {fileID: 211150989}
-    - target: {fileID: 5615167271143781587, guid: 8619d383b949f2047802810e41ae9a6c,
+    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
-      propertyPath: playerNum
+      propertyPath: weight
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
-      propertyPath: ClaireSounds.Array.size
-      value: 9
+      propertyPath: gravityUp
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
-      propertyPath: ClaireSoundPlayer
-      value: 
-      objectReference: {fileID: 1827133005}
+      propertyPath: gravityDown
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
-      propertyPath: ClaireSounds.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 65e6146a06118f640a76735f77d3b022, type: 3}
-    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: ClaireSounds.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 1d48ccce2ff63304dad1f0e939cf13ae, type: 3}
-    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: ClaireSounds.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 8fa4aa820ced1384f933ca8a83a22fe9, type: 3}
-    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: ClaireSounds.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 4eea50aa9d02da1458e5fb00fe0d7767, type: 3}
-    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: ClaireSounds.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: 76d160b1550c1d44887508aca288e58a, type: 3}
-    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: ClaireSounds.Array.data[5]
-      value: 
-      objectReference: {fileID: 8300000, guid: 8fa4aa820ced1384f933ca8a83a22fe9, type: 3}
-    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: ClaireSounds.Array.data[9]
-      value: 
-      objectReference: {fileID: 8300000, guid: e90041802fae9cc46ac0359a6386a57b, type: 3}
-    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: ClaireSounds.Array.data[8]
-      value: 
-      objectReference: {fileID: 8300000, guid: e90041802fae9cc46ac0359a6386a57b, type: 3}
-    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: ClaireSounds.Array.data[7]
-      value: 
-      objectReference: {fileID: 8300000, guid: 8fa4aa820ced1384f933ca8a83a22fe9, type: 3}
-    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: ClaireSounds.Array.data[6]
-      value: 
-      objectReference: {fileID: 8300000, guid: 76d160b1550c1d44887508aca288e58a, type: 3}
-    - target: {fileID: 5615167271143781584, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
+      propertyPath: jumpVel
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8619d383b949f2047802810e41ae9a6c, type: 3}
---- !u!82 &1827133005 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 5615167271143781584, guid: 8619d383b949f2047802810e41ae9a6c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1827133003}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1841791987
 GameObject:
   m_ObjectHideFlags: 0
