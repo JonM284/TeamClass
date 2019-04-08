@@ -19,6 +19,8 @@ public class Mushroom_BouncePad : MonoBehaviour
     public float removeMushroomBounceTimer, removeMushroomBounceLength;
     public bool MushroomBounceAreThere;
 
+    [SerializeField] private float bounceForce;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,6 @@ public class Mushroom_BouncePad : MonoBehaviour
         {
             mushroomBounceCollider.enabled = false;
         }
-        //damageToDealToPlayer = 100;
     }
 
     // Update is called once per frame
@@ -55,6 +56,8 @@ public class Mushroom_BouncePad : MonoBehaviour
         {
             Deactivate_MushroomBounce();
         }
+
+
     }
 
     //the function done to activate bounce pad
@@ -77,13 +80,13 @@ public class Mushroom_BouncePad : MonoBehaviour
     }
 
     //when hit a player send them upwards
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if(other.gameObject.tag == "Player")
         {
-            print("bounce");
+            Debug.Log("Bounce");
             //bounce the player up HERE
-            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(0, 90, 40, 0, 100, .5f, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight(),0,0,0);
+            other.gameObject.GetComponent<BasicPlayerScript>().velocity.y = other.gameObject.GetComponent<BasicPlayerScript>().jumpVel * bounceForce;
         }
     }
 
