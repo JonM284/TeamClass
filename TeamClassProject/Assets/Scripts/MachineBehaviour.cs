@@ -207,7 +207,12 @@ public class MachineBehaviour : MonoBehaviour
         if (myPlayer.GetButtonDown("Special"))
         {
                 Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.white;
+            if (Current_Haz_Num < max_Machines_Amnt - 1) {
                 Current_Haz_Num++;
+            }else if (Current_Haz_Num == max_Machines_Amnt - 1)
+            {
+                Current_Haz_Num = 0;
+            }
             switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
             {
                 case 2:
@@ -326,7 +331,14 @@ public class MachineBehaviour : MonoBehaviour
             if (Current_Haz_Num < max_Machines_Amnt)
             {
                 Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.white;
-                Current_Haz_Num++;
+                if (Current_Haz_Num < max_Machines_Amnt - 1)
+                {
+                    Current_Haz_Num++;
+                }
+                else if (Current_Haz_Num == max_Machines_Amnt - 1)
+                {
+                    Current_Haz_Num = 0;
+                }
                 switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
                 {
                     case 2:
@@ -453,7 +465,14 @@ public class MachineBehaviour : MonoBehaviour
             if (Current_Haz_Num < max_Machines_Amnt)
             {
                 Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.white;
-                Current_Haz_Num++;
+                if (Current_Haz_Num < max_Machines_Amnt - 1)
+                {
+                    Current_Haz_Num++;
+                }
+                else if (Current_Haz_Num == max_Machines_Amnt - 1)
+                {
+                    Current_Haz_Num = 0;
+                }
                 switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
                 {
                     case 2:

@@ -135,7 +135,7 @@ public class AlternateSP : MonoBehaviour
         // Give the machine my inputs.
         // If the player presses "Jump" and is using a machine, set them to free again.
         // Also if they press heavy attack, they jump off the machine without using it.
-        if (is_In_Area && (myPlayer.GetButtonDown("Jump")|| myPlayer.GetButtonDown("BasicAttack")))
+        if (is_In_Area && (myPlayer.GetButtonDown("Jump")))
         {
             if (status == Status.Free && !myMachine.GetComponent<MachineBehaviour>().is_In_Use)
             {
@@ -170,8 +170,19 @@ public class AlternateSP : MonoBehaviour
                 Debug.Log(status);
             }
 
+        }else if (status == Status.AtMachine && myPlayer.GetButtonDown("BasicAttack"))
+        {
+            status = Status.Free;
+            if (myMachine.GetComponent<MachineBehaviour>().is_In_Use)
+            {
+                myMachine.GetComponent<MachineBehaviour>().Fire_Off_Machine();
+                myMachine.GetComponent<MachineBehaviour>().End_Control();
+                Debug.Log("Has detached from machine with Jump");
+            }
         }
 
+
+        
 
         Handle_Animations();
 
