@@ -3974,6 +3974,11 @@ PrefabInstance:
       propertyPath: gilbertFlightTime
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 601068658141386479, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
+        type: 3}
+      propertyPath: teamNum
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
       propertyPath: GilbertSounds.Array.size
       value: 8
@@ -12853,7 +12858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a84798539e05554c957a6b86b175395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNum: 4
+  playerNum: 1
   rigPieces: []
   teamNum: 0
   healthBar: {fileID: 206296646}
@@ -12862,8 +12867,8 @@ MonoBehaviour:
   anim: {fileID: 0}
   state: 0
   accel: 0
-  accelMult: 0.11
-  decelMult: 0.15
+  accelMult: 1
+  decelMult: 1
   speed: 6
   weight: 40
   gilbertFlightTime: 0
@@ -12926,7 +12931,7 @@ MonoBehaviour:
   BF_Angle: 40
   BF_Knockback: 30
   BF_HitStun: 0.3
-  BF_Distance: 450
+  BF_Distance: 125
   BF_TravelTime: 0.3
   BF_ShakeDuration: 0.04
   BF_ShakeMagnitude: 0.03
@@ -12942,9 +12947,9 @@ MonoBehaviour:
   BU_ShakeSlowDown: 0
   BD_Damage: 60
   BD_Angle: 70
-  BD_Knockback: 40
+  BD_Knockback: 100
   BD_HitStun: 0.3
-  BD_Distance: 200
+  BD_Distance: 80
   BD_TravelTime: 0.3
   BD_ShakeDuration: 0.035
   BD_ShakeMagnitude: 0.03
@@ -12967,6 +12972,27 @@ MonoBehaviour:
   UA_ShakeDuration: 0
   UA_ShakeMagnitude: 0
   UA_ShakeSlowDown: 0
+  FA_Damage: 65
+  FA_Angle: 0
+  FA_Knockback: 200
+  FA_HitStun: 0.1
+  FA_Distance: 60
+  FA_TravelTime: 0.1
+  FA_ShakeDuration: 0.032
+  FA_ShakeMagnitude: 0.04
+  FA_ShakeSlowDown: 0.2
+  spit: {fileID: 2931862945572960438, guid: fbd324249cff3464789ab5cd1c6d81af, type: 3}
+  spawnSpitHere: {fileID: 2124544365}
+  spitSpeed: 10
+  BA_Damage: 75
+  BA_Angle: 135
+  BA_Knockback: 70
+  BA_HitStun: 0.25
+  BA_Distance: 165
+  BA_TravelTime: 0.25
+  BA_ShakeDuration: 0.032
+  BA_ShakeMagnitude: 0.04
+  BA_ShakeSlowDown: 0.2
   DA_Damage: 43
   DA_Angle: 20
   DA_Knockback: 49
@@ -12979,12 +13005,12 @@ MonoBehaviour:
   melonDown: {fileID: 2416181010292551942, guid: 4ff962d24eb7d214e8e4603d16e043aa,
     type: 3}
   spawnMelonJDHere: {fileID: 1303765690}
-  melDSpeed: 3
+  melDSpeed: 6
   NH_Damage: 40
   NH_Angle: 45
-  NH_Knockback: 10
+  NH_Knockback: 100
   NH_HitStun: 0.2
-  NH_Distance: 2
+  NH_Distance: 95
   NH_TravelTime: 0.2
   NH_ShakeDuration: 0.035
   NH_ShakeMagnitude: 0.03
@@ -13023,6 +13049,7 @@ Transform:
   - {fileID: 936724169}
   - {fileID: 2108161060}
   - {fileID: 414500616}
+  - {fileID: 2124544366}
   m_Father: {fileID: 0}
   m_RootOrder: 47
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15372,7 +15399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  playerNum: 1
+  playerNum: 4
   teamID: 1
   teamNum: 0
   is_In_Area: 0
@@ -16676,6 +16703,11 @@ PrefabInstance:
       propertyPath: playerNum
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781587, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: teamNum
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8619d383b949f2047802810e41ae9a6c, type: 3}
 --- !u!1 &1730788200
@@ -17455,6 +17487,16 @@ PrefabInstance:
       propertyPath: regenableHealthBar
       value: 
       objectReference: {fileID: 211150989}
+    - target: {fileID: 5615167271143781587, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: playerNum
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781587, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: teamNum
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
       propertyPath: weight
@@ -20097,6 +20139,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 46
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2124544365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2124544366}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2124544366
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124544365}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.46, y: 0.24, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1133579046}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2127931911
 GameObject:

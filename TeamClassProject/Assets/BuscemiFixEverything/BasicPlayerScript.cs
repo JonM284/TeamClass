@@ -687,6 +687,8 @@ public class BasicPlayerScript : MonoBehaviour
                         if (gillbert) { gillbertCharacter.GilbertAttackController(11); }
 
                         //if (gnomercy) { gnomercyCharacter.GnomercyAttackController(11); }
+
+                        if (wawa) { wawaCharacter.WawaAttackController(14); }
                     }
                 }
             }
@@ -701,6 +703,8 @@ public class BasicPlayerScript : MonoBehaviour
                         if (gillbert) { gillbertCharacter.GilbertAttackController(11); }
 
                         //if (gnomercy) { gnomercyCharacter.GnomercyAttackController(11); }
+
+                        if (wawa) { wawaCharacter.WawaAttackController(14); }
                     }
                 }
             }
@@ -708,29 +712,35 @@ public class BasicPlayerScript : MonoBehaviour
             //back air attack
             if (direction == "Right")
             {
-                if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") < -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer < 0)
+                if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") < -.3f && myPlayer.GetAxis("Vertical") > .3f && myPlayer.GetAxis("Vertical") > -.3f && onPlatformTimer < 0)
                 {
                     if (myPlayer.GetButtonDown("BasicAttack"))
                     {
+                        Debug.Log("Hi");
                         //if (claire) { claireCharacter.ClaireAttackController(11); }
 
                         //if (gillbert) { gillbertCharacter.GilbertAttackController(11); }
 
                         //if (gnomercy) { gnomercyCharacter.GnomercyAttackController(11); }
+
+                        if (wawa) { wawaCharacter.WawaAttackController(10); }
                     }
                 }
             }
             if (direction == "Left")
             {
-                if (myPlayer.GetAxis("Horizontal") > .3f && myPlayer.GetAxis("Horizontal") > -.3f && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer < 0)
+                if (myPlayer.GetAxis("Horizontal") > .3f && myPlayer.GetAxis("Horizontal") > -.3f && myPlayer.GetAxis("Vertical") < .3f && myPlayer.GetAxis("Vertical") < -.3f && onPlatformTimer < 0)
                 {
                     if (myPlayer.GetButtonDown("BasicAttack"))
                     {
+                        Debug.Log("Hi");
                         //if (claire) { claireCharacter.ClaireAttackController(11); }
 
                         //if (gillbert) { gillbertCharacter.GilbertAttackController(11); }
 
                         //if (gnomercy) { gnomercyCharacter.GnomercyAttackController(11); }
+
+                        if (wawa) { wawaCharacter.WawaAttackController(10); }
                     }
                 }
             }
