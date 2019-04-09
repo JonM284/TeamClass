@@ -4761,6 +4761,63 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &825623641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 825623642}
+  - component: {fileID: 825623643}
+  m_Layer: 0
+  m_Name: SlideHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &825623642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825623641}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5615167271143781669}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &825623643
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825623641}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.9232487, y: -1.0212826}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.3200599, y: 1.123047}
+  m_EdgeRadius: 0
 --- !u!1 &223519341407970169
 GameObject:
   m_ObjectHideFlags: 0
@@ -25734,6 +25791,7 @@ GameObject:
   - component: {fileID: 5615167270242946369}
   - component: {fileID: 5615167270242946371}
   - component: {fileID: 5615167270242946368}
+  - component: {fileID: 319532528}
   m_Layer: 0
   m_Name: Back Crystal Fist
   m_TagString: Untagged
@@ -25821,6 +25879,32 @@ CircleCollider2D:
   m_Offset: {x: -0.016860366, y: -0.23604658}
   serializedVersion: 2
   m_Radius: 0.62
+--- !u!61 &319532528
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5615167270242946374}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.016860366, y: -0.23604572}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.52794534, y: 0.8727038}
+    oldSize: {x: 0.60333335, y: 0.6333333}
+    newSize: {x: 0.26, y: 0.38666666}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.60333335, y: 0.6333333}
+  m_EdgeRadius: 0
 --- !u!1 &5615167270265633777
 GameObject:
   m_ObjectHideFlags: 0
@@ -26835,6 +26919,7 @@ Transform:
   - {fileID: 5615167269358937976}
   - {fileID: 791574513304624714}
   - {fileID: 4034388612700275526}
+  - {fileID: 825623642}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -27020,6 +27105,15 @@ MonoBehaviour:
   UA_ShakeSlowDown: 0.2
   spawnIceShotHere1: {fileID: 5615167269358937977}
   bulletSpeed1: 16
+  DA_Damage: 0
+  DA_Angle: 0
+  DA_Knockback: 0
+  DA_HitStun: 0
+  DA_Distance: 0
+  DA_TravelTime: 0
+  DA_ShakeDuration: 0
+  DA_ShakeMagnitude: 0
+  DA_ShakeSlowDown: 0
   NH_Damage: 150
   NH_Angle: 30
   NH_Knockback: 9
@@ -27065,8 +27159,17 @@ MonoBehaviour:
   DH_ShakeDuration: 0
   DH_ShakeMagnitude: 0
   DH_ShakeSlowDown: 0
-  ClaireSounds: []
-  ClaireSoundPlayer: {fileID: 0}
+  ClaireSounds:
+  - {fileID: 8300000, guid: 65e6146a06118f640a76735f77d3b022, type: 3}
+  - {fileID: 8300000, guid: 8fa4aa820ced1384f933ca8a83a22fe9, type: 3}
+  - {fileID: 8300000, guid: 1d48ccce2ff63304dad1f0e939cf13ae, type: 3}
+  - {fileID: 8300000, guid: 4eea50aa9d02da1458e5fb00fe0d7767, type: 3}
+  - {fileID: 8300000, guid: 76d160b1550c1d44887508aca288e58a, type: 3}
+  - {fileID: 8300000, guid: 8fa4aa820ced1384f933ca8a83a22fe9, type: 3}
+  - {fileID: 8300000, guid: 76d160b1550c1d44887508aca288e58a, type: 3}
+  - {fileID: 8300000, guid: 8fa4aa820ced1384f933ca8a83a22fe9, type: 3}
+  - {fileID: 8300000, guid: e90041802fae9cc46ac0359a6386a57b, type: 3}
+  ClaireSoundPlayer: {fileID: 5615167271143781584}
 --- !u!111 &5615167271143781676
 Animation:
   m_ObjectHideFlags: 0
@@ -27211,7 +27314,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5615167271143781585}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
