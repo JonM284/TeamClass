@@ -360,6 +360,7 @@ public class Gillbert : MonoBehaviour
             case 21:
                 player.anim.SetTrigger("HeavyForward");
                 player.isAttacking = true;
+                player.GetComponent<BasicPlayerScript>().AttackMovement(8, .4f, new Vector3(1, 0, 0));
 
                 GilbertSoundPlayer.clip = GilbertSounds[6];
                 GilbertSoundPlayer.Play();

@@ -117,6 +117,11 @@ public class BasicPlayerScript : MonoBehaviour
     private float prevJoystickAxis = 0;
     private bool didntTurnAround = true;
 
+    private float doAttackMovementTimer = 0;
+    private Vector3 attackMovementDir = new Vector3(0, 0, 0);
+    private float attackMovementSpeed = 0;
+
+
     bool findTeamController = false;
 
     GameObject mainCamera;
@@ -318,7 +323,12 @@ public class BasicPlayerScript : MonoBehaviour
 			Attack();
 		}
 
-        if (stunTime <= 0 || !inHitAnims)
+        if (doAttackMovementTimer > 0)
+        {
+            doAttackMovementTimer -= Time.deltaTime;
+        }
+
+        if (stunTime <= 0 && !inHitAnims && doAttackMovementTimer <= 0)
         {
             Movement();
         }
@@ -334,6 +344,11 @@ public class BasicPlayerScript : MonoBehaviour
 
  void FixedUpdate()
 	{
+        if(doAttackMovementTimer > 0)
+        {
+            doAttackMovement();
+        }
+
         if(gotHitTimer > 0)
         {
             anim.SetBool("hitstun", true);
@@ -343,7 +358,7 @@ public class BasicPlayerScript : MonoBehaviour
             anim.SetBool("hitstun", false);
         }
 
-		if (stunTime <= 0 || !inHitAnims)
+		if (stunTime <= 0 && !inHitAnims && doAttackMovementTimer <= 0)
 		{
             FixedMovement();
         }
@@ -927,6 +942,26 @@ public class BasicPlayerScript : MonoBehaviour
             // rb.AddForce(new Vector2(attackForce, 0));
         }
     }
+
+    void doAttackMovement()
+    {
+
+        velocity = attackMovementDir * attackMovementSpeed;
+        //rb.MovePosition(transform.position + attackMovementDir * attackMovementSpeed * Time.deltaTime);
+
+    }
+
+
+    public void AttackMovement(float speed, float duration, Vector2 direction)
+    {
+
+        speed = attackMovementSpeed;
+        duration = doAttackMovementTimer;
+        direction = attackMovementDir;
+
+    }
+
+        
 
 	IEnumerator CalcVelocity()
 	{
