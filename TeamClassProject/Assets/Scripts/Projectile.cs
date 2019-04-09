@@ -73,5 +73,11 @@ public class Projectile : MonoBehaviour
 
             }
         }
+
+        if (other.gameObject.tag == "Floor")
+        {
+            Destroy(gameObject);
+        }
+        
     }
 }

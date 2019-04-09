@@ -83,6 +83,31 @@ public class Watermelon : MonoBehaviour
     public float UA_ShakeMagnitude;
     public float UA_ShakeSlowDown;
 
+    [Header("Basic Forward")]
+    public float FA_Damage;
+    public float FA_Angle;
+    public float FA_Knockback;
+    public float FA_HitStun;
+    public float FA_Distance;
+    public float FA_TravelTime;
+    public float FA_ShakeDuration;
+    public float FA_ShakeMagnitude;
+    public float FA_ShakeSlowDown;
+    public GameObject spit;
+    public GameObject spawnSpitHere;
+    public float spitSpeed;
+
+    [Header("Back Air")]
+    public float BA_Damage;
+    public float BA_Angle;
+    public float BA_Knockback;
+    public float BA_HitStun;
+    public float BA_Distance;
+    public float BA_TravelTime;
+    public float BA_ShakeDuration;
+    public float BA_ShakeMagnitude;
+    public float BA_ShakeSlowDown;
+
     [Header("Down Air")]
     public float DA_Damage;
     public float DA_Angle;
@@ -232,6 +257,16 @@ public class Watermelon : MonoBehaviour
               //  }
                 break;
 
+            case 10:
+                player.anim.SetTrigger("BackAir");
+                player.isAttacking = true;
+                //if (player.wawa)
+                //{
+                //     player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                //  }
+                break;
+
             case 11:
                 player.anim.SetTrigger("DownAir");
                 player.isAttacking = true;
@@ -248,6 +283,16 @@ public class Watermelon : MonoBehaviour
                 //if (player.wawa)
                 //{
                  //   player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                //}
+                break;
+
+            case 14:
+                player.anim.SetTrigger("ForwardAir");
+                player.isAttacking = true;
+                //if (player.wawa)
+                //{
+                //   player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
                 //}
                 break;
@@ -336,6 +381,27 @@ public class Watermelon : MonoBehaviour
         enemy.GetComponent<BasicPlayerScript>().GetHit(NA_Damage, NA_Angle, NA_Knockback, NA_HitStun, NA_Distance, NA_TravelTime, player.FacingRight(), NA_ShakeDuration, NA_ShakeMagnitude, NA_ShakeSlowDown);
     }
 
+    private void ForwardAir()
+    {
+        GameObject bullet = Instantiate(spit, spawnSpitHere.transform.position, Quaternion.identity);
+        bullet.GetComponent<Projectile>().SetVariables(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, BF_Distance, BF_TravelTime, spitSpeed, playerNumber, BF_ShakeDuration, BF_ShakeMagnitude, BF_ShakeSlowDown);
+        bullet.GetComponent<Projectile>().moveRight = player.FacingRight();
+        bullet.GetComponent<Projectile>().player = player;
+        if (player.FacingRight())
+        {
+            bullet.GetComponent<Projectile>().direction = new Vector3(-1, 0, 0);
+        }
+        else
+        {
+            bullet.GetComponent<Projectile>().direction = new Vector3(1, 0, 0);
+        }
+    }
+
+    private void BackAir(GameObject enemy)
+    {
+        enemy.GetComponent<BasicPlayerScript>().GetHit(BA_Damage, BA_Angle, BA_Knockback, BA_HitStun, BA_Distance, BA_TravelTime, player.FacingRight(), BA_ShakeDuration, BA_ShakeMagnitude, BA_ShakeSlowDown);
+    }
+
     private void UpAir()
     {
 
@@ -381,6 +447,7 @@ public class Watermelon : MonoBehaviour
      * 4 = Basic Down
      * 
      * 9 = neutral aerial
+     * 10 = Back Air
      * 
      */
     private void OnTriggerEnter2D(Collider2D other)
@@ -410,6 +477,10 @@ public class Watermelon : MonoBehaviour
 
                 case 9:
                     NeutralAir(other.gameObject);
+                    break;
+
+                case 10:
+                    BackAir(other.gameObject);
                     break;
 
                 case 11:
