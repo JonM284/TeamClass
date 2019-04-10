@@ -13042,7 +13042,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1133579041}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.99, y: -1.87, z: 0}
+  m_LocalPosition: {x: 10.99, y: -1.87, z: 0}
   m_LocalScale: {x: 0.41382, y: 0.41382, z: 0.82764}
   m_Children:
   - {fileID: 251218339}
@@ -14858,6 +14858,80 @@ RectTransform:
   m_AnchoredPosition: {x: -220, y: 185}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &1483613191
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 465150925344218950, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: m_Name
+      value: Gno Mercy
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150925344218946, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.484
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150925344218946, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150925344218946, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150925344218946, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150925344218946, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150925344218946, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150925344218946, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150925344218946, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150925344218946, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150925344218946, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150925344218946, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150924411906162, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 55d4e7d9556e799489855555e5439d79, type: 3}
 --- !u!1 &1491147295
 GameObject:
   m_ObjectHideFlags: 0
@@ -17421,6 +17495,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Crystal Claire
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781585, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5615167271143781669, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
