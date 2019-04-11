@@ -120,6 +120,7 @@ public class BasicPlayerScript : MonoBehaviour
     private float doAttackMovementTimer = 0;
     private Vector3 attackMovementDir = new Vector3(0, 0, 0);
     private float attackMovementSpeed = 0;
+    private float attackTimerDelay = 0;
 
 
     bool findTeamController = false;
@@ -261,6 +262,7 @@ public class BasicPlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        attackTimerDelay -= Time.deltaTime;
         landtimer -= Time.deltaTime;
 
         if (findTeamController == false)
@@ -323,7 +325,7 @@ public class BasicPlayerScript : MonoBehaviour
 			Attack();
 		}
 
-        if (doAttackMovementTimer > 0)
+        if (doAttackMovementTimer > 0 && attackTimerDelay < 0)
         {
             doAttackMovementTimer -= Time.deltaTime;
         }
@@ -344,7 +346,7 @@ public class BasicPlayerScript : MonoBehaviour
 
  void FixedUpdate()
 	{
-        if(doAttackMovementTimer > 0)
+        if(doAttackMovementTimer > 0 && attackTimerDelay < 0)
         {
             doAttackMovement();
         }
@@ -946,19 +948,31 @@ public class BasicPlayerScript : MonoBehaviour
     void doAttackMovement()
     {
 
-        velocity = attackMovementDir * attackMovementSpeed;
+        //velocity = attackMovementDir * attackMovementSpeed;
         //rb.MovePosition(transform.position + attackMovementDir * attackMovementSpeed * Time.deltaTime);
+        Debug.Log("Attack Timer: " + doAttackMovementTimer);
+
+        if (direction == "Right")
+        {
+            Vector3 move = new Vector3(attackMovementSpeed, 0, 0);
+            rb.MovePosition(transform.position + move * Time.deltaTime);
+        }
+        if (direction == "Left")
+        {
+            Vector3 move = new Vector3(-attackMovementSpeed, 0, 0);
+            rb.MovePosition(transform.position + move * Time.deltaTime);
+        }
+
 
     }
 
 
-    public void AttackMovement(float speed, float duration, Vector2 direction)
+    public void AttackMovement(float speed, float duration, float delayTime, Vector2 direction)
     {
-
-        speed = attackMovementSpeed;
-        duration = doAttackMovementTimer;
-        direction = attackMovementDir;
-
+        attackMovementSpeed = speed;
+        doAttackMovementTimer = duration;
+        attackMovementDir = direction;
+        attackTimerDelay = delayTime;
     }
 
         

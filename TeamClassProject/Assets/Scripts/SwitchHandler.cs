@@ -157,7 +157,7 @@ public class SwitchHandler : MonoBehaviour
 
                 if(specialMeter[i].fillAmount >= .2f)
                 {
-                    specialMeter[i].color = Color.yellow;
+                    specialMeter[i].color = new Color(1, 248.0f/255.0f, 151.0f/255.0f);
                 }
                 else
                 {
