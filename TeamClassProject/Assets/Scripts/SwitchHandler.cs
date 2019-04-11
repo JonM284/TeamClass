@@ -90,7 +90,7 @@ public class SwitchHandler : MonoBehaviour
 
         if (teammate1_timer > 0 && teammate2_timer > 0)
         {
-            if (specialMeter[0].fillAmount >= 1)
+            if (specialMeter[0].fillAmount >= .2f)
             {
                 currentUltNum -= 100;
 
@@ -152,12 +152,12 @@ public class SwitchHandler : MonoBehaviour
         for(int i = 0; i < 3; i++)
         {
             if (currentUltNum >= 0) {
-                specialMeter[i].fillAmount = temp / 100;
+                specialMeter[i].fillAmount = temp / 100 * .2f;
                 temp -= 100;
 
-                if(specialMeter[i].fillAmount >= 1)
+                if(specialMeter[i].fillAmount >= .2f)
                 {
-                    specialMeter[i].color = Color.yellow;
+                    specialMeter[i].color = new Color(1, 248.0f/255.0f, 151.0f/255.0f);
                 }
                 else
                 {

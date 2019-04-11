@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 
 public class pauserScript : MonoBehaviour
@@ -14,7 +15,7 @@ public class pauserScript : MonoBehaviour
 
     private Vector2 originsfS, originmuS;
 
-
+    public AudioMixerGroup fx, mc;
 
 
      void Start()
@@ -90,6 +91,13 @@ public class pauserScript : MonoBehaviour
             sfxS.enabled = true;
             musS.enabled = true;
         }
+    }
+
+    public void AudioChanging()
+    {
+        print(sfxS.value);
+        fx.audioMixer.SetFloat("VolumeSF", sfxS.value);
+        mc.audioMixer.SetFloat("VolumeMu", musS.value);
     }
 
 }

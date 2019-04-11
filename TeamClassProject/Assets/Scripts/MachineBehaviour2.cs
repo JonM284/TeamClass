@@ -19,7 +19,7 @@ public class MachineBehaviour2 : MonoBehaviour
     [Tooltip("Max distance for side hazards, max angle for side cannons")]
     public float Max_range;
     //These are the different MACHINE TYPES
-    public enum MachineID { Two_Fairy, Two_BottomHazard, Two_TopHazard, Two_Mushrooms };
+    public enum MachineID { Two_Fairy, Two_BottomHazard, Two_TopHazard, Two_Mushrooms, Two_Squirrel };
     [Header("Machine Type")]
     [Tooltip("What type of machine will this be?")]
     public MachineID mach;
@@ -60,6 +60,10 @@ public class MachineBehaviour2 : MonoBehaviour
     private float cooldownLength_Mushrooms;
     private bool Mushrooms_Machine_Ready;
 
+    private float cooldownTimer_Squirrel;
+    private float cooldownLength_Squirrel;
+    private bool Squirrel_Machine_Ready;
+
     public List<Vector3> Hazard_StartPos;
     public List<Vector3> Hazard_MaxPos;
     public List<Vector3> Hazard_MinPos;
@@ -86,6 +90,7 @@ public class MachineBehaviour2 : MonoBehaviour
 
 
         //resetting cooldowns
+        //IF MAKING COOLDOWN 3 SECONDS INSTEAD, OTHER MACHINES HAVE TO LAST LESS THAN 3 SECONDS (TREE, MUSHROOMS)
         cooldownTimer_Fairy = 0f;
         cooldownLength_Fairy = 5f;
         Fairy_Machine_Ready = true;
@@ -98,9 +103,13 @@ public class MachineBehaviour2 : MonoBehaviour
         cooldownLength_TwoTopHazard = 5f;
         Two_TopHazard_Machine_Ready = true;
 
-        cooldownTimer_Mushrooms= 0f;
+        cooldownTimer_Mushrooms = 0f;
         cooldownLength_Mushrooms = 5f;
         Mushrooms_Machine_Ready = true;
+
+        cooldownTimer_Squirrel = 0f;
+        cooldownLength_Squirrel = 5f;
+        Squirrel_Machine_Ready = true;
     }
 
     // Update is called once per frame
@@ -150,6 +159,17 @@ public class MachineBehaviour2 : MonoBehaviour
             }
         }
 
+        //Squirrel Cooldown
+        if (Squirrel_Machine_Ready == false)
+        {
+            cooldownTimer_Squirrel -= Time.deltaTime;
+            if (cooldownTimer_Squirrel <= 0)
+            {
+                Squirrel_Machine_Ready = true;
+                GetComponent<BoxCollider2D>().enabled = true;
+            }
+        }
+
         //if the machine is in use
         if (is_In_Use) {
 
@@ -174,10 +194,10 @@ public class MachineBehaviour2 : MonoBehaviour
                 horizontalInput = myPlayer.GetAxisRaw("Horizontal");
                 MushroomMachine();
             }/*
-            else if (mach == MachineID.MiddlePlatform)
+            else if (mach == MachineID.Squirrel)
             {
 
-                MiddlePlatformBehavior();
+
             }*/
         }
 

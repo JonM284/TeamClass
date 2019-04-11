@@ -15,6 +15,7 @@ TagManager:
   - MenuButton
   - Wawa
   - Mushroom_BouncePad
+  - SupportPlayer
   layers:
   - Default
   - TransparentFX
@@ -51,6 +52,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Outline
+    uniqueID: 4239420379
     locked: 0
   - name: Background
     uniqueID: 2516756037

@@ -130,7 +130,7 @@ public class MachineBehaviour : MonoBehaviour
         middlePlatform_rb = middlePlatform.GetComponent<Rigidbody2D>();
         middlePlatform_vacuumBoxCollider = GameObject.Find("MiddlePlatform_Collider_Vacuum").GetComponent<BoxCollider2D>();
         middlePlatform_blowBoxCollider = GameObject.Find("MiddlePlatform_Collider_Blow").GetComponent<BoxCollider2D>();
-        middlePlatform_moveSpeed = 0.125f;
+        
 
         //setting AudioSource
         machineSoundPlayer = gameObject.GetComponent<AudioSource>();
@@ -307,6 +307,27 @@ public class MachineBehaviour : MonoBehaviour
         if (myPlayer.GetButtonDown("Jump"))
         {
             End_Control();
+        }
+
+        if (Controlled_Hazard[Current_Haz_Num].transform.position.y > 4f)
+        {
+            Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.position.x,
+                4, Controlled_Hazard[Current_Haz_Num].transform.position.z);
+        }
+        if (Controlled_Hazard[Current_Haz_Num].transform.position.y <-2f)
+        {
+            Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.position.x,
+                -2, Controlled_Hazard[Current_Haz_Num].transform.position.z);
+        }
+        if (Controlled_Hazard[Current_Haz_Num].transform.position.x < -7.5)
+        {
+            Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(-7.5f,
+              Controlled_Hazard[Current_Haz_Num].transform.position.y, Controlled_Hazard[Current_Haz_Num].transform.position.z);
+        }
+        else if (Controlled_Hazard[Current_Haz_Num].transform.position.x > 7.5)
+        {
+            Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(7.5f,
+               Controlled_Hazard[Current_Haz_Num].transform.position.y, Controlled_Hazard[Current_Haz_Num].transform.position.z);
         }
 
         //this allows the player to move the crosshair
@@ -576,12 +597,12 @@ public class MachineBehaviour : MonoBehaviour
         //move ship upward
         if (middlePlatform_movingUp == true)
         {
-            middlePlatform_rb.MovePosition(middlePlatform.transform.position + middlePlatform.transform.up * middlePlatform_moveSpeed * Time.deltaTime);
+            middlePlatform_rb.MovePosition(middlePlatform.transform.position + middlePlatform.transform.up * speed * Time.deltaTime);
         }
         //move ship downward
         else if(middlePlatform_movingUp == false)
         {
-            middlePlatform_rb.MovePosition(middlePlatform.transform.position - middlePlatform.transform.up * middlePlatform_moveSpeed * Time.deltaTime);
+            middlePlatform_rb.MovePosition(middlePlatform.transform.position - middlePlatform.transform.up * speed * Time.deltaTime);
         }
         
         //if ship reaches its max/min, kick out of machine and set cooldown
@@ -696,13 +717,13 @@ public class MachineBehaviour : MonoBehaviour
             switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
             {
                 case 2:
-                    Controlled_Hazard[0].GetComponentInParent<SpriteRenderer>().color = Color.cyan;
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.cyan;
                     break;
                 case 1:
-                    Controlled_Hazard[0].GetComponentInParent<SpriteRenderer>().color = Color.red;
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.red;
                     break;
                 default:
-                    Controlled_Hazard[0].GetComponentInParent<SpriteRenderer>().color = Color.black;
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.black;
                     break;
             }
         }
@@ -712,13 +733,13 @@ public class MachineBehaviour : MonoBehaviour
             switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
             {
                 case 2:
-                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.cyan;
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.cyan;
                     break;
                 case 1:
-                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.red;
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
                     break;
                 default:
-                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.black;
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.black;
                     break;
             }
         }else if (mach == MachineID.SpecialPlatform)
@@ -726,13 +747,13 @@ public class MachineBehaviour : MonoBehaviour
             switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
             {
                 case 2:
-                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.cyan;
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.cyan;
                     break;
                 case 1:
-                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.red;
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
                     break;
                 default:
-                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.black;
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.black;
                     break;
             }
         }

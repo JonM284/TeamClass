@@ -89,6 +89,17 @@ public class Gnomercy : MonoBehaviour
     public GameObject spawnIceShotHere1;
 	public float bulletSpeed1;
 
+	[Header("Forward Air")]
+	public float FA_Damage;
+	public float FA_Angle;
+	public float FA_Knockback;
+	public float FA_HitStun;
+	public float FA_Distance;
+	public float FA_TravelTime;
+	public float FA_ShakeDuration;
+	public float FA_ShakeMagnitude;
+	public float FA_ShakeSlowDown;
+
 	[Header("Neutral Heavy")]
 	public float NH_Damage;
 	public float NH_Angle;
@@ -111,27 +122,27 @@ public class Gnomercy : MonoBehaviour
     public float FH_ShakeMagnitude;
     public float FH_ShakeSlowDown;
 
-    [Header("Down Heavy Part 1")]
-	public float DH1_Damage;
-	public float DH1_Angle;
-	public float DH1_Knockback;
-	public float DH1_HitStun;
-	public float DH1_Distance;
-	public float DH1_TravelTime;
-    public float DH1_ShakeDuration;
-    public float DH1_ShakeMagnitude;
-    public float DH1_ShakeSlowDown;
+    [Header("Down Heavy")]
+	public float DH_Damage;
+	public float DH_Angle;
+	public float DH_Knockback;
+	public float DH_HitStun;
+	public float DH_Distance;
+	public float DH_TravelTime;
+    public float DH_ShakeDuration;
+    public float DH_ShakeMagnitude;
+    public float DH_ShakeSlowDown;
 
-    [Header("Down Heavy Part 2")]
-	public float DH2_Damage;
-	public float DH2_Angle;
-	public float DH2_Knockback;
-	public float DH2_HitStun;
-	public float DH2_Distance;
-	public float DH2_TravelTime;
-    public float DH2_ShakeDuration;
-    public float DH2_ShakeMagnitude;
-    public float DH2_ShakeSlowDown;
+    [Header("Up Heavy")]
+	public float UH_Damage;
+	public float UH_Angle;
+	public float UH_Knockback;
+	public float UH_HitStun;
+	public float UH_Distance;
+	public float UH_TravelTime;
+    public float UH_ShakeDuration;
+    public float UH_ShakeMagnitude;
+    public float UH_ShakeSlowDown;
 
     BasicPlayerScript player;
 
@@ -189,6 +200,12 @@ public class Gnomercy : MonoBehaviour
                 player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 break;
 
+			case 4:
+				player.anim.SetTrigger("BasicDown");
+				player.isAttacking = true;
+				player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+				break;
+
 			case 9:
 				player.anim.SetTrigger("NeutralAir");
 				player.isAttacking = true;
@@ -196,6 +213,11 @@ public class Gnomercy : MonoBehaviour
 
 			case 10:
 				player.anim.SetTrigger("UpAir");
+				player.isAttacking = true;
+				break;
+
+			case 14:
+				player.anim.SetTrigger("ForwardAir");
 				player.isAttacking = true;
 				break;
 
@@ -216,6 +238,12 @@ public class Gnomercy : MonoBehaviour
 				player.isAttacking = true;
                 player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 break;
+
+			case 23:
+				player.anim.SetTrigger("HeavyUp");
+				player.isAttacking = true;
+				player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+				break;
 
 
 			default:
@@ -266,6 +294,11 @@ public class Gnomercy : MonoBehaviour
 		bullet.GetComponent<Projectile>().moveRight = player.FacingRight();
 	}
 
+	private void ForwardAir(GameObject enemy)
+	{
+		enemy.GetComponent<BasicPlayerScript>().GetHit(FA_Damage, FA_Angle, FA_Knockback, FA_HitStun, FA_Distance, FA_TravelTime, player.FacingRight(), FA_ShakeDuration, FA_ShakeMagnitude, FA_ShakeSlowDown);
+	}
+
 	private void NeutralHeavy(GameObject enemy)
 	{
 		enemy.GetComponent<BasicPlayerScript>().GetHit(NH_Damage, NH_Angle, NH_Knockback, NH_HitStun, NH_Distance, NH_TravelTime, player.FacingRight(), NH_ShakeDuration, NH_ShakeMagnitude, NH_ShakeSlowDown);
@@ -276,14 +309,15 @@ public class Gnomercy : MonoBehaviour
 		enemy.GetComponent<BasicPlayerScript>().GetHit(FH_Damage, FH_Angle, FH_Knockback, FH_HitStun, FH_Distance, FH_TravelTime, player.FacingRight(), FH_ShakeDuration, FH_ShakeMagnitude, FH_ShakeSlowDown);
 	}
 
-	private void DownHeavyPart1(GameObject enemy)
+	private void DownHeavy(GameObject enemy)
 	{
-		enemy.GetComponent<BasicPlayerScript>().GetHit(DH1_Damage, DH1_Angle, DH1_Knockback, DH1_HitStun, DH1_Distance, DH1_TravelTime, player.FacingRight(), DH1_ShakeDuration, DH1_ShakeMagnitude, DH1_ShakeSlowDown);
+		//do gnomercy's dirt projectile
+		//enemy.GetComponent<BasicPlayerScript>().GetHit(DH1_Damage, DH1_Angle, DH1_Knockback, DH1_HitStun, DH1_Distance, DH1_TravelTime, player.FacingRight(), DH1_ShakeDuration, DH1_ShakeMagnitude, DH1_ShakeSlowDown);
 	}
 
-	private void DownHeavyPart2(GameObject enemy)
+	private void UpHeavy(GameObject enemy)
 	{
-		enemy.GetComponent<BasicPlayerScript>().GetHit(DH2_Damage, DH2_Angle, DH2_Knockback, DH2_HitStun, DH2_Distance, DH2_TravelTime, player.FacingRight(), DH2_ShakeDuration, DH2_ShakeMagnitude, DH2_ShakeSlowDown);
+		enemy.GetComponent<BasicPlayerScript>().GetHit(UH_Damage, UH_Angle, UH_Knockback, UH_HitStun, UH_Distance, UH_TravelTime, player.FacingRight(), UH_ShakeDuration, UH_ShakeMagnitude, UH_ShakeSlowDown);
 	}
 
 	public void CurrentAttack(int attackNum)
@@ -307,13 +341,14 @@ public class Gnomercy : MonoBehaviour
      * 3 = Basic Up
      * 4 = Basic Down
      * 
-     * 9 = neutral aerial
+     * 9 = neutral air
      * 
+	 * 14 = forward air
      * 
      * 20 = neutral heavy
      * 21 = forward heavy
-     * 22 = down heavy part 1
-     * 23 = down heavy part 2
+     * 22 = down heavy
+     * 23 = Up Heavy
      * 
      */
 	private void OnTriggerEnter2D(Collider2D other)
@@ -345,6 +380,10 @@ public class Gnomercy : MonoBehaviour
 							NeutralAir(other.gameObject);
 							break;
 
+						case 14:
+							ForwardAir(other.gameObject);
+							break;
+
 						case 20:
 							NeutralHeavy(other.gameObject);
 							break;
@@ -353,12 +392,8 @@ public class Gnomercy : MonoBehaviour
 							ForwardHeavy(other.gameObject);
 							break;
 
-						case 22:
-							DownHeavyPart1(other.gameObject);
-							break;
-
 						case 23:
-							DownHeavyPart2(other.gameObject);
+							UpHeavy(other.gameObject);
 							break;
 					}
 				}

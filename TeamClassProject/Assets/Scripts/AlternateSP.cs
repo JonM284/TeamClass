@@ -96,11 +96,12 @@ public class AlternateSP : MonoBehaviour
             transform.position = new Vector2(7.5f, transform.position.y);
         }
 
-        if (myPlayer.GetButtonDown("Switch"))
+        if (myPlayer.GetButtonDown("Switch") && status == Status.Free)
         {
             try
             {
-                    teamController.GetComponent<SwitchHandler>().BeginSwap(playerNum);
+                Debug.Log(teamController.name);
+                teamController.GetComponent<SwitchHandler>().BeginSwap(playerNum);
             }
             catch
             {
@@ -129,6 +130,11 @@ public class AlternateSP : MonoBehaviour
             {
                 transform.position = new Vector3(myMachine.transform.position.x, transform.position.y, transform.position.z);
             }
+        }
+
+        if (transform.position.y != -4.027125)
+        {
+            transform.position = new Vector3(transform.position.x, -4.027125f, transform.position.z);
         }
 
         // If player is infront of machine and they press "Jump" and they are free, set their status to at a machine
@@ -170,7 +176,9 @@ public class AlternateSP : MonoBehaviour
                 Debug.Log(status);
             }
 
-        }else if (status == Status.AtMachine && myPlayer.GetButtonDown("BasicAttack"))
+        }
+
+        if (status == Status.AtMachine && myPlayer.GetButtonDown("BasicAttack"))
         {
             status = Status.Free;
             if (myMachine.GetComponent<MachineBehaviour>().is_In_Use)
@@ -213,16 +221,20 @@ public class AlternateSP : MonoBehaviour
         if (myPlayer.GetAxisRaw("Horizontal") == 0 && status == Status.Free)
         {
             anim.SetInteger("Anim_Num", 0);
-        }else if (Mathf.Abs(myPlayer.GetAxisRaw("Horizontal")) >= 0.1f && status == Status.Free)
+        }
+        if (Mathf.Abs(myPlayer.GetAxisRaw("Horizontal")) >= 0.1f && status == Status.Free)
         {
             anim.SetInteger("Anim_Num", 1);
-        }else if (status == Status.AtMachine && Mathf.Abs(myPlayer.GetAxisRaw("Horizontal")) == 0 && Mathf.Abs(myPlayer.GetAxisRaw("Vertical")) == 0)
+        }
+        if (status == Status.AtMachine && Mathf.Abs(myPlayer.GetAxisRaw("Horizontal")) == 0 && Mathf.Abs(myPlayer.GetAxisRaw("Vertical")) == 0)
         {
             anim.SetInteger("Anim_Num", 2);
-        }else if (status == Status.AtMachine && (myPlayer.GetAxisRaw("Horizontal") >= 0.1f || myPlayer.GetAxisRaw("Vertical") >= 0.1f))
+        }
+        if (status == Status.AtMachine && (myPlayer.GetAxisRaw("Horizontal") >= 0.1f || myPlayer.GetAxisRaw("Vertical") >= 0.1f))
         {
             anim.SetInteger("Anim_Num", 7);
-        }else if (status == Status.AtMachine && (myPlayer.GetAxisRaw("Horizontal") <= -0.1f || myPlayer.GetAxisRaw("Vertical") <= -0.1f))
+        }
+        if (status == Status.AtMachine && (myPlayer.GetAxisRaw("Horizontal") <= -0.1f || myPlayer.GetAxisRaw("Vertical") <= -0.1f))
         {
             anim.SetInteger("Anim_Num", 6);
         }
@@ -254,7 +266,7 @@ public class AlternateSP : MonoBehaviour
     //--------------------------------------------------------------------------------------------------
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Machine")
+        if (other.gameObject.tag == "Machine" && !other.gameObject.GetComponent<MachineBehaviour>().is_In_Use)
         {
             is_In_Area = true;
             myMachine = other.gameObject;
@@ -266,7 +278,7 @@ public class AlternateSP : MonoBehaviour
     //--------------------------------------------------------------------------------------------------
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Machine")
+        if (other.gameObject.tag == "Machine" && !other.gameObject.GetComponent<MachineBehaviour>().is_In_Use)
         {           
             myMachine = other.gameObject;
         }
