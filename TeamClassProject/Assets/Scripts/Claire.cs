@@ -255,8 +255,7 @@ public class Claire : MonoBehaviour
 			case 4:
 				player.anim.SetTrigger("BasicDown");
 				player.isAttacking = true;
-                player.AttackMovement(5, .55f, .1f, new Vector2(0, 0));
-                break;
+				break;
 
             case 9:
                 player.anim.SetTrigger("NeutralAir");
@@ -308,7 +307,12 @@ public class Claire : MonoBehaviour
                 ClaireSoundPlayer.clip = ClaireSounds[6];
                 ClaireSoundPlayer.Play();
 
-                player.AttackMovement(5, .55f, .1f, new Vector2(0, 0));
+                if (player.claire)
+                    {
+
+                        //add movement
+
+                    }
                 break;
 
             case 22:
