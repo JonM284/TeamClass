@@ -96,11 +96,12 @@ public class AlternateSP : MonoBehaviour
             transform.position = new Vector2(7.5f, transform.position.y);
         }
 
-        if (myPlayer.GetButtonDown("Switch"))
+        if (myPlayer.GetButtonDown("Switch") && status == Status.Free)
         {
             try
             {
-                    teamController.GetComponent<SwitchHandler>().BeginSwap(playerNum);
+                Debug.Log(teamController.name);
+                teamController.GetComponent<SwitchHandler>().BeginSwap(playerNum);
             }
             catch
             {
@@ -129,6 +130,11 @@ public class AlternateSP : MonoBehaviour
             {
                 transform.position = new Vector3(myMachine.transform.position.x, transform.position.y, transform.position.z);
             }
+        }
+
+        if (transform.position.y != -4.027125)
+        {
+            transform.position = new Vector3(transform.position.x, -4.027125f, transform.position.z);
         }
 
         // If player is infront of machine and they press "Jump" and they are free, set their status to at a machine

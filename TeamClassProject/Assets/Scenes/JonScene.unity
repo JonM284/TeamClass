@@ -992,7 +992,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
       propertyPath: playerNum
-      value: 4
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
+      propertyPath: teamID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
+      propertyPath: teamNum
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
@@ -9773,7 +9781,7 @@ PrefabInstance:
     - target: {fileID: 601068658141386479, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
         type: 3}
       propertyPath: playerNum
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
       propertyPath: GilbertSounds.Array.size
@@ -10610,10 +10618,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamNumber: 1
-  teammate1_fighter: {fileID: 1827133004}
-  teammate1_support: {fileID: 1570947080}
-  teammate2_fighter: {fileID: 645758370}
-  teammate2_support: {fileID: 2094059088}
+  teammate1_fighter: {fileID: 645758370}
+  teammate1_support: {fileID: 2094059088}
+  teammate2_fighter: {fileID: 1827133004}
+  teammate2_support: {fileID: 1570947080}
   specialMeter:
   - {fileID: 946656933}
   - {fileID: 387890593}
@@ -17422,6 +17430,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
       propertyPath: playerNum
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
+      propertyPath: teamNum
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -20038,7 +20050,7 @@ PrefabInstance:
     - target: {fileID: 5615167271143781587, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
       propertyPath: playerNum
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
@@ -20100,59 +20112,15 @@ PrefabInstance:
       propertyPath: ClaireSounds.Array.data[6]
       value: 
       objectReference: {fileID: 8300000, guid: 76d160b1550c1d44887508aca288e58a, type: 3}
-    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: BD_Damage
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: BD_Angle
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: BD_Knockback
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: BD_HitStun
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: BD_Distance
-      value: 135
-      objectReference: {fileID: 0}
-    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: BD_TravelTime
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: BD_ShakeDuration
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: BD_ShakeMagnitude
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 5615167271143781679, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: BD_ShakeSlowDown
-      value: 0.02
-      objectReference: {fileID: 0}
     - target: {fileID: 5615167271143781584, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 825623643, guid: 8619d383b949f2047802810e41ae9a6c, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
+    - target: {fileID: 5615167271143781677, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: playerNum
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8619d383b949f2047802810e41ae9a6c, type: 3}
@@ -21303,15 +21271,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
+      propertyPath: playerNum
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
+      propertyPath: teamID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
+      propertyPath: teamNum
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4224738144925258988, guid: f081e4ae8c20f64408db1e12712574bf,
         type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 6723ac93ce646c949bccc870c71def42, type: 2}
-    - target: {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
-      propertyPath: playerNum
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4224738144925258988, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
@@ -22070,13 +22046,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 133428130904735773, guid: db453bdbb735396439e84a12697d9e7b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
       propertyPath: teamID
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
       propertyPath: playerNum
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
+      propertyPath: teamNum
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
