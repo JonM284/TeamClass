@@ -260,7 +260,7 @@ public class AlternateSP : MonoBehaviour
     //--------------------------------------------------------------------------------------------------
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Machine")
+        if (other.gameObject.tag == "Machine" && !other.gameObject.GetComponent<MachineBehaviour>().is_In_Use)
         {
             is_In_Area = true;
             myMachine = other.gameObject;
@@ -272,7 +272,7 @@ public class AlternateSP : MonoBehaviour
     //--------------------------------------------------------------------------------------------------
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Machine")
+        if (other.gameObject.tag == "Machine" && !other.gameObject.GetComponent<MachineBehaviour>().is_In_Use)
         {           
             myMachine = other.gameObject;
         }
