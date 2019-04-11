@@ -1411,25 +1411,7 @@ AnimationClip:
     path: Skirt/Crystal Torso/Front Crystal Bicep/Front Crystal Forearm/Claire Blade
     classID: 1
     script: {fileID: 0}
-  m_PPtrCurves:
-  - curve:
-    - time: 0.85833335
-      value: {fileID: 21300008, guid: 10468c9b9d5c3400385d279504c62a8a, type: 3}
-    - time: 0
-      value: {fileID: 21300008, guid: 10468c9b9d5c3400385d279504c62a8a, type: 3}
-    attribute: m_Sprite
-    path: Skirt/Front Crystal Thigh/Front Crystal Calf
-    classID: 212
-    script: {fileID: 0}
-  - curve:
-    - time: 0.85833335
-      value: {fileID: 21300032, guid: 10468c9b9d5c3400385d279504c62a8a, type: 3}
-    - time: 0
-      value: {fileID: 21300032, guid: 10468c9b9d5c3400385d279504c62a8a, type: 3}
-    attribute: m_Sprite
-    path: Skirt/Front Crystal Thigh/Front Crystal Calf/Front Crystal Foot
-    classID: 212
-    script: {fileID: 0}
+  m_PPtrCurves: []
   m_SampleRate: 120
   m_WrapMode: 0
   m_Bounds:
@@ -1544,20 +1526,6 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 617622773
-      attribute: 0
-      script: {fileID: 0}
-      typeID: 212
-      customType: 23
-      isPPtrCurve: 1
-    - serializedVersion: 2
-      path: 2623201478
-      attribute: 0
-      script: {fileID: 0}
-      typeID: 212
-      customType: 23
-      isPPtrCurve: 1
-    - serializedVersion: 2
-      path: 617622773
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -1633,11 +1601,7 @@ AnimationClip:
       typeID: 1
       customType: 0
       isPPtrCurve: 0
-    pptrCurveMapping:
-    - {fileID: 21300008, guid: 10468c9b9d5c3400385d279504c62a8a, type: 3}
-    - {fileID: 21300008, guid: 10468c9b9d5c3400385d279504c62a8a, type: 3}
-    - {fileID: 21300032, guid: 10468c9b9d5c3400385d279504c62a8a, type: 3}
-    - {fileID: 21300032, guid: 10468c9b9d5c3400385d279504c62a8a, type: 3}
+    pptrCurveMapping: []
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
