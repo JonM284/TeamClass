@@ -12319,15 +12319,15 @@ MonoBehaviour:
   UA_ShakeSlowDown: 0
   spawnIceShotHere1: {fileID: 0}
   bulletSpeed1: 0
-  NH_Damage: 0
-  NH_Angle: 0
-  NH_Knockback: 0
-  NH_HitStun: 0
-  NH_Distance: 0
-  NH_TravelTime: 0
-  NH_ShakeDuration: 0
-  NH_ShakeMagnitude: 0
-  NH_ShakeSlowDown: 0
+  NH_Damage: 50
+  NH_Angle: 60
+  NH_Knockback: 125
+  NH_HitStun: 0.04
+  NH_Distance: 100
+  NH_TravelTime: 0.04
+  NH_ShakeDuration: 0.0035
+  NH_ShakeMagnitude: 0.2
+  NH_ShakeSlowDown: 0.02
   FH_Damage: 0
   FH_Angle: 0
   FH_Knockback: 0
@@ -12337,24 +12337,24 @@ MonoBehaviour:
   FH_ShakeDuration: 0
   FH_ShakeMagnitude: 0
   FH_ShakeSlowDown: 0
-  DH1_Damage: 0
-  DH1_Angle: 0
-  DH1_Knockback: 0
-  DH1_HitStun: 0
-  DH1_Distance: 0
-  DH1_TravelTime: 0
-  DH1_ShakeDuration: 0
-  DH1_ShakeMagnitude: 0
-  DH1_ShakeSlowDown: 0
-  DH2_Damage: 0
-  DH2_Angle: 0
-  DH2_Knockback: 0
-  DH2_HitStun: 0
-  DH2_Distance: 0
-  DH2_TravelTime: 0
-  DH2_ShakeDuration: 0
-  DH2_ShakeMagnitude: 0
-  DH2_ShakeSlowDown: 0
+  DH_Damage: 0
+  DH_Angle: 0
+  DH_Knockback: 0
+  DH_HitStun: 0
+  DH_Distance: 0
+  DH_TravelTime: 0
+  DH_ShakeDuration: 0
+  DH_ShakeMagnitude: 0
+  DH_ShakeSlowDown: 0
+  UH_Damage: 0
+  UH_Angle: 0
+  UH_Knockback: 0
+  UH_HitStun: 0
+  UH_Distance: 0
+  UH_TravelTime: 0
+  UH_ShakeDuration: 0
+  UH_ShakeMagnitude: 0
+  UH_ShakeSlowDown: 0
   GnomercySounds:
   - {fileID: 8300000, guid: 8184a72042d3277489e008c378fe68e6, type: 3}
   GnomercySoundPlayer: {fileID: 0}

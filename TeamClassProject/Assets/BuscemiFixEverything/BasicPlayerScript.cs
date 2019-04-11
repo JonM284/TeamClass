@@ -666,7 +666,9 @@ public class BasicPlayerScript : MonoBehaviour
 
                     if (gillbert) { gillbertCharacter.GilbertAttackController(4); }
 
-                    if (wawa) {wawaCharacter.WawaAttackController(4); }
+					if (gnomercy) { gnomercyCharacter.GnomercyAttackController(4); }
+
+					if (wawa) {wawaCharacter.WawaAttackController(4); }
                 }
             }
 
@@ -706,7 +708,7 @@ public class BasicPlayerScript : MonoBehaviour
 
                         if (gillbert) { gillbertCharacter.GilbertAttackController(11); }
 
-                        //if (gnomercy) { gnomercyCharacter.GnomercyAttackController(11); }
+                        if (gnomercy) { gnomercyCharacter.GnomercyAttackController(14); }
 
                         if (wawa) { wawaCharacter.WawaAttackController(14); }
                     }
@@ -837,7 +839,7 @@ public class BasicPlayerScript : MonoBehaviour
 
                     //if (gillbert) { gillbertCharacter.GilbertAttackController(23); }
 
-                    //if (gnomercy) { gnomercyCharacter.GnomercyAttackController(23); }
+                    if (gnomercy) { gnomercyCharacter.GnomercyAttackController(23); }
                 }
             }
 
@@ -1080,7 +1082,7 @@ public class BasicPlayerScript : MonoBehaviour
 				if (contact.normal.y >= 0)
 				{ //am I hitting the top of the platform?
                     isJumping = false;
-                    isAttacking = false;
+                    //isAttacking = false;
                     if (landtimer < 0)
                     {
                         anim.SetTrigger("land");
