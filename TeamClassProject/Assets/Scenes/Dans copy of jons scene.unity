@@ -4410,7 +4410,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453940707}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.97, z: 0}
   m_LocalScale: {x: 12, y: 1, z: 1}
   m_Children:
   - {fileID: 1808684086}
@@ -14870,6 +14870,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gno Mercy
       objectReference: {fileID: 0}
+    - target: {fileID: 465150925344218950, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 465150925344218946, guid: 55d4e7d9556e799489855555e5439d79,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14929,6 +14934,66 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150925344218947, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: NH_Angle
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150925344218947, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: NH_Knockback
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150925344218947, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: NH_Distance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150925344218947, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: NH_Damage
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150925344218947, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: NH_TravelTime
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150925344218947, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: NH_ShakeDuration
+      value: 0.0035
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150925344218947, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: NH_ShakeMagnitude
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150925344218947, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: NH_ShakeSlowDown
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150925344218947, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: NH_HitStun
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150924710674501, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150924710674501, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 1.4476343
+      objectReference: {fileID: 0}
+    - target: {fileID: 465150924710674501, guid: 55d4e7d9556e799489855555e5439d79,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 4.105057
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55d4e7d9556e799489855555e5439d79, type: 3}
