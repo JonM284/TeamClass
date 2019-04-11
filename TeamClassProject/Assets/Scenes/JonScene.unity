@@ -992,7 +992,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
       propertyPath: playerNum
-      value: 4
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
+      propertyPath: teamID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
+      propertyPath: teamNum
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
@@ -17424,6 +17432,10 @@ PrefabInstance:
       propertyPath: playerNum
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
+      propertyPath: teamNum
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
 --- !u!1 &1570947080 stripped
@@ -20105,6 +20117,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781677, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: playerNum
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8619d383b949f2047802810e41ae9a6c, type: 3}
 --- !u!1 &1827133004 stripped
@@ -21254,15 +21271,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
+      propertyPath: playerNum
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
+      propertyPath: teamID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
+      propertyPath: teamNum
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4224738144925258988, guid: f081e4ae8c20f64408db1e12712574bf,
         type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 6723ac93ce646c949bccc870c71def42, type: 2}
-    - target: {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
-      propertyPath: playerNum
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4224738144925258988, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
@@ -22021,12 +22046,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 133428130904735773, guid: db453bdbb735396439e84a12697d9e7b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
       propertyPath: teamID
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
       propertyPath: playerNum
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
+      propertyPath: teamNum
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
