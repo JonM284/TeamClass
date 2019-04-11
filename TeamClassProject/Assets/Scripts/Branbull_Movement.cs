@@ -79,7 +79,7 @@ public class Branbull_Movement : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         branbullExploded.GetComponent<SpriteRenderer>().enabled = true;
         branbullExploded.GetComponent<BoxCollider2D>().enabled = true;
-        transform.position = new Vector3(transform.position.x, transform.position.y + .025f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

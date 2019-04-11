@@ -35,7 +35,7 @@ public class Apple_Movement : MonoBehaviour
         {
             appleCollider.enabled = false;
         }
-        damageToDealToPlayer = 100;
+        damageToDealToPlayer = 50;
     }
 
     // Update is called once per frame
@@ -97,7 +97,8 @@ public class Apple_Movement : MonoBehaviour
         //deals damage to player if apple hits player
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(damageToDealToPlayer, 0, 0, 0, 0, 0, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight(),0,0,0);
+            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(damageToDealToPlayer, 0, 0, /*Stun Time*/.75f, 0, 0, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight(),0,0,0);
+            
         }
     }
 
