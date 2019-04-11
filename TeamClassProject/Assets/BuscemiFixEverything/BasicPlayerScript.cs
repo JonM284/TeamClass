@@ -16,6 +16,7 @@ public class BasicPlayerScript : MonoBehaviour
 	public int playerNum;
     public SpriteRenderer[] rigPieces;
     public int teamNum;
+	private Shader outlineColor;
 
 	public Image healthBar;
 	public Image regenableHealthBar;
@@ -227,7 +228,36 @@ public class BasicPlayerScript : MonoBehaviour
                 }
             }
         }
-    }
+
+		outlineColor = Shader.Find("GUI/Text");
+
+		if (teamNum == 1)
+		{
+			foreach (SpriteRenderer sprite in rigPieces)
+			{
+				if (sprite.sortingLayerName == "Outline")
+				{
+					sprite.material.shader = outlineColor;
+					sprite.color = Color.red;
+				}
+				
+			}
+		}
+
+		if (teamNum == 2)
+		{
+			foreach (SpriteRenderer sprite in rigPieces)
+			{
+				if (sprite.sortingLayerName == "Outline")
+				{
+					sprite.material.shader = outlineColor;
+					sprite.color = Color.blue;
+				}
+
+			}
+		}
+
+	}
 
 	// Start is called before the first frame update
 	void Start()
