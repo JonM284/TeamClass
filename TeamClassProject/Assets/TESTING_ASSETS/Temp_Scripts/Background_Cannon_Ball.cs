@@ -6,6 +6,7 @@ public class Background_Cannon_Ball : MonoBehaviour
 {
 
     public ParticleSystem explosion_Effect;
+    public float wait_Time;
 
     private void OnEnable()
     {
@@ -25,7 +26,7 @@ public class Background_Cannon_Ball : MonoBehaviour
     IEnumerator Turn_On()
     {
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(wait_Time);
         this.GetComponent<Collider2D>().enabled = true;
         explosion_Effect.Play();
         yield return new WaitForSeconds(1.5f);
