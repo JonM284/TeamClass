@@ -1109,6 +1109,7 @@ public class BasicPlayerScript : MonoBehaviour
 			if (Mathf.Abs(contact.normal.y) > Mathf.Abs(contact.normal.x))
 			{
 				velocity.y = 0; //stop vertical velocity
+                hitHead = true;
 				if (contact.normal.y >= 0)
 				{ //am I hitting the top of the platform?
                     isJumping = false;
