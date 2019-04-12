@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
 using Rewired.ControllerExtensions;
+using UnityEngine.SceneManagement;
 
 public class PlayerStageSelect : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class PlayerStageSelect : MonoBehaviour
     public GameObject white_box;
     public GameObject white_box_2;
 
+    public float timer;
+    public float timerMax;
+
     void Awake()
     {
         myPlayer = ReInput.players.GetPlayer(playerNum - 1);
@@ -40,13 +44,23 @@ public class PlayerStageSelect : MonoBehaviour
 
         white_box.SetActive(false);
         white_box_2.SetActive(false);
+
+        timer = 0f;
+        timerMax = 15f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        timer++;
+
+        if (timer >= timerMax)
+        {
+            timer = timerMax;
+        }
+
         //move right if holding right
-        if(myPlayer.GetAxis("Horizontal") >= 0.1f && hasSelected == false)
+        if (myPlayer.GetAxis("Horizontal") >= 0.1f && hasSelected == false)
         {
             position--;
         }
@@ -110,13 +124,20 @@ public class PlayerStageSelect : MonoBehaviour
             }
         }
 
-        if (myPlayer.GetButtonDown("HeavyAttack") && hasSelected == true)
+        if (myPlayer.GetButtonDown("HeavyAttack") && hasSelected == true && timer >= timerMax)
         {
             white_box.SetActive(false);
             white_box_2.SetActive(true);
             stage_airship.SetActive(false);
             stage_forest.SetActive(false);
             hasSelected = false;
+            timer = 0;
+        }
+
+        if (myPlayer.GetButtonDown("HeavyAttack") && hasSelected == false && timer >= timerMax)
+        {
+            timer = 0;
+            SceneManager.LoadScene("NolanScene");
         }
     }
 }

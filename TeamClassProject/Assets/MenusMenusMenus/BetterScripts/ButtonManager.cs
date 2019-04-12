@@ -110,9 +110,10 @@ public class ButtonManager : MonoBehaviour
 
     public void playBtn()
     {
-        if (MenuSliderScript.sliderInt == 1)
+        if (MenuSliderScript.sliderInt == 1 && timer >= timerMax)
         {
             SceneManager.LoadScene("StageSelection");
+            timer = 0;
         }
     }
 
@@ -136,8 +137,9 @@ public class ButtonManager : MonoBehaviour
 
     public void quitBtn()
     {
-        if (MenuSliderScript.sliderInt == 1)
+        if (MenuSliderScript.sliderInt == 1 && timer >= timerMax)
         {
+            timer = 0;
             Application.Quit();
         }
     }
