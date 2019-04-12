@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
 using Rewired.ControllerExtensions;
+using UnityEngine.SceneManagement;
 
 public class PlayerStageSelect : MonoBehaviour
 {
@@ -19,6 +20,15 @@ public class PlayerStageSelect : MonoBehaviour
     public GameObject selected_airship;
     public GameObject selected_forest;
 
+    public GameObject stage_airship;
+    public GameObject stage_forest;
+
+    public GameObject white_box;
+    public GameObject white_box_2;
+
+    public float timer;
+    public float timerMax;
+
     void Awake()
     {
         myPlayer = ReInput.players.GetPlayer(playerNum - 1);
@@ -31,13 +41,26 @@ public class PlayerStageSelect : MonoBehaviour
         hasSelected = false;
 
         GameManager.gameState = 2;
+
+        white_box.SetActive(false);
+        white_box_2.SetActive(false);
+
+        timer = 0f;
+        timerMax = 15f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        timer++;
+
+        if (timer >= timerMax)
+        {
+            timer = timerMax;
+        }
+
         //move right if holding right
-        if(myPlayer.GetAxis("Horizontal") >= 0.1f && hasSelected == false)
+        if (myPlayer.GetAxis("Horizontal") >= 0.1f && hasSelected == false)
         {
             position--;
         }
@@ -83,11 +106,38 @@ public class PlayerStageSelect : MonoBehaviour
         if (myPlayer.GetButtonDown("Jump") && hasSelected == false)
         {
             hasSelected = true;
+            white_box.SetActive(true);
+            white_box_2.SetActive(false);
+
+            if (position == 1)
+            {
+                stage_forest.SetActive(true);
+                selected_forest.SetActive(false);
+                selected_airship.SetActive(false);
+            }
+
+            if (position == 2)
+            {
+                stage_airship.SetActive(true);
+                selected_forest.SetActive(false);
+                selected_airship.SetActive(false);
+            }
         }
 
-        if (myPlayer.GetButtonDown("HeavyAttack") && hasSelected == true)
+        if (myPlayer.GetButtonDown("HeavyAttack") && hasSelected == true && timer >= timerMax)
         {
+            white_box.SetActive(false);
+            white_box_2.SetActive(true);
+            stage_airship.SetActive(false);
+            stage_forest.SetActive(false);
             hasSelected = false;
+            timer = 0;
+        }
+
+        if (myPlayer.GetButtonDown("HeavyAttack") && hasSelected == false && timer >= timerMax)
+        {
+            timer = 0;
+            SceneManager.LoadScene("NolanScene");
         }
     }
 }
