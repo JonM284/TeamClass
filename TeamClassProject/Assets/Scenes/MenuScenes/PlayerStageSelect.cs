@@ -19,6 +19,12 @@ public class PlayerStageSelect : MonoBehaviour
     public GameObject selected_airship;
     public GameObject selected_forest;
 
+    public GameObject stage_airship;
+    public GameObject stage_forest;
+
+    public GameObject white_box;
+    public GameObject white_box_2;
+
     void Awake()
     {
         myPlayer = ReInput.players.GetPlayer(playerNum - 1);
@@ -31,6 +37,9 @@ public class PlayerStageSelect : MonoBehaviour
         hasSelected = false;
 
         GameManager.gameState = 2;
+
+        white_box.SetActive(false);
+        white_box_2.SetActive(false);
     }
 
     // Update is called once per frame
@@ -83,10 +92,30 @@ public class PlayerStageSelect : MonoBehaviour
         if (myPlayer.GetButtonDown("Jump") && hasSelected == false)
         {
             hasSelected = true;
+            white_box.SetActive(true);
+            white_box_2.SetActive(false);
+
+            if (position == 1)
+            {
+                stage_forest.SetActive(true);
+                selected_forest.SetActive(false);
+                selected_airship.SetActive(false);
+            }
+
+            if (position == 2)
+            {
+                stage_airship.SetActive(true);
+                selected_forest.SetActive(false);
+                selected_airship.SetActive(false);
+            }
         }
 
         if (myPlayer.GetButtonDown("HeavyAttack") && hasSelected == true)
         {
+            white_box.SetActive(false);
+            white_box_2.SetActive(true);
+            stage_airship.SetActive(false);
+            stage_forest.SetActive(false);
             hasSelected = false;
         }
     }
