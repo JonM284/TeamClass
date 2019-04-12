@@ -651,7 +651,7 @@ public class BasicPlayerScript : MonoBehaviour
 		//neutral basic attack
 		if (gotHitTimer < 0)
 		{          
-			if (myPlayer.GetAxis("Horizontal") < .5f && myPlayer.GetAxis("Horizontal") > -.5f && myPlayer.GetAxis("Vertical") < .5f && myPlayer.GetAxis("Vertical") > -.5f && onPlatformTimer > 0)
+			if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && myPlayer.GetAxis("Vertical") < .3f && myPlayer.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
@@ -662,7 +662,7 @@ public class BasicPlayerScript : MonoBehaviour
 			}
             
             //forward basic attack
-            if (((myPlayer.GetAxis("Horizontal") > .5f && myPlayer.GetAxis("Horizontal") > -.5f) || (myPlayer.GetAxis("Horizontal")) < .5f && myPlayer.GetAxis("Horizontal") < -.5f) && Input.GetAxis("Vertical") < .5f && Input.GetAxis("Vertical") > -.5f && onPlatformTimer > 0)
+            if (((myPlayer.GetAxis("Horizontal") > .3f && myPlayer.GetAxis("Horizontal") > -.3f) || (myPlayer.GetAxis("Horizontal")) < .3f && myPlayer.GetAxis("Horizontal") < -.3f) && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
             {
                 if (myPlayer.GetButtonDown("BasicAttack"))
                 {
@@ -675,7 +675,7 @@ public class BasicPlayerScript : MonoBehaviour
             }
 
             //up basic attack
-            if (myPlayer.GetAxis("Horizontal") < .5f && myPlayer.GetAxis("Horizontal") > -.5f && myPlayer.GetAxis("Vertical") > .5f && myPlayer.GetAxis("Vertical") > -.5f && onPlatformTimer > 0)
+            if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && myPlayer.GetAxis("Vertical") > .3f && myPlayer.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
@@ -688,7 +688,7 @@ public class BasicPlayerScript : MonoBehaviour
 			}
                        
             //Down basic attack
-            if (myPlayer.GetAxis("Horizontal") < .5f && myPlayer.GetAxis("Horizontal") > -.5f && myPlayer.GetAxis("Vertical") < .5f && myPlayer.GetAxis("Vertical") < -.5f && onPlatformTimer > 0)
+            if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && myPlayer.GetAxis("Vertical") < .3f && myPlayer.GetAxis("Vertical") < -.3f && onPlatformTimer > 0)
             {
                 if (myPlayer.GetButtonDown("BasicAttack"))
                 {
@@ -703,7 +703,7 @@ public class BasicPlayerScript : MonoBehaviour
             }
 
             //neutral air attack
-            if (myPlayer.GetAxis("Horizontal") < .5f && myPlayer.GetAxis("Horizontal") > -.5f && myPlayer.GetAxis("Vertical") < .5f && myPlayer.GetAxis("Vertical") > -.5f && onPlatformTimer < 0)
+            if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && myPlayer.GetAxis("Vertical") < .3f && myPlayer.GetAxis("Vertical") > -.3f && onPlatformTimer < 0)
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
@@ -717,7 +717,7 @@ public class BasicPlayerScript : MonoBehaviour
 			}
 
 			//up air attack
-			if (myPlayer.GetAxis("Horizontal") < .5f && myPlayer.GetAxis("Horizontal") > -.5f && myPlayer.GetAxis("Vertical") > .5f && myPlayer.GetAxis("Vertical") > -.5f && onPlatformTimer < 0)
+			if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && myPlayer.GetAxis("Vertical") > .3f && myPlayer.GetAxis("Vertical") > -.3f && onPlatformTimer < 0)
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
@@ -730,7 +730,7 @@ public class BasicPlayerScript : MonoBehaviour
             //forward air attack
             if (direction == "Right")
             {
-                if (myPlayer.GetAxis("Horizontal") > .5f && myPlayer.GetAxis("Horizontal") > -.5f && myPlayer.GetAxis("Vertical") < .5f && myPlayer.GetAxis("Vertical") > -.5f && onPlatformTimer < 0)
+                if (myPlayer.GetAxis("Horizontal") > .3f && myPlayer.GetAxis("Horizontal") > -.3f && myPlayer.GetAxis("Vertical") < .3f && myPlayer.GetAxis("Vertical") > -.3f && onPlatformTimer < 0)
                 {
                     if (myPlayer.GetButtonDown("BasicAttack"))
                     {
@@ -746,7 +746,7 @@ public class BasicPlayerScript : MonoBehaviour
             }
             if (direction == "Left")
             {
-                if (myPlayer.GetAxis("Horizontal") < .5f && myPlayer.GetAxis("Horizontal") < -.5f && myPlayer.GetAxis("Vertical") < .5f && myPlayer.GetAxis("Vertical") > -.5f && onPlatformTimer < 0)
+                if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") < -.3f && myPlayer.GetAxis("Vertical") < .3f && myPlayer.GetAxis("Vertical") > -.3f && onPlatformTimer < 0)
                 {
                     if (myPlayer.GetButtonDown("BasicAttack"))
                     {
@@ -764,7 +764,7 @@ public class BasicPlayerScript : MonoBehaviour
             //back air attack
             if (direction == "Right")
             {
-                if (myPlayer.GetAxis("Horizontal") < .5f && myPlayer.GetAxis("Horizontal") < -.5f && myPlayer.GetAxis("Vertical") > .5f && myPlayer.GetAxis("Vertical") > -.5f && onPlatformTimer < 0)
+                if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") < -.3f && myPlayer.GetAxis("Vertical") > .3f && myPlayer.GetAxis("Vertical") > -.3f && onPlatformTimer < 0)
                 {
                     if (myPlayer.GetButtonDown("BasicAttack"))
                     {
@@ -781,7 +781,7 @@ public class BasicPlayerScript : MonoBehaviour
             }
             if (direction == "Left")
             {
-                if (myPlayer.GetAxis("Horizontal") > .5f && myPlayer.GetAxis("Horizontal") > -.5f && myPlayer.GetAxis("Vertical") < .5f && myPlayer.GetAxis("Vertical") < -.5f && onPlatformTimer < 0)
+                if (myPlayer.GetAxis("Horizontal") > .3f && myPlayer.GetAxis("Horizontal") > -.3f && myPlayer.GetAxis("Vertical") < .3f && myPlayer.GetAxis("Vertical") < -.3f && onPlatformTimer < 0)
                 {
                     if (myPlayer.GetButtonDown("BasicAttack"))
                     {
@@ -799,7 +799,7 @@ public class BasicPlayerScript : MonoBehaviour
 
 
             //down air attack
-            if (myPlayer.GetAxis("Horizontal") < .5f && myPlayer.GetAxis("Horizontal") > -.5f && myPlayer.GetAxis("Vertical") < .5f && myPlayer.GetAxis("Vertical") < -.5f && onPlatformTimer < 0)
+            if (myPlayer.GetAxis("Horizontal") < .5f && myPlayer.GetAxis("Horizontal") > -.5f && myPlayer.GetAxis("Vertical") < .3f && myPlayer.GetAxis("Vertical") < -.3f && onPlatformTimer < 0)
             {
                 if (myPlayer.GetButtonDown("BasicAttack"))
                 {
@@ -820,7 +820,7 @@ public class BasicPlayerScript : MonoBehaviour
 
 
             //Neutral Heavy
-            if (myPlayer.GetAxis("Horizontal") < .5f && myPlayer.GetAxis("Horizontal") > -.5f && myPlayer.GetAxis("Vertical") < .5f && myPlayer.GetAxis("Vertical") > -.5f && onPlatformTimer > 0)
+            if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && myPlayer.GetAxis("Vertical") < .3f && myPlayer.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
             {
                 if (myPlayer.GetButtonDown("HeavyAttack"))
                 {
@@ -835,7 +835,7 @@ public class BasicPlayerScript : MonoBehaviour
             }
 
             //forward heavy attack
-            if (((myPlayer.GetAxis("Horizontal") > .5f && myPlayer.GetAxis("Horizontal") > -.5f) || (myPlayer.GetAxis("Horizontal")) < .5f && myPlayer.GetAxis("Horizontal") < -.5f) && myPlayer.GetAxis("Vertical") < .5f && myPlayer.GetAxis("Vertical") > -.5f && onPlatformTimer > 0)
+            if (((myPlayer.GetAxis("Horizontal") > .3f && myPlayer.GetAxis("Horizontal") > -.3f) || (myPlayer.GetAxis("Horizontal")) < .3f && myPlayer.GetAxis("Horizontal") < -.3f) && myPlayer.GetAxis("Vertical") < .3f && myPlayer.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
             {
                 if (myPlayer.GetButtonDown("HeavyAttack"))
                 {
@@ -848,7 +848,7 @@ public class BasicPlayerScript : MonoBehaviour
             }
 
             //Down Heavy
-            if (myPlayer.GetAxis("Horizontal") < .5f && myPlayer.GetAxis("Horizontal") > -.5f && myPlayer.GetAxis("Vertical") < .5f && myPlayer.GetAxis("Vertical") < -.5f && onPlatformTimer > 0)
+            if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && myPlayer.GetAxis("Vertical") < .3f && myPlayer.GetAxis("Vertical") < -.3f && onPlatformTimer > 0)
             {
                 if (myPlayer.GetButtonDown("HeavyAttack"))
                 {
@@ -861,7 +861,7 @@ public class BasicPlayerScript : MonoBehaviour
             }
 
             //Up Heavy
-            if (myPlayer.GetAxis("Horizontal") < .5f && myPlayer.GetAxis("Horizontal") > -.5f && myPlayer.GetAxis("Vertical") > .5f && myPlayer.GetAxis("Vertical") > -.5f && onPlatformTimer > 0)
+            if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && myPlayer.GetAxis("Vertical") > .3f && myPlayer.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
             {
                 if (myPlayer.GetButtonDown("HeavyAttack"))
                 {
@@ -1109,7 +1109,6 @@ public class BasicPlayerScript : MonoBehaviour
 			if (Mathf.Abs(contact.normal.y) > Mathf.Abs(contact.normal.x))
 			{
 				velocity.y = 0; //stop vertical velocity
-                hitHead = true;
 				if (contact.normal.y >= 0)
 				{ //am I hitting the top of the platform?
                     isJumping = false;

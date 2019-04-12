@@ -1,2 +1,0 @@
-﻿//On the main camera you need to add the "Shake screen script" and the "win handler" script.
-//When  we get a win screen things will be different, but just so it doesnt give you null reference exception you can put some random bullcrap in the public image things on the win handler script
