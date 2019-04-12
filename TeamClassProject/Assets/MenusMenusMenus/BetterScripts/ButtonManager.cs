@@ -44,6 +44,8 @@ public class ButtonManager : MonoBehaviour
         timerMax = 15f;
 
         position = 1;
+
+        es.SetSelectedGameObject(null);
     }
 
     // Update is called once per frame
