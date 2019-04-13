@@ -34,7 +34,7 @@ public class AlternateSP2 : MonoBehaviour
     // AtMachine(Player is at machine- not free to move).
     public Status status;
     //reference to whichever machine the player is going to use
-    private GameObject myMachine;
+    public GameObject myMachine;
 
     //Beyond this point is for animations
     private Animator anim;
