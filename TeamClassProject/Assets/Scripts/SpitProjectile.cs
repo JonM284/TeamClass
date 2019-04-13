@@ -9,7 +9,8 @@ public class SpitProjectile : MonoBehaviour
     public float maxDownVel;
     public float gravityUp;
     public float gravityDown;
-    public float speed;
+    public float xSpeed;
+    public float ySpeed;
     private float currentMoveUpTimer;
     public float maxMoveUpTimer;
 
@@ -37,12 +38,13 @@ public class SpitProjectile : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void SetPhysicsVariables(float maxDownVelocity, float gravityUp1, float gravityDown1, float speed1, float maxMoveUpTimer1)
+    public void SetPhysicsVariables(float maxDownVelocity, float gravityUp1, float gravityDown1, float xSpeed1, float ySpeed1, float maxMoveUpTimer1)
     {
         maxDownVel = maxDownVelocity;
         gravityUp = gravityUp1;
         gravityDown = gravityDown1;
-        speed = speed1;
+        xSpeed = xSpeed1;
+        ySpeed = ySpeed1;
         maxMoveUpTimer = maxMoveUpTimer1;
         currentMoveUpTimer = maxMoveUpTimer;
     }
@@ -77,7 +79,8 @@ public class SpitProjectile : MonoBehaviour
     {
         if (maxMoveUpTimer > currentMoveUpTimer)
         {
-            velocity.y = speed * (currentMoveUpTimer / maxMoveUpTimer);
+            velocity.x = xSpeed;
+            velocity.y = ySpeed * (currentMoveUpTimer / maxMoveUpTimer);
         }
 
         rb.MovePosition(transform.position + velocity * Time.fixedDeltaTime);
@@ -105,11 +108,20 @@ public class SpitProjectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (other.gameObject.tag == "Platform")
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Floor")
+        {
+            Destroy(gameObject);
+        }
+
+        if (other.gameObject.tag == "Platform")
         {
             Destroy(gameObject);
         }

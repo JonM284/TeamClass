@@ -10646,7 +10646,8 @@ MonoBehaviour:
   BU_MaxDownVel: 100
   BU_GravityUp: 70
   BU_GravityDown: 45
-  BU_Speed: 7.5
+  BU_XSpeed: 1
+  BU_YSpeed: 6
   BU_MoveUpTimer: 0.7
   BD_Damage: 10
   BD_StunTime: 1
@@ -10694,7 +10695,8 @@ MonoBehaviour:
   DA_MaxDownVel: 100
   DA_GravityUp: 70
   DA_GravityDown: 30
-  DA_Speed: 5
+  DA_XSpeed: 0
+  DA_YSpeed: 1
   DA_MoveUpTimer: 0.01
   NH_Damage: 65
   NH_Angle: 45
@@ -10737,7 +10739,8 @@ MonoBehaviour:
   U_MaxDownVel: 100
   U_GravityUp: 70
   U_GravityDown: 30
-  U_Speed: 5
+  U_XSpeed: 0
+  U_YSpeed: 1
   U_MoveUpTimer: 0.01
   GilbertSounds:
   - {fileID: 8300000, guid: aef0e71aaaa2629479f4b24b20eab9c2, type: 3}
