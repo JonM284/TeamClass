@@ -55,7 +55,8 @@ public class Gillbert : MonoBehaviour
     public float BU_MaxDownVel;
     public float BU_GravityUp;
     public float BU_GravityDown;
-    public float BU_Speed;
+    public float BU_XSpeed;
+    public float BU_YSpeed;
     public float BU_MoveUpTimer;
 
     [Header("Basic Down")]
@@ -113,7 +114,8 @@ public class Gillbert : MonoBehaviour
     public float DA_MaxDownVel;
     public float DA_GravityUp;
     public float DA_GravityDown;
-    public float DA_Speed;
+    public float DA_XSpeed;
+    public float DA_YSpeed;
     public float DA_MoveUpTimer;
 
     [Header("Neutral Heavy")]
@@ -163,7 +165,8 @@ public class Gillbert : MonoBehaviour
     public float U_MaxDownVel;
     public float U_GravityUp;
     public float U_GravityDown;
-    public float U_Speed;
+    public float U_XSpeed;
+    public float U_YSpeed;
     public float U_MoveUpTimer;
 
 
@@ -413,8 +416,14 @@ public class Gillbert : MonoBehaviour
     {
         GameObject spit = Instantiate(spitBall, spawnSpitHere.transform.position, Quaternion.identity);
         spit.GetComponent<SpitProjectile>().SetVariables(BU_Damage, BU_Angle, BU_Knockback, BU_HitStun, BU_Distance, BU_TravelTime, playerNumber, BU_ShakeDuration, BU_ShakeMagnitude, BU_ShakeSlowDown);
-        spit.GetComponent<SpitProjectile>().SetPhysicsVariables(BU_MaxDownVel, BU_GravityUp, BU_GravityDown, BU_Speed, BU_MoveUpTimer);
-        player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(BU_Damage);
+        spit.GetComponent<SpitProjectile>().SetPhysicsVariables(BU_MaxDownVel, BU_GravityUp, BU_GravityDown, BU_XSpeed, BU_YSpeed, BU_MoveUpTimer);
+
+        GameObject spit1 = Instantiate(spitBall, spawnSpitHere.transform.position, Quaternion.identity);
+        spit1.GetComponent<SpitProjectile>().SetVariables(BU_Damage, BU_Angle, BU_Knockback, BU_HitStun, BU_Distance, BU_TravelTime, playerNumber, BU_ShakeDuration, BU_ShakeMagnitude, BU_ShakeSlowDown);
+        spit1.GetComponent<SpitProjectile>().SetPhysicsVariables(BU_MaxDownVel, BU_GravityUp, BU_GravityDown, -BU_XSpeed, BU_YSpeed, BU_MoveUpTimer);
+
+        spit.GetComponent<SpitProjectile>().player = player;
+        spit1.GetComponent<SpitProjectile>().player = player;
     }
 
     private void DownBasic(GameObject enemy)
@@ -445,7 +454,7 @@ public class Gillbert : MonoBehaviour
     {
         GameObject spit1 = Instantiate(spitBall1, spawnSpitHere1.transform.position, Quaternion.identity);
         spit1.GetComponent<SpitProjectile>().SetVariables(DA_Damage, DA_Angle, DA_Knockback, DA_HitStun, DA_Distance, DA_TravelTime, playerNumber, DA_ShakeDuration, DA_ShakeMagnitude, DA_ShakeSlowDown);
-        spit1.GetComponent<SpitProjectile>().SetPhysicsVariables(DA_MaxDownVel, DA_GravityUp, DA_GravityDown, DA_Speed, DA_MoveUpTimer);
+        spit1.GetComponent<SpitProjectile>().SetPhysicsVariables(DA_MaxDownVel, DA_GravityUp, DA_GravityDown, DA_XSpeed, DA_YSpeed, DA_MoveUpTimer);
         spit1.GetComponent<SpitProjectile>().player = player;
     }
 
@@ -472,7 +481,7 @@ public class Gillbert : MonoBehaviour
     {
         GameObject fireballs = Instantiate(fireball, spawnSpitHere1.transform.position, Quaternion.identity);
         fireball.GetComponent<SpitProjectile>().SetVariables(U_Damage, U_Angle, U_Knockback, U_HitStun, U_Distance, U_TravelTime, playerNumber, U_ShakeDuration, U_ShakeMagnitude, U_ShakeSlowDown);
-        fireball.GetComponent<SpitProjectile>().SetPhysicsVariables(U_MaxDownVel, U_GravityUp, U_GravityDown, U_Speed, U_MoveUpTimer);
+        fireball.GetComponent<SpitProjectile>().SetPhysicsVariables(U_MaxDownVel, U_GravityUp, U_GravityDown, U_XSpeed, U_YSpeed, U_MoveUpTimer);
         fireball.GetComponent<SpitProjectile>().player = player;
     }   
 

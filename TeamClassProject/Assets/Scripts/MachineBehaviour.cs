@@ -126,10 +126,17 @@ public class MachineBehaviour : MonoBehaviour
         }
 
         //set middlePlatform variables
-        middlePlatform = GameObject.Find("MiddlePlatform");
-        middlePlatform_rb = middlePlatform.GetComponent<Rigidbody2D>();
-        middlePlatform_vacuumBoxCollider = GameObject.Find("MiddlePlatform_Collider_Vacuum").GetComponent<BoxCollider2D>();
-        middlePlatform_blowBoxCollider = GameObject.Find("MiddlePlatform_Collider_Blow").GetComponent<BoxCollider2D>();
+        try
+        {
+            middlePlatform = GameObject.Find("MiddlePlatform");
+            middlePlatform_rb = middlePlatform.GetComponent<Rigidbody2D>();
+            middlePlatform_vacuumBoxCollider = GameObject.Find("MiddlePlatform_Collider_Vacuum").GetComponent<BoxCollider2D>();
+            middlePlatform_blowBoxCollider = GameObject.Find("MiddlePlatform_Collider_Blow").GetComponent<BoxCollider2D>();
+        }
+        catch
+        {
+
+        }
         
 
         //setting AudioSource

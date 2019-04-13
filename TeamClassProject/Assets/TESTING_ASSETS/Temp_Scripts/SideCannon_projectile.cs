@@ -74,7 +74,11 @@ public class SideCannon_projectile : MonoBehaviour
         StartCoroutine(wait_To_Deactivate());
         float angle = Mathf.Atan2(other.transform.position.y, other.transform.position.x);
         if (other.gameObject.tag == "Player") {
-            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(150f, 450, 12, 0.2f, 100, .8f, !other.GetComponent<BasicPlayerScript>().FacingRight(), 0.1f, 0.3f, 0.2f);
+            if(move_Right)
+            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(150f, 45, 12, 0.2f, 100, .2f, false, 0.1f, 0.3f, 0.2f);
+
+            if (!move_Right)
+                other.gameObject.GetComponent<BasicPlayerScript>().GetHit(150f, 45, 12, 0.2f, 100, .2f, true, 0.1f, 0.3f, 0.2f);
         }
     }
 
