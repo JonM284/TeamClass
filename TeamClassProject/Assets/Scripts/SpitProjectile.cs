@@ -29,6 +29,9 @@ public class SpitProjectile : MonoBehaviour
     public bool moveRight = true;
     public BasicPlayerScript player;
 
+    private SpriteRenderer sr;
+    public Sprite[] spitSprites;
+
     Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -36,6 +39,7 @@ public class SpitProjectile : MonoBehaviour
     {
         currentMoveUpTimer = maxMoveUpTimer;
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     public void SetPhysicsVariables(float maxDownVelocity, float gravityUp1, float gravityDown1, float xSpeed1, float ySpeed1, float maxMoveUpTimer1)
@@ -66,7 +70,24 @@ public class SpitProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Debug.Log("Veg" + Mathf.Abs(velocity.y));
         
+        if(Mathf.Abs(velocity.y) < 1)
+        {
+            sr.sprite = spitSprites[0];
+        }else if(Mathf.Abs(velocity.y) < 3.5f)
+        {
+            sr.sprite = spitSprites[1];
+        }
+        else if(Mathf.Abs(velocity.y) < 7f)
+        {
+            sr.sprite = spitSprites[2];
+        }
+        else
+        {
+            sr.sprite = spitSprites[3];
+        }
 
         Gravity();
 

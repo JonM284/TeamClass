@@ -496,8 +496,9 @@ public class BasicPlayerScript : MonoBehaviour
 			{
 				if (accel > 0)
 				{
-					accel -= decelMult;
-				}
+                    if (onTopOfPlatform) { accel -= decelMult; }
+                    if (onTopOfPlatform) { accel -= decelMult / 4; }
+                }
 				else
 				{
 					accel = 0;
@@ -507,8 +508,9 @@ public class BasicPlayerScript : MonoBehaviour
 			{
 				if (accel < 0)
 				{
-					accel += decelMult;
-				}
+                    if (onTopOfPlatform) { accel += decelMult; }
+                    if (onTopOfPlatform) { accel += decelMult / 4; }
+                }
 				else
 				{
 					accel = 0;

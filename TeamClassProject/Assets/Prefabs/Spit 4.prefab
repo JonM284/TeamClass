@@ -69,9 +69,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -594534133
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300064, guid: e5a285933c0cc40c18cb9e62d096ff35, type: 3}
+  m_Sprite: {fileID: 21300060, guid: e5a285933c0cc40c18cb9e62d096ff35, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,7 +119,8 @@ MonoBehaviour:
   maxDownVel: 100
   gravityUp: 70
   gravityDown: 30
-  speed: 5.5
+  xSpeed: 0
+  ySpeed: 0
   maxMoveUpTimer: 0.7
   damage: 45
   angle: 70
@@ -133,6 +134,12 @@ MonoBehaviour:
   shakeSlowDown: 0
   direction: {x: 0, y: 0, z: 0}
   moveRight: 1
+  player: {fileID: 0}
+  spitSprites:
+  - {fileID: 21300064, guid: e5a285933c0cc40c18cb9e62d096ff35, type: 3}
+  - {fileID: 21300062, guid: e5a285933c0cc40c18cb9e62d096ff35, type: 3}
+  - {fileID: 21300060, guid: e5a285933c0cc40c18cb9e62d096ff35, type: 3}
+  - {fileID: 21300058, guid: e5a285933c0cc40c18cb9e62d096ff35, type: 3}
 --- !u!58 &8136995603509912919
 CircleCollider2D:
   m_ObjectHideFlags: 0
