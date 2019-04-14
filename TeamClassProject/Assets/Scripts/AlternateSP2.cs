@@ -202,8 +202,19 @@ public class AlternateSP2 : MonoBehaviour
     {
         vel.x = horizontalInput * speed;
         vel.y = 0;
-
-        rb.MovePosition(rb.position + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+        if(transform.position.x > -7.4f && transform.position.x < 7.4f)
+        {
+            rb.MovePosition(rb.position + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+        }
+        else if(transform.position.x <= 7.4f && horizontalInput > 0)
+        {
+            rb.MovePosition(rb.position + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+        }
+        else if(transform.position.x >= 7.4f && horizontalInput < 0)
+        {
+            rb.MovePosition(rb.position + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+        }
+        
     }
 
     //--------------------------------------------------------------------------------------------------

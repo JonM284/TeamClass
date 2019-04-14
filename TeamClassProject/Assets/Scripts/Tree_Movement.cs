@@ -14,6 +14,7 @@ public class Tree_Movement : MonoBehaviour
 
     public float removeTreeTimer, removeTreeLength;
     public bool treeIsThere;
+    private Color myColor;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class Tree_Movement : MonoBehaviour
         //myTree.GetComponent<BoxCollider2D>().enabled = false;
         myTree.GetComponent<PolygonCollider2D>().enabled = false;
         treeIsThere = false;
+        myColor = new Color(255, 255, 255, 1);
     }
 
     // Update is called once per frame
@@ -38,10 +40,16 @@ public class Tree_Movement : MonoBehaviour
             Activate_Tree();
         }
 
+        
         //if the tree is on map currently, count timer down til its less than 0, then....
         if(removeTreeTimer > 0 && treeIsThere == true)
         {
             removeTreeTimer -= Time.deltaTime;
+            if(removeTreeTimer < 1)
+            {
+                myColor.a -= .02f;
+                myTree.GetComponent<SpriteRenderer>().color = myColor;
+            }
         }
         //...disable tree and reset its position for next time machine is used
         if(removeTreeTimer <= 0 && treeIsThere == true)
@@ -51,7 +59,11 @@ public class Tree_Movement : MonoBehaviour
             //myTree.GetComponent<BoxCollider2D>().enabled = false;
             myTree.GetComponent<PolygonCollider2D>().enabled = false;
             myTree.transform.position = myStartPos;
+            myColor.a = 1f;
+            myTree.GetComponent<SpriteRenderer>().color = myColor;
         }
+
+
 
     }
     //the function done to move the tree upwards

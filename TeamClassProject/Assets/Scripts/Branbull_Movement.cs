@@ -16,6 +16,9 @@ public class Branbull_Movement : MonoBehaviour
 
     public float removeBranbullTimer, removeBranbullLength;
     public bool BranbullIsThere;
+    public float fallSpeed;
+
+    private Color myColor;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +32,10 @@ public class Branbull_Movement : MonoBehaviour
         branbullExploded.GetComponent<SpriteRenderer>().enabled = false;
         myBranbull.GetComponent<BoxCollider2D>().enabled = false;
         branbullExploded.GetComponent<BoxCollider2D>().enabled = false;
-        
+        fallSpeed = 10f;
+
         damageToDealToPlayerOnImpact = 50;
+        myColor = new Color(255, 255, 255, 1);
     }
 
     // Update is called once per frame
@@ -46,6 +51,11 @@ public class Branbull_Movement : MonoBehaviour
         if (removeBranbullTimer > 0 && BranbullIsThere == true)
         {
             removeBranbullTimer -= Time.deltaTime;
+            if(removeBranbullTimer < 1)
+            {
+                myColor.a -= .02f;
+                branbullExploded.GetComponent<SpriteRenderer>().color = myColor;
+            }
         }
         //...disable Brandbull and reset its position for next time machine is used
         if (removeBranbullTimer <= 0 && BranbullIsThere == true)
@@ -56,14 +66,20 @@ public class Branbull_Movement : MonoBehaviour
             branbullExploded.GetComponent<SpriteRenderer>().enabled = false;
             branbullExploded.GetComponent<BoxCollider2D>().enabled = false;
             myBranbull.transform.position = myStartPos;
+            fallSpeed = 10f;
+            myColor.a = 1f;
+            branbullExploded.GetComponent<SpriteRenderer>().color = myColor;
         }
+
 
     }
 
     //the function done to move the branbull downwards
     public void Activate_Branbull()
     {
-        myBranbull.transform.position = Vector3.Lerp(myBranbull.transform.position, new Vector3(transform.position.x, myEndPos.position.y, transform.position.z), Time.deltaTime * going_Out_Speed);
+        //myBranbull.transform.position = Vector3.Lerp(myBranbull.transform.position, new Vector3(transform.position.x, myEndPos.position.y, transform.position.z), Time.deltaTime * going_Out_Speed);
+        myBranbull.transform.Translate(Vector3.down * Time.deltaTime * fallSpeed);
+        fallSpeed += .1f;
     }
 
     //the function that happens when the branbull hits the floor or platform to explode branbull
@@ -79,16 +95,22 @@ public class Branbull_Movement : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         branbullExploded.GetComponent<SpriteRenderer>().enabled = true;
         branbullExploded.GetComponent<BoxCollider2D>().enabled = true;
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
+
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         //explodes the branbull when it hits the floor or a platform
-        if(Branbull_Active == true && other.gameObject.tag == "Platform" || other.gameObject.tag == "Floor")
+        if(Branbull_Active == true && other.gameObject.tag == "Platform")
         {
             StartCoroutine(DeactivateDelay());
             //Deactivate_Branbull();
+        }
+        if(Branbull_Active && other.gameObject.tag == "Floor")
+        {
+            StartCoroutine(DeactivateDelay());
+            transform.position = new Vector3(transform.position.x, -1.84f, transform.position.z);
         }
     }
     private void OnTriggerStay2D(Collider2D other)

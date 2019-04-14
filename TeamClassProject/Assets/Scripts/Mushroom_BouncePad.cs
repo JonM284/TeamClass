@@ -21,6 +21,8 @@ public class Mushroom_BouncePad : MonoBehaviour
 
     [SerializeField] private float bounceForce;
 
+    private Color myColor;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,8 @@ public class Mushroom_BouncePad : MonoBehaviour
         {
             mushroomBounceCollider.enabled = false;
         }
+        //myColor = new Color(255, 255, 255, 1);            //this is for bc we dont have sprite yet
+        myColor = new Color(255, 0, 0, 1);
     }
 
     // Update is called once per frame
@@ -50,11 +54,18 @@ public class Mushroom_BouncePad : MonoBehaviour
         if (removeMushroomBounceTimer > 0 && MushroomBounceAreThere == true)
         {
             removeMushroomBounceTimer -= Time.deltaTime;
+            if(removeMushroomBounceTimer < 1)
+            {
+                myColor.a -= .02f;
+                mushroomBounceSprite.color = myColor;
+            }
         }
         //...disable bounce pad and reset its position for next time machine is used
         if (removeMushroomBounceTimer <= 0 && MushroomBounceAreThere == true)
         {
             Deactivate_MushroomBounce();
+            myColor.a = 1f;
+            mushroomBounceSprite.color = myColor;
         }
 
 

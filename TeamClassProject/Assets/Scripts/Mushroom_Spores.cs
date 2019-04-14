@@ -19,6 +19,8 @@ public class Mushroom_Spores : MonoBehaviour
     public bool MushroomSporesAreThere;
     public ParticleSystem sporesParticles;
 
+    private Color myColor;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,8 @@ public class Mushroom_Spores : MonoBehaviour
             mushroomSporesCollider.enabled = false;
         }
         //damageToDealToPlayer = 100;
+        //myColor = new Color(255, 255, 255, 1);            //this is for bc we dont have sprite yet
+        myColor = new Color(196, 0, 255, 1);
     }
 
     // Update is called once per frame
@@ -55,6 +59,11 @@ public class Mushroom_Spores : MonoBehaviour
             {
                 sporesParticles.Play();
             }
+            if(removeMushroomSporesTimer < 1)
+            {
+                myColor.a -= 0.02f;
+                mushroomSporesSprite.color = myColor;
+            }
         }
         if(removeMushroomSporesTimer <= 1f && sporesParticles.isPlaying == true)
         {
@@ -64,6 +73,8 @@ public class Mushroom_Spores : MonoBehaviour
         if (removeMushroomSporesTimer <= 0 && MushroomSporesAreThere == true)
         {
             Deactivate_MushroomSpores();
+            myColor.a = 1f;
+            mushroomSporesSprite.color = myColor;
         }
     }
 

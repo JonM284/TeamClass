@@ -17,6 +17,8 @@ public class Apple_Movement : MonoBehaviour
 
     public float removeApplesTimer, removeApplesLength;
     public bool ApplesAreThere;
+    public float fallSpeed;
+    private Color myColor;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +38,8 @@ public class Apple_Movement : MonoBehaviour
             appleCollider.enabled = false;
         }
         damageToDealToPlayer = 50;
+        fallSpeed = 10f;
+        myColor = new Color(255, 255, 255, 1);
     }
 
     // Update is called once per frame
@@ -51,6 +55,14 @@ public class Apple_Movement : MonoBehaviour
         if (removeApplesTimer > 0 && ApplesAreThere == true)
         {
             removeApplesTimer -= Time.deltaTime;
+            if(removeApplesTimer < 1)
+            {
+                myColor.a -= .02f;
+                appleSprites[0].color = myColor;
+                appleSprites[1].color = myColor;
+                appleSprites[2].color = myColor;
+            }
+            
         }
         //...disable Apples and reset its position for next time machine is used
         if (removeApplesTimer <= 0 && ApplesAreThere == true)
@@ -65,6 +77,11 @@ public class Apple_Movement : MonoBehaviour
                 appleCollider.enabled = false;
             }
             myApple.transform.position = myStartPos;
+            fallSpeed = 10f;
+            myColor.a = 1;
+            appleSprites[0].color = myColor;
+            appleSprites[1].color = myColor;
+            appleSprites[2].color = myColor;
         }
 
     }
@@ -72,7 +89,9 @@ public class Apple_Movement : MonoBehaviour
     //the function done to move the apple downwards
     public void Activate_Apple()
     {
-        myApple.transform.position = Vector3.Lerp(myApple.transform.position, new Vector3(transform.position.x, myEndPos.position.y, transform.position.z), Time.deltaTime * going_Out_Speed);
+        //myApple.transform.position = Vector3.Lerp(myApple.transform.position, new Vector3(transform.position.x, myEndPos.position.y, transform.position.z), Time.deltaTime * going_Out_Speed);
+        myApple.transform.Translate(Vector3.down * Time.deltaTime * fallSpeed);
+        fallSpeed += .2f;
     }
 
     //the function that happens when the apple hits the invisible collider to stop
@@ -85,6 +104,7 @@ public class Apple_Movement : MonoBehaviour
         {
             appleCollider.enabled = false;
         }
+        myApple.transform.position = new Vector3(transform.position.x, -2f, transform.position.z);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

@@ -100,7 +100,7 @@ public class MachineBehaviour2 : MonoBehaviour
         Two_BottomHazard_Machine_Ready = true;
 
         cooldownTimer_TwoTopHazard = 0f;
-        cooldownLength_TwoTopHazard = 5f;
+        cooldownLength_TwoTopHazard = 3f;
         Two_TopHazard_Machine_Ready = true;
 
         cooldownTimer_Mushrooms = 0f;
@@ -108,7 +108,7 @@ public class MachineBehaviour2 : MonoBehaviour
         Mushrooms_Machine_Ready = true;
 
         cooldownTimer_Squirrel = 0f;
-        cooldownLength_Squirrel = 5f;
+        cooldownLength_Squirrel = 3f;
         Squirrel_Machine_Ready = true;
     }
 
@@ -258,7 +258,7 @@ public class MachineBehaviour2 : MonoBehaviour
             {
                 Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<SpriteRenderer>().enabled = false;
                 Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<BoxCollider2D>().enabled = false;
-                Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.transform.position = Controlled_Hazard[0].GetComponent<Spike_Movement>().myStartPos;
+                //Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.transform.position = Controlled_Hazard[0].GetComponent<Spike_Movement>().myStartPos;
                 Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<SpriteRenderer>().enabled = true;   
             }
             //switch tree for spikes
@@ -268,7 +268,7 @@ public class MachineBehaviour2 : MonoBehaviour
                 Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<SpriteRenderer>().enabled = false;
                 //Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<BoxCollider2D>().enabled = false;
                 Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<PolygonCollider2D>().enabled = false;
-                Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.transform.position = Controlled_Hazard[1].GetComponent<Tree_Movement>().myStartPos;
+                //Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.transform.position = Controlled_Hazard[1].GetComponent<Tree_Movement>().myStartPos;
             }
         }
         
@@ -280,6 +280,7 @@ public class MachineBehaviour2 : MonoBehaviour
             {
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Spike_Movement>().Spike_Active = true;
                 Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<BoxCollider2D>().enabled = true;
+                Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.transform.position = Controlled_Hazard[1].GetComponent<Tree_Movement>().myStartPos;
             }
             //if tree
             else if(Current_Haz_Num == 1)
@@ -287,6 +288,7 @@ public class MachineBehaviour2 : MonoBehaviour
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Tree_Movement>().Tree_Active = true;
                 //Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<BoxCollider2D>().enabled = true;
                 Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<PolygonCollider2D>().enabled = true;
+                Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.transform.position = Controlled_Hazard[0].GetComponent<Spike_Movement>().myStartPos;
             }
 
             //kick player off machine and put it on cooldown
@@ -297,28 +299,33 @@ public class MachineBehaviour2 : MonoBehaviour
 
         }
        
-            //this allows the player to move the hazard left and right
-            Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
+        //Moving hazard left and righjt, with ranges stopping movement on walls
+        if(Controlled_Hazard[0].transform.position.x > -7.4f && Controlled_Hazard[0].transform.position.x < 7.4f)
+        {
+            Controlled_Hazard[0].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[0].GetComponent<Rigidbody2D>().position
                 + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
-
-        //boundaries for spike moving sideways
-        if (Controlled_Hazard[0].transform.position.x < -7.4f)
-        {
-            Controlled_Hazard[0].transform.position = new Vector3(Controlled_Hazard[0].transform.position.x + .1f, Controlled_Hazard[0].transform.position.y, Controlled_Hazard[0].transform.position.z);
+            Controlled_Hazard[1].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[1].GetComponent<Rigidbody2D>().position
+                + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
         }
-        if (Controlled_Hazard[0].transform.position.x > 7.4f)
+        else if(Controlled_Hazard[0].transform.position.x <= -7.4f)
         {
-            Controlled_Hazard[0].transform.position = new Vector3(Controlled_Hazard[0].transform.position.x - .1f, Controlled_Hazard[0].transform.position.y, Controlled_Hazard[0].transform.position.z);
+            if(horizontalInput > 0)
+            {
+                Controlled_Hazard[0].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[0].GetComponent<Rigidbody2D>().position
+                    + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+                Controlled_Hazard[1].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[1].GetComponent<Rigidbody2D>().position
+                    + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+            }
         }
-
-        //boundaries for tree moving sideways
-        if (Controlled_Hazard[1].transform.position.x < -7.05f)
+        else if (Controlled_Hazard[0].transform.position.x >= -7.4f)
         {
-            Controlled_Hazard[1].transform.position = new Vector3(Controlled_Hazard[1].transform.position.x + .1f, Controlled_Hazard[1].transform.position.y, Controlled_Hazard[1].transform.position.z);
-        }
-        if(Controlled_Hazard[1].transform.position.x > 7.05f)
-        {
-            Controlled_Hazard[1].transform.position = new Vector3(Controlled_Hazard[1].transform.position.x - .1f, Controlled_Hazard[1].transform.position.y, Controlled_Hazard[1].transform.position.z);
+            if (horizontalInput < 0)
+            {
+                Controlled_Hazard[0].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[0].GetComponent<Rigidbody2D>().position
+                    + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+                Controlled_Hazard[1].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[1].GetComponent<Rigidbody2D>().position
+                    + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+            }
         }
 
     }
@@ -349,7 +356,7 @@ public class MachineBehaviour2 : MonoBehaviour
                 Controlled_Hazard[0].GetComponent<Branbull_Movement>().branbullExploded.GetComponent<SpriteRenderer>().enabled = false;
                 Controlled_Hazard[0].GetComponent<Branbull_Movement>().myBranbull.GetComponent<BoxCollider2D>().enabled = false;
                 Controlled_Hazard[0].GetComponent<Branbull_Movement>().branbullExploded.GetComponent<BoxCollider2D>().enabled = false;
-                Controlled_Hazard[0].GetComponent<Branbull_Movement>().myBranbull.transform.position = Controlled_Hazard[0].GetComponent<Branbull_Movement>().myStartPos;
+                //Controlled_Hazard[0].GetComponent<Branbull_Movement>().myBranbull.transform.position = Controlled_Hazard[0].GetComponent<Branbull_Movement>().myStartPos;
                 foreach (SpriteRenderer apple in Controlled_Hazard[1].GetComponent<Apple_Movement>().appleSprites)
                 {
                     apple.enabled = true;
@@ -367,7 +374,7 @@ public class MachineBehaviour2 : MonoBehaviour
                 {
                     appleCollider.enabled = false;
                 }
-                Controlled_Hazard[1].GetComponent<Apple_Movement>().myApple.transform.position = Controlled_Hazard[1].GetComponent<Apple_Movement>().myStartPos;
+                //Controlled_Hazard[1].GetComponent<Apple_Movement>().myApple.transform.position = Controlled_Hazard[1].GetComponent<Apple_Movement>().myStartPos;
             }
 
         }
@@ -380,6 +387,7 @@ public class MachineBehaviour2 : MonoBehaviour
             {
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Branbull_Movement>().Branbull_Active = true;
                 Controlled_Hazard[0].GetComponent<Branbull_Movement>().myBranbull.GetComponent<BoxCollider2D>().enabled = true;
+                Controlled_Hazard[1].GetComponent<Apple_Movement>().myApple.transform.position = Controlled_Hazard[1].GetComponent<Apple_Movement>().myStartPos;
             }
             //if apple
             else if (Current_Haz_Num == 1)
@@ -389,6 +397,7 @@ public class MachineBehaviour2 : MonoBehaviour
                 {
                     appleCollider.enabled = true;
                 }
+                Controlled_Hazard[0].GetComponent<Branbull_Movement>().myBranbull.transform.position = Controlled_Hazard[0].GetComponent<Branbull_Movement>().myStartPos;
             }
 
             //kick player off machine and put it on cooldown
@@ -399,28 +408,34 @@ public class MachineBehaviour2 : MonoBehaviour
 
         }
 
-        //this allows the player to move the hazard left and right
-        Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
-            + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
 
-        //boundaries for branbull moving sideways
-        if (Controlled_Hazard[0].transform.position.x < -7.35f)
+        //Moving hazard left and righjt, with ranges stopping movement on walls
+        if (Controlled_Hazard[0].transform.position.x > -7.4f && Controlled_Hazard[0].transform.position.x < 7.4f)
         {
-            Controlled_Hazard[0].transform.position = new Vector3(Controlled_Hazard[0].transform.position.x + .1f, Controlled_Hazard[0].transform.position.y, Controlled_Hazard[0].transform.position.z);
+            Controlled_Hazard[0].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[0].GetComponent<Rigidbody2D>().position
+                + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+            Controlled_Hazard[1].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[1].GetComponent<Rigidbody2D>().position
+                + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
         }
-        if (Controlled_Hazard[0].transform.position.x > 7.35f)
+        else if (Controlled_Hazard[0].transform.position.x <= -7.4f)
         {
-            Controlled_Hazard[0].transform.position = new Vector3(Controlled_Hazard[0].transform.position.x - .1f, Controlled_Hazard[0].transform.position.y, Controlled_Hazard[0].transform.position.z);
+            if (horizontalInput > 0)
+            {
+                Controlled_Hazard[0].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[0].GetComponent<Rigidbody2D>().position
+                    + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+                Controlled_Hazard[1].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[1].GetComponent<Rigidbody2D>().position
+                    + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+            }
         }
-
-        //boundaries for apple moving sideways
-        if (Controlled_Hazard[1].transform.position.x < -6f)
+        else if (Controlled_Hazard[0].transform.position.x >= -7.4f)
         {
-            Controlled_Hazard[1].transform.position = new Vector3(Controlled_Hazard[1].transform.position.x + .1f, Controlled_Hazard[1].transform.position.y, Controlled_Hazard[1].transform.position.z);
-        }
-        if (Controlled_Hazard[1].transform.position.x > 6f)
-        {
-            Controlled_Hazard[1].transform.position = new Vector3(Controlled_Hazard[1].transform.position.x - .1f, Controlled_Hazard[1].transform.position.y, Controlled_Hazard[1].transform.position.z);
+            if (horizontalInput < 0)
+            {
+                Controlled_Hazard[0].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[0].GetComponent<Rigidbody2D>().position
+                    + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+                Controlled_Hazard[1].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[1].GetComponent<Rigidbody2D>().position
+                    + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+            }
         }
 
     }
@@ -453,7 +468,7 @@ public class MachineBehaviour2 : MonoBehaviour
                 {
                     mushroomBounceCollider.enabled = false;
                 }
-                Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().myMushroomBounce.transform.position = Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().myStartPos;
+                //Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().myMushroomBounce.transform.position = Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().myStartPos;
                 Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myMushroomSpores.GetComponent<SpriteRenderer>().enabled = true;
             }
             //switch spores for bounce pad
@@ -465,7 +480,7 @@ public class MachineBehaviour2 : MonoBehaviour
                 {
                     mushroomSporesCollider.enabled = false;
                 }
-                Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myMushroomSpores.transform.position = Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myStartPos;
+                //Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myMushroomSpores.transform.position = Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myStartPos;
             }
         }
 
@@ -482,6 +497,7 @@ public class MachineBehaviour2 : MonoBehaviour
                 }
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Mushroom_BouncePad>().removeMushroomBounceTimer = Controlled_Hazard[Current_Haz_Num].GetComponent<Mushroom_BouncePad>().removeMushroomBounceLength;
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Mushroom_BouncePad>().MushroomBounceAreThere = true;
+                Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myMushroomSpores.transform.position = Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myStartPos;
             }
             //if spores
             else if (Current_Haz_Num == 1)
@@ -493,6 +509,7 @@ public class MachineBehaviour2 : MonoBehaviour
                 }
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Mushroom_Spores>().removeMushroomSporesTimer = Controlled_Hazard[Current_Haz_Num].GetComponent<Mushroom_Spores>().removeMushroomSporesLength;
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Mushroom_Spores>().MushroomSporesAreThere = true;
+                Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().myMushroomBounce.transform.position = Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().myStartPos;
             }
 
             //kick player off machine and put it on cooldown
@@ -503,28 +520,33 @@ public class MachineBehaviour2 : MonoBehaviour
 
         }
 
-        //this allows the player to move the hazard left and right
-        Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
-            + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
-
-        //boundaries for bounce pad moving sideways
-        if (Controlled_Hazard[0].transform.position.x < -7f)
+        //Moving hazard left and righjt, with ranges stopping movement on walls
+        if (Controlled_Hazard[0].transform.position.x > -7.4f && Controlled_Hazard[0].transform.position.x < 7.4f)
         {
-            Controlled_Hazard[0].transform.position = new Vector3(Controlled_Hazard[0].transform.position.x + .1f, Controlled_Hazard[0].transform.position.y, Controlled_Hazard[0].transform.position.z);
+            Controlled_Hazard[0].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[0].GetComponent<Rigidbody2D>().position
+                + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+            Controlled_Hazard[1].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[1].GetComponent<Rigidbody2D>().position
+                + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
         }
-        if (Controlled_Hazard[0].transform.position.x > 7f)
+        else if (Controlled_Hazard[0].transform.position.x <= -7.4f)
         {
-            Controlled_Hazard[0].transform.position = new Vector3(Controlled_Hazard[0].transform.position.x - .1f, Controlled_Hazard[0].transform.position.y, Controlled_Hazard[0].transform.position.z);
+            if (horizontalInput > 0)
+            {
+                Controlled_Hazard[0].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[0].GetComponent<Rigidbody2D>().position
+                    + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+                Controlled_Hazard[1].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[1].GetComponent<Rigidbody2D>().position
+                    + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+            }
         }
-
-        //boundaries for spores moving sideways
-        if (Controlled_Hazard[1].transform.position.x < -7f)
+        else if (Controlled_Hazard[0].transform.position.x >= -7.4f)
         {
-            Controlled_Hazard[1].transform.position = new Vector3(Controlled_Hazard[1].transform.position.x + .1f, Controlled_Hazard[1].transform.position.y, Controlled_Hazard[1].transform.position.z);
-        }
-        if (Controlled_Hazard[1].transform.position.x > 7f)
-        {
-            Controlled_Hazard[1].transform.position = new Vector3(Controlled_Hazard[1].transform.position.x - .1f, Controlled_Hazard[1].transform.position.y, Controlled_Hazard[1].transform.position.z);
+            if (horizontalInput < 0)
+            {
+                Controlled_Hazard[0].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[0].GetComponent<Rigidbody2D>().position
+                    + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+                Controlled_Hazard[1].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[1].GetComponent<Rigidbody2D>().position
+                    + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+            }
         }
     }
 
@@ -614,7 +636,7 @@ public class MachineBehaviour2 : MonoBehaviour
         if(mach == MachineID.Two_BottomHazard)
         {
             //if just leaving machine and not activating either spikes or tree, disable sprites and colliders of spikes/trees | if one of them is active, you don't want to do anything
-            if(Controlled_Hazard[0].GetComponent<Spike_Movement>().Spike_Active == false && Controlled_Hazard[1].GetComponent<Tree_Movement>().Tree_Active == false)
+            if (Controlled_Hazard[0].GetComponent<Spike_Movement>().Spike_Active == false && Controlled_Hazard[1].GetComponent<Tree_Movement>().Tree_Active == false)
             {
                 Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<SpriteRenderer>().enabled = false;
                 Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<BoxCollider2D>().enabled = false;
@@ -644,8 +666,8 @@ public class MachineBehaviour2 : MonoBehaviour
                 Controlled_Hazard[1].GetComponent<Apple_Movement>().myApple.transform.position = Controlled_Hazard[1].GetComponent<Apple_Movement>().myStartPos;
             }
         }
-
-        if(mach == MachineID.Two_Mushrooms)
+        //if just leaving machine and not activating either mushroom, disable sprites and colliders of mushrooms | if one of them is active, you don't want to do anything
+        if (mach == MachineID.Two_Mushrooms)
         {
             if (Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().MushroomBounce_Active == false && Controlled_Hazard[1].GetComponent<Mushroom_Spores>().MushroomSpores_Active == false)
             {
@@ -668,35 +690,6 @@ public class MachineBehaviour2 : MonoBehaviour
 
         Debug.Log("Player has deactivated machine: "+transform.name);
     }
-
-
-
-
-    //--------------------------------------------------------------------------------------------------
-    // This function just draws Gizmos in unity
-    /*private void OnDrawGizmos()
-    {
-        if (mach == MachineID.SideHazard) {
-            Gizmos.color = new Color32(255, 0, 0, 200);
-            for (int i = 0; i < Controlled_Hazard.Length; i++) {
-                Gizmos.DrawLine(new Vector3(Controlled_Hazard[i].transform.position.x,
-                    Controlled_Hazard[i].transform.position.y + 0.6f, Controlled_Hazard[i].transform.position.x),
-                    new Vector3(Controlled_Hazard[i].transform.position.x,
-                    Controlled_Hazard[i].transform.position.y - 0.6f, Controlled_Hazard[i].transform.position.x));
-            }
-        }
-
-        if (mach == MachineID.BackgroundCannon)
-        {
-            Gizmos.color = new Color32(0,255,0, 80);
-        }
-        if (mach == MachineID.SideCannon)
-        {
-            Gizmos.color = new Color32(0, 0, 255, 125);
-        }
-        Gizmos.DrawWireSphere(transform.position, 0.5f);
-    }
-    */
 
     IEnumerator waitForUse()
     {
