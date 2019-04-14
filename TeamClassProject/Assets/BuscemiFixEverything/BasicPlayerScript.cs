@@ -497,7 +497,7 @@ public class BasicPlayerScript : MonoBehaviour
 				if (accel > 0)
 				{
                     if (onTopOfPlatform) { accel -= decelMult; }
-                    if (onTopOfPlatform) { accel -= decelMult / 4; }
+                    if (onTopOfPlatform) { accel -= decelMult / 4; } //discard probably :D
                 }
 				else
 				{
@@ -509,7 +509,7 @@ public class BasicPlayerScript : MonoBehaviour
 				if (accel < 0)
 				{
                     if (onTopOfPlatform) { accel += decelMult; }
-                    if (onTopOfPlatform) { accel += decelMult / 4; }
+                    if (onTopOfPlatform) { accel += decelMult / 4; } //discard probably :D
                 }
 				else
 				{
@@ -1117,6 +1117,7 @@ public class BasicPlayerScript : MonoBehaviour
                 hitHead = true;
 				if (contact.normal.y >= 0)
 				{ //am I hitting the top of the platform?
+
                     isJumping = false;
                     //isAttacking = false;
                     if (landtimer < 0)
