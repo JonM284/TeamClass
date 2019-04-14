@@ -767,7 +767,8 @@ public class MachineBehaviour : MonoBehaviour
         Debug.Log("Player:"+playerNum+ " has activated hazzard: "+mach);
 
         machine_UI[0].SetActive(false);
-        for (int i = 1; i < machine_UI.Length; i++)
+        machine_UI[1].SetActive(false);
+        for (int i = 2; i < machine_UI.Length; i++)
         {
             machine_UI[i].SetActive(true);
         }
@@ -895,6 +896,7 @@ public class MachineBehaviour : MonoBehaviour
         if (!is_In_Use && other.gameObject.tag == "Player")
         {
             machine_UI[0].SetActive(true);
+            machine_UI[1].SetActive(true);
         }
     }
 
@@ -903,6 +905,7 @@ public class MachineBehaviour : MonoBehaviour
         if (!is_In_Use && other.gameObject.tag == "Player")
         {
             machine_UI[0].SetActive(false);
+            machine_UI[1].SetActive(false);
         }
     }
 
