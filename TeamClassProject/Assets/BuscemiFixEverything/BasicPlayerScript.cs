@@ -960,19 +960,22 @@ public class BasicPlayerScript : MonoBehaviour
             gotHitTimer = hitStun;
             knockback = attackForce;
             Vector3 dir = new Vector3(0, 0, 0);
-            if (facingRight)
+            if (gotHitTimer > 0)
             {
-                dir = Quaternion.AngleAxis(attackAngle, Vector3.forward) * Vector3.right;
-                hitDirection = new Vector3(-dir.x, dir.y, dir.z);
-                endPosition = transform.position + (hitDirection.normalized * distance);
-                direction = "Right";
-            }
-            else
-            {
-                dir = Quaternion.AngleAxis(attackAngle, Vector3.forward) * Vector3.right;
-                hitDirection = dir;
-                endPosition = transform.position + (hitDirection.normalized * distance);
-                direction = "Left";
+                if (facingRight)
+                {
+                    dir = Quaternion.AngleAxis(attackAngle, Vector3.forward) * Vector3.right;
+                    hitDirection = new Vector3(-dir.x, dir.y, dir.z);
+                    endPosition = transform.position + (hitDirection.normalized * distance);
+                    direction = "Right";
+                }
+                else
+                {
+                    dir = Quaternion.AngleAxis(attackAngle, Vector3.forward) * Vector3.right;
+                    hitDirection = dir;
+                    endPosition = transform.position + (hitDirection.normalized * distance);
+                    direction = "Left";
+                }
             }
             //rb.AddForce(dir * attackForce);
             // rb.AddForce(new Vector2(attackForce, 0));

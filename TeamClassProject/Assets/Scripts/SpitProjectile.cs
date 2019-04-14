@@ -72,7 +72,7 @@ public class SpitProjectile : MonoBehaviour
     {
 
         Debug.Log("Veg" + Mathf.Abs(velocity.y));
-        
+        /*
         if(Mathf.Abs(velocity.y) < 1)
         {
             sr.sprite = spitSprites[0];
@@ -88,6 +88,7 @@ public class SpitProjectile : MonoBehaviour
         {
             sr.sprite = spitSprites[3];
         }
+        */
 
         Gravity();
 
@@ -105,7 +106,9 @@ public class SpitProjectile : MonoBehaviour
         }
 
         rb.MovePosition(transform.position + velocity * Time.fixedDeltaTime);
-    }
+
+    
+}
 
     void Gravity()
     {
