@@ -103,8 +103,9 @@ public class PlayerStageSelect : MonoBehaviour
             selected_airship.SetActive(false);
         }
 
-        if (myPlayer.GetButtonDown("Jump") && hasSelected == false)
+        if (myPlayer.GetButtonDown("Jump") && hasSelected == false && timer >= timerMax)
         {
+            timer = 0;
             hasSelected = true;
             white_box.SetActive(true);
             white_box_2.SetActive(false);

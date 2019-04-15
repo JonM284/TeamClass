@@ -14,7 +14,7 @@ public class Portrait : MonoBehaviour
     public int playerNum;
 
     public GameObject char_1, char_2, char_3, char_4;
-    //public GameObject greyRect_1, greyRect_2, greyRect_3, greyRect_4; //this references teammates octagons, NOT YOUR OWN
+    public GameObject greyRect_1, greyRect_2, greyRect_3, greyRect_4; //this references teammates octagons, NOT YOUR OWN
     public int team_num;
     public int char_selected;
     public bool disabled_for_teammate;
@@ -38,12 +38,12 @@ public class Portrait : MonoBehaviour
         selected = false;
         playersLockedIn = 0;
 
-        /*
+        
         greyRect_1.SetActive(false);
         greyRect_2.SetActive(false);
         greyRect_3.SetActive(false);
         greyRect_4.SetActive(false);
-        */      
+              
     }
 
     // Update is called once per frame
@@ -123,11 +123,12 @@ public class Portrait : MonoBehaviour
             char_4.SetActive(false);
         }
 
-        if (myPlayer.GetButtonDown("Jump") && selected == false && PlayerStageSelect.hasSelected == true)
+        if (myPlayer.GetButtonDown("Jump") && selected == false && PlayerStageSelect.hasSelected == true && timer >= timerMax)
         {
+            timer = 0;
             selected = true;
-            arrows.SetActive(false);
-            playersLockedIn -= 1;
+            //arrows.SetActive(false);
+            playersLockedIn += 1;
 
             if (char_selected == 1)
             {
