@@ -13,7 +13,10 @@ public class pauserScript : MonoBehaviour
 
     public Slider sfxS, musS;
 
-    private Vector2 originsfS, originmuS;
+    public Image cntrl;
+    private bool ctlB;
+
+    private Vector2 originsfS, originmuS, cntrlOr;
 
     public AudioMixerGroup fx, mc;
 
@@ -22,15 +25,15 @@ public class pauserScript : MonoBehaviour
      {
         originmuS = musS.transform.position;
         originsfS = sfxS.transform.position;
-
-
+        cntrlOr = cntrl.transform.position;
+        cntrl.transform.position = new Vector2(9999, 9999);
         sfxS.transform.position = new Vector2(9999, 9999);
         musS.transform.position = new Vector2(9999, 9999);
 
         pPanel.enabled = false;
         sfxS.enabled = false;
         musS.enabled = false;
-
+        ctlB = false;
      }
 
 
@@ -71,11 +74,16 @@ public class pauserScript : MonoBehaviour
         musS.enabled = false;
         sfxS.transform.position = new Vector2(9999, 9999);
         musS.transform.position = new Vector2(9999, 9999);
+        cntrl.transform.position = new Vector2(9999, 9999);
+        ctlB = false;
 
     }
 
     public void ScriptFSound()
     {
+        cntrl.transform.position = new Vector2(9999, 9999);
+        ctlB = false;
+
         if (sfxS.enabled==true)
         {
             sfxS.enabled = false;
@@ -98,6 +106,27 @@ public class pauserScript : MonoBehaviour
         print(sfxS.value);
         fx.audioMixer.SetFloat("VolumeSF", sfxS.value);
         mc.audioMixer.SetFloat("VolumeMu", musS.value);
+    }
+
+    public void ControlSF()
+    {
+
+        sfxS.enabled = false;
+        musS.enabled = false;
+        sfxS.transform.position = new Vector2(9999, 9999);
+        musS.transform.position = new Vector2(9999, 9999);
+
+
+        if (ctlB == false)
+        {
+            cntrl.transform.position = cntrlOr;
+            ctlB = true;
+        }
+        else
+        {
+            cntrl.transform.position = new Vector2(9999, 9999);
+            ctlB = false;
+        }
     }
 
 }
