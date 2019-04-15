@@ -1139,6 +1139,11 @@ public class BasicPlayerScript : MonoBehaviour
                             maxDistance = 0;
                         }
                     }
+                    if(collisionInfo.gameObject.tag == "Platform")
+                    {
+                        this.transform.parent = collisionInfo.transform;
+                        anim.SetBool("OnPlatform", true);
+                    }
                 }
 				//am I hitting the bottom of a platform?
 				if(contact.normal.y < 0)
@@ -1180,6 +1185,11 @@ public class BasicPlayerScript : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collisionInfo)
     {
+        if (collisionInfo.gameObject.tag == "Platform")
+        {
+            this.transform.parent = null;
+            anim.SetBool("OnPlatform", false);
+        }
         foreach (ContactPoint2D contact in collisionInfo.contacts)
         {
             //am I coming from the top/bottom?
