@@ -292,6 +292,7 @@ public class BasicPlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("myplayerNum : ");
         attackTimerDelay -= Time.deltaTime;
         landtimer -= Time.deltaTime;
 

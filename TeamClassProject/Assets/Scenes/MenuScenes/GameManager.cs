@@ -48,9 +48,12 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
         // Start is called before the first frame update
-        void Start()
+    void Start()
     {
-
+        PlayerPrefs.SetInt("Player1Character", 0);
+        PlayerPrefs.SetInt("Player2Character", 0);
+        PlayerPrefs.SetInt("Player3Character", 0);
+        PlayerPrefs.SetInt("Player4Character", 0);
     }
 
     // Update is called once per frame

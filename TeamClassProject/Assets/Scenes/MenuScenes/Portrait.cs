@@ -44,6 +44,7 @@ public class Portrait : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Playerchar: " + PlayerPrefs.GetInt("Player" + playerNum + "Character"));
         timer++;
 
         if (timer >= timerMax)
@@ -123,6 +124,7 @@ public class Portrait : MonoBehaviour
 
             if(char_selected == 1)
             {
+                PlayerPrefs.SetInt("Player" + playerNum + "Character", 1);
                 greyRect_1.SetActive(true);
             }
             else
@@ -132,6 +134,7 @@ public class Portrait : MonoBehaviour
 
             if (char_selected == 2)
             {
+                PlayerPrefs.SetInt("Player" + playerNum + "Character", 2);
                 greyRect_2.SetActive(true);
             }
             else
@@ -141,6 +144,7 @@ public class Portrait : MonoBehaviour
 
             if (char_selected == 3)
             {
+                PlayerPrefs.SetInt("Player" + playerNum + "Character", 3);
                 greyRect_3.SetActive(true);
             }
             else
@@ -150,6 +154,7 @@ public class Portrait : MonoBehaviour
 
             if (char_selected == 4)
             {
+                PlayerPrefs.SetInt("Player" + playerNum + "Character", 4);
                 greyRect_4.SetActive(true);
             }
             else
