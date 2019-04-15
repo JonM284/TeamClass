@@ -110,7 +110,7 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
-    public void playBtn()
+    public void PlayBtn()
     {
         if (MenuSliderScript.sliderInt == 1 && timer >= timerMax)
         {
@@ -119,25 +119,25 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
-    public void fighterBtn()
+    public void FighterBtn()
     {
         if (MenuSliderScript.sliderInt == 1)
         {
-            //SceneManager.LoadScene("Fighters");
+            SceneManager.LoadScene("FightersScene");
         }
     }
 
-    public void optionsBtn()
+    public void OptionsBtn()
     {
         //SceneManager.LoadScene("");
     }
 
-    public void extrasBtn()
+    public void ExtrasBtn()
     {
-        //SceneManager.LoadScene("Extras");
+        SceneManager.LoadScene("Credits");
     }
 
-    public void quitBtn()
+    public void QuitBtn()
     {
         if (MenuSliderScript.sliderInt == 1 && timer >= timerMax)
         {
@@ -146,7 +146,7 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
-    public void menuBtn()
+    public void MenuBtn()
     {
         SceneManager.LoadScene("NolanScene");
     }

@@ -17,7 +17,7 @@ public class MenuSliderScript : MonoBehaviour
     public static int sliderInt;
     public AudioSource menuUp;
     public AudioSource menuDown;
-    public bool hasMenuBeenUp;
+    public static bool hasMenuBeenUp;
 
     public GameObject pressA;
     public GameObject pressB;
