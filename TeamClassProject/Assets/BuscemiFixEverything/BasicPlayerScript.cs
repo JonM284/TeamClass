@@ -1143,6 +1143,7 @@ public class BasicPlayerScript : MonoBehaviour
                     {
                         this.transform.parent = collisionInfo.transform;
                         anim.SetBool("OnPlatform", true);
+                        
                     }
                 }
 				//am I hitting the bottom of a platform?
@@ -1189,6 +1190,7 @@ public class BasicPlayerScript : MonoBehaviour
         {
             this.transform.parent = null;
             anim.SetBool("OnPlatform", false);
+            
         }
         foreach (ContactPoint2D contact in collisionInfo.contacts)
         {
