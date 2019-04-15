@@ -139,5 +139,15 @@ public class PlayerStageSelect : MonoBehaviour
             timer = 0;
             SceneManager.LoadScene("NolanScene");
         }
+
+        if(Portrait.playersLockedIn >= 4 && position == 2)
+        {
+            SceneManager.LoadScene("JonScene");
+        }
+
+        if (Portrait.playersLockedIn >= 4 && position == 1)
+        {
+            SceneManager.LoadScene("JustinScene");
+        }
     }
 }

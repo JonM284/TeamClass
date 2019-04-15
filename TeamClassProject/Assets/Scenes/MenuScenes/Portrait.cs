@@ -14,14 +14,16 @@ public class Portrait : MonoBehaviour
     public int playerNum;
 
     public GameObject char_1, char_2, char_3, char_4;
-    public GameObject greyRect_1, greyRect_2, greyRect_3, greyRect_4; //this references teammates octagons, NOT YOUR OWN
+    //public GameObject greyRect_1, greyRect_2, greyRect_3, greyRect_4; //this references teammates octagons, NOT YOUR OWN
     public int team_num;
     public int char_selected;
     public bool disabled_for_teammate;
     public float timer;
     public float timerMax;
     public int player_value; //1 - top left, 2 - bot left, 3 - top right, 4 - bot right
-    public bool selected;
+    public bool selected; //did this player select a character
+    public static int playersLockedIn;
+    public GameObject arrows;
 
     void Awake()
     {
@@ -34,11 +36,14 @@ public class Portrait : MonoBehaviour
         timer = 0f;
         timerMax = 15f;
         selected = false;
+        playersLockedIn = 0;
 
+        /*
         greyRect_1.SetActive(false);
         greyRect_2.SetActive(false);
         greyRect_3.SetActive(false);
         greyRect_4.SetActive(false);
+        */      
     }
 
     // Update is called once per frame
@@ -120,56 +125,62 @@ public class Portrait : MonoBehaviour
 
         if (myPlayer.GetButtonDown("Jump") && selected == false && PlayerStageSelect.hasSelected == true)
         {
-            //selected = true;
+            selected = true;
+            arrows.SetActive(false);
+            playersLockedIn -= 1;
 
-            if(char_selected == 1)
+            if (char_selected == 1)
             {
                 PlayerPrefs.SetInt("Player" + playerNum + "Character", 1);
-                greyRect_1.SetActive(true);
+                //greyRect_1.SetActive(true);
             }
             else
             {
-                greyRect_1.SetActive(false);
+                //greyRect_1.SetActive(false);
             }
 
             if (char_selected == 2)
             {
                 PlayerPrefs.SetInt("Player" + playerNum + "Character", 2);
-                greyRect_2.SetActive(true);
+                //greyRect_2.SetActive(true);
             }
             else
             {
-                greyRect_2.SetActive(false);
+                //greyRect_2.SetActive(false);
             }
 
             if (char_selected == 3)
             {
                 PlayerPrefs.SetInt("Player" + playerNum + "Character", 3);
-                greyRect_3.SetActive(true);
+                //greyRect_3.SetActive(true);
             }
             else
             {
-                greyRect_3.SetActive(false);
+                //greyRect_3.SetActive(false);
             }
 
             if (char_selected == 4)
             {
                 PlayerPrefs.SetInt("Player" + playerNum + "Character", 4);
-                greyRect_4.SetActive(true);
+                //greyRect_4.SetActive(true);
             }
             else
             {
-                greyRect_4.SetActive(false);
+                //greyRect_4.SetActive(false);
             }
         }
 
         if (myPlayer.GetButtonDown("HeavyAttack") && selected == true && PlayerStageSelect.hasSelected == true)
         {
-            selected = false;
+            selected = false; 
+            arrows.SetActive(true);
+            playersLockedIn -= 1;
+            /*
             greyRect_1.SetActive(false);
             greyRect_2.SetActive(false);
             greyRect_3.SetActive(false);
             greyRect_4.SetActive(false);
+            */          
         }
     }
 }
