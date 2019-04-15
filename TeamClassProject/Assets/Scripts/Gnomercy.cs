@@ -182,6 +182,10 @@ public class Gnomercy : MonoBehaviour
 				player.anim.SetTrigger("BasicNeutral");
 				player.isAttacking = true;
                 player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                GnomercySoundPlayer.clip = GnomercySounds[0];
+                GnomercySoundPlayer.Play();
+
                 break;
 
 			case 2:
@@ -189,7 +193,7 @@ public class Gnomercy : MonoBehaviour
 				player.isAttacking = true;
                 player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-                GnomercySoundPlayer.clip = GnomercySounds[0];
+                GnomercySoundPlayer.clip = GnomercySounds[1];
                 GnomercySoundPlayer.Play();
 
                 break;
@@ -198,52 +202,88 @@ public class Gnomercy : MonoBehaviour
 				player.anim.SetTrigger("BasicUp");
 				player.isAttacking = true;
                 player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                GnomercySoundPlayer.clip = GnomercySounds[2];
+                GnomercySoundPlayer.Play();
+
                 break;
 
 			case 4:
 				player.anim.SetTrigger("BasicDown");
 				player.isAttacking = true;
 				player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
-				break;
+
+                GnomercySoundPlayer.clip = GnomercySounds[3];
+                GnomercySoundPlayer.Play();
+
+                break;
 
 			case 9:
 				player.anim.SetTrigger("NeutralAir");
 				player.isAttacking = true;
-				break;
+
+                GnomercySoundPlayer.clip = GnomercySounds[4];
+                GnomercySoundPlayer.Play();
+
+                break;
 
 			case 10:
 				player.anim.SetTrigger("UpAir");
 				player.isAttacking = true;
-				break;
+
+                GnomercySoundPlayer.clip = GnomercySounds[5];
+                GnomercySoundPlayer.Play();
+
+                break;
 
 			case 14:
 				player.anim.SetTrigger("ForwardAir");
 				player.isAttacking = true;
-				break;
+
+                GnomercySoundPlayer.clip = GnomercySounds[6];
+                GnomercySoundPlayer.Play();
+
+                break;
 
 			case 20:
 				player.anim.SetTrigger("HeavyNeutral");
 				player.isAttacking = true;
                 player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                GnomercySoundPlayer.clip = GnomercySounds[7];
+                GnomercySoundPlayer.Play();
+
                 break;
 
 			case 21:
 				player.anim.SetTrigger("HeavyForward");
 				player.isAttacking = true;
                 player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                GnomercySoundPlayer.clip = GnomercySounds[8];
+                GnomercySoundPlayer.Play();
+
                 break;
 
 			case 22:
 				player.anim.SetTrigger("HeavyDown");
 				player.isAttacking = true;
                 player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                GnomercySoundPlayer.clip = GnomercySounds[9];
+                GnomercySoundPlayer.Play();
+
                 break;
 
 			case 23:
 				player.anim.SetTrigger("HeavyUp");
 				player.isAttacking = true;
 				player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
-				break;
+
+                GnomercySoundPlayer.clip = GnomercySounds[10];
+                GnomercySoundPlayer.Play();
+
+                break;
 
 
 			default:
