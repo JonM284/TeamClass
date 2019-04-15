@@ -73,6 +73,7 @@ public class MachineBehaviour2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //reset for jon
         originalRotation = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.rotation.x,
             Controlled_Hazard[Current_Haz_Num].transform.rotation.y,
             Controlled_Hazard[Current_Haz_Num].transform.rotation.z);

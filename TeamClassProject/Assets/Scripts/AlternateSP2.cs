@@ -47,6 +47,7 @@ public class AlternateSP2 : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         original_Scale = transform.localScale;
+        //reset for jon
     }
 
 
