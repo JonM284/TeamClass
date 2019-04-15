@@ -129,5 +129,12 @@ public class pauserScript : MonoBehaviour
         }
     }
 
+
+    public void quitGame()
+    {
+        //this does nothing. add quit when Nolan adds menu
+    }
+    
+
 }
 
