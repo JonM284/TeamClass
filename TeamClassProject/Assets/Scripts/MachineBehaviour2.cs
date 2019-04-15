@@ -70,9 +70,17 @@ public class MachineBehaviour2 : MonoBehaviour
 
     public GameObject my_Controller_Player;
 
+    public GameObject[] indicator_Images;
+
+    [Header("Audio")]
+    public AudioClip[] machineSounds;
+    public AudioSource machineSoundPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
+        indicator_Images[0].SetActive(true);
+        indicator_Images[1].SetActive(false);
         //reset for jon
         originalRotation = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.rotation.x,
             Controlled_Hazard[Current_Haz_Num].transform.rotation.y,
@@ -101,7 +109,7 @@ public class MachineBehaviour2 : MonoBehaviour
         Two_BottomHazard_Machine_Ready = true;
 
         cooldownTimer_TwoTopHazard = 0f;
-        cooldownLength_TwoTopHazard = 3f;
+        cooldownLength_TwoTopHazard = 5f;
         Two_TopHazard_Machine_Ready = true;
 
         cooldownTimer_Mushrooms = 0f;
@@ -111,6 +119,8 @@ public class MachineBehaviour2 : MonoBehaviour
         cooldownTimer_Squirrel = 0f;
         cooldownLength_Squirrel = 3f;
         Squirrel_Machine_Ready = true;
+
+        machineSoundPlayer = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -123,6 +133,10 @@ public class MachineBehaviour2 : MonoBehaviour
             if (cooldownTimer_Fairy <= 0)
             {
                 Fairy_Machine_Ready = true;
+                indicator_Images[0].SetActive(true);
+                indicator_Images[1].SetActive(false);
+                machineSoundPlayer.clip = machineSounds[1];
+                machineSoundPlayer.Play();
                 GetComponent<BoxCollider2D>().enabled = true;
             }
         }
@@ -134,6 +148,10 @@ public class MachineBehaviour2 : MonoBehaviour
             if(cooldownTimer_TwoBottomHazard <= 0)
             {
                 Two_BottomHazard_Machine_Ready = true;
+                indicator_Images[0].SetActive(true);
+                indicator_Images[1].SetActive(false);
+                machineSoundPlayer.clip = machineSounds[1];
+                machineSoundPlayer.Play();
                 GetComponent<BoxCollider2D>().enabled = true;
             }
         }
@@ -145,6 +163,10 @@ public class MachineBehaviour2 : MonoBehaviour
             if (cooldownTimer_TwoTopHazard <= 0)
             {
                 Two_TopHazard_Machine_Ready = true;
+                indicator_Images[0].SetActive(true);
+                indicator_Images[1].SetActive(false);
+                machineSoundPlayer.clip = machineSounds[1];
+                machineSoundPlayer.Play();
                 GetComponent<BoxCollider2D>().enabled = true;
             }
         }
@@ -156,6 +178,10 @@ public class MachineBehaviour2 : MonoBehaviour
             if (cooldownTimer_Mushrooms <= 0)
             {
                 Mushrooms_Machine_Ready = true;
+                indicator_Images[0].SetActive(true);
+                indicator_Images[1].SetActive(false);
+                machineSoundPlayer.clip = machineSounds[1];
+                machineSoundPlayer.Play();
                 GetComponent<BoxCollider2D>().enabled = true;
             }
         }
@@ -167,6 +193,10 @@ public class MachineBehaviour2 : MonoBehaviour
             if (cooldownTimer_Squirrel <= 0)
             {
                 Squirrel_Machine_Ready = true;
+                indicator_Images[0].SetActive(true);
+                indicator_Images[1].SetActive(false);
+                machineSoundPlayer.clip = machineSounds[1];
+                machineSoundPlayer.Play();
                 GetComponent<BoxCollider2D>().enabled = true;
             }
         }
@@ -217,6 +247,8 @@ public class MachineBehaviour2 : MonoBehaviour
         //if fairy hits a player
         if (fairyScript.fairyHitPlayer == true)
         {
+            indicator_Images[0].SetActive(false);
+            indicator_Images[1].SetActive(true);
             StartCoroutine(FairyResetInitialDelay());
             End_Control();
             Fairy_Machine_Ready = false;
@@ -276,6 +308,8 @@ public class MachineBehaviour2 : MonoBehaviour
         //player activates (sends out) hazard (spikes/tree)
         if(myPlayer.GetButton("BasicAttack") && can_Use)
         {
+            indicator_Images[0].SetActive(false);
+            indicator_Images[1].SetActive(true);
             //if spikes
             if (Current_Haz_Num == 0)
             {
@@ -383,6 +417,8 @@ public class MachineBehaviour2 : MonoBehaviour
         //player activates (sends out) hazard (branbull/apple)
         if (myPlayer.GetButton("BasicAttack") && can_Use)
         {
+            indicator_Images[0].SetActive(false);
+            indicator_Images[1].SetActive(true);
             //if branbull
             if (Current_Haz_Num == 0)
             {
@@ -488,6 +524,8 @@ public class MachineBehaviour2 : MonoBehaviour
         //player activates bounce pad / spores
         if (myPlayer.GetButton("BasicAttack") && can_Use)
         {
+            indicator_Images[0].SetActive(false);
+            indicator_Images[1].SetActive(true);
             //if bounce pad
             if (Current_Haz_Num == 0)
             {
@@ -598,8 +636,12 @@ public class MachineBehaviour2 : MonoBehaviour
                 objectPool.SpawnFromPool("CannonBall_Move_Left", Controlled_Hazard[Current_Haz_Num].transform.position,
                     Quaternion.Euler(Move_Rotation));
             }
-
+            indicator_Images[0].SetActive(false);
+            indicator_Images[1].SetActive(true);
             End_Control();
+            Squirrel_Machine_Ready = false;
+            cooldownTimer_Squirrel = cooldownLength_Squirrel;
+            GetComponent<BoxCollider2D>().enabled = false;
         }
 
         
@@ -807,7 +849,8 @@ public class MachineBehaviour2 : MonoBehaviour
                 Controlled_Hazard[i].GetComponentInParent<SpriteRenderer>().color = Color.white;
             }
         }
-
+        machineSoundPlayer.clip = machineSounds[0];
+        machineSoundPlayer.Play();
         Debug.Log("Player has deactivated machine: "+transform.name);
     }
 
