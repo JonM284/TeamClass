@@ -194,12 +194,12 @@ public class MachineBehaviour2 : MonoBehaviour
             {
                 horizontalInput = myPlayer.GetAxisRaw("Horizontal");
                 MushroomMachine();
-            }/*
-            else if (mach == MachineID.Squirrel)
+            }
+            else if (mach == MachineID.Two_Squirrel)
             {
-
-
-            }*/
+                verticalInput = myPlayer.GetAxisRaw("Vertical");
+                SideCannonMovement();
+            }
         }
 
     }
@@ -551,6 +551,116 @@ public class MachineBehaviour2 : MonoBehaviour
         }
     }
 
+
+    //--------------------------------------------------------------------------------------------------
+    /// <summary>
+    /// Function description: This contains all movement and interactions for the Side Cannons
+    /// </summary>
+    void SideCannonMovement()
+    {
+
+        //this allows players to change which side hazzard is currently selected
+        if (myPlayer.GetButtonDown("Special"))
+        {
+            Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.white;
+            if (Current_Haz_Num < max_Machines_Amnt - 1)
+            {
+                Current_Haz_Num++;
+            }
+            else if (Current_Haz_Num == max_Machines_Amnt - 1)
+            {
+                Current_Haz_Num = 0;
+            }
+            switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.cyan;
+                    break;
+                case 1:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.red;
+                    break;
+                default:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.black;
+                    break;
+            }
+            //Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Do_Flash();
+        }
+
+        if (myPlayer.GetButtonDown("BasicAttack") && is_In_Use)
+        {
+            if (Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Is_Facing_Right)
+            {
+                objectPool.SpawnFromPool("CannonBall_Move_Right", Controlled_Hazard[Current_Haz_Num].transform.position,
+                    Quaternion.Euler(Move_Rotation));
+            }
+            if (!Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Is_Facing_Right)
+            {
+                objectPool.SpawnFromPool("CannonBall_Move_Left", Controlled_Hazard[Current_Haz_Num].transform.position,
+                    Quaternion.Euler(Move_Rotation));
+            }
+
+            End_Control();
+        }
+
+        
+
+        if (Current_Haz_Num > max_Machines_Amnt - 1)
+        {
+            Current_Haz_Num = 0;
+            switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.cyan;
+                    break;
+                case 1:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.red;
+                    break;
+                default:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.black;
+                    break;
+            }
+        }
+
+
+        if (verticalInput > 0.1f && Move_Rotation.z < Max_range)
+        {
+            if (Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Is_Facing_Right)
+            {
+                Move_Rotation.z += Time.deltaTime * speed;
+            }
+            if (!Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Is_Facing_Right)
+            {
+                Move_Rotation.z -= Time.deltaTime * speed;
+            }
+        }
+        if (verticalInput < -0.1f && Move_Rotation.z > -Max_range)
+        {
+
+            if (Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Is_Facing_Right)
+            {
+
+                Move_Rotation.z -= Time.deltaTime * speed;
+            }
+            if (!Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Is_Facing_Right)
+            {
+                Move_Rotation.z += Time.deltaTime * speed;
+            }
+        }
+
+
+        if (Move_Rotation.z > Max_range)
+        {
+            Move_Rotation.z = Max_range;
+        }
+        if (Move_Rotation.z < -Max_range)
+        {
+            Move_Rotation.z = -Max_range;
+        }
+
+        Controlled_Hazard[Current_Haz_Num].transform.rotation = Quaternion.Euler(Move_Rotation);
+
+    }
+
     //--------------------------------------------------------------------------------------------------
     /// <summary>
     ///
@@ -686,7 +796,16 @@ public class MachineBehaviour2 : MonoBehaviour
                 }
                 Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myMushroomSpores.transform.position = Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myStartPos;
             }
+
+
             
+        }
+        if (mach == MachineID.Two_Squirrel)
+        {
+            for (int i = 0; i < Controlled_Hazard.Length; i++)
+            {
+                Controlled_Hazard[i].GetComponentInParent<SpriteRenderer>().color = Color.white;
+            }
         }
 
         Debug.Log("Player has deactivated machine: "+transform.name);

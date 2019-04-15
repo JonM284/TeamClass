@@ -6145,7 +6145,7 @@ PrefabInstance:
     - target: {fileID: 2580083951923943346, guid: dcacabfbeb0a72f48a4c481e77cb3f4b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9857322
+      value: 3.3599997
       objectReference: {fileID: 0}
     - target: {fileID: 2580083951923943346, guid: dcacabfbeb0a72f48a4c481e77cb3f4b,
         type: 3}
@@ -6196,6 +6196,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580083952111958020, guid: dcacabfbeb0a72f48a4c481e77cb3f4b,
+        type: 3}
+      propertyPath: Is_Facing_Right
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcacabfbeb0a72f48a4c481e77cb3f4b, type: 3}
@@ -10973,7 +10978,7 @@ PrefabInstance:
     - target: {fileID: 2580083951923943346, guid: dcacabfbeb0a72f48a4c481e77cb3f4b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9857322
+      value: 3.36
       objectReference: {fileID: 0}
     - target: {fileID: 2580083951923943346, guid: dcacabfbeb0a72f48a4c481e77cb3f4b,
         type: 3}
@@ -12370,6 +12375,58 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1309914757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1309914759}
+  - component: {fileID: 1309914758}
+  m_Layer: 0
+  m_Name: Object_Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1309914758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309914757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 109b39cbc176f4d41a29d52eccb52536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPools:
+  - poolTag: CannonBall_Move_Right
+    poolObject: {fileID: 6912426572162878237, guid: 0c0c00d088b5d2c4e88c64aa8914e527,
+      type: 3}
+    total_Pool_Amt: 3
+  - poolTag: CannonBall_Move_Left
+    poolObject: {fileID: 6912426572162878237, guid: ecbef7ddb71b73446b509d4f5b7576a5,
+      type: 3}
+    total_Pool_Amt: 3
+--- !u!4 &1309914759
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309914757}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.01, y: -7.04, z: 0.40625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1358756432
 GameObject:
   m_ObjectHideFlags: 0
@@ -16454,6 +16511,7 @@ GameObject:
   - component: {fileID: 1655359640}
   - component: {fileID: 1655359639}
   - component: {fileID: 1655359641}
+  - component: {fileID: 1655359642}
   m_Layer: 0
   m_Name: Squirrel Machine
   m_TagString: Machine
@@ -16631,7 +16689,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655359636}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2af41ecae21a0604a92c50876f929445, type: 3}
   m_Name: 
@@ -16692,6 +16750,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5266669, y: 1.5666666}
   m_EdgeRadius: 0
+--- !u!114 &1655359642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655359636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a533cefbeb5a1c42a12e831cd63f1c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  is_In_Use: 0
+  Controlled_Hazard:
+  - {fileID: 948717603}
+  - {fileID: 301375358}
+  speed: 80
+  max_Machines_Amnt: 2
+  Max_range: 60
+  mach: 4
+  can_Use: 0
+  fairyScript: {fileID: 191691700}
+  Hazard_StartPos: []
+  Hazard_MaxPos: []
+  Hazard_MinPos: []
+  my_Controller_Player: {fileID: 0}
 --- !u!1 &1657217326
 GameObject:
   m_ObjectHideFlags: 0
