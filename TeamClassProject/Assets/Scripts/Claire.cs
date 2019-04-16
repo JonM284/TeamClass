@@ -206,7 +206,6 @@ public class Claire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         ultAttackTime -= Time.deltaTime;
 
         if (ultActive)
