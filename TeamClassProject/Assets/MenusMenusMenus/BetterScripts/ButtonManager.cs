@@ -9,7 +9,6 @@ using Rewired.ControllerExtensions;
 
 public class ButtonManager : MonoBehaviour
 {
-
     public EventSystem es;
     public GameObject playButton;
     public GameObject fightersButton;
@@ -20,8 +19,8 @@ public class ButtonManager : MonoBehaviour
     public int position;
 
     //the following is in order to use rewired
-    [Tooltip("Reference for using rewired")]
-    private Player myPlayer;
+    //[Tooltip("Reference for using rewired")]
+    //private Player myPlayer;
     [Header("Rewired")]
     [Tooltip("Number identifier for each player, must be above 0")]
     public int playerNum;
@@ -31,8 +30,7 @@ public class ButtonManager : MonoBehaviour
 
     void Awake()
     {
-        playerNum = 1;
-        myPlayer = ReInput.players.GetPlayer(playerNum - 1);
+        //myPlayer = ReInput.players.GetPlayer(playerNum - 1);
     }
 
     // Start is called before the first frame update
@@ -63,51 +61,58 @@ public class ButtonManager : MonoBehaviour
             es.SetSelectedGameObject(es.firstSelectedGameObject);
         }
 
-        if(myPlayer.GetAxis("Vertical") >= 0.1f && timer >= timerMax)
+        //Iterating through Players (excluding the System Player)
+        for (int i = 0; i < ReInput.players.playerCount; i++)
         {
-            timer = 0;
-            position--;
-        }
+            Player myPlayer = ReInput.players.Players[i];
 
-        if (myPlayer.GetAxis("Vertical") <= -0.1f && timer >= timerMax)
-        {
-            timer = 0;
-            position++;
-        }
 
-        if (position <= 0)
-        {
-            position = 5;
-        }
+            if (myPlayer.GetAxis("Vertical") >= 0.1f && timer >= timerMax)
+            {
+                timer = 0;
+                position--;
+            }
 
-        if (position >= 6)
-        {
-            position = 1;
-        }
+            if (myPlayer.GetAxis("Vertical") <= -0.1f && timer >= timerMax)
+            {
+                timer = 0;
+                position++;
+            }
 
-        if(position == 1)
-        {
-            es.SetSelectedGameObject(playButton);
-        }
+            if (position <= 0)
+            {
+                position = 5;
+            }
 
-        if (position == 2)
-        {
-            es.SetSelectedGameObject(fightersButton);
-        }
+            if (position >= 6)
+            {
+                position = 1;
+            }
 
-        if (position == 3)
-        {
-            es.SetSelectedGameObject(optionsButton);
-        }
+            if (position == 1)
+            {
+                es.SetSelectedGameObject(playButton);
+            }
 
-        if (position == 4)
-        {
-            es.SetSelectedGameObject(extrasButton);
-        }
+            if (position == 2)
+            {
+                es.SetSelectedGameObject(fightersButton);
+            }
 
-        if (position == 5)
-        {
-            es.SetSelectedGameObject(quitButton);
+            if (position == 3)
+            {
+                es.SetSelectedGameObject(optionsButton);
+            }
+
+            if (position == 4)
+            {
+                es.SetSelectedGameObject(extrasButton);
+            }
+
+            if (position == 5)
+            {
+                es.SetSelectedGameObject(quitButton);
+            }
         }
     }
 

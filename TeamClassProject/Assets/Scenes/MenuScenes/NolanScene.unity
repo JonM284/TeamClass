@@ -5829,7 +5829,6 @@ GameObject:
   - component: {fileID: 1512945691}
   - component: {fileID: 1512945690}
   - component: {fileID: 1512945693}
-  - component: {fileID: 1512945694}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -5918,28 +5917,6 @@ Canvas:
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &1512945693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1512945688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c37c24cb2b6684a02b567259889ff458, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  es: {fileID: 322506733}
-  playButton: {fileID: 1042682429}
-  fightersButton: {fileID: 1928231676}
-  optionsButton: {fileID: 1338409724}
-  extrasButton: {fileID: 1571206059}
-  quitButton: {fileID: 1852882887}
-  position: 0
-  playerNum: 1
-  timer: 0
-  timerMax: 0
---- !u!114 &1512945694
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
