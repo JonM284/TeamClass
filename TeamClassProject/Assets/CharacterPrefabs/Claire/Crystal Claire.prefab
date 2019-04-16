@@ -10167,6 +10167,37 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &3496331253190302594
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 4229623468395514507}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7521823057106006097}
+  m_Layer: 0
+  m_Name: Claire's Ult turn this on when shes ulting (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7521823057106006097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 4229623468395514507}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3496331253190302594}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6432370848822176503}
+  m_Father: {fileID: 5615167271143781669}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3759519470568511853
 GameObject:
   m_ObjectHideFlags: 0
@@ -24585,6 +24616,37 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &5552145746717007883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 4229623468395514507}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6432370848822176503}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6432370848822176503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 7203220728026587260, guid: 2c80dc7d3a59440acb053bee01162712,
+    type: 3}
+  m_PrefabInstance: {fileID: 4229623468395514507}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5552145746717007883}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7521823057106006097}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5615167269278715990
 GameObject:
   m_ObjectHideFlags: 0
@@ -27162,7 +27224,7 @@ Transform:
   - {fileID: 852921027}
   - {fileID: 1658776135}
   - {fileID: 1979839550}
-  - {fileID: 6432370848822176503}
+  - {fileID: 7521823057106006097}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -27576,7 +27638,8 @@ AudioSource:
   m_GameObject: {fileID: 5615167271143781585}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243632238380340606, guid: 556c6bcf2206b36429662c95a61257e9,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -56783,9 +56846,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c80dc7d3a59440acb053bee01162712, type: 3}
---- !u!4 &6432370848822176503 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7203220728026587260, guid: 2c80dc7d3a59440acb053bee01162712,
-    type: 3}
-  m_PrefabInstance: {fileID: 4229623468395514507}
-  m_PrefabAsset: {fileID: 0}
