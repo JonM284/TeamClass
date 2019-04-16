@@ -24,7 +24,7 @@ public class Branbull_Movement : MonoBehaviour
     void Start()
     {
         removeBranbullTimer = 0f;
-        removeBranbullLength = 5f;
+        removeBranbullLength = 4.0f;
         BranbullIsThere = false;
         branbullExploded = GameObject.Find("Branbull_Exploded");
         myStartPos = myBranbull.transform.position;
