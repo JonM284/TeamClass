@@ -31,6 +31,7 @@ public class ButtonManager : MonoBehaviour
 
     void Awake()
     {
+        playerNum = 1;
         myPlayer = ReInput.players.GetPlayer(playerNum - 1);
     }
 
