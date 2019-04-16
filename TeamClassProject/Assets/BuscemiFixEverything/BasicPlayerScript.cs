@@ -880,16 +880,19 @@ public class BasicPlayerScript : MonoBehaviour
 
 
             //ult
-            if (Input.GetKeyDown("u"))
+            // if (myPlayer.GetButtonDown("Ult"))
+            if (myPlayer.GetButtonDown("Ultimate")) 
             {
-               // if (teamController.GetComponent<SwitchHandler>().specialMeter[2].fillAmount >= 1)
-              //  {
+                if (teamController.GetComponent<SwitchHandler>().specialMeter[2].fillAmount >= .2)
+                {
                     teamController.GetComponent<SwitchHandler>().currentUltNum = 0;
 
-                    if (claire) { claireCharacter.ClaireAttackController(69); }
+                    //if (claire) { claireCharacter.ClaireAttackController(69); }
 
                     if (gillbert) { gillbertCharacter.GilbertAttackController(69); }
-               // }
+
+                    teamController.GetComponent<SwitchHandler>().UpdateUltBar(0);
+                }
             }
         }
 	}
