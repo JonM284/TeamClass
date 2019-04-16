@@ -35,6 +35,10 @@ public class SwitchHandler : MonoBehaviour
 
     Color origBarColor;
 
+    public Image clairePortrait;
+    public Image gilbertPortrait;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +63,37 @@ public class SwitchHandler : MonoBehaviour
         {
             specialMeter[i].fillAmount = 0;
         }
+
+        if (teammate1_fighter.activeSelf)
+        {
+            if (teammate1_fighter.GetComponent<BasicPlayerScript>().claire)
+            {
+                clairePortrait.enabled = true;
+                gilbertPortrait.enabled = false;
+            }
+            else
+            if (teammate1_fighter.GetComponent<BasicPlayerScript>().gillbert)
+            {
+                clairePortrait.enabled = false;
+                gilbertPortrait.enabled = true;
+            }
+        }
+        else
+        {
+            if (teammate2_fighter.GetComponent<BasicPlayerScript>().claire)
+            {
+                clairePortrait.enabled = true;
+                gilbertPortrait.enabled = false;
+            }
+            else
+            if (teammate2_fighter.GetComponent<BasicPlayerScript>().gillbert)
+            {
+                clairePortrait.enabled = false;
+                gilbertPortrait.enabled = true;
+            }
+        }
+       
+        
     }
 
     // Update is called once per frame
@@ -117,6 +152,18 @@ public class SwitchHandler : MonoBehaviour
                     }
                     teammate1_fighter.transform.position = new Vector3(teammate2_fighterPos.x, teammate2_fighterPos.y + .3f, teammate2_fighterPos.z);
                     teammate1_support.SetActive(false);
+
+                    //portrait swap
+                    if (teammate1_fighter.GetComponent<BasicPlayerScript>().claire)
+                    {
+                        clairePortrait.enabled = true;
+                        gilbertPortrait.enabled = false;
+                    }
+                    else if (teammate1_fighter.GetComponent<BasicPlayerScript>().gillbert)
+                    {
+                        clairePortrait.enabled = false;
+                        gilbertPortrait.enabled = true;
+                    }
                 }
 
 
@@ -140,6 +187,18 @@ public class SwitchHandler : MonoBehaviour
                     }
                     teammate2_fighter.transform.position = new Vector3(teammate1_fighterPos.x, teammate1_fighterPos.y + .3f, teammate1_fighterPos.z);
                     teammate2_support.SetActive(false);
+
+                    //portrait swap
+                    if (teammate2_fighter.GetComponent<BasicPlayerScript>().claire)
+                    {
+                        clairePortrait.enabled = true;
+                        gilbertPortrait.enabled = false;
+                    }
+                    else if (teammate2_fighter.GetComponent<BasicPlayerScript>().gillbert)
+                    {
+                        clairePortrait.enabled = false;
+                        gilbertPortrait.enabled = true;
+                    }
                 }
             }
         }
