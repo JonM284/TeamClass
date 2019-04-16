@@ -158,10 +158,23 @@ public class Claire : MonoBehaviour
     public bool shield;
 
     [Header("Ult Attack")]
-    public GameObject storm;
-    public bool hasStorm;
-    public float ultDuration;
-    public float ultDamage;
+    public float U_Damage;
+    public float U_Angle;
+    public float U_Knockback;
+    public float U_HitStun;
+    public float U_Distance;
+    public float U_TravelTime;
+    public float U_ShakeDuration;
+    public float U_ShakeMagnitude;
+    public float U_ShakeSlowDown;
+    public GameObject fireball;
+    public float U_MaxDownVel;
+    public float U_GravityUp;
+    public float U_GravityDown;
+    public float U_XSpeed;
+    public float U_YSpeed;
+    public float U_MoveUpTimer;
+
 
     private float ultAttackTime = 0;
     private bool ultActive = false;
@@ -199,11 +212,7 @@ public class Claire : MonoBehaviour
         {
             if (ultAttackTime < 0)
             {
-                if (!hasStorm)
-                {
-                    var ult = Instantiate(storm, transform.position, Quaternion.identity);
-                    ult.GetComponent<ClaireUlt>().duration = 1;
-                }
+                UltAttack();
                 ultAttackTime = 1;
             }
         }
