@@ -1504,10 +1504,6 @@ MonoBehaviour:
   char_2: {fileID: 1713541532}
   char_3: {fileID: 140232037}
   char_4: {fileID: 379628054}
-  greyRect_1: {fileID: 0}
-  greyRect_2: {fileID: 0}
-  greyRect_3: {fileID: 0}
-  greyRect_4: {fileID: 0}
   team_num: 2
   char_selected: 2
   disabled_for_teammate: 0
@@ -1516,6 +1512,7 @@ MonoBehaviour:
   player_value: 0
   selected: 0
   arrows: {fileID: 414135592}
+  dummyObject: {fileID: 1074261568}
 --- !u!1 &627808531
 GameObject:
   m_ObjectHideFlags: 0
@@ -2036,10 +2033,6 @@ MonoBehaviour:
   char_2: {fileID: 148739578}
   char_3: {fileID: 1350259873}
   char_4: {fileID: 698863971}
-  greyRect_1: {fileID: 0}
-  greyRect_2: {fileID: 0}
-  greyRect_3: {fileID: 0}
-  greyRect_4: {fileID: 0}
   team_num: 1
   char_selected: 2
   disabled_for_teammate: 0
@@ -2048,6 +2041,7 @@ MonoBehaviour:
   player_value: 0
   selected: 0
   arrows: {fileID: 472072936}
+  dummyObject: {fileID: 1074261568}
 --- !u!1 &780914504
 GameObject:
   m_ObjectHideFlags: 0
@@ -2802,6 +2796,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team_anim: {fileID: 1069684962}
+--- !u!1 &1074261568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1074261570}
+  - component: {fileID: 1074261569}
+  m_Layer: 0
+  m_Name: DummyObj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1074261569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074261568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3377b5a863bff476ea3f209b3f3be565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1074261570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074261568}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1084898114
 GameObject:
   m_ObjectHideFlags: 0
@@ -3402,10 +3439,6 @@ MonoBehaviour:
   char_2: {fileID: 567062664}
   char_3: {fileID: 1692400913}
   char_4: {fileID: 733762254}
-  greyRect_1: {fileID: 0}
-  greyRect_2: {fileID: 0}
-  greyRect_3: {fileID: 0}
-  greyRect_4: {fileID: 0}
   team_num: 2
   char_selected: 1
   disabled_for_teammate: 0
@@ -3414,6 +3447,7 @@ MonoBehaviour:
   player_value: 0
   selected: 0
   arrows: {fileID: 1669526247}
+  dummyObject: {fileID: 1074261568}
 --- !u!1 &1520873634
 GameObject:
   m_ObjectHideFlags: 0
@@ -7492,10 +7526,6 @@ MonoBehaviour:
   char_2: {fileID: 851964170}
   char_3: {fileID: 642248283}
   char_4: {fileID: 1848089421}
-  greyRect_1: {fileID: 0}
-  greyRect_2: {fileID: 0}
-  greyRect_3: {fileID: 0}
-  greyRect_4: {fileID: 0}
   team_num: 1
   char_selected: 1
   disabled_for_teammate: 0
@@ -7504,6 +7534,7 @@ MonoBehaviour:
   player_value: 0
   selected: 0
   arrows: {fileID: 248031330}
+  dummyObject: {fileID: 1074261568}
 --- !u!1 &2061227639
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,6 +24,9 @@ public class Portrait : MonoBehaviour
     public bool selected; //did this player select a character
     public static int playersLockedIn;
     public GameObject arrows;
+    public GameObject dummyObject; //turns on a nonexistant object that allows players to lock in their characters
+
+    public static bool canSelect;
 
     void Awake()
     {
@@ -37,6 +40,7 @@ public class Portrait : MonoBehaviour
         timerMax = 15f;
         selected = false;
         playersLockedIn = 0;
+        canSelect = false;
 
         /*
         greyRect_1.SetActive(false);
@@ -56,6 +60,7 @@ public class Portrait : MonoBehaviour
         if (timer >= timerMax)
         {
             timer = timerMax;
+            //canSelect = true;
         }
 
         //move right if holding right
@@ -63,6 +68,7 @@ public class Portrait : MonoBehaviour
         {
             char_selected++;
             timer = 0f;
+            dummyObject.SetActive(true);
         }
 
         //move left if holding left
@@ -70,6 +76,7 @@ public class Portrait : MonoBehaviour
         {
             char_selected--;
             timer = 0f;
+            dummyObject.SetActive(true);
         }
 
         //if holding left on 1, go to 4
@@ -124,11 +131,11 @@ public class Portrait : MonoBehaviour
             char_4.SetActive(false);
         }
 
-        if (myPlayer.GetButtonDown("Jump") && selected == false && PlayerStageSelect.hasSelected == true && timer >= timerMax)
+        if (myPlayer.GetButtonDown("Jump") && selected == false && PlayerStageSelect.hasSelected == true && timer >= timerMax && canSelect == true)
         {
             timer = 0;
             selected = true;
-            //arrows.SetActive(false);
+            arrows.SetActive(false);
             playersLockedIn += 1;
 
             if (char_selected == 1)
@@ -172,17 +179,19 @@ public class Portrait : MonoBehaviour
             }
         }
 
-        if (myPlayer.GetButtonDown("HeavyAttack") && selected == true && PlayerStageSelect.hasSelected == true)
+        if (myPlayer.GetButtonDown("HeavyAttack") && selected == true && PlayerStageSelect.hasSelected == true && timer >= timerMax)
         {
+            timer = 0;
             selected = false; 
             arrows.SetActive(true);
             playersLockedIn -= 1;
+
             /*
             greyRect_1.SetActive(false);
             greyRect_2.SetActive(false);
             greyRect_3.SetActive(false);
             greyRect_4.SetActive(false);
-            */          
+            */
         }
     }
 }
