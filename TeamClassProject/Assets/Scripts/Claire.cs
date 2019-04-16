@@ -155,6 +155,7 @@ public class Claire : MonoBehaviour
     public float DH_ShakeDuration;
     public float DH_ShakeMagnitude;
     public float DH_ShakeSlowDown;
+    public bool shield;
 
     [Header("Ult Attack")]
     public float U_Damage;
@@ -491,6 +492,10 @@ public class Claire : MonoBehaviour
     {
         currentAttack = 0;
         player.isAttacking = false;
+        if (shield)
+        {
+            shield = false;
+        }
         player.canTurn = true;
         this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
 		this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
