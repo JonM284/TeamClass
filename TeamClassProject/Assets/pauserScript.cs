@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
+
 
 
 public class pauserScript : MonoBehaviour
@@ -132,7 +134,7 @@ public class pauserScript : MonoBehaviour
 
     public void quitGame()
     {
-        //this does nothing. add quit when Nolan adds menu
+        SceneManager.LoadScene("NolanScene");
     }
     
 
