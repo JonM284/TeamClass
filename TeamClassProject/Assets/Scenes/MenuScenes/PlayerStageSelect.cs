@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 public class PlayerStageSelect : MonoBehaviour
 {
     //the following is in order to use rewired
-    [Tooltip("Reference for using rewired")]
-    private Player myPlayer;
+    //[Tooltip("Reference for using rewired")]
+    //private Player myPlayer;
     [Header("Rewired")]
     [Tooltip("Number identifier for each player, must be above 0")]
     public int playerNum;
@@ -31,7 +31,7 @@ public class PlayerStageSelect : MonoBehaviour
 
     void Awake()
     {
-        myPlayer = ReInput.players.GetPlayer(playerNum - 1);
+        //myPlayer = ReInput.players.GetPlayer(playerNum - 1);
     }
 
     // Start is called before the first frame update
@@ -40,7 +40,7 @@ public class PlayerStageSelect : MonoBehaviour
         position = 2;
         hasSelected = false;
 
-        GameManager.gameState = 2;
+        //GameManager.gameState = 2;
 
         white_box.SetActive(false);
         white_box_2.SetActive(false);
@@ -52,103 +52,109 @@ public class PlayerStageSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer++;
+        //Iterating through Players (excluding the System Player)
+        for (int i = 0; i < ReInput.players.playerCount; i++)
+        {
+            Player myPlayer = ReInput.players.Players[i];
 
-        if (timer >= timerMax)
-        {
-            timer = timerMax;
-        }
+            timer++;
 
-        //move right if holding right
-        if (myPlayer.GetAxis("Horizontal") >= 0.1f && hasSelected == false)
-        {
-            position--;
-        }
+            if (timer >= timerMax)
+            {
+                timer = timerMax;
+            }
 
-        //move left if holding left
-        if (myPlayer.GetAxis("Horizontal") <= -0.1f && hasSelected == false)
-        {
-            position++;
-        }
+            //move right if holding right
+            if (myPlayer.GetAxis("Horizontal") >= 0.1f && hasSelected == false)
+            {
+                position--;
+            }
 
-        //if holding left on 1, don't do anything
-        if (position <= 1)
-        {
-            position = 1;
-        }
+            //move left if holding left
+            if (myPlayer.GetAxis("Horizontal") <= -0.1f && hasSelected == false)
+            {
+                position++;
+            }
 
-        //if holding right on 2, don't do anything 
-        if (position >= 2)
-        {
-            position = 2;
-        }
-       
-        //if position is 1, turn on the grey object over the airship level
-        if (position == 1)
-        {
-            selected_forest.SetActive(true);
-        }
-        else
-        {
-            selected_forest.SetActive(false);
-        }
+            //if holding left on 1, don't do anything
+            if (position <= 1)
+            {
+                position = 1;
+            }
 
-        //if position is 2, turn on the grey object over the forest level
-        if (position == 2)
-        {
-            selected_airship.SetActive(true);
-        }
-        else
-        {
-            selected_airship.SetActive(false);
-        }
+            //if holding right on 2, don't do anything 
+            if (position >= 2)
+            {
+                position = 2;
+            }
 
-        if (myPlayer.GetButtonDown("Jump") && hasSelected == false && timer >= timerMax)
-        {
-            timer = 0;
-            hasSelected = true;
-            white_box.SetActive(true);
-            white_box_2.SetActive(false);
-
+            //if position is 1, turn on the grey object over the airship level
             if (position == 1)
             {
-                stage_forest.SetActive(true);
+                selected_forest.SetActive(true);
+            }
+            else
+            {
                 selected_forest.SetActive(false);
-                selected_airship.SetActive(false);
             }
 
+            //if position is 2, turn on the grey object over the forest level
             if (position == 2)
             {
-                stage_airship.SetActive(true);
-                selected_forest.SetActive(false);
+                selected_airship.SetActive(true);
+            }
+            else
+            {
                 selected_airship.SetActive(false);
             }
-        }
 
-        if (myPlayer.GetButtonDown("HeavyAttack") && hasSelected == true && timer >= timerMax)
-        {
-            white_box.SetActive(false);
-            white_box_2.SetActive(true);
-            stage_airship.SetActive(false);
-            stage_forest.SetActive(false);
-            hasSelected = false;
-            timer = 0;
-        }
+            if (myPlayer.GetButtonDown("Jump") && hasSelected == false && timer >= timerMax)
+            {
+                timer = 0;
+                hasSelected = true;
+                white_box.SetActive(true);
+                white_box_2.SetActive(false);
 
-        if (myPlayer.GetButtonDown("HeavyAttack") && hasSelected == false && timer >= timerMax)
-        {
-            timer = 0;
-            SceneManager.LoadScene("NolanScene");
-        }
+                if (position == 1)
+                {
+                    stage_forest.SetActive(true);
+                    selected_forest.SetActive(false);
+                    selected_airship.SetActive(false);
+                }
 
-        if(Portrait.playersLockedIn >= 4 && position == 2)
-        {
-            SceneManager.LoadScene("JonScene");
-        }
+                if (position == 2)
+                {
+                    stage_airship.SetActive(true);
+                    selected_forest.SetActive(false);
+                    selected_airship.SetActive(false);
+                }
+            }
 
-        if (Portrait.playersLockedIn >= 4 && position == 1)
-        {
-            SceneManager.LoadScene("JustinScene");
+            if (myPlayer.GetButtonDown("HeavyAttack") && hasSelected == true && timer >= timerMax)
+            {
+                white_box.SetActive(false);
+                white_box_2.SetActive(true);
+                stage_airship.SetActive(false);
+                stage_forest.SetActive(false);
+                hasSelected = false;
+                timer = 0;
+            }
+
+            if (myPlayer.GetButtonDown("HeavyAttack") && hasSelected == false && timer >= timerMax)
+            {
+                timer = 0;
+                SceneManager.LoadScene("NolanScene");
+            }
+
+            if (Portrait.playersLockedIn >= 4 && position == 2)
+            {
+                SceneManager.LoadScene("JonScene");
+            }
+
+            if (Portrait.playersLockedIn >= 4 && position == 1)
+            {
+                SceneManager.LoadScene("JustinScene");
+            }
         }
     }
 }
