@@ -10626,7 +10626,7 @@ MonoBehaviour:
   BF_Angle: 30
   BF_Knockback: 6
   BF_HitStun: 0.4
-  BF_Distance: 80
+  BF_Distance: 115
   BF_TravelTime: 0.4
   BF_ShakeDuration: 0.035
   BF_ShakeMagnitude: 0.05
@@ -10696,8 +10696,8 @@ MonoBehaviour:
   DA_GravityUp: 70
   DA_GravityDown: 30
   DA_XSpeed: 0
-  DA_YSpeed: 1
-  DA_MoveUpTimer: 0.01
+  DA_YSpeed: 5
+  DA_MoveUpTimer: 0.1
   NH_Damage: 65
   NH_Angle: 45
   NH_Knockback: 0
@@ -10741,7 +10741,7 @@ MonoBehaviour:
   U_GravityDown: 30
   U_XSpeed: 0
   U_YSpeed: 1
-  U_MoveUpTimer: 0.01
+  U_MoveUpTimer: 0.1
   GilbertSounds:
   - {fileID: 8300000, guid: aef0e71aaaa2629479f4b24b20eab9c2, type: 3}
   - {fileID: 8300000, guid: 79c00d26f3241924ba24499dd91b2b4e, type: 3}
@@ -10751,7 +10751,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 43ce80f3d92074a46b5ab9b2245c224b, type: 3}
   - {fileID: 8300000, guid: ced2d752152d1584c8f1e14a31f40d79, type: 3}
   - {fileID: 8300000, guid: c11bc7903d8ea49478bf354d37a8b30a, type: 3}
-  GilbertSoundPlayer: {fileID: 2660453998392343815}
+  GilbertSoundPlayer: {fileID: 0}
 --- !u!82 &2660453998392343815
 AudioSource:
   m_ObjectHideFlags: 0

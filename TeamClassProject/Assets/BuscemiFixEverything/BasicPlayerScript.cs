@@ -886,6 +886,7 @@ public class BasicPlayerScript : MonoBehaviour
               //  {
                     teamController.GetComponent<SwitchHandler>().currentUltNum = 0;
 
+                    if (claire) { claireCharacter.ClaireAttackController(69); }
 
                     if (gillbert) { gillbertCharacter.GilbertAttackController(69); }
                // }
@@ -935,51 +936,57 @@ public class BasicPlayerScript : MonoBehaviour
     /// <param name="slowDown">How quickly the camera stops shaking</param>
     public void GetHit(float attackDamage, float attackAngle, float attackForce, float hitStun, float distance, float travelTime, bool facingRight, float duration, float magnitude, float slowDown)//im probably missing a few arguments
     {
-
-		rb.constraints = RigidbodyConstraints2D.None;
-		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-		if (isJumping)
-		{
-			isJumping = false;
-		}
-
-        if (gotHitTimer < 0)
+        if (claire && claireCharacter.shield)
         {
-            teamController.GetComponent<SwitchHandler>().UpdateUltBar(attackDamage);
-            currentHealth -= attackDamage;
-            hitAngle = attackAngle;
-            regenHeath -= attackDamage * regenHeathMultiplier;
-            velocity = new Vector3(0, 0, 0);
-            maxDistance = distance;
-            maxKnockbackTime = travelTime;
-            currentKnockbackTime = 0;
-            startPosition = transform.position;
-            isAttacking = false;
-
-            mainCamera.GetComponent<ShakeScreenScript>().SetVariables(duration, magnitude, slowDown);
-
-            gotHitTimer = hitStun;
-            knockback = attackForce;
-            Vector3 dir = new Vector3(0, 0, 0);
-            if (gotHitTimer > 0)
+            //do nothing
+        }
+        else
+        { 
+            rb.constraints = RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            if (isJumping)
             {
-                if (facingRight)
-                {
-                    dir = Quaternion.AngleAxis(attackAngle, Vector3.forward) * Vector3.right;
-                    hitDirection = new Vector3(-dir.x, dir.y, dir.z);
-                    endPosition = transform.position + (hitDirection.normalized * distance);
-                    direction = "Right";
-                }
-                else
-                {
-                    dir = Quaternion.AngleAxis(attackAngle, Vector3.forward) * Vector3.right;
-                    hitDirection = dir;
-                    endPosition = transform.position + (hitDirection.normalized * distance);
-                    direction = "Left";
-                }
+                isJumping = false;
             }
-            //rb.AddForce(dir * attackForce);
-            // rb.AddForce(new Vector2(attackForce, 0));
+
+            if (gotHitTimer < 0)
+            {
+                teamController.GetComponent<SwitchHandler>().UpdateUltBar(attackDamage);
+                currentHealth -= attackDamage;
+                hitAngle = attackAngle;
+                regenHeath -= attackDamage * regenHeathMultiplier;
+                velocity = new Vector3(0, 0, 0);
+                maxDistance = distance;
+                maxKnockbackTime = travelTime;
+                currentKnockbackTime = 0;
+                startPosition = transform.position;
+                isAttacking = false;
+
+                mainCamera.GetComponent<ShakeScreenScript>().SetVariables(duration, magnitude, slowDown);
+
+                gotHitTimer = hitStun;
+                knockback = attackForce;
+                Vector3 dir = new Vector3(0, 0, 0);
+                if (gotHitTimer > 0)
+                {
+                    if (facingRight)
+                    {
+                        dir = Quaternion.AngleAxis(attackAngle, Vector3.forward) * Vector3.right;
+                        hitDirection = new Vector3(-dir.x, dir.y, dir.z);
+                        endPosition = transform.position + (hitDirection.normalized * distance);
+                        direction = "Right";
+                    }
+                    else
+                    {
+                        dir = Quaternion.AngleAxis(attackAngle, Vector3.forward) * Vector3.right;
+                        hitDirection = dir;
+                        endPosition = transform.position + (hitDirection.normalized * distance);
+                        direction = "Left";
+                    }
+                }
+                //rb.AddForce(dir * attackForce);
+                // rb.AddForce(new Vector2(attackForce, 0));
+            }
         }
     }
 

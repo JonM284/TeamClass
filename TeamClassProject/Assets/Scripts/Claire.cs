@@ -155,6 +155,29 @@ public class Claire : MonoBehaviour
     public float DH_ShakeDuration;
     public float DH_ShakeMagnitude;
     public float DH_ShakeSlowDown;
+    public bool shield;
+
+    [Header("Ult Attack")]
+    public float U_Damage;
+    public float U_Angle;
+    public float U_Knockback;
+    public float U_HitStun;
+    public float U_Distance;
+    public float U_TravelTime;
+    public float U_ShakeDuration;
+    public float U_ShakeMagnitude;
+    public float U_ShakeSlowDown;
+    public GameObject fireball;
+    public float U_MaxDownVel;
+    public float U_GravityUp;
+    public float U_GravityDown;
+    public float U_XSpeed;
+    public float U_YSpeed;
+    public float U_MoveUpTimer;
+
+
+    private float ultAttackTime = 0;
+    private bool ultActive = false;
 
     private float currentAttack;
 
@@ -183,7 +206,18 @@ public class Claire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		
+
+        ultAttackTime -= Time.deltaTime;
+
+        if (ultActive)
+        {
+            if (ultAttackTime < 0)
+            {
+                UltAttack();
+                ultAttackTime = 1;
+            }
+        }
+
     }
 
     /*
@@ -317,6 +351,8 @@ public class Claire : MonoBehaviour
                 player.isAttacking = true;
                 player.canTurn = false;
 
+                shield = true;
+
                 ClaireSoundPlayer.clip = ClaireSounds[7];
                 ClaireSoundPlayer.Play();
 
@@ -343,6 +379,11 @@ public class Claire : MonoBehaviour
                 }
                 break;
 
+
+            case 69:
+                player.isAttacking = true;
+                ultActive = true;
+                break;
 
             default:
                 break;
@@ -420,7 +461,7 @@ public class Claire : MonoBehaviour
 
     private void DownHeavy(GameObject enemy)
     {
-        //enemy.GetComponent<BasicPlayerScript>().GetHit(DH_Damage, DH_Angle, DH_Knockback, DH_HitStun, DH_Distance, DH_TravelTime, player.FacingRight(), DH_ShakeDuration, DH_ShakeMagnitude, DH_ShakeSlowDown);
+        
     }
 
     private void UpHeavyPart1(GameObject enemy)
@@ -435,6 +476,13 @@ public class Claire : MonoBehaviour
         player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(UH2_Damage);
     }
 
+    private void UltAttack()
+    {
+        
+
+        
+    }
+
     public void CurrentAttack(int attackNum)
     {
         currentAttack = attackNum;
@@ -444,6 +492,10 @@ public class Claire : MonoBehaviour
     {
         currentAttack = 0;
         player.isAttacking = false;
+        if (shield)
+        {
+            shield = false;
+        }
         player.canTurn = true;
         this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
 		this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;

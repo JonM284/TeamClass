@@ -366,7 +366,7 @@ public class Gillbert : MonoBehaviour
 
                 GilbertSoundPlayer.clip = GilbertSounds[6];
                 GilbertSoundPlayer.Play();
-                player.AttackMovement(6, .5f, .3f, new Vector2(0,0));
+                player.AttackMovement(10, .5f, .2f, new Vector2(0,0));
 
                 break;
 

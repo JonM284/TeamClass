@@ -28,7 +28,7 @@ public class AlternateSP : MonoBehaviour
     public enum Status { Free, AtMachine };
     private Rigidbody2D rb;
     private Vector2 vel;
-    private float horizontalInput, verticalInput;
+    private float horizontalInput, verticalInput, m_initial_Y_Pos;
     private Player myPlayer;
     [SerializeField]
     private bool is_In_Area = false;
@@ -53,6 +53,7 @@ public class AlternateSP : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         original_Scale = transform.localScale;
+        m_initial_Y_Pos = transform.position.y;
 
     }
 
@@ -132,9 +133,9 @@ public class AlternateSP : MonoBehaviour
             }
         }
 
-        if (transform.position.y != -4.027125)
+        if (transform.position.y != m_initial_Y_Pos)
         {
-            transform.position = new Vector3(transform.position.x, -4.027125f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, m_initial_Y_Pos, transform.position.z);
         }
 
         // If player is infront of machine and they press "Jump" and they are free, set their status to at a machine
