@@ -886,6 +886,7 @@ public class BasicPlayerScript : MonoBehaviour
               //  {
                     teamController.GetComponent<SwitchHandler>().currentUltNum = 0;
 
+                    if (claire) { claireCharacter.ClaireAttackController(69); }
 
                     if (gillbert) { gillbertCharacter.GilbertAttackController(69); }
                // }
