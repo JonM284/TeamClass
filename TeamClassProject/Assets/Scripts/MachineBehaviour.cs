@@ -135,7 +135,7 @@ public class MachineBehaviour : MonoBehaviour
         }
         catch
         {
-
+            
         }
         
 
@@ -172,7 +172,7 @@ public class MachineBehaviour : MonoBehaviour
             }
             else if (mach == MachineID.MiddlePlatform)
             {
-
+                verticalInput = myPlayer.GetAxisRaw("Vertical");
                 MiddlePlatformBehavior();
             }
         }
@@ -287,11 +287,11 @@ public class MachineBehaviour : MonoBehaviour
 
         if (Move_Rotation.z > Max_range)
         {
-            Move_Rotation.z = Max_range;
+            Move_Rotation.z = Max_range - 0.01f;
         }
         if (Move_Rotation.z < -Max_range)
         {
-            Move_Rotation.z = -Max_range;
+            Move_Rotation.z = -Max_range + 0.01f;
         }
 
         Controlled_Hazard[Current_Haz_Num].transform.rotation = Quaternion.Euler(Move_Rotation);
@@ -417,16 +417,16 @@ public class MachineBehaviour : MonoBehaviour
              sideHazardReady = true;
          }*/
 
-        if (Controlled_Hazard[Current_Haz_Num].transform.position.y >= Hazard_MaxPos[Current_Haz_Num].y)
+        if (Controlled_Hazard[Current_Haz_Num].transform.position.y > Hazard_MaxPos[Current_Haz_Num].y)
         {
             Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.position.x,
-                Hazard_MaxPos[Current_Haz_Num].y, Controlled_Hazard[Current_Haz_Num].transform.position.z);
+                Hazard_MaxPos[Current_Haz_Num].y - 0.01f, Controlled_Hazard[Current_Haz_Num].transform.position.z);
         }
 
-        if (Controlled_Hazard[Current_Haz_Num].transform.position.y <= Hazard_MinPos[Current_Haz_Num].y)
+        if (Controlled_Hazard[Current_Haz_Num].transform.position.y < Hazard_MinPos[Current_Haz_Num].y)
         {
             Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.position.x,
-                Hazard_MinPos[Current_Haz_Num].y, Controlled_Hazard[Current_Haz_Num].transform.position.z);
+                Hazard_MinPos[Current_Haz_Num].y + 0.01f, Controlled_Hazard[Current_Haz_Num].transform.position.z);
         }
         /*
         //lerping timer
@@ -537,16 +537,16 @@ public class MachineBehaviour : MonoBehaviour
         }
 
 
-        if (Controlled_Hazard[Current_Haz_Num].transform.position.y >= Hazard_MaxPos[Current_Haz_Num].y)
+        if (Controlled_Hazard[Current_Haz_Num].transform.position.y > Hazard_MaxPos[Current_Haz_Num].y)
         {
             Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.position.x,
-                Hazard_MaxPos[Current_Haz_Num].y, Controlled_Hazard[Current_Haz_Num].transform.position.z);
+                Hazard_MaxPos[Current_Haz_Num].y - 0.01f, Controlled_Hazard[Current_Haz_Num].transform.position.z);
         }
 
-        if (Controlled_Hazard[Current_Haz_Num].transform.position.y <= Hazard_MinPos[Current_Haz_Num].y)
+        if (Controlled_Hazard[Current_Haz_Num].transform.position.y < Hazard_MinPos[Current_Haz_Num].y)
         {
             Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.position.x,
-                Hazard_MinPos[Current_Haz_Num].y, Controlled_Hazard[Current_Haz_Num].transform.position.z);
+                Hazard_MinPos[Current_Haz_Num].y + 0.01f, Controlled_Hazard[Current_Haz_Num].transform.position.z);
         }
 
 
@@ -560,7 +560,7 @@ public class MachineBehaviour : MonoBehaviour
         machineSoundPlayer.clip = machineSounds[2];
         machineSoundPlayer.Play();
 
-        if (middlePlatform_movingUp == true)
+        /*if (middlePlatform_movingUp == true)
         {
             Current_Haz_Num = 0;
         }
@@ -626,9 +626,25 @@ public class MachineBehaviour : MonoBehaviour
             End_Control();
             middlePlatform_movingUp = true;
             middlePlatform_vacuumBoxCollider.enabled = false;
+        }*/
+        vel.x = 0;
+        vel.y = verticalInput * speed;
+
+
+        if (Controlled_Hazard[Current_Haz_Num].transform.position.y > 3.0f)
+        {
+            Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.position.x,
+                3.0f - 0.001f, Controlled_Hazard[Current_Haz_Num].transform.position.z);
         }
 
-        
+        if (Controlled_Hazard[Current_Haz_Num].transform.position.y < 1.0f)
+        {
+            Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.position.x,
+                1.0f + 0.001f, Controlled_Hazard[Current_Haz_Num].transform.position.z);
+        }
+
+        Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
+            + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
 
     }
 
