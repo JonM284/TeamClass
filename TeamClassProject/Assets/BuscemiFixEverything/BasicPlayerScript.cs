@@ -498,7 +498,7 @@ public class BasicPlayerScript : MonoBehaviour
 				if (accel > 0)
 				{
                     if (onTopOfPlatform) { accel -= decelMult; }
-                    if (onTopOfPlatform) { accel -= decelMult / 4; } //discard probably :D
+                   // if (onTopOfPlatform) { accel -= decelMult / 4; } //discard probably :D
                 }
 				else
 				{
@@ -510,7 +510,7 @@ public class BasicPlayerScript : MonoBehaviour
 				if (accel < 0)
 				{
                     if (onTopOfPlatform) { accel += decelMult; }
-                    if (onTopOfPlatform) { accel += decelMult / 4; } //discard probably :D
+                    //if (onTopOfPlatform) { accel += decelMult / 4; } //discard probably :D
                 }
 				else
 				{

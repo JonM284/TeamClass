@@ -201,6 +201,10 @@ public class Gillbert : MonoBehaviour
     void Update()
     {
         ultAttackTime -= Time.deltaTime;
+        if (ultActive)
+        {
+            player.currentGilbertFlightTime -= Time.deltaTime;
+        }
 
         if (ultActive)
         {
