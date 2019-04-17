@@ -27465,22 +27465,10 @@ MonoBehaviour:
   DH_ShakeMagnitude: 0
   DH_ShakeSlowDown: 0
   shield: 0
-  U_Damage: 0
-  U_Angle: 0
-  U_Knockback: 0
-  U_HitStun: 0
-  U_Distance: 0
-  U_TravelTime: 0
-  U_ShakeDuration: 0
-  U_ShakeMagnitude: 0
-  U_ShakeSlowDown: 0
-  fireball: {fileID: 0}
-  U_MaxDownVel: 0
-  U_GravityUp: 0
-  U_GravityDown: 0
-  U_XSpeed: 0
-  U_YSpeed: 0
-  U_MoveUpTimer: 0
+  storm: {fileID: 0}
+  hasStorm: 0
+  ultDuration: 0
+  ultDamage: 0
   ClaireSounds:
   - {fileID: 8300000, guid: 65e6146a06118f640a76735f77d3b022, type: 3}
   - {fileID: 8300000, guid: 8fa4aa820ced1384f933ca8a83a22fe9, type: 3}
@@ -27563,7 +27551,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04728341, y: 0.118163586}
+  m_Offset: {x: -0.04728341, y: 0.07344526}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -27574,7 +27562,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.15066, y: 2.997426}
+  m_Size: {x: 1.15066, y: 3.0868626}
   m_EdgeRadius: 0
 --- !u!114 &5615167271143781587
 MonoBehaviour:
@@ -27627,6 +27615,7 @@ MonoBehaviour:
   stunTime: 0
   dashSpeed: 0.25
   maxDashTimer: 0.18
+  attackZone: 0
   teamController: {fileID: 0}
   canTurn: 1
 --- !u!82 &5615167271143781584
@@ -56784,11 +56773,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5615167271143781669}
     m_Modifications:
-    - target: {fileID: 991012252433896763, guid: 2c80dc7d3a59440acb053bee01162712,
-        type: 3}
-      propertyPath: m_Name
-      value: Claire's Ult turn this on when shes ulting
-      objectReference: {fileID: 0}
     - target: {fileID: 7203220728026587260, guid: 2c80dc7d3a59440acb053bee01162712,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -56843,6 +56827,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 991012252433896763, guid: 2c80dc7d3a59440acb053bee01162712,
+        type: 3}
+      propertyPath: m_Name
+      value: Claire's Ult turn this on when shes ulting
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c80dc7d3a59440acb053bee01162712, type: 3}
