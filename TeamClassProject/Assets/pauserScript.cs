@@ -68,7 +68,7 @@ public class pauserScript : MonoBehaviour
 
         if (timer >= timerMax)
         {
-            print("gyes");
+            //print("gyes");
         }
         up = false;
         down = false;
@@ -76,7 +76,7 @@ public class pauserScript : MonoBehaviour
         Player myPlayer = ReInput.players.Players[0];
 
         float need = myPlayer.GetAxis("Vertical");
-        print(need + "float");
+        //print(need + "float");
 
         
         if (myPlayer.GetButtonDown("Pause"))
@@ -89,7 +89,7 @@ public class pauserScript : MonoBehaviour
         //    es.SetSelectedGameObject(es.firstSelectedGameObject);
         }
 
-        print("1GoGo");
+        //print("1GoGo");
          if (Input.GetKeyDown(KeyCode.Escape))
          {
              if (pPanel.enabled)
