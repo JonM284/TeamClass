@@ -135,8 +135,8 @@ public class MachineBehaviour2 : MonoBehaviour
                 Fairy_Machine_Ready = true;
                 indicator_Images[0].SetActive(true);
                 indicator_Images[1].SetActive(false);
-                //machineSoundPlayer.clip = machineSounds[0];
-                //machineSoundPlayer.Play();
+                machineSoundPlayer.clip = machineSounds[1];
+                machineSoundPlayer.Play();
                 GetComponent<BoxCollider2D>().enabled = true;
             }
         }
@@ -150,8 +150,8 @@ public class MachineBehaviour2 : MonoBehaviour
                 Two_BottomHazard_Machine_Ready = true;
                 indicator_Images[0].SetActive(true);
                 indicator_Images[1].SetActive(false);
-                //machineSoundPlayer.clip = machineSounds[0];
-                //machineSoundPlayer.Play();
+                machineSoundPlayer.clip = machineSounds[1];
+                machineSoundPlayer.Play();
                 GetComponent<BoxCollider2D>().enabled = true;
             }
         }
@@ -165,8 +165,8 @@ public class MachineBehaviour2 : MonoBehaviour
                 Two_TopHazard_Machine_Ready = true;
                 indicator_Images[0].SetActive(true);
                 indicator_Images[1].SetActive(false);
-                //machineSoundPlayer.clip = machineSounds[0];
-                //machineSoundPlayer.Play();
+                machineSoundPlayer.clip = machineSounds[1];
+                machineSoundPlayer.Play();
                 GetComponent<BoxCollider2D>().enabled = true;
             }
         }
@@ -180,8 +180,8 @@ public class MachineBehaviour2 : MonoBehaviour
                 Mushrooms_Machine_Ready = true;
                 indicator_Images[0].SetActive(true);
                 indicator_Images[1].SetActive(false);
-                //machineSoundPlayer.clip = machineSounds[0];
-                //machineSoundPlayer.Play();
+                machineSoundPlayer.clip = machineSounds[1];
+                machineSoundPlayer.Play();
                 GetComponent<BoxCollider2D>().enabled = true;
             }
         }
@@ -195,8 +195,8 @@ public class MachineBehaviour2 : MonoBehaviour
                 Squirrel_Machine_Ready = true;
                 indicator_Images[0].SetActive(true);
                 indicator_Images[1].SetActive(false);
-                //machineSoundPlayer.clip = machineSounds[0];
-                //machineSoundPlayer.Play();
+                machineSoundPlayer.clip = machineSounds[1];
+                machineSoundPlayer.Play();
                 GetComponent<BoxCollider2D>().enabled = true;
             }
         }
@@ -241,6 +241,7 @@ public class MachineBehaviour2 : MonoBehaviour
     /// </summary>
     void FairyControl()
     {
+
         vel.x = horizontalInput * speed;
         vel.y = verticalInput * speed;
         //if fairy hits a player
@@ -253,9 +254,6 @@ public class MachineBehaviour2 : MonoBehaviour
             Fairy_Machine_Ready = false;
             cooldownTimer_Fairy = cooldownLength_Fairy;
             GetComponent<BoxCollider2D>().enabled = false;
-
-            machineSoundPlayer.clip = machineSounds[1];
-            machineSoundPlayer.Play();
         }
 
         //this allows the player to move the crosshair
@@ -318,9 +316,6 @@ public class MachineBehaviour2 : MonoBehaviour
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Spike_Movement>().Spike_Active = true;
                 Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<BoxCollider2D>().enabled = true;
                 Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.transform.position = Controlled_Hazard[1].GetComponent<Tree_Movement>().myStartPos;
-
-                machineSoundPlayer.clip = machineSounds[4];
-                machineSoundPlayer.Play();
             }
             //if tree
             else if(Current_Haz_Num == 1)
@@ -329,9 +324,6 @@ public class MachineBehaviour2 : MonoBehaviour
                 //Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<BoxCollider2D>().enabled = true;
                 Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<PolygonCollider2D>().enabled = true;
                 Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.transform.position = Controlled_Hazard[0].GetComponent<Spike_Movement>().myStartPos;
-
-                machineSoundPlayer.clip = machineSounds[5];
-                machineSoundPlayer.Play();
             }
 
             //kick player off machine and put it on cooldown
@@ -430,10 +422,6 @@ public class MachineBehaviour2 : MonoBehaviour
             //if branbull
             if (Current_Haz_Num == 0)
             {
-
-                machineSoundPlayer.clip = machineSounds[2];
-                machineSoundPlayer.Play();
-
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Branbull_Movement>().Branbull_Active = true;
                 Controlled_Hazard[0].GetComponent<Branbull_Movement>().myBranbull.GetComponent<BoxCollider2D>().enabled = true;
                 Controlled_Hazard[1].GetComponent<Apple_Movement>().myApple.transform.position = Controlled_Hazard[1].GetComponent<Apple_Movement>().myStartPos;
@@ -441,9 +429,6 @@ public class MachineBehaviour2 : MonoBehaviour
             //if apple
             else if (Current_Haz_Num == 1)
             {
-                machineSoundPlayer.clip = machineSounds[3];
-                machineSoundPlayer.Play();
-
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Apple_Movement>().Apple_Active = true;
                 foreach (CircleCollider2D appleCollider in Controlled_Hazard[1].GetComponent<Apple_Movement>().appleColliders)
                 {
@@ -657,9 +642,6 @@ public class MachineBehaviour2 : MonoBehaviour
             Squirrel_Machine_Ready = false;
             cooldownTimer_Squirrel = cooldownLength_Squirrel;
             GetComponent<BoxCollider2D>().enabled = false;
-
-            machineSoundPlayer.clip = machineSounds[6];
-            machineSoundPlayer.Play();
         }
 
         
@@ -867,8 +849,8 @@ public class MachineBehaviour2 : MonoBehaviour
                 Controlled_Hazard[i].GetComponentInParent<SpriteRenderer>().color = Color.white;
             }
         }
-        //machineSoundPlayer.clip = machineSounds[0];
-        //machineSoundPlayer.Play();
+        machineSoundPlayer.clip = machineSounds[0];
+        machineSoundPlayer.Play();
         Debug.Log("Player has deactivated machine: "+transform.name);
     }
 
@@ -878,9 +860,6 @@ public class MachineBehaviour2 : MonoBehaviour
         Debug.Log("Now can use");
         can_Use = true;
         other_can_Use = true;
-
-        machineSoundPlayer.clip = machineSounds[7];
-        machineSoundPlayer.Play();
     }
 
 }
