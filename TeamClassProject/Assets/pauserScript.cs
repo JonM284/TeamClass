@@ -74,6 +74,7 @@ public class pauserScript : MonoBehaviour
         down = false;
 
         Player myPlayer = ReInput.players.Players[0];
+
         float need = myPlayer.GetAxis("Vertical");
         print(need + "float");
 
@@ -83,9 +84,9 @@ public class pauserScript : MonoBehaviour
             Pauser();
         }
 
-        if (es.currentSelectedGameObject == null)
+        //if (es.currentSelectedGameObject == null)
         {
-            es.SetSelectedGameObject(es.firstSelectedGameObject);
+        //    es.SetSelectedGameObject(es.firstSelectedGameObject);
         }
 
         print("1GoGo");
