@@ -952,6 +952,7 @@ public class BasicPlayerScript : MonoBehaviour
         }
         else
         {
+            healthAnim.ResetTrigger("gotHit");
             healthAnim.SetTrigger("gotHit");
             rb.constraints = RigidbodyConstraints2D.None;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
