@@ -134,7 +134,9 @@ public class BasicPlayerScript : MonoBehaviour
     public GameObject teamController;
 
     [HideInInspector]
-    public bool canTurn = true; 
+    public bool canTurn = true;
+
+    Animator healthAnim;
     
 
 	void Awake()
@@ -289,13 +291,15 @@ public class BasicPlayerScript : MonoBehaviour
 		//this isn't working properly since it makes the player go back down to 0 in between frames
 		StartCoroutine(CalcVelocity());
 
+        healthAnim = healthBar.GetComponent<Animator>();
+
 	}
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Horizontal: " + myPlayer.GetAxis("Horizontal"));
-        Debug.Log("Vertical: " + myPlayer.GetAxis("Vertical"));
+        //Debug.Log("Horizontal: " + myPlayer.GetAxis("Horizontal"));
+        //Debug.Log("Vertical: " + myPlayer.GetAxis("Vertical"));
         attackTimerDelay -= Time.deltaTime;
         landtimer -= Time.deltaTime;
 
@@ -656,7 +660,8 @@ public class BasicPlayerScript : MonoBehaviour
 	{
 		//neutral basic attack
 		if (gotHitTimer < 0)
-		{          
+		{
+            
 			if (myPlayer.GetAxis("Horizontal") < attackZone && myPlayer.GetAxis("Horizontal") > -attackZone && myPlayer.GetAxis("Vertical") < attackZone && myPlayer.GetAxis("Vertical") > -attackZone && onPlatformTimer > 0)
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
@@ -878,8 +883,7 @@ public class BasicPlayerScript : MonoBehaviour
                     if (gnomercy) { gnomercyCharacter.GnomercyAttackController(23); }
                 }
             }
-
-
+            
 
 
             //ult
@@ -947,7 +951,8 @@ public class BasicPlayerScript : MonoBehaviour
             //do nothing
         }
         else
-        { 
+        {
+            healthAnim.SetTrigger("gotHit");
             rb.constraints = RigidbodyConstraints2D.None;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             if (isJumping)
