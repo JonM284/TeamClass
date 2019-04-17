@@ -128,6 +128,8 @@ public class BasicPlayerScript : MonoBehaviour
 
     GameObject mainCamera;
 
+    public float attackZone;
+
     [HideInInspector]
     public GameObject teamController;
 
@@ -654,7 +656,7 @@ public class BasicPlayerScript : MonoBehaviour
 		//neutral basic attack
 		if (gotHitTimer < 0)
 		{          
-			if (myPlayer.GetAxis("Horizontal") < .3f && myPlayer.GetAxis("Horizontal") > -.3f && myPlayer.GetAxis("Vertical") < .3f && myPlayer.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
+			if (myPlayer.GetAxis("Horizontal") < attackZone && myPlayer.GetAxis("Horizontal") > -attackZone && myPlayer.GetAxis("Vertical") < attackZone && myPlayer.GetAxis("Vertical") > -attackZone && onPlatformTimer > 0)
 			{
 				if (myPlayer.GetButtonDown("BasicAttack"))
 				{
@@ -665,7 +667,7 @@ public class BasicPlayerScript : MonoBehaviour
 			}
             
             //forward basic attack
-            if (((myPlayer.GetAxis("Horizontal") > .3f && myPlayer.GetAxis("Horizontal") > -.3f) || (myPlayer.GetAxis("Horizontal")) < .3f && myPlayer.GetAxis("Horizontal") < -.3f) && Input.GetAxis("Vertical") < .3f && Input.GetAxis("Vertical") > -.3f && onPlatformTimer > 0)
+            if (((myPlayer.GetAxis("Horizontal") > attackZone && myPlayer.GetAxis("Horizontal") > -attackZone) || (myPlayer.GetAxis("Horizontal")) < attackZone && myPlayer.GetAxis("Horizontal") < -attackZone) && Input.GetAxis("Vertical") < attackZone && Input.GetAxis("Vertical") > -attackZone && onPlatformTimer > 0)
             {
                 if (myPlayer.GetButtonDown("BasicAttack"))
                 {
