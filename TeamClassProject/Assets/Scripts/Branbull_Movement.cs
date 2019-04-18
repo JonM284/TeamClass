@@ -51,7 +51,7 @@ public class Branbull_Movement : MonoBehaviour
         if (removeBranbullTimer > 0 && BranbullIsThere == true)
         {
             removeBranbullTimer -= Time.deltaTime;
-            if(removeBranbullTimer < 1)
+            if (removeBranbullTimer < 1)
             {
                 myColor.a -= .02f;
                 branbullExploded.GetComponent<SpriteRenderer>().color = myColor;
@@ -102,23 +102,37 @@ public class Branbull_Movement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         //explodes the branbull when it hits the floor or a platform
-        if(Branbull_Active == true && other.gameObject.tag == "Platform")
+        if (Branbull_Active == true && other.gameObject.tag == "Platform")
         {
             StartCoroutine(DeactivateDelay());
             //Deactivate_Branbull();
         }
-        if(Branbull_Active && other.gameObject.tag == "Floor")
+        if (Branbull_Active && other.gameObject.tag == "Floor")
         {
             StartCoroutine(DeactivateDelay());
             transform.position = new Vector3(transform.position.x, -1.84f, transform.position.z);
         }
+
+
+
     }
     private void OnTriggerStay2D(Collider2D other)
     {
-        //if the player is standing on exploded branbull it deals damage every frame
+        /*//if the player is standing on exploded branbull it deals damage every frame
         if(other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<BasicPlayerScript>().GetHit(2f, 0, 0, 0, 0, 0, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight(), 0, 0,0 );
+        }*/
+        if (myBranbull.GetComponent<SpriteRenderer>().enabled == true && other.gameObject.tag == "Player")
+        {
+            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(20f, 270f, 200f, 0.2f, 60f, .2f, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight(), 0.1f, 0.3f, 0.2f);
+        }
+        if (other.gameObject.transform.position.x > transform.position.x)
+        {
+            if (branbullExploded.GetComponent<SpriteRenderer>().enabled == true && other.gameObject.tag == "Player")
+            {
+                other.GetComponent<BasicPlayerScript>().GetHit(35f, 45, 150, 0.2f, 100f, 0.5f, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight(), 0.1f, 0.3f, 0.2f);
+            }
         }
     }
 
