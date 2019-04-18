@@ -698,7 +698,7 @@ public class MachineBehaviour : MonoBehaviour
             //this allows the player to spawn an object in the position where the crosshair is
                 objectPool.SpawnFromPool("Tester", Controlled_Hazard[Current_Haz_Num].transform.position, Quaternion.identity);
 
-            End_Control();
+                End_Control();
                 Debug.Log("Has Spawned object");
           
         }
