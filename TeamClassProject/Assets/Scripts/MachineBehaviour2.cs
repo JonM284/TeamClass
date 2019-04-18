@@ -850,7 +850,7 @@ public class MachineBehaviour2 : MonoBehaviour
             }
         }
         machineSoundPlayer.clip = machineSounds[0];
-        machineSoundPlayer.Play();
+        //machineSoundPlayer.Play();
         Debug.Log("Player has deactivated machine: "+transform.name);
     }
 

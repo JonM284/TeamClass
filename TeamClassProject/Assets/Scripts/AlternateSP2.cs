@@ -255,7 +255,7 @@ public class AlternateSP2 : MonoBehaviour
     //--------------------------------------------------------------------------------------------------
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Machine")
+        if (other.gameObject.tag == "Machine" && !other.gameObject.GetComponent<MachineBehaviour2>().is_In_Use)
         {
             is_In_Area = true;
             myMachine = other.gameObject;
@@ -267,7 +267,7 @@ public class AlternateSP2 : MonoBehaviour
     //--------------------------------------------------------------------------------------------------
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Machine")
+        if (other.gameObject.tag == "Machine" && !other.gameObject.GetComponent<MachineBehaviour2>().is_In_Use)
         {           
             myMachine = other.gameObject;
         }
@@ -277,7 +277,7 @@ public class AlternateSP2 : MonoBehaviour
     //--------------------------------------------------------------------------------------------------
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Machine")
+        if (other.gameObject.tag == "Machine" )
         {
             is_In_Area = false;
             myMachine = null;
