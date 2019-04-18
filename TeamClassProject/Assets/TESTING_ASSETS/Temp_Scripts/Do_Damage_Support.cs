@@ -16,9 +16,11 @@ public class Do_Damage_Support : MonoBehaviour
             if (transform.position.x < collision.transform.position.x)
             {
                 collision.GetComponent<BasicPlayerScript>().GetHit(attack_Damage, 45, 100 ,0.2f, 60f, 0.5f, false, 0.1f, 0.3f, 0.2f);
+                
             }else if (transform.position.x > collision.transform.position.x)
             {
                 collision.GetComponent<BasicPlayerScript>().GetHit(attack_Damage, 45, 100 ,0.2f, 60f, 0.5f, true, 0.1f, 0.3f, 0.2f);
+                
             }
            
         }
@@ -28,7 +30,8 @@ public class Do_Damage_Support : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && !is_Spike)
         {
-            collision.GetComponent<BasicPlayerScript>().GetHit(attack_Damage, 0, 0,0,0,0, true, 0,0,0);
+            //collision.GetComponent<BasicPlayerScript>().GetHit(attack_Damage, 0, 0,0,0,0, true, 0,0,0);
+            collision.GetComponent<BasicPlayerScript>().currentHealth -= attack_Damage;
         }
     }
 }
