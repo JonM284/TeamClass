@@ -1160,7 +1160,7 @@ public class BasicPlayerScript : MonoBehaviour
                     }
                     if(collisionInfo.gameObject.tag == "Platform")
                     {
-                        this.transform.parent = collisionInfo.transform;
+                        //this.transform.parent = collisionInfo.transform;
                         anim.SetBool("OnPlatform", true);
                         
                     }
@@ -1207,7 +1207,7 @@ public class BasicPlayerScript : MonoBehaviour
     {
         if (collisionInfo.gameObject.tag == "Platform")
         {
-            this.transform.parent = null;
+            //this.transform.parent = null;
             anim.SetBool("OnPlatform", false);
             
         }
