@@ -536,7 +536,7 @@ public class MachineBehaviour2 : MonoBehaviour
         else if(vel.x < 0)
         {
             mushroomBounce2.gameObject.transform.localScale = baseScale;
-            mushroomSpores.gameObject.transform.localScale = flippedScale;
+            mushroomSpores.gameObject.transform.localScale = baseScale;
         }
         //Moving the mushroom left/right before activating it
         vel.x = horizontalInput * speed;

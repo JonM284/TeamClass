@@ -15,6 +15,14 @@ public class Tree_Movement : MonoBehaviour
     public float removeTreeTimer, removeTreeLength;
     public bool treeIsThere;
     private Color myColor;
+    private RigidbodyConstraints2D originalConstraints;
+    private Quaternion treeRotation;
+
+    private void Awake()
+    {
+        originalConstraints = myTree.GetComponent<Rigidbody2D>().constraints;
+        treeRotation = transform.rotation;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +42,8 @@ public class Tree_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.rotation = treeRotation;
+
         //if the player presses BasicAttack to send tree, send tree and do Activate_Tree();
         if (Tree_Active)
         {
@@ -70,6 +80,7 @@ public class Tree_Movement : MonoBehaviour
     public void Activate_Tree()
     {
         myTree.transform.position = Vector3.Lerp(myTree.transform.position, new Vector3(transform.position.x, myEndPos.position.y, transform.position.z), Time.deltaTime * going_Out_Speed);
+        myTree.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
     }
 
     //the function that happens when the tree hits the invisible collider in the map to stop it moving and start the removeTree Timer
@@ -78,6 +89,7 @@ public class Tree_Movement : MonoBehaviour
         Tree_Active = false;
         treeIsThere = true;
         removeTreeTimer = removeTreeLength;
+        myTree.GetComponent<Rigidbody2D>().constraints = originalConstraints;
     }
 
     
