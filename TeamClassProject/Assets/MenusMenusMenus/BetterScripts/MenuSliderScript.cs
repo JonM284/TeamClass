@@ -20,7 +20,9 @@ public class MenuSliderScript : MonoBehaviour
     public static bool hasMenuBeenUp;
 
     public GameObject pressA;
-    public GameObject pressB;
+    //public GameObject pressB;
+
+    //public Animation pressA_Fade;
 
     void Awake()
     {
@@ -41,7 +43,7 @@ public class MenuSliderScript : MonoBehaviour
         sliderInt = 0;
         hasMenuBeenUp = false;
         pressA.SetActive(true);
-        pressB.SetActive(false);
+        //pressB.SetActive(false);
     }
 
     // Update is called once per frame
@@ -60,7 +62,8 @@ public class MenuSliderScript : MonoBehaviour
                 sliderInt = 1;
                 hasMenuBeenUp = true;
                 pressA.SetActive(false);
-                pressB.SetActive(true);
+                //pressB.SetActive(true);
+
             }
 
             if (myPlayer.GetButtonDown("HeavyAttack") && sliderInt != 2 && hasMenuBeenUp == true)
@@ -69,7 +72,7 @@ public class MenuSliderScript : MonoBehaviour
                 //menuDown.Play();
                 sliderInt = 2;
                 pressA.SetActive(true);
-                pressB.SetActive(false);
+                //pressB.SetActive(false);
             }
         }
     }
