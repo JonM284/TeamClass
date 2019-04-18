@@ -1161,7 +1161,7 @@ public class BasicPlayerScript : MonoBehaviour
                     if(collisionInfo.gameObject.tag == "Platform")
                     {
                         //this.transform.parent = collisionInfo.transform;
-                        anim.SetBool("OnPlatform", true);
+                        //anim.SetBool("OnPlatform", true);
                         
                     }
                 }
@@ -1208,7 +1208,7 @@ public class BasicPlayerScript : MonoBehaviour
         if (collisionInfo.gameObject.tag == "Platform")
         {
             //this.transform.parent = null;
-            anim.SetBool("OnPlatform", false);
+            //anim.SetBool("OnPlatform", false);
             
         }
         foreach (ContactPoint2D contact in collisionInfo.contacts)
