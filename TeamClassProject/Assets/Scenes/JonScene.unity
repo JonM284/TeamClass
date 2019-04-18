@@ -3506,6 +3506,11 @@ PrefabInstance:
       propertyPath: playerNum
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 601068658141386479, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
+        type: 3}
+      propertyPath: attackZone
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
       propertyPath: GilbertSounds.Array.size
       value: 8
@@ -11805,6 +11810,11 @@ PrefabInstance:
       propertyPath: playerNum
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 601068658141386479, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
+        type: 3}
+      propertyPath: attackZone
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 645758371, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
       propertyPath: GilbertSounds.Array.size
       value: 8
@@ -12489,6 +12499,11 @@ PrefabInstance:
         type: 3}
       propertyPath: teamNum
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2729868350300346152, guid: 46ac94da96ae24a7996f96058d2091e3,
+        type: 3}
+      propertyPath: attackZone
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46ac94da96ae24a7996f96058d2091e3, type: 3}
@@ -21931,7 +21946,7 @@ PrefabInstance:
     - target: {fileID: 5615167271143781587, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
       propertyPath: attackZone
-      value: 0.2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5615167271143781584, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
@@ -23781,6 +23796,11 @@ PrefabInstance:
       propertyPath: teamNum
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2729868350300346152, guid: 46ac94da96ae24a7996f96058d2091e3,
+        type: 3}
+      propertyPath: attackZone
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46ac94da96ae24a7996f96058d2091e3, type: 3}
 --- !u!1 &1754021450
@@ -24625,6 +24645,11 @@ PrefabInstance:
       propertyPath: teamNum
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5008809732962063447, guid: c1ff1730c2b444e22ab7a32eae7cbd75,
+        type: 3}
+      propertyPath: attackZone
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1ff1730c2b444e22ab7a32eae7cbd75, type: 3}
 --- !u!1001 &1827133003
@@ -24712,7 +24737,7 @@ PrefabInstance:
     - target: {fileID: 5615167271143781587, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
       propertyPath: attackZone
-      value: 0.2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5615167271143781584, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
@@ -26556,11 +26581,6 @@ PrefabInstance:
       propertyPath: teamNum
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4224738144925258988, guid: f081e4ae8c20f64408db1e12712574bf,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 6723ac93ce646c949bccc870c71def42, type: 2}
     - target: {fileID: 7094890516991349158, guid: f081e4ae8c20f64408db1e12712574bf,
         type: 3}
       propertyPath: m_RootOrder
@@ -26886,6 +26906,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4224738144925258988, guid: f081e4ae8c20f64408db1e12712574bf,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6723ac93ce646c949bccc870c71def42, type: 2}
     m_RemovedComponents:
     - {fileID: 4224738144925258988, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
@@ -29414,6 +29439,11 @@ PrefabInstance:
         type: 3}
       propertyPath: teamNum
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5008809732962063447, guid: c1ff1730c2b444e22ab7a32eae7cbd75,
+        type: 3}
+      propertyPath: attackZone
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1ff1730c2b444e22ab7a32eae7cbd75, type: 3}
