@@ -33,11 +33,11 @@ public class Apple_Movement : MonoBehaviour
             apple.enabled = false;
         }
         appleColliders = myApple.GetComponents<CircleCollider2D>();
-        foreach(CircleCollider2D appleCollider in appleColliders)
+        foreach (CircleCollider2D appleCollider in appleColliders)
         {
             appleCollider.enabled = false;
         }
-        damageToDealToPlayer = 50;
+        damageToDealToPlayer = 25;
         fallSpeed = 10f;
         myColor = new Color(255, 255, 255, 1);
     }
@@ -55,14 +55,14 @@ public class Apple_Movement : MonoBehaviour
         if (removeApplesTimer > 0 && ApplesAreThere == true)
         {
             removeApplesTimer -= Time.deltaTime;
-            if(removeApplesTimer < 1)
+            if (removeApplesTimer < 1)
             {
                 myColor.a -= .02f;
                 appleSprites[0].color = myColor;
                 appleSprites[1].color = myColor;
                 appleSprites[2].color = myColor;
             }
-            
+
         }
         //...disable Apples and reset its position for next time machine is used
         if (removeApplesTimer <= 0 && ApplesAreThere == true)
@@ -110,15 +110,15 @@ public class Apple_Movement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         //disables the apple's hitbox and starts timer til it disappears
-        if(other.gameObject.name == "Apple_EndPos")
+        if (other.gameObject.name == "Apple_EndPos")
         {
             Deactivate_Apple();
         }
         //deals damage to player if apple hits player
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(damageToDealToPlayer, 0, 0, /*Stun Time*/.75f, 0, 0, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight(),0,0,0);
-            
+            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(damageToDealToPlayer, 90f, 300f, /*Stun Time*/1.0f, 1f, .1f, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight(), 0.1f, 0.15f, 0.1f);
+
         }
     }
 

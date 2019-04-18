@@ -59,13 +59,13 @@ public class Mushroom_Spores : MonoBehaviour
             {
                 sporesParticles.Play();
             }
-            if(removeMushroomSporesTimer < 1)
+            if (removeMushroomSporesTimer < 1)
             {
                 myColor.a -= 0.02f;
                 mushroomSporesSprite.color = myColor;
             }
         }
-        if(removeMushroomSporesTimer <= 1f && sporesParticles.isPlaying == true)
+        if (removeMushroomSporesTimer <= 1f && sporesParticles.isPlaying == true)
         {
             sporesParticles.Stop();
         }
@@ -104,7 +104,8 @@ public class Mushroom_Spores : MonoBehaviour
         {
             print("damage by spores");
             //Deal Damage to the player HERE
-            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(1f, 0, 0, 0, 0, 0, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight(), 0, 0, 0);
+            //other.gameObject.GetComponent<BasicPlayerScript>().GetHit(1f, 0, 0, 0, 0, 0, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight(), 0, 0, 0);
+            other.gameObject.GetComponent<BasicPlayerScript>().currentHealth -= 1f;
         }
     }
 }

@@ -19,17 +19,18 @@ public class FairyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             fairyHitPlayer = true;
 
-            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(-250f, 0, 0, 0, 0, 0, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight(), 0,0 ,0);
+            //other.gameObject.GetComponent<BasicPlayerScript>().GetHit(-100f, 0, 0, 0, 0, 0, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight(), 0,0 ,0);
+            other.gameObject.GetComponent<BasicPlayerScript>().currentHealth += 100f;
             transform.position = startPos;
 
         }
