@@ -9,11 +9,27 @@ public class SwitchHandler : MonoBehaviour
 
     public int teamNumber;
 
-    public GameObject teammate1_fighter;
-    public GameObject teammate1_support;
+    [Header("Player 1 or 3 Character Dump")]
+    public GameObject P1x3_ClaireFighter;
+    public GameObject P1x3_ClaireSupport;
+    public GameObject P1x3_GilbertFighter;
+    public GameObject P1x3_GilbertSupport;
+    [Header("Player 2 or 4 Character Dump")]
+    public GameObject P2x4_ClaireFighter;
+    public GameObject P2x4_ClaireSupport;
+    public GameObject P2x4_GilbertFighter;
+    public GameObject P2x4_GilbertSupport;
 
+    [HideInInspector]
+    public GameObject teammate1_fighter;
+    [HideInInspector]
+    public GameObject teammate1_support;
+    [HideInInspector]
     public GameObject teammate2_fighter;
+    [HideInInspector]
     public GameObject teammate2_support;
+
+    [Header("UI")]
 
     public Image[] specialMeter = new Image[3];
 
@@ -43,6 +59,74 @@ public class SwitchHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        P1x3_ClaireFighter.SetActive(false);
+        P1x3_ClaireSupport.SetActive(false);
+        P1x3_GilbertFighter.SetActive(false);
+        P1x3_GilbertSupport.SetActive(false);
+        P2x4_ClaireFighter.SetActive(false);
+        P2x4_ClaireSupport.SetActive(false);
+        P2x4_GilbertFighter.SetActive(false);
+        P2x4_GilbertSupport.SetActive(false);
+
+
+
+
+        if (teamNumber == 1)
+        {
+            //player 1
+            if (PlayerPrefs.GetInt("Player1Character") == 1)
+            {
+                teammate1_fighter = P1x3_ClaireFighter;
+                teammate1_support = P1x3_ClaireSupport;
+            }
+            if (PlayerPrefs.GetInt("Player1Character") == 2)
+            {
+                teammate1_fighter = P1x3_GilbertFighter;
+                teammate1_support = P1x3_GilbertSupport;
+            }
+
+            //player 2
+            if (PlayerPrefs.GetInt("Player2Character") == 1)
+            {
+                teammate2_fighter = P2x4_ClaireFighter;
+                teammate2_support = P2x4_ClaireSupport;
+            }
+            if (PlayerPrefs.GetInt("Player2Character") == 2)
+            {
+                teammate2_fighter = P2x4_GilbertFighter;
+                teammate2_support = P2x4_GilbertSupport;
+            }
+        }
+
+        if (teamNumber == 2)
+        {
+            //player 3
+            if (PlayerPrefs.GetInt("Player3Character") == 1)
+            {
+                teammate1_fighter = P1x3_ClaireFighter;
+                teammate1_support = P1x3_ClaireSupport;
+            }
+            if (PlayerPrefs.GetInt("Player3Character") == 2)
+            {
+                teammate1_fighter = P1x3_GilbertFighter;
+                teammate1_support = P1x3_GilbertSupport;
+            }
+
+            //player 4
+            if (PlayerPrefs.GetInt("Player4Character") == 1)
+            {
+                teammate2_fighter = P2x4_ClaireFighter;
+                teammate2_support = P2x4_ClaireSupport;
+            }
+            if (PlayerPrefs.GetInt("Player4Character") == 2)
+            {
+                teammate2_fighter = P2x4_GilbertFighter;
+                teammate2_support = P2x4_GilbertSupport;
+            }
+        }
+
+
+
         teammate1_num = teammate1_fighter.GetComponent<BasicPlayerScript>().playerNum;
         teammate2_num = teammate2_fighter.GetComponent<BasicPlayerScript>().playerNum;
 
