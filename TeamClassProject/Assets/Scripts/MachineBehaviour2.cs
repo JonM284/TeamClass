@@ -69,8 +69,9 @@ public class MachineBehaviour2 : MonoBehaviour
     public List<Vector3> Hazard_MinPos;
 
     public GameObject my_Controller_Player;
-
+    public GameObject[] machine_UI;
     public GameObject[] indicator_Images;
+
 
     [Header("Audio")]
     public AudioClip[] machineSounds;
@@ -90,7 +91,10 @@ public class MachineBehaviour2 : MonoBehaviour
         //get an instance of the object spawner so we can spawn objects
         objectPool = ObjectSpawner.Instance;
         my_Controller_Player = null;
-
+        for (int i = 0; i < machine_UI.Length; i++)
+        {
+            machine_UI[i].SetActive(false);
+        }
         //only do this if this machine is of type "Background Cannon" 
         if (mach == MachineID.Two_Fairy)
         {
@@ -609,7 +613,7 @@ public class MachineBehaviour2 : MonoBehaviour
             {
                 Current_Haz_Num = 0;
             }
-            switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+            switch (my_Controller_Player.GetComponent<AlternateSP2>().teamID)
             {
                 case 2:
                     Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.cyan;
@@ -692,11 +696,11 @@ public class MachineBehaviour2 : MonoBehaviour
 
         if (Move_Rotation.z > Max_range)
         {
-            Move_Rotation.z = Max_range;
+            Move_Rotation.z = Max_range - 0.01f;
         }
         if (Move_Rotation.z < -Max_range)
         {
-            Move_Rotation.z = -Max_range;
+            Move_Rotation.z = -Max_range + 0.01f;
         }
 
         Controlled_Hazard[Current_Haz_Num].transform.rotation = Quaternion.Euler(Move_Rotation);
@@ -761,7 +765,29 @@ public class MachineBehaviour2 : MonoBehaviour
             Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myMushroomSpores.transform.position = Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myStartPos;
         }
 
+        if (mach == MachineID.Two_Squirrel)
+        {
+            //Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Do_Flash();
+            switch (my_Controller_Player.GetComponent<AlternateSP2>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.cyan;
+                    break;
+                case 1:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.red;
+                    break;
+                default:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.black;
+                    break;
+            }
+        }
         Debug.Log("Player:"+playerNum+ " has activated hazzard: "+mach);
+        machine_UI[0].SetActive(false);
+        machine_UI[1].SetActive(false);
+        for (int i = 2; i < machine_UI.Length; i++)
+        {
+            machine_UI[i].SetActive(true);
+        }
     }
 
 
@@ -778,8 +804,11 @@ public class MachineBehaviour2 : MonoBehaviour
         my_Controller_Player.GetComponent<AlternateSP2>().status = AlternateSP2.Status.Free;
         my_Controller_Player = null;
         // The playerID "-1" does not exist, therefore, the inputs will never be recieved.
-        myPlayer = ReInput.players.GetPlayer(-1);
-
+        myPlayer = ReInput.players.GetPlayer(5);
+        for (int i = 0; i < machine_UI.Length; i++)
+        {
+            machine_UI[i].SetActive(false);
+        }
         if (mach == MachineID.Two_Fairy)
         {
             Controlled_Hazard[0].transform.position = fairyScript.startPos;
@@ -860,6 +889,25 @@ public class MachineBehaviour2 : MonoBehaviour
         Debug.Log("Now can use");
         can_Use = true;
         other_can_Use = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!is_In_Use && other.gameObject.tag == "Player")
+        {
+            machine_UI[0].SetActive(true);
+            machine_UI[1].SetActive(true);
+            Debug.Log("Show UI");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (!is_In_Use && other.gameObject.tag == "Player")
+        {
+            machine_UI[0].SetActive(false);
+            machine_UI[1].SetActive(false);
+        }
     }
 
 }
