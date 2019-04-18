@@ -876,8 +876,9 @@ public class MachineBehaviour : MonoBehaviour
             has_Been_Used = true;
         }
 
-        machineSoundPlayer.clip = machineSounds[0];
-        machineSoundPlayer.Play();
+        //machineSoundPlayer.clip = machineSounds[0];
+        //machineSoundPlayer.Play();
+
         //Debug.Log("audio MachinePowerDown");
 
     }
