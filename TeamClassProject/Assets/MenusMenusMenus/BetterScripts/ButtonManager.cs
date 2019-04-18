@@ -62,6 +62,13 @@ public class ButtonManager : MonoBehaviour
         {
             Player myPlayer = ReInput.players.Players[i];
 
+            if (myPlayer.GetButtonDown("Jump"))
+            {
+                pressed = true;
+            } else {
+                pressed = false;
+            }
+
 
             if (myPlayer.GetAxis("Vertical") >= 0.1f && timer >= timerMax)
             {
