@@ -17,6 +17,7 @@ public class ButtonManager : MonoBehaviour
     public GameObject quitButton;
     //private bool buttonSelected;
     public int position;
+    public bool pressed;
 
     //the following is in order to use rewired
     //[Tooltip("Reference for using rewired")]
@@ -127,7 +128,7 @@ public class ButtonManager : MonoBehaviour
 
     public void FighterBtn()
     {
-        if (MenuSliderScript.sliderInt == 1)
+        if (MenuSliderScript.sliderInt == 1 && timer >= timerMax)
         {
             SceneManager.LoadScene("FightersScene");
         }
@@ -140,7 +141,10 @@ public class ButtonManager : MonoBehaviour
 
     public void ExtrasBtn()
     {
-        SceneManager.LoadScene("Credits");
+        if (MenuSliderScript.sliderInt == 1 && timer >= timerMax)
+        {
+            SceneManager.LoadScene("Credits");
+        }
     }
 
     public void QuitBtn()
