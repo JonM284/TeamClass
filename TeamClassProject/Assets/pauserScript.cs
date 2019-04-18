@@ -39,6 +39,13 @@ public class pauserScript : MonoBehaviour
 
     private bool up, down;
 
+    public static pauserScript pauser_Instance;
+
+    private void Awake()
+    {
+        pauser_Instance = this;
+    }
+
     void Start()
      {
 
@@ -66,14 +73,14 @@ public class pauserScript : MonoBehaviour
      void Update()
      {
 
-        if (timer >= timerMax)
+        /*if (timer >= timerMax)
         {
             //print("gyes");
         }
         up = false;
         down = false;
 
-        Player myPlayer = ReInput.players.Players[playerNum];
+        Player myPlayer = ReInput.players.Players[0];
 
         float need = myPlayer.GetAxis("Vertical");
         //print(need + "float");
@@ -111,7 +118,7 @@ public class pauserScript : MonoBehaviour
 
                 if (myPlayer.GetAxis("Vertical") <= -0.1f && timer >= timerMax)
                 {
-                    //print("GoDown");
+                    print("GoDown");
                     timer = 0;
                     position--;
                 }
@@ -152,7 +159,7 @@ public class pauserScript : MonoBehaviour
                     es.SetSelectedGameObject(qutB);
                 }
             }
-
+            */
         
     }
 
@@ -167,7 +174,7 @@ public class pauserScript : MonoBehaviour
         {
             Time.timeScale = 0;
             pPanel.enabled = true;
-            //print("Pause!");
+            print("Pause!");
             canv.enabled = false;
         }
    }
@@ -178,7 +185,7 @@ public class pauserScript : MonoBehaviour
         {
             Time.timeScale = 1;
             pPanel.enabled = false;
-            //print("Continue!");
+            print("Continue!");
             canv.enabled = true;
 
             sfxS.enabled = false;

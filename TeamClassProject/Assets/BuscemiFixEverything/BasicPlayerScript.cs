@@ -142,9 +142,10 @@ public class BasicPlayerScript : MonoBehaviour
     public bool canTurn = true;
 
     Animator healthAnim;
-    
 
-	void Awake()
+    private pauserScript m_my_Pauser;
+
+    void Awake()
 	{
         
 
@@ -271,8 +272,8 @@ public class BasicPlayerScript : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-        
 
+        m_my_Pauser = pauserScript.pauser_Instance;
         rb = GetComponent<Rigidbody2D>();
 		if (GetComponent<Animator>() != null)
 		{
@@ -333,7 +334,7 @@ public class BasicPlayerScript : MonoBehaviour
 
         if (myPlayer.GetButtonDown("Pause"))
         {
-            mainCamera.GetComponent<pauserScript>().playerNum = this.playerNum;
+            m_my_Pauser.Pauser();
         }
 
         //<3 for Justin  
@@ -342,7 +343,7 @@ public class BasicPlayerScript : MonoBehaviour
         //set upon us, for without him we are nothing.
         //Praise be to our one and only team manager Patrick ♥♥♥♥♥♥♥♥
 
-		//I hate you Pat. You are not only a regular garbage person, but you are THE garbage man, who eats trash but isn't Danny Devito.
+        //I hate you Pat. You are not only a regular garbage person, but you are THE garbage man, who eats trash but isn't Danny Devito.
 
         if (currentHealth > maxHealth)
         {
