@@ -1545,6 +1545,9 @@ MonoBehaviour:
   dashSpeed: 0.25
   maxDashTimer: 0.18
   attackZone: 0
+  neutralZone: 0
+  verticalForwardZone: 0
+  horizontalUpwardZone: 0
   teamController: {fileID: 0}
   canTurn: 1
 --- !u!50 &4631393466039951176
@@ -2651,7 +2654,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -594534133
   m_SortingLayer: 8
-  m_SortingOrder: 13
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: d6573fef6d8fb48aa9b6c98650ff33d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
