@@ -10,12 +10,6 @@ public class WinHandler : MonoBehaviour
     GameObject team2;
 
 
-    public Image winScreen;
-    public Image winScreen1;
-
-    public Text team1Text;
-    public Text team2Text;
-
     private bool winActive = false;
 
 
@@ -24,8 +18,6 @@ public class WinHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        winScreen.enabled = false;
-        winScreen1.enabled = false;
         team1 = GameObject.Find("Team1");
         team2 = GameObject.Find("Team2");
     }
@@ -33,22 +25,21 @@ public class WinHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //team 1 loses
         if(winActive == false && (team1.GetComponent<SwitchHandler>().teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth <=0 || team1.GetComponent<SwitchHandler>().teammate2_fighter.GetComponent<BasicPlayerScript>().currentHealth <= 0))
         {
-            winScreen.enabled = true;
             winActive = true;
-            team1Text.enabled = false;
-            team2Text.enabled = false;
+            SceneManager.LoadScene("WinRed");
         }
 
+        //team 2 loses
         if (winActive == false && (team2.GetComponent<SwitchHandler>().teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth <= 0 || team2.GetComponent<SwitchHandler>().teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth <= 0))
         {
-            winScreen1.enabled = true;
             winActive = true;
-            team1Text.enabled = false;
-            team2Text.enabled = false;
+            SceneManager.LoadScene("WinBlue");
         }
 
+        /*
         if (winActive)
         {
             if(Input.GetKeyDown("r"))
@@ -60,5 +51,6 @@ public class WinHandler : MonoBehaviour
         {
             SceneManager.LoadScene("JonScene");
         }
+        */
     }
 }
