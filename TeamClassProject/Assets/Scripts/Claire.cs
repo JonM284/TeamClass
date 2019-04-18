@@ -166,7 +166,7 @@ public class Claire : MonoBehaviour
     public float ultDamage;
 
     private float ultAttackTime = 0;
-    private bool ultActive = false;
+    public bool ultActive = false;
 
     private float currentAttack;
 
@@ -195,19 +195,17 @@ public class Claire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ultAttackTime -= Time.deltaTime;
+        //ultAttackTime -= Time.deltaTime;
 
         if (ultActive)
         {
-            if (ultAttackTime < 0)
+            if (!hasStorm)
             {
-                if (!hasStorm)
-                {
-                    var ult = Instantiate(storm, transform.position, Quaternion.identity);
-                    //ult.GetComponent<ClaireUlt>().duration = ultDuration;
-                    //ult.GetComponent<ClaireUlt>().duration = ultDuration;
-                }
-                ultAttackTime = 1;
+                var ult = Instantiate(storm, transform.position, Quaternion.identity);
+                ult.GetComponent<ClaireUlt>().duration = ultDuration;
+                ult.GetComponent<ClaireUlt>().duration = ultDuration;
+                ult.GetComponent<ClaireUlt>().thisPlayer = this.gameObject;
+                hasStorm = true;
             }
         }
 
@@ -374,7 +372,7 @@ public class Claire : MonoBehaviour
 
 
             case 69:
-                player.isAttacking = true;
+                //player.isAttacking = true;
                 ultActive = true;
                 break;
 
