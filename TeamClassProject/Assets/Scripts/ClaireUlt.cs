@@ -34,7 +34,7 @@ public class ClaireUlt : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player" && collision.gameObject != thisPlayer)
         {
-            collision.gameObject.GetComponent<BasicPlayerScript>().currentHealth -= damage;
+            collision.GetComponent<BasicPlayerScript>().currentHealth -= damage;
             Debug.Log("I'm hitting something");
         }
     }
