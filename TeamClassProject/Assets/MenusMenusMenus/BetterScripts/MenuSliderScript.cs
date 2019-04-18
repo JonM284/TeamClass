@@ -34,6 +34,14 @@ public class MenuSliderScript : MonoBehaviour
         //pressB.SetActive(false);
     }
 
+
+    private void OnLevelWasLoaded(int level)
+    {
+        sliderInt = 0;
+        hasMenuBeenUp = false;
+        pressA.SetActive(true);
+    }
+
     // Update is called once per frame
     void Update()
     {
