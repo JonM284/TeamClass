@@ -23819,11 +23819,6 @@ PrefabInstance:
       propertyPath: teamNum
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4224738144925258988, guid: f081e4ae8c20f64408db1e12712574bf,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 6723ac93ce646c949bccc870c71def42, type: 2}
     - target: {fileID: 7094890516991349158, guid: f081e4ae8c20f64408db1e12712574bf,
         type: 3}
       propertyPath: m_RootOrder
@@ -24149,6 +24144,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4224738144925258988, guid: f081e4ae8c20f64408db1e12712574bf,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6723ac93ce646c949bccc870c71def42, type: 2}
     m_RemovedComponents:
     - {fileID: 4224738144925258988, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
@@ -27248,6 +27248,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117594310344056349, guid: 35196b16a9e71424b870301153067539,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[10].actionElementMaps.Array.data[4]._actionId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117594310344056349, guid: 35196b16a9e71424b870301153067539,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[10].actionElementMaps.Array.data[5]._actionId
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117594310344056349, guid: 35196b16a9e71424b870301153067539,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[10].actionElementMaps.Array.data[6]._actionId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117594310344056349, guid: 35196b16a9e71424b870301153067539,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[10].actionElementMaps.Array.data[7]._actionId
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35196b16a9e71424b870301153067539, type: 3}

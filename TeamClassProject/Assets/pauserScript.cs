@@ -73,7 +73,7 @@ public class pauserScript : MonoBehaviour
         up = false;
         down = false;
 
-        Player myPlayer = ReInput.players.Players[0];
+        Player myPlayer = ReInput.players.Players[playerNum];
 
         float need = myPlayer.GetAxis("Vertical");
         //print(need + "float");
@@ -111,7 +111,7 @@ public class pauserScript : MonoBehaviour
 
                 if (myPlayer.GetAxis("Vertical") <= -0.1f && timer >= timerMax)
                 {
-                    print("GoDown");
+                    //print("GoDown");
                     timer = 0;
                     position--;
                 }
@@ -167,7 +167,7 @@ public class pauserScript : MonoBehaviour
         {
             Time.timeScale = 0;
             pPanel.enabled = true;
-            print("Pause!");
+            //print("Pause!");
             canv.enabled = false;
         }
    }
@@ -178,7 +178,7 @@ public class pauserScript : MonoBehaviour
         {
             Time.timeScale = 1;
             pPanel.enabled = false;
-            print("Continue!");
+            //print("Continue!");
             canv.enabled = true;
 
             sfxS.enabled = false;
