@@ -910,7 +910,21 @@ public class BasicPlayerScript : MonoBehaviour
         }
 	}
 
-	void Gravity()
+    void ResetTriggers()
+    {
+        anim.ResetTrigger("BasicNeutral");
+        anim.ResetTrigger("BasicForward");
+        anim.ResetTrigger("BasicUp");
+        anim.ResetTrigger("BasicDown");
+        anim.ResetTrigger("HeavyNeutral");
+        anim.ResetTrigger("HeavyForward");
+        anim.ResetTrigger("HeavyUp");
+        anim.ResetTrigger("HeavyDown");
+        anim.ResetTrigger("land");
+        anim.ResetTrigger("Jump");
+    }
+
+    void Gravity()
 	{
 		//gravity logic
 		if (velocity.y > -maxDownVel)
