@@ -130,7 +130,7 @@ public class AlternateSP2 : MonoBehaviour
                     myMachine.GetComponent<MachineBehaviour2>().Commence_Control(playerNum, teamID, gameObject);
                 }
                 Debug.Log(status);
-            }else if (status == Status.AtMachine)
+            }/*else if (status == Status.AtMachine)
             {
                 status = Status.Free;
                 if (myMachine.GetComponent<MachineBehaviour2>().is_In_Use)
@@ -140,7 +140,7 @@ public class AlternateSP2 : MonoBehaviour
                 }
                 
                 Debug.Log(status);
-            }
+            }*/
         }else if (is_In_Area && myPlayer.GetButtonDown("HeavyAttack"))
         {
             if (myMachine.GetComponent<MachineBehaviour2>().is_In_Use)

@@ -14,6 +14,7 @@ public class Mushroom_Spores : MonoBehaviour
     //public SpriteRenderer[] appleSprites;
     public SpriteRenderer mushroomSporesSprite;
     public BoxCollider2D[] mushroomSporesColliders;
+    public GameObject mushroomSpores;
 
     public float removeMushroomSporesTimer, removeMushroomSporesLength;
     public bool MushroomSporesAreThere;
@@ -28,9 +29,10 @@ public class Mushroom_Spores : MonoBehaviour
         removeMushroomSporesLength = 4f;
         MushroomSporesAreThere = false;
         myStartPos = myMushroomSpores.transform.position;
-        mushroomSporesSprite = myMushroomSpores.GetComponent<SpriteRenderer>();
-        mushroomSporesSprite.enabled = false;
+        //mushroomSporesSprite = myMushroomSpores.GetComponent<SpriteRenderer>();
+        //mushroomSporesSprite.enabled = false;
         mushroomSporesColliders = myMushroomSpores.GetComponents<BoxCollider2D>();
+        mushroomSpores.SetActive(false);
         foreach (BoxCollider2D mushroomSporesCollider in mushroomSporesColliders)
         {
             mushroomSporesCollider.enabled = false;
@@ -94,6 +96,7 @@ public class Mushroom_Spores : MonoBehaviour
         {
             mushroomSporesCollider.enabled = false;
         }
+        mushroomSpores.SetActive(false);
         myMushroomSpores.transform.position = myStartPos;
     }
 

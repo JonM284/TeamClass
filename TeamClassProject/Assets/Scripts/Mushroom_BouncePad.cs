@@ -15,6 +15,7 @@ public class Mushroom_BouncePad : MonoBehaviour
     //public SpriteRenderer[] appleSprites;
     public SpriteRenderer mushroomBounceSprite;
     public BoxCollider2D[] mushroomBounceColliders;
+    public GameObject mushroomBouncePrefab;
 
     public float removeMushroomBounceTimer, removeMushroomBounceLength;
     public bool MushroomBounceAreThere;
@@ -30,9 +31,10 @@ public class Mushroom_BouncePad : MonoBehaviour
         removeMushroomBounceLength = 4f;
         MushroomBounceAreThere = false;
         myStartPos = myMushroomBounce.transform.position;
-        mushroomBounceSprite = myMushroomBounce.GetComponent<SpriteRenderer>();
+        //mushroomBounceSprite = myMushroomBounce.GetComponent<SpriteRenderer>();
         mushroomBounceSprite.enabled = false;
         mushroomBounceColliders = myMushroomBounce.GetComponents<BoxCollider2D>();
+        mushroomBouncePrefab.SetActive(false);
         foreach (BoxCollider2D mushroomBounceCollider in mushroomBounceColliders)
         {
             mushroomBounceCollider.enabled = false;
@@ -82,11 +84,12 @@ public class Mushroom_BouncePad : MonoBehaviour
     {
         MushroomBounce_Active = false;
         MushroomBounceAreThere = false;
-        mushroomBounceSprite.enabled = false;
+        //mushroomBounceSprite.enabled = false;
         foreach (BoxCollider2D mushroomBounceCollider in mushroomBounceColliders)
         {
             mushroomBounceCollider.enabled = false;
         }
+        mushroomBouncePrefab.SetActive(false);
         myMushroomBounce.transform.position = myStartPos;
     }
 
