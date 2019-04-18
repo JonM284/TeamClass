@@ -39,6 +39,13 @@ public class pauserScript : MonoBehaviour
 
     private bool up, down;
 
+    public static pauserScript pauser_Instance;
+
+    private void Awake()
+    {
+        pauser_Instance = this;
+    }
+
     void Start()
      {
 
@@ -66,7 +73,7 @@ public class pauserScript : MonoBehaviour
      void Update()
      {
 
-        if (timer >= timerMax)
+        /*if (timer >= timerMax)
         {
             //print("gyes");
         }
@@ -152,7 +159,7 @@ public class pauserScript : MonoBehaviour
                     es.SetSelectedGameObject(qutB);
                 }
             }
-
+            */
         
     }
 
