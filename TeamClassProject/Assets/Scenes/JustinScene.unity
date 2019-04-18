@@ -708,6 +708,7 @@ MonoBehaviour:
   is_In_Area: 0
   status: 0
   myMachine: {fileID: 0}
+  teamNum: 0
 --- !u!1 &136344555
 GameObject:
   m_ObjectHideFlags: 0
@@ -11129,6 +11130,7 @@ MonoBehaviour:
   is_In_Area: 0
   status: 0
   myMachine: {fileID: 0}
+  teamNum: 0
 --- !u!1 &772833150
 GameObject:
   m_ObjectHideFlags: 0
@@ -13518,7 +13520,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
 --- !u!1 &1157185000
 GameObject:
@@ -14441,6 +14448,7 @@ MonoBehaviour:
   is_In_Area: 0
   status: 0
   myMachine: {fileID: 0}
+  teamNum: 0
 --- !u!1 &1292134616
 GameObject:
   m_ObjectHideFlags: 0
@@ -17865,7 +17873,8 @@ PrefabInstance:
       propertyPath: teamNum
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
 --- !u!1 &1475149488
 GameObject:
@@ -20900,7 +20909,8 @@ PrefabInstance:
       propertyPath: teamNum
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
 --- !u!1 &1889597017
 GameObject:
@@ -22274,6 +22284,25 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1135432674}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2074193697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074193696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ff5d27dc7ad4474e9ac2e163be538f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  playerNum: 2
+  teamID: 1
+  is_In_Area: 0
+  status: 0
+  myMachine: {fileID: 0}
+  teamNum: 0
 --- !u!1 &2078355497
 GameObject:
   m_ObjectHideFlags: 0
@@ -22399,7 +22428,8 @@ PrefabInstance:
       propertyPath: teamNum
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
 --- !u!1 &2090186786
 GameObject:

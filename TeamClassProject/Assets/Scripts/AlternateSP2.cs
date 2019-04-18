@@ -38,7 +38,13 @@ public class AlternateSP2 : MonoBehaviour
 
     //Beyond this point is for animations
     private Animator anim;
-    
+
+
+    public int teamNum;
+
+     GameObject teamController;
+
+    bool findTeamController = false;
 
 
     //--------------------------------------------------------------------------------------------------
@@ -68,6 +74,21 @@ public class AlternateSP2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (findTeamController == false)
+        {
+            if (teamNum == 1)
+            {
+                teamController = GameObject.Find("Team1");
+            }
+            else if (teamNum == 2)
+            {
+                teamController = GameObject.Find("Team2");
+            }
+
+            findTeamController = true;
+        }
+
+
         if (status == Status.Free) {
             horizontalInput = myPlayer.GetAxisRaw("Horizontal");
 
@@ -129,6 +150,19 @@ public class AlternateSP2 : MonoBehaviour
                 Debug.Log(status);
             }
 
+        }
+
+        if (myPlayer.GetButtonDown("Switch") && status == Status.Free)
+        {
+            Debug.Log("FREEEEEEE");
+            try
+            {
+                Debug.Log(teamController.name);
+                teamController.GetComponent<SwitchHandler>().BeginSwap(playerNum);
+            }
+            catch
+            {
+            }
         }
 
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SwitchHandler : MonoBehaviour
 {
@@ -52,9 +53,23 @@ public class SwitchHandler : MonoBehaviour
         teammate2_support.SetActive(true);
 
         teammate1_fighter.GetComponent<BasicPlayerScript>().teamNum = teamNumber;
-        teammate1_support.GetComponent<AlternateSP>().teamNum = teamNumber;
         teammate2_fighter.GetComponent<BasicPlayerScript>().teamNum = teamNumber;
-        teammate2_support.GetComponent<AlternateSP>().teamNum = teamNumber;
+
+
+        if (SceneManager.GetActiveScene().name.Equals("JonScene"))
+        {
+            Debug.Log("jon");
+            teammate1_support.GetComponent<AlternateSP>().teamNum = teamNumber;
+            teammate2_support.GetComponent<AlternateSP>().teamNum = teamNumber;
+        }
+
+        if (SceneManager.GetActiveScene().name.Equals("JustinScene"))
+        {
+            Debug.Log("justin");
+            teammate1_support.GetComponent<AlternateSP2>().teamNum = teamNumber;
+            teammate2_support.GetComponent<AlternateSP2>().teamNum = teamNumber;
+        }
+
 
 
         origBarColor = specialMeter[0].color;
