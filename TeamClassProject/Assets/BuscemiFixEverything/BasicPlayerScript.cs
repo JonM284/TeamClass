@@ -721,7 +721,7 @@ public class BasicPlayerScript : MonoBehaviour
             //neutral air attack
             if (myPlayer.GetAxis("Horizontal") < neutralZone && myPlayer.GetAxis("Horizontal") > -neutralZone && myPlayer.GetAxis("Vertical") < neutralZone && myPlayer.GetAxis("Vertical") > -neutralZone && onPlatformTimer < 0)
 			{
-				if (myPlayer.GetButtonDown("BasicAttack"))
+				if (myPlayer.GetButtonDown("BasicAttack") || myPlayer.GetButtonDown("HeavyAttack"))
 				{
                     if (claire) { claireCharacter.ClaireAttackController(9); }
 
@@ -735,7 +735,7 @@ public class BasicPlayerScript : MonoBehaviour
 			//up air attack
 			if (myPlayer.GetAxis("Horizontal") < horizontalUpwardZone && myPlayer.GetAxis("Horizontal") > -horizontalUpwardZone && myPlayer.GetAxis("Vertical") > attackZone && myPlayer.GetAxis("Vertical") > -attackZone && onPlatformTimer < 0)
 			{
-				if (myPlayer.GetButtonDown("BasicAttack"))
+				if (myPlayer.GetButtonDown("BasicAttack") || myPlayer.GetButtonDown("HeavyAttack"))
 				{
                     if (claire) { claireCharacter.ClaireAttackController(10); }
 
@@ -748,7 +748,7 @@ public class BasicPlayerScript : MonoBehaviour
             {
                 if (myPlayer.GetAxis("Horizontal") > attackZone && myPlayer.GetAxis("Horizontal") > -attackZone && myPlayer.GetAxis("Vertical") <= verticalForwardZone && myPlayer.GetAxis("Vertical") >= -verticalForwardZone && onPlatformTimer < 0)
                 {
-                    if (myPlayer.GetButtonDown("BasicAttack"))
+                    if (myPlayer.GetButtonDown("BasicAttack") || myPlayer.GetButtonDown("HeavyAttack"))
                     {
                         //if (claire) { claireCharacter.ClaireAttackController(11); }
 
@@ -764,7 +764,7 @@ public class BasicPlayerScript : MonoBehaviour
             {
                 if (myPlayer.GetAxis("Horizontal") < attackZone && myPlayer.GetAxis("Horizontal") < -attackZone && myPlayer.GetAxis("Vertical") <= verticalForwardZone && myPlayer.GetAxis("Vertical") >= -verticalForwardZone && onPlatformTimer < 0)
                 {
-                    if (myPlayer.GetButtonDown("BasicAttack"))
+                    if (myPlayer.GetButtonDown("BasicAttack") || myPlayer.GetButtonDown("HeavyAttack"))
                     {
                         //if (claire) { claireCharacter.ClaireAttackController(11); }
 
@@ -782,7 +782,7 @@ public class BasicPlayerScript : MonoBehaviour
             {
                 if (myPlayer.GetAxis("Horizontal") < attackZone && myPlayer.GetAxis("Horizontal") < -attackZone && myPlayer.GetAxis("Vertical") <= verticalForwardZone && myPlayer.GetAxis("Vertical") >= -verticalForwardZone && onPlatformTimer < 0)
                 {
-                    if (myPlayer.GetButtonDown("BasicAttack"))
+                    if (myPlayer.GetButtonDown("BasicAttack") || myPlayer.GetButtonDown("HeavyAttack"))
                     {
                         Debug.Log("Hi");
                         //if (claire) { claireCharacter.ClaireAttackController(11); }
@@ -799,7 +799,7 @@ public class BasicPlayerScript : MonoBehaviour
             {
                 if (myPlayer.GetAxis("Horizontal") > attackZone && myPlayer.GetAxis("Horizontal") > -attackZone && myPlayer.GetAxis("Vertical") <= verticalForwardZone && myPlayer.GetAxis("Vertical") >= -verticalForwardZone && onPlatformTimer < 0)
                 {
-                    if (myPlayer.GetButtonDown("BasicAttack"))
+                    if (myPlayer.GetButtonDown("BasicAttack") || myPlayer.GetButtonDown("HeavyAttack"))
                     {
                         Debug.Log("Hi");
                         //if (claire) { claireCharacter.ClaireAttackController(11); }
@@ -817,7 +817,7 @@ public class BasicPlayerScript : MonoBehaviour
             //down air attack
             if (myPlayer.GetAxis("Horizontal") < horizontalUpwardZone && myPlayer.GetAxis("Horizontal") > -horizontalUpwardZone && myPlayer.GetAxis("Vertical") < attackZone && myPlayer.GetAxis("Vertical") < -attackZone && onPlatformTimer < 0)
             {
-                if (myPlayer.GetButtonDown("BasicAttack"))
+                if (myPlayer.GetButtonDown("BasicAttack") || myPlayer.GetButtonDown("HeavyAttack"))
                 {
 
 					if (claire) { claireCharacter.ClaireAttackController(12); }
