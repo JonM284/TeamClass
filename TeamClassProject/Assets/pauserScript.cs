@@ -248,7 +248,7 @@ public class pauserScript : MonoBehaviour
     }
 
 
-    public void quitGame()
+    public void QuitGame()
     {
         if (pPanel.enabled == true)
         {
