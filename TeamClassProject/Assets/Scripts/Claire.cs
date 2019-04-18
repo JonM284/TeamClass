@@ -492,7 +492,10 @@ public class Claire : MonoBehaviour
 		this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 	}
 
-
+    void FistLand()
+    {
+        player.rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+    }
 
     /*
      * attack numbers

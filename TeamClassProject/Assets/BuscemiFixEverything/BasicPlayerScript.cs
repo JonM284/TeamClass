@@ -756,7 +756,7 @@ public class BasicPlayerScript : MonoBehaviour
                 {
                     if (myPlayer.GetButtonDown("BasicAttack") || myPlayer.GetButtonDown("HeavyAttack"))
                     {
-                        //if (claire) { claireCharacter.ClaireAttackController(11); }
+                        if (claire) { claireCharacter.ClaireAttackController(9); }
 
                         if (gillbert) { gillbertCharacter.GilbertAttackController(11); }
 
@@ -772,7 +772,7 @@ public class BasicPlayerScript : MonoBehaviour
                 {
                     if (myPlayer.GetButtonDown("BasicAttack") || myPlayer.GetButtonDown("HeavyAttack"))
                     {
-                        //if (claire) { claireCharacter.ClaireAttackController(11); }
+                        if (claire) { claireCharacter.ClaireAttackController(9); }
 
                         if (gillbert) { gillbertCharacter.GilbertAttackController(11); }
 
@@ -790,8 +790,8 @@ public class BasicPlayerScript : MonoBehaviour
                 {
                     if (myPlayer.GetButtonDown("BasicAttack") || myPlayer.GetButtonDown("HeavyAttack"))
                     {
-                        Debug.Log("Hi");
-                        //if (claire) { claireCharacter.ClaireAttackController(11); }
+                        
+                        if (claire) { claireCharacter.ClaireAttackController(9); }
 
                         //if (gillbert) { gillbertCharacter.GilbertAttackController(11); }
 
@@ -807,8 +807,8 @@ public class BasicPlayerScript : MonoBehaviour
                 {
                     if (myPlayer.GetButtonDown("BasicAttack") || myPlayer.GetButtonDown("HeavyAttack"))
                     {
-                        Debug.Log("Hi");
-                        //if (claire) { claireCharacter.ClaireAttackController(11); }
+                        
+                        if (claire) { claireCharacter.ClaireAttackController(9); }
 
                         //if (gillbert) { gillbertCharacter.GilbertAttackController(11); }
 
