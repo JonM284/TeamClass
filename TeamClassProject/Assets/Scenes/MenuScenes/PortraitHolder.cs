@@ -24,6 +24,7 @@ public class PortraitHolder : MonoBehaviour
         if (PlayerStageSelect.hasSelected == false)
         {
             team_anim.SetInteger("animState", 2);
+            Portrait.playersLockedIn = 0;
         }
     }
 }
