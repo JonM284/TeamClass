@@ -163,6 +163,7 @@ public class SwitchHandler : MonoBehaviour
             specialMeter[i].fillAmount = 0;
         }
 
+        /*
         if (teammate1_fighter.activeSelf)
         {
             if (teammate1_fighter.GetComponent<BasicPlayerScript>().claire)
@@ -191,6 +192,7 @@ public class SwitchHandler : MonoBehaviour
                 gilbertPortrait.enabled = true;
             }
         }
+        */
        
         
     }
@@ -198,6 +200,37 @@ public class SwitchHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (teammate1_fighter.activeSelf)
+        {
+            if (teammate1_fighter.GetComponent<BasicPlayerScript>().claire)
+            {
+                clairePortrait.enabled = true;
+                gilbertPortrait.enabled = false;
+            }
+            else
+            if (teammate1_fighter.GetComponent<BasicPlayerScript>().gillbert)
+            {
+                clairePortrait.enabled = false;
+                gilbertPortrait.enabled = true;
+            }
+        }
+        else
+        {
+            if (teammate2_fighter.GetComponent<BasicPlayerScript>().claire)
+            {
+                clairePortrait.enabled = true;
+                gilbertPortrait.enabled = false;
+            }
+            else
+            if (teammate2_fighter.GetComponent<BasicPlayerScript>().gillbert)
+            {
+                clairePortrait.enabled = false;
+                gilbertPortrait.enabled = true;
+            }
+        }
+
+
+
         UltBar();
 
         regenHealthPool += Time.deltaTime * 20;
