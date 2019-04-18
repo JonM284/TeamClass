@@ -199,6 +199,11 @@ PrefabInstance:
       propertyPath: playerNum
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781587, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: attackZone
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5615167271143781672, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
       propertyPath: m_Enabled
@@ -1169,6 +1174,16 @@ PrefabInstance:
         type: 3}
       propertyPath: gilbertFlightTime
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 601068658141386479, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
+        type: 3}
+      propertyPath: attackZone
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 601068658357083640, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
@@ -7332,7 +7347,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1155850541
-  m_SortingLayer: 6
+  m_SortingLayer: 5
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 41dc8f67cb64d4649a96dd3a444be2b8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -9444,8 +9459,8 @@ SpriteMask:
   m_MaskAlphaCutoff: 1
   m_FrontSortingLayerID: -594534133
   m_BackSortingLayerID: -594534133
-  m_FrontSortingLayer: 4
-  m_BackSortingLayer: 4
+  m_FrontSortingLayer: 8
+  m_BackSortingLayer: 8
   m_FrontSortingOrder: 50
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 1
@@ -9536,6 +9551,16 @@ PrefabInstance:
         type: 3}
       propertyPath: attackZone
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 601068658141386479, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
+        type: 3}
+      propertyPath: playerNum
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 601068658357083640, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
@@ -11099,7 +11124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  playerNum: 2
+  playerNum: 1
   teamID: 1
   is_In_Area: 0
   status: 0
@@ -17834,7 +17859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
       propertyPath: playerNum
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
       propertyPath: teamNum
@@ -20170,7 +20195,12 @@ PrefabInstance:
     - target: {fileID: 5615167271143781587, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
       propertyPath: playerNum
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781587, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: attackZone
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5615167271143781672, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
@@ -20417,7 +20447,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1155850541
-  m_SortingLayer: 6
+  m_SortingLayer: 5
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: a485a76a9d0ddca48a567245e61ad869, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
