@@ -218,7 +218,7 @@ public class pauserScript : MonoBehaviour
 
     public void AudioChanging()
     {
-        print(sfxS.value);
+        //print(sfxS.value);
         fx.audioMixer.SetFloat("VolumeSF", sfxS.value);
         mc.audioMixer.SetFloat("VolumeMu", musS.value);
     }

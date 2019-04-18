@@ -130,7 +130,7 @@ public class PlayerStageSelect : MonoBehaviour
                 }
             }
 
-            if (myPlayer.GetButtonDown("HeavyAttack") && hasSelected == true && timer >= timerMax)
+            if (myPlayer.GetButtonDown("HeavyAttack") && hasSelected == true && timer >= timerMax && Portrait.playersLockedIn == 0)
             {
                 white_box.SetActive(false);
                 white_box_2.SetActive(true);

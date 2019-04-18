@@ -26,7 +26,7 @@ public class AlternateSP2 : MonoBehaviour
     public enum Status { Free, AtMachine };
     private Rigidbody2D rb;
     private Vector2 vel;
-    private float horizontalInput, verticalInput;
+    private float horizontalInput, verticalInput, m_initial_Y_Pos;
     private Player myPlayer;
     [SerializeField]
     private bool is_In_Area = false;
@@ -38,7 +38,13 @@ public class AlternateSP2 : MonoBehaviour
 
     //Beyond this point is for animations
     private Animator anim;
-    
+
+
+    public int teamNum;
+
+     GameObject teamController;
+
+    bool findTeamController = false;
 
 
     //--------------------------------------------------------------------------------------------------
@@ -47,6 +53,7 @@ public class AlternateSP2 : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         original_Scale = transform.localScale;
+        m_initial_Y_Pos = transform.position.y;
         //reset for jon
     }
 
@@ -68,6 +75,21 @@ public class AlternateSP2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (findTeamController == false)
+        {
+            if (teamNum == 1)
+            {
+                teamController = GameObject.Find("Team1");
+            }
+            else if (teamNum == 2)
+            {
+                teamController = GameObject.Find("Team2");
+            }
+
+            findTeamController = true;
+        }
+
+
         if (status == Status.Free) {
             horizontalInput = myPlayer.GetAxisRaw("Horizontal");
 
@@ -91,13 +113,17 @@ public class AlternateSP2 : MonoBehaviour
             }
         }
 
+        if (transform.position.y != m_initial_Y_Pos)
+        {
+            transform.position = new Vector3(transform.position.x, m_initial_Y_Pos, transform.position.z);
+        }
         // If player is infront of machine and they press "Jump" and they are free, set their status to at a machine
         // Give the machine my inputs.
         // If the player presses "Jump" and is using a machine, set them to free again.
         // Also if they press heavy attack, they jump off the machine without using it.
         if (is_In_Area && (myPlayer.GetButtonDown("Jump")/*|| myPlayer.GetButtonDown("BasicAttack")*/))
         {
-            if (status == Status.Free)
+            if (status == Status.Free && !myMachine.GetComponent<MachineBehaviour2>().is_In_Use)
             {
                 status = Status.AtMachine;
                 if (!myMachine.GetComponent<MachineBehaviour2>().is_In_Use) {
@@ -129,6 +155,19 @@ public class AlternateSP2 : MonoBehaviour
                 Debug.Log(status);
             }
 
+        }
+
+        if (myPlayer.GetButtonDown("Switch") && status == Status.Free)
+        {
+            Debug.Log("FREEEEEEE");
+            try
+            {
+                Debug.Log(teamController.name);
+                teamController.GetComponent<SwitchHandler>().BeginSwap(playerNum);
+            }
+            catch
+            {
+            }
         }
 
 
@@ -221,7 +260,7 @@ public class AlternateSP2 : MonoBehaviour
     //--------------------------------------------------------------------------------------------------
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Machine")
+        if (other.gameObject.tag == "Machine" && !other.gameObject.GetComponent<MachineBehaviour2>().is_In_Use)
         {
             is_In_Area = true;
             myMachine = other.gameObject;
@@ -233,7 +272,7 @@ public class AlternateSP2 : MonoBehaviour
     //--------------------------------------------------------------------------------------------------
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Machine")
+        if (other.gameObject.tag == "Machine" && !other.gameObject.GetComponent<MachineBehaviour2>().is_In_Use)
         {           
             myMachine = other.gameObject;
         }
@@ -243,7 +282,7 @@ public class AlternateSP2 : MonoBehaviour
     //--------------------------------------------------------------------------------------------------
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Machine")
+        if (other.gameObject.tag == "Machine" )
         {
             is_In_Area = false;
             myMachine = null;

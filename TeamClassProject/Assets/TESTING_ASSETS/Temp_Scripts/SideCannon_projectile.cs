@@ -107,14 +107,17 @@ public class SideCannon_projectile : MonoBehaviour
         explosion_Particles.gameObject.SetActive(true);
         explosion_Particles.Play();
         trail_Particles.Stop();
+
+
+        //Cannon Explosion
+        CannonSoundPlayer.clip = CannonSounds[1];
+        CannonSoundPlayer.Play();
+
         yield return new WaitForSeconds(0.5f);
         explosion_Particles.Stop();
         explosion_Particles.gameObject.SetActive(false);
         this.gameObject.SetActive(false);
 
-        //Cannon Explosion
-        CannonSoundPlayer.clip = CannonSounds[1];
-        CannonSoundPlayer.Play();
 
     }
 }

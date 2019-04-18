@@ -20,18 +20,34 @@ public class MenuSliderScript : MonoBehaviour
     public static bool hasMenuBeenUp;
 
     public GameObject pressA;
-    public GameObject pressB;
+    //public GameObject pressB;
 
+    //Singleton Design Pattern
+    public static ButtonManager instance = null;
+
+    //public Animation pressA_Fade;
+
+    //Awake is always called before any Start functions
     void Awake()
     {
-        //myPlayer = ReInput.players.GetPlayer(playerNum - 1);
-
-        /* Iterating through Players (excluding the System Player)
-        for (int i = 0; i < ReInput.players.playerCount; i++)
+        //Check if instance already exists
+        if (instance == null)
         {
-            Player myPlayer = ReInput.players.Players[i];
+
+            //if not, set instance to this
+            instance = this;
         }
-        */
+
+        //If instance already exists and it's not this:
+        else if (instance != this)
+        {
+
+            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+            Destroy(gameObject);
+        }
+
+        //Sets this to not be destroyed when reloading scene
+        DontDestroyOnLoad(gameObject);
     }
 
     // Start is called before the first frame update
@@ -41,7 +57,7 @@ public class MenuSliderScript : MonoBehaviour
         sliderInt = 0;
         hasMenuBeenUp = false;
         pressA.SetActive(true);
-        pressB.SetActive(false);
+        //pressB.SetActive(false);
     }
 
     // Update is called once per frame
@@ -60,7 +76,8 @@ public class MenuSliderScript : MonoBehaviour
                 sliderInt = 1;
                 hasMenuBeenUp = true;
                 pressA.SetActive(false);
-                pressB.SetActive(true);
+                //pressB.SetActive(true);
+
             }
 
             if (myPlayer.GetButtonDown("HeavyAttack") && sliderInt != 2 && hasMenuBeenUp == true)
@@ -69,7 +86,7 @@ public class MenuSliderScript : MonoBehaviour
                 //menuDown.Play();
                 sliderInt = 2;
                 pressA.SetActive(true);
-                pressB.SetActive(false);
+                //pressB.SetActive(false);
             }
         }
     }

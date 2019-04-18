@@ -45,7 +45,7 @@ public class MachineBehaviour : MonoBehaviour
     private Player myPlayer;
     //This is in order to "Spawn in" objects
     private ObjectSpawner objectPool;
-    private Vector3 Move_Rotation, originalRotation;
+    private Vector3 Move_Rotation, originalRotation, m_Move_Platform;
 
     //variables for side hazzards "Eels"
     float sideHazardMovement;
@@ -94,7 +94,7 @@ public class MachineBehaviour : MonoBehaviour
         originalRotation = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.rotation.x, 
             Controlled_Hazard[Current_Haz_Num].transform.rotation.y,
             Controlled_Hazard[Current_Haz_Num].transform.rotation.z);
-
+        m_Move_Platform.y = Controlled_Hazard[Current_Haz_Num].transform.position.y;
         Move_Rotation = new Vector3(0,0,90);
         //get an instance of the object spawner so we can spawn objects
         objectPool = ObjectSpawner.Instance;
@@ -549,9 +549,19 @@ public class MachineBehaviour : MonoBehaviour
                 Hazard_MinPos[Current_Haz_Num].y + 0.01f, Controlled_Hazard[Current_Haz_Num].transform.position.z);
         }
 
+        if (verticalInput > 0.1f && m_Move_Platform.y < Hazard_MaxPos[Current_Haz_Num].y)
+        {
+            m_Move_Platform.y += speed * Time.deltaTime;
+        }else if (verticalInput < -0.1f && m_Move_Platform.y > Hazard_MinPos[Current_Haz_Num].y)
+        {
+            m_Move_Platform.y -= speed * Time.deltaTime;
+        }
 
-        Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
-            + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+        Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.position.x,
+            m_Move_Platform.y, Controlled_Hazard[Current_Haz_Num].transform.position.z);
+
+        /*Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
+            + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);*/
     }
 
     void MiddlePlatformBehavior()
@@ -643,8 +653,21 @@ public class MachineBehaviour : MonoBehaviour
                 1.0f + 0.001f, Controlled_Hazard[Current_Haz_Num].transform.position.z);
         }
 
-        Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
-            + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+
+        if (verticalInput > 0.1f && m_Move_Platform.y < 3.0f)
+        {
+            m_Move_Platform.y += speed * Time.deltaTime;
+        }
+        else if (verticalInput < -0.1f && m_Move_Platform.y > 1.0f)
+        {
+            m_Move_Platform.y -= speed * Time.deltaTime;
+        }
+
+        Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.position.x,
+            m_Move_Platform.y, Controlled_Hazard[Current_Haz_Num].transform.position.z);
+
+        /* Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
+             + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);*/
 
     }
 
@@ -780,7 +803,7 @@ public class MachineBehaviour : MonoBehaviour
                     break;
             }
         }
-        Debug.Log("Player:"+playerNum+ " has activated hazzard: "+mach);
+        //Debug.Log("Player:"+playerNum+ " has activated hazzard: "+mach);
 
         machine_UI[0].SetActive(false);
         machine_UI[1].SetActive(false);
@@ -800,7 +823,7 @@ public class MachineBehaviour : MonoBehaviour
     /// </summary>
     public void End_Control()
     {
-        Debug.Log("End Control has been called on: " +transform.name);
+        //Debug.Log("End Control has been called on: " +transform.name);
         is_In_Use = false;
         can_Use = false;
         other_can_Use = false;
@@ -853,8 +876,9 @@ public class MachineBehaviour : MonoBehaviour
             has_Been_Used = true;
         }
 
-        machineSoundPlayer.clip = machineSounds[0];
-        machineSoundPlayer.Play();
+        //machineSoundPlayer.clip = machineSounds[0];
+        //machineSoundPlayer.Play();
+
         //Debug.Log("audio MachinePowerDown");
 
     }

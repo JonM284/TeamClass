@@ -79,14 +79,14 @@ public class Portrait : MonoBehaviour
             dummyObject.SetActive(true);
         }
 
-        //if holding left on 1, go to 4
+        //if holding left on 1, go to 4 //THESE VALUES ARE BEING SET TO 2 BEFORE WE SEND TO NOAH BC WAWA AND GNO ARE NOT IN THE GAME
         if (char_selected < 1)
         {
-            char_selected = 4;
+            char_selected = 2;
         }
 
-        //if holding right on 4, go to 1 
-        if (char_selected > 4)
+        //if holding right on 4, go to 1 //THESE VALUES ARE BEING SET TO 2 BEFORE WE SEND TO NOAH BC WAWA AND GNO ARE NOT IN THE GAME
+        if (char_selected > 2)
         {
             char_selected = 1;
         }

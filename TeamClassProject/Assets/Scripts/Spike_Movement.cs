@@ -60,8 +60,8 @@ public class Spike_Movement : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             print("hit player");
-            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(damageToDealToPlayer, 0, 0, 0, 0, 0, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight(),0,0,0);
-            
+            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(75f, 90, 500, 0.5f, 200f, 0.5f, false, 0.1f, 0.3f, 0.2f);
+
         }
     }
 

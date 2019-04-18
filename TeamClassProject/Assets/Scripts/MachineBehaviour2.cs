@@ -69,8 +69,9 @@ public class MachineBehaviour2 : MonoBehaviour
     public List<Vector3> Hazard_MinPos;
 
     public GameObject my_Controller_Player;
-
+    public GameObject[] machine_UI;
     public GameObject[] indicator_Images;
+
 
     [Header("Audio")]
     public AudioClip[] machineSounds;
@@ -90,7 +91,10 @@ public class MachineBehaviour2 : MonoBehaviour
         //get an instance of the object spawner so we can spawn objects
         objectPool = ObjectSpawner.Instance;
         my_Controller_Player = null;
-
+        for (int i = 0; i < machine_UI.Length; i++)
+        {
+            machine_UI[i].SetActive(false);
+        }
         //only do this if this machine is of type "Background Cannon" 
         if (mach == MachineID.Two_Fairy)
         {
@@ -135,8 +139,7 @@ public class MachineBehaviour2 : MonoBehaviour
                 Fairy_Machine_Ready = true;
                 indicator_Images[0].SetActive(true);
                 indicator_Images[1].SetActive(false);
-                machineSoundPlayer.clip = machineSounds[1];
-                machineSoundPlayer.Play();
+
                 GetComponent<BoxCollider2D>().enabled = true;
             }
         }
@@ -244,6 +247,12 @@ public class MachineBehaviour2 : MonoBehaviour
 
         vel.x = horizontalInput * speed;
         vel.y = verticalInput * speed;
+
+        //regular moving noise -G
+        machineSoundPlayer.clip = machineSounds[1];
+        machineSoundPlayer.Play();
+
+
         //if fairy hits a player
         if (fairyScript.fairyHitPlayer == true)
         {
@@ -254,6 +263,11 @@ public class MachineBehaviour2 : MonoBehaviour
             Fairy_Machine_Ready = false;
             cooldownTimer_Fairy = cooldownLength_Fairy;
             GetComponent<BoxCollider2D>().enabled = false;
+
+            //hit player noise -G
+            machineSoundPlayer.clip = machineSounds[2];
+            machineSoundPlayer.Play();
+
         }
 
         //this allows the player to move the crosshair
@@ -316,6 +330,11 @@ public class MachineBehaviour2 : MonoBehaviour
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Spike_Movement>().Spike_Active = true;
                 Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<BoxCollider2D>().enabled = true;
                 Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.transform.position = Controlled_Hazard[1].GetComponent<Tree_Movement>().myStartPos;
+
+
+                machineSoundPlayer.clip = machineSounds[8];
+                machineSoundPlayer.Play();
+
             }
             //if tree
             else if(Current_Haz_Num == 1)
@@ -324,6 +343,11 @@ public class MachineBehaviour2 : MonoBehaviour
                 //Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<BoxCollider2D>().enabled = true;
                 Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<PolygonCollider2D>().enabled = true;
                 Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.transform.position = Controlled_Hazard[0].GetComponent<Spike_Movement>().myStartPos;
+
+
+                machineSoundPlayer.clip = machineSounds[9];
+                machineSoundPlayer.Play();
+
             }
 
             //kick player off machine and put it on cooldown
@@ -425,6 +449,11 @@ public class MachineBehaviour2 : MonoBehaviour
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Branbull_Movement>().Branbull_Active = true;
                 Controlled_Hazard[0].GetComponent<Branbull_Movement>().myBranbull.GetComponent<BoxCollider2D>().enabled = true;
                 Controlled_Hazard[1].GetComponent<Apple_Movement>().myApple.transform.position = Controlled_Hazard[1].GetComponent<Apple_Movement>().myStartPos;
+
+
+                machineSoundPlayer.clip = machineSounds[3];
+                machineSoundPlayer.Play();
+
             }
             //if apple
             else if (Current_Haz_Num == 1)
@@ -435,6 +464,11 @@ public class MachineBehaviour2 : MonoBehaviour
                     appleCollider.enabled = true;
                 }
                 Controlled_Hazard[0].GetComponent<Branbull_Movement>().myBranbull.transform.position = Controlled_Hazard[0].GetComponent<Branbull_Movement>().myStartPos;
+
+
+                machineSoundPlayer.clip = machineSounds[4];
+                machineSoundPlayer.Play();
+
             }
 
             //kick player off machine and put it on cooldown
@@ -537,6 +571,11 @@ public class MachineBehaviour2 : MonoBehaviour
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Mushroom_BouncePad>().removeMushroomBounceTimer = Controlled_Hazard[Current_Haz_Num].GetComponent<Mushroom_BouncePad>().removeMushroomBounceLength;
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Mushroom_BouncePad>().MushroomBounceAreThere = true;
                 Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myMushroomSpores.transform.position = Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myStartPos;
+
+
+                machineSoundPlayer.clip = machineSounds[5];
+                machineSoundPlayer.Play();
+
             }
             //if spores
             else if (Current_Haz_Num == 1)
@@ -549,6 +588,11 @@ public class MachineBehaviour2 : MonoBehaviour
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Mushroom_Spores>().removeMushroomSporesTimer = Controlled_Hazard[Current_Haz_Num].GetComponent<Mushroom_Spores>().removeMushroomSporesLength;
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Mushroom_Spores>().MushroomSporesAreThere = true;
                 Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().myMushroomBounce.transform.position = Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().myStartPos;
+
+
+                machineSoundPlayer.clip = machineSounds[6];
+                machineSoundPlayer.Play();
+
             }
 
             //kick player off machine and put it on cooldown
@@ -609,7 +653,7 @@ public class MachineBehaviour2 : MonoBehaviour
             {
                 Current_Haz_Num = 0;
             }
-            switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
+            switch (my_Controller_Player.GetComponent<AlternateSP2>().teamID)
             {
                 case 2:
                     Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.cyan;
@@ -692,11 +736,11 @@ public class MachineBehaviour2 : MonoBehaviour
 
         if (Move_Rotation.z > Max_range)
         {
-            Move_Rotation.z = Max_range;
+            Move_Rotation.z = Max_range - 0.01f;
         }
         if (Move_Rotation.z < -Max_range)
         {
-            Move_Rotation.z = -Max_range;
+            Move_Rotation.z = -Max_range + 0.01f;
         }
 
         Controlled_Hazard[Current_Haz_Num].transform.rotation = Quaternion.Euler(Move_Rotation);
@@ -761,7 +805,33 @@ public class MachineBehaviour2 : MonoBehaviour
             Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myMushroomSpores.transform.position = Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myStartPos;
         }
 
+        if (mach == MachineID.Two_Squirrel)
+        {
+            //Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Do_Flash();
+            switch (my_Controller_Player.GetComponent<AlternateSP2>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.cyan;
+                    break;
+                case 1:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.red;
+                    break;
+                default:
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.black;
+                    break;
+            }
+        }
+
+        machineSoundPlayer.clip = machineSounds[7];
+        machineSoundPlayer.Play();
+
         Debug.Log("Player:"+playerNum+ " has activated hazzard: "+mach);
+        machine_UI[0].SetActive(false);
+        machine_UI[1].SetActive(false);
+        for (int i = 2; i < machine_UI.Length; i++)
+        {
+            machine_UI[i].SetActive(true);
+        }
     }
 
 
@@ -778,8 +848,11 @@ public class MachineBehaviour2 : MonoBehaviour
         my_Controller_Player.GetComponent<AlternateSP2>().status = AlternateSP2.Status.Free;
         my_Controller_Player = null;
         // The playerID "-1" does not exist, therefore, the inputs will never be recieved.
-        myPlayer = ReInput.players.GetPlayer(-1);
-
+        myPlayer = ReInput.players.GetPlayer(5);
+        for (int i = 0; i < machine_UI.Length; i++)
+        {
+            machine_UI[i].SetActive(false);
+        }
         if (mach == MachineID.Two_Fairy)
         {
             Controlled_Hazard[0].transform.position = fairyScript.startPos;
@@ -849,8 +922,7 @@ public class MachineBehaviour2 : MonoBehaviour
                 Controlled_Hazard[i].GetComponentInParent<SpriteRenderer>().color = Color.white;
             }
         }
-        machineSoundPlayer.clip = machineSounds[0];
-        machineSoundPlayer.Play();
+
         Debug.Log("Player has deactivated machine: "+transform.name);
     }
 
@@ -860,6 +932,30 @@ public class MachineBehaviour2 : MonoBehaviour
         Debug.Log("Now can use");
         can_Use = true;
         other_can_Use = true;
+
+
+        machineSoundPlayer.clip = machineSounds[0];
+        machineSoundPlayer.Play();
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!is_In_Use && other.gameObject.tag == "Player")
+        {
+            machine_UI[0].SetActive(true);
+            machine_UI[1].SetActive(true);
+            Debug.Log("Show UI");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (!is_In_Use && other.gameObject.tag == "Player")
+        {
+            machine_UI[0].SetActive(false);
+            machine_UI[1].SetActive(false);
+        }
     }
 
 }

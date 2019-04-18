@@ -4833,6 +4833,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52843d6e3245d7a4883d9f77571d8a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 0
+  damage: 0
+  thisPlayer: {fileID: 0}
 --- !u!1 &1376787127019997693
 GameObject:
   m_ObjectHideFlags: 0
@@ -4901,7 +4904,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -594534133
-  m_SortingLayer: 4
+  m_SortingLayer: 8
   m_SortingOrder: 13
   m_Sprite: {fileID: 21300000, guid: 86c98f934efc9400c96c80cbae52b425, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4950,7 +4953,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -594534133
-  m_SortingLayer: 4
+  m_SortingLayer: 8
   m_SortingOrder: 13
   m_Time: 0.05
   m_Parameters:
