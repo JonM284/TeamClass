@@ -331,11 +331,6 @@ public class BasicPlayerScript : MonoBehaviour
             }
         }
 
-        if (myPlayer.GetButtonDown("Pause"))
-        {
-            mainCamera.GetComponent<pauserScript>().playerNum = this.playerNum;
-        }
-
         //<3 for Justin  
         //-Love Dan 🦆
         //Here's additional recognition for our one true leader throughout this endeavorous task
