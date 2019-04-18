@@ -803,7 +803,7 @@ public class MachineBehaviour : MonoBehaviour
                     break;
             }
         }
-        Debug.Log("Player:"+playerNum+ " has activated hazzard: "+mach);
+        //Debug.Log("Player:"+playerNum+ " has activated hazzard: "+mach);
 
         machine_UI[0].SetActive(false);
         machine_UI[1].SetActive(false);
@@ -823,7 +823,7 @@ public class MachineBehaviour : MonoBehaviour
     /// </summary>
     public void End_Control()
     {
-        Debug.Log("End Control has been called on: " +transform.name);
+        //Debug.Log("End Control has been called on: " +transform.name);
         is_In_Use = false;
         can_Use = false;
         other_can_Use = false;

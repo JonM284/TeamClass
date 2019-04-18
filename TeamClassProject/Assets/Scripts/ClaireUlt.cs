@@ -8,6 +8,8 @@ public class ClaireUlt : MonoBehaviour
     public float duration;
     public float damage;
 
+    public GameObject thisPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +32,7 @@ public class ClaireUlt : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-
+            
         }
     }
 

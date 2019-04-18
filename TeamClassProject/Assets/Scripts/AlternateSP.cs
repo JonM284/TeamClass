@@ -169,12 +169,12 @@ public class AlternateSP : MonoBehaviour
             {
                 myMachine.GetComponent<MachineBehaviour>().End_Control();
                 myMachine = null;
-                Debug.Log("Has detached from machine with Heavy Attack");
+                //Debug.Log("Has detached from machine with Heavy Attack");
             }
             if (status == Status.AtMachine)
             {
                 status = Status.Free;
-                Debug.Log(status);
+                //Debug.Log(status);
             }
 
         }
