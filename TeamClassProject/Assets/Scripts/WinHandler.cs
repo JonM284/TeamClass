@@ -38,9 +38,18 @@ public class WinHandler : MonoBehaviour
             SceneManager.LoadScene("WinRed");
         }
 
+        if (t2_p1_dead && t2_p2_dead)
+        {
+            winActive = true;
+            SceneManager.LoadScene("WinBlue");
+        }
+
+
+
+
         //team 2 loses
         // if (winActive == false && (team2.GetComponent<SwitchHandler>().teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth <= 0 && team2.GetComponent<SwitchHandler>().teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth <= 0))
-        if(t2_p1_dead && t2_p2_dead)
+        if (t2_p1_dead && t2_p2_dead)
         {
             winActive = true;
            // SceneManager.LoadScene("WinBlue");
