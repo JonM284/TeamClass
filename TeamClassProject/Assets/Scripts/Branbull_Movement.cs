@@ -120,6 +120,12 @@ public class Branbull_Movement : MonoBehaviour
             //Deactivate_Branbull();
             transform.position = new Vector3(transform.position.x, -.364f, transform.position.z);
         }
+        if (Branbull_Active == true && other.gameObject.name == "stump")
+        {
+            StartCoroutine(DeactivateDelay());
+            //Deactivate_Branbull();
+            transform.position = new Vector3(transform.position.x, -1.1f, transform.position.z);
+        }
         if (Branbull_Active && other.gameObject.tag == "Floor")
         {
             StartCoroutine(DeactivateDelay());
