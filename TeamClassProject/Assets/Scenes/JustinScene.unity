@@ -490,6 +490,7 @@ GameObject:
   - component: {fileID: 46016815}
   - component: {fileID: 46016814}
   - component: {fileID: 46016813}
+  - component: {fileID: 46016816}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -504,7 +505,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 46016812}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -528,7 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1442753295}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &46016815
@@ -545,6 +546,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &46016816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46016812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10efa70eea88e69459c632aac286892d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rewiredInputManager: {fileID: 1701857915}
+  useAllRewiredGamePlayers: 1
+  useRewiredSystemPlayer: 0
+  rewiredPlayerIds: 00000000
+  usePlayingPlayersOnly: 0
+  playerMice: []
+  moveOneElementPerAxisPress: 0
+  setActionsById: 0
+  horizontalActionId: -1
+  verticalActionId: -1
+  submitActionId: -1
+  cancelActionId: -1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Jump
+  m_CancelButton: HeavyAttack
+  m_InputActionsPerSecond: 3
+  m_RepeatDelay: 0
+  m_allowMouseInput: 1
+  m_allowMouseInputIfTouchSupported: 1
+  m_allowTouchInput: 1
+  m_ForceModuleActive: 0
 --- !u!1 &47411189
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,7 +1245,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1997040350}
         m_MethodName: ScriptFSound
         m_Mode: 1
         m_Arguments:
@@ -12805,7 +12840,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -7.0351562, y: -131.24243}
+  m_AnchoredPosition: {x: -7.0351562, y: -131.24242}
   m_SizeDelta: {x: -700.00006, y: -350.1234}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &707099336
@@ -19197,7 +19232,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1997040350}
         m_MethodName: Continuer
         m_Mode: 1
         m_Arguments:
@@ -22805,6 +22840,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35196b16a9e71424b870301153067539, type: 3}
+--- !u!114 &1701857915 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1117594310344056349, guid: 35196b16a9e71424b870301153067539,
+    type: 3}
+  m_PrefabInstance: {fileID: 1701857914}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 581b3e3c96df0ef42aef16b63b27b87f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1711150205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26310,7 +26357,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1997040350}
         m_MethodName: ControlSF
         m_Mode: 1
         m_Arguments:
