@@ -679,7 +679,7 @@ public class BasicPlayerScript : MonoBehaviour
 				{
                     if (claire) { claireCharacter.ClaireAttackController(1); }
 
-                    //if (gillbert) { gillbertCharacter.GilbertAttackController(1); }
+                    if (gillbert) { gillbertCharacter.GilbertAttackController(2); }
 				}
 			}
             
@@ -745,7 +745,7 @@ public class BasicPlayerScript : MonoBehaviour
 				{
                     if (claire) { claireCharacter.ClaireAttackController(10); }
 
-                    //if (gillbert) { gillbertCharacter.GilbertAttackController(10); }
+                    if (gillbert) { gillbertCharacter.GilbertAttackController(9); }
                 }
 			}
 
@@ -793,7 +793,7 @@ public class BasicPlayerScript : MonoBehaviour
                         
                         if (claire) { claireCharacter.ClaireAttackController(9); }
 
-                        //if (gillbert) { gillbertCharacter.GilbertAttackController(11); }
+                        if (gillbert) { gillbertCharacter.GilbertAttackController(9); }
 
                         //if (gnomercy) { gnomercyCharacter.GnomercyAttackController(11); }
 
@@ -810,7 +810,7 @@ public class BasicPlayerScript : MonoBehaviour
                         
                         if (claire) { claireCharacter.ClaireAttackController(9); }
 
-                        //if (gillbert) { gillbertCharacter.GilbertAttackController(11); }
+                        if (gillbert) { gillbertCharacter.GilbertAttackController(9); }
 
                         //if (gnomercy) { gnomercyCharacter.GnomercyAttackController(11); }
 
@@ -884,7 +884,7 @@ public class BasicPlayerScript : MonoBehaviour
                 {
                     if (claire) { claireCharacter.ClaireAttackController(23); }
 
-                    //if (gillbert) { gillbertCharacter.GilbertAttackController(23); }
+                    if (gillbert) { gillbertCharacter.GilbertAttackController(20); }
 
                     if (gnomercy) { gnomercyCharacter.GnomercyAttackController(23); }
                 }
