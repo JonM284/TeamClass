@@ -102,10 +102,23 @@ public class Branbull_Movement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         //explodes the branbull when it hits the floor or a platform
-        if (Branbull_Active == true && other.gameObject.tag == "Platform")
+        if (Branbull_Active == true && other.gameObject.name == "platformLeft")
         {
             StartCoroutine(DeactivateDelay());
             //Deactivate_Branbull();
+            transform.position = new Vector3(transform.position.x, 2.06f, transform.position.z);
+        }
+        if (Branbull_Active == true && other.gameObject.name == "platformRight_left")
+        {
+            StartCoroutine(DeactivateDelay());
+            //Deactivate_Branbull();
+            transform.position = new Vector3(transform.position.x, -1.024f, transform.position.z);
+        }
+        if (Branbull_Active == true && other.gameObject.name == "platformRight_right")
+        {
+            StartCoroutine(DeactivateDelay());
+            //Deactivate_Branbull();
+            transform.position = new Vector3(transform.position.x, -.364f, transform.position.z);
         }
         if (Branbull_Active && other.gameObject.tag == "Floor")
         {
