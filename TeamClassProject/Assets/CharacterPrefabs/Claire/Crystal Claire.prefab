@@ -27131,6 +27131,8 @@ GameObject:
   - component: {fileID: 5615167271143781586}
   - component: {fileID: 5615167271143781587}
   - component: {fileID: 5615167271143781584}
+  - component: {fileID: 8125005314800857892}
+  - component: {fileID: 1063699221178050176}
   m_Layer: 0
   m_Name: Crystal Claire
   m_TagString: Player
@@ -27447,7 +27449,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04728341, y: 0.09987545}
+  m_Offset: {x: -0.04728341, y: 0.13375098}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -27458,7 +27460,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.15066, y: 3.0340023}
+  m_Size: {x: 1.15066, y: 2.109787}
   m_EdgeRadius: 0
 --- !u!114 &5615167271143781587
 MonoBehaviour:
@@ -27614,6 +27616,62 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!60 &8125005314800857892
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5615167271143781585}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 9, y: 9}
+    newSize: {x: 1.6, y: 2.3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.16531289, y: 1.676755}
+      - {x: -0.6242466, y: 1.1900002}
+      - {x: 0.5264467, y: 1.1908152}
+--- !u!60 &1063699221178050176
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5615167271143781585}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 9, y: 9}
+    newSize: {x: 1.6, y: 2.3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.6105387, y: -0.9174791}
+      - {x: 0.5252248, y: -0.9174791}
+      - {x: -0.05495429, y: -1.5546054}
 --- !u!1 &5615167271289989227
 GameObject:
   m_ObjectHideFlags: 0

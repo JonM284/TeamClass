@@ -10444,6 +10444,8 @@ GameObject:
   - component: {fileID: 601068658141386477}
   - component: {fileID: 645758371}
   - component: {fileID: 2660453998392343815}
+  - component: {fileID: 5307436960926158923}
+  - component: {fileID: 6626781172835203818}
   m_Layer: 0
   m_Name: The Flying Fish
   m_TagString: Player
@@ -10517,8 +10519,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.12000002, y: -0.2655536}
-  m_Size: {x: 1.48, y: 2.821107}
+  m_Offset: {x: 0.12000002, y: -0.20269603}
+  m_Size: {x: 1.48, y: 1.9645888}
   m_Direction: 0
 --- !u!114 &601068658141386479
 MonoBehaviour:
@@ -10853,6 +10855,62 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!60 &5307436960926158923
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601068658141386466}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.7098496, y: 0.50412893}
+      - {x: 0.02819419, y: 1.3264072}
+      - {x: -0.536471, y: 0.37936315}
+--- !u!60 &6626781172835203818
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601068658141386466}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.6988764, y: -0.91080517}
+      - {x: -0.5627918, y: -0.74192613}
+      - {x: 0.068894625, y: -1.6810971}
 --- !u!1 &601068658247654022
 GameObject:
   m_ObjectHideFlags: 0

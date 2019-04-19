@@ -1416,6 +1416,8 @@ GameObject:
   - component: {fileID: 4631393466039951176}
   - component: {fileID: 14132372076835048}
   - component: {fileID: 4130340295680157920}
+  - component: {fileID: 8043154980640512863}
+  - component: {fileID: 7444764014212260546}
   m_Layer: 0
   m_Name: The Flying Fish Alt
   m_TagString: Player
@@ -1490,8 +1492,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.12, y: -0.24}
-  m_Size: {x: 1.48, y: 2.77}
+  m_Offset: {x: 0.12000002, y: -0.23793519}
+  m_Size: {x: 1.48, y: 1.9400203}
   m_Direction: 0
 --- !u!114 &2729868350300346152
 MonoBehaviour:
@@ -1545,6 +1547,9 @@ MonoBehaviour:
   dashSpeed: 0.25
   maxDashTimer: 0.18
   attackZone: 0
+  neutralZone: 0
+  verticalForwardZone: 0
+  horizontalUpwardZone: 0
   teamController: {fileID: 0}
   canTurn: 1
 --- !u!50 &4631393466039951176
@@ -1822,6 +1827,62 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!60 &8043154980640512863
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336007881639682530}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.14544547, y: 1.3838457}
+      - {x: -0.5350822, y: 0.33809632}
+      - {x: 0.79555035, y: 0.28863102}
+--- !u!60 &7444764014212260546
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336007881639682530}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.7651824, y: -0.8543569}
+      - {x: -0.47803402, y: -0.896315}
+      - {x: 0.07720053, y: -1.6953626}
 --- !u!1 &4371638519875398636
 GameObject:
   m_ObjectHideFlags: 0
