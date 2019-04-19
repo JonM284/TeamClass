@@ -2270,6 +2270,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d4402e038925a84a9955610f7e2c447, type: 3}
+--- !u!1 &101412082 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1827133004, guid: 7d4402e038925a84a9955610f7e2c447,
+    type: 3}
+  m_PrefabInstance: {fileID: 101412081}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &105958393
 GameObject:
   m_ObjectHideFlags: 0
@@ -3777,12 +3783,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 617f59b469a224004a2a3a6c09f99158, type: 3}
---- !u!1 &186722022 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5615167271143781585, guid: 617f59b469a224004a2a3a6c09f99158,
-    type: 3}
-  m_PrefabInstance: {fileID: 186722021}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &202710488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13782,6 +13782,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d4402e038925a84a9955610f7e2c447, type: 3}
+--- !u!1 &1009235046 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1827133004, guid: 7d4402e038925a84a9955610f7e2c447,
+    type: 3}
+  m_PrefabInstance: {fileID: 1009235045}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1015039984
 GameObject:
   m_ObjectHideFlags: 0
@@ -27597,12 +27603,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 617f59b469a224004a2a3a6c09f99158, type: 3}
---- !u!1 &2128723302 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5615167271143781585, guid: 617f59b469a224004a2a3a6c09f99158,
-    type: 3}
-  m_PrefabInstance: {fileID: 2128723301}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2129911847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28537,7 +28537,7 @@ PrefabInstance:
         type: 3}
       propertyPath: P2x4_ClaireFighter
       value: 
-      objectReference: {fileID: 186722022}
+      objectReference: {fileID: 101412082}
     - target: {fileID: 6102400894643832776, guid: 0f942f408932afa4297d2de310aa31c0,
         type: 3}
       propertyPath: P2x4_ClaireSupport
@@ -28557,7 +28557,7 @@ PrefabInstance:
         type: 3}
       propertyPath: P1x3_ClaireFighter
       value: 
-      objectReference: {fileID: 2128723302}
+      objectReference: {fileID: 1009235046}
     - target: {fileID: 6102400894643832776, guid: 0f942f408932afa4297d2de310aa31c0,
         type: 3}
       propertyPath: P1x3_ClaireSupport
