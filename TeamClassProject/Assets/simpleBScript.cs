@@ -26,14 +26,21 @@ public class simpleBScript : MonoBehaviour
             es.SetSelectedGameObject(es.firstSelectedGameObject);
         }
 
-        Player myPlayer = ReInput.players.Players[0];
+        /*Player myPlayer = ReInput.players.Players[0];
 
 
-        if (myPlayer.GetButtonDown("BasicAttack"))
+        if (myPlayer.GetButtonDown("Jump"))
         {
             SceneManager.LoadScene("NolanScene");
         }
-
+        */
 
     }
+
+    public void Go_To_Main_Menu()
+    {
+        SceneManager.LoadScene("NolanScene");
+    }
+
+
 }

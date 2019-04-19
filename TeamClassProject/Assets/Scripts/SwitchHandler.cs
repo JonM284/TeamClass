@@ -365,7 +365,7 @@ public class SwitchHandler : MonoBehaviour
 
     public void UpdateUltBar(float damage)
     {
-        currentUltNum += damage * .5f;
+        currentUltNum += damage * .39f;
 
         if(currentUltNum > maxUltNum)
         {
