@@ -60,6 +60,7 @@ public class Portrait : MonoBehaviour
         if (timer >= timerMax)
         {
             timer = timerMax;
+            //dummyObject.SetActive(true);
             //canSelect = true;
         }
 
