@@ -487,6 +487,7 @@ public class Claire : MonoBehaviour
         {
             shield = false;
         }
+        player.ResetTriggers();
         player.canTurn = true;
         this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
 		this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;

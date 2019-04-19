@@ -910,7 +910,7 @@ public class BasicPlayerScript : MonoBehaviour
         }
 	}
 
-    void ResetTriggers()
+    public void ResetTriggers()
     {
         anim.ResetTrigger("BasicNeutral");
         anim.ResetTrigger("BasicForward");
