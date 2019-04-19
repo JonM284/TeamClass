@@ -722,6 +722,10 @@ public class MachineBehaviour : MonoBehaviour
         {
             side_platform_Used = true;
             Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Platform_Behaviour>().Do_Spike();
+
+            machineSoundPlayer.clip = machineSounds[5];
+            machineSoundPlayer.Play();
+
             End_Control();
         }
 
@@ -870,6 +874,10 @@ public class MachineBehaviour : MonoBehaviour
         {
             if (!side_platform_Used) {
                 Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Platform_Behaviour>().Do_Fire();
+
+                machineSoundPlayer.clip = machineSounds[6];
+                machineSoundPlayer.Play();
+
             }
             for (int i = 0; i < Controlled_Hazard.Length; i++)
             {
