@@ -79,8 +79,8 @@ public class PlayerStageSelect : MonoBehaviour
             //if holding left on 1, don't do anything
             if (position <= 1)
             {
-                //position = 1; //THIS IS OFF TEMPORARILY BECAUSE WE ARENT SENDING NOAH STAGE 2
-                position = 2;
+                position = 1; //THIS IS OFF TEMPORARILY BECAUSE WE ARENT SENDING NOAH STAGE 2
+               // position = 2;
             }
 
             //if holding right on 2, don't do anything 
