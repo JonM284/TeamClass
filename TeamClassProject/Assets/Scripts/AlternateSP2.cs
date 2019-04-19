@@ -46,6 +46,7 @@ public class AlternateSP2 : MonoBehaviour
 
     bool findTeamController = false;
 
+    private pauserScript m_my_Pauser;
 
     //--------------------------------------------------------------------------------------------------
     private void Awake()
@@ -64,6 +65,7 @@ public class AlternateSP2 : MonoBehaviour
     void Start()
     {
         myMachine = null;
+        m_my_Pauser = pauserScript.pauser_Instance;
         status = Status.Free;
         myPlayer = ReInput.players.GetPlayer(playerNum - 1);
         ReInput.ControllerConnectedEvent += OnControllerConnected;
@@ -89,6 +91,10 @@ public class AlternateSP2 : MonoBehaviour
             findTeamController = true;
         }
 
+        if (myPlayer.GetButtonDown("Pause"))
+        {
+            m_my_Pauser.Pauser();
+        }
 
         if (status == Status.Free) {
             horizontalInput = myPlayer.GetAxisRaw("Horizontal");
