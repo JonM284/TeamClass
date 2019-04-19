@@ -54,7 +54,7 @@ public class Portrait : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Playerchar: " + PlayerPrefs.GetInt("Player" + playerNum + "Character"));
+
         timer++;
 
         if (timer >= timerMax)

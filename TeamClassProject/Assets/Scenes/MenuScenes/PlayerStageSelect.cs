@@ -111,6 +111,7 @@ public class PlayerStageSelect : MonoBehaviour
 
             if (myPlayer.GetButtonDown("Jump") && hasSelected == false && timer >= timerMax)
             {
+                Debug.Log("pos"+position);
                 timer = 0;
                 hasSelected = true;
                 white_box.SetActive(true);
