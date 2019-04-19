@@ -496,6 +496,7 @@ public class Claire : MonoBehaviour
     void FistLand()
     {
         player.rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+        player.rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     /*
