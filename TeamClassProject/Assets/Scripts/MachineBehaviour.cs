@@ -85,11 +85,15 @@ public class MachineBehaviour : MonoBehaviour
     public AudioClip[] machineSounds;
     public AudioSource machineSoundPlayer;
 
+    private Color m_Team_One_Color, m_Team_Two_Color;
+
     // Start is called before the first frame update
     void Start()
     {
         indicator_Images[0].SetActive(true);
         indicator_Images[1].SetActive(false);
+        m_Team_One_Color = Color.cyan;
+        m_Team_Two_Color = Color.red;
         coolDown_Timer_Max = coolDown_Timer;
         originalRotation = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.rotation.x, 
             Controlled_Hazard[Current_Haz_Num].transform.rotation.y,
@@ -223,10 +227,10 @@ public class MachineBehaviour : MonoBehaviour
             switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
             {
                 case 2:
-                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.cyan;
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = m_Team_Two_Color;
                     break;
                 case 1:
-                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.red;
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = m_Team_One_Color;
                     break;
                 default:
                     Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.black;
@@ -248,10 +252,10 @@ public class MachineBehaviour : MonoBehaviour
             switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
             {
                 case 2:
-                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.cyan;
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = m_Team_Two_Color;
                     break;
                 case 1:
-                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.red;
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = m_Team_One_Color;
                     break;
                 default:
                     Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.black;
@@ -370,10 +374,10 @@ public class MachineBehaviour : MonoBehaviour
                 switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
                 {
                     case 2:
-                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.cyan;
+                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = m_Team_Two_Color;
                         break;
                     case 1:
-                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
+                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = m_Team_One_Color;
                         break;
                     default:
                         Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.black;
@@ -390,10 +394,10 @@ public class MachineBehaviour : MonoBehaviour
             switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
             {
                 case 2:
-                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.cyan;
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = m_Team_Two_Color;
                     break;
                 case 1:
-                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = m_Team_One_Color;
                     break;
                 default:
                     Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.black;
@@ -504,10 +508,10 @@ public class MachineBehaviour : MonoBehaviour
                 switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
                 {
                     case 2:
-                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.cyan;
+                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = m_Team_Two_Color;
                         break;
                     case 1:
-                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
+                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = m_Team_One_Color;
                         break;
                     default:
                         Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.black;
@@ -525,10 +529,10 @@ public class MachineBehaviour : MonoBehaviour
             switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
             {
                 case 2:
-                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.cyan;
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = m_Team_Two_Color;
                     break;
                 case 1:
-                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = m_Team_One_Color;
                     break;
                 default:
                     Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.black;
@@ -748,10 +752,10 @@ public class MachineBehaviour : MonoBehaviour
             switch (teamID)
             {
                 case 2:
-                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.cyan;
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = m_Team_Two_Color;
                     break;
                 case 1:
-                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.red;
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = m_Team_One_Color;
                     break;
                 default:
                     Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.black;
@@ -763,10 +767,10 @@ public class MachineBehaviour : MonoBehaviour
             switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
             {
                 case 2:
-                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.cyan;
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = m_Team_Two_Color;
                     break;
                 case 1:
-                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.red;
+                    Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = m_Team_One_Color;
                     break;
                 default:
                     Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.black;
@@ -779,10 +783,10 @@ public class MachineBehaviour : MonoBehaviour
             switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
             {
                 case 2:
-                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.cyan;
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = m_Team_Two_Color;
                     break;
                 case 1:
-                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = m_Team_One_Color;
                     break;
                 default:
                     Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.black;
@@ -793,10 +797,10 @@ public class MachineBehaviour : MonoBehaviour
             switch (my_Controller_Player.GetComponent<AlternateSP>().teamID)
             {
                 case 2:
-                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.cyan;
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = m_Team_Two_Color;
                     break;
                 case 1:
-                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.red;
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = m_Team_One_Color;
                     break;
                 default:
                     Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.black;
