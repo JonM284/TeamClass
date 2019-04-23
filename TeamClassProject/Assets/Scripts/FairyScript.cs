@@ -43,7 +43,7 @@ public class FairyScript : MonoBehaviour
 
             //other.gameObject.GetComponent<BasicPlayerScript>().GetHit(-100f, 0, 0, 0, 0, 0, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight(), 0,0 ,0);
             other.gameObject.GetComponent<BasicPlayerScript>().currentHealth += 100f;
-            transform.position = startPos;
+            //transform.position = startPos;
 
         }
     }

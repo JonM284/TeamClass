@@ -260,6 +260,15 @@ public class MachineBehaviour2 : MonoBehaviour
         vel.x = horizontalInput * speed;
         vel.y = verticalInput * speed;
 
+        /*if(vel.x < 0)
+        {
+            Controlled_Hazard[0].GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else if (vel.x > 0)
+        {
+            Controlled_Hazard[0].GetComponent<SpriteRenderer>().flipX = false;
+        }*/
+
         //regular moving noise -G
         machineSoundPlayer.clip = machineSounds[1];
         machineSoundPlayer.Play();
@@ -290,7 +299,10 @@ public class MachineBehaviour2 : MonoBehaviour
     IEnumerator FairyResetInitialDelay()
     {
         yield return new WaitForSeconds(1.0f);
+        fairyScript.gameObject.SetActive(false);
         fairyScript.fairyHitPlayer = false;
+        fairyScript.transform.position = fairyScript.startPos;
+        fairyScript.gameObject.GetComponent<ParticleSystem>().Stop();
     }
 
     //Spikes/Tree Bottom Hazard Support Machine
@@ -796,6 +808,13 @@ public class MachineBehaviour2 : MonoBehaviour
         if (mach == MachineID.Two_Fairy)
         {
             Controlled_Hazard[0].SetActive(true);
+            //Controlled_Hazard[0].GetComponentsInChildren<SpriteRenderer>();
+            foreach(SpriteRenderer fairySpriteChildren in Controlled_Hazard[0].GetComponentsInChildren<SpriteRenderer>())
+            {
+                fairySpriteChildren.enabled = true;
+            }
+            Controlled_Hazard[0].GetComponent<BoxCollider2D>().enabled = true;
+            fairyScript.gameObject.GetComponent<ParticleSystem>().Play();
         }
         if(mach == MachineID.Two_BottomHazard)
         {
@@ -885,8 +904,28 @@ public class MachineBehaviour2 : MonoBehaviour
         }
         if (mach == MachineID.Two_Fairy)
         {
-            Controlled_Hazard[0].transform.position = fairyScript.startPos;
-            Controlled_Hazard[0].SetActive(false);
+            //Controlled_Hazard[0].transform.position = fairyScript.startPos;
+            //Controlled_Hazard[0].SetActive(false);
+            //Controlled_Hazard[0].GetComponent<SpriteRenderer>().enabled = false;
+            foreach (SpriteRenderer fairySpriteChildren in Controlled_Hazard[0].GetComponentsInChildren<SpriteRenderer>())
+            {
+                fairySpriteChildren.enabled = false;
+            }
+            Controlled_Hazard[0].GetComponent<BoxCollider2D>().enabled = false;
+            //fairyScript.gameObject.GetComponent<ParticleSystem>().Pause();
+
+            if(Controlled_Hazard[0].GetComponent<FairyScript>().fairyHitPlayer == false)
+            {
+                //Controlled_Hazard[0].GetComponent<SpriteRenderer>().enabled = false;
+                foreach (SpriteRenderer fairySpriteChildren in Controlled_Hazard[0].GetComponentsInChildren<SpriteRenderer>())
+                {
+                    fairySpriteChildren.enabled = false;
+                }
+                Controlled_Hazard[0].GetComponent<BoxCollider2D>().enabled = false;
+                Controlled_Hazard[0].GetComponent<FairyScript>().transform.position = Controlled_Hazard[0].GetComponent<FairyScript>().startPos;
+                Controlled_Hazard[0].gameObject.GetComponent<ParticleSystem>().Stop();
+            }
+
         }
 
         if(mach == MachineID.Two_BottomHazard)

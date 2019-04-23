@@ -10007,7 +10007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  playerNum: 2
+  playerNum: 1
   teamID: 1
   is_In_Area: 0
   status: 0
@@ -28013,7 +28013,8 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 386726649075771923, guid: e16410378a0003840ae88420a2bafde1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e16410378a0003840ae88420a2bafde1, type: 3}
 --- !u!222 &2122791569804280560
 CanvasRenderer:
