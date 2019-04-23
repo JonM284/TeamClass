@@ -47,6 +47,8 @@ public class PlayerStageSelect : MonoBehaviour
 
         timer = 0f;
         timerMax = 15f;
+
+        Cursor.visible = false;
     }
 
     // Update is called once per frame

@@ -8,23 +8,6 @@ public class GameManager : MonoBehaviour
     //Singleton Design Pattern
     public static GameManager instance = null;
 
-    /* Ints will check and tell us which scene is currently active
-    1 - Main Menu, 2 - Stage Select, 3 - Fighter Select, 4 - Main Fight Scene */
-    public static int gameState = 1;
-
-    /* Ints will handle which stage was voted for
-    1 - Claire's, 2 - Gilbert's, 3 - Gno's, 4 - Wawa's, 5 - Random */
-    public static int Stage_1, Stage_2, Stage_3, Stage_4, Stage_5 = 0;
-
-    /* Ints will handle which stage is selected
-    1 - Claire's, 2 - Gilbert's, 3 - Gno's, 4 - Wawa's, 5 - Random */
-    public static int stageToLoad = 0;
-
-    /* Ints will handle which character someone is
-    1 - Claire, 2 - Gilbert, 3 - Gno, 4 - Wawa */  
-    public static int P1_Character, P2_Character, P3_Character, P4_Character = 0;
-
-
     //Awake is always called before any Start functions
     void Awake()
     {
@@ -50,18 +33,12 @@ public class GameManager : MonoBehaviour
         // Start is called before the first frame update
     void Start()
     {
-        PlayerPrefs.SetInt("Player1Character", 0);
-        PlayerPrefs.SetInt("Player2Character", 0);
-        PlayerPrefs.SetInt("Player3Character", 0);
-        PlayerPrefs.SetInt("Player4Character", 0);
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Stage_1 + Stage_2 + Stage_3 + Stage_4 + Stage_5 >= 4)
-        {
-            //load level with most votes here once everyone voted
-        }
+
     }
 }
