@@ -236,6 +236,8 @@ public class MachineBehaviour : MonoBehaviour
                     Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.black;
                     break;
             }
+
+            Move_Rotation.z = Controlled_Hazard[Current_Haz_Num].transform.rotation.z;
             //Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Do_Flash();
         }
 
