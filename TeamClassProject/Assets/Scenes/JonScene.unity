@@ -4892,9 +4892,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 946963251
-  m_SortingLayer: 3
-  m_SortingOrder: -1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4210cd32bd6f2c94993ffa32c74a048e, type: 3}
   m_Color: {r: 0.46226418, g: 0.2928913, b: 0.15917587, a: 1}
   m_FlipX: 0
@@ -27553,7 +27553,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2127931911}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 930677339}
@@ -27881,6 +27881,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rewired Input Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 1117594310344056349, guid: 35196b16a9e71424b870301153067539,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[10].actionElementMaps.Array.data[4]._actionId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117594310344056349, guid: 35196b16a9e71424b870301153067539,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[10].actionElementMaps.Array.data[5]._actionId
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117594310344056349, guid: 35196b16a9e71424b870301153067539,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[10].actionElementMaps.Array.data[6]._actionId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117594310344056349, guid: 35196b16a9e71424b870301153067539,
+        type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[10].actionElementMaps.Array.data[7]._actionId
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1117594310344056418, guid: 35196b16a9e71424b870301153067539,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27935,26 +27955,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1117594310344056349, guid: 35196b16a9e71424b870301153067539,
-        type: 3}
-      propertyPath: _userData.joystickMaps.Array.data[10].actionElementMaps.Array.data[4]._actionId
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1117594310344056349, guid: 35196b16a9e71424b870301153067539,
-        type: 3}
-      propertyPath: _userData.joystickMaps.Array.data[10].actionElementMaps.Array.data[5]._actionId
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1117594310344056349, guid: 35196b16a9e71424b870301153067539,
-        type: 3}
-      propertyPath: _userData.joystickMaps.Array.data[10].actionElementMaps.Array.data[6]._actionId
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1117594310344056349, guid: 35196b16a9e71424b870301153067539,
-        type: 3}
-      propertyPath: _userData.joystickMaps.Array.data[10].actionElementMaps.Array.data[7]._actionId
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35196b16a9e71424b870301153067539, type: 3}
@@ -28398,7 +28398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1872036089, guid: 0547fd0f6c3cc484f9659405029b140c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.043
+      value: -4.06
       objectReference: {fileID: 0}
     - target: {fileID: 1872036089, guid: 0547fd0f6c3cc484f9659405029b140c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -28886,7 +28886,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1863225447, guid: 33d3dc97275ae6f4288b968cd3f92b4e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.043
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 1863225447, guid: 33d3dc97275ae6f4288b968cd3f92b4e, type: 3}
       propertyPath: m_LocalPosition.z
