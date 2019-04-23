@@ -518,6 +518,8 @@ public class MachineBehaviour : MonoBehaviour
                         break;
                 }
 
+                m_Move_Platform.y = Controlled_Hazard[Current_Haz_Num].transform.position.y;
+
             }
             //reset current_haz_Num if it is greater than or equal to the max number of hazzards
            
