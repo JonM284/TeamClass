@@ -236,6 +236,8 @@ public class MachineBehaviour : MonoBehaviour
                     Controlled_Hazard[Current_Haz_Num].GetComponentInParent<SpriteRenderer>().color = Color.black;
                     break;
             }
+
+            Move_Rotation.z = Controlled_Hazard[Current_Haz_Num].transform.rotation.z;
             //Controlled_Hazard[Current_Haz_Num].GetComponent<Side_Cannon_Behaviour>().Do_Flash();
         }
 
@@ -517,6 +519,8 @@ public class MachineBehaviour : MonoBehaviour
                         Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.black;
                         break;
                 }
+
+                m_Move_Platform.y = Controlled_Hazard[Current_Haz_Num].transform.position.y;
 
             }
             //reset current_haz_Num if it is greater than or equal to the max number of hazzards
