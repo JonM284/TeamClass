@@ -49,6 +49,17 @@ public class AlternateSP : MonoBehaviour
 
     private pauserScript m_my_Pauser;
 
+    [Header("Vibration Variables")]
+    [Tooltip("The magnitude of the vibration for the controller - light")]
+    [Range(0,1.0f)]
+    public float light_Vib = 0.3f;
+    [Tooltip("The magnitude of the vibration for the controller - heavy")]
+    [Range(0, 1.0f)]
+    public float Heavy_Vib = 0.5f;
+    [Tooltip("The amount of time the virbtation will last in seconds")]
+    [Range(0, 1.5f)]
+    public float light_Time = 0.2f, Heavy_Time = 0.35f;
+
     //--------------------------------------------------------------------------------------------------
     private void Awake()
     {
@@ -157,6 +168,7 @@ public class AlternateSP : MonoBehaviour
                 status = Status.AtMachine;
                 if (!myMachine.GetComponent<MachineBehaviour>().is_In_Use) {
                     myMachine.GetComponent<MachineBehaviour>().Commence_Control(playerNum, teamID, gameObject);
+                    myPlayer.SetVibration(0,light_Vib, light_Time);
                 }
                 Debug.Log(status);
             }
@@ -167,6 +179,7 @@ public class AlternateSP : MonoBehaviour
             {
                 myMachine.GetComponent<MachineBehaviour>().End_Control();
                 myMachine = null;
+                myPlayer.SetVibration(0, light_Vib, light_Time);
                 //Debug.Log("Has detached from machine with Heavy Attack");
             }
             if (status == Status.AtMachine)
@@ -182,6 +195,7 @@ public class AlternateSP : MonoBehaviour
             status = Status.Free;
             if (myMachine.GetComponent<MachineBehaviour>().is_In_Use)
             {
+                myPlayer.SetVibration(0, Heavy_Vib, Heavy_Time);
                 myMachine.GetComponent<MachineBehaviour>().Fire_Off_Machine();
                 myMachine.GetComponent<MachineBehaviour>().End_Control();
                 Debug.Log("Has detached from machine with Jump");

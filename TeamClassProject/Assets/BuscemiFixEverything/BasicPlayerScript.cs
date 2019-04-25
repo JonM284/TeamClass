@@ -145,6 +145,17 @@ public class BasicPlayerScript : MonoBehaviour
 
     private pauserScript m_my_Pauser;
 
+    [Header("Vibration Variables")]
+    [Tooltip("The magnitude of the vibration for the controller - light")]
+    [Range(0, 1.0f)]
+    public float light_Vib = 0.3f;
+    [Tooltip("The magnitude of the vibration for the controller - heavy")]
+    [Range(0, 1.0f)]
+    public float Heavy_Vib = 0.5f;
+    [Tooltip("The amount of time the virbtation will last in seconds")]
+    [Range(0, 1.5f)]
+    public float light_Time = 0.2f, Heavy_Time = 0.35f;
+
     void Awake()
 	{
         
@@ -976,6 +987,17 @@ public class BasicPlayerScript : MonoBehaviour
             healthAnim.SetTrigger("gotHit");
             rb.constraints = RigidbodyConstraints2D.None;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+            //Jon put this here
+            if (attackDamage < 100)
+            {
+                myPlayer.SetVibration(0, light_Vib, light_Time);
+            }
+            else if (attackDamage >= 100)
+            {
+                myPlayer.SetVibration(0, Heavy_Vib, Heavy_Time);
+            }
+
             if (isJumping)
             {
                 isJumping = false;

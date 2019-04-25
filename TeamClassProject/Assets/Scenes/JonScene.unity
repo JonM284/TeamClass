@@ -1879,6 +1879,22 @@ PrefabInstance:
       propertyPath: playerNum
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f44bb8f416ab4428d903ed3cb8ba363a, type: 3}
+      propertyPath: light_Vib
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f44bb8f416ab4428d903ed3cb8ba363a, type: 3}
+      propertyPath: Heavy_Vib
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f44bb8f416ab4428d903ed3cb8ba363a, type: 3}
+      propertyPath: light_Time
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f44bb8f416ab4428d903ed3cb8ba363a, type: 3}
+      propertyPath: Heavy_Time
+      value: 0.35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f44bb8f416ab4428d903ed3cb8ba363a, type: 3}
 --- !u!1 &90036243 stripped
@@ -2044,6 +2060,22 @@ PrefabInstance:
     - target: {fileID: 1570947081, guid: f44bb8f416ab4428d903ed3cb8ba363a, type: 3}
       propertyPath: teamNum
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f44bb8f416ab4428d903ed3cb8ba363a, type: 3}
+      propertyPath: light_Vib
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f44bb8f416ab4428d903ed3cb8ba363a, type: 3}
+      propertyPath: Heavy_Vib
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f44bb8f416ab4428d903ed3cb8ba363a, type: 3}
+      propertyPath: light_Time
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f44bb8f416ab4428d903ed3cb8ba363a, type: 3}
+      propertyPath: Heavy_Time
+      value: 0.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f44bb8f416ab4428d903ed3cb8ba363a, type: 3}
@@ -2699,6 +2731,22 @@ PrefabInstance:
     - target: {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
       propertyPath: teamNum
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
+      propertyPath: light_Vib
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
+      propertyPath: Heavy_Vib
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
+      propertyPath: light_Time
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
+      propertyPath: Heavy_Time
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 7094890516991349158, guid: f081e4ae8c20f64408db1e12712574bf,
         type: 3}
@@ -9947,6 +9995,22 @@ PrefabInstance:
       propertyPath: teamNum
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: 4786470e0f7154dbe965da47b9a77166, type: 3}
+      propertyPath: light_Vib
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: 4786470e0f7154dbe965da47b9a77166, type: 3}
+      propertyPath: Heavy_Vib
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: 4786470e0f7154dbe965da47b9a77166, type: 3}
+      propertyPath: light_Time
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: 4786470e0f7154dbe965da47b9a77166, type: 3}
+      propertyPath: Heavy_Time
+      value: 0.35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4786470e0f7154dbe965da47b9a77166, type: 3}
 --- !u!1 &672028333 stripped
@@ -14420,6 +14484,10 @@ MonoBehaviour:
   is_In_Area: 0
   status: 0
   myMachine: {fileID: 0}
+  light_Vib: 0
+  Heavy_Vib: 0
+  light_Time: 0
+  Heavy_Time: 0
 --- !u!1 &1062523075
 GameObject:
   m_ObjectHideFlags: 0
@@ -14542,6 +14610,10 @@ MonoBehaviour:
   is_In_Area: 0
   status: 0
   myMachine: {fileID: 0}
+  light_Vib: 0
+  Heavy_Vib: 0
+  light_Time: 0
+  Heavy_Time: 0
 --- !u!114 &1073772753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16486,6 +16558,22 @@ PrefabInstance:
     - target: {fileID: 2094059089, guid: 4786470e0f7154dbe965da47b9a77166, type: 3}
       propertyPath: teamNum
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: 4786470e0f7154dbe965da47b9a77166, type: 3}
+      propertyPath: light_Vib
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: 4786470e0f7154dbe965da47b9a77166, type: 3}
+      propertyPath: Heavy_Vib
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: 4786470e0f7154dbe965da47b9a77166, type: 3}
+      propertyPath: light_Time
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: 4786470e0f7154dbe965da47b9a77166, type: 3}
+      propertyPath: Heavy_Time
+      value: 0.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4786470e0f7154dbe965da47b9a77166, type: 3}
@@ -19374,6 +19462,22 @@ PrefabInstance:
     - target: {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
       propertyPath: teamNum
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
+      propertyPath: light_Vib
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
+      propertyPath: Heavy_Vib
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
+      propertyPath: light_Time
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570947081, guid: f081e4ae8c20f64408db1e12712574bf, type: 3}
+      propertyPath: Heavy_Time
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 7094890516991349158, guid: f081e4ae8c20f64408db1e12712574bf,
         type: 3}
@@ -25128,6 +25232,22 @@ PrefabInstance:
       propertyPath: teamNum
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
+      propertyPath: light_Vib
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
+      propertyPath: Heavy_Vib
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
+      propertyPath: light_Time
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
+      propertyPath: Heavy_Time
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 133428130904735773, guid: db453bdbb735396439e84a12697d9e7b,
         type: 3}
       propertyPath: m_IsActive
@@ -26310,6 +26430,22 @@ PrefabInstance:
     - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
       propertyPath: teamNum
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
+      propertyPath: light_Vib
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
+      propertyPath: Heavy_Vib
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
+      propertyPath: light_Time
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094059089, guid: db453bdbb735396439e84a12697d9e7b, type: 3}
+      propertyPath: Heavy_Time
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 133428130904735773, guid: db453bdbb735396439e84a12697d9e7b,
         type: 3}
