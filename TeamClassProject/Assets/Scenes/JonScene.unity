@@ -21767,13 +21767,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 243632238380340606, guid: 556c6bcf2206b36429662c95a61257e9,
         type: 2}
-    - target: {fileID: 825623643, guid: 8619d383b949f2047802810e41ae9a6c, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1979839550, guid: 8619d383b949f2047802810e41ae9a6c, type: 3}
       propertyPath: m_RootOrder
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 825623643, guid: 8619d383b949f2047802810e41ae9a6c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7521823057106006097, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
@@ -29614,6 +29614,12 @@ PrefabInstance:
       propertyPath: P1x3_ClaireSupport
       value: 
       objectReference: {fileID: 90036243}
+    - target: {fileID: 6102400894643832776, guid: 0f942f408932afa4297d2de310aa31c0,
+        type: 3}
+      propertyPath: switchSmoke
+      value: 
+      objectReference: {fileID: 4026524147607902860, guid: 222e0a14a46704bc589c5aedd24bba3f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f942f408932afa4297d2de310aa31c0, type: 3}
 --- !u!1001 &6740412654153685912
@@ -30345,5 +30351,11 @@ PrefabInstance:
       propertyPath: P2x4_GilbertSupport
       value: 
       objectReference: {fileID: 2094059088}
+    - target: {fileID: 8765449318816536313, guid: f4dff83ab246402449f65a02efbc0b81,
+        type: 3}
+      propertyPath: switchSmoke
+      value: 
+      objectReference: {fileID: 4026524147607902860, guid: 222e0a14a46704bc589c5aedd24bba3f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4dff83ab246402449f65a02efbc0b81, type: 3}

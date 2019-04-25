@@ -29,6 +29,9 @@ public class SwitchHandler : MonoBehaviour
     [HideInInspector]
     public GameObject teammate2_support;
 
+    [Header("Visual Effects")]
+    public GameObject switchSmoke;
+
     [Header("UI")]
 
     public Image[] specialMeter = new Image[3];
@@ -266,6 +269,8 @@ public class SwitchHandler : MonoBehaviour
 
                 if (teammate1_fighter.activeSelf)
                 {
+                    Instantiate(switchSmoke, teammate1_fighterPos, Quaternion.identity);
+                    Instantiate(switchSmoke, teammate2_supportPos, Quaternion.identity);
                     teammate1_fighter.SetActive(false);
                     teammate1_support.SetActive(true);
                     teammate1_support.transform.position = new Vector3(teammate2_supportPos.x, -3.85f, teammate2_supportPos.z);
@@ -301,6 +306,8 @@ public class SwitchHandler : MonoBehaviour
 
                 if (teammate2_fighter.activeSelf)
                 {
+                    Instantiate(switchSmoke, teammate1_supportPos, Quaternion.identity);
+                    Instantiate(switchSmoke, teammate2_fighterPos, Quaternion.identity);
                     teammate2_fighter.SetActive(false);
                     teammate2_support.SetActive(true);
                     teammate2_support.transform.position = new Vector3(teammate1_supportPos.x, -3.85f, teammate1_supportPos.z);

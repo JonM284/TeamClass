@@ -135,6 +135,9 @@ public class BasicPlayerScript : MonoBehaviour
     public float verticalForwardZone;
     public float horizontalUpwardZone;
 
+    [Header("Visual Effects")]
+    public GameObject hitEffect;
+
     [HideInInspector]
     public GameObject teamController;
 
