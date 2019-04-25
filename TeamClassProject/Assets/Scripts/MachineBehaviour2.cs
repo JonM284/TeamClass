@@ -80,6 +80,8 @@ public class MachineBehaviour2 : MonoBehaviour
     public AudioClip[] machineSounds;
     public AudioSource machineSoundPlayer;
 
+    private Color m_Team_One_Color, m_Team_Two_Color;
+
     private void Awake()
     {
         mushroomBounce2 = GameObject.Find("Walking Mushroom_bounce").GetComponent<Animator>();
@@ -89,6 +91,9 @@ public class MachineBehaviour2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_Team_One_Color = Color.cyan;
+        m_Team_Two_Color = Color.red;
+
         baseScale = mushroomBounce2.gameObject.transform.localScale;
         flippedScale = new Vector2(baseScale.x * -1, baseScale.y);
         indicator_Images[0].SetActive(true);
@@ -292,6 +297,53 @@ public class MachineBehaviour2 : MonoBehaviour
         }
 
         //this allows the player to move the crosshair
+        //Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
+           // + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+
+        /*//Moving hazard left and righjt, with ranges stopping movement on walls
+        if (Controlled_Hazard[0].transform.position.y > -2.15f && Controlled_Hazard[0].transform.position.y < 4.5f)
+        {
+            Controlled_Hazard[0].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[0].GetComponent<Rigidbody2D>().position
+                + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+        }
+        else if (Controlled_Hazard[0].transform.position.y <= -2.15f)
+        {
+            if (verticalInput > 0)
+            {
+                Controlled_Hazard[0].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[0].GetComponent<Rigidbody2D>().position
+                    + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+            }
+        }
+        else if (Controlled_Hazard[0].transform.position.y >= -2.15f)
+        {
+            if (verticalInput < 0)
+            {
+                Controlled_Hazard[0].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[0].GetComponent<Rigidbody2D>().position
+                    + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
+            }
+        }*/
+
+        if(Controlled_Hazard[0].transform.position.y < -2.15f)
+        {
+            Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.position.x,
+                -2.15f, Controlled_Hazard[Current_Haz_Num].transform.position.z);
+        }
+        if(Controlled_Hazard[0].transform.position.y > 4.5f)
+        {
+            Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(Controlled_Hazard[Current_Haz_Num].transform.position.x,
+                4.5f, Controlled_Hazard[Current_Haz_Num].transform.position.z);
+        }
+        if(Controlled_Hazard[0].transform.position.x < -7.4f)
+        {
+            Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(-7.4f,
+                Controlled_Hazard[0].transform.position.y, Controlled_Hazard[Current_Haz_Num].transform.position.z);
+        }
+        if (Controlled_Hazard[0].transform.position.x > 7.4f)
+        {
+            Controlled_Hazard[Current_Haz_Num].transform.position = new Vector3(7.4f,
+                Controlled_Hazard[0].transform.position.y, Controlled_Hazard[Current_Haz_Num].transform.position.z);
+        }
+        //this allows the player to move the crosshair
         Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().MovePosition(Controlled_Hazard[Current_Haz_Num].GetComponent<Rigidbody2D>().position
             + Vector2.ClampMagnitude(vel, speed) * Time.deltaTime);
     }
@@ -341,6 +393,21 @@ public class MachineBehaviour2 : MonoBehaviour
                 Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<PolygonCollider2D>().enabled = false;
                 //Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.transform.position = Controlled_Hazard[1].GetComponent<Tree_Movement>().myStartPos;
             }
+
+
+            switch (my_Controller_Player.GetComponent<AlternateSP2>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = m_Team_Two_Color;
+                    break;
+                case 1:
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = m_Team_One_Color;
+                    break;
+                default:
+                    Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.black;
+                    break;
+            }
+
         }
         
         //player activates (sends out) hazard (spikes/tree)
@@ -444,6 +511,30 @@ public class MachineBehaviour2 : MonoBehaviour
                 {
                     apple.enabled = true;
                 }
+                switch (my_Controller_Player.GetComponent<AlternateSP2>().teamID)
+                {
+                    case 2:
+                        foreach (SpriteRenderer apple in Controlled_Hazard[Current_Haz_Num].GetComponent<Apple_Movement>().appleSprites)
+                        {
+                            apple.color = m_Team_Two_Color;
+                        }
+                        //Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = m_Team_Two_Color;
+                        break;
+                    case 1:
+                        foreach (SpriteRenderer apple in Controlled_Hazard[Current_Haz_Num].GetComponent<Apple_Movement>().appleSprites)
+                        {
+                            apple.color = m_Team_One_Color;
+                        }
+                        //Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = m_Team_One_Color;
+                        break;
+                    default:
+                        foreach (SpriteRenderer apple in Controlled_Hazard[Current_Haz_Num].GetComponent<Apple_Movement>().appleSprites)
+                        {
+                            apple.color = Color.black;
+                        }
+                        //Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.black;
+                        break;
+                }
             }
             //switch apple for branbull
             else
@@ -458,7 +549,21 @@ public class MachineBehaviour2 : MonoBehaviour
                     appleCollider.enabled = false;
                 }
                 //Controlled_Hazard[1].GetComponent<Apple_Movement>().myApple.transform.position = Controlled_Hazard[1].GetComponent<Apple_Movement>().myStartPos;
+                switch (my_Controller_Player.GetComponent<AlternateSP2>().teamID)
+                {
+                    case 2:
+                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = m_Team_Two_Color;
+                        break;
+                    case 1:
+                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = m_Team_One_Color;
+                        break;
+                    default:
+                        Controlled_Hazard[Current_Haz_Num].GetComponent<SpriteRenderer>().color = Color.black;
+                        break;
+                }
             }
+
+           
 
         }
 
@@ -807,6 +912,9 @@ public class MachineBehaviour2 : MonoBehaviour
 
         if (mach == MachineID.Two_Fairy)
         {
+
+
+
             Controlled_Hazard[0].SetActive(true);
             //Controlled_Hazard[0].GetComponentsInChildren<SpriteRenderer>();
             foreach(SpriteRenderer fairySpriteChildren in Controlled_Hazard[0].GetComponentsInChildren<SpriteRenderer>())
@@ -818,6 +926,20 @@ public class MachineBehaviour2 : MonoBehaviour
         }
         if(mach == MachineID.Two_BottomHazard)
         {
+
+            switch (my_Controller_Player.GetComponent<AlternateSP2>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = m_Team_Two_Color;
+                    break;
+                case 1:
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = m_Team_One_Color;
+                    break;
+                default:
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.black;
+                    break;
+            }
+
             Current_Haz_Num = 0;
             Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<SpriteRenderer>().enabled = true;
             Controlled_Hazard[0].GetComponent<Spike_Movement>().mySpike.GetComponent<BoxCollider2D>().enabled = false;
@@ -827,6 +949,20 @@ public class MachineBehaviour2 : MonoBehaviour
         }
         if (mach == MachineID.Two_TopHazard)
         {
+
+            switch (my_Controller_Player.GetComponent<AlternateSP2>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = m_Team_Two_Color;
+                    break;
+                case 1:
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = m_Team_One_Color;
+                    break;
+                default:
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.black;
+                    break;
+            }
+
             Current_Haz_Num = 0;
             Controlled_Hazard[0].GetComponent<Branbull_Movement>().myBranbull.GetComponent<SpriteRenderer>().enabled = true;
             Controlled_Hazard[0].GetComponent<Branbull_Movement>().myBranbull.GetComponent<BoxCollider2D>().enabled = false;
@@ -843,6 +979,20 @@ public class MachineBehaviour2 : MonoBehaviour
 
         if(mach == MachineID.Two_Mushrooms)
         {
+
+            switch (my_Controller_Player.GetComponent<AlternateSP2>().teamID)
+            {
+                case 2:
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = m_Team_Two_Color;
+                    break;
+                case 1:
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = m_Team_One_Color;
+                    break;
+                default:
+                    Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.black;
+                    break;
+            }
+
             Current_Haz_Num = 0;
             //Controlled_Hazard[0].GetComponent<Mushroom_BouncePad>().myMushroomBounce.GetComponent<SpriteRenderer>().enabled = true;
             //Controlled_Hazard[1].GetComponent<Mushroom_Spores>().myMushroomSpores.GetComponent<SpriteRenderer>().enabled = false;
@@ -928,6 +1078,7 @@ public class MachineBehaviour2 : MonoBehaviour
 
         }
 
+
         if(mach == MachineID.Two_BottomHazard)
         {
             //if just leaving machine and not activating either spikes or tree, disable sprites and colliders of spikes/trees | if one of them is active, you don't want to do anything
@@ -941,6 +1092,15 @@ public class MachineBehaviour2 : MonoBehaviour
                 Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.GetComponent<PolygonCollider2D>().enabled = true;
                 Controlled_Hazard[1].GetComponent<Tree_Movement>().myTree.transform.position = Controlled_Hazard[1].GetComponent<Tree_Movement>().myStartPos;
             } 
+            if(Current_Haz_Num == 0)
+            {
+                Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.white;
+            }
+            else if (Current_Haz_Num == 1)
+            {
+                Controlled_Hazard[1].GetComponent<SpriteRenderer>().color = Color.white;
+            }
+
         }
         if (mach == MachineID.Two_TopHazard)
         {
@@ -960,6 +1120,20 @@ public class MachineBehaviour2 : MonoBehaviour
                 }
                 Controlled_Hazard[1].GetComponent<Apple_Movement>().myApple.transform.position = Controlled_Hazard[1].GetComponent<Apple_Movement>().myStartPos;
             }
+            if(Current_Haz_Num == 0)
+            {
+                Controlled_Hazard[0].GetComponent<SpriteRenderer>().color = Color.white;
+            }
+            else if(Current_Haz_Num == 1)
+            {
+                foreach (SpriteRenderer apple in Controlled_Hazard[Current_Haz_Num].GetComponent<Apple_Movement>().appleSprites)
+                {
+                    apple.color = Color.white;
+                }
+            }
+
+
+
         }
         //if just leaving machine and not activating either mushroom, disable sprites and colliders of mushrooms | if one of them is active, you don't want to do anything
         if (mach == MachineID.Two_Mushrooms)
