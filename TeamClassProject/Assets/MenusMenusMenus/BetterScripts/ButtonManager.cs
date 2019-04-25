@@ -41,6 +41,8 @@ public class ButtonManager : MonoBehaviour
         position = 1;
 
         es.SetSelectedGameObject(null);
+
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
