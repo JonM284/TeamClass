@@ -209,7 +209,6 @@ public class BasicPlayerScript : MonoBehaviour
 			jumpVel = gnomercyCharacter.jumpVel;
 			maxDownVel = gnomercyCharacter.maxDownVel;
 		}
-
         if (wawa)
         {
             wawaCharacter = this.GetComponent<Watermelon>();
