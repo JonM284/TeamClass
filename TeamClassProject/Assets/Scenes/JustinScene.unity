@@ -184,11 +184,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5615167271143781672, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5615167271143781587, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
       propertyPath: teamNum
@@ -213,6 +208,11 @@ PrefabInstance:
         type: 3}
       propertyPath: attackZone
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781672, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8619d383b949f2047802810e41ae9a6c, type: 3}
@@ -446,11 +446,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5615167271143781672, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5615167271143781587, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
       propertyPath: teamNum
@@ -475,6 +470,11 @@ PrefabInstance:
         type: 3}
       propertyPath: attackZone
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781672, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8619d383b949f2047802810e41ae9a6c, type: 3}
@@ -8335,7 +8335,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Spit Fire
+  m_text: Detach
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fae8eeef1ccacd7449114469b0036c6d, type: 2}
   m_sharedMaterial: {fileID: 21395162190898174, guid: fae8eeef1ccacd7449114469b0036c6d,
@@ -8405,10 +8405,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 327026411}
-    characterCount: 9
+    characterCount: 6
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 0
+    wordCount: 1
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -13165,7 +13165,7 @@ RectTransform:
   m_GameObject: {fileID: 707099334}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.98241204, y: 0.98241204, z: 0.98241204}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 530538629}
   - {fileID: 449182743}
@@ -15845,7 +15845,7 @@ RectTransform:
   m_GameObject: {fileID: 918915622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.98241204, y: 0.98241204, z: 0.98241204}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 316899354}
   - {fileID: 326309160}
@@ -17698,11 +17698,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5615167271143781672, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5615167271143781587, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
       propertyPath: teamNum
@@ -17727,6 +17722,11 @@ PrefabInstance:
         type: 3}
       propertyPath: attackZone
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781672, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8619d383b949f2047802810e41ae9a6c, type: 3}
@@ -21735,7 +21735,7 @@ RectTransform:
   m_GameObject: {fileID: 1623500585}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.98241204, y: 0.98241204, z: 0.98241204}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 1921746600}
   - {fileID: 1035377500}
@@ -23455,11 +23455,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5615167271143781672, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5615167271143781587, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
       propertyPath: teamNum
@@ -23484,6 +23479,11 @@ PrefabInstance:
         type: 3}
       propertyPath: attackZone
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781672, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8619d383b949f2047802810e41ae9a6c, type: 3}
@@ -23594,7 +23594,7 @@ RectTransform:
   m_GameObject: {fileID: 1696356164}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.98241204, y: 0.98241204, z: 0.98241204}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 1466073762}
   - {fileID: 960995628}
@@ -27785,11 +27785,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5615167271143781672, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5615167271143781587, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
       propertyPath: teamNum
@@ -27814,6 +27809,11 @@ PrefabInstance:
         type: 3}
       propertyPath: attackZone
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781672, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8619d383b949f2047802810e41ae9a6c, type: 3}
@@ -27849,7 +27849,7 @@ RectTransform:
   m_GameObject: {fileID: 2137420481}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.98241204, y: 0.98241204, z: 0.98241204}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 2056557417}
   - {fileID: 2115067808}
