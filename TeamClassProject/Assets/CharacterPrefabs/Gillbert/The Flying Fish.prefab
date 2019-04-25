@@ -10595,8 +10595,13 @@ MonoBehaviour:
   neutralZone: 0.05
   verticalForwardZone: 0.8
   horizontalUpwardZone: 0.8
+  hitEffect: {fileID: 0}
   teamController: {fileID: 0}
   canTurn: 1
+  light_Vib: 0.3
+  Heavy_Vib: 0.5
+  light_Time: 0.2
+  Heavy_Time: 0.35
 --- !u!50 &601068658141386477
 Rigidbody2D:
   serializedVersion: 4
@@ -11336,7 +11341,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -594534133
   m_SortingLayer: 8
-  m_SortingOrder: -3
+  m_SortingOrder: -7
   m_Sprite: {fileID: 21300034, guid: e5a285933c0cc40c18cb9e62d096ff35, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -11662,7 +11667,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -594534133
   m_SortingLayer: 8
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_Sprite: {fileID: 21300034, guid: e5a285933c0cc40c18cb9e62d096ff35, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
