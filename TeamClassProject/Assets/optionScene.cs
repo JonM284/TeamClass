@@ -28,7 +28,6 @@ public class optionScene : MonoBehaviour
 
     public void AudioChanging()
     {
-        //print(sfxS.value);
         fx.audioMixer.SetFloat("VolumeSF", sfxS.value);
         mc.audioMixer.SetFloat("VolumeMu", musS.value);
     }
@@ -37,5 +36,7 @@ public class optionScene : MonoBehaviour
     {
         SceneManager.LoadScene("NolanScene");
     }
+
+    //fixDropDown
 
 }
