@@ -14,6 +14,8 @@ public class PortraitManager : MonoBehaviour
     public Image claireRight;
     public Image gilbertRight;
 
+    public GameObject fish_background, gnome_Background;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,8 @@ public class PortraitManager : MonoBehaviour
         claireRight.enabled = false;
         gilbertRight.enabled = false;
     }
+
+    
 
     // Update is called once per frame
     void Update()
@@ -68,6 +72,17 @@ public class PortraitManager : MonoBehaviour
             {
                 gilbertRight.enabled = true;
             }
+        }
+
+        if (PlayerPrefs.GetInt("Current_Stage") == 0)
+        {
+            fish_background.SetActive(true);
+            gnome_Background.SetActive(false);
+        }
+        else if (PlayerPrefs.GetInt("Current_Stage") == 1)
+        {
+            gnome_Background.SetActive(true);
+            fish_background.SetActive(false);
         }
     }
 }

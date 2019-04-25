@@ -124,6 +124,7 @@ public class PlayerStageSelect : MonoBehaviour
                     stage_forest.SetActive(true);
                     selected_forest.SetActive(false);
                     selected_airship.SetActive(false);
+                    
                 }
 
                 if (position == 2)
@@ -131,6 +132,7 @@ public class PlayerStageSelect : MonoBehaviour
                     stage_airship.SetActive(true);
                     selected_forest.SetActive(false);
                     selected_airship.SetActive(false);
+                    
                 }
             }
 
@@ -152,11 +154,13 @@ public class PlayerStageSelect : MonoBehaviour
 
             if (Portrait.playersLockedIn >= 4 && position == 2)
             {
+                PlayerPrefs.SetInt("Current_Stage", 0);
                 SceneManager.LoadScene("JonScene");
             }
 
             if (Portrait.playersLockedIn >= 4 && position == 1)
             {
+                PlayerPrefs.SetInt("Current_Stage", 1);
                 SceneManager.LoadScene("JustinScene");
             }
         }
