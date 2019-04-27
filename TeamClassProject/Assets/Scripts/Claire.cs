@@ -170,7 +170,7 @@ public class Claire : MonoBehaviour
 
     private float currentAttack;
 
-    BasicPlayerScript player;
+    BasePlayer player;
 
     [Header("Audio")]
     public AudioClip[] ClaireSounds;
@@ -185,8 +185,8 @@ public class Claire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		player = this.GetComponent<BasicPlayerScript>();
-        playerNumber = GetComponent<BasicPlayerScript>().playerNum;
+		player = this.GetComponent<BasePlayer>();
+        playerNumber = player.playerNum;
 
         //setting AudioSource
         ClaireSoundPlayer = gameObject.GetComponent<AudioSource>();
@@ -228,6 +228,7 @@ public class Claire : MonoBehaviour
    * 22 = down heavy 
    * 23 = up heavy
    */
+   /*
     public void ClaireAttackController(int attackNum)
     {
         switch (attackNum)
@@ -380,9 +381,9 @@ public class Claire : MonoBehaviour
                 break;
         }
     }
-
+    */
 	
-
+    /*
     private void NeutralBasic(GameObject enemy)
     {
 		enemy.GetComponent<BasicPlayerScript>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, BN_Distance, BN_TravelTime, player.FacingRight(), BN_ShakeDuration, BN_ShakeMagnitude, BN_ShakeSlowDown);
@@ -498,6 +499,7 @@ public class Claire : MonoBehaviour
         player.rb.constraints = RigidbodyConstraints2D.FreezePositionX;
         player.rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
+    */
 
     /*
      * attack numbers
@@ -525,6 +527,7 @@ public class Claire : MonoBehaviour
             {
                 if (other.transform.root.gameObject.GetComponent<BasicPlayerScript>().playerNum != playerNumber)
                 {
+                    /*
                     switch (currentAttack)
                     {
                         case 0:
@@ -569,6 +572,7 @@ public class Claire : MonoBehaviour
                             UpHeavyPart2(other.gameObject);
                             break;
                     }
+                    */
                 }
             }
             catch
