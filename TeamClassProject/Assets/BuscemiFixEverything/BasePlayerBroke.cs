@@ -4,7 +4,7 @@ using UnityEngine;
 using Rewired;
 using Rewired.ControllerExtensions;
 
-public class BasePlayer : MonoBehaviour
+public class BasePlayerBroke : MonoBehaviour
 {
 
     //the following is in order to use rewired
@@ -34,8 +34,6 @@ public class BasePlayer : MonoBehaviour
     enum playerState { FreeMovement, Knockback}
     playerState player;
 
-
-    Animator anim;
     [HideInInspector]
     public Rigidbody2D rb;
 
@@ -44,10 +42,10 @@ public class BasePlayer : MonoBehaviour
     [Header("Gravity Variables")]
     public float gravityUp;
     public float gravityDown;
-    public float maxDownVel;
     public float jumpVel;
-    public float fallMult;
-    public float lowJumpMult;
+    public float lowJumpMultiplier;
+    public float maxDownVel;
+    private bool jumpButtonPressed = false;
     public float onPlatformTimer;
     public float onPlatformTimerMax;
     public bool onTopOfPlatform;
@@ -86,8 +84,8 @@ public class BasePlayer : MonoBehaviour
             regenHeath = maxHealth;
             speed = claireCharacter.speed;
             weight = claireCharacter.weight;
-            gravityUp = claireCharacter.gravityUp;
-            gravityDown = claireCharacter.gravityDown;
+            //gravityUp = claireCharacter.gravityUp;
+            //gravityDown = claireCharacter.gravityDown;
             jumpVel = claireCharacter.jumpVel;
             maxDownVel = claireCharacter.maxDownVel;
         }
@@ -144,7 +142,6 @@ public class BasePlayer : MonoBehaviour
     {
 
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
         
         //making the player face a certain way
         if (makeFaceRight)
@@ -176,7 +173,7 @@ public class BasePlayer : MonoBehaviour
         Gravity();
 
         //always running this so that everything can be based off of gravity
-        rb.MovePosition(transform.position + velocity * Time.fixedDeltaTime);
+        rb.MovePosition(transform.position + velocity * speed * Time.fixedDeltaTime);
 
     }
 
@@ -187,16 +184,12 @@ public class BasePlayer : MonoBehaviour
 
             if (Mathf.Abs(myPlayer.GetAxis("Horizontal")) > horizontalDZ)
             {
-                velocity.x = myPlayer.GetAxis("Horizontal") * speed;
-                anim.SetFloat("xVel", 1);
+                velocity.x = myPlayer.GetAxis("Horizontal");
             }
             else
             {
                 velocity.x = 0;
-                anim.SetFloat("xVel", 0);
             }
-
-            anim.SetFloat("yVel", velocity.y);
 
             if(velocity.x > 0)
             {
@@ -229,21 +222,9 @@ public class BasePlayer : MonoBehaviour
                 onPlatformTimer -= Time.deltaTime;
             }
 
-            //jump logic
             if (myPlayer.GetButtonDown("Jump") && onPlatformTimer > 0)
             {
                 velocity.y = jumpVel;
-                anim.ResetTrigger("Jump");
-                anim.SetTrigger("Jump");
-            }
-
-            if (velocity.y < 0)
-            {
-                velocity += Vector3.up * -gravityDown * (fallMult - 1) * Time.deltaTime;
-            }
-            else if (velocity.y > 0 && !myPlayer.GetButton("Jump"))
-            {
-                velocity += Vector3.up * -gravityUp * (lowJumpMult - 1) * Time.deltaTime;
             }
 
         }
@@ -252,12 +233,13 @@ public class BasePlayer : MonoBehaviour
     void FixedMovement()
     {
 
-        
+
 
     }
 
     void Gravity()
     {
+
         //gravity logic
         if (velocity.y > -maxDownVel)
         { //if we haven't reached maxDownVel
@@ -270,6 +252,7 @@ public class BasePlayer : MonoBehaviour
                 velocity.y -= gravityDown * Time.fixedDeltaTime;
             }
         }
+
     }
 
     void OnCollisionEnter2D(Collision2D collisionInfo)
@@ -279,24 +262,18 @@ public class BasePlayer : MonoBehaviour
             //am I coming from the top/bottom?
             if (Mathf.Abs(contact.normal.y) > Mathf.Abs(contact.normal.x))
             {
-                if (collisionInfo.gameObject.tag != "Player")
+                velocity.y = 0; //stop vertical velocity
+                if (contact.normal.y >= 0)
+                { //am I hitting the top of the platform?
+                    onTopOfPlatform = true;
+                    velocity.y = 0;
+                }
+                //am I hitting the bottom of a platform?
+                if (contact.normal.y < 0)
                 {
-                    velocity.y = 0; //stop vertical velocity
-                    if (contact.normal.y >= 0)
-                    { //am I hitting the top of the platform?
-                        onTopOfPlatform = true;
-                        anim.ResetTrigger("Land");
-                        anim.SetTrigger("Land");
-                        //anim.ResetTrigger("Land");
-                        velocity.y = 0;
-                    }
-                    //am I hitting the bottom of a platform?
-                    if (contact.normal.y < 0)
-                    {
 
-                        velocity.y = 0;
+                    velocity.y = 0;
 
-                    }
                 }
             }
         }

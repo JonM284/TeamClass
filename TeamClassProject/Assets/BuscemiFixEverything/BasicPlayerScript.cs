@@ -176,8 +176,8 @@ public class BasicPlayerScript : MonoBehaviour
             regenHeath = maxHealth;
 			speed = claireCharacter.speed;
 			weight = claireCharacter.weight;
-			gravityUp = claireCharacter.gravityUp;
-			gravityDown = claireCharacter.gravityDown;
+			//gravityUp = claireCharacter.gravityUp;
+			//gravityDown = claireCharacter.gravityDown;
 			jumpVel = claireCharacter.jumpVel;
 			maxDownVel = claireCharacter.maxDownVel;
 		}
@@ -936,6 +936,8 @@ public class BasicPlayerScript : MonoBehaviour
         anim.ResetTrigger("land");
         anim.ResetTrigger("Jump");
     }
+
+
 
     void Gravity()
 	{
