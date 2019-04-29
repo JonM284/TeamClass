@@ -284,7 +284,7 @@ public class BasePlayer : MonoBehaviour
                 {
                     anim.SetFloat("Attack", 0);
                 }
-                if(Mathf.Abs())
+                //if(Mathf.Abs())
 
                 anim.ResetTrigger("Basic");
                 anim.SetTrigger("Basic");
