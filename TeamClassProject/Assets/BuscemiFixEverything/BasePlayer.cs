@@ -71,6 +71,11 @@ public class BasePlayer : MonoBehaviour
     public float regenHeathMultiplier;
     public bool makeFaceRight;
     private bool isFlying = false;
+    [Space(10)]
+
+    [Header("Attack Variables")]
+    public bool isAttacking;
+    public Vector2 joyPos;
 
     [Header("Joystick Deadzone")]
     public float horizontalDZ;
@@ -166,6 +171,13 @@ public class BasePlayer : MonoBehaviour
 
         Movement();
 
+        //if (!isAttacking)
+        {
+
+            Attack();
+
+        }
+
     }
 
     private void FixedUpdate()
@@ -253,6 +265,32 @@ public class BasePlayer : MonoBehaviour
     {
 
         
+
+    }
+
+    void Attack()
+    {
+
+        if (player == playerState.FreeMovement)
+        {
+
+            //checking to see where the joystick is
+            joyPos = new Vector2(myPlayer.GetAxis("Horizontal"), myPlayer.GetAxis("Vertical"));
+
+            if (myPlayer.GetButtonDown("BasicAttack"))
+            {
+
+                if(Mathf.Abs(joyPos.x) < horizontalDZ && Mathf.Abs(joyPos.y) < horizontalDZ)
+                {
+                    anim.SetFloat("Attack", 0);
+                }
+
+                anim.ResetTrigger("Basic");
+                anim.SetTrigger("Basic");
+                isAttacking = true;
+
+            }
+        }
 
     }
 
