@@ -58,6 +58,9 @@ public class SwitchHandler : MonoBehaviour
     public Image clairePortrait;
     public Image gilbertPortrait;
 
+    [Header("Audio")]
+    public AudioClip[]swapSounds;
+    public AudioSource swapSoundPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -71,7 +74,8 @@ public class SwitchHandler : MonoBehaviour
         P2x4_GilbertFighter.SetActive(false);
         P2x4_GilbertSupport.SetActive(false);
 
-
+        //setting AudioSource
+        swapSoundPlayer = gameObject.GetComponent<AudioSource>();
 
 
         if (teamNumber == 1)
@@ -244,6 +248,9 @@ public class SwitchHandler : MonoBehaviour
         if (teammate1_fighter.activeSelf == true)
         {
             teammate1_fighterPos = teammate1_fighter.transform.position;
+
+            swapSoundPlayer.clip = swapSounds[0];
+            swapSoundPlayer.Play();
         }
         if (teammate1_support.activeSelf == true)
         {
@@ -252,6 +259,10 @@ public class SwitchHandler : MonoBehaviour
         if (teammate2_fighter.activeSelf == true)
         {
             teammate2_fighterPos = teammate2_fighter.transform.position;
+
+            swapSoundPlayer.clip = swapSounds[0];
+            swapSoundPlayer.Play();
+
         }
         if (teammate2_fighter.activeSelf == true)
         {
