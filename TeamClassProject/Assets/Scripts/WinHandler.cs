@@ -55,7 +55,7 @@ public class WinHandler : MonoBehaviour
            // SceneManager.LoadScene("WinBlue");
         }
 
-        if (team1.GetComponent<SwitchHandler>().teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth <= 0 && t1_p1_dead == false)
+        if (team1.GetComponent<SwitchHandler>().teammate1_fighter.GetComponent<BasePlayer>().currentHealth <= 0 && t1_p1_dead == false)
         {
             t1_p1_dead = true;
             team1.GetComponent<SwitchHandler>().teammate1_fighter.SetActive(false);
@@ -107,7 +107,7 @@ public class WinHandler : MonoBehaviour
         }
 
 
-        if (team2.GetComponent<SwitchHandler>().teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth <= 0 && t2_p1_dead == false)
+        if (team2.GetComponent<SwitchHandler>().teammate1_fighter.GetComponent<BasePlayer>().currentHealth <= 0 && t2_p1_dead == false)
         {
             t2_p1_dead = true;
             team2.GetComponent<SwitchHandler>().teammate1_fighter.SetActive(false);

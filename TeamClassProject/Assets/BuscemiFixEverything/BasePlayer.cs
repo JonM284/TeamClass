@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Rewired;
 using Rewired.ControllerExtensions;
 
@@ -14,6 +15,13 @@ public class BasePlayer : MonoBehaviour
     [Tooltip("Number identifier for each player, must be above 0")]
     public int playerNum;
     [Space(10)]
+
+    public SpriteRenderer[] rigPieces;
+    public int teamNum;
+
+    [Header("UI Stuff")]
+    public Image healthBar;
+    public Image regenableHealthBar;
 
     [Header("Movement Variables")]
     [HideInInspector]
@@ -40,6 +48,10 @@ public class BasePlayer : MonoBehaviour
     public Rigidbody2D rb;
     [HideInInspector]
     public GameObject teamController;
+
+    private pauserScript m_my_Pauser;
+
+    GameObject mainCamera;
 
     bool findTeamController = false;
 
@@ -154,7 +166,8 @@ public class BasePlayer : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        
+        m_my_Pauser = pauserScript.pauser_Instance;
+
         //making the player face a certain way
         if (makeFaceRight)
         {
@@ -172,6 +185,17 @@ public class BasePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //resetting the health in case it ever goes above
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        //setting the health
+        if (healthBar != null && regenableHealthBar != null)
+        {
+            healthBar.fillAmount = currentHealth / maxHealth;
+            regenableHealthBar.fillAmount = regenHeath / maxHealth;
+        }
 
         Movement();
 
@@ -180,6 +204,38 @@ public class BasePlayer : MonoBehaviour
 
             Attack();
 
+        }
+
+        if (findTeamController == false)
+        {
+            if (teamNum == 1)
+            {
+                teamController = GameObject.Find("Team1");
+            }
+            else if (teamNum == 2)
+            {
+                teamController = GameObject.Find("Team2");
+            }
+
+            findTeamController = true;
+            //Hey Nick. Itsa me. Your good pal Nolan. Let me know if you find this
+        }
+
+        if (myPlayer.GetButtonDown("Switch"))
+        {
+            Debug.Log(teamController.name);
+            try
+            {
+                teamController.GetComponent<SwitchHandler>().BeginSwap(playerNum);
+            }
+            catch
+            {
+            }
+        }
+
+        if (myPlayer.GetButtonDown("Pause"))
+        {
+            m_my_Pauser.Pauser();
         }
 
     }
@@ -194,6 +250,11 @@ public class BasePlayer : MonoBehaviour
         //always running this so that everything can be based off of gravity
         rb.MovePosition(transform.position + velocity * Time.fixedDeltaTime);
 
+    }
+
+    private void LateUpdate()
+    {
+        onTopOfPlatform = false;
     }
 
     void Movement()
@@ -246,7 +307,7 @@ public class BasePlayer : MonoBehaviour
             }
 
             //jump logic
-            if (myPlayer.GetButtonDown("Jump") && onPlatformTimer > 0)
+            if (myPlayer.GetButtonDown("Jump") && onPlatformTimer > 0 && !isAttacking)
             {
                 velocity.y = jumpVel;
                 anim.ResetTrigger("Jump");
@@ -275,6 +336,9 @@ public class BasePlayer : MonoBehaviour
     void Attack()
     {
 
+        anim.SetBool("isAttacking", isAttacking);
+
+
         if (player == playerState.FreeMovement)
         {
 
@@ -289,23 +353,19 @@ public class BasePlayer : MonoBehaviour
 
                     if (Mathf.Abs(joyPos.x) < deadZone && Mathf.Abs(joyPos.y) < deadZone)
                     {
-                        Debug.Log("Neutral");
                         anim.SetFloat("Attack", 0);
 
                     }
                     if ((Mathf.Abs(joyPos.x) > deadZone) && (Mathf.Abs(joyPos.x) >= Mathf.Abs(joyPos.y)))
                     {
-                        Debug.Log("Forward");
                         anim.SetFloat("Attack", 1);
                     }
                     if (joyPos.y > deadZone && joyPos.y > Mathf.Abs(joyPos.x))
                     {
-                        Debug.Log("Up");
                         anim.SetFloat("Attack", 2);
                     }
                     if (Mathf.Abs(joyPos.y) > deadZone && joyPos.y < joyPos.x && Mathf.Abs(joyPos.y) > joyPos.x)
                     {
-                        Debug.Log("Down");
                         anim.SetFloat("Attack", 3);
                     }
 
@@ -320,23 +380,19 @@ public class BasePlayer : MonoBehaviour
 
                     if (Mathf.Abs(joyPos.x) < deadZone && Mathf.Abs(joyPos.y) < deadZone)
                     {
-                        Debug.Log("Neutral");
                         anim.SetFloat("Attack", 0);
 
                     }
                     if ((Mathf.Abs(joyPos.x) > deadZone) && (Mathf.Abs(joyPos.x) >= Mathf.Abs(joyPos.y)))
                     {
-                        Debug.Log("Forward");
                         anim.SetFloat("Attack", 1);
                     }
                     if (joyPos.y > deadZone && joyPos.y > Mathf.Abs(joyPos.x))
                     {
-                        Debug.Log("Up");
                         anim.SetFloat("Attack", 2);
                     }
                     if (Mathf.Abs(joyPos.y) > deadZone && joyPos.y < joyPos.x && Mathf.Abs(joyPos.y) > joyPos.x)
                     {
-                        Debug.Log("Down");
                         anim.SetFloat("Attack", 3);
                     }
 
@@ -348,28 +404,24 @@ public class BasePlayer : MonoBehaviour
             }
             else
             {
-                if (myPlayer.GetButtonDown("BasicAttack") || myPlayer.GetButtonDown("HeavyBasic"))
+                if (myPlayer.GetButtonDown("BasicAttack") || myPlayer.GetButtonDown("HeavyAttack"))
                 {
 
                     if (Mathf.Abs(joyPos.x) < deadZone && Mathf.Abs(joyPos.y) < deadZone)
                     {
-                        Debug.Log("Neutral");
                         anim.SetFloat("Attack", 0);
 
                     }
                     if ((Mathf.Abs(joyPos.x) > deadZone) && (Mathf.Abs(joyPos.x) >= Mathf.Abs(joyPos.y)))
                     {
-                        Debug.Log("Forward");
                         anim.SetFloat("Attack", 0);
                     }
                     if (joyPos.y > deadZone && joyPos.y > Mathf.Abs(joyPos.x))
                     {
-                        Debug.Log("Up");
                         anim.SetFloat("Attack", 1);
                     }
                     if (Mathf.Abs(joyPos.y) > deadZone && joyPos.y < joyPos.x && Mathf.Abs(joyPos.y) > joyPos.x)
                     {
-                        Debug.Log("Down");
                         anim.SetFloat("Attack", 2);
                     }
 
@@ -379,6 +431,22 @@ public class BasePlayer : MonoBehaviour
 
                 }
             }
+            //ultimate abilities
+            /*
+            if (myPlayer.GetButtonDown("Ultimate"))
+            {
+                if (teamController.GetComponent<SwitchHandler>().specialMeter[2].fillAmount >= .2)
+                {
+                    teamController.GetComponent<SwitchHandler>().currentUltNum = 0;
+
+                    if (claire) { claireCharacter.ClaireAttackController(69); }
+
+                    if (gillbert) { gillbertCharacter.GilbertAttackController(69); }
+
+                    teamController.GetComponent<SwitchHandler>().UpdateUltBar(0);
+                }
+            }
+            */
 
         }
 
@@ -423,7 +491,6 @@ public class BasePlayer : MonoBehaviour
                         onTopOfPlatform = true;
                         anim.ResetTrigger("Land");
                         anim.SetTrigger("Land");
-                        //anim.ResetTrigger("Land");
                         velocity.y = 0;
                     }
                     //am I hitting the bottom of a platform?

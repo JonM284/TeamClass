@@ -221,7 +221,7 @@ public class Claire : MonoBehaviour
    * 
    * 9 = neutral aerial
    * 10 = up aerial
-   * 
+   * 11 = down aerial
    * 
    * 20 = neutral heavy
    * 21 = forward heavy
@@ -282,6 +282,7 @@ public class Claire : MonoBehaviour
 
 			case 11:
 
+                player.anim.SetBool("DownPunch", true);
 				break;
 
 			case 12:
@@ -445,14 +446,17 @@ public class Claire : MonoBehaviour
         {
             player.anim.SetBool("Slide", false);
         }
+        if (player.anim.GetBool("DownPunch"))
+        {
+            player.anim.SetBool("DownPunch", false);
+        }
         this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
 		this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 	}
 
-    void FistLand()
+    public void FistLand()
     {
-        player.rb.constraints = RigidbodyConstraints2D.FreezePositionX;
-        player.rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        player.rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
     }
 
     /*

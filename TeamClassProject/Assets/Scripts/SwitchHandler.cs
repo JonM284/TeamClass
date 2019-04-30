@@ -20,7 +20,7 @@ public class SwitchHandler : MonoBehaviour
     public GameObject P2x4_GilbertFighter;
     public GameObject P2x4_GilbertSupport;
 
-    [HideInInspector]
+    //[HideInInspector]
     public GameObject teammate1_fighter;
     [HideInInspector]
     public GameObject teammate1_support;
@@ -80,6 +80,7 @@ public class SwitchHandler : MonoBehaviour
 
         if (teamNumber == 1)
         {
+            teammate1_fighter = P1x3_ClaireFighter;
             //player 1
             if (PlayerPrefs.GetInt("Player1Character") == 1)
             {
@@ -132,9 +133,7 @@ public class SwitchHandler : MonoBehaviour
             }
         }
 
-
-
-        teammate1_num = teammate1_fighter.GetComponent<BasicPlayerScript>().playerNum;
+        teammate1_num = teammate1_fighter.GetComponent<BasePlayer>().playerNum;
         teammate2_num = teammate2_fighter.GetComponent<BasicPlayerScript>().playerNum;
 
         teammate1_fighter.SetActive(true);
@@ -143,20 +142,18 @@ public class SwitchHandler : MonoBehaviour
         teammate2_fighter.SetActive(false);
         teammate2_support.SetActive(true);
 
-        teammate1_fighter.GetComponent<BasicPlayerScript>().teamNum = teamNumber;
+        teammate1_fighter.GetComponent<BasePlayer>().teamNum = teamNumber;
         teammate2_fighter.GetComponent<BasicPlayerScript>().teamNum = teamNumber;
 
 
         if (SceneManager.GetActiveScene().name.Equals("JonScene"))
         {
-            Debug.Log("jon");
             teammate1_support.GetComponent<AlternateSP>().teamNum = teamNumber;
             teammate2_support.GetComponent<AlternateSP>().teamNum = teamNumber;
         }
 
         if (SceneManager.GetActiveScene().name.Equals("JustinScene"))
         {
-            Debug.Log("justin");
             teammate1_support.GetComponent<AlternateSP2>().teamNum = teamNumber;
             teammate2_support.GetComponent<AlternateSP2>().teamNum = teamNumber;
         }
@@ -209,13 +206,13 @@ public class SwitchHandler : MonoBehaviour
     {
         if (teammate1_fighter.activeSelf)
         {
-            if (teammate1_fighter.GetComponent<BasicPlayerScript>().claire)
+            if (teammate1_fighter.GetComponent<BasePlayer>().claire)
             {
                 clairePortrait.enabled = true;
                 gilbertPortrait.enabled = false;
             }
             else
-            if (teammate1_fighter.GetComponent<BasicPlayerScript>().gillbert)
+            if (teammate1_fighter.GetComponent<BasePlayer>().gillbert)
             {
                 clairePortrait.enabled = false;
                 gilbertPortrait.enabled = true;
@@ -289,25 +286,25 @@ public class SwitchHandler : MonoBehaviour
                 else
                 {
                     teammate1_fighter.SetActive(true);
-                    if (teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth + regenHealthPool >= teammate1_fighter.GetComponent<BasicPlayerScript>().regenHeath)
+                    if (teammate1_fighter.GetComponent<BasePlayer>().currentHealth + regenHealthPool >= teammate1_fighter.GetComponent<BasePlayer>().regenHeath)
                     {
-                        teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth = teammate1_fighter.GetComponent<BasicPlayerScript>().regenHeath;
+                        teammate1_fighter.GetComponent<BasePlayer>().currentHealth = teammate1_fighter.GetComponent<BasePlayer>().regenHeath;
                     }
                     else
                     {
-                        teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth += regenHealthPool;
-                        teammate1_fighter.GetComponent<BasicPlayerScript>().regenHeath = teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth;
+                        teammate1_fighter.GetComponent<BasePlayer>().currentHealth += regenHealthPool;
+                        teammate1_fighter.GetComponent<BasePlayer>().regenHeath = teammate1_fighter.GetComponent<BasePlayer>().currentHealth;
                     }
                     teammate1_fighter.transform.position = new Vector3(teammate2_fighterPos.x, teammate2_fighterPos.y + .3f, teammate2_fighterPos.z);
                     teammate1_support.SetActive(false);
 
                     //portrait swap
-                    if (teammate1_fighter.GetComponent<BasicPlayerScript>().claire)
+                    if (teammate1_fighter.GetComponent<BasePlayer>().claire)
                     {
                         clairePortrait.enabled = true;
                         gilbertPortrait.enabled = false;
                     }
-                    else if (teammate1_fighter.GetComponent<BasicPlayerScript>().gillbert)
+                    else if (teammate1_fighter.GetComponent<BasePlayer>().gillbert)
                     {
                         clairePortrait.enabled = false;
                         gilbertPortrait.enabled = true;
