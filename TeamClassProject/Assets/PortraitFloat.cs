@@ -90,8 +90,8 @@ public class PortraitFloat : MonoBehaviour
 
             if (myPlayer.GetButtonDown("HeavyAttack"))
             {
-                //Go back to menu
-                SceneManager.LoadScene("NolanScene");
+                //Reference script on whiteBox
+                backToMenuFromFighters.pressedBack = true;
             }
 
         }
