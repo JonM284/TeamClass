@@ -17,6 +17,15 @@ public class SideCannon_projectile : MonoBehaviour
     public AudioClip[] CannonSounds;
     public AudioSource CannonSoundPlayer;
 
+    [Tooltip("Attack force if eels touch player")]
+    public float attack_force = 12f;
+    [Tooltip("How long player will be stunned for")]
+    public float hitStun = 0.2f;
+    public float attack_Damage = 150f;
+    public float screen_Shake_Duration = 0.2f;
+    public float screen_Shake_Magnitude = 0.1f;
+    public float screen_Shake_Time = 0.2f;
+
     private void Awake()
     {
         original_Speed = speed;
@@ -80,13 +89,18 @@ public class SideCannon_projectile : MonoBehaviour
         {
             StartCoroutine(wait_To_Deactivate());
             float angle = Mathf.Atan2(other.transform.position.y, other.transform.position.x);
+            Vector2 attack_Angle = other.gameObject.transform.position - transform.position;
+            bool player_Facing_Right = GetComponent<BasePlayer>().FacingRight();
             if (other.gameObject.tag == "Player")
             {
                 if (move_Right)
-                    other.gameObject.GetComponent<BasicPlayerScript>().GetHit(150f, 45, 12, 0.2f, 100, .2f, false, 0.1f, 0.3f, 0.2f);
-
+                    //other.gameObject.GetComponent<BasicPlayerScript>().GetHit(150f, 45, 12, 0.2f, 100, .2f, false, 0.1f, 0.3f, 0.2f);
+                    other.gameObject.GetComponent<BasePlayer>().GetHit(attack_Damage, attack_Angle, attack_force, hitStun,
+                    player_Facing_Right, screen_Shake_Duration, screen_Shake_Magnitude, screen_Shake_Time);
                 if (!move_Right)
-                    other.gameObject.GetComponent<BasicPlayerScript>().GetHit(150f, 45, 12, 0.2f, 100, .2f, true, 0.1f, 0.3f, 0.2f);
+                    //other.gameObject.GetComponent<BasicPlayerScript>().GetHit(150f, 45, 12, 0.2f, 100, .2f, true, 0.1f, 0.3f, 0.2f);
+                    other.gameObject.GetComponent<BasePlayer>().GetHit(attack_Damage, attack_Angle, attack_force, hitStun,
+                    player_Facing_Right, screen_Shake_Duration, screen_Shake_Magnitude, screen_Shake_Time);
             }
         }
 
