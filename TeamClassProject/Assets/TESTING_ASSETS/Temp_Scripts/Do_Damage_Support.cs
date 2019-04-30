@@ -8,6 +8,7 @@ public class Do_Damage_Support : MonoBehaviour
     public float attack_Damage;
     public bool is_Spike;
     [Header("Variables for GetHit()")]
+    public Vector2 attack_Angle;
     [Tooltip("Attack force if eels touch player")]
     public float attack_force = 100f;
     [Tooltip("How long player will be stunned for")]
@@ -34,8 +35,7 @@ public class Do_Damage_Support : MonoBehaviour
                 collision.gameObject.GetComponent<BasePlayer>().GetHit(attack_Damage, attack_Angle, attack_force, hitStun,
                 player_Facing_Right, screen_Shake_Duration, screen_Shake_Magnitude, screen_Shake_Time);
             }*/
-            Vector2 attack_Angle = collision.gameObject.transform.position - transform.position;
-            bool player_Facing_Right = GetComponent<BasePlayer>().FacingRight();
+            bool player_Facing_Right = collision.GetComponent<BasePlayer>().FacingRight();
             collision.gameObject.GetComponent<BasePlayer>().GetHit(attack_Damage, attack_Angle, attack_force, hitStun,
             player_Facing_Right, screen_Shake_Duration, screen_Shake_Magnitude, screen_Shake_Time);
 

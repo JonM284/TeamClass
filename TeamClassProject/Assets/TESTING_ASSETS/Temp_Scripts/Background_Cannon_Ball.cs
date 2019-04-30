@@ -9,6 +9,7 @@ public class Background_Cannon_Ball : MonoBehaviour
     public float wait_Time;
 
     [Tooltip("Attack force if eels touch player")]
+    public Vector2 attack_Angle;
     public float attack_force = 100f;
     [Tooltip("How long player will be stunned for")]
     public float hitStun = 0.2f;
@@ -30,8 +31,7 @@ public class Background_Cannon_Ball : MonoBehaviour
             //float angle = Mathf.Atan2(other.transform.position.y, other.transform.position.x);
            //other.gameObject.GetComponent<BasicPlayerScript>().GetHit(250f, angle, 100, 0.2f, 75f, 0.5f, true, 0.1f, 0.3f, 0.2f);
 
-            Vector2 attack_Angle = other.gameObject.transform.position - transform.position;
-            bool player_Facing_Right = GetComponent<BasePlayer>().FacingRight();
+            bool player_Facing_Right = other.GetComponent<BasePlayer>().FacingRight();
             other.gameObject.GetComponent<BasePlayer>().GetHit(attack_Damage, attack_Angle, attack_force, hitStun,
             player_Facing_Right, screen_Shake_Duration, screen_Shake_Magnitude, screen_Shake_Time);
         }

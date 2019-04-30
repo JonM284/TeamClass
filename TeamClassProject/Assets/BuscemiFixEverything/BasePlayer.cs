@@ -111,6 +111,8 @@ public class BasePlayer : MonoBehaviour
     private void Awake()
     {
 
+        mainCamera = GameObject.Find("Main Camera");
+
         if (claire)
         {
             claireCharacter = this.GetComponent<Claire>();

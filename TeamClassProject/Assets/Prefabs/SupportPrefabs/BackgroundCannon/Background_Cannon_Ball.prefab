@@ -63,6 +63,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion_Effect: {fileID: 2965581613862910665}
   wait_Time: 0.3
+  attack_Angle: {x: 0.6, y: 1}
+  attack_force: 13
+  hitStun: 0.2
+  attack_Damage: 250
+  screen_Shake_Duration: 0.2
+  screen_Shake_Magnitude: 0.1
+  screen_Shake_Time: 0.2
 --- !u!1001 &996244047174214113
 PrefabInstance:
   m_ObjectHideFlags: 0

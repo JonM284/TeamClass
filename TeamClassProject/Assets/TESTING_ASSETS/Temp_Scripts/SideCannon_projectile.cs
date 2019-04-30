@@ -89,8 +89,8 @@ public class SideCannon_projectile : MonoBehaviour
         {
             StartCoroutine(wait_To_Deactivate());
             float angle = Mathf.Atan2(other.transform.position.y, other.transform.position.x);
-            Vector2 attack_Angle = other.gameObject.transform.position - transform.position;
-            bool player_Facing_Right = GetComponent<BasePlayer>().FacingRight();
+            Vector2 attack_Angle = (transform.position - other.gameObject.transform.position).normalized;
+            bool player_Facing_Right = other.GetComponent<BasePlayer>().FacingRight();
             if (other.gameObject.tag == "Player")
             {
                 if (move_Right)

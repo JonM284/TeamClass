@@ -4072,6 +4072,11 @@ PrefabInstance:
       propertyPath: gillbert
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 601068658141386478, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
     m_RemovedComponents:
     - {fileID: 2660453998392343815, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
     - {fileID: 601068658141386479, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
@@ -6107,7 +6112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_Parent: {fileID: 0}
-  attack_force: 100
+  attack_Angle: {x: 0.2, y: 1}
+  attack_force: 13
   hitStun: 0.2
   screen_Shake_Duration: 0.2
   screen_Shake_Magnitude: 0.1
@@ -6313,6 +6319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack_Damage: 200
   is_Spike: 1
+  attack_Angle: {x: 0, y: 0}
   attack_force: 100
   hitStun: 0.2
   screen_Shake_Duration: 0.2
@@ -6991,6 +6998,11 @@ PrefabInstance:
       propertyPath: gillbert
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 601068658141386478, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
     m_RemovedComponents:
     - {fileID: 2660453998392343815, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
     - {fileID: 601068658141386479, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
@@ -10018,6 +10030,16 @@ PrefabInstance:
       propertyPath: ClaireSoundPlayer
       value: 
       objectReference: {fileID: 1500910303}
+    - target: {fileID: 2588851933903481643, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481643, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a8e6f2e7e998044985d7d5e84024362, type: 3}
 --- !u!1 &615460971 stripped
@@ -12022,7 +12044,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_Parent: {fileID: 0}
-  attack_force: 100
+  attack_Angle: {x: 0.2, y: 1}
+  attack_force: 13
   hitStun: 0.2
   screen_Shake_Duration: 0.2
   screen_Shake_Magnitude: 0.1
@@ -12597,6 +12620,16 @@ PrefabInstance:
       propertyPath: ClaireSoundPlayer
       value: 
       objectReference: {fileID: 1500910303}
+    - target: {fileID: 2588851933903481643, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481643, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a8e6f2e7e998044985d7d5e84024362, type: 3}
 --- !u!1 &817027953 stripped
@@ -17157,6 +17190,11 @@ PrefabInstance:
       propertyPath: gillbert
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 601068658141386478, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
     m_RemovedComponents:
     - {fileID: 2660453998392343815, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
     - {fileID: 601068658141386479, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
@@ -20485,6 +20523,16 @@ PrefabInstance:
       propertyPath: UH1_Angle.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481643, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481643, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a8e6f2e7e998044985d7d5e84024362, type: 3}
 --- !u!1 &1500910300 stripped
@@ -22794,6 +22842,11 @@ PrefabInstance:
       propertyPath: gillbert
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 601068658141386478, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
     m_RemovedComponents:
     - {fileID: 2660453998392343815, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: da5f7037fa8ac89469e766bdb2f9fdbe, type: 3}
@@ -23387,7 +23440,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_Parent: {fileID: 0}
-  attack_force: 100
+  attack_Angle: {x: 0.2, y: 1}
+  attack_force: 13
   hitStun: 0.2
   screen_Shake_Duration: 0.2
   screen_Shake_Magnitude: 0.1
@@ -25012,7 +25066,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_Parent: {fileID: 0}
-  attack_force: 100
+  attack_Angle: {x: 0.2, y: 1}
+  attack_force: 13
   hitStun: 0.2
   screen_Shake_Duration: 0.2
   screen_Shake_Magnitude: 0.1
@@ -28400,7 +28455,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack_Damage: 200
   is_Spike: 1
-  attack_force: 100
+  attack_Angle: {x: 0, y: 1}
+  attack_force: 8
   hitStun: 0.2
   screen_Shake_Duration: 0.2
   screen_Shake_Magnitude: 0.1
@@ -29554,6 +29610,16 @@ PrefabInstance:
       propertyPath: ClaireSoundPlayer
       value: 
       objectReference: {fileID: 1500910303}
+    - target: {fileID: 2588851933903481643, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481643, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a8e6f2e7e998044985d7d5e84024362, type: 3}
 --- !u!1 &2057249755 stripped
@@ -30396,6 +30462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack_Damage: 1.7
   is_Spike: 0
+  attack_Angle: {x: 0, y: 0}
   attack_force: 100
   hitStun: 0.2
   screen_Shake_Duration: 0.2
@@ -30472,6 +30539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack_Damage: 1.7
   is_Spike: 0
+  attack_Angle: {x: 0, y: 0}
   attack_force: 100
   hitStun: 0.2
   screen_Shake_Duration: 0.2

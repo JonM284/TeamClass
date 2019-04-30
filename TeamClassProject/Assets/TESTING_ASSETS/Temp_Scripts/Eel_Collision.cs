@@ -7,6 +7,7 @@ public class Eel_Collision : MonoBehaviour
     public GameObject my_Parent;
     [Header("Variables for GetHit()")]
     [Tooltip("Attack force if eels touch player")]
+    public Vector2 attack_Angle;
     public float attack_force = 100f;
     public float hitStun = 0.2f;
     public float screen_Shake_Duration = 0.2f;
@@ -33,8 +34,7 @@ public class Eel_Collision : MonoBehaviour
             my_Parent.GetComponent<Eel_Movement>().has_Hit_Platform = true;
             my_Parent.GetComponent<Eel_Movement>().Eel_Active = true;
             float angle = Mathf.Atan2(other.transform.position.y, other.transform.position.x);
-            Vector2 attack_Angle = other.gameObject.transform.position - transform.position;
-            bool player_Facing_Right = GetComponent<BasePlayer>().FacingRight();
+            bool player_Facing_Right = other.GetComponent<BasePlayer>().FacingRight();
             
             other.gameObject.GetComponent<BasePlayer>().GetHit(75f, attack_Angle, attack_force, hitStun,
                 player_Facing_Right, screen_Shake_Duration, screen_Shake_Magnitude, screen_Shake_Time);
