@@ -13,6 +13,8 @@ public class Spike_Movement : MonoBehaviour
     public float going_Out_Speed, return_Speed;
     public int damageToDealToPlayer;
 
+    public Vector2 attackAngleSpike;
+
     // Start is called before the first frame update
     void Start()
     { 
@@ -60,8 +62,8 @@ public class Spike_Movement : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             print("hit player");
-            other.gameObject.GetComponent<BasicPlayerScript>().GetHit(75f, 90, 500, 0.5f, 200f, 0.5f, false, 0.1f, 0.3f, 0.2f);
-
+            //other.gameObject.GetComponent<BasicPlayerScript>().GetHit(75f, 90, 500, 0.5f, 200f, 0.5f, false, 0.1f, 0.3f, 0.2f);
+            other.gameObject.GetComponent<BasePlayer>().GetHit(75f, attackAngleSpike, 500f, 0.5f, other.gameObject.GetComponent<BasePlayer>().FacingRight(), 0.1f, .3f, .2f);
         }
     }
 
