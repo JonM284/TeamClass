@@ -228,45 +228,65 @@ public class Claire : MonoBehaviour
    * 22 = down heavy 
    * 23 = up heavy
    */
-   
+   /*
     public void ClaireAttackController(int attackNum)
     {
         switch (attackNum)
         {
             case 1:
-                //neutral basic
+                player.anim.SetTrigger("BasicNeutral");
+                player.isAttacking = true;
+                player.canTurn = false;
+
                 ClaireSoundPlayer.clip = ClaireSounds[0];
                 ClaireSoundPlayer.Play();
 
-                player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
+                if (player.claire)
+                {
+                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                }
                 break;
 
             case 2:
-                //forward basic
+                player.anim.SetTrigger("BasicForward");
+                player.isAttacking = true;
+                player.canTurn = false;
+
                 ClaireSoundPlayer.clip = ClaireSounds[1];
                 ClaireSoundPlayer.Play();
 
-                player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                if (player.claire)
+                {
 
+                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                }
                 break;
 
             case 3:
-                //up basic
+                player.anim.SetTrigger("BasicUp");
+                player.isAttacking = true;
+
                 ClaireSoundPlayer.clip = ClaireSounds[2];
                 ClaireSoundPlayer.Play();
 
-                player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                if (player.claire)
+                {
 
+                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                }
                 break;
 
 			case 4:
-                //down basic
-                player.anim.SetBool("Slide", true);
-
-                break;
+				player.anim.SetTrigger("BasicDown");
+				player.isAttacking = true;
+                player.AttackMovement(6, .5f, 0f, new Vector2(0, 0));
+				break;
 
             case 9:
+                player.anim.SetTrigger("NeutralAir");
+                player.isAttacking = true;
 
                 ClaireSoundPlayer.clip = ClaireSounds[0];
                 ClaireSoundPlayer.Play();
@@ -274,6 +294,8 @@ public class Claire : MonoBehaviour
                 break;
 
             case 10:
+                player.anim.SetTrigger("UpAir");
+                player.isAttacking = true;
 
                 ClaireSoundPlayer.clip = ClaireSounds[4];
                 ClaireSoundPlayer.Play();
@@ -281,46 +303,72 @@ public class Claire : MonoBehaviour
                 break;
 
 			case 11:
-
 				break;
 
 			case 12:
-
+				player.anim.SetTrigger("DownAir");
+				player.isAttacking = true;
 				break;
 
 			case 20:
-                //neutral heavy
+                player.anim.SetTrigger("HeavyNeutral");
+                player.isAttacking = true;
+                player.canTurn = false;
+
                 ClaireSoundPlayer.clip = ClaireSounds[5];
                 ClaireSoundPlayer.Play();
 
-                player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                if (player.claire)
+                {
 
+                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                }
                 break;
 
-            case 21:
-                //forward heavy
+            case 21:   
+                    player.anim.SetTrigger("HeavyForward");
+                    player.isAttacking = true;
+                player.canTurn = false;
+
                 ClaireSoundPlayer.clip = ClaireSounds[6];
                 ClaireSoundPlayer.Play();
+
+                player.AttackMovement(6, .5f, 0, new Vector2(0, 0));
 
                 break;
 
             case 22:
-                //up heavy
-                ClaireSoundPlayer.clip = ClaireSounds[8];
-                ClaireSoundPlayer.Play();
+                player.anim.SetTrigger("HeavyDown");
+                player.isAttacking = true;
+                player.canTurn = false;
 
-                player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
-                break;
-            case 23:
-                //down heavy
                 shield = true;
 
                 ClaireSoundPlayer.clip = ClaireSounds[7];
                 ClaireSoundPlayer.Play();
 
-                player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                if (player.claire)
+                {
 
+                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                }
+                break;
+            case 23:
+                player.anim.SetTrigger("HeavyUp");
+                player.isAttacking = true;
+                player.canTurn = false;
+
+                ClaireSoundPlayer.clip = ClaireSounds[8];
+                ClaireSoundPlayer.Play();
+
+                if (player.claire)
+                {
+
+                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+                }
                 break;
 
 
@@ -333,7 +381,7 @@ public class Claire : MonoBehaviour
                 break;
         }
     }
-    
+    */
 	
     /*
     private void NeutralBasic(GameObject enemy)
@@ -426,7 +474,7 @@ public class Claire : MonoBehaviour
 
         
     }
-    */
+
     public void CurrentAttack(int attackNum)
     {
         currentAttack = attackNum;
@@ -440,10 +488,8 @@ public class Claire : MonoBehaviour
         {
             shield = false;
         }
-        if (player.anim.GetBool("Slide"))
-        {
-            player.anim.SetBool("Slide", false);
-        }
+        player.ResetTriggers();
+        player.canTurn = true;
         this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
 		this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 	}
@@ -453,6 +499,7 @@ public class Claire : MonoBehaviour
         player.rb.constraints = RigidbodyConstraints2D.FreezePositionX;
         player.rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
+    */
 
     /*
      * attack numbers

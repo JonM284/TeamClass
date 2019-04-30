@@ -3732,11 +3732,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -24.143002
       objectReference: {fileID: 0}
-    - target: {fileID: 5615167271143781674, guid: 8619d383b949f2047802810e41ae9a6c,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: d56dd1c910cfa484cb298771bf318193, type: 2}
     - target: {fileID: 5615167271289989226, guid: 8619d383b949f2047802810e41ae9a6c,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -3862,6 +3857,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -84.27801
       objectReference: {fileID: 0}
+    - target: {fileID: 5615167271143781674, guid: 8619d383b949f2047802810e41ae9a6c,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d56dd1c910cfa484cb298771bf318193, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8619d383b949f2047802810e41ae9a6c, type: 3}
 --- !u!1 &1267189348
@@ -7792,9 +7792,7 @@ MonoBehaviour:
   regenHeath: 0
   regenHeathMultiplier: 0
   makeFaceRight: 1
-  isAttacking: 0
-  joyPos: {x: 0, y: 0}
-  deadZone: 0.2
+  horizontalDZ: 0.2
 --- !u!95 &155241490972451849
 Animator:
   serializedVersion: 3
