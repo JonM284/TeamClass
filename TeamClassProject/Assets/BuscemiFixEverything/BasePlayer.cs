@@ -22,6 +22,7 @@ public class BasePlayer : MonoBehaviour
     [Header("UI Stuff")]
     public Image healthBar;
     public Image regenableHealthBar;
+    Animator healthAnim;
 
     [Header("Movement Variables")]
     [HideInInspector]
@@ -96,6 +97,17 @@ public class BasePlayer : MonoBehaviour
     [Header("Joystick Deadzone")]
     public float deadZone;
 
+    [Header("Vibration Variables")]
+    [Tooltip("The magnitude of the vibration for the controller - light")]
+    [Range(0, 1.0f)]
+    public float light_Vib = 0.3f;
+    [Tooltip("The magnitude of the vibration for the controller - heavy")]
+    [Range(0, 1.0f)]
+    public float Heavy_Vib = 0.5f;
+    [Tooltip("The amount of time the virbtation will last in seconds")]
+    [Range(0, 1.5f)]
+    public float light_Time = 0.2f, Heavy_Time = 0.35f;
+
     private void Awake()
     {
 
@@ -158,6 +170,31 @@ public class BasePlayer : MonoBehaviour
         ReInput.ControllerConnectedEvent += OnControllerConnected;
         CheckController(myPlayer);
 
+        rigPieces = GetComponentsInChildren<SpriteRenderer>();
+        if (playerNum == 1)
+        {
+            foreach (SpriteRenderer sprite in rigPieces)
+            {
+                if (sprite != null)
+                {
+                    sprite.sortingLayerName = "Player 1";
+                }
+            }
+        }
+        else
+        {
+            if (playerNum == 2)
+            {
+                foreach (SpriteRenderer sprite in rigPieces)
+                {
+                    if (sprite != null)
+                    {
+                        sprite.sortingLayerName = "Player 2";
+                    }
+                }
+            }
+        }
+
     }
 
     // Start is called before the first frame update
@@ -166,6 +203,7 @@ public class BasePlayer : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        healthAnim = healthBar.GetComponent<Animator>();
         m_my_Pauser = pauserScript.pauser_Instance;
 
         //making the player face a certain way
@@ -451,6 +489,68 @@ public class BasePlayer : MonoBehaviour
         }
 
     }
+    /// <summary>
+    /// This function gets called when an enemy hits you
+    /// </summary>
+    /// <param name="attackDamage">is the how much the players health/armor goes down.</param>
+    /// <param name="attackAngle">is the angle you get sent flying when you get hit. Use x and y variables to determine the angle, y should never be less than 0[*possibly* affected by player weight]</param>
+    /// <param name="attackForce"> is how far back you get sent flying. Use x and y variables to determine if you want to have more upward velocity than x or so on.[affected by player weight]</param>
+    /// <param name="hitStun">is how long the player has to wait before they can do anything</param>
+    /// <param name="facingRight">Checks which way the player is facing when they do the attack so that it knows whether or not to reverse the knockback</param>
+    /// <param name="duration">How long the screen shake lasts</param>
+    /// <param name="magnitude">How agressively the screen shakes</param>
+    /// <param name="slowDown">How quickly the camera stops shaking</param>
+    public void GetHit(float attackDamage, Vector2 attackAngle, Vector2 attackForce, float hitStun, bool facingRight, float duration, float magnitude, float slowDown)//im probably missing a few arguments
+    {
+        if (claire && claireCharacter.shield)
+        {
+            //do nothing
+        }
+        else
+        {
+            healthAnim.ResetTrigger("gotHit");
+            healthAnim.SetTrigger("gotHit");
+            rb.constraints = RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+            //Jon put this here
+            if (attackDamage < 100)
+            {
+                myPlayer.SetVibration(0, light_Vib, light_Time);
+            }
+            else if (attackDamage >= 100)
+            {
+                myPlayer.SetVibration(0, Heavy_Vib, Heavy_Time);
+            }
+
+            teamController.GetComponent<SwitchHandler>().UpdateUltBar(attackDamage);
+            currentHealth -= attackDamage;
+            regenHeath -= attackDamage * regenHeathMultiplier;
+            velocity = new Vector3(0, 0, 0);
+            isAttacking = false;
+
+            mainCamera.GetComponent<ShakeScreenScript>().SetVariables(duration, magnitude, slowDown);
+
+            if (facingRight)
+            {
+                velocity = new Vector3(-attackAngle.x * attackForce.x, attackAngle.y * attackForce.y, velocity.z);
+                direction = "Right";
+            }
+            else
+            {
+                velocity = attackAngle * attackForce;
+                direction = "Left";
+            }
+            player = playerState.Knockback;
+            StartCoroutine(HitStun(hitStun));
+        }
+    }
+
+    IEnumerator HitStun(float stunTime)
+    {
+        yield return new WaitForSeconds(stunTime);
+        player = playerState.FreeMovement;
+    }
 
     public void ResetTriggers()
     {
@@ -473,6 +573,20 @@ public class BasePlayer : MonoBehaviour
             { //if player is moving down
                 velocity.y -= gravityDown * Time.fixedDeltaTime;
             }
+        }
+    }
+
+    public bool FacingRight()
+    {
+        if ((makeFaceRight && transform.localScale.x < 0) || (!makeFaceRight && transform.localScale.x > 0))
+        {
+            //Debug.Log("Right");
+            return true;
+        }
+        else
+        {
+            //Debug.Log("Left");
+            return false;
         }
     }
 

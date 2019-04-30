@@ -4986,13 +4986,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5615167271143781669}
   - component: {fileID: 5615167271143781674}
-  - component: {fileID: 5615167271143781675}
-  - component: {fileID: 5615167271143781672}
   - component: {fileID: 5615167271143781673}
+  - component: {fileID: 5086114439606481545}
   - component: {fileID: 5615167271143781679}
-  - component: {fileID: 5615167271143781676}
   - component: {fileID: 5615167271143781586}
-  - component: {fileID: 5615167271143781587}
   - component: {fileID: 1827133005}
   m_Layer: 0
   m_Name: Ted Use This One Alt
@@ -5046,70 +5043,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!212 &5615167271143781675
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1827133004}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 054fee0056aca554aa4443e5c651d556, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1.6, y: 2.3}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!70 &5615167271143781672
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1827133004}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.15}
-  m_Size: {x: 1.18, y: 2.95}
-  m_Direction: 0
 --- !u!50 &5615167271143781673
 Rigidbody2D:
   serializedVersion: 4
@@ -5131,6 +5064,58 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &5086114439606481545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827133004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56fa192aeb3cd64994225b05fd965fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNum: 0
+  rigPieces: []
+  teamNum: 0
+  healthBar: {fileID: 0}
+  regenableHealthBar: {fileID: 0}
+  speed: 0
+  weight: 0
+  gilbertFlightTime: 0
+  currentGilbertFlightTime: 0
+  velocity: {x: 0, y: 0, z: 0}
+  direction: 
+  xScale: 0
+  anim: {fileID: 0}
+  rb: {fileID: 0}
+  teamController: {fileID: 0}
+  gravityUp: 0
+  gravityDown: 0
+  maxDownVel: 0
+  jumpVel: 0
+  fallMult: 0
+  lowJumpMult: 0
+  onPlatformTimer: 0
+  onPlatformTimerMax: 0
+  onTopOfPlatform: 0
+  claire: 0
+  gillbert: 0
+  gnomercy: 0
+  wawa: 0
+  maxHealth: 0
+  currentHealth: 0
+  regenHeath: 0
+  regenHeathMultiplier: 0
+  makeFaceRight: 0
+  isAttacking: 0
+  joyPos: {x: 0, y: 0}
+  deadZone: 0
+  light_Vib: 0.3
+  Heavy_Vib: 0.5
+  light_Time: 0.2
+  Heavy_Time: 0.35
 --- !u!114 &5615167271143781679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5282,21 +5267,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8fa4aa820ced1384f933ca8a83a22fe9, type: 3}
   - {fileID: 8300000, guid: e90041802fae9cc46ac0359a6386a57b, type: 3}
   ClaireSoundPlayer: {fileID: 1827133005}
---- !u!111 &5615167271143781676
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1827133004}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!61 &5615167271143781586
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5323,63 +5293,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.15066, y: 3.0340023}
   m_EdgeRadius: 0
---- !u!114 &5615167271143781587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1827133004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a84798539e05554c957a6b86b175395, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerNum: 1
-  rigPieces: []
-  teamNum: 1
-  healthBar: {fileID: 0}
-  regenableHealthBar: {fileID: 0}
-  rb: {fileID: 0}
-  anim: {fileID: 0}
-  state: 0
-  accel: 0
-  accelMult: 1
-  decelMult: 1
-  speed: 7
-  weight: 0
-  gilbertFlightTime: 0
-  currentGilbertFlightTime: 0
-  velocity: {x: 0, y: 0, z: 0}
-  direction: 
-  gravityUp: 0
-  gravityDown: 0
-  jumpVel: 0
-  maxDownVel: 0
-  maxInitialJumpTime: 0.05
-  maxHoldJumpTime: 0.075
-  onPlatformTimer: 0
-  onPlatformTimerMax: 0.075
-  onTopOfPlatform: 0
-  claire: 1
-  gillbert: 0
-  gnomercy: 0
-  wawa: 0
-  maxHealth: 100
-  currentHealth: 0
-  regenHeath: 0
-  regenHeathMultiplier: 0.4
-  makeFaceRight: 0
-  isAttacking: 0
-  stunTime: 0
-  dashSpeed: 0.25
-  maxDashTimer: 0.18
-  attackZone: 0.05
-  neutralZone: 0.05
-  verticalForwardZone: 0.8
-  horizontalUpwardZone: 0.8
-  teamController: {fileID: 0}
-  canTurn: 1
 --- !u!82 &1827133005
 AudioSource:
   m_ObjectHideFlags: 0
