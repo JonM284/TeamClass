@@ -10458,8 +10458,8 @@ GameObject:
   - component: {fileID: 601068658141386472}
   - component: {fileID: 601068658141386473}
   - component: {fileID: 601068658141386478}
-  - component: {fileID: 601068658141386479}
   - component: {fileID: 601068658141386477}
+  - component: {fileID: 2988186520398043739}
   - component: {fileID: 645758371}
   - component: {fileID: 2660453998392343815}
   - component: {fileID: 5307436960926158923}
@@ -10540,68 +10540,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.12000002, y: -0.20269603}
   m_Size: {x: 1.48, y: 1.9645888}
   m_Direction: 0
---- !u!114 &601068658141386479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601068658141386466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a84798539e05554c957a6b86b175395, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerNum: 1
-  rigPieces: []
-  teamNum: 0
-  healthBar: {fileID: 0}
-  regenableHealthBar: {fileID: 0}
-  rb: {fileID: 0}
-  anim: {fileID: 0}
-  state: 0
-  accel: 0
-  accelMult: 1
-  decelMult: 1
-  speed: 7
-  weight: 0
-  gilbertFlightTime: 2.5
-  currentGilbertFlightTime: 0
-  velocity: {x: 0, y: 0, z: 0}
-  direction: 
-  gravityUp: 0
-  gravityDown: 0
-  jumpVel: 0
-  maxDownVel: 0
-  maxInitialJumpTime: 0.05
-  maxHoldJumpTime: 0.075
-  onPlatformTimer: 0
-  onPlatformTimerMax: 0.075
-  onTopOfPlatform: 0
-  claire: 0
-  gillbert: 1
-  gnomercy: 0
-  wawa: 0
-  maxHealth: 0
-  currentHealth: 0
-  regenHeath: 0
-  regenHeathMultiplier: 0.4
-  makeFaceRight: 0
-  isAttacking: 0
-  stunTime: 0
-  dashSpeed: 0.25
-  maxDashTimer: 0.18
-  attackZone: 0.03
-  neutralZone: 0.05
-  verticalForwardZone: 0.8
-  horizontalUpwardZone: 0.8
-  hitEffect: {fileID: 0}
-  teamController: {fileID: 0}
-  canTurn: 1
-  light_Vib: 0.3
-  Heavy_Vib: 0.5
-  light_Time: 0.2
-  Heavy_Time: 0.35
 --- !u!50 &601068658141386477
 Rigidbody2D:
   serializedVersion: 4
@@ -10623,6 +10561,58 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &2988186520398043739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601068658141386466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56fa192aeb3cd64994225b05fd965fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNum: 0
+  rigPieces: []
+  teamNum: 0
+  healthBar: {fileID: 0}
+  regenableHealthBar: {fileID: 0}
+  speed: 0
+  weight: 0
+  gilbertFlightTime: 0
+  currentGilbertFlightTime: 0
+  velocity: {x: 0, y: 0, z: 0}
+  direction: 
+  xScale: 0
+  anim: {fileID: 0}
+  rb: {fileID: 0}
+  teamController: {fileID: 0}
+  gravityUp: 0
+  gravityDown: 0
+  maxDownVel: 0
+  jumpVel: 0
+  fallMult: 0
+  lowJumpMult: 0
+  onPlatformTimer: 0
+  onPlatformTimerMax: 0
+  onTopOfPlatform: 0
+  claire: 0
+  gillbert: 0
+  gnomercy: 0
+  wawa: 0
+  maxHealth: 0
+  currentHealth: 0
+  regenHeath: 0
+  regenHeathMultiplier: 0
+  makeFaceRight: 0
+  isAttacking: 0
+  joyPos: {x: 0, y: 0}
+  deadZone: 0
+  light_Vib: 0.3
+  Heavy_Vib: 0.5
+  light_Time: 0.2
+  Heavy_Time: 0.35
 --- !u!114 &645758371
 MonoBehaviour:
   m_ObjectHideFlags: 0
