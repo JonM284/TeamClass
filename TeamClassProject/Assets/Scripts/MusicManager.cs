@@ -12,6 +12,14 @@ public class MusicManager : MonoBehaviour
         get { return instance; }
     }
 
+    [Header("Audio")]
+    public AudioClip[] mainMenuSounds;
+    public AudioSource mainMenuSoundPlayer;
+
+    public bool mainMenuBrowse;
+    public bool mainMenuBack;
+    public bool mainMenuSelect;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -55,5 +63,36 @@ public class MusicManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        /*
+        if (mainMenuSelect)
+        {
+            mainMenuSoundPlayer.clip = mainMenuSounds[0];
+            mainMenuSoundPlayer.Play();
+        }
+        else
+        {
+            mainMenuSelect = false;
+        }
+
+        if (mainMenuBrowse)
+        {
+            mainMenuSoundPlayer.clip = mainMenuSounds[1];
+            mainMenuSoundPlayer.Play();
+        }
+        else
+        {
+            mainMenuBrowse = false;
+        }
+
+        if (mainMenuBack)
+        {
+            mainMenuSoundPlayer.clip = mainMenuSounds[2];
+            mainMenuSoundPlayer.Play();
+        }
+        else
+        {
+            mainMenuBack = false;
+        }
+        */
     }
 }

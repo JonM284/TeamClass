@@ -29,11 +29,6 @@ public class ButtonManager : MonoBehaviour
     public float timer;
     public float timerMax;
 
-    [Header("Audio")]
-    public AudioClip[] buttonSounds;
-    public AudioSource buttonSoundPlayer;
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -48,8 +43,6 @@ public class ButtonManager : MonoBehaviour
         es.SetSelectedGameObject(null);
 
         Cursor.visible = false;
-
-        buttonSoundPlayer = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
