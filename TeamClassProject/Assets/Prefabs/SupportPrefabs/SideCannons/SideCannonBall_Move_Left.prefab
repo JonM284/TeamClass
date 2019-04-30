@@ -95,6 +95,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 753449cc5acce7e4bb63f231d6d7a674, type: 3}
   - {fileID: 8300000, guid: 701c72d0a8b26f242bb17d1e665f3d1f, type: 3}
   CannonSoundPlayer: {fileID: 1001728853270091829}
+  attack_force: 8
+  hitStun: 0.2
+  attack_Damage: 150
+  screen_Shake_Duration: 0.2
+  screen_Shake_Magnitude: 0.1
+  screen_Shake_Time: 0.2
 --- !u!212 &8873830554345692787
 SpriteRenderer:
   m_ObjectHideFlags: 0
