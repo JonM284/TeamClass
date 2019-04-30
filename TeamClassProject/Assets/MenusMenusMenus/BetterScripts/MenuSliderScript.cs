@@ -24,6 +24,12 @@ public class MenuSliderScript : MonoBehaviour
 
     //public Animation pressA_Fade;
 
+
+    [Header("Audio")]
+    public AudioClip[] menuSounds;
+    public AudioSource menuSoundPlayer;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +38,8 @@ public class MenuSliderScript : MonoBehaviour
         hasMenuBeenUp = false;
         pressA.SetActive(true);
         //pressB.SetActive(false);
+
+        menuSoundPlayer = gameObject.GetComponent<AudioSource>();
     }
 
 
@@ -54,6 +62,10 @@ public class MenuSliderScript : MonoBehaviour
             if (myPlayer.GetButtonDown("Jump") && sliderInt != 1)
             {
                 anim.SetInteger("SliderValue", 1);
+
+                menuSoundPlayer.clip = menuSounds[0];
+                menuSoundPlayer.Play();
+
                 //menuUp.Play();
                 sliderInt = 1;
                 hasMenuBeenUp = true;
@@ -65,6 +77,10 @@ public class MenuSliderScript : MonoBehaviour
             if (myPlayer.GetButtonDown("HeavyAttack") && sliderInt != 2 && hasMenuBeenUp == true)
             {
                 anim.SetInteger("SliderValue", 2);
+
+                menuSoundPlayer.clip = menuSounds[1];
+                menuSoundPlayer.Play();
+
                 //menuDown.Play();
                 sliderInt = 2;
                 pressA.SetActive(true);
