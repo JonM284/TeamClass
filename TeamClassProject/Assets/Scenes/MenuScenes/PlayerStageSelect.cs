@@ -29,6 +29,10 @@ public class PlayerStageSelect : MonoBehaviour
     public float timer;
     public float timerMax;
 
+    [Header("Audio")]
+    public AudioClip[] stageSounds;
+    public AudioSource stageSoundPlayer;
+
     void Awake()
     {
         //myPlayer = ReInput.players.GetPlayer(playerNum - 1);
@@ -70,12 +74,18 @@ public class PlayerStageSelect : MonoBehaviour
             if (myPlayer.GetAxis("Horizontal") >= 0.1f && hasSelected == false)
             {
                 position--;
+                stageSoundPlayer.clip = stageSounds[0];
+                stageSoundPlayer.Play();
+
             }
 
             //move left if holding left
             if (myPlayer.GetAxis("Horizontal") <= -0.1f && hasSelected == false)
             {
                 position++;
+                stageSoundPlayer.clip = stageSounds[0];
+                stageSoundPlayer.Play();
+
             }
 
             //if holding left on 1, don't do anything
@@ -119,6 +129,9 @@ public class PlayerStageSelect : MonoBehaviour
                 white_box.SetActive(true);
                 white_box_2.SetActive(false);
 
+                stageSoundPlayer.clip = stageSounds[1];
+                stageSoundPlayer.Play();
+
                 if (position == 1)
                 {
                     stage_forest.SetActive(true);
@@ -148,6 +161,9 @@ public class PlayerStageSelect : MonoBehaviour
 
             if (myPlayer.GetButtonDown("HeavyAttack") && hasSelected == false && timer >= timerMax)
             {
+                stageSoundPlayer.clip = stageSounds[2];
+                stageSoundPlayer.Play();
+
                 timer = 0;
                 SceneManager.LoadScene("NolanScene");
             }

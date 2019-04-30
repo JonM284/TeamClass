@@ -28,6 +28,10 @@ public class Portrait : MonoBehaviour
 
     public static bool canSelect;
 
+    [Header("Audio")]
+    public AudioClip[] stageSounds;
+    public AudioSource stageSoundPlayer;
+
     void Awake()
     {
         myPlayer = ReInput.players.GetPlayer(playerNum - 1);
@@ -70,6 +74,9 @@ public class Portrait : MonoBehaviour
             char_selected++;
             timer = 0f;
             dummyObject.SetActive(true);
+
+            stageSoundPlayer.clip = stageSounds[1];
+            stageSoundPlayer.Play();
         }
 
         //move left if holding left
@@ -78,6 +85,9 @@ public class Portrait : MonoBehaviour
             char_selected--;
             timer = 0f;
             dummyObject.SetActive(true);
+
+            stageSoundPlayer.clip = stageSounds[1];
+            stageSoundPlayer.Play();
         }
 
         //if holding left on 1, go to 4 //THESE VALUES ARE BEING SET TO 2 BEFORE WE SEND TO NOAH BC WAWA AND GNO ARE NOT IN THE GAME
@@ -139,6 +149,9 @@ public class Portrait : MonoBehaviour
             arrows.SetActive(false);
             playersLockedIn += 1;
 
+            stageSoundPlayer.clip = stageSounds[0];
+            stageSoundPlayer.Play();
+
             if (char_selected == 1)
             {
                 PlayerPrefs.SetInt("Player" + playerNum + "Character", 1);
@@ -182,6 +195,9 @@ public class Portrait : MonoBehaviour
 
         if (myPlayer.GetButtonDown("HeavyAttack") && selected == true && PlayerStageSelect.hasSelected == true && timer >= timerMax)
         {
+            stageSoundPlayer.clip = stageSounds[2];
+            stageSoundPlayer.Play();
+
             timer = 0;
             selected = false; 
             arrows.SetActive(true);
