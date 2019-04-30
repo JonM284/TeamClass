@@ -34,8 +34,8 @@ public class BasePlayer : MonoBehaviour
     enum playerState { FreeMovement, Knockback}
     playerState player;
 
-
-    Animator anim;
+    [HideInInspector]
+    public Animator anim;
     [HideInInspector]
     public Rigidbody2D rb;
 
@@ -78,7 +78,7 @@ public class BasePlayer : MonoBehaviour
     public Vector2 joyPos;
 
     [Header("Joystick Deadzone")]
-    public float horizontalDZ;
+    public float deadZone;
 
     private void Awake()
     {
@@ -171,7 +171,7 @@ public class BasePlayer : MonoBehaviour
 
         Movement();
 
-        //if (!isAttacking)
+        if (!isAttacking)
         {
 
             Attack();
@@ -197,7 +197,7 @@ public class BasePlayer : MonoBehaviour
         if(player == playerState.FreeMovement)
         {
 
-            if (Mathf.Abs(myPlayer.GetAxis("Horizontal")) > horizontalDZ)
+            if (Mathf.Abs(myPlayer.GetAxis("Horizontal")) > deadZone)
             {
                 velocity.x = myPlayer.GetAxis("Horizontal") * speed;
                 anim.SetFloat("xVel", 1);
@@ -219,7 +219,7 @@ public class BasePlayer : MonoBehaviour
                 direction = "Left";
             }
 
-            if (onPlatformTimer > -.15)
+            if (onPlatformTimer > .05 && !isAttacking)
             {
                 if (direction == "Right")
                 {
@@ -280,17 +280,65 @@ public class BasePlayer : MonoBehaviour
             if (myPlayer.GetButtonDown("BasicAttack"))
             {
 
-                if(Mathf.Abs(joyPos.x) < horizontalDZ && Mathf.Abs(joyPos.y) < horizontalDZ)
+                if(Mathf.Abs(joyPos.x) < deadZone && Mathf.Abs(joyPos.y) < deadZone)
                 {
+                    Debug.Log("Neutral");
                     anim.SetFloat("Attack", 0);
+
                 }
-                //if(Mathf.Abs())
+                if((Mathf.Abs(joyPos.x) > deadZone) && (Mathf.Abs(joyPos.x) >= Mathf.Abs(joyPos.y)))
+                {
+                    Debug.Log("Forward");
+                    anim.SetFloat("Attack", 1);
+                }
+                if(joyPos.y > deadZone && joyPos.y > Mathf.Abs(joyPos.x))
+                {
+                    Debug.Log("Up");
+                    anim.SetFloat("Attack", 2);
+                }
+                if(Mathf.Abs(joyPos.y) > deadZone && joyPos.y < joyPos.x && Mathf.Abs(joyPos.y) > joyPos.x )
+                {
+                    Debug.Log("Down");
+                    anim.SetFloat("Attack", 3);
+                }
 
                 anim.ResetTrigger("Basic");
                 anim.SetTrigger("Basic");
                 isAttacking = true;
 
             }
+
+            if (myPlayer.GetButtonDown("HeavyAttack"))
+            {
+
+                if (Mathf.Abs(joyPos.x) < deadZone && Mathf.Abs(joyPos.y) < deadZone)
+                {
+                    Debug.Log("Neutral");
+                    anim.SetFloat("Attack", 0);
+
+                }
+                if ((Mathf.Abs(joyPos.x) > deadZone) && (Mathf.Abs(joyPos.x) >= Mathf.Abs(joyPos.y)))
+                {
+                    Debug.Log("Forward");
+                    anim.SetFloat("Attack", 1);
+                }
+                if (joyPos.y > deadZone && joyPos.y > Mathf.Abs(joyPos.x))
+                {
+                    Debug.Log("Up");
+                    anim.SetFloat("Attack", 2);
+                }
+                if (Mathf.Abs(joyPos.y) > deadZone && joyPos.y < joyPos.x && Mathf.Abs(joyPos.y) > joyPos.x)
+                {
+                    Debug.Log("Down");
+                    anim.SetFloat("Attack", 3);
+                }
+
+                anim.ResetTrigger("Heavy");
+                anim.SetTrigger("Heavy");
+                isAttacking = true;
+
+            }
+
         }
 
     }
