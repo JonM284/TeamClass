@@ -147,7 +147,7 @@ public class FightersSceneScript : MonoBehaviour
         if (myPlayer.GetButtonDown("HeavyAttack") && timer >= timerMax)
         {
             timer = 0;
-            SceneManager.LoadScene("NolanScene");
+            //SceneManager.LoadScene("NolanScene");
         }
     }
 
