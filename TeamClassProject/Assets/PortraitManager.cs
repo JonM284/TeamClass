@@ -13,7 +13,7 @@ public class PortraitManager : MonoBehaviour
     [Header("Teammate 2")]
     public Image claireRight;
     public Image gilbertRight;
-
+    
     public GameObject fish_background, gnome_Background;
 
     // Start is called before the first frame update
@@ -23,6 +23,7 @@ public class PortraitManager : MonoBehaviour
         gilbertLeft.enabled = false;
         claireRight.enabled = false;
         gilbertRight.enabled = false;
+        
     }
 
     
