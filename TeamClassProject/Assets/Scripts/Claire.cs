@@ -20,7 +20,7 @@ public class Claire : MonoBehaviour
     [Header("Basic Attacks")]
     [Header("Basic Neutral")]
     public float BN_Damage;
-    public float BN_Angle;
+    public Vector2 BN_Angle;
     public float BN_Knockback;
     public float BN_HitStun;
     public float BN_Distance;
@@ -32,7 +32,7 @@ public class Claire : MonoBehaviour
 
     [Header("Basic Forward")]
     public float BF_Damage;
-    public float BF_Angle;
+    public Vector2 BF_Angle;
     public float BF_Knockback;
     public float BF_HitStun;
     public float BF_Distance;
@@ -46,7 +46,7 @@ public class Claire : MonoBehaviour
 
     [Header("Basic Up")]
     public float BU_Damage;
-    public float BU_Angle;
+    public Vector2 BU_Angle;
     public float BU_Knockback;
     public float BU_HitStun;
     public float BU_Distance;
@@ -57,7 +57,7 @@ public class Claire : MonoBehaviour
 
     [Header("Basic Down")]
     public float BD_Damage;
-    public float BD_Angle;
+    public Vector2 BD_Angle;
     public float BD_Knockback;
     public float BD_HitStun;
     public float BD_Distance;
@@ -70,7 +70,7 @@ public class Claire : MonoBehaviour
 
     [Header("Neutral Air")]
     public float NA_Damage;
-    public float NA_Angle;
+    public Vector2 NA_Angle;
     public float NA_Knockback;
     public float NA_HitStun;
     public float NA_Distance;
@@ -81,7 +81,7 @@ public class Claire : MonoBehaviour
 
     [Header("Up Air")]
     public float UA_Damage;
-    public float UA_Angle;
+    public Vector2 UA_Angle;
     public float UA_Knockback;
     public float UA_HitStun;
     public float UA_Distance;
@@ -94,7 +94,7 @@ public class Claire : MonoBehaviour
 
 	[Header("Down Air")]
 	public float DA_Damage;
-	public float DA_Angle;
+	public Vector2 DA_Angle;
 	public float DA_Knockback;
 	public float DA_HitStun;
 	public float DA_Distance;
@@ -105,7 +105,7 @@ public class Claire : MonoBehaviour
 
 	[Header("Neutral Heavy")]
     public float NH_Damage;
-    public float NH_Angle;
+    public Vector2 NH_Angle;
     public float NH_Knockback;
     public float NH_HitStun;
     public float NH_Distance;
@@ -116,7 +116,7 @@ public class Claire : MonoBehaviour
 
     [Header("Forward Heavy")]
     public float FH_Damage;
-    public float FH_Angle;
+    public Vector2 FH_Angle;
     public float FH_Knockback;
     public float FH_HitStun;
     public float FH_Distance;
@@ -127,7 +127,7 @@ public class Claire : MonoBehaviour
 
     [Header("Up Heavy Part 1")]
     public float UH1_Damage;
-    public float UH1_Angle;
+    public Vector2 UH1_Angle;
     public float UH1_Knockback;
     public float UH1_HitStun;
     public float UH1_Distance;
@@ -138,7 +138,7 @@ public class Claire : MonoBehaviour
 
     [Header("Up Heavy Part 2")]
     public float UH2_Damage;
-    public float UH2_Angle;
+    public Vector2 UH2_Angle;
     public float UH2_Knockback;
     public float UH2_HitStun;
     public float UH2_Distance;
@@ -149,7 +149,7 @@ public class Claire : MonoBehaviour
 
     [Header("Down Heavy")]
     public float DH_Damage;
-    public float DH_Angle;
+    public Vector2 DH_Angle;
     public float DH_Knockback;
     public float DH_HitStun;
     public float DH_Distance;
@@ -336,10 +336,10 @@ public class Claire : MonoBehaviour
     }
     
 	
-    /*
+    
     private void NeutralBasic(GameObject enemy)
     {
-		enemy.GetComponent<BasicPlayerScript>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, BN_Distance, BN_TravelTime, player.FacingRight(), BN_ShakeDuration, BN_ShakeMagnitude, BN_ShakeSlowDown);
+		enemy.GetComponent<BasePlayer>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, player.FacingRight(), BN_ShakeDuration, BN_ShakeMagnitude, BN_ShakeSlowDown);
         player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(BN_Damage);
     }
 
@@ -351,29 +351,29 @@ public class Claire : MonoBehaviour
         bullet.GetComponent<Projectile>().player = player;
         if (player.FacingRight())
         {
-            bullet.GetComponent<Projectile>().direction = new Vector3(-1, 0, 0);
+            bullet.GetComponent<Projectile>().direction = new Vector3(1, 0, 0);
         }
         else
         {
-            bullet.GetComponent<Projectile>().direction = new Vector3(1, 0, 0);
+            bullet.GetComponent<Projectile>().direction = new Vector3(-1, 0, 0);
         }
     }
 
     private void UpBasic(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(BU_Damage, BU_Angle, BU_Knockback, BU_HitStun, BU_Distance, BU_TravelTime, player.FacingRight(), BU_ShakeDuration, BU_ShakeMagnitude, BU_ShakeSlowDown);
+        enemy.GetComponent<BasePlayer>().GetHit(BU_Damage, BU_Angle, BU_Knockback, BU_HitStun, player.FacingRight(), BU_ShakeDuration, BU_ShakeMagnitude, BU_ShakeSlowDown);
         player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(BU_Damage);
     }
 
     private void DownBasic(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(BD_Damage, BD_Angle, BD_Knockback, BD_HitStun, BD_Distance, BD_TravelTime, player.FacingRight(), BD_ShakeDuration, BD_ShakeMagnitude, BD_ShakeSlowDown);
+        enemy.GetComponent<BasePlayer>().GetHit(BD_Damage, BD_Angle, BD_Knockback, BD_HitStun, player.FacingRight(), BD_ShakeDuration, BD_ShakeMagnitude, BD_ShakeSlowDown);
         player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(BD_Damage);
     }
 
     private void NeutralAir(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(NA_Damage, NA_Angle, NA_Knockback, NA_HitStun, NA_Distance, NA_TravelTime, player.FacingRight(), NA_ShakeDuration, NA_ShakeMagnitude, NA_ShakeSlowDown);
+        enemy.GetComponent<BasePlayer>().GetHit(NA_Damage, NA_Angle, NA_Knockback, NA_HitStun, player.FacingRight(), NA_ShakeDuration, NA_ShakeMagnitude, NA_ShakeSlowDown);
         player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(NA_Damage);
     }
 
@@ -388,19 +388,19 @@ public class Claire : MonoBehaviour
 
 	private void DownAir(GameObject enemy)
 	{
-		enemy.GetComponent<BasicPlayerScript>().GetHit(DA_Damage, DA_Angle, DA_Knockback, DA_HitStun, DA_Distance, DA_TravelTime, player.FacingRight(), DA_ShakeDuration, DA_ShakeMagnitude, DA_ShakeSlowDown);
+		enemy.GetComponent<BasePlayer>().GetHit(DA_Damage, DA_Angle, DA_Knockback, DA_HitStun, player.FacingRight(), DA_ShakeDuration, DA_ShakeMagnitude, DA_ShakeSlowDown);
 		player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(DA_Damage);
 	}
 
 	private void NeutralHeavy(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(NH_Damage, NH_Angle, NH_Knockback, NH_HitStun, NH_Distance, NH_TravelTime, player.FacingRight(), NH_ShakeDuration, NH_ShakeMagnitude, NH_ShakeSlowDown);
+        enemy.GetComponent<BasePlayer>().GetHit(NH_Damage, NH_Angle, NH_Knockback, NH_HitStun, player.FacingRight(), NH_ShakeDuration, NH_ShakeMagnitude, NH_ShakeSlowDown);
         player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(NH_Damage);
     }
 
     private void ForwardHeavy(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(FH_Damage, FH_Angle, FH_Knockback, FH_HitStun, FH_Distance, FH_TravelTime, player.FacingRight(), FH_ShakeDuration, FH_ShakeMagnitude, FH_ShakeSlowDown);
+        enemy.GetComponent<BasePlayer>().GetHit(FH_Damage, FH_Angle, FH_Knockback, FH_HitStun, player.FacingRight(), FH_ShakeDuration, FH_ShakeMagnitude, FH_ShakeSlowDown);
         player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(FH_Damage);
     }
 
@@ -411,13 +411,13 @@ public class Claire : MonoBehaviour
 
     private void UpHeavyPart1(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(UH1_Damage, UH1_Angle, UH1_Knockback, UH1_HitStun, UH1_Distance, UH1_TravelTime, player.FacingRight(), UH1_ShakeDuration, UH1_ShakeMagnitude, UH1_ShakeSlowDown);
+        enemy.GetComponent<BasePlayer>().GetHit(UH1_Damage, UH1_Angle, UH1_Knockback, UH1_HitStun, player.FacingRight(), UH1_ShakeDuration, UH1_ShakeMagnitude, UH1_ShakeSlowDown);
         player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(UH1_Damage);
     }
 
     private void UpHeavyPart2(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(UH2_Damage, UH2_Angle, UH2_Knockback, UH2_HitStun, UH2_Distance, UH2_TravelTime, player.FacingRight(), UH2_ShakeDuration, UH2_ShakeMagnitude, UH2_ShakeSlowDown);
+        enemy.GetComponent<BasePlayer>().GetHit(UH2_Damage, UH2_Angle, UH2_Knockback, UH2_HitStun, player.FacingRight(), UH2_ShakeDuration, UH2_ShakeMagnitude, UH2_ShakeSlowDown);
         player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(UH2_Damage);
     }
 
@@ -427,7 +427,7 @@ public class Claire : MonoBehaviour
 
         
     }
-    */
+    
     public void CurrentAttack(int attackNum)
     {
         currentAttack = attackNum;
@@ -483,9 +483,9 @@ public class Claire : MonoBehaviour
         {
             try
             {
-                if (other.transform.root.gameObject.GetComponent<BasicPlayerScript>().playerNum != playerNumber)
+                if (other.transform.root.gameObject.GetComponent<BasePlayer>().playerNum != playerNumber)
                 {
-                    /*
+                    if(other.GetComponent<BasePlayer>().player != BasePlayer.playerState.Knockback)
                     switch (currentAttack)
                     {
                         case 0:
@@ -530,7 +530,6 @@ public class Claire : MonoBehaviour
                             UpHeavyPart2(other.gameObject);
                             break;
                     }
-                    */
                 }
             }
             catch

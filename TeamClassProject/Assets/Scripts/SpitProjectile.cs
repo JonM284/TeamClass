@@ -16,7 +16,7 @@ public class SpitProjectile : MonoBehaviour
 
     [Header("Attack Attributes")]
     public float damage;
-    public float angle;
+    public Vector2 angle;
     public float knockback;
     public float hitStun;
     public float distance;
@@ -27,7 +27,7 @@ public class SpitProjectile : MonoBehaviour
     public float shakeSlowDown;
     public Vector3 direction;
     public bool moveRight = true;
-    public BasicPlayerScript player;
+    public BasePlayer player;
 
     private SpriteRenderer sr;
     public Sprite[] spitSprites;
@@ -53,7 +53,7 @@ public class SpitProjectile : MonoBehaviour
         currentMoveUpTimer = maxMoveUpTimer;
     }
 
-    public void SetVariables(float damage1, float angle1, float knockback1, float hitStun1, float distance1, float travelTime1, int playerNum1, float duration, float magnitude, float slowDown)
+    public void SetVariables(float damage1, Vector2 angle1, float knockback1, float hitStun1, float distance1, float travelTime1, int playerNum1, float duration, float magnitude, float slowDown)
     {
         damage = damage1;
         angle = angle1;
@@ -163,9 +163,9 @@ public class SpitProjectile : MonoBehaviour
 
             try
             {
-                if (other.transform.root.gameObject.GetComponent<BasicPlayerScript>().playerNum != playerNum)
+                if (other.transform.root.gameObject.GetComponent<BasePlayer>().playerNum != playerNum)
                 {
-                    other.gameObject.GetComponent<BasicPlayerScript>().GetHit(damage, angle, knockback, hitStun, distance, travelTime, moveRight, shakeDuration, shakeMagnitude, shakeSlowDown);
+                    other.gameObject.GetComponent<BasePlayer>().GetHit(damage, angle, knockback, hitStun, moveRight, shakeDuration, shakeMagnitude, shakeSlowDown);
                     player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(damage);
                     Destroy(gameObject);
                 }

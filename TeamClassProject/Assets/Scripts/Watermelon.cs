@@ -354,7 +354,7 @@ public class Watermelon : MonoBehaviour
 
 
     }
-
+    /*
     private void NeutralBasic(GameObject enemy)
     {
         print("NB");
@@ -420,7 +420,7 @@ public class Watermelon : MonoBehaviour
     {
         enemy.GetComponent<BasicPlayerScript>().GetHit(NH_Damage, NH_Angle, NH_Knockback, NH_HitStun, NH_Distance, NH_TravelTime, player.FacingRight(), NH_ShakeDuration, NH_ShakeMagnitude, NH_ShakeSlowDown);
     }
-
+    */
 
     public void CurrentAttack(int attackNum)
     {
@@ -454,6 +454,7 @@ public class Watermelon : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            /*
             switch (currentAttack)
             {
                 case 0:
@@ -491,6 +492,7 @@ public class Watermelon : MonoBehaviour
                     NeutralHeavy(other.gameObject);
                     break;
             }
+            */
         }
     }
 }

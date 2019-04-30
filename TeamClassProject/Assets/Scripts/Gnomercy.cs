@@ -290,7 +290,7 @@ public class Gnomercy : MonoBehaviour
 				break;
 		}
 	}
-
+    /*
 	private void NeutralBasic(GameObject enemy)
 	{
 		enemy.GetComponent<BasicPlayerScript>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, BN_Distance, BN_TravelTime, player.FacingRight(), BN_ShakeDuration, BN_ShakeMagnitude, BN_ShakeSlowDown);
@@ -399,8 +399,10 @@ public class Gnomercy : MonoBehaviour
 			{
 				if (other.transform.root.gameObject.GetComponent<BasicPlayerScript>().playerNum != playerNumber)
 				{
+                    /*
 					switch (currentAttack)
 					{
+                        
 						case 0:
 							break;
 
@@ -436,6 +438,7 @@ public class Gnomercy : MonoBehaviour
 							UpHeavy(other.gameObject);
 							break;
 					}
+                    */
 				}
 			}
 			catch

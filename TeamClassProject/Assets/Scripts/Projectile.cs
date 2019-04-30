@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour
 
     [Header("Attack Attributes")]
     public float damage;
-    public float angle;
+    public Vector2 angle;
     public float knockback;
     public float hitStun;
     public float distance;
@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
     public float shakeSlowDown;
     public Vector3 direction;
 
-    public BasicPlayerScript player;
+    public BasePlayer player;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,7 @@ public class Projectile : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void SetVariables(float damage1, float angle1, float knockback1, float hitStun1, float distance1, float travelTime1, float speed1, int playerNum1, float duration, float magnitude, float slowDown)
+    public void SetVariables(float damage1, Vector2 angle1, float knockback1, float hitStun1, float distance1, float travelTime1, float speed1, int playerNum1, float duration, float magnitude, float slowDown)
     {
         damage = damage1;
         angle = angle1;
@@ -59,12 +59,12 @@ public class Projectile : MonoBehaviour
         {
             try
             {
-                if (other.transform.root.gameObject.GetComponent<BasicPlayerScript>().playerNum != playerNum)
-                {                
-                    Debug.Log("pn" + other.transform.root.gameObject.GetComponent<BasicPlayerScript>().playerNum);
-                    Debug.Log("pnm1 " + playerNum);
-                    other.gameObject.GetComponent<BasicPlayerScript>().GetHit(damage, angle, knockback, hitStun, distance, travelTime, moveRight, shakeDuration, shakeMagnitude, shakeSlowDown);
+                if (other.transform.root.gameObject.GetComponent<BasePlayer>().playerNum != playerNum)
+                {
+                    other.gameObject.GetComponent<BasePlayer>().GetHit(damage, angle, knockback, hitStun, moveRight, shakeDuration, shakeMagnitude, shakeSlowDown);
                     player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(damage);
+                    Debug.Log("pn" + other.transform.root.gameObject.GetComponent<BasePlayer>().playerNum);
+                    Debug.Log("pnm1 " + playerNum);
                     Destroy(gameObject);
                 }
             }

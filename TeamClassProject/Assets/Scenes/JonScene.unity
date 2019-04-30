@@ -6107,6 +6107,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_Parent: {fileID: 0}
+  attack_force: 100
+  hitStun: 0.2
+  screen_Shake_Duration: 0.2
+  screen_Shake_Magnitude: 0.1
+  screen_Shake_Time: 0.2
 --- !u!4 &352123217 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3174836650587856897, guid: 7b74d7bbab95d4e739d264a61cbb3db3,
@@ -6308,6 +6313,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack_Damage: 200
   is_Spike: 1
+  attack_force: 100
+  hitStun: 0.2
+  screen_Shake_Duration: 0.2
+  screen_Shake_Magnitude: 0.1
+  screen_Shake_Time: 0.2
 --- !u!1 &358094161
 GameObject:
   m_ObjectHideFlags: 0
@@ -6959,7 +6969,7 @@ PrefabInstance:
     - target: {fileID: 2988186520398043739, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
         type: 3}
       propertyPath: makeFaceRight
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2988186520398043739, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
         type: 3}
@@ -9851,7 +9861,7 @@ PrefabInstance:
     - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
         type: 3}
       propertyPath: makeFaceRight
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a8e6f2e7e998044985d7d5e84024362, type: 3}
@@ -11857,6 +11867,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_Parent: {fileID: 0}
+  attack_force: 100
+  hitStun: 0.2
+  screen_Shake_Duration: 0.2
+  screen_Shake_Magnitude: 0.1
+  screen_Shake_Time: 0.2
 --- !u!4 &786984732 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3174836650587856897, guid: 7b74d7bbab95d4e739d264a61cbb3db3,
@@ -12270,7 +12285,7 @@ PrefabInstance:
     - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
         type: 3}
       propertyPath: makeFaceRight
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a8e6f2e7e998044985d7d5e84024362, type: 3}
@@ -16810,7 +16825,7 @@ PrefabInstance:
     - target: {fileID: 2988186520398043739, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
         type: 3}
       propertyPath: makeFaceRight
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2988186520398043739, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
         type: 3}
@@ -19999,6 +20014,51 @@ PrefabInstance:
       propertyPath: regenableHealthBar
       value: 
       objectReference: {fileID: 1424168686}
+    - target: {fileID: 2588851933903481558, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: BN_Angle.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481558, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: BN_Angle.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481558, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: BN_Knockback
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481558, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: BF_Angle.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481558, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: BF_Angle.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481558, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: BF_Knockback
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481558, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: BU_Angle.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481558, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: BU_Angle.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481558, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: BU_Knockback
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a8e6f2e7e998044985d7d5e84024362, type: 3}
 --- !u!1 &1500910300 stripped
@@ -22895,6 +22955,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_Parent: {fileID: 0}
+  attack_force: 100
+  hitStun: 0.2
+  screen_Shake_Duration: 0.2
+  screen_Shake_Magnitude: 0.1
+  screen_Shake_Time: 0.2
 --- !u!4 &1679502885 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3174836650587856897, guid: 7b74d7bbab95d4e739d264a61cbb3db3,
@@ -24509,6 +24574,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   my_Parent: {fileID: 0}
+  attack_force: 100
+  hitStun: 0.2
+  screen_Shake_Duration: 0.2
+  screen_Shake_Magnitude: 0.1
+  screen_Shake_Time: 0.2
 --- !u!4 &1803329644 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3174836650587856897, guid: 7b74d7bbab95d4e739d264a61cbb3db3,
@@ -27892,6 +27962,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack_Damage: 200
   is_Spike: 1
+  attack_force: 100
+  hitStun: 0.2
+  screen_Shake_Duration: 0.2
+  screen_Shake_Magnitude: 0.1
+  screen_Shake_Time: 0.2
 --- !u!1 &2033650913 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4336007881639682530, guid: 46ac94da96ae24a7996f96058d2091e3,
@@ -28672,7 +28747,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.105000004, y: 0.16444197}
   m_AnchorMax: {x: 0.16750002, y: 0.27322102}
-  m_AnchoredPosition: {x: 7.275017, y: 37.470093}
+  m_AnchoredPosition: {x: 7.2750244, y: 37.470093}
   m_SizeDelta: {x: 43.74997, y: 39.072647}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2055920671
@@ -29728,6 +29803,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack_Damage: 1.7
   is_Spike: 0
+  attack_force: 100
+  hitStun: 0.2
+  screen_Shake_Duration: 0.2
+  screen_Shake_Magnitude: 0.1
+  screen_Shake_Time: 0.2
 --- !u!1 &2141519549 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2122791570533091895, guid: a117407697d3c4a42a8bd4f25eb33cbb,
@@ -29799,6 +29879,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack_Damage: 1.7
   is_Spike: 0
+  attack_force: 100
+  hitStun: 0.2
+  screen_Shake_Duration: 0.2
+  screen_Shake_Magnitude: 0.1
+  screen_Shake_Time: 0.2
 --- !u!1001 &1117594310838675490
 PrefabInstance:
   m_ObjectHideFlags: 0
