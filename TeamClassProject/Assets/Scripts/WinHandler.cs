@@ -80,7 +80,7 @@ public class WinHandler : MonoBehaviour
             team1.GetComponent<SwitchHandler>().teammate2_support.SetActive(false);
             team1.GetComponent<SwitchHandler>().teammate2_fighter.SetActive(true);
         }
-        if (team1.GetComponent<SwitchHandler>().teammate2_fighter.GetComponent<BasicPlayerScript>().currentHealth <= 0 && t1_p2_dead == false)
+        if (team1.GetComponent<SwitchHandler>().teammate2_fighter.GetComponent<BasePlayer>().currentHealth <= 0 && t1_p2_dead == false)
         {
             t1_p2_dead = true;
             team1.GetComponent<SwitchHandler>().teammate2_fighter.SetActive(false);
@@ -132,7 +132,7 @@ public class WinHandler : MonoBehaviour
             team2.GetComponent<SwitchHandler>().teammate2_support.SetActive(false);
             team2.GetComponent<SwitchHandler>().teammate2_fighter.SetActive(true);
         }
-        if (team2.GetComponent<SwitchHandler>().teammate2_fighter.GetComponent<BasicPlayerScript>().currentHealth <= 0 && t2_p2_dead == false)
+        if (team2.GetComponent<SwitchHandler>().teammate2_fighter.GetComponent<BasePlayer>().currentHealth <= 0 && t2_p2_dead == false)
         {
             t2_p2_dead = true;
             team2.GetComponent<SwitchHandler>().teammate1_fighter.SetActive(true);

@@ -134,7 +134,7 @@ public class SwitchHandler : MonoBehaviour
         }
 
         teammate1_num = teammate1_fighter.GetComponent<BasePlayer>().playerNum;
-        teammate2_num = teammate2_fighter.GetComponent<BasicPlayerScript>().playerNum;
+        teammate2_num = teammate2_fighter.GetComponent<BasePlayer>().playerNum;
 
         teammate1_fighter.SetActive(true);
         teammate1_support.SetActive(false);
@@ -143,7 +143,7 @@ public class SwitchHandler : MonoBehaviour
         teammate2_support.SetActive(true);
 
         teammate1_fighter.GetComponent<BasePlayer>().teamNum = teamNumber;
-        teammate2_fighter.GetComponent<BasicPlayerScript>().teamNum = teamNumber;
+        teammate2_fighter.GetComponent<BasePlayer>().teamNum = teamNumber;
 
 
         if (SceneManager.GetActiveScene().name.Equals("JonScene"))
@@ -220,13 +220,13 @@ public class SwitchHandler : MonoBehaviour
         }
         else
         {
-            if (teammate2_fighter.GetComponent<BasicPlayerScript>().claire)
+            if (teammate2_fighter.GetComponent<BasePlayer>().claire)
             {
                 clairePortrait.enabled = true;
                 gilbertPortrait.enabled = false;
             }
             else
-            if (teammate2_fighter.GetComponent<BasicPlayerScript>().gillbert)
+            if (teammate2_fighter.GetComponent<BasePlayer>().gillbert)
             {
                 clairePortrait.enabled = false;
                 gilbertPortrait.enabled = true;
@@ -323,25 +323,25 @@ public class SwitchHandler : MonoBehaviour
                 else
                 {
                     teammate2_fighter.SetActive(true);
-                    if (teammate2_fighter.GetComponent<BasicPlayerScript>().currentHealth + regenHealthPool >= teammate2_fighter.GetComponent<BasicPlayerScript>().regenHeath)
+                    if (teammate2_fighter.GetComponent<BasePlayer>().currentHealth + regenHealthPool >= teammate2_fighter.GetComponent<BasePlayer>().regenHeath)
                     {
-                        teammate2_fighter.GetComponent<BasicPlayerScript>().currentHealth = teammate2_fighter.GetComponent<BasicPlayerScript>().regenHeath;
+                        teammate2_fighter.GetComponent<BasePlayer>().currentHealth = teammate2_fighter.GetComponent<BasePlayer>().regenHeath;
                     }
                     else
                     {
-                        teammate2_fighter.GetComponent<BasicPlayerScript>().currentHealth += regenHealthPool;
-                        teammate2_fighter.GetComponent<BasicPlayerScript>().regenHeath = teammate2_fighter.GetComponent<BasicPlayerScript>().currentHealth;
+                        teammate2_fighter.GetComponent<BasePlayer>().currentHealth += regenHealthPool;
+                        teammate2_fighter.GetComponent<BasePlayer>().regenHeath = teammate2_fighter.GetComponent<BasePlayer>().currentHealth;
                     }
                     teammate2_fighter.transform.position = new Vector3(teammate1_fighterPos.x, teammate1_fighterPos.y + .3f, teammate1_fighterPos.z);
                     teammate2_support.SetActive(false);
 
                     //portrait swap
-                    if (teammate2_fighter.GetComponent<BasicPlayerScript>().claire)
+                    if (teammate2_fighter.GetComponent<BasePlayer>().claire)
                     {
                         clairePortrait.enabled = true;
                         gilbertPortrait.enabled = false;
                     }
-                    else if (teammate2_fighter.GetComponent<BasicPlayerScript>().gillbert)
+                    else if (teammate2_fighter.GetComponent<BasePlayer>().gillbert)
                     {
                         clairePortrait.enabled = false;
                         gilbertPortrait.enabled = true;

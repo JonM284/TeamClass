@@ -175,7 +175,7 @@ public class Gillbert : MonoBehaviour
 
     private float currentAttack;
 
-    BasicPlayerScript player;
+    BasePlayer player;
 
 
     [Header("Audio")]
@@ -190,8 +190,8 @@ public class Gillbert : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = this.GetComponent<BasicPlayerScript>();
-        playerNumber = GetComponent<BasicPlayerScript>().playerNum;
+        player = this.GetComponent<BasePlayer>();
+        playerNumber = GetComponent<BasePlayer>().playerNum;
 
         //setting AudioSource
         GilbertSoundPlayer = gameObject.GetComponent<AudioSource>();
@@ -200,6 +200,7 @@ public class Gillbert : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         ultAttackTime -= Time.deltaTime;
         if (ultActive)
         {
@@ -214,7 +215,7 @@ public class Gillbert : MonoBehaviour
                 ultAttackTime = 1;
             }
         }
-
+        
         if(player.currentGilbertFlightTime < 0)
         {
             if(ultActive == true)
@@ -223,6 +224,7 @@ public class Gillbert : MonoBehaviour
             }
             ultActive = false;
         }
+        */
     }
 
     /*
@@ -251,143 +253,92 @@ public class Gillbert : MonoBehaviour
         switch (attackNum)
         {
             case 1:
-                player.anim.SetTrigger("BasicNeutral");
-                player.isAttacking = true;
-                player.canTurn = false;
-
+                //basic neutral
                 GilbertSoundPlayer.clip = GilbertSounds[0];
                 GilbertSoundPlayer.Play();
 
-                if (player.gillbert)
-                {
-                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
-                }
+                player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
                 break;
 
             case 2:
-                player.anim.SetTrigger("BasicForward");
-                player.isAttacking = true;
-                player.canTurn = false;
-
+                //basic forward
                 GilbertSoundPlayer.clip = GilbertSounds[0];
                 GilbertSoundPlayer.Play();
 
-                if (player.gillbert)
-                {
+                player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
-                }
                 break;
 
             case 3:
-                player.anim.SetTrigger("BasicUp");
-                player.isAttacking = true;
-                player.canTurn = false;
-
+                //basic up
                 GilbertSoundPlayer.clip = GilbertSounds[1];
                 GilbertSoundPlayer.Play();
 
-                if (player.gillbert)
-                {
+                player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
-                }
                 break;
 
             case 4:
-                player.anim.SetTrigger("BasicDown");
-                player.isAttacking = true;
-                player.canTurn = false;
-
+                //basic down
                 GilbertSoundPlayer.clip = GilbertSounds[2];
                 GilbertSoundPlayer.Play();
 
-                if (player.gillbert)
-                {
+                player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
-                }
                 break;
 
             case 9:
-                player.anim.SetTrigger("NeutralAir");
-                player.isAttacking = true;
-
+                //neutral air
                 GilbertSoundPlayer.clip = GilbertSounds[0];
                 GilbertSoundPlayer.Play();
 
                 break;
 
             case 10:
-                player.anim.SetTrigger("UpAir");
-                player.isAttacking = true;
-
+                //up air
                 GilbertSoundPlayer.clip = GilbertSounds[3];
                 GilbertSoundPlayer.Play();
 
                 break;
 
             case 11:
-                player.anim.SetTrigger("ForwardAir");
-                player.isAttacking = true;
-
+                //forward air
                 GilbertSoundPlayer.clip = GilbertSounds[3];
                 GilbertSoundPlayer.Play();
 
                 break;
 
             case 12:
-                player.anim.SetTrigger("DownAir");
-                player.isAttacking = true;
-
+                //down air
                 GilbertSoundPlayer.clip = GilbertSounds[4];
                 GilbertSoundPlayer.Play();
 
                 break;
 
             case 20:
-                player.anim.SetTrigger("HeavyNeutral");
-                player.isAttacking = true;
-                player.canTurn = false;
-
+                //heavy neutral
                 GilbertSoundPlayer.clip = GilbertSounds[5];
                 GilbertSoundPlayer.Play();
 
-                if (player.gillbert)
-                {
+                player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
-                }
                 break;
 
             case 21:
-                player.anim.SetTrigger("HeavyForward");
-                player.isAttacking = true;
-
+                //heavy forward
                 GilbertSoundPlayer.clip = GilbertSounds[6];
                 GilbertSoundPlayer.Play();
-                player.AttackMovement(10, .5f, .2f, new Vector2(0,0));
 
                 break;
 
             case 22:
-                player.anim.SetTrigger("HeavyDown");
-                player.isAttacking = true;
-                player.canTurn = false;
-
+                //heavy down
                 GilbertSoundPlayer.clip = GilbertSounds[7];
                 GilbertSoundPlayer.Play();
 
-                if (player.gillbert)
-                {
+                player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-                    player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
-                }
                 break;
 
             case 69:
@@ -404,7 +355,7 @@ public class Gillbert : MonoBehaviour
     }
 
 
-
+    /*
     private void NeutralBasic(GameObject enemy)
     {
         //enemy.GetComponent<BasicPlayerScript>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, BN_Distance, BN_TravelTime, player.FacingRight(), BN_ShakeDuration, BN_ShakeMagnitude, BN_ShakeSlowDown);
@@ -489,7 +440,7 @@ public class Gillbert : MonoBehaviour
         fireball.GetComponent<SpitProjectile>().player = player;
     }   
 
-
+    */
     public void CurrentAttack(int attackNum)
     {
         currentAttack = attackNum;
@@ -500,7 +451,6 @@ public class Gillbert : MonoBehaviour
         currentAttack = 0;
         player.isAttacking = false;
         player.ResetTriggers();
-        player.canTurn = true;
         this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
     }
@@ -533,6 +483,7 @@ public class Gillbert : MonoBehaviour
             {
                 if (other.transform.root.gameObject.GetComponent<BasicPlayerScript>().playerNum != playerNumber)
                 {
+                    /*
                     switch (currentAttack)
                     {
                         case 0:
@@ -575,6 +526,7 @@ public class Gillbert : MonoBehaviour
                             break;
 
                     }
+                    */
                 }
             }
             catch
