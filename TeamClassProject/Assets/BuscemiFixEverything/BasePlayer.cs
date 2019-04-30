@@ -533,7 +533,7 @@ public class BasePlayer : MonoBehaviour
 
             if (facingRight)
             {
-                velocity = new Vector3(-attackAngle.x * attackForce.x, attackAngle.y * attackForce.y, velocity.z);
+                velocity = new Vector3(-attackAngle.x * attackForce, attackAngle.y * attackForce, velocity.z);
                 direction = "Right";
             }
             else
