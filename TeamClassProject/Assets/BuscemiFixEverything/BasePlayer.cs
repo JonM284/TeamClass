@@ -40,8 +40,8 @@ public class BasePlayer : MonoBehaviour
     public float xScale;
 
     //separating when the player can move verses when they are in knockback
-    enum playerState { FreeMovement, Knockback}
-    playerState player;
+    public enum playerState { FreeMovement, Knockback}
+    public playerState player;
 
     [HideInInspector]
     public Animator anim;
@@ -508,11 +508,11 @@ public class BasePlayer : MonoBehaviour
         }
         else
         {
+            player = playerState.Knockback;
             healthAnim.ResetTrigger("gotHit");
             healthAnim.SetTrigger("gotHit");
             rb.constraints = RigidbodyConstraints2D.None;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-
             //Jon put this here
             if (attackDamage < 100)
             {
@@ -522,27 +522,25 @@ public class BasePlayer : MonoBehaviour
             {
                 myPlayer.SetVibration(0, Heavy_Vib, Heavy_Time);
             }
-
             teamController.GetComponent<SwitchHandler>().UpdateUltBar(attackDamage);
             currentHealth -= attackDamage;
             regenHeath -= attackDamage * regenHeathMultiplier;
             velocity = new Vector3(0, 0, 0);
-            isAttacking = false;
-
-            mainCamera.GetComponent<ShakeScreenScript>().SetVariables(duration, magnitude, slowDown);
-
+            velocity = new Vector3(-attackAngle.x * attackForce, attackAngle.y * attackForce, velocity.z);
+            direction = "Right";
             if (facingRight)
-            {
-                velocity = new Vector3(-attackAngle.x * attackForce, attackAngle.y * attackForce, velocity.z);
-                direction = "Right";
-            }
-            else
             {
                 velocity = attackAngle * attackForce;
                 direction = "Left";
             }
-            player = playerState.Knockback;
+            else 
+            {
+                velocity = new Vector3(-attackAngle.x * attackForce, attackAngle.y * attackForce, velocity.z);
+                direction = "Right";
+            }
             StartCoroutine(HitStun(hitStun));
+            isAttacking = false;
+            mainCamera.GetComponent<ShakeScreenScript>().SetVariables(duration, magnitude, slowDown);
         }
     }
 

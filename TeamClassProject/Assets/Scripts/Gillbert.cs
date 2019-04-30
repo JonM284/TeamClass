@@ -18,7 +18,7 @@ public class Gillbert : MonoBehaviour
     [Header("Basic Attacks")]
     [Header("Basic Neutral")]
     public float BN_Damage;
-    public float BN_Angle;
+    public Vector2 BN_Angle;
     public float BN_Knockback;
     public float BN_HitStun;
     public float BN_Distance;
@@ -30,7 +30,7 @@ public class Gillbert : MonoBehaviour
 
     [Header("Basic Forward")]
     public float BF_Damage;
-    public float BF_Angle;
+    public Vector2 BF_Angle;
     public float BF_Knockback;
     public float BF_HitStun;
     public float BF_Distance;
@@ -42,7 +42,7 @@ public class Gillbert : MonoBehaviour
 
     [Header("Basic Up")]
     public float BU_Damage;
-    public float BU_Angle;
+    public Vector2 BU_Angle;
     public float BU_Knockback;
     public float BU_HitStun;
     public float BU_Distance;
@@ -66,7 +66,7 @@ public class Gillbert : MonoBehaviour
       [Header("Air Attacks")]
     [Header("Neutral Air")]
     public float NA_Damage;
-    public float NA_Angle;
+    public Vector2 NA_Angle;
     public float NA_Knockback;
     public float NA_HitStun;
     public float NA_Distance;
@@ -77,7 +77,7 @@ public class Gillbert : MonoBehaviour
 
     [Header("Forward Air")]
     public float FA_Damage;
-    public float FA_Angle;
+    public Vector2 FA_Angle;
     public float FA_Knockback;
     public float FA_HitStun;
     public float FA_Distance;
@@ -88,7 +88,7 @@ public class Gillbert : MonoBehaviour
 
     [Header("Up Air")]
     public float UA_Damage;
-    public float UA_Angle;
+    public Vector2 UA_Angle;
     public float UA_Knockback;
     public float UA_HitStun;
     public float UA_Distance;
@@ -101,7 +101,7 @@ public class Gillbert : MonoBehaviour
 
     [Header("Down Air")]
     public float DA_Damage;
-    public float DA_Angle;
+    public Vector2 DA_Angle;
     public float DA_Knockback;
     public float DA_HitStun;
     public float DA_Distance;
@@ -120,7 +120,7 @@ public class Gillbert : MonoBehaviour
 
     [Header("Neutral Heavy")]
     public float NH_Damage;
-    public float NH_Angle;
+    public Vector2 NH_Angle;
     public float NH_Knockback;
     public float NH_HitStun;
     public float NH_Distance;
@@ -131,7 +131,7 @@ public class Gillbert : MonoBehaviour
 
     [Header("Forward Heavy")]
     public float FH_Damage;
-    public float FH_Angle;
+    public Vector2 FH_Angle;
     public float FH_Knockback;
     public float FH_HitStun;
     public float FH_Distance;
@@ -142,7 +142,7 @@ public class Gillbert : MonoBehaviour
 
     [Header("Down Heavy")]
     public float DH1_Damage;
-    public float DH1_Angle;
+    public Vector2 DH1_Angle;
     public float DH1_Knockback;
     public float DH1_HitStun;
     public float DH1_Distance;
@@ -153,7 +153,7 @@ public class Gillbert : MonoBehaviour
 
     [Header("Ult Attack")]
     public float U_Damage;
-    public float U_Angle;
+    public Vector2 U_Angle;
     public float U_Knockback;
     public float U_HitStun;
     public float U_Distance;
@@ -355,15 +355,15 @@ public class Gillbert : MonoBehaviour
     }
 
 
-    /*
+    
     private void NeutralBasic(GameObject enemy)
     {
-        //enemy.GetComponent<BasicPlayerScript>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, BN_Distance, BN_TravelTime, player.FacingRight(), BN_ShakeDuration, BN_ShakeMagnitude, BN_ShakeSlowDown);
+        enemy.GetComponent<BasePlayer>().GetHit(BN_Damage, BN_Angle, BN_Knockback, BN_HitStun, player.FacingRight(), BN_ShakeDuration, BN_ShakeMagnitude, BN_ShakeSlowDown);
     }
 
     private void ForwardBasic(GameObject enemy) 
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, BF_Distance, BF_TravelTime, player.FacingRight(), BF_ShakeDuration, BF_ShakeMagnitude, BF_ShakeSlowDown);
+        enemy.GetComponent<BasePlayer>().GetHit(BF_Damage, BF_Angle, BF_Knockback, BF_HitStun, player.FacingRight(), BF_ShakeDuration, BF_ShakeMagnitude, BF_ShakeSlowDown);
         player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(BF_Damage);
     }
 
@@ -383,20 +383,21 @@ public class Gillbert : MonoBehaviour
 
     private void DownBasic(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().currentHealth -= BD_Damage;
-        enemy.GetComponent<BasicPlayerScript>().stunTime = BD_StunTime;
+        enemy.GetComponent<BasePlayer>().currentHealth -= BD_Damage;
+        //need to fix stun
+        //enemy.GetComponent<BasePlayer>().stunTime = BD_StunTime;
         player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(BD_Damage);
     }
 
     private void NeutralAir(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(NA_Damage, NA_Angle, NA_Knockback, NA_HitStun, NA_Distance, NA_TravelTime, player.FacingRight(), NA_ShakeDuration, NA_ShakeMagnitude, NA_ShakeSlowDown);
+        enemy.GetComponent<BasePlayer>().GetHit(NA_Damage, NA_Angle, NA_Knockback, NA_HitStun, player.FacingRight(), NA_ShakeDuration, NA_ShakeMagnitude, NA_ShakeSlowDown);
         player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(NA_Damage);
     }
 
     private void ForwardAir(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(FA_Damage, FA_Angle, FA_Knockback, FA_HitStun, FA_Distance, FA_TravelTime, player.FacingRight(), FA_ShakeDuration, FA_ShakeMagnitude, FA_ShakeSlowDown);
+        enemy.GetComponent<BasePlayer>().GetHit(FA_Damage, FA_Angle, FA_Knockback, FA_HitStun, player.FacingRight(), FA_ShakeDuration, FA_ShakeMagnitude, FA_ShakeSlowDown);
         player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(FA_Damage);
     }
 
@@ -415,19 +416,19 @@ public class Gillbert : MonoBehaviour
 
     private void NeutralHeavy(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(NH_Damage, NH_Angle, NH_Knockback, NH_HitStun, NH_Distance, NH_TravelTime, player.FacingRight(), NH_ShakeDuration, NH_ShakeMagnitude, NH_ShakeSlowDown);
+        enemy.GetComponent<BasePlayer>().GetHit(NH_Damage, NH_Angle, NH_Knockback, NH_HitStun, player.FacingRight(), NH_ShakeDuration, NH_ShakeMagnitude, NH_ShakeSlowDown);
         player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(NH_Damage);
     }
 
     private void ForwardHeavy(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(FH_Damage, FH_Angle, FH_Knockback, FH_HitStun, FH_Distance, FH_TravelTime, player.FacingRight(), FH_ShakeDuration, FH_ShakeMagnitude, FH_ShakeSlowDown);
+        enemy.GetComponent<BasePlayer>().GetHit(FH_Damage, FH_Angle, FH_Knockback, FH_HitStun, player.FacingRight(), FH_ShakeDuration, FH_ShakeMagnitude, FH_ShakeSlowDown);
         player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(FH_Damage);
     }
 
     private void DownHeavy(GameObject enemy)
     {
-        enemy.GetComponent<BasicPlayerScript>().GetHit(DH1_Damage, DH1_Angle, DH1_Knockback, DH1_HitStun, DH1_Distance, DH1_TravelTime, player.FacingRight(), DH1_ShakeDuration, DH1_ShakeMagnitude, DH1_ShakeSlowDown);
+        enemy.GetComponent<BasePlayer>().GetHit(DH1_Damage, DH1_Angle, DH1_Knockback, DH1_HitStun, player.FacingRight(), DH1_ShakeDuration, DH1_ShakeMagnitude, DH1_ShakeSlowDown);
         player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(DH1_Damage);
     }
 
@@ -440,7 +441,6 @@ public class Gillbert : MonoBehaviour
         fireball.GetComponent<SpitProjectile>().player = player;
     }   
 
-    */
     public void CurrentAttack(int attackNum)
     {
         currentAttack = attackNum;
@@ -483,7 +483,6 @@ public class Gillbert : MonoBehaviour
             {
                 if (other.transform.root.gameObject.GetComponent<BasicPlayerScript>().playerNum != playerNumber)
                 {
-                    /*
                     switch (currentAttack)
                     {
                         case 0:
@@ -526,7 +525,6 @@ public class Gillbert : MonoBehaviour
                             break;
 
                     }
-                    */
                 }
             }
             catch
