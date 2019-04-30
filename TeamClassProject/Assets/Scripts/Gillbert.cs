@@ -403,7 +403,8 @@ public class Gillbert : MonoBehaviour
 
     private void UpAir(GameObject enemy)
     {
-
+        enemy.GetComponent<BasePlayer>().GetHit(UA_Damage, UA_Angle, UA_Knockback, UA_HitStun, player.FacingRight(), UA_ShakeDuration, UA_ShakeMagnitude, UA_ShakeSlowDown);
+        player.teamController.GetComponent<SwitchHandler>().UpdateUltBar(UA_Damage);
     }
 
     private void DownAir(GameObject enemy)
@@ -481,7 +482,7 @@ public class Gillbert : MonoBehaviour
         {
             try
             {
-                if (other.transform.root.gameObject.GetComponent<BasicPlayerScript>().playerNum != playerNumber)
+                if (other.transform.root.gameObject.GetComponent<BasePlayer>().playerNum != playerNumber)
                 {
                     switch (currentAttack)
                     {

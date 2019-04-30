@@ -71,7 +71,7 @@ public class SpitProjectile : MonoBehaviour
     void Update()
     {
 
-        Debug.Log("Veg" + Mathf.Abs(velocity.y));
+        //Debug.Log("Veg" + Mathf.Abs(velocity.y));
         /*
         if(Mathf.Abs(velocity.y) < 1)
         {

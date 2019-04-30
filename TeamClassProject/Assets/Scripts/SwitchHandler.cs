@@ -80,7 +80,6 @@ public class SwitchHandler : MonoBehaviour
 
         if (teamNumber == 1)
         {
-            teammate1_fighter = P1x3_ClaireFighter;
             //player 1
             if (PlayerPrefs.GetInt("Player1Character") == 1)
             {
@@ -104,6 +103,7 @@ public class SwitchHandler : MonoBehaviour
                 teammate2_fighter = P2x4_GilbertFighter;
                 teammate2_support = P2x4_GilbertSupport;
             }
+            teammate1_fighter = P1x3_GilbertFighter;
         }
 
         if (teamNumber == 2)
