@@ -500,7 +500,7 @@ public class BasePlayer : MonoBehaviour
     /// <param name="duration">How long the screen shake lasts</param>
     /// <param name="magnitude">How agressively the screen shakes</param>
     /// <param name="slowDown">How quickly the camera stops shaking</param>
-    public void GetHit(float attackDamage, Vector2 attackAngle, Vector2 attackForce, float hitStun, bool facingRight, float duration, float magnitude, float slowDown)//im probably missing a few arguments
+    public void GetHit(float attackDamage, Vector2 attackAngle, float attackForce, float hitStun, bool facingRight, float duration, float magnitude, float slowDown)//im probably missing a few arguments
     {
         if (claire && claireCharacter.shield)
         {
