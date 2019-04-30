@@ -434,6 +434,7 @@ public class Claire : MonoBehaviour
 
     public void EndAttack()
     {
+        player.ResetTriggers();
         currentAttack = 0;
         player.isAttacking = false;
         if (shield)
