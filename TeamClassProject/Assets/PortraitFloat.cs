@@ -47,13 +47,13 @@ public class PortraitFloat : MonoBehaviour
         {
             Player myPlayer = ReInput.players.Players[i];
 
-            if (myPlayer.GetAxis("Horizontal") <= -0.1f && timer >= timerMax)
+            if (myPlayer.GetAxis("Horizontal") <= -0.25f && timer >= timerMax)
             {
                 timer = 0;
                 selection--;
             }
 
-            if (myPlayer.GetAxis("Horizontal") >= 0.1f && timer >= timerMax)
+            if (myPlayer.GetAxis("Horizontal") >= 0.25f && timer >= timerMax)
             {
                 timer = 0;
                 selection++;
