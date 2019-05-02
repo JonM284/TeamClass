@@ -63,7 +63,7 @@ public class Spike_Movement : MonoBehaviour
         {
             print("hit player");
             //other.gameObject.GetComponent<BasicPlayerScript>().GetHit(75f, 90, 500, 0.5f, 200f, 0.5f, false, 0.1f, 0.3f, 0.2f);
-            other.gameObject.GetComponent<BasePlayer>().GetHit(75f, attackAngleSpike, 500f, 0.5f, other.gameObject.GetComponent<BasePlayer>().FacingRight(), 0.1f, .3f, .2f);
+            other.gameObject.GetComponent<BasePlayer>().GetHit(damageToDealToPlayer, attackAngleSpike, 12f, 0.5f, other.gameObject.GetComponent<BasePlayer>().FacingRight(), 0.1f, .3f, .2f);
         }
     }
 

@@ -10585,6 +10585,7 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   direction: 
   xScale: 0
+  player: 0
   anim: {fileID: 0}
   rb: {fileID: 0}
   teamController: {fileID: 0}
@@ -10609,10 +10610,13 @@ MonoBehaviour:
   isAttacking: 0
   joyPos: {x: 0, y: 0}
   deadZone: 0
+  boxColliders: []
+  polygonColliders: []
   light_Vib: 0.3
   Heavy_Vib: 0.5
   light_Time: 0.2
   Heavy_Time: 0.35
+  isDead: 0
 --- !u!114 &645758371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10628,12 +10632,12 @@ MonoBehaviour:
   maxHealth: 1000
   speed: 7
   weight: 1
-  gravityUp: 70
-  gravityDown: 30
+  gravityUp: 25
+  gravityDown: 20
   jumpVel: 13
-  maxDownVel: 100
+  maxDownVel: 40
   BN_Damage: 0
-  BN_Angle: 0
+  BN_Angle: {x: 0, y: 0}
   BN_Knockback: 0
   BN_HitStun: 0
   BN_Distance: 0
@@ -10642,8 +10646,8 @@ MonoBehaviour:
   BN_ShakeMagnitude: 0
   BN_ShakeSlowDown: 0
   BF_Damage: 50
-  BF_Angle: 30
-  BF_Knockback: 6
+  BF_Angle: {x: 1, y: 1}
+  BF_Knockback: 8
   BF_HitStun: 0.4
   BF_Distance: 115
   BF_TravelTime: 0.4
@@ -10651,8 +10655,8 @@ MonoBehaviour:
   BF_ShakeMagnitude: 0.05
   BF_ShakeSlowDown: 0.2
   BU_Damage: 45
-  BU_Angle: 70
-  BU_Knockback: 100
+  BU_Angle: {x: 1, y: 0.5}
+  BU_Knockback: 6
   BU_HitStun: 0.26
   BU_Distance: 32
   BU_TravelTime: 0.26
@@ -10671,8 +10675,8 @@ MonoBehaviour:
   BD_Damage: 10
   BD_StunTime: 1
   NA_Damage: 85
-  NA_Angle: 345
-  NA_Knockback: 70
+  NA_Angle: {x: 1, y: 0.4}
+  NA_Knockback: 8
   NA_HitStun: 0.25
   NA_Distance: 120
   NA_TravelTime: 0.25
@@ -10680,7 +10684,7 @@ MonoBehaviour:
   NA_ShakeMagnitude: 0.5
   NA_ShakeSlowDown: 0.2
   FA_Damage: 85
-  FA_Angle: 345
+  FA_Angle: {x: 0, y: 0}
   FA_Knockback: 200
   FA_HitStun: 0.2
   FA_Distance: 120
@@ -10688,19 +10692,19 @@ MonoBehaviour:
   FA_ShakeDuration: 0.035
   FA_ShakeMagnitude: 0.5
   FA_ShakeSlowDown: 0.2
-  UA_Damage: 0
-  UA_Angle: 0
-  UA_Knockback: 0
-  UA_HitStun: 0
+  UA_Damage: 100
+  UA_Angle: {x: 1, y: 0.4}
+  UA_Knockback: 15
+  UA_HitStun: 0.25
   UA_Distance: 0
   UA_TravelTime: 0
-  UA_ShakeDuration: 0
-  UA_ShakeMagnitude: 0
-  UA_ShakeSlowDown: 0
+  UA_ShakeDuration: 0.035
+  UA_ShakeMagnitude: 0.5
+  UA_ShakeSlowDown: 0.2
   spawnIceShotHere1: {fileID: 0}
   bulletSpeed1: 0
   DA_Damage: 50
-  DA_Angle: 20
+  DA_Angle: {x: 0, y: 0}
   DA_Knockback: 150
   DA_HitStun: 0.05
   DA_Distance: 50
@@ -10718,8 +10722,8 @@ MonoBehaviour:
   DA_YSpeed: 5
   DA_MoveUpTimer: 0.1
   NH_Damage: 65
-  NH_Angle: 45
-  NH_Knockback: 0
+  NH_Angle: {x: 1, y: 1}
+  NH_Knockback: 14
   NH_HitStun: 0.2
   NH_Distance: 220
   NH_TravelTime: 0.2
@@ -10727,8 +10731,8 @@ MonoBehaviour:
   NH_ShakeMagnitude: 0.06
   NH_ShakeSlowDown: 0.2
   FH_Damage: 90
-  FH_Angle: 20
-  FH_Knockback: 50
+  FH_Angle: {x: 0.5, y: 1}
+  FH_Knockback: 15
   FH_HitStun: 0.3
   FH_Distance: 145
   FH_TravelTime: 0.3
@@ -10736,8 +10740,8 @@ MonoBehaviour:
   FH_ShakeMagnitude: 0.06
   FH_ShakeSlowDown: 0.2
   DH1_Damage: 92
-  DH1_Angle: 60
-  DH1_Knockback: 45
+  DH1_Angle: {x: 1, y: 1}
+  DH1_Knockback: 17
   DH1_HitStun: 0.25
   DH1_Distance: 264
   DH1_TravelTime: 0.25
@@ -10745,7 +10749,7 @@ MonoBehaviour:
   DH1_ShakeMagnitude: 0.05
   DH1_ShakeSlowDown: 0.25
   U_Damage: 50
-  U_Angle: 20
+  U_Angle: {x: 0, y: 0}
   U_Knockback: 150
   U_HitStun: 0.05
   U_Distance: 50

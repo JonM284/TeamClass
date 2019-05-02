@@ -120,7 +120,7 @@ public class Apple_Movement : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             //other.gameObject.GetComponent<BasicPlayerScript>().GetHit(damageToDealToPlayer, 90f, 100f, /*Stun Time*/.5f, 50f, .5f, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight(), 0.1f, 0.15f, 0.1f);
-            other.gameObject.GetComponent<BasePlayer>().GetHit(damageToDealToPlayer, attackAngleApple, 100f, .5f, other.gameObject.GetComponent<BasePlayer>().FacingRight(), .1f, .15f, .1f);
+            other.gameObject.GetComponent<BasePlayer>().GetHit(damageToDealToPlayer, attackAngleApple, 10f, .5f, other.gameObject.GetComponent<BasePlayer>().FacingRight(), .1f, .15f, .1f);
         }
     }
 

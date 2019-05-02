@@ -4991,6 +4991,8 @@ GameObject:
   - component: {fileID: 5615167271143781679}
   - component: {fileID: 5615167271143781586}
   - component: {fileID: 1827133005}
+  - component: {fileID: 596648039}
+  - component: {fileID: 596648040}
   m_Layer: 0
   m_Name: Ted Use This One Alt
   m_TagString: Player
@@ -5034,7 +5036,7 @@ Animator:
   m_GameObject: {fileID: 1827133004}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c8798a9217fe3401694ef21c37c07b90, type: 2}
+  m_Controller: {fileID: 9100000, guid: 89f61b7569fb3bc47980eb7eb0da3898, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5076,9 +5078,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c56fa192aeb3cd64994225b05fd965fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNum: 0
+  playerNum: 3
   rigPieces: []
-  teamNum: 0
+  teamNum: 2
   healthBar: {fileID: 0}
   regenableHealthBar: {fileID: 0}
   speed: 0
@@ -5088,6 +5090,7 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   direction: 
   xScale: 0
+  player: 0
   anim: {fileID: 0}
   rb: {fileID: 0}
   teamController: {fileID: 0}
@@ -5095,12 +5098,12 @@ MonoBehaviour:
   gravityDown: 0
   maxDownVel: 0
   jumpVel: 0
-  fallMult: 0
-  lowJumpMult: 0
+  fallMult: 1.5
+  lowJumpMult: 2
   onPlatformTimer: 0
-  onPlatformTimerMax: 0
+  onPlatformTimerMax: 0.075
   onTopOfPlatform: 0
-  claire: 0
+  claire: 1
   gillbert: 0
   gnomercy: 0
   wawa: 0
@@ -5108,14 +5111,18 @@ MonoBehaviour:
   currentHealth: 0
   regenHeath: 0
   regenHeathMultiplier: 0
-  makeFaceRight: 0
+  makeFaceRight: 1
   isAttacking: 0
   joyPos: {x: 0, y: 0}
-  deadZone: 0
+  deadZone: 0.2
+  hitEffect: {fileID: 0}
+  boxColliders: []
+  polygonColliders: []
   light_Vib: 0.3
   Heavy_Vib: 0.5
   light_Time: 0.2
   Heavy_Time: 0.35
+  isDead: 0
 --- !u!114 &5615167271143781679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5133,12 +5140,12 @@ MonoBehaviour:
   ultSpeed: 12
   regularSpeed: 7
   weight: 1
-  gravityUp: 70
-  gravityDown: 30
-  jumpVel: 15
-  maxDownVel: 100
+  gravityUp: 25
+  gravityDown: 20
+  jumpVel: 12
+  maxDownVel: 40
   BN_Damage: 100
-  BN_Angle: 60
+  BN_Angle: {x: 1, y: 1}
   BN_Knockback: 10
   BN_HitStun: 0.45
   BN_Distance: 200
@@ -5147,7 +5154,7 @@ MonoBehaviour:
   BN_ShakeMagnitude: 0.075
   BN_ShakeSlowDown: 0.2
   BF_Damage: 30
-  BF_Angle: 30
+  BF_Angle: {x: 1, y: 0.5}
   BF_Knockback: 12
   BF_HitStun: 0.3
   BF_Distance: 175
@@ -5159,8 +5166,8 @@ MonoBehaviour:
   spawnIceShotHere: {fileID: 5615167269875392314}
   bulletSpeed: 16
   BU_Damage: 100
-  BU_Angle: 90
-  BU_Knockback: 800
+  BU_Angle: {x: 0.4, y: 1}
+  BU_Knockback: 15
   BU_HitStun: 0.45
   BU_Distance: 150
   BU_TravelTime: 0.45
@@ -5168,8 +5175,8 @@ MonoBehaviour:
   BU_ShakeMagnitude: 0.06
   BU_ShakeSlowDown: 0.3
   BD_Damage: 65
-  BD_Angle: 30
-  BD_Knockback: 300
+  BD_Angle: {x: 0.1, y: 1}
+  BD_Knockback: 10
   BD_HitStun: 0.2
   BD_Distance: 150
   BD_TravelTime: 0.2
@@ -5177,16 +5184,16 @@ MonoBehaviour:
   BD_ShakeMagnitude: 0.2
   BD_ShakeSlowDown: 0.2
   NA_Damage: 80
-  NA_Angle: 325
-  NA_Knockback: 20
-  NA_HitStun: 0.35
+  NA_Angle: {x: 1, y: 0.5}
+  NA_Knockback: 8
+  NA_HitStun: 0.25
   NA_Distance: 300
-  NA_TravelTime: 0.35
+  NA_TravelTime: 0.25
   NA_ShakeDuration: 0.4
   NA_ShakeMagnitude: 0.06
   NA_ShakeSlowDown: 0.3
   UA_Damage: 30
-  UA_Angle: 80
+  UA_Angle: {x: 0.5, y: 1}
   UA_Knockback: 8
   UA_HitStun: 0.1
   UA_Distance: 150
@@ -5197,8 +5204,8 @@ MonoBehaviour:
   spawnIceShotHere1: {fileID: 5615167269358937977}
   bulletSpeed1: 16
   DA_Damage: 45
-  DA_Angle: 40
-  DA_Knockback: 12
+  DA_Angle: {x: 1, y: 1}
+  DA_Knockback: 15
   DA_HitStun: 0.3
   DA_Distance: 200
   DA_TravelTime: 0.3
@@ -5206,8 +5213,8 @@ MonoBehaviour:
   DA_ShakeMagnitude: 0.08
   DA_ShakeSlowDown: 0.3
   NH_Damage: 150
-  NH_Angle: 30
-  NH_Knockback: 9
+  NH_Angle: {x: 1, y: 0.6}
+  NH_Knockback: 20
   NH_HitStun: 0.4
   NH_Distance: 300
   NH_TravelTime: 0.4
@@ -5215,8 +5222,8 @@ MonoBehaviour:
   NH_ShakeMagnitude: 0.085
   NH_ShakeSlowDown: 0.1
   FH_Damage: 120
-  FH_Angle: 39
-  FH_Knockback: 9
+  FH_Angle: {x: 1, y: 1}
+  FH_Knockback: 15
   FH_HitStun: 0.45
   FH_Distance: 255
   FH_TravelTime: 0.45
@@ -5224,7 +5231,7 @@ MonoBehaviour:
   FH_ShakeMagnitude: 0.085
   FH_ShakeSlowDown: 0.1
   UH1_Damage: 10
-  UH1_Angle: 125
+  UH1_Angle: {x: -0.2, y: 0}
   UH1_Knockback: 2
   UH1_HitStun: 0.4
   UH1_Distance: 35
@@ -5233,8 +5240,8 @@ MonoBehaviour:
   UH1_ShakeMagnitude: 0.035
   UH1_ShakeSlowDown: 0.2
   UH2_Damage: 160
-  UH2_Angle: 55
-  UH2_Knockback: 11
+  UH2_Angle: {x: 1, y: 1}
+  UH2_Knockback: 25
   UH2_HitStun: 0.6
   UH2_Distance: 275
   UH2_TravelTime: 0.6
@@ -5242,7 +5249,7 @@ MonoBehaviour:
   UH2_ShakeMagnitude: 0.05
   UH2_ShakeSlowDown: 0.1
   DH_Damage: 0
-  DH_Angle: 0
+  DH_Angle: {x: 0, y: 0}
   DH_Knockback: 0
   DH_HitStun: 0
   DH_Distance: 0
@@ -5266,7 +5273,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 76d160b1550c1d44887508aca288e58a, type: 3}
   - {fileID: 8300000, guid: 8fa4aa820ced1384f933ca8a83a22fe9, type: 3}
   - {fileID: 8300000, guid: e90041802fae9cc46ac0359a6386a57b, type: 3}
-  ClaireSoundPlayer: {fileID: 1827133005}
+  ClaireSoundPlayer: {fileID: 0}
 --- !u!61 &5615167271143781586
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5280,7 +5287,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04728341, y: 0.09987545}
+  m_Offset: {x: -0.04728341, y: 0.13375098}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5291,7 +5298,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.15066, y: 3.0340023}
+  m_Size: {x: 1.15066, y: 2.109787}
   m_EdgeRadius: 0
 --- !u!82 &1827133005
 AudioSource:
@@ -5390,6 +5397,62 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!60 &596648039
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827133004}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 9, y: 9}
+    newSize: {x: 1.6, y: 2.3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.6105387, y: -0.9174791}
+      - {x: 0.5252248, y: -0.9174791}
+      - {x: -0.0645107, y: -1.564162}
+--- !u!60 &596648040
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827133004}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: b443891d0251aec4d876703bae0cedb6, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 9, y: 9}
+    newSize: {x: 1.6, y: 2.3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.06974757, y: 1.6767551}
+      - {x: -0.6242466, y: 1.1900002}
+      - {x: 0.5264467, y: 1.1908152}
 --- !u!1 &1979839549
 GameObject:
   m_ObjectHideFlags: 0

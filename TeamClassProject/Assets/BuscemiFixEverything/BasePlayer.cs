@@ -97,6 +97,8 @@ public class BasePlayer : MonoBehaviour
     [Header("Joystick Deadzone")]
     public float deadZone;
 
+    [Header("Visual Effects")]
+    public GameObject hitEffect;
 
     public BoxCollider2D[] boxColliders;
     public PolygonCollider2D[] polygonColliders;
@@ -247,14 +249,16 @@ public class BasePlayer : MonoBehaviour
                 healthBar.fillAmount = currentHealth / maxHealth;
                 regenableHealthBar.fillAmount = regenHeath / maxHealth;
             }
-
-            Movement();
-
-            if (!isAttacking)
+            if (Time.timeScale == 1)
             {
+                Movement();
 
-                Attack();
+                if (!isAttacking)
+                {
 
+                    Attack();
+
+                }
             }
 
             if (findTeamController == false)
@@ -537,6 +541,9 @@ public class BasePlayer : MonoBehaviour
         }
         else
         {
+            if (hitEffect != null) {
+                Instantiate(hitEffect, transform.position, Quaternion.identity);
+            }
             player = playerState.Knockback;
             healthAnim.ResetTrigger("gotHit");
             healthAnim.SetTrigger("gotHit");

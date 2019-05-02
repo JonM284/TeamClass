@@ -1410,10 +1410,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3645792096513345583}
   - component: {fileID: 3255886741749247371}
-  - component: {fileID: 5734122998045851665}
   - component: {fileID: 4057159296745483285}
-  - component: {fileID: 2729868350300346152}
   - component: {fileID: 4631393466039951176}
+  - component: {fileID: 4543854465951767085}
   - component: {fileID: 14132372076835048}
   - component: {fileID: 4130340295680157920}
   - component: {fileID: 8043154980640512863}
@@ -1424,7 +1423,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3645792096513345583
 Transform:
   m_ObjectHideFlags: 0
@@ -1455,7 +1454,7 @@ Animator:
   m_GameObject: {fileID: 4336007881639682530}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b9101ce8657a44c0291da3e6fb907de6, type: 2}
+  m_Controller: {fileID: 9100000, guid: 490342eb29ffe114b8e17451030ef0da, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1464,21 +1463,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!111 &5734122998045851665
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4336007881639682530}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!70 &4057159296745483285
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1495,63 +1479,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.12000002, y: -0.23793519}
   m_Size: {x: 1.48, y: 1.9400203}
   m_Direction: 0
---- !u!114 &2729868350300346152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4336007881639682530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a84798539e05554c957a6b86b175395, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerNum: 2
-  rigPieces: []
-  teamNum: 0
-  healthBar: {fileID: 0}
-  regenableHealthBar: {fileID: 0}
-  rb: {fileID: 0}
-  anim: {fileID: 0}
-  state: 0
-  accel: 0
-  accelMult: 1
-  decelMult: 1
-  speed: 7
-  weight: 0
-  gilbertFlightTime: 2.5
-  currentGilbertFlightTime: 0
-  velocity: {x: 0, y: 0, z: 0}
-  direction: 
-  gravityUp: 0
-  gravityDown: 0
-  jumpVel: 0
-  maxDownVel: 0
-  maxInitialJumpTime: 0.05
-  maxHoldJumpTime: 0.075
-  onPlatformTimer: 0
-  onPlatformTimerMax: 0.075
-  onTopOfPlatform: 0
-  claire: 0
-  gillbert: 1
-  gnomercy: 0
-  wawa: 0
-  maxHealth: 0
-  currentHealth: 0
-  regenHeath: 0
-  regenHeathMultiplier: 0.4
-  makeFaceRight: 0
-  isAttacking: 0
-  stunTime: 0
-  dashSpeed: 0.25
-  maxDashTimer: 0.18
-  attackZone: 0.03
-  neutralZone: 0.05
-  verticalForwardZone: 0.8
-  horizontalUpwardZone: 0.8
-  teamController: {fileID: 0}
-  canTurn: 1
 --- !u!50 &4631393466039951176
 Rigidbody2D:
   serializedVersion: 4
@@ -1573,6 +1500,63 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &4543854465951767085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336007881639682530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56fa192aeb3cd64994225b05fd965fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNum: 4
+  rigPieces: []
+  teamNum: 2
+  healthBar: {fileID: 0}
+  regenableHealthBar: {fileID: 0}
+  speed: 0
+  weight: 0
+  gilbertFlightTime: 0
+  currentGilbertFlightTime: 0
+  velocity: {x: 0, y: 0, z: 0}
+  direction: 
+  xScale: 0
+  player: 0
+  anim: {fileID: 0}
+  rb: {fileID: 0}
+  teamController: {fileID: 0}
+  gravityUp: 0
+  gravityDown: 0
+  maxDownVel: 0
+  jumpVel: 0
+  fallMult: 1.5
+  lowJumpMult: 2
+  onPlatformTimer: 0
+  onPlatformTimerMax: 0.075
+  onTopOfPlatform: 0
+  claire: 0
+  gillbert: 1
+  gnomercy: 0
+  wawa: 0
+  maxHealth: 0
+  currentHealth: 0
+  regenHeath: 0
+  regenHeathMultiplier: 0
+  makeFaceRight: 1
+  isAttacking: 0
+  joyPos: {x: 0, y: 0}
+  deadZone: 0.2
+  hitEffect: {fileID: 0}
+  boxColliders: []
+  polygonColliders: []
+  light_Vib: 0.3
+  Heavy_Vib: 0.5
+  light_Time: 0.2
+  Heavy_Time: 0.35
+  isDead: 0
 --- !u!114 &14132372076835048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1588,12 +1572,12 @@ MonoBehaviour:
   maxHealth: 1000
   speed: 7
   weight: 1
-  gravityUp: 70
-  gravityDown: 30
+  gravityUp: 25
+  gravityDown: 20
   jumpVel: 13
-  maxDownVel: 100
+  maxDownVel: 40
   BN_Damage: 0
-  BN_Angle: 0
+  BN_Angle: {x: 0, y: 0}
   BN_Knockback: 0
   BN_HitStun: 0
   BN_Distance: 0
@@ -1602,8 +1586,8 @@ MonoBehaviour:
   BN_ShakeMagnitude: 0
   BN_ShakeSlowDown: 0
   BF_Damage: 50
-  BF_Angle: 30
-  BF_Knockback: 12
+  BF_Angle: {x: 1, y: 1}
+  BF_Knockback: 8
   BF_HitStun: 0.4
   BF_Distance: 115
   BF_TravelTime: 0.4
@@ -1611,8 +1595,8 @@ MonoBehaviour:
   BF_ShakeMagnitude: 0.05
   BF_ShakeSlowDown: 0.2
   BU_Damage: 45
-  BU_Angle: 70
-  BU_Knockback: 100
+  BU_Angle: {x: 1, y: 0.5}
+  BU_Knockback: 6
   BU_HitStun: 0.26
   BU_Distance: 32
   BU_TravelTime: 0.26
@@ -1625,14 +1609,14 @@ MonoBehaviour:
   BU_MaxDownVel: 100
   BU_GravityUp: 70
   BU_GravityDown: 45
-  BU_XSpeed: 0
-  BU_YSpeed: 0
+  BU_XSpeed: 1
+  BU_YSpeed: 6
   BU_MoveUpTimer: 0.7
   BD_Damage: 10
   BD_StunTime: 1
   NA_Damage: 85
-  NA_Angle: 345
-  NA_Knockback: 70
+  NA_Angle: {x: 1, y: 0.4}
+  NA_Knockback: 8
   NA_HitStun: 0.25
   NA_Distance: 120
   NA_TravelTime: 0.25
@@ -1640,7 +1624,7 @@ MonoBehaviour:
   NA_ShakeMagnitude: 0.5
   NA_ShakeSlowDown: 0.2
   FA_Damage: 85
-  FA_Angle: 345
+  FA_Angle: {x: 0, y: 0}
   FA_Knockback: 200
   FA_HitStun: 0.2
   FA_Distance: 120
@@ -1648,19 +1632,19 @@ MonoBehaviour:
   FA_ShakeDuration: 0.035
   FA_ShakeMagnitude: 0.5
   FA_ShakeSlowDown: 0.2
-  UA_Damage: 0
-  UA_Angle: 0
-  UA_Knockback: 0
-  UA_HitStun: 0
+  UA_Damage: 100
+  UA_Angle: {x: 1, y: 0.4}
+  UA_Knockback: 15
+  UA_HitStun: 0.25
   UA_Distance: 0
   UA_TravelTime: 0
-  UA_ShakeDuration: 0
-  UA_ShakeMagnitude: 0
-  UA_ShakeSlowDown: 0
+  UA_ShakeDuration: 0.035
+  UA_ShakeMagnitude: 0.5
+  UA_ShakeSlowDown: 0.2
   spawnIceShotHere1: {fileID: 0}
   bulletSpeed1: 0
   DA_Damage: 50
-  DA_Angle: 20
+  DA_Angle: {x: 0, y: 0}
   DA_Knockback: 150
   DA_HitStun: 0.05
   DA_Distance: 50
@@ -1675,11 +1659,11 @@ MonoBehaviour:
   DA_GravityUp: 70
   DA_GravityDown: 30
   DA_XSpeed: 0
-  DA_YSpeed: 0
+  DA_YSpeed: 5
   DA_MoveUpTimer: 0.1
   NH_Damage: 65
-  NH_Angle: 45
-  NH_Knockback: 0
+  NH_Angle: {x: 1, y: 1}
+  NH_Knockback: 14
   NH_HitStun: 0.2
   NH_Distance: 220
   NH_TravelTime: 0.2
@@ -1687,8 +1671,8 @@ MonoBehaviour:
   NH_ShakeMagnitude: 0.06
   NH_ShakeSlowDown: 0.2
   FH_Damage: 90
-  FH_Angle: 20
-  FH_Knockback: 50
+  FH_Angle: {x: 0.5, y: 1}
+  FH_Knockback: 15
   FH_HitStun: 0.3
   FH_Distance: 145
   FH_TravelTime: 0.3
@@ -1696,8 +1680,8 @@ MonoBehaviour:
   FH_ShakeMagnitude: 0.06
   FH_ShakeSlowDown: 0.2
   DH1_Damage: 92
-  DH1_Angle: 60
-  DH1_Knockback: 45
+  DH1_Angle: {x: 1, y: 1}
+  DH1_Knockback: 17
   DH1_HitStun: 0.25
   DH1_Distance: 264
   DH1_TravelTime: 0.25
@@ -1705,7 +1689,7 @@ MonoBehaviour:
   DH1_ShakeMagnitude: 0.05
   DH1_ShakeSlowDown: 0.25
   U_Damage: 50
-  U_Angle: 20
+  U_Angle: {x: 0, y: 0}
   U_Knockback: 150
   U_HitStun: 0.05
   U_Distance: 50
@@ -1719,7 +1703,7 @@ MonoBehaviour:
   U_GravityUp: 70
   U_GravityDown: 30
   U_XSpeed: 0
-  U_YSpeed: 0
+  U_YSpeed: 1
   U_MoveUpTimer: 0.1
   GilbertSounds:
   - {fileID: 8300000, guid: aef0e71aaaa2629479f4b24b20eab9c2, type: 3}
@@ -3218,8 +3202,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.28935102, y: -0.83699435}
-  m_Size: {x: 0.86666775, y: 2.6541345}
+  m_Offset: {x: 0.54641753, y: -2.94}
+  m_Size: {x: 1.3808007, y: 8}
   m_Direction: 0
 --- !u!1 &7573342827613727854
 GameObject:
@@ -3450,6 +3434,6 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.38612345, y: -0.28278458}
-  m_Size: {x: 1.0602163, y: 3.0673864}
+  m_Offset: {x: 0.54641753, y: -2.94}
+  m_Size: {x: 1.3808007, y: 8}
   m_Direction: 0

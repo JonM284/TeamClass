@@ -14,11 +14,16 @@ public class SwitchHandler : MonoBehaviour
     public GameObject P1x3_ClaireSupport;
     public GameObject P1x3_GilbertFighter;
     public GameObject P1x3_GilbertSupport;
+    public GameObject P1x3_GnomercyFighter;
+    public GameObject P1x3_GnomercySupport;
+
     [Header("Player 2 or 4 Character Dump")]
     public GameObject P2x4_ClaireFighter;
     public GameObject P2x4_ClaireSupport;
     public GameObject P2x4_GilbertFighter;
     public GameObject P2x4_GilbertSupport;
+    public GameObject P2x4_GnomercyFighter;
+    public GameObject P2x4_GnomercySupport;
 
     [HideInInspector]
     public GameObject teammate1_fighter;
@@ -91,6 +96,11 @@ public class SwitchHandler : MonoBehaviour
                 teammate1_fighter = P1x3_GilbertFighter;
                 teammate1_support = P1x3_GilbertSupport;
             }
+            if (PlayerPrefs.GetInt("Player1Character") == 3)
+            {
+                teammate1_fighter = P1x3_GnomercyFighter;
+                teammate1_support = P1x3_GnomercySupport;
+            }
 
             //player 2
             if (PlayerPrefs.GetInt("Player2Character") == 1)
@@ -103,7 +113,11 @@ public class SwitchHandler : MonoBehaviour
                 teammate2_fighter = P2x4_GilbertFighter;
                 teammate2_support = P2x4_GilbertSupport;
             }
-            teammate1_fighter = P1x3_GilbertFighter;
+            if (PlayerPrefs.GetInt("Player2Character") == 3)
+            {
+                teammate2_fighter = P2x4_GnomercyFighter;
+                teammate2_support = P2x4_GnomercySupport;
+            }
         }
 
         if (teamNumber == 2)
@@ -119,6 +133,11 @@ public class SwitchHandler : MonoBehaviour
                 teammate1_fighter = P1x3_GilbertFighter;
                 teammate1_support = P1x3_GilbertSupport;
             }
+            if (PlayerPrefs.GetInt("Player3Character") == 3)
+            {
+                teammate1_fighter = P1x3_GnomercyFighter;
+                teammate1_support = P1x3_GnomercySupport;
+            }
 
             //player 4
             if (PlayerPrefs.GetInt("Player4Character") == 1)
@@ -130,6 +149,11 @@ public class SwitchHandler : MonoBehaviour
             {
                 teammate2_fighter = P2x4_GilbertFighter;
                 teammate2_support = P2x4_GilbertSupport;
+            }
+            if (PlayerPrefs.GetInt("Player4Character") == 3)
+            {
+                teammate2_fighter = P2x4_GnomercyFighter;
+                teammate2_support = P2x4_GnomercySupport;
             }
         }
 

@@ -148,14 +148,14 @@ public class Branbull_Movement : MonoBehaviour
         if (myBranbull.GetComponent<SpriteRenderer>().enabled == true && other.gameObject.tag == "Player")
         {
             //other.gameObject.GetComponent<BasicPlayerScript>().GetHit(20f, 270f, 200f, 0.2f, 60f, .2f, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight(), 0.1f, 0.3f, 0.2f);
-            other.gameObject.GetComponent<BasePlayer>().GetHit(20f, attackAngleBrambleSendPlayerDown, 200f, .2f, other.gameObject.GetComponent<BasePlayer>().FacingRight(), .1f, .3f, .2f);
+            other.gameObject.GetComponent<BasePlayer>().GetHit(damageToDealToPlayerOnImpact, attackAngleBrambleSendPlayerDown, 20f, .2f, other.gameObject.GetComponent<BasePlayer>().FacingRight(), .1f, .3f, .2f);
         }
         if (other.gameObject.transform.position.x > transform.position.x)
         {
             if (branbullExploded.GetComponent<SpriteRenderer>().enabled == true && other.gameObject.tag == "Player")
             {
                 //other.gameObject.GetComponent<BasicPlayerScript>().GetHit(35f, 45, 150, 0.2f, 100f, 0.5f, other.gameObject.GetComponent<BasicPlayerScript>().FacingRight(), 0.1f, 0.3f, 0.2f);
-                other.gameObject.GetComponent<BasePlayer>().GetHit(35f, attackAngleBrambleSendPlayerUp, 150, .2f, other.gameObject.GetComponent<BasePlayer>().FacingRight(), .1f, .3f, .2f);
+                other.gameObject.GetComponent<BasePlayer>().GetHit(35f, attackAngleBrambleSendPlayerUp, 15, .2f, other.gameObject.GetComponent<BasePlayer>().FacingRight(), .1f, .3f, .2f);
             }
         }
     }
