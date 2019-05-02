@@ -269,9 +269,6 @@ public class SwitchHandler : MonoBehaviour
         if (teammate1_fighter.activeSelf == true)
         {
             teammate1_fighterPos = teammate1_fighter.transform.position;
-
-            swapSoundPlayer.clip = swapSounds[0];
-            swapSoundPlayer.Play();
         }
         if (teammate1_support.activeSelf == true)
         {
@@ -280,10 +277,6 @@ public class SwitchHandler : MonoBehaviour
         if (teammate2_fighter.activeSelf == true)
         {
             teammate2_fighterPos = teammate2_fighter.transform.position;
-
-            swapSoundPlayer.clip = swapSounds[0];
-            swapSoundPlayer.Play();
-
         }
         if (teammate2_fighter.activeSelf == true)
         {
@@ -309,6 +302,10 @@ public class SwitchHandler : MonoBehaviour
                 }
                 else
                 {
+
+                    swapSoundPlayer.clip = swapSounds[0];
+                    swapSoundPlayer.Play();
+
                     teammate1_fighter.SetActive(true);
                     if (teammate1_fighter.GetComponent<BasePlayer>().currentHealth + regenHealthPool >= teammate1_fighter.GetComponent<BasePlayer>().regenHeath)
                     {
@@ -346,6 +343,10 @@ public class SwitchHandler : MonoBehaviour
                 }
                 else
                 {
+
+                    swapSoundPlayer.clip = swapSounds[0];
+                    swapSoundPlayer.Play();
+
                     teammate2_fighter.SetActive(true);
                     if (teammate2_fighter.GetComponent<BasePlayer>().currentHealth + regenHealthPool >= teammate2_fighter.GetComponent<BasePlayer>().regenHeath)
                     {
