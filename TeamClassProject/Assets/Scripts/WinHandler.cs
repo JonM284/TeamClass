@@ -17,6 +17,8 @@ public class WinHandler : MonoBehaviour
 
     private bool winActive = false;
 
+    private float winTimer = 2;
+
 
 
 
@@ -32,18 +34,46 @@ public class WinHandler : MonoBehaviour
     {
         //team 1 loses
         // if(winActive == false && (team1.GetComponent<SwitchHandler>().teammate1_fighter.GetComponent<BasicPlayerScript>().currentHealth <=0 && team1.GetComponent<SwitchHandler>().teammate2_fighter.GetComponent<BasicPlayerScript>().currentHealth <= 0))
-        if(t1_p1_dead && t1_p2_dead)
+        if (t1_p1_dead && t1_p2_dead)
         {
             winActive = true;
-            SceneManager.LoadScene("WinRed");
+            if (winTimer < 0)
+            {
+                SceneManager.LoadScene("WinRed");
+            }
+
+            if (team1.GetComponent<SwitchHandler>().teammate1_fighter.activeSelf)
+            {
+                team1.GetComponent<SwitchHandler>().teammate1_fighter.GetComponent<BasePlayer>().isDead = true;
+            }
+            if (team1.GetComponent<SwitchHandler>().teammate2_fighter.activeSelf)
+            {
+                team1.GetComponent<SwitchHandler>().teammate2_fighter.GetComponent<BasePlayer>().isDead = true;
+            }
         }
 
         if (t2_p1_dead && t2_p2_dead)
         {
             winActive = true;
-            SceneManager.LoadScene("WinBlue");
+            if (winTimer < 0)
+            {
+                SceneManager.LoadScene("WinBlue");
+            }
+
+            if (team2.GetComponent<SwitchHandler>().teammate1_fighter.activeSelf)
+            {
+                team2.GetComponent<SwitchHandler>().teammate1_fighter.GetComponent<BasePlayer>().isDead = true;
+            }
+            if (team2.GetComponent<SwitchHandler>().teammate2_fighter.activeSelf)
+            {
+                team2.GetComponent<SwitchHandler>().teammate2_fighter.GetComponent<BasePlayer>().isDead = true;
+            }
         }
 
+        if (winActive)
+        {
+            winTimer -= Time.deltaTime;
+        }
 
 
 
@@ -52,111 +82,125 @@ public class WinHandler : MonoBehaviour
         if (t2_p1_dead && t2_p2_dead)
         {
             winActive = true;
-           // SceneManager.LoadScene("WinBlue");
+            // SceneManager.LoadScene("WinBlue");
         }
 
+        if (!winActive) { 
         if (team1.GetComponent<SwitchHandler>().teammate1_fighter.GetComponent<BasePlayer>().currentHealth <= 0 && t1_p1_dead == false)
         {
             t1_p1_dead = true;
-            team1.GetComponent<SwitchHandler>().teammate1_fighter.SetActive(false);
-            try
-            {
-                if (team1.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP>().status == AlternateSP.Status.AtMachine)
+                if (t1_p2_dead == false)
                 {
-                    team1.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP>().myMachine.GetComponent<MachineBehaviour>().End_Control();
-                    team1.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP>().status = AlternateSP.Status.Free;
+                    team1.GetComponent<SwitchHandler>().teammate1_fighter.SetActive(false);
+                    try
+                    {
+                        if (team1.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP>().status == AlternateSP.Status.AtMachine)
+                        {
+                            team1.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP>().myMachine.GetComponent<MachineBehaviour>().End_Control();
+                            team1.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP>().status = AlternateSP.Status.Free;
+                        }
+                    }
+                    catch { }
+                    try
+                    {
+                        if (team1.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP2>().status == AlternateSP2.Status.AtMachine)
+                        {
+                            team1.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP2>().myMachine.GetComponent<MachineBehaviour>().End_Control();
+                            team1.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP2>().status = AlternateSP2.Status.Free;
+                        }
+                    }
+                    catch { }
+                    team1.GetComponent<SwitchHandler>().teammate2_support.SetActive(false);
+                    team1.GetComponent<SwitchHandler>().teammate2_fighter.SetActive(true);
                 }
-            }
-            catch { }
-            try
-            {
-                if (team1.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP2>().status == AlternateSP2.Status.AtMachine)
-                {
-                    team1.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP2>().myMachine.GetComponent<MachineBehaviour>().End_Control();
-                    team1.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP2>().status = AlternateSP2.Status.Free;
-                }
-            }
-            catch { }
-            team1.GetComponent<SwitchHandler>().teammate2_support.SetActive(false);
-            team1.GetComponent<SwitchHandler>().teammate2_fighter.SetActive(true);
         }
         if (team1.GetComponent<SwitchHandler>().teammate2_fighter.GetComponent<BasePlayer>().currentHealth <= 0 && t1_p2_dead == false)
         {
             t1_p2_dead = true;
-            team1.GetComponent<SwitchHandler>().teammate2_fighter.SetActive(false);
-            try
-            {
-                if (team1.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP>().status == AlternateSP.Status.AtMachine)
+                if (t1_p1_dead == false)
                 {
-                    team1.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP>().myMachine.GetComponent<MachineBehaviour>().End_Control();
-                    team1.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP>().status = AlternateSP.Status.Free;
+                    team1.GetComponent<SwitchHandler>().teammate2_fighter.SetActive(false);
+                    try
+                    {
+                        if (team1.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP>().status == AlternateSP.Status.AtMachine)
+                        {
+                            team1.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP>().myMachine.GetComponent<MachineBehaviour>().End_Control();
+                            team1.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP>().status = AlternateSP.Status.Free;
+                        }
+                    }
+                    catch { }
+                    try
+                    {
+                        if (team1.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP2>().status == AlternateSP2.Status.AtMachine)
+                        {
+                            team1.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP2>().myMachine.GetComponent<MachineBehaviour>().End_Control();
+                            team1.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP2>().status = AlternateSP2.Status.Free;
+                        }
+                    }
+                    catch { }
+                    team1.GetComponent<SwitchHandler>().teammate1_support.SetActive(false);
+                    team1.GetComponent<SwitchHandler>().teammate1_fighter.SetActive(true);
                 }
-            }
-            catch { }
-            try
-            {
-                if (team1.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP2>().status == AlternateSP2.Status.AtMachine)
-                {
-                    team1.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP2>().myMachine.GetComponent<MachineBehaviour>().End_Control();
-                    team1.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP2>().status = AlternateSP2.Status.Free;
-                }
-            }
-            catch { }
-            team1.GetComponent<SwitchHandler>().teammate1_support.SetActive(false);
-            team1.GetComponent<SwitchHandler>().teammate1_fighter.SetActive(true);
         }
 
 
         if (team2.GetComponent<SwitchHandler>().teammate1_fighter.GetComponent<BasePlayer>().currentHealth <= 0 && t2_p1_dead == false)
         {
             t2_p1_dead = true;
-            team2.GetComponent<SwitchHandler>().teammate1_fighter.SetActive(false);
-            try
-            {
-                if (team2.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP2>().status == AlternateSP2.Status.AtMachine)
+                if (t2_p2_dead == false)
                 {
-                    team2.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP2>().myMachine.GetComponent<MachineBehaviour>().End_Control();
-                    team2.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP2>().status = AlternateSP2.Status.Free;
+                    team2.GetComponent<SwitchHandler>().teammate1_fighter.SetActive(false);
+                    try
+                    {
+                        if (team2.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP2>().status == AlternateSP2.Status.AtMachine)
+                        {
+                            team2.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP2>().myMachine.GetComponent<MachineBehaviour>().End_Control();
+                            team2.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP2>().status = AlternateSP2.Status.Free;
+                        }
+                    }
+                    catch { }
+                    try
+                    {
+                        if (team2.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP2>().status == AlternateSP2.Status.AtMachine)
+                        {
+                            team2.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP2>().myMachine.GetComponent<MachineBehaviour>().End_Control();
+                            team2.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP2>().status = AlternateSP2.Status.Free;
+                        }
+                    }
+                    catch { }
+                    team2.GetComponent<SwitchHandler>().teammate2_support.SetActive(false);
+                    team2.GetComponent<SwitchHandler>().teammate2_fighter.SetActive(true);
                 }
-            }
-            catch { }
-            try
-            {
-                if (team2.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP2>().status == AlternateSP2.Status.AtMachine)
-                {
-                    team2.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP2>().myMachine.GetComponent<MachineBehaviour>().End_Control();
-                    team2.GetComponent<SwitchHandler>().teammate2_support.GetComponent<AlternateSP2>().status = AlternateSP2.Status.Free;
-                }
-            }
-            catch { }
-            team2.GetComponent<SwitchHandler>().teammate2_support.SetActive(false);
-            team2.GetComponent<SwitchHandler>().teammate2_fighter.SetActive(true);
         }
         if (team2.GetComponent<SwitchHandler>().teammate2_fighter.GetComponent<BasePlayer>().currentHealth <= 0 && t2_p2_dead == false)
         {
             t2_p2_dead = true;
-            team2.GetComponent<SwitchHandler>().teammate1_fighter.SetActive(true);
-            try
-            {
-                if (team2.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP2>().status == AlternateSP2.Status.AtMachine)
+                if (t2_p1_dead == false)
                 {
-                    team2.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP2>().myMachine.GetComponent<MachineBehaviour>().End_Control();
-                    team2.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP2>().status = AlternateSP2.Status.Free;
+                    team2.GetComponent<SwitchHandler>().teammate1_fighter.SetActive(true);
+                    try
+                    {
+                        if (team2.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP2>().status == AlternateSP2.Status.AtMachine)
+                        {
+                            team2.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP2>().myMachine.GetComponent<MachineBehaviour>().End_Control();
+                            team2.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP2>().status = AlternateSP2.Status.Free;
+                        }
+                    }
+                    catch { }
+                    try
+                    {
+                        if (team2.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP2>().status == AlternateSP2.Status.AtMachine)
+                        {
+                            team2.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP2>().myMachine.GetComponent<MachineBehaviour>().End_Control();
+                            team2.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP2>().status = AlternateSP2.Status.Free;
+                        }
+                    }
+                    catch { }
+                    team2.GetComponent<SwitchHandler>().teammate1_support.SetActive(false);
+                    team2.GetComponent<SwitchHandler>().teammate2_fighter.SetActive(false);
                 }
-            }
-            catch { }
-            try
-            {
-                if (team2.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP2>().status == AlternateSP2.Status.AtMachine)
-                {
-                    team2.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP2>().myMachine.GetComponent<MachineBehaviour>().End_Control();
-                    team2.GetComponent<SwitchHandler>().teammate1_support.GetComponent<AlternateSP2>().status = AlternateSP2.Status.Free;
-                }
-            }
-            catch { }
-            team2.GetComponent<SwitchHandler>().teammate1_support.SetActive(false);
-            team2.GetComponent<SwitchHandler>().teammate2_fighter.SetActive(false);
         }
+    }
 
         /*
         if (winActive)

@@ -97,6 +97,10 @@ public class BasePlayer : MonoBehaviour
     [Header("Joystick Deadzone")]
     public float deadZone;
 
+
+    public BoxCollider2D[] boxColliders;
+    public PolygonCollider2D[] polygonColliders;
+
     [Header("Vibration Variables")]
     [Tooltip("The magnitude of the vibration for the controller - light")]
     [Range(0, 1.0f)]
@@ -107,6 +111,11 @@ public class BasePlayer : MonoBehaviour
     [Tooltip("The amount of time the virbtation will last in seconds")]
     [Range(0, 1.5f)]
     public float light_Time = 0.2f, Heavy_Time = 0.35f;
+
+    [HideInInspector]
+    public bool isDead = false;
+
+    
 
     private void Awake()
     {
@@ -225,51 +234,67 @@ public class BasePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //resetting the health in case it ever goes above
-        if (currentHealth > maxHealth)
+        if (!isDead)
         {
-            currentHealth = maxHealth;
-        }
-        //setting the health
-        if (healthBar != null && regenableHealthBar != null)
-        {
-            healthBar.fillAmount = currentHealth / maxHealth;
-            regenableHealthBar.fillAmount = regenHeath / maxHealth;
-        }
-
-        Movement();
-
-        if (!isAttacking)
-        {
-
-            Attack();
-
-        }
-
-        if (findTeamController == false)
-        {
-            if (teamNum == 1)
+            //resetting the health in case it ever goes above
+            if (currentHealth > maxHealth)
             {
-                teamController = GameObject.Find("Team1");
+                currentHealth = maxHealth;
             }
-            else if (teamNum == 2)
+            //setting the health
+            if (healthBar != null && regenableHealthBar != null)
             {
-                teamController = GameObject.Find("Team2");
+                healthBar.fillAmount = currentHealth / maxHealth;
+                regenableHealthBar.fillAmount = regenHeath / maxHealth;
             }
 
-            findTeamController = true;
-            //Hey Nick. Itsa me. Your good pal Nolan. Let me know if you find this
-        }
+            Movement();
 
-        if (myPlayer.GetButtonDown("Switch"))
-        {
-            Debug.Log(teamController.name);
-            try
+            if (!isAttacking)
             {
-                teamController.GetComponent<SwitchHandler>().BeginSwap(playerNum);
+
+                Attack();
+
             }
-            catch
+
+            if (findTeamController == false)
             {
+                if (teamNum == 1)
+                {
+                    teamController = GameObject.Find("Team1");
+                }
+                else if (teamNum == 2)
+                {
+                    teamController = GameObject.Find("Team2");
+                }
+
+                findTeamController = true;
+                //Hey Nick. Itsa me. Your good pal Nolan. Let me know if you find this
+            }
+
+            if (myPlayer.GetButtonDown("Switch"))
+            {
+                Debug.Log(teamController.name);
+                try
+                {
+                    teamController.GetComponent<SwitchHandler>().BeginSwap(playerNum);
+                }
+                catch
+                {
+                }
+            }
+        }
+        else
+        {
+            anim.SetBool("IsDead", true);
+
+            for(int i = 0; i < boxColliders.Length; i++)
+            {
+                boxColliders[i].enabled = false;
+            }
+            for (int i = 0; i < polygonColliders.Length; i++)
+            {
+                polygonColliders[i].enabled = false;
             }
         }
 
@@ -282,13 +307,15 @@ public class BasePlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-        FixedMovement();
-
         Gravity();
 
-        //always running this so that everything can be based off of gravity
-        rb.MovePosition(transform.position + velocity * Time.fixedDeltaTime);
+        if (!isDead)
+        {
+            FixedMovement();
+        }
+
+            //always running this so that everything can be based off of gravity
+            rb.MovePosition(transform.position + velocity * Time.fixedDeltaTime);
 
     }
 

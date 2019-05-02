@@ -20,7 +20,7 @@ public class SwitchHandler : MonoBehaviour
     public GameObject P2x4_GilbertFighter;
     public GameObject P2x4_GilbertSupport;
 
-    //[HideInInspector]
+    [HideInInspector]
     public GameObject teammate1_fighter;
     [HideInInspector]
     public GameObject teammate1_support;
@@ -167,16 +167,16 @@ public class SwitchHandler : MonoBehaviour
             specialMeter[i].fillAmount = 0;
         }
 
-        /*
+        
         if (teammate1_fighter.activeSelf)
         {
-            if (teammate1_fighter.GetComponent<BasicPlayerScript>().claire)
+            if (teammate1_fighter.GetComponent<BasePlayer>().claire)
             {
                 clairePortrait.enabled = true;
                 gilbertPortrait.enabled = false;
             }
             else
-            if (teammate1_fighter.GetComponent<BasicPlayerScript>().gillbert)
+            if (teammate1_fighter.GetComponent<BasePlayer>().gillbert)
             {
                 clairePortrait.enabled = false;
                 gilbertPortrait.enabled = true;
@@ -184,19 +184,19 @@ public class SwitchHandler : MonoBehaviour
         }
         else
         {
-            if (teammate2_fighter.GetComponent<BasicPlayerScript>().claire)
+            if (teammate2_fighter.GetComponent<BasePlayer>().claire)
             {
                 clairePortrait.enabled = true;
                 gilbertPortrait.enabled = false;
             }
             else
-            if (teammate2_fighter.GetComponent<BasicPlayerScript>().gillbert)
+            if (teammate2_fighter.GetComponent<BasePlayer>().gillbert)
             {
                 clairePortrait.enabled = false;
                 gilbertPortrait.enabled = true;
             }
         }
-        */
+        
        
         
     }

@@ -9976,6 +9976,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
         type: 3}
+      propertyPath: boxColliders.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: polygonColliders.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
       propertyPath: teamNum
       value: 2
       objectReference: {fileID: 0}
@@ -9999,6 +10009,21 @@ PrefabInstance:
       propertyPath: makeFaceRight
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: boxColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 615460975}
+    - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: polygonColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 615460973}
+    - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: polygonColliders.Array.data[1]
+      value: 
+      objectReference: {fileID: 615460972}
     - target: {fileID: 2588851933903481558, guid: 0a8e6f2e7e998044985d7d5e84024362,
         type: 3}
       propertyPath: BN_Angle.x
@@ -10172,6 +10197,40 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 615460970}
   m_PrefabAsset: {fileID: 0}
+--- !u!60 &615460972 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6972525713369315705, guid: 0a8e6f2e7e998044985d7d5e84024362,
+    type: 3}
+  m_PrefabInstance: {fileID: 615460970}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &615460973 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2216253387871579357, guid: 0a8e6f2e7e998044985d7d5e84024362,
+    type: 3}
+  m_PrefabInstance: {fileID: 615460970}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &615460975 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2588851933903481643, guid: 0a8e6f2e7e998044985d7d5e84024362,
+    type: 3}
+  m_PrefabInstance: {fileID: 615460970}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &615460981
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615460971}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.67}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &629131652 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 601068658141386466, guid: da5f7037fa8ac89469e766bdb2f9fdbe,
@@ -12566,6 +12625,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
         type: 3}
+      propertyPath: boxColliders.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: polygonColliders.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
       propertyPath: teamNum
       value: 2
       objectReference: {fileID: 0}
@@ -12589,6 +12658,21 @@ PrefabInstance:
       propertyPath: makeFaceRight
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: boxColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 817027957}
+    - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: polygonColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 817027955}
+    - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: polygonColliders.Array.data[1]
+      value: 
+      objectReference: {fileID: 817027954}
     - target: {fileID: 2588851933903481558, guid: 0a8e6f2e7e998044985d7d5e84024362,
         type: 3}
       propertyPath: BN_Angle.x
@@ -12762,6 +12846,40 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 817027952}
   m_PrefabAsset: {fileID: 0}
+--- !u!60 &817027954 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6972525713369315705, guid: 0a8e6f2e7e998044985d7d5e84024362,
+    type: 3}
+  m_PrefabInstance: {fileID: 817027952}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &817027955 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2216253387871579357, guid: 0a8e6f2e7e998044985d7d5e84024362,
+    type: 3}
+  m_PrefabInstance: {fileID: 817027952}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &817027957 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2588851933903481643, guid: 0a8e6f2e7e998044985d7d5e84024362,
+    type: 3}
+  m_PrefabInstance: {fileID: 817027952}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &817027963
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817027953}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.67}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &821951769
 GameObject:
   m_ObjectHideFlags: 0
@@ -20479,6 +20597,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
         type: 3}
+      propertyPath: boxColliders.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: polygonColliders.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
       propertyPath: teamNum
       value: 1
       objectReference: {fileID: 0}
@@ -20492,6 +20620,21 @@ PrefabInstance:
       propertyPath: regenableHealthBar
       value: 
       objectReference: {fileID: 1424168686}
+    - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: boxColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 1500910304}
+    - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: polygonColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 1500910302}
+    - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: polygonColliders.Array.data[1]
+      value: 
+      objectReference: {fileID: 1500910301}
     - target: {fileID: 2588851933903481558, guid: 0a8e6f2e7e998044985d7d5e84024362,
         type: 3}
       propertyPath: BN_Angle.x
@@ -20665,12 +20808,46 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1500910299}
   m_PrefabAsset: {fileID: 0}
+--- !u!60 &1500910301 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6972525713369315705, guid: 0a8e6f2e7e998044985d7d5e84024362,
+    type: 3}
+  m_PrefabInstance: {fileID: 1500910299}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &1500910302 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2216253387871579357, guid: 0a8e6f2e7e998044985d7d5e84024362,
+    type: 3}
+  m_PrefabInstance: {fileID: 1500910299}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &1500910303 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 2588851933903481641, guid: 0a8e6f2e7e998044985d7d5e84024362,
     type: 3}
   m_PrefabInstance: {fileID: 1500910299}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &1500910304 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2588851933903481643, guid: 0a8e6f2e7e998044985d7d5e84024362,
+    type: 3}
+  m_PrefabInstance: {fileID: 1500910299}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &1500910310
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500910300}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.67}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &1506173871
 GameObject:
   m_ObjectHideFlags: 0
@@ -29567,6 +29744,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
         type: 3}
+      propertyPath: boxColliders.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: polygonColliders.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
       propertyPath: teamNum
       value: 1
       objectReference: {fileID: 0}
@@ -29585,6 +29772,21 @@ PrefabInstance:
       propertyPath: playerNum
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: boxColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 2057249759}
+    - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: polygonColliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 2057249757}
+    - target: {fileID: 2588851933903481639, guid: 0a8e6f2e7e998044985d7d5e84024362,
+        type: 3}
+      propertyPath: polygonColliders.Array.data[1]
+      value: 
+      objectReference: {fileID: 2057249756}
     - target: {fileID: 2588851933903481558, guid: 0a8e6f2e7e998044985d7d5e84024362,
         type: 3}
       propertyPath: BN_Angle.x
@@ -29758,6 +29960,40 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2057249754}
   m_PrefabAsset: {fileID: 0}
+--- !u!60 &2057249756 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6972525713369315705, guid: 0a8e6f2e7e998044985d7d5e84024362,
+    type: 3}
+  m_PrefabInstance: {fileID: 2057249754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &2057249757 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2216253387871579357, guid: 0a8e6f2e7e998044985d7d5e84024362,
+    type: 3}
+  m_PrefabInstance: {fileID: 2057249754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &2057249759 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2588851933903481643, guid: 0a8e6f2e7e998044985d7d5e84024362,
+    type: 3}
+  m_PrefabInstance: {fileID: 2057249754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &2057249765
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057249755}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.67}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &2060324689
 GameObject:
   m_ObjectHideFlags: 0
